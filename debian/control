@@ -54,3 +54,5 @@ Description: Software Center for GNOME (common files)
  data from a number of traditional packaging systems, such as rpm or apt. An
  appdata plugin provides additional metadata from locally installed data in the
  appdata format. 
+ .
+ This package contains the architectures independent files
