@@ -1,0 +1,5 @@
+gnome-software (3.12.1-1) UNRELEASED; urgency=low
+
+  * Initial release (Closes: #722316)
+
+ -- Laurent Bigonville <bigon@debian.org>  Sat, 26 Apr 2014 16:23:10 +0200

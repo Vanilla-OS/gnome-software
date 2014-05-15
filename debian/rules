@@ -1,0 +1,19 @@
+#!/usr/bin/make -f
+include /usr/share/gnome-pkg-tools/1/rules/uploaders.mk
+-include /usr/share/gnome-pkg-tools/1/rules/gnome-get-source.mk
+
+%:
+	dh $@ --with gnome
+
+override_dh_auto_configure:
+	dh_auto_configure -- --libdir=/usr/lib
+
+override_dh_install:
+	rm -f debian/tmp/gs-plugins-3/*.a
+	rm -f debian/tmp/gs-plugins-3/*.la
+	dh_install -X.la -X.a --list-missing
+
+override_dh_makeshlibs:
+	dh_makeshlibs -Xlibgs_plugin
+
+override_dh_auto_test:
