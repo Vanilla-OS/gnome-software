@@ -6,11 +6,11 @@ include /usr/share/gnome-pkg-tools/1/rules/uploaders.mk
 	dh $@ --with gnome
 
 override_dh_auto_configure:
-	dh_auto_configure -- --libdir=/usr/lib
+	dh_auto_configure -- --libdir=/usr/lib --disable-silent-rules
 
 override_dh_install:
-	rm -f debian/tmp/gs-plugins-3/*.a
-	rm -f debian/tmp/gs-plugins-3/*.la
+	rm -f debian/tmp/gs-plugins-6/*.a
+	rm -f debian/tmp/gs-plugins-6/*.la
 	dh_install -X.la -X.a --list-missing
 
 override_dh_makeshlibs:

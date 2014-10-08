@@ -2,7 +2,6 @@
 # 
 # Modifications should be made to debian/control.in instead.
 # This file is regenerated automatically in the clean target.
-
 Source: gnome-software
 Section: gnome
 Priority: optional
@@ -14,16 +13,17 @@ Build-Depends: debhelper (>= 9.0.0),
                gnome-pkg-tools (>= 0.10),
                gsettings-desktop-schemas-dev (>= 3.11.5),
                intltool (>= 0.35.0),
+               libappstream-glib-dev (>= 0.2.4),
                libglib2.0-dev (>= 2.39.1),
                libgnome-desktop-3-dev,
-               libgtk-3-dev (>= 3.11.5),
-               libpackagekit-glib2-dev (>= 0.8.12),
+               libgtk-3-dev (>= 3.13.1),
+               libpackagekit-glib2-dev (>= 1.0.0),
                libsoup2.4-dev,
                libsqlite3-dev,
                libxml2-utils,
                pkg-config,
                xsltproc
-Standards-Version: 3.9.5
+Standards-Version: 3.9.6
 Homepage: https://wiki.gnome.org/Apps/Software
 Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/packages/unstable/gnome-software/
 Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-gnome/packages/unstable/gnome-software/
@@ -41,7 +41,7 @@ Description: Software Center for GNOME
  technologies that are used underneath. Currently, a PackageKit plugin provides
  data from a number of traditional packaging systems, such as rpm or apt. An
  appdata plugin provides additional metadata from locally installed data in the
- appdata format. 
+ appdata format.
 
 Package: gnome-software-common
 Architecture: all
@@ -53,6 +53,6 @@ Description: Software Center for GNOME (common files)
  technologies that are used underneath. Currently, a PackageKit plugin provides
  data from a number of traditional packaging systems, such as rpm or apt. An
  appdata plugin provides additional metadata from locally installed data in the
- appdata format. 
+ appdata format.
  .
  This package contains the architectures independent files
