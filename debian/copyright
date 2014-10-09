@@ -5,6 +5,7 @@ Source: https://download.gnome.org/sources/gnome-software/
 Files: *
 Copyright: 2013-2014 Richard Hughes <richard@hughsie.com>
            2013 Matthias Clasen <mclasen@redhat.com>
+           2014 Kalev Lember <kalevlember@gmail.com>
 License: GPL-2.0+
 
 Files: debian/*
