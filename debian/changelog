@@ -1,5 +1,5 @@
-gnome-software (3.14.0-1) UNRELEASED; urgency=low
+gnome-software (3.14.0-1) unstable; urgency=low
 
   * Initial release (Closes: #722316)
 
- -- Laurent Bigonville <bigon@debian.org>  Thu, 09 Oct 2014 00:58:11 +0200
+ -- Laurent Bigonville <bigon@debian.org>  Sat, 11 Oct 2014 11:04:58 +0200
