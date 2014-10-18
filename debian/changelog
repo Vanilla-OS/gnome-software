@@ -1,3 +1,11 @@
+gnome-software (3.14.1-1) UNRELEASED; urgency=medium
+
+  * New upstream release
+    - debian/control.in: Bump gtk+-3.0 build-dependency to 3.14.1
+    - debian/rules: Bump plugin API version to 7
+
+ -- Laurent Bigonville <bigon@debian.org>  Sat, 18 Oct 2014 09:12:02 +0200
+
 gnome-software (3.14.0-1) unstable; urgency=low
 
   * Initial release (Closes: #722316)

@@ -9,8 +9,8 @@ override_dh_auto_configure:
 	dh_auto_configure -- --libdir=/usr/lib --disable-silent-rules
 
 override_dh_install:
-	rm -f debian/tmp/gs-plugins-6/*.a
-	rm -f debian/tmp/gs-plugins-6/*.la
+	rm -f debian/tmp/gs-plugins-7/*.a
+	rm -f debian/tmp/gs-plugins-7/*.la
 	dh_install -X.la -X.a --list-missing
 
 override_dh_makeshlibs:
