@@ -1,3 +1,12 @@
+gnome-software (3.14.2-1) UNRELEASED; urgency=medium
+
+  * New upstream release
+  * debian/control.in: Bump both appstream-glib build and runtime dependencies
+    to >= 0.3.2, this can be reverted when appstream-glib will provide a
+    .symbols file
+
+ -- Laurent Bigonville <bigon@debian.org>  Tue, 18 Nov 2014 22:55:48 +0100
+
 gnome-software (3.14.1-2) unstable; urgency=medium
 
   * debian/rules, debian/gnome-software.install: Install appdata file
