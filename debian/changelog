@@ -1,3 +1,9 @@
+gnome-software (3.16.4-1) UNRELEASED; urgency=medium
+
+  * New upstream release.
+
+ -- Michael Biebl <biebl@debian.org>  Tue, 21 Jul 2015 23:51:31 +0200
+
 gnome-software (3.14.2-1) unstable; urgency=medium
 
   * New upstream release
