@@ -1,6 +1,11 @@
 gnome-software (3.16.4-1) UNRELEASED; urgency=medium
 
   * New upstream release.
+  * Update Build-Depends as per configure.ac:
+    - Add appstream-util.
+    - Add libpolkit-gobject-1-dev.
+    - Bump libappstream-glib-dev to (>= 0.3.4).
+    - Bump libgtk-3-dev to (>= 3.16).
 
  -- Michael Biebl <biebl@debian.org>  Tue, 21 Jul 2015 23:51:31 +0200
 
