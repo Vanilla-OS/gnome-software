@@ -8,6 +8,8 @@ gnome-software (3.16.4-1) UNRELEASED; urgency=medium
     - Bump libgtk-3-dev to (>= 3.16).
   * Drop hard-coded dependency on libappstream-glib7 now that the library
     provides a symbols file.
+  * Use dh_install's exclude (-X) functionality to not install the .a and .la
+    files.
 
  -- Michael Biebl <biebl@debian.org>  Tue, 21 Jul 2015 23:51:31 +0200
 
