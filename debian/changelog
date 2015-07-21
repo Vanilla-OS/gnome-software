@@ -1,4 +1,4 @@
-gnome-software (3.16.4-1) UNRELEASED; urgency=medium
+gnome-software (3.16.4-1) unstable; urgency=medium
 
   * New upstream release.
   * Update Build-Depends as per configure.ac:
@@ -11,7 +11,7 @@ gnome-software (3.16.4-1) UNRELEASED; urgency=medium
   * Use dh_install's exclude (-X) functionality to not install the .a and .la
     files.
 
- -- Michael Biebl <biebl@debian.org>  Tue, 21 Jul 2015 23:51:31 +0200
+ -- Michael Biebl <biebl@debian.org>  Wed, 22 Jul 2015 00:03:04 +0200
 
 gnome-software (3.14.2-1) unstable; urgency=medium
 
