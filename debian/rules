@@ -2,11 +2,18 @@
 include /usr/share/gnome-pkg-tools/1/rules/uploaders.mk
 -include /usr/share/gnome-pkg-tools/1/rules/gnome-get-source.mk
 
+# Install target dir
+INSTALLDIR = $(CURDIR)/debian/tmp
+
 %:
 	dh $@ --with gnome
 
 override_dh_auto_configure:
 	dh_auto_configure -- --libdir=/usr/lib --disable-silent-rules
+
+override_dh_auto_install:
+	dh_auto_install --destdir=$(INSTALLDIR)
+	rm -f $(INSTALLDIR)/usr/lib/gs-plugins-?/libgs_plugin_fedora*
 
 override_dh_install:
 	dh_install -X.a -X.la --list-missing
