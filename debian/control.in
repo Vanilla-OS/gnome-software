@@ -24,7 +24,7 @@ Build-Depends: debhelper (>= 9.0.0),
 Standards-Version: 3.9.6
 Homepage: https://wiki.gnome.org/Apps/Software
 Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/packages/unstable/gnome-software/
-Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-gnome/packages/unstable/gnome-software/
+Vcs-Browser: https://anonscm.debian.org/viewvc/pkg-gnome/packages/unstable/gnome-software/
 
 Package: gnome-software
 Architecture: any
