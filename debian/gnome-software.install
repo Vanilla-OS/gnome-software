@@ -1,6 +1,6 @@
 etc/xdg/autostart/
 usr/bin/gnome-software
-usr/lib/gs-plugins-7/*.so
+usr/lib/gs-plugins-?/*.so
 usr/share/appdata/
 usr/share/applications/
 usr/share/dbus-1/

@@ -2,6 +2,14 @@
 include /usr/share/gnome-pkg-tools/1/rules/uploaders.mk
 -include /usr/share/gnome-pkg-tools/1/rules/gnome-get-source.mk
 
+GS_CONFIGURE_FLAGS = --libdir=/usr/lib \
+		--disable-silent-rules
+
+ifeq ($(DEB_HOST_ARCH_OS), linux)
+	GS_CONFIGURE_FLAGS += --enable-limba
+	# TODO: --enable-firmware
+endif
+
 # Install target dir
 INSTALLDIR = $(CURDIR)/debian/tmp
 
@@ -9,7 +17,7 @@ INSTALLDIR = $(CURDIR)/debian/tmp
 	dh $@ --with gnome
 
 override_dh_auto_configure:
-	dh_auto_configure -- --libdir=/usr/lib --disable-silent-rules
+	dh_auto_configure -- $(GS_CONFIGURE_FLAGS)
 
 override_dh_auto_install:
 	dh_auto_install --destdir=$(INSTALLDIR)

@@ -2,19 +2,21 @@ Source: gnome-software
 Section: gnome
 Priority: optional
 Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
-Uploaders: Matthias Klumpp <mak@debian.org>, @GNOME_TEAM@
-Build-Depends: debhelper (>= 9.0.0),
+Uploaders: Matthias Klumpp <mak@debian.org>,
+           @GNOME_TEAM@
+Build-Depends: appstream-util,
+               debhelper (>= 9.0.0),
                dh-autoreconf,
                docbook-xsl,
                gnome-pkg-tools (>= 0.10),
-               gsettings-desktop-schemas-dev (>= 3.11.5),
+               gsettings-desktop-schemas-dev (>= 3.18),
                intltool (>= 0.35.0),
-               appstream-util,
-               libappstream-glib-dev (>= 0.3.4),
-               libglib2.0-dev (>= 2.39.1),
-               libgnome-desktop-3-dev,
-               libgtk-3-dev (>= 3.16),
-               libpackagekit-glib2-dev (>= 1.0.0),
+               libappstream-glib-dev (>= 0.5.1),
+               libglib2.0-dev (>= 2.46),
+               libgnome-desktop-3-dev (>= 3.18),
+               libgtk-3-dev (>= 3.18),
+               liblimba-dev (>= 0.5.2) [linux-any],
+               libpackagekit-glib2-dev (>= 1.0.10),
                libpolkit-gobject-1-dev,
                libsoup2.4-dev,
                libsqlite3-dev,
@@ -29,7 +31,7 @@ Vcs-Browser: https://anonscm.debian.org/viewvc/pkg-gnome/packages/unstable/gnome
 Package: gnome-software
 Architecture: any
 Depends: gnome-software-common (= ${source:Version}),
-         gsettings-desktop-schemas (>= 3.11.5),
+         gsettings-desktop-schemas (>= 3.18),
          ${misc:Depends},
          ${shlibs:Depends}
 Description: Software Center for GNOME
