@@ -5,6 +5,16 @@ gnome-software (3.18.2-1) unstable; urgency=medium
 
   [ Matthias Klumpp ]
   * New upstream release: 3.18.2
+  * Update Build-Depends:
+    - Bump libpackagekit-glib2-dev to (>= 1.0.10)
+    - Bump libsoup2.4-dev to (>= 2.52)
+    - Bump libgnome-desktop-3-dev to (>= 3.18)
+    - Bump libappstream-glib-dev to (>= 0.5.1)
+    - Bump libgtk-3-dev to (>= 3.18)
+    - Add liblimba-dev (>= 0.5.2) on Linux
+  * Sort build dependencies
+  * Enable optional support for the Limba installer.
+    - Will be inert if not explicitly configured.
 
  -- Matthias Klumpp <mak@debian.org>  Wed, 14 Oct 2015 19:54:10 +0200
 
