@@ -1,8 +1,12 @@
-gnome-software (3.18.1-1) UNRELEASED; urgency=medium
+gnome-software (3.18.2-1) unstable; urgency=medium
 
-  * New upstream release.
+  [ Michael Biebl ]
+  * Use https:// for Vcs-Browser
 
- -- Michael Biebl <biebl@debian.org>  Wed, 14 Oct 2015 21:58:23 +0200
+  [ Matthias Klumpp ]
+  * New upstream release: 3.18.2
+
+ -- Matthias Klumpp <mak@debian.org>  Wed, 14 Oct 2015 19:54:10 +0200
 
 gnome-software (3.16.5-2) unstable; urgency=medium
 
