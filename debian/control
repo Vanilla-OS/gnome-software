@@ -36,8 +36,11 @@ Package: gnome-software
 Architecture: any
 Depends: gnome-software-common (= ${source:Version}),
          gsettings-desktop-schemas (>= 3.18),
+         packagekit (>= 1.0.10),
          ${misc:Depends},
          ${shlibs:Depends}
+Replaces: gnome-packagekit-session (<< 3.16.0-2~)
+Breaks: gnome-packagekit-session (<< 3.16.0-2~)
 Description: Software Center for GNOME
  Software lets you install and update applications and system extensions.
  .
