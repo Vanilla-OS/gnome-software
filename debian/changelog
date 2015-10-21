@@ -1,3 +1,13 @@
+gnome-software (3.18.2-2) UNRELEASED; urgency=medium
+
+  * Add missing Breaks/Replaces against gnome-packagekit-session
+    - Closes: #802458
+  * Explicitly depend on PackageKit (Closes: #794979)
+    - GNOME-Software needs the PackageKit daemon to work properly
+      at time.
+
+ -- Matthias Klumpp <mak@debian.org>  Wed, 21 Oct 2015 02:26:35 +0200
+
 gnome-software (3.18.2-1) unstable; urgency=medium
 
   [ Michael Biebl ]
