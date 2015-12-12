@@ -8,7 +8,8 @@ Priority: optional
 Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
 Uploaders: Matthias Klumpp <mak@debian.org>,
            Laurent Bigonville <bigon@debian.org>, Michael Biebl <biebl@debian.org>
-Build-Depends: appstream-util,
+Build-Depends: appstream,
+               appstream-util,
                debhelper (>= 9.0.0),
                dh-autoreconf,
                docbook-xsl,
@@ -34,7 +35,8 @@ Vcs-Browser: https://anonscm.debian.org/viewvc/pkg-gnome/packages/unstable/gnome
 
 Package: gnome-software
 Architecture: any
-Depends: gnome-software-common (= ${source:Version}),
+Depends: appstream,
+         gnome-software-common (= ${source:Version}),
          gsettings-desktop-schemas (>= 3.18),
          packagekit (>= 1.0.10),
          ${misc:Depends},
