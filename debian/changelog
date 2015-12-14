@@ -1,3 +1,13 @@
+gnome-software (3.18.3-2) unstable; urgency=medium
+
+  * Enable fwupd support
+    - This allows updating flashed firmware from GNOME-Software
+      when 'fwupd' is installed.
+  * Depend on 'appstream'
+    - Enables AppStream/DEP-11 integration on Debian automatically.
+
+ -- Matthias Klumpp <mak@debian.org>  Mon, 14 Dec 2015 16:02:42 +0100
+
 gnome-software (3.18.3-1) unstable; urgency=medium
 
   * New upstream bugfix release
