@@ -1,3 +1,12 @@
+gnome-software (3.18.3-3) unstable; urgency=medium
+
+  * Add 01_fwupd-dont-crash.patch: Don't crash when the fwupd daemon
+    is removed.
+  * Add 02_fwupd-nofail.patch: Do not fail update checks if fwupd is
+    not available. (Closes: #808305)
+
+ -- Matthias Klumpp <mak@debian.org>  Fri, 15 Jan 2016 15:14:42 +0100
+
 gnome-software (3.18.3-2) unstable; urgency=medium
 
   * Enable fwupd support
