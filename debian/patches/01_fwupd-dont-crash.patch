@@ -8,12 +8,10 @@ Fixes: https://bugzilla.redhat.com/show_bug.cgi?id=1282395
  src/plugins/gs-plugin-fwupd.c | 38 ++++++++++++++++----------------------
  1 file changed, 16 insertions(+), 22 deletions(-)
 
-diff --git a/src/plugins/gs-plugin-fwupd.c b/src/plugins/gs-plugin-fwupd.c
-index 0a4844a..d5e5f66 100644
 --- a/src/plugins/gs-plugin-fwupd.c
 +++ b/src/plugins/gs-plugin-fwupd.c
-@@ -34,7 +34,7 @@
- #include "gs-utils.h"
+@@ -32,7 +32,7 @@
+ #include <gs-plugin.h>
  
  struct GsPluginPrivate {
 -	gsize			 done_init;
@@ -21,7 +19,7 @@ index 0a4844a..d5e5f66 100644
  	GDBusProxy		*proxy;
  	GPtrArray		*to_download;
  	GPtrArray		*to_ignore;
-@@ -137,6 +137,7 @@ gs_plugin_startup (GsPlugin *plugin, GCancellable *cancellable, GError **error)
+@@ -135,6 +135,7 @@
  	g_autoptr(GError) error_local = NULL;
  	g_autofree gchar *data = NULL;
  	g_autoptr(GDBusConnection) conn = NULL;
@@ -29,7 +27,7 @@ index 0a4844a..d5e5f66 100644
  
  	/* register D-Bus errors */
  	fwupd_error_quark ();
-@@ -411,23 +412,20 @@ gs_plugin_add_updates_historical (GsPlugin *plugin,
+@@ -425,23 +426,20 @@
  {
  	GVariant *variant;
  	const gchar *key;
@@ -58,7 +56,7 @@ index 0a4844a..d5e5f66 100644
  	val = g_dbus_proxy_call_sync (plugin->priv->proxy,
  				      "GetResults",
  				      g_variant_new ("(s)", FWUPD_DEVICE_ID_ANY),
-@@ -476,23 +474,20 @@ gs_plugin_add_updates (GsPlugin *plugin,
+@@ -490,23 +488,20 @@
  		       GError **error)
  {
  	const gchar *id;
@@ -87,7 +85,7 @@ index 0a4844a..d5e5f66 100644
  	val = g_dbus_proxy_call_sync (plugin->priv->proxy,
  				      "GetUpdates",
  				      NULL,
-@@ -732,16 +727,15 @@ gs_plugin_refresh (GsPlugin *plugin,
+@@ -772,16 +767,15 @@
  		   GError **error)
  {
  	const gchar *tmp;
@@ -108,6 +106,3 @@ index 0a4844a..d5e5f66 100644
  
  	/* ensure networking is set up */
  	if (!gs_plugin_fwupd_setup_networking (plugin, error))
--- 
-cgit v0.11.2
-
