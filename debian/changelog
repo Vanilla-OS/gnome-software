@@ -1,12 +1,25 @@
-gnome-software (3.20.2-1) UNRELEASED; urgency=medium
+gnome-software (3.20.2-1) unstable; urgency=medium
+
+  [ Matthias Klumpp ]
+  * New upstream release: 3.20.2
+  * Enable the (alpha) Open Desktop Review Service (ODRS) feature
+  * Update dependencies:
+    - Bump libpackagekit-glib2-dev (>= 1.1)
+    - Bump libappstream-glib-dev (>= 0.5.14)
+    - Bump liblimba-dev (>= 0.5.6)
+    - Add libjson-glib-dev
+    - Add libgtkspell3-3-dev (>= 3.0)
+  * Drop patches: Applied upstream
+  * Add Debian DFSG plugin to set license information
+    - See debian-dfsg.patch
+    - In case we don't know if a software is free or not based on the license
+      data it supplies, we set it as free based on it originating from "main".
+  * Set provenance for Debian
 
   [ Michael Biebl ]
   * Drop uploaders.mk from debian/rules as this breaks the clean target with
     dh. Instead use the gnome dh addon which updates debian/control via
     dh_gnome_clean.
-
-  [ Matthias Klumpp ]
-  * 
 
  -- Matthias Klumpp <mak@debian.org>  Mon, 25 Apr 2016 18:12:18 +0200
 
