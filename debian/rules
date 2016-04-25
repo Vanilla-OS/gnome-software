@@ -3,7 +3,8 @@
 -include /usr/share/gnome-pkg-tools/1/rules/gnome-get-source.mk
 
 GS_CONFIGURE_FLAGS = --libdir=/usr/lib \
-		--disable-silent-rules
+		--disable-silent-rules \
+		--enable-odrs
 
 ifeq ($(DEB_HOST_ARCH_OS), linux)
 	# Enable Limba support on Linux
@@ -13,6 +14,13 @@ ifeq ($(DEB_HOST_ARCH_OS), linux)
 	ifneq (,$(findstring $(DEB_BUILD_ARCH), amd64 arm64 armhf i386))
 		GS_CONFIGURE_FLAGS += --enable-firmware
 	endif
+endif
+
+DISTRO_ID = debian
+ifeq (yes,$(shell dpkg-vendor --derives-from Ubuntu && echo yes))
+	DISTRO_ID = ubuntu
+else ifeq (yes,$(shell dpkg-vendor --derives-from Tanglu && echo yes))
+	DISTRO_ID = tanglu
 endif
 
 # Install target dir
@@ -27,6 +35,13 @@ override_dh_auto_configure:
 override_dh_auto_install:
 	dh_auto_install --destdir=$(INSTALLDIR)
 	rm -f $(INSTALLDIR)/usr/lib/gs-plugins-?/libgs_plugin_fedora*
+ifneq (yes,$(shell dpkg-vendor --derives-from Ubuntu && echo yes))
+	rm -f $(INSTALLDIR)/usr/lib/gs-plugins-?/libgs_plugin_ubuntu*
+endif
+
+override_dh_installgsettings:
+	sed 's/@DISTRO@/$(DISTRO_ID)/g' debian/gnome-software.gsettings-override.in > debian/gnome-software.gsettings-override
+	dh_installgsettings
 
 override_dh_install:
 	dh_install -X.a -X.la --list-missing
@@ -35,3 +50,8 @@ override_dh_makeshlibs:
 	dh_makeshlibs -Xlibgs_plugin
 
 override_dh_auto_test:
+	# DISABLED
+
+override_dh_clean:
+	rm -f debian/gnome-software.gsettings-override
+	dh_clean
