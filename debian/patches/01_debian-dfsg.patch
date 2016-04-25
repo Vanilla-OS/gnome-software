@@ -1,0 +1,228 @@
+commit cd0917ef194a4efdeff8f75f3b010afe54892916
+Author: Matthias Klumpp <matthias@tenstral.net>
+Date:   Mon Apr 25 18:54:59 2016 +0200
+
+    Add plugin to mark software from Debian main as FLOSS
+    
+    We need this because not all software has set the <project_license/> tag
+    properly in their AppStream metainfo files, and because some software
+    doesn't even ship a metainfo file.
+    Additionally, all software coming from Debian main adheres to the DFSG
+    and therefore is free and open-source software.
+    
+    This plugin also handles Tanglu.
+
+diff --git a/src/gs-app.c b/src/gs-app.c
+index 6effba8..99e5139 100644
+--- a/src/gs-app.c
++++ b/src/gs-app.c
+@@ -1370,6 +1370,14 @@ gs_app_set_license (GsApp *app, GsAppQuality quality, const gchar *license)
+ 	/* only save this if the data is sufficiently high quality */
+ 	if (quality <= app->license_quality)
+ 		return;
++	if (license == NULL)
++		return;
++
++	/* some backends consider "unknown" a valid license, this messes with
++	 * setting a free license (which also has the lowest priority) later. */
++	if ((quality == GS_APP_QUALITY_LOWEST) && (g_strcmp0 (license, "unknown") == 0))
++		return;
++
+ 	app->license_quality = quality;
+ 
+ 	g_return_if_fail (GS_IS_APP (app));
+@@ -1400,13 +1408,6 @@ gs_app_set_license (GsApp *app, GsAppQuality quality, const gchar *license)
+ 			continue;
+ 		}
+ 
+-		/* do the best we can */
+-		if (gs_app_get_license_token_is_nonfree (tokens[i])) {
+-			g_debug ("nonfree license from %s: '%s'",
+-				 gs_app_get_id (app), tokens[i]);
+-			app->license_is_free = FALSE;
+-		}
+-
+ 		/* legacy literal text */
+ 		if (g_str_has_prefix (tokens[i], "#")) {
+ 			g_string_append (urld, tokens[i] + 1);
+@@ -1433,6 +1434,30 @@ gs_app_set_license (GsApp *app, GsAppQuality quality, const gchar *license)
+ 			continue;
+ 		}
+ 
++		/* free software, license unspecified */
++		if (g_str_has_prefix (tokens[i], "@LicenseRef-free")) {
++			const gchar *url = "https://www.gnu.org/philosophy/free-sw";
++			gchar *tmp;
++
++			/* we support putting a custom URL in the
++			 * token string, e.g. @LicenseRef-free=http://ubuntu.com */
++			tmp = g_strstr_len (tokens[i], -1, "=");
++			if (tmp != NULL)
++				url = tmp + 1;
++			g_string_append_printf (urld,
++						"<a href=\"%s\">%s</a>",
++						/* TRANSLATORS: see GNU page */
++						url, _("Free Software"));
++			continue;
++		}
++
++		/* do the best we can */
++		if (gs_app_get_license_token_is_nonfree (tokens[i])) {
++			g_debug ("nonfree license from %s: '%s'",
++				 gs_app_get_id (app), tokens[i]);
++			app->license_is_free = FALSE;
++		}
++
+ 		/* SPDX value */
+ 		if (g_str_has_prefix (tokens[i], "@")) {
+ 			g_string_append_printf (urld,
+diff --git a/src/plugins/Makefile.am b/src/plugins/Makefile.am
+index a256cec..7db001b 100644
+--- a/src/plugins/Makefile.am
++++ b/src/plugins/Makefile.am
+@@ -36,6 +36,7 @@ plugin_LTLIBRARIES =					\
+ 	libgs_plugin_fedora_distro_upgrades.la		\
+ 	libgs_plugin_provenance.la			\
+ 	libgs_plugin_fedora_tagger_usage.la		\
++	libgs_plugin_debian_dfsg.la			\
+ 	libgs_plugin_epiphany.la			\
+ 	libgs_plugin_icons.la
+ 
+@@ -87,6 +88,11 @@ libgs_plugin_provenance_la_LIBADD = $(GS_PLUGIN_LIBS)
+ libgs_plugin_provenance_la_LDFLAGS = -module -avoid-version
+ libgs_plugin_provenance_la_CFLAGS = $(GS_PLUGIN_CFLAGS) $(WARN_CFLAGS)
+ 
++libgs_plugin_debian_dfsg_la_SOURCES = gs-plugin-debian-dfsg.c
++libgs_plugin_debian_dfsg_la_LIBADD = $(GS_PLUGIN_LIBS)
++libgs_plugin_debian_dfsg_la_LDFLAGS = -module -avoid-version
++libgs_plugin_debian_dfsg_la_CFLAGS = $(GS_PLUGIN_CFLAGS) $(WARN_CFLAGS)
++
+ libgs_plugin_fedora_tagger_usage_la_SOURCES = gs-plugin-fedora-tagger-usage.c
+ libgs_plugin_fedora_tagger_usage_la_LIBADD = $(GS_PLUGIN_LIBS) $(SOUP_LIBS) $(SQLITE_LIBS)
+ libgs_plugin_fedora_tagger_usage_la_LDFLAGS = -module -avoid-version
+diff --git a/src/plugins/gs-plugin-debian-dfsg.c b/src/plugins/gs-plugin-debian-dfsg.c
+new file mode 100644
+index 0000000..c1b853d
+--- /dev/null
++++ b/src/plugins/gs-plugin-debian-dfsg.c
+@@ -0,0 +1,120 @@
++/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
++ *
++ * Copyright (C) 2016 Matthias Klumpp <mak@debian.org>
++ *
++ * Licensed under the GNU General Public License Version 2
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
++ */
++
++#include <config.h>
++#include <gs-plugin.h>
++
++/*
++ * SECTION:
++ * Marks the application as OpenSource if it comes from an origin
++ * that is recognized as being DFSG-free.
++ * See https://www.debian.org/social_contract#guidelines
++ */
++
++#define DFSG_INFO_URL "https://www.debian.org/social_contract#guidelines"
++
++struct GsPluginPrivate {
++	guint dummy;
++};
++
++/**
++ * gs_plugin_get_name:
++ */
++const gchar *
++gs_plugin_get_name (void)
++{
++	return "debian-dfsg";
++}
++
++/**
++ * gs_plugin_initialize:
++ */
++void
++gs_plugin_initialize (GsPlugin *plugin)
++{
++}
++
++/**
++ * gs_plugin_order_after:
++ */
++const gchar **
++gs_plugin_order_after (GsPlugin *plugin)
++{
++	static const gchar *deps[] = {
++		"provenance",	/* after provenance information has been set */
++		NULL };
++	return deps;
++}
++
++/**
++ * gs_plugin_destroy:
++ */
++void
++gs_plugin_destroy (GsPlugin *plugin)
++{
++}
++
++/**
++ * gs_utils_check_origin_dfsg_free:
++ */
++static gboolean
++gs_utils_check_origin_dfsg_free (const gchar *origin)
++{
++	if (!g_str_has_suffix (origin, "-main"))
++		return FALSE;
++
++	if (g_str_has_prefix (origin, "debian-"))
++		return TRUE;
++	if (g_str_has_prefix (origin, "tanglu-"))
++		return TRUE;
++	if (g_str_has_prefix (origin, "ubuntu-"))
++		return TRUE;
++	return FALSE;
++}
++
++/**
++ * gs_plugin_refine_app:
++ */
++gboolean
++gs_plugin_refine_app (GsPlugin *plugin,
++		      GsApp *app,
++		      GsPluginRefineFlags flags,
++		      GCancellable *cancellable,
++		      GError **error)
++{
++	const gchar *origin;
++
++	/* no provenance == no DFSG-free guarantee */
++	if (!gs_app_has_quirk (app, AS_APP_QUIRK_PROVENANCE))
++		return TRUE;
++
++	/* if no AppStream origin is set, we can't reliably test the source for containing DFSG-free software */
++	origin = gs_app_get_origin (app);
++	if (origin == NULL)
++		return TRUE;
++
++	if (gs_utils_check_origin_dfsg_free (origin)) {
++		gs_app_set_license (app, GS_APP_QUALITY_LOWEST, "@LicenseRef-free=" DFSG_INFO_URL);
++		return TRUE;
++	}
++
++	return TRUE;
++}
