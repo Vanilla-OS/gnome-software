@@ -16,20 +16,22 @@ Build-Depends: appstream,
                gnome-pkg-tools (>= 0.10),
                gsettings-desktop-schemas-dev (>= 3.18),
                intltool (>= 0.35.0),
-               libappstream-glib-dev (>= 0.5.2-2),
+               libappstream-glib-dev (>= 0.5.14),
                libfwupd-dev (>= 0.6) [amd64 arm64 armhf i386],
                libglib2.0-dev (>= 2.46),
                libgnome-desktop-3-dev (>= 3.18),
                libgtk-3-dev (>= 3.18),
-               liblimba-dev (>= 0.5.2) [linux-any],
-               libpackagekit-glib2-dev (>= 1.0.10),
+               libgtkspell3-3-dev (>= 3.0),
+               libjson-glib-dev,
+               liblimba-dev (>= 0.5.6) [linux-any],
+               libpackagekit-glib2-dev (>= 1.1),
                libpolkit-gobject-1-dev,
                libsoup2.4-dev (>= 2.52),
                libsqlite3-dev,
                libxml2-utils,
                pkg-config,
                xsltproc
-Standards-Version: 3.9.6
+Standards-Version: 3.9.8
 Homepage: https://wiki.gnome.org/Apps/Software
 Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/packages/unstable/gnome-software/
 Vcs-Browser: https://anonscm.debian.org/viewvc/pkg-gnome/packages/unstable/gnome-software/
