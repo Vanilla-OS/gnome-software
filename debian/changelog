@@ -1,3 +1,10 @@
+gnome-software (3.20.2-2) UNRELEASED; urgency=medium
+
+  * debian/rules: Do not use -X parameter for dh_install, some files were not
+    installed as expected.
+
+ -- Laurent Bigonville <bigon@debian.org>  Tue, 26 Apr 2016 14:24:33 +0200
+
 gnome-software (3.20.2-1) unstable; urgency=medium
 
   [ Matthias Klumpp ]

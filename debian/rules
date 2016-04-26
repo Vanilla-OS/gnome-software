@@ -44,7 +44,9 @@ override_dh_installgsettings:
 	dh_installgsettings
 
 override_dh_install:
-	dh_install -X.a -X.la --list-missing
+	rm -f debian/tmp/usr/lib/gs-plugins-*/*.a
+	rm -f debian/tmp/usr/lib/gs-plugins-*/*.la
+	dh_install --list-missing
 
 override_dh_makeshlibs:
 	dh_makeshlibs -Xlibgs_plugin
