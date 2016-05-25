@@ -1,3 +1,10 @@
+gnome-software (3.20.2-3) UNRELEASED; urgency=medium
+
+  * Team upload
+  * Add debian/docs to install NEWS
+
+ -- Jeremy Bicha <jbicha@linux.com>  Tue, 24 May 2016 23:33:35 -0400
+
 gnome-software (3.20.2-2) unstable; urgency=medium
 
   * debian/rules: Do not use -X parameter for dh_install, some files were not
