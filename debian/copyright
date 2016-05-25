@@ -1,4 +1,4 @@
-Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: gnome-software
 Source: https://download.gnome.org/sources/gnome-software/
 
@@ -6,13 +6,13 @@ Files: *
 Copyright: 2013-2014 Richard Hughes <richard@hughsie.com>
            2013 Matthias Clasen <mclasen@redhat.com>
            2014 Kalev Lember <kalevlember@gmail.com>
-License: GPL-2.0+
+License: GPL-2+
 
 Files: debian/*
 Copyright: 2014 Laurent Bigonville <bigon@debian.org>
-License: GPL-2.0+
+License: GPL-2+
 
-License: GPL-2.0+
+License: GPL-2+
  This package is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
