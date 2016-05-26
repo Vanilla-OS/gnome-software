@@ -3,7 +3,6 @@
 -include /usr/share/gnome-pkg-tools/1/rules/gnome-get-source.mk
 
 GS_CONFIGURE_FLAGS = --libdir=/usr/lib \
-		--disable-silent-rules \
 		--enable-odrs
 
 ifeq ($(DEB_HOST_ARCH_OS), linux)
