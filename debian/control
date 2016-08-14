@@ -33,8 +33,8 @@ Build-Depends: appstream,
                xsltproc
 Standards-Version: 3.9.8
 Homepage: https://wiki.gnome.org/Apps/Software
-Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/packages/unstable/gnome-software/
-Vcs-Browser: https://anonscm.debian.org/viewvc/pkg-gnome/packages/unstable/gnome-software/
+Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/desktop/unstable/gnome-software/
+Vcs-Browser: https://anonscm.debian.org/viewvc/pkg-gnome/desktop/unstable/gnome-software/
 
 Package: gnome-software
 Architecture: any
