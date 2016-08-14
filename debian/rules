@@ -33,9 +33,9 @@ override_dh_auto_configure:
 
 override_dh_auto_install:
 	dh_auto_install --destdir=$(INSTALLDIR)
-	rm -f $(INSTALLDIR)/usr/lib/gs-plugins-?/libgs_plugin_fedora*
+	rm -f $(INSTALLDIR)/usr/lib/gs-plugins-*/libgs_plugin_fedora*
 ifneq (yes,$(shell dpkg-vendor --derives-from Ubuntu && echo yes))
-	rm -f $(INSTALLDIR)/usr/lib/gs-plugins-?/libgs_plugin_ubuntu*
+	rm -f $(INSTALLDIR)/usr/lib/gs-plugins-*/libgs_plugin_ubuntu*
 endif
 
 override_dh_installgsettings:
