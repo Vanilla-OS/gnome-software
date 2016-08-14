@@ -41,6 +41,7 @@ Architecture: any
 Depends: appstream,
          gnome-software-common (= ${source:Version}),
          gsettings-desktop-schemas (>= 3.18),
+         limba (>= 0.5.6) [linux-any],
          packagekit (>= 1.0.10),
          ${misc:Depends},
          ${shlibs:Depends}

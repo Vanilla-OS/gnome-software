@@ -3,7 +3,10 @@ gnome-software (3.20.4-1) UNRELEASED; urgency=medium
   [ Jeremy Bicha ]
   * New upstream release
   * Add debian/docs to install NEWS
-  * Update Vcs links
+  * debian/control.in:
+    - Depend on limba (needed for limba support to not freeze the app when
+      checking for updates)
+    - Update Vcs links
 
   [ Michael Biebl ]
   * Drop --disable-silent-rules from debian/rules. This is now handled by dh
