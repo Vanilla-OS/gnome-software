@@ -7,6 +7,9 @@ gnome-software (3.20.4-1) UNRELEASED; urgency=medium
     - Depend on limba (needed for limba support to not freeze the app when
       checking for updates)
     - Update Vcs links
+    - Build-depend on gnome-common (needed for autoreconf)
+  * debian/rules:
+    - Build with autoreconf
 
   [ Michael Biebl ]
   * Drop --disable-silent-rules from debian/rules. This is now handled by dh
