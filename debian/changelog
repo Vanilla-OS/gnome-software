@@ -8,6 +8,7 @@ gnome-software (3.21.91-1) UNRELEASED; urgency=medium
     - Update Vcs links
     - Build-depend on autoconf-archive and libflatpak-dev
     - Have gnome-software suggest flatpak and limba plugins
+    - Bump build-dependencies based on configure.ac
   * debian/rules:
     - Build with autoreconf
 
