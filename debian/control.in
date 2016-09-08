@@ -6,10 +6,10 @@ Uploaders: Matthias Klumpp <mak@debian.org>,
            @GNOME_TEAM@
 Build-Depends: appstream,
                appstream-util,
+               autoconf-archive,
                debhelper (>= 9.0.0),
                dh-autoreconf,
                docbook-xsl,
-               gnome-common,
                gnome-pkg-tools (>= 0.10),
                gsettings-desktop-schemas-dev (>= 3.18),
                intltool (>= 0.35.0),
@@ -47,7 +47,7 @@ Depends: appstream,
 Replaces: gnome-packagekit-session (<< 3.16.0-2~)
 Breaks: gnome-packagekit-session (<< 3.16.0-2~)
 Suggests: fwupd [amd64 arm64 armhf i386],
-#          gnome-software-plugin-flatpak [linux-any],
+          gnome-software-plugin-flatpak [linux-any],
           gnome-software-plugin-limba [linux-any],
 Description: Software Center for GNOME
  Software lets you install and update applications and system extensions.
@@ -72,23 +72,23 @@ Description: Software Center for GNOME (common files)
  .
  This package contains the architectures independent files
 
-#Package: gnome-software-plugin-flatpak
-#Architecture: linux-any
-#Depends: gnome-software (= ${source:Version}),
-#         flatpak,
-#         ${misc:Depends},
-#         ${shlibs:Depends}
-#Recommends: flatpak
-#Description: Flatpak support for GNOME Software
-# Software lets you install and update applications and system extensions.
-# .
-# Software uses a plugin architecture to separate the frontend from the
-# technologies that are used underneath. Currently, a PackageKit plugin provides
-# data from a number of traditional packaging systems, such as rpm or apt. An
-# appdata plugin provides additional metadata from locally installed data in the
-# appdata format.
-# .
-# This package contains the Flatpak plugin.
+Package: gnome-software-plugin-flatpak
+Architecture: linux-any
+Depends: gnome-software (= ${source:Version}),
+         flatpak,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Recommends: flatpak
+Description: Flatpak support for GNOME Software
+ Software lets you install and update applications and system extensions.
+ .
+ Software uses a plugin architecture to separate the frontend from the
+ technologies that are used underneath. Currently, a PackageKit plugin provides
+ data from a number of traditional packaging systems, such as rpm or apt. An
+ appdata plugin provides additional metadata from locally installed data in the
+ appdata format.
+ .
+ This package contains the Flatpak plugin.
 
 Package: gnome-software-plugin-limba
 Architecture: linux-any
