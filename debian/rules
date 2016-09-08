@@ -6,8 +6,8 @@ GS_CONFIGURE_FLAGS = --libdir=/usr/lib \
 		--enable-odrs
 
 ifeq ($(DEB_HOST_ARCH_OS), linux)
-	# Enable Limba support on Linux
-	GS_CONFIGURE_FLAGS += --enable-limba
+	# Enable Flatpak and Limba support on Linux
+	GS_CONFIGURE_FLAGS += --enable-limba --enable-flatpak
 
 	# Enable fwupd support on supported architectures
 	ifneq (,$(findstring $(DEB_BUILD_ARCH), amd64 arm64 armhf i386))
