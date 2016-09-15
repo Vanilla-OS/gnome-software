@@ -1,4 +1,4 @@
-gnome-software (3.21.91-1) UNRELEASED; urgency=medium
+gnome-software (3.21.92-1) UNRELEASED; urgency=medium
 
   [ Jeremy Bicha ]
   * New upstream release
@@ -6,7 +6,7 @@ gnome-software (3.21.91-1) UNRELEASED; urgency=medium
   * Use separate packages for flatpak and limba plugins
   * debian/control.in:
     - Update Vcs links
-    - Build-depend on autoconf-archive and libflatpak-dev
+    - Build-depend on autoconf-archive
     - Have gnome-software suggest flatpak and limba plugins
     - Bump build-dependencies based on configure.ac
   * debian/rules:
@@ -15,6 +15,22 @@ gnome-software (3.21.91-1) UNRELEASED; urgency=medium
   [ Michael Biebl ]
   * Drop --disable-silent-rules from debian/rules. This is now handled by dh
     directly depending on whether the DH_QUIET environment variable is set.
+
+  [ Simon McVittie ]
+  * New upstream release
+    - build-depend on libappstream-glib-dev (>= 0.6.2) to get all mandatory
+      and optional functionality
+    - build-depend on libflatpak-dev and enable Flatpak
+    - build-depend on libsecret-1-dev
+    - build-depend on gudev on linux-any
+    - bump Gtk build-dependency
+    - explicitly disable OSTree support for now, OSTree in Debian is not
+      ready to be used for OS deployment
+    - d/p/01_debian-dfsg.patch: remove, the same result can be achieved
+      with GSettings now
+    - d/gnome-software.gsettings-override.in: consider the 'main'
+      component to be Free Software (Ubuntu will likely want to patch this
+      to do the same for universe)
 
  -- Jeremy Bicha <jbicha@linux.com>  Tue, 24 May 2016 23:33:35 -0400
 

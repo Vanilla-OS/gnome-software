@@ -3,7 +3,8 @@ Upstream-Name: gnome-software
 Source: https://download.gnome.org/sources/gnome-software/
 
 Files: *
-Copyright: 2013-2014 Richard Hughes <richard@hughsie.com>
+Copyright: 2013-2016 Richard Hughes <richard@hughsie.com>
+           2013-2016 Free Software Foundation, Inc.
            2013 Matthias Clasen <mclasen@redhat.com>
            2014 Kalev Lember <kalevlember@gmail.com>
 License: GPL-2+
