@@ -1,4 +1,4 @@
-gnome-software (3.22.0-1) UNRELEASED; urgency=medium
+gnome-software (3.22.0-1) unstable; urgency=medium
 
   [ Jeremy Bicha ]
   * New upstream release
@@ -36,7 +36,13 @@ gnome-software (3.22.0-1) UNRELEASED; urgency=medium
       component to be Free Software (Ubuntu will likely want to patch this
       to do the same for universe)
 
- -- Jeremy Bicha <jbicha@linux.com>  Tue, 24 May 2016 23:33:35 -0400
+  [ Matthias Klumpp ]
+  * Explicitly enable PackageKit, gnome-desktop support
+  * Small tweaks for debian/rules
+  * Make package binNMUable again
+  * Bump PackageKit dependency to >= 1.1.4 (Closes: #823989)
+
+ -- Matthias Klumpp <mak@debian.org>  Thu, 22 Sep 2016 20:48:42 +0200
 
 gnome-software (3.20.2-2) unstable; urgency=medium
 
