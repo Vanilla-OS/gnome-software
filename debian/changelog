@@ -17,7 +17,11 @@ gnome-software (3.22.0-1) UNRELEASED; urgency=medium
     directly depending on whether the DH_QUIET environment variable is set.
 
   [ Simon McVittie ]
-  * New upstream release
+  * New upstream release: 3.22.0
+    - This release closes upstream bugs
+      + Closes: #838200
+      + Closes: #829975
+      + Closes: #836919
     - build-depend on libappstream-glib-dev (>= 0.6.2) to get all mandatory
       and optional functionality
     - build-depend on libflatpak-dev and enable Flatpak
