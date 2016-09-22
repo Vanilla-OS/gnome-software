@@ -75,11 +75,10 @@ Description: Software Center for GNOME (common files)
 
 Package: gnome-software-plugin-flatpak
 Architecture: linux-any
-Depends: gnome-software (= ${source:Version}),
+Depends: gnome-software (= ${binary:Version}),
          flatpak,
          ${misc:Depends},
          ${shlibs:Depends}
-Recommends: flatpak
 Description: Flatpak support for GNOME Software
  Software lets you install and update applications and system extensions.
  .
@@ -93,7 +92,7 @@ Description: Flatpak support for GNOME Software
 
 Package: gnome-software-plugin-limba
 Architecture: linux-any
-Depends: gnome-software (= ${source:Version}),
+Depends: gnome-software (= ${binary:Version}),
          limba,
          ${misc:Depends},
          ${shlibs:Depends}
