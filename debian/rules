@@ -4,7 +4,9 @@
 
 GS_CONFIGURE_FLAGS = --libdir=/usr/lib \
 		--disable-ostree \
-		--enable-odrs
+		--enable-odrs \
+		--enable-packagekit \
+		--enable-gnome-desktop
 
 ifeq ($(DEB_HOST_ARCH_OS), linux)
 	# Enable Flatpak and Limba support on Linux
