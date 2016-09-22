@@ -101,8 +101,8 @@ Depends: gnome-software (= ${source:Version}),
          limba,
          ${misc:Depends},
          ${shlibs:Depends}
-Breaks: gnome-software (<< 3.20.4-1~)
-Replaces: gnome-software (<< 3.20.4-1~)
+Breaks: gnome-software (<< 3.21.92)
+Replaces: gnome-software (<< 3.21.92)
 Description: Limba support for GNOME Software
  Software lets you install and update applications and system extensions.
  .
