@@ -24,7 +24,7 @@ Build-Depends: appstream,
                libjson-glib-dev,
                liblimba-dev (>= 0.5.6) [linux-any],
                liboauth-dev,
-               libpackagekit-glib2-dev (>= 1.1),
+               libpackagekit-glib2-dev (>= 1.1.4),
                libpolkit-gobject-1-dev,
                libsecret-1-dev,
                libsoup2.4-dev (>= 2.52),
@@ -42,7 +42,7 @@ Architecture: any
 Depends: appstream,
          gnome-software-common (= ${source:Version}),
          gsettings-desktop-schemas (>= 3.18),
-         packagekit (>= 1.0.10),
+         packagekit (>= 1.1.4),
          ${misc:Depends},
          ${shlibs:Depends}
 Replaces: gnome-packagekit-session (<< 3.16.0-2~)
