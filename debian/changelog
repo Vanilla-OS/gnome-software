@@ -41,6 +41,7 @@ gnome-software (3.22.0-1) unstable; urgency=medium
   * Small tweaks for debian/rules
   * Make package binNMUable again
   * Bump PackageKit dependency to >= 1.1.4 (Closes: #823989)
+  * Update d/copyright
 
  -- Matthias Klumpp <mak@debian.org>  Thu, 22 Sep 2016 20:48:42 +0200
 
