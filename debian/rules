@@ -13,7 +13,7 @@ ifeq ($(DEB_HOST_ARCH_OS), linux)
 	GS_CONFIGURE_FLAGS += --enable-limba --enable-flatpak
 
 	# Enable fwupd support on supported architectures
-	ifneq (,$(findstring $(DEB_BUILD_ARCH), amd64 arm64 armhf i386))
+	ifneq (,$(findstring $(DEB_HOST_ARCH), amd64 arm64 armhf i386))
 		GS_CONFIGURE_FLAGS += --enable-firmware
 	endif
 endif
