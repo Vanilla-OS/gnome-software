@@ -1,0 +1,37 @@
+From d2fe19b93b0633222d852a0e00d51f0d6ccf8e28 Mon Sep 17 00:00:00 2001
+From: Richard Hughes <richard@hughsie.com>
+Date: Wed, 19 Oct 2016 20:27:51 +0100
+Subject: trivial: Add a sanity check when resolving pkgnames
+
+There is a bug in appstream-glib that's triggering on Debian that causes the
+pkgname to be an empty string, which then triggers a bug in aptcc in the
+PackageKit project. Explosions ensue.
+---
+ src/plugins/gs-plugin-packagekit-refine.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/plugins/gs-plugin-packagekit-refine.c b/src/plugins/gs-plugin-packagekit-refine.c
+index 50306b7..5f6aff8 100644
+--- a/src/plugins/gs-plugin-packagekit-refine.c
++++ b/src/plugins/gs-plugin-packagekit-refine.c
+@@ -252,9 +252,17 @@ gs_plugin_packagekit_resolve_packages (GsPlugin *plugin,
+ 		sources = gs_app_get_sources (app);
+ 		for (j = 0; j < sources->len; j++) {
+ 			pkgname = g_ptr_array_index (sources, j);
++			if (pkgname == NULL || pkgname[0] == '\0') {
++				g_warning ("invalid pkgname '%s' for %s",
++					   pkgname,
++					   gs_app_get_unique_id (app));
++				continue;
++			}
+ 			g_ptr_array_add (package_ids, g_strdup (pkgname));
+ 		}
+ 	}
++	if (package_ids->len == 0)
++		return TRUE;
+ 	g_ptr_array_add (package_ids, NULL);
+ 
+ 	data.app = NULL;
+-- 
+cgit v0.12
+
