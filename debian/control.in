@@ -49,7 +49,7 @@ Replaces: gnome-packagekit-session (<< 3.16.0-2~)
 Breaks: gnome-packagekit-session (<< 3.16.0-2~)
 Suggests: fwupd [amd64 arm64 armhf i386],
           gnome-software-plugin-flatpak [linux-any],
-          gnome-software-plugin-limba [linux-any],
+          gnome-software-plugin-limba [linux-any]
 Description: Software Center for GNOME
  Software lets you install and update applications and system extensions.
  .
@@ -75,8 +75,8 @@ Description: Software Center for GNOME (common files)
 
 Package: gnome-software-plugin-flatpak
 Architecture: linux-any
-Depends: gnome-software (= ${binary:Version}),
-         flatpak,
+Depends: flatpak,
+         gnome-software (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Description: Flatpak support for GNOME Software
