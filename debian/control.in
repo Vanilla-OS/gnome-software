@@ -109,6 +109,24 @@ Description: Limba support for GNOME Software
  .
  This package contains the Limba plugin.
 
+Package: gnome-software-plugin-snap
+Architecture: linux-any
+Depends: gnome-software (= ${binary:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends}
+Breaks: gnome-software (<< 3.21.92)
+Replaces: gnome-software (<< 3.21.92)
+Description: Snap support for GNOME Software
+ Software lets you install and update applications and system extensions.
+ .
+ Software uses a plugin architecture to separate the frontend from the
+ technologies that are used underneath. Currently, a PackageKit plugin provides
+ data from a number of traditional packaging systems, such as rpm or apt. An
+ appdata plugin provides additional metadata from locally installed data in the
+ appdata format.
+ .
+ This package contains the Snap plugin.
+
 Package: gnome-packagekit-session
 Architecture: all
 Section: oldlibs
