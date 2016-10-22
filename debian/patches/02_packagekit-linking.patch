@@ -1,0 +1,35 @@
+From c801422abb1a6354cca39d6487d73ce8cec0007d Mon Sep 17 00:00:00 2001
+From: Richard Hughes <richard@hughsie.com>
+Date: Wed, 19 Oct 2016 19:25:06 +0100
+Subject: trivial: Fix some underlinking in two PackageKit plugins
+
+Detected when testing on Debian.
+---
+ src/plugins/Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/plugins/Makefile.am b/src/plugins/Makefile.am
+index 331a436..b4e98fb 100644
+--- a/src/plugins/Makefile.am
++++ b/src/plugins/Makefile.am
+@@ -326,7 +326,7 @@ libgs_plugin_fwupd_la_CFLAGS = $(GS_PLUGIN_CFLAGS) $(WARN_CFLAGS)
+ endif
+ 
+ libgs_plugin_packagekit_history_la_SOURCES = gs-plugin-packagekit-history.c
+-libgs_plugin_packagekit_history_la_LIBADD = $(GS_PLUGIN_LIBS)
++libgs_plugin_packagekit_history_la_LIBADD = $(GS_PLUGIN_LIBS) $(PACKAGEKIT_LIBS)
+ libgs_plugin_packagekit_history_la_LDFLAGS = -module -avoid-version
+ libgs_plugin_packagekit_history_la_CFLAGS = $(GS_PLUGIN_CFLAGS) $(WARN_CFLAGS)
+ 
+@@ -352,7 +352,7 @@ libgs_plugin_packagekit_origin_la_LDFLAGS = -module -avoid-version
+ libgs_plugin_packagekit_origin_la_CFLAGS = $(GS_PLUGIN_CFLAGS) $(WARN_CFLAGS)
+ 
+ libgs_plugin_packagekit_proxy_la_SOURCES = gs-plugin-packagekit-proxy.c
+-libgs_plugin_packagekit_proxy_la_LIBADD = $(GS_PLUGIN_LIBS)
++libgs_plugin_packagekit_proxy_la_LIBADD = $(GS_PLUGIN_LIBS) $(PACKAGEKIT_LIBS)
+ libgs_plugin_packagekit_proxy_la_LDFLAGS = -module -avoid-version
+ libgs_plugin_packagekit_proxy_la_CFLAGS = $(GS_PLUGIN_CFLAGS) $(WARN_CFLAGS)
+ 
+-- 
+cgit v0.12
+
