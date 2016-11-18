@@ -19,8 +19,11 @@ ifeq ($(DEB_HOST_ARCH_OS), linux)
 endif
 
 DISTRO_ID = debian
+FREE_URL = https:\/\/www.debian.org\/social_contract\#guidelines
 ifeq (yes,$(shell dpkg-vendor --derives-from Ubuntu && echo yes))
 	DISTRO_ID = ubuntu
+	FREE_URL = https:\/\/www.ubuntu.com\/about\/about-ubuntu\/licensing
+	GS_CONFIGURE_FLAGS += '--enable-ubuntu-reviews'
 else ifeq (yes,$(shell dpkg-vendor --derives-from Tanglu && echo yes))
 	DISTRO_ID = tanglu
 endif
@@ -42,6 +45,7 @@ endif
 
 override_dh_installgsettings:
 	sed 's/@DISTRO@/$(DISTRO_ID)/g' debian/gnome-software.gsettings-override.in > debian/gnome-software.gsettings-override
+	sed -i 's/@URL@/$(FREE_URL)/g' debian/gnome-software.gsettings-override
 	dh_installgsettings
 
 override_dh_install:

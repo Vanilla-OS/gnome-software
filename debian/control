@@ -66,6 +66,7 @@ Description: Software Center for GNOME
 
 Package: gnome-software-common
 Architecture: all
+Multi-Arch: foreign
 Depends: ${misc:Depends}
 Description: Software Center for GNOME (common files)
  Software lets you install and update applications and system extensions.
@@ -76,7 +77,7 @@ Description: Software Center for GNOME (common files)
  appdata plugin provides additional metadata from locally installed data in the
  appdata format.
  .
- This package contains the architectures independent files
+ This package contains the architecture-independent files.
 
 Package: gnome-software-plugin-flatpak
 Architecture: linux-any
