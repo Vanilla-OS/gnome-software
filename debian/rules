@@ -26,6 +26,8 @@ ifeq (yes,$(shell dpkg-vendor --derives-from Ubuntu && echo yes))
 	GS_CONFIGURE_FLAGS += '--enable-ubuntu-reviews'
 else ifeq (yes,$(shell dpkg-vendor --derives-from Tanglu && echo yes))
 	DISTRO_ID = tanglu
+else ifeq (yes,$(shell dpkg-vendor --derives-from PureOS && echo yes))
+	DISTRO_ID = pureos
 endif
 
 # Install target dir
