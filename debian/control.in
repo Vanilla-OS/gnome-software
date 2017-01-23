@@ -13,7 +13,7 @@ Build-Depends: appstream,
                gnome-pkg-tools (>= 0.10),
                gsettings-desktop-schemas-dev (>= 3.18),
                intltool (>= 0.35.0),
-               libappstream-glib-dev (>= 0.6.5),
+               libappstream-glib-dev (>= 0.6.7),
                libflatpak-dev (>= 0.6.12) [linux-any],
                libfwupd-dev (>= 0.7) [amd64 arm64 armhf i386],
                libglib2.0-dev (>= 2.46),
@@ -116,8 +116,8 @@ Description: Limba support for GNOME Software
 #Depends: gnome-software (= ${binary:Version}),
 #         ${misc:Depends},
 #         ${shlibs:Depends}
-#Breaks: gnome-software (<< 3.21.92)
-#Replaces: gnome-software (<< 3.21.92)
+#Breaks: gnome-software (<< 3.22.3)
+#Replaces: gnome-software (<< 3.22.3)
 #Description: Snap support for GNOME Software
 # Software lets you install and update applications and system extensions.
 # .
