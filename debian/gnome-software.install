@@ -1,3 +1,4 @@
+debian/extra/60gnome-software /etc/apt/apt.conf.d/
 etc/xdg/autostart/
 usr/bin/gnome-software
 usr/lib/gs-plugins-*/*.so
