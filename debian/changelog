@@ -1,4 +1,4 @@
-gnome-software (3.25.1-1) UNRELEASED; urgency=medium
+gnome-software (3.25.1-1) experimental; urgency=medium
 
   [ Jeremy Bicha ]
   * debian/control.in:
@@ -19,7 +19,7 @@ gnome-software (3.25.1-1) UNRELEASED; urgency=medium
   * debian/rules: Build with --fail-missing.
   * debian/copyright: Consolidate and update.
 
- -- Jeremy Bicha <jbicha@ubuntu.com>  Mon, 23 Jan 2017 13:59:41 +0000
+ -- Iain Lane <laney@debian.org>  Fri, 05 May 2017 17:31:43 +0100
 
 gnome-software (3.22.5-1) unstable; urgency=medium
 
