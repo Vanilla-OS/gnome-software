@@ -1,7 +1,22 @@
-gnome-software (3.22.5-2) UNRELEASED; urgency=medium
+gnome-software (3.25.1-1) UNRELEASED; urgency=medium
 
+  [ Jeremy Bicha ]
   * debian/control.in:
     - Bump minimum appstream-glib to 0.6.7
+
+  [ Iain Lane ]
+  * New upstream development release 3.25.1
+  * debian/watch: Find unstable versions
+  * Build with meson. The debhelper support isn't yet in Debian, so we're
+    calling meson directly. Once it is, we can switch.
+  * debian/patches/0001-build-Use-the-configured-directory-locations-to-inst.patch,
+    debian/patches/0002-build-Fix-the-pcfile.patch,
+    debian/patches/0003-build-limba-Set-limba-as-a-dependency.patch: Some
+    cherry-picks I pushed upstream which fix the build to build and install
+    all the right things.
+  * debian/control{,.in}, debian/gnome-software-{dev,doc}.install: Install the
+    headers and gtk-doc documentation so that external plugins can be built.
+  * debian/rules: Build with --fail-missing.
 
  -- Jeremy Bicha <jbicha@ubuntu.com>  Mon, 23 Jan 2017 13:59:41 +0000
 
