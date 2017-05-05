@@ -17,6 +17,7 @@ gnome-software (3.25.1-1) UNRELEASED; urgency=medium
   * debian/control{,.in}, debian/gnome-software-{dev,doc}.install: Install the
     headers and gtk-doc documentation so that external plugins can be built.
   * debian/rules: Build with --fail-missing.
+  * debian/copyright: Consolidate and update.
 
  -- Jeremy Bicha <jbicha@ubuntu.com>  Mon, 23 Jan 2017 13:59:41 +0000
 

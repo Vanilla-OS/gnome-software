@@ -3,109 +3,19 @@ Upstream-Name: gnome-software
 Source: https://download.gnome.org/sources/gnome-software/
 
 Files: *
-Copyright: 2013-2016 Richard Hughes <richard@hughsie.com>
+Copyright: 2007-2016 Richard Hughes <richard@hughsie.com>
            2013 Matthias Clasen <mclasen@redhat.com>
-           2014 Kalev Lember <kalevlember@gmail.com>
-License: GPL-2+
-
-Files: src/*
-Copyright: 2007-2016, Richard Hughes <richard@hughsie.com>
-License: GPL-2+
-
-Files: ./src/gs-app-folder-dialog.c
- ./src/gs-app-folder-dialog.h
- ./src/gs-app-tile.c
- ./src/gs-app-tile.h
- ./src/gs-application.h
- ./src/gs-category-tile.c
- ./src/gs-category-tile.h
- ./src/gs-feature-tile.c
- ./src/gs-feature-tile.h
- ./src/gs-popular-tile.c
- ./src/gs-popular-tile.h
- ./src/gs-shell-search-provider.h
- ./src/gs-summary-tile.c
- ./src/gs-summary-tile.h
-Copyright: 2013, Matthias Clasen <mclasen@redhat.com>
+           2014-2016 Kalev Lember <kalevlember@gmail.com>
+           2015-2016 Canonical Ltd.
+           2015-2016 Rafał Lużyński <digitalfreak@lingonborough.com>
+           2016-2017 Joaquim Rocha <jrocha@endlessm.com>
+           2015-2016 Matthias Klumpp <matthias@tenstral.net>
 License: GPL-2+
 
 Files: ./data/featured-builder*
 Copyright: Backdrop image for Builder featured banner used with
  permission by Adam Wyles -- http://www.flickr.com/photos/the-travelling-bum/6336397663/
 License: CC-BY-SA-3.0
-
-Files: ./src/gs-review-bar.c
- ./src/gs-review-bar.h
- ./src/gs-review-dialog.c
- ./src/gs-review-dialog.h
- ./src/gs-review-histogram.c
- ./src/gs-review-histogram.h
- ./src/gs-review-row.c
- ./src/gs-review-row.h
- ./src/plugins/gs-plugin-ubuntu-reviews.c
- ./src/plugins/gs-plugin-snap.c
- ./src/plugins/gs-plugin-ubuntuone.c
- ./src/plugins/gs-snapd.c
- ./src/plugins/gs-snapd.h
-Copyright: 2015-2016, Canonical Ltd.
-License: GPL-2+
-
-Files: ./src/gs-removal-dialog.c
- ./src/gs-removal-dialog.h
- ./src/gs-sources-dialog-row.c
- ./src/gs-sources-dialog-row.h
- ./src/gs-upgrade-banner.h
- ./src/plugins/gs-plugin-fedora-distro-upgrades.c
-Copyright: 2015, Kalev Lember <klember@redhat.com>
-  2016, Kalev Lember <klember@redhat.com>
-License: GPL-2+
-
-Files: ./src/gs-first-run-dialog.c
- ./src/gs-first-run-dialog.h
-Copyright: 2014, Kalev Lember <kalevlember@gmail.com>
-License: GPL-2+
-
-Files: ./src/gs-fixed-size-bin.c
- ./src/gs-fixed-size-bin.h
- ./src/gs-hiding-box.c
- ./src/gs-hiding-box.h
- ./src/gs-info-bar.c
- ./src/gs-info-bar.h
-Copyright: 2015-2016 Rafał Lużyński <digitalfreak@lingonborough.com>
-License: GPL-2+
-
-Files: ./src/plugins/gs-plugin-flatpak-system.c
- ./src/plugins/gs-plugin-flatpak-user.c
- ./src/plugins/gs-flatpak.c
- ./src/plugins/gs-flatpak.h
-Copyright: 2016, Joaquim Rocha <jrocha@endlessm.com>
- 2016, Richard Hughes <richard@hughsie.com>
-License: GPL-2+
-
-Files: ./src/gs-os-release.c
- ./src/gs-os-release.h
-Copyright: 2016, Kalev Lember <klember@redhat.com>
-  2016, Richard Hughes <richard@hughsie.com>
-License: LGPL-2.1+
-
-Files: ./src/gs-upgrade-banner.c
-Copyright: 2016, Kalev Lember <klember@redhat.com>
-  2016, Richard Hughes <richard@hughsie.com>
-License: GPL-2+
-
-Files: ./src/plugins/gs-plugin-provenance-license.c
-Copyright: 2016, Matthias Klumpp <mak@debian.org>
-  2016, Richard Hughes <richard@hughsie.com>
-License: GPL-2+
-
-Files: ./src/gs-shell-search-provider.c
-Copyright: 2013, Matthias Clasen
-License: GPL-2+
-
-Files: ./src/plugins/gs-plugin-limba.c
-Copyright: 2015, Matthias Klumpp <matthias@tenstral.net>
-  2015, Richard Hughes <richard@hughsie.com>
-License: GPL-2+
 
 Files: ./data/featured-mypaint.png
  ./data/featured-blender.png
@@ -115,6 +25,7 @@ Copyright: Richard Hughes <richard@hughsie.com>
 License: CC-BY-SA-3.0
 
 Files: ./data/appdata/org.gnome.Software.appdata.xml.in
+ ./plugins/*/*.metainfo.*
 Copyright: 2013-2016, Richard Hughes <richard@hughsie.com>
 License: CC0-1.0
 
