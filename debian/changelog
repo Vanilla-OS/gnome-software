@@ -1,4 +1,4 @@
-gnome-software (3.25.3-1) UNRELEASED; urgency=medium
+gnome-software (3.25.3-1) experimental; urgency=medium
 
   * New upstream release 3.25.3
   * debian/control{,.in}: Bump libappstrem-glib-dev and libfwupd-dev versions
@@ -6,7 +6,7 @@ gnome-software (3.25.3-1) UNRELEASED; urgency=medium
   * debian/rules: -Denable-firmware is now called -Denable-fwupd.
   * debian/patches: Drop - these are all upstream.
 
- -- Iain Lane <laney@debian.org>  Tue, 09 May 2017 13:10:31 +0100
+ -- Iain Lane <laney@debian.org>  Fri, 23 Jun 2017 17:44:59 +0100
 
 gnome-software (3.25.1-1) experimental; urgency=medium
 
