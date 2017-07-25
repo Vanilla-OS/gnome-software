@@ -6,7 +6,7 @@ Uploaders: Matthias Klumpp <mak@debian.org>,
            @GNOME_TEAM@
 Build-Depends: appstream,
                appstream-util,
-               debhelper (>= 9.0.0),
+               debhelper (>= 10.4),
                docbook-xsl,
                gnome-pkg-tools (>= 0.10),
                gsettings-desktop-schemas-dev (>= 3.18),

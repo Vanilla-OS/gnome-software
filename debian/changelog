@@ -1,3 +1,13 @@
+gnome-software (3.25.4-1) UNRELEASED; urgency=medium
+
+  * New upstream release 3.25.4
+  * debian/rules: Switch to debhelper's meson buildsystem instead of calling
+    meson directly ourselves.
+  * debian/rules: Use dh_missing --fail-missing instead of dh_install.
+  * debian/control{,.in}: Bump debhelper BD to 10.4 for the above.
+
+ -- Iain Lane <laney@debian.org>  Tue, 25 Jul 2017 11:18:49 +0100
+
 gnome-software (3.25.3-1) experimental; urgency=medium
 
   * New upstream release 3.25.3

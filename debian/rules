@@ -38,25 +38,17 @@ else ifeq (yes,$(shell dpkg-vendor --derives-from PureOS && echo yes))
 	DISTRO_ID = pureos
 endif
 
-# Install target dir
-INSTALLDIR = $(CURDIR)/debian/tmp
-
 %:
-	dh $@ --with gnome
+	dh $@ --with gnome --buildsystem=meson
 
 override_dh_auto_configure:
-	meson build-deb $(GS_CONFIGURE_FLAGS) \
-			--prefix=/usr \
-			--libexecdir=/usr/lib/$(DEB_HOST_MULTIARCH)/gnome-software/ \
-			--sysconfdir=/etc
-
-override_dh_auto_build:
-	ninja -v -C build-deb
+	dh_auto_configure -- --libexecdir=/usr/lib/$(DEB_HOST_MULTIARCH)/gnome-software/ \
+			     $(GS_CONFIGURE_FLAGS)
 
 override_dh_auto_install:
-	DESTDIR=$(INSTALLDIR) ninja -v -C build-deb install
+	dh_auto_install
 ifneq (yes,$(shell dpkg-vendor --derives-from Ubuntu && echo yes))
-	rm -f $(INSTALLDIR)/usr/lib/*/gs-plugins-*/libgs_plugin_ubuntu*
+	rm -f debian/tmp/usr/lib/*/gs-plugins-*/libgs_plugin_ubuntu*
 endif
 
 override_dh_installgsettings:
@@ -69,7 +61,10 @@ override_dh_install-arch:
 	rm -f debian/tmp/usr/lib/*/gs-plugins-*/*.a
 	rm -f debian/tmp/usr/lib/*/gs-plugins-*/*.la
 	rm -f debian/tmp/usr/lib/*/gs-plugins-*/libgs_plugin_fedora*
-	dh_install --fail-missing
+	dh_install
+
+override_dh_missing:
+	dh_missing --fail-missing
 
 	# These files are split out to separate packages
 	rm -f debian/gnome-software/usr/lib/*/gs-plugins-*/libgs_plugin_flatpak*
