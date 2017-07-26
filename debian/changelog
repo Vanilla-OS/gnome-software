@@ -1,3 +1,9 @@
+gnome-software (3.25.4-2) UNRELEASED; urgency=medium
+
+  * debian/compat: Bump to 10, mainly to get --parallel by default.
+
+ -- Iain Lane <laney@debian.org>  Tue, 25 Jul 2017 13:24:59 +0100
+
 gnome-software (3.25.4-1) experimental; urgency=medium
 
   * New upstream release 3.25.4
