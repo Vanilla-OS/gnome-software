@@ -1,6 +1,9 @@
-gnome-software (3.25.4-2) UNRELEASED; urgency=medium
+gnome-software (3.25.91-1) UNRELEASED; urgency=medium
 
   * debian/compat: Bump to 10, mainly to get --parallel by default.
+  * New upstream release 3.25.91 (LP: #1706715)
+    + Doesn't let you cancel PackageKit (.deb) installations when PK says it's
+      not allowed. (LP: #1707053)
 
  -- Iain Lane <laney@debian.org>  Tue, 25 Jul 2017 13:24:59 +0100
 
