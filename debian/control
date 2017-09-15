@@ -6,8 +6,7 @@ Source: gnome-software
 Section: gnome
 Priority: optional
 Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
-Uploaders: Matthias Klumpp <mak@debian.org>,
-           Iain Lane <laney@debian.org>, Laurent Bigonville <bigon@debian.org>, Michael Biebl <biebl@debian.org>
+Uploaders: Iain Lane <laney@debian.org>, Jeremy Bicha <jbicha@debian.org>, Laurent Bigonville <bigon@debian.org>, Matthias Klumpp <mak@debian.org>
 Build-Depends: appstream,
                appstream-util,
                debhelper (>= 10.4),

@@ -1,15 +1,16 @@
-gnome-software (3.26.0-1) UNRELEASED; urgency=medium
-
-  [ Iain Lane ]
-  * debian/rules: Make sure to not build with -Wl,-Bsymbolic-functions
+gnome-software (3.26.0-1) unstable; urgency=medium
 
   [ Jeremy Bicha ]
+  * Release to unstable
   * New upstream release
   * Add apport hook to report which gnome-software plugins are installed
   * debian/rules
     - Add workaround for Ubuntu translations issue
 
- -- Jeremy Bicha <jbicha@debian.org>  Thu, 14 Sep 2017 20:16:00 -0400
+  [ Iain Lane ]
+  * debian/rules: Make sure to not build with -Wl,-Bsymbolic-functions
+
+ -- Jeremy Bicha <jbicha@debian.org>  Thu, 14 Sep 2017 20:30:08 -0400
 
 gnome-software (3.25.91-1) experimental; urgency=medium
 

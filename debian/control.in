@@ -2,8 +2,7 @@ Source: gnome-software
 Section: gnome
 Priority: optional
 Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
-Uploaders: Matthias Klumpp <mak@debian.org>,
-           @GNOME_TEAM@
+Uploaders: @GNOME_TEAM@
 Build-Depends: appstream,
                appstream-util,
                debhelper (>= 10.4),
