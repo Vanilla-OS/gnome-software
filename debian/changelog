@@ -1,6 +1,7 @@
 gnome-software (3.26.0-2) UNRELEASED; urgency=medium
 
   * Only build with valgrind on architectures where valgrind is available
+  * Bump Standards-Version to 4.1.0
 
  -- Jeremy Bicha <jbicha@debian.org>  Fri, 15 Sep 2017 08:14:47 -0400
 
