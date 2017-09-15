@@ -87,3 +87,8 @@ override_dh_auto_test:
 override_dh_clean:
 	rm -f debian/gnome-software.gsettings-override
 	dh_clean
+
+# Needed by Ubuntu
+override_dh_translations:
+	ninja -C obj-$(DEB_HOST_GNU_TYPE) gnome-software-pot
+	dh_translations

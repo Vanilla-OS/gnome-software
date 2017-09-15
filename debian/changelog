@@ -5,6 +5,8 @@ gnome-software (3.26.0-1) UNRELEASED; urgency=medium
 
   [ Jeremy Bicha ]
   * New upstream release
+  * debian/rules
+    - Add workaround for Ubuntu translations issue
 
  -- Jeremy Bicha <jbicha@debian.org>  Thu, 14 Sep 2017 20:16:00 -0400
 
