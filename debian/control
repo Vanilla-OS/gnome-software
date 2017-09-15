@@ -7,19 +7,18 @@ Section: gnome
 Priority: optional
 Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
 Uploaders: Matthias Klumpp <mak@debian.org>,
-           Laurent Bigonville <bigon@debian.org>, Michael Biebl <biebl@debian.org>
+           Iain Lane <laney@debian.org>, Laurent Bigonville <bigon@debian.org>, Michael Biebl <biebl@debian.org>
 Build-Depends: appstream,
                appstream-util,
-               autoconf-archive,
-               debhelper (>= 9.0.0),
-               dh-autoreconf,
+               debhelper (>= 10.4),
                docbook-xsl,
                gnome-pkg-tools (>= 0.10),
                gsettings-desktop-schemas-dev (>= 3.18),
+               gtk-doc-tools,
                intltool (>= 0.35.0),
-               libappstream-glib-dev (>= 0.6.7),
+               libappstream-glib-dev (>= 0.7.0~),
                libflatpak-dev (>= 0.6.12) [linux-any],
-               libfwupd-dev (>= 0.7) [amd64 arm64 armhf i386],
+               libfwupd-dev (>= 0.9.3) [amd64 arm64 armhf i386],
                libglib2.0-dev (>= 2.46),
                libgnome-desktop-3-dev (>= 3.18),
                libgtk-3-dev (>= 3.20),
@@ -34,12 +33,14 @@ Build-Depends: appstream,
                libsoup2.4-dev (>= 2.52),
                libsqlite3-dev,
                libxml2-utils,
+               meson (>= 0.37),
                pkg-config,
+               valgrind,
                xsltproc
 Standards-Version: 3.9.8
 Homepage: https://wiki.gnome.org/Apps/Software
-Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/desktop/unstable/gnome-software/
-Vcs-Browser: https://anonscm.debian.org/viewvc/pkg-gnome/desktop/unstable/gnome-software/
+Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/desktop/experimental/gnome-software/
+Vcs-Browser: https://anonscm.debian.org/viewvc/pkg-gnome/desktop/experimental/gnome-software/
 
 Package: gnome-software
 Architecture: any
@@ -145,3 +146,28 @@ Description: Transitional package (gnome-packagekit-session -> gnome-software)
  .
  The PackageKit session interface is no separate component anymore, but built
  into GNOME-Software.
+
+Package: gnome-software-dev
+Section: libdevel
+Architecture: any
+Depends: libglib2.0-dev,
+         libgtk-3-dev,
+         libappstream-glib-dev,
+         libsoup2.4-dev,
+         ${misc:Depends}
+Suggests: gnome-software-doc
+Description: Software Center for GNOME - development files
+ Software lets you install and update applications and system extensions.
+ .
+ This package contains headers and other files required when compiling external
+ plugins for use with Software.
+
+Package: gnome-software-doc
+Section: doc
+Architecture: all
+Depends: ${misc:Depends}
+Description: Software Center for GNOME - documentation
+ Software lets you install and update applications and system extensions.
+ .
+ This package contains documentation for use when developing plugins for
+ Software.
