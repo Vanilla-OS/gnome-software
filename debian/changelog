@@ -5,6 +5,7 @@ gnome-software (3.26.0-1) UNRELEASED; urgency=medium
 
   [ Jeremy Bicha ]
   * New upstream release
+  * Add apport hook to report which gnome-software plugins are installed
   * debian/rules
     - Add workaround for Ubuntu translations issue
 
