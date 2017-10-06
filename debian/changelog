@@ -1,3 +1,9 @@
+gnome-software (3.26.1-1) UNRELEASED; urgency=medium
+
+  * New upstream release
+
+ -- Jeremy Bicha <jbicha@debian.org>  Thu, 05 Oct 2017 22:00:53 -0400
+
 gnome-software (3.26.0-2) unstable; urgency=medium
 
   * Only build with valgrind on architectures where valgrind is available
