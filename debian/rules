@@ -14,6 +14,7 @@ GS_CONFIGURE_FLAGS += \
 	-Denable-fwupd=false \
 	-Denable-flatpak=false \
 	-Denable-limba=false \
+	-Denable-gudev=false \
 	-Denable-ubuntu-reviews=true \
 	-Denable-valgrind=false
 
@@ -21,6 +22,9 @@ ifeq ($(DEB_HOST_ARCH_OS), linux)
 	# Enable Flatpak and Limba support on Linux
 	GS_CONFIGURE_FLAGS += -Denable-limba=true -Denable-flatpak=true
 
+	# Enable GUdev support on Linux
+	GS_CONFIGURE_FLAGS += -Denable-gudev=true
+	
 	# Enable fwupd support on supported architectures
 	ifneq (,$(findstring $(DEB_HOST_ARCH), amd64 arm64 armhf i386))
 		GS_CONFIGURE_FLAGS += -Denable-fwupd=true
