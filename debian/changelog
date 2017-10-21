@@ -1,10 +1,10 @@
-gnome-software (3.26.1-1.1) UNRELEASED; urgency=medium
+gnome-software (3.26.1-2) unstable; urgency=medium
 
   * Cherry-pick upstream fixes to make gnome-software build against fwupd 1.0.
     (Closes: #879006)
   * Enable GUDev support only on Linux. (Closes: #875916)
 
- -- Michael Biebl <biebl@debian.org>  Sat, 21 Oct 2017 05:20:41 +0200
+ -- Michael Biebl <biebl@debian.org>  Sat, 21 Oct 2017 05:36:14 +0200
 
 gnome-software (3.26.1-1) unstable; urgency=medium
 
