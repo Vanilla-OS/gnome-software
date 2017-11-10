@@ -1,3 +1,10 @@
+gnome-software (3.26.2-1) UNRELEASED; urgency=medium
+
+  * New upstream release
+  * Drop all patches, applied in new release.
+
+ -- Jeremy Bicha <jbicha@debian.org>  Fri, 10 Nov 2017 09:24:51 -0500
+
 gnome-software (3.26.1-2) unstable; urgency=medium
 
   * Cherry-pick upstream fixes to make gnome-software build against fwupd 1.0.
