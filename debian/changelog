@@ -1,11 +1,11 @@
-gnome-software (3.26.2-1) UNRELEASED; urgency=medium
+gnome-software (3.26.2-1) unstable; urgency=medium
 
   * New upstream release
   * debian/control.in:
     - Bump required fwupd to >= 0.9.7
   * Drop all patches, applied in new release.
 
- -- Jeremy Bicha <jbicha@debian.org>  Fri, 10 Nov 2017 09:24:51 -0500
+ -- Jeremy Bicha <jbicha@debian.org>  Fri, 10 Nov 2017 09:30:30 -0500
 
 gnome-software (3.26.1-2) unstable; urgency=medium
 
