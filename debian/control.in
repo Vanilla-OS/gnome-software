@@ -13,7 +13,7 @@ Build-Depends: appstream,
                intltool (>= 0.35.0),
                libappstream-glib-dev (>= 0.7.0~),
                libflatpak-dev (>= 0.6.12) [linux-any],
-               libfwupd-dev (>= 0.9.3) [amd64 arm64 armhf i386],
+               libfwupd-dev (>= 0.9.7) [amd64 arm64 armhf i386],
                libglib2.0-dev (>= 2.46),
                libgnome-desktop-3-dev (>= 3.18),
                libgtk-3-dev (>= 3.20),
@@ -132,7 +132,6 @@ Description: Limba support for GNOME Software
 Package: gnome-packagekit-session
 Architecture: all
 Section: oldlibs
-Priority: extra
 Depends: gnome-software (>= ${source:Version}),
          ${misc:Depends}
 Description: Transitional package (gnome-packagekit-session -> gnome-software)
