@@ -20,7 +20,7 @@ GS_CONFIGURE_FLAGS += \
 
 ifeq ($(DEB_HOST_ARCH_OS), linux)
 	# Enable Flatpak and Limba support on Linux
-	GS_CONFIGURE_FLAGS += -Denable-limba=true -Denable-flatpak=true
+	GS_CONFIGURE_FLAGS += -Denable-limba=true -Denable-flatpak=true -Denable-snap=true
 
 	# Enable GUdev support on Linux
 	GS_CONFIGURE_FLAGS += -Denable-gudev=true

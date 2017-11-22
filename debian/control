@@ -6,7 +6,7 @@ Source: gnome-software
 Section: gnome
 Priority: optional
 Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
-Uploaders: Iain Lane <laney@debian.org>, Jeremy Bicha <jbicha@debian.org>, Matthias Klumpp <mak@debian.org>, Michael Biebl <biebl@debian.org>
+Uploaders: Iain Lane <laney@debian.org>, Jeremy Bicha <jbicha@debian.org>, Michael Biebl <biebl@debian.org>
 Build-Depends: appstream,
                appstream-util,
                debhelper (>= 10.4),
@@ -29,6 +29,7 @@ Build-Depends: appstream,
                libpackagekit-glib2-dev (>= 1.1.4),
                libpolkit-gobject-1-dev,
                libsecret-1-dev,
+               libsnapd-glib-dev (>= 1.19) [linux-any],
                libsoup2.4-dev (>= 2.52),
                libsqlite3-dev,
                libxml2-utils,
@@ -54,7 +55,8 @@ Replaces: gnome-packagekit-session (<< 3.16.0-2~)
 Breaks: gnome-packagekit-session (<< 3.16.0-2~)
 Suggests: fwupd [amd64 arm64 armhf i386],
           gnome-software-plugin-flatpak [linux-any],
-          gnome-software-plugin-limba [linux-any]
+          gnome-software-plugin-limba [linux-any],
+          gnome-software-plugin-snap [linux-any]
 Description: Software Center for GNOME
  Software lets you install and update applications and system extensions.
  .
@@ -115,23 +117,24 @@ Description: Limba support for GNOME Software
  .
  This package contains the Limba plugin.
 
-#Package: gnome-software-plugin-snap
-#Architecture: linux-any
-#Depends: gnome-software (= ${binary:Version}),
-#         ${misc:Depends},
-#         ${shlibs:Depends}
-#Breaks: gnome-software (<< 3.22.3)
-#Replaces: gnome-software (<< 3.22.3)
-#Description: Snap support for GNOME Software
-# Software lets you install and update applications and system extensions.
-# .
-# Software uses a plugin architecture to separate the frontend from the
-# technologies that are used underneath. Currently, a PackageKit plugin provides
-# data from a number of traditional packaging systems, such as rpm or apt. An
-# appdata plugin provides additional metadata from locally installed data in the
-# appdata format.
-# .
-# This package contains the Snap plugin.
+Package: gnome-software-plugin-snap
+Architecture: linux-any
+Depends: gnome-software (= ${binary:Version}),
+         snapd,
+         ${misc:Depends},
+         ${shlibs:Depends},
+Breaks: gnome-software (<< 3.22.3)
+Replaces: gnome-software (<< 3.22.3)
+Description: Snap support for GNOME Software
+ Software lets you install and update applications and system extensions.
+ .
+ Software uses a plugin architecture to separate the frontend from the
+ technologies that are used underneath. Currently, a PackageKit plugin provides
+ data from a number of traditional packaging systems, such as rpm or apt. An
+ appdata plugin provides additional metadata from locally installed data in the
+ appdata format.
+ .
+ This package contains the Snap plugin.
 
 Package: gnome-packagekit-session
 Architecture: all
