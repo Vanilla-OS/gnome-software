@@ -20,7 +20,7 @@ GS_CONFIGURE_FLAGS += \
 
 ifeq ($(DEB_HOST_ARCH_OS), linux)
 	# Enable Flatpak and Limba support on Linux
-	GS_CONFIGURE_FLAGS += -Denable-limba=true -Denable-flatpak=true -Denable-snap=true
+	GS_CONFIGURE_FLAGS += -Denable-limba=true -Denable-flatpak=true
 
 	# Enable GUdev support on Linux
 	GS_CONFIGURE_FLAGS += -Denable-gudev=true
@@ -28,6 +28,11 @@ ifeq ($(DEB_HOST_ARCH_OS), linux)
 	# Enable fwupd support on supported architectures
 	ifneq (,$(findstring $(DEB_HOST_ARCH), amd64 arm64 armhf i386))
 		GS_CONFIGURE_FLAGS += -Denable-fwupd=true
+	endif
+
+	# Enable snap support on supported architectures
+	ifneq (,$(findstring $(DEB_HOST_ARCH), amd64 arm64 armel armhf i386 ppc64 ppc64el))
+		GS_CONFIGURE_FLAGS += -Denable-snap=true
 	endif
 
 	# Enable valgrind support on supported architectures
