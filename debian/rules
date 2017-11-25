@@ -71,6 +71,7 @@ endif
 
 override_dh_installdocs:
 	dh_installdocs
+	mkdir -p debian/gnome-software/usr/share/doc/gnome-software
 	appstream-util appdata-to-news $(CURDIR)/*/data/appdata/org.gnome.Software.appdata.xml \
 		> debian/gnome-software/usr/share/doc/gnome-software/NEWS
 
