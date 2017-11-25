@@ -1,8 +1,8 @@
-gnome-software (3.26.3-3) UNRELEASED; urgency=medium
+gnome-software (3.26.3-3) unstable; urgency=medium
 
   * Fix arch:all build
 
- -- Jeremy Bicha <jbicha@debian.org>  Fri, 24 Nov 2017 19:57:01 -0500
+ -- Jeremy Bicha <jbicha@debian.org>  Fri, 24 Nov 2017 19:57:28 -0500
 
 gnome-software (3.26.3-2) unstable; urgency=medium
 
