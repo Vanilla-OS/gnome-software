@@ -69,12 +69,6 @@ ifneq (yes,$(shell dpkg-vendor --derives-from Ubuntu && echo yes))
 	rm -f debian/tmp/usr/lib/*/gs-plugins-*/libgs_plugin_ubuntu*
 endif
 
-override_dh_installdocs:
-	dh_installdocs
-	mkdir -p debian/gnome-software/usr/share/doc/gnome-software
-	appstream-util appdata-to-news $(CURDIR)/*/data/appdata/org.gnome.Software.appdata.xml \
-		> debian/gnome-software/usr/share/doc/gnome-software/NEWS
-
 override_dh_installgsettings:
 	sed 's/@DISTRO@/$(DISTRO_ID)/g' debian/gnome-software.gsettings-override.in > debian/gnome-software.gsettings-override
 	sed -i 's/@URL@/$(FREE_URL)/g' debian/gnome-software.gsettings-override

@@ -1,3 +1,9 @@
+gnome-software (3.26.3-4) UNRELEASED; urgency=medium
+
+  * Stop using appdata-to-NEWS to install NEWS. It's no longer needed.
+
+ -- Jeremy Bicha <jbicha@debian.org>  Sat, 16 Dec 2017 13:20:18 -0500
+
 gnome-software (3.26.3-3) unstable; urgency=medium
 
   * Fix arch:all build
