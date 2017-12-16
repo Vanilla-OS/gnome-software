@@ -1,12 +1,12 @@
-gnome-software (3.26.3-4) UNRELEASED; urgency=medium
+gnome-software (3.26.3-4) unstable; urgency=medium
 
-  * Stop using appdata-to-NEWS to install NEWS. It's no longer needed.
   * Update Vcs fields for conversion to git
   * Add debian/gbp.conf
   * Bump Standards-Version to 4.1.2
+  * Stop using appdata-to-NEWS to install NEWS. It's no longer needed.
   * Add some Multi-Arch metadata
 
- -- Jeremy Bicha <jbicha@debian.org>  Sat, 16 Dec 2017 13:20:18 -0500
+ -- Jeremy Bicha <jbicha@debian.org>  Sat, 16 Dec 2017 13:24:18 -0500
 
 gnome-software (3.26.3-3) unstable; urgency=medium
 
