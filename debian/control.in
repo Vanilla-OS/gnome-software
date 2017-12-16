@@ -33,7 +33,7 @@ Build-Depends: appstream,
                pkg-config,
                valgrind [amd64 arm64 armhf i386 mips mips64 mips64el mipsel powerpc ppc64 ppc64el s390x],
                xsltproc
-Standards-Version: 4.1.1
+Standards-Version: 4.1.2
 Homepage: https://wiki.gnome.org/Apps/Software
 Vcs-Git: https://anonscm.debian.org/git/pkg-gnome/gnome-software.git
 Vcs-Browser: https://anonscm.debian.org/git/pkg-gnome/gnome-software.git
