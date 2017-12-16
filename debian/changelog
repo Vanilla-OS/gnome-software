@@ -4,6 +4,7 @@ gnome-software (3.26.3-4) UNRELEASED; urgency=medium
   * Update Vcs fields for conversion to git
   * Add debian/gbp.conf
   * Bump Standards-Version to 4.1.2
+  * Add some Multi-Arch metadata
 
  -- Jeremy Bicha <jbicha@debian.org>  Sat, 16 Dec 2017 13:20:18 -0500
 

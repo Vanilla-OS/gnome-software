@@ -148,6 +148,7 @@ Description: Transitional package (gnome-packagekit-session -> gnome-software)
 Package: gnome-software-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: libglib2.0-dev,
          libgtk-3-dev,
          libappstream-glib-dev,
@@ -163,6 +164,7 @@ Description: Software Center for GNOME - development files
 Package: gnome-software-doc
 Section: doc
 Architecture: all
+Multi-Arch: foreign
 Depends: ${misc:Depends}
 Description: Software Center for GNOME - documentation
  Software lets you install and update applications and system extensions.
