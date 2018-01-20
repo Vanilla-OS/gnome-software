@@ -2,6 +2,7 @@ gnome-software (3.26.5-1) UNRELEASED; urgency=medium
 
   * New upstream release
   * Update Vcs fields for migration to https://salsa.debian.org/
+  * Bump debhelper compat to 11
 
  -- Jeremy Bicha <jbicha@debian.org>  Fri, 19 Jan 2018 20:42:55 -0500
 
