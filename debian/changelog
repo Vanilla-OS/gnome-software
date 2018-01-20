@@ -1,5 +1,6 @@
-gnome-software (3.26.3-5) UNRELEASED; urgency=medium
+gnome-software (3.26.5-1) UNRELEASED; urgency=medium
 
+  * New upstream release
   * Update Vcs fields for migration to https://salsa.debian.org/
 
  -- Jeremy Bicha <jbicha@debian.org>  Fri, 19 Jan 2018 20:42:55 -0500
