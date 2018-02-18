@@ -1,4 +1,4 @@
-gnome-software (3.27.90-1) UNRELEASED; urgency=medium
+gnome-software (3.27.90-1) experimental; urgency=medium
 
   * New upstream development release
   * Bump dependencies for new version:
@@ -7,7 +7,7 @@ gnome-software (3.27.90-1) UNRELEASED; urgency=medium
   * Build-Depend on libgspell-1-dev instead of libgtkspell3-3-dev
   * debian/docs: Install README.md
 
- -- Jeremy Bicha <jbicha@debian.org>  Sun, 18 Feb 2018 16:09:00 -0500
+ -- Jeremy Bicha <jbicha@debian.org>  Sun, 18 Feb 2018 16:27:18 -0500
 
 gnome-software (3.26.5-1) unstable; urgency=medium
 
