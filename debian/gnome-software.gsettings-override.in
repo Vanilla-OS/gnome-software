@@ -1,4 +1,4 @@
 [org.gnome.software]
-official-sources=['@DISTRO@-*']
-free-sources=['@DISTRO@-*-main']
-free-sources-url='@URL@'
+official-repos=['@DISTRO@-*']
+free-repos=['@DISTRO@-*-main']
+free-repos-url='@URL@'
