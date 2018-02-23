@@ -102,6 +102,7 @@ override_dh_auto_test:
 
 override_dh_clean:
 	rm -f debian/gnome-software.gsettings-override
+	rm -f po/gnome-software.pot
 	dh_clean
 
 # Needed by Ubuntu
