@@ -2,6 +2,7 @@ gnome-software (3.27.90-2) UNRELEASED; urgency=medium
 
   * Update gsettings schema names for new release ("sources" renamed to
     "repos")
+  * Depend on libgtk3-perl for debconf's GNOME backend
 
  -- Jeremy Bicha <jbicha@debian.org>  Tue, 20 Feb 2018 17:15:24 -0500
 
