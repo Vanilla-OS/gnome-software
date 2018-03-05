@@ -4,6 +4,7 @@ gnome-software (3.27.92-1) UNRELEASED; urgency=medium
   * Update gsettings schema names for new release ("sources" renamed to
     "repos")
   * Depend on libgtk3-perl for debconf's GNOME backend
+  * Bump minimum libfwupd-dev to 1.0.3
 
  -- Jeremy Bicha <jbicha@debian.org>  Tue, 20 Feb 2018 17:15:24 -0500
 
