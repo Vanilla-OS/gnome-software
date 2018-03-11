@@ -1,12 +1,13 @@
-gnome-software (3.27.92-1) UNRELEASED; urgency=medium
+gnome-software (3.27.92-1) unstable; urgency=medium
 
   * New upstream release candidate
   * Update gsettings schema names for new release ("sources" renamed to
     "repos") (Closes: #892456)
   * Depend on libgtk3-perl for debconf's GNOME backend
   * Bump minimum libfwupd-dev to 1.0.3
+  * Release to unstable
 
- -- Jeremy Bicha <jbicha@debian.org>  Tue, 20 Feb 2018 17:15:24 -0500
+ -- Jeremy Bicha <jbicha@debian.org>  Sat, 10 Mar 2018 21:13:52 -0500
 
 gnome-software (3.27.90-1) experimental; urgency=medium
 
