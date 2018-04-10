@@ -1,3 +1,9 @@
+gnome-software (3.28.1-1) UNRELEASED; urgency=medium
+
+  * New upstream release
+
+ -- Jeremy Bicha <jbicha@debian.org>  Tue, 10 Apr 2018 19:31:57 -0400
+
 gnome-software (3.28.0-1) unstable; urgency=medium
 
   * New upstream release
