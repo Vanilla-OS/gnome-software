@@ -1,6 +1,7 @@
 gnome-software (3.28.1-1) UNRELEASED; urgency=medium
 
   * New upstream release
+  * Bump Standards-Version to 4.1.4
 
  -- Jeremy Bicha <jbicha@debian.org>  Tue, 10 Apr 2018 19:31:57 -0400
 
