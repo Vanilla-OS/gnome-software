@@ -2,15 +2,14 @@
 %global gtk3_version 3.22.4
 %global json_glib_version 1.2.0
 %global packagekit_version 1.1.1
-%global appstream_glib_version 0.7.3
+%global appstream_glib_version 0.7.8
 %global libsoup_version 2.52.0
 %global gsettings_desktop_schemas_version 3.12.0
 %global gnome_desktop_version 3.18.0
-%global fwupd_version 1.0.3
+%global fwupd_version 1.0.7
 %global flatpak_version 0.9.4
 
 %define alphatag                        #ALPHATAG#
-%define distrotag                       23
 
 Name:      gnome-software
 Version:   #VERSION#
@@ -19,8 +18,9 @@ Summary:   A software center for GNOME
 
 License:   GPLv2+
 URL:       https://wiki.gnome.org/Apps/Software
-Source0:   https://download.gnome.org/sources/gnome-software/3.27/%{name}-%{version}.tar.xz
+Source0:   https://download.gnome.org/sources/gnome-software/3.29/%{name}-%{version}.tar.xz
 
+BuildRequires: gcc
 BuildRequires: gettext
 BuildRequires: libxslt
 BuildRequires: docbook-style-xsl
@@ -45,7 +45,9 @@ BuildRequires: rpm-ostree-devel
 BuildRequires: libgudev1-devel
 BuildRequires: valgrind-devel
 BuildRequires: liboauth-devel
-BuildRequires: snapd-glib-devel
+%if 0%{?fedora}
+BuildRequires: snapd-glib-devel >= 1.42
+%endif
 
 Requires: appstream-data
 %if 0%{?fedora}
@@ -69,7 +71,7 @@ Requires: libsoup%{?_isa} >= %{libsoup_version}
 Requires: PackageKit%{?_isa} >= %{packagekit_version}
 
 # this is not a library version
-%define gs_plugin_version               11
+%define gs_plugin_version               12
 
 %description
 gnome-software is an application that makes it easy to add, remove
@@ -90,6 +92,7 @@ Requires: %{name}%{?_isa} = %{version}-%{release}
 %description editor
 Editor for designing banners for GNOME Software.
 
+%if 0%{?fedora}
 %package snap
 Summary: Support for Ubuntu Snap packages
 Requires: %{name}%{?_isa} = %{version}-%{release}
@@ -98,20 +101,25 @@ Supplements: (gnome-software%{?_isa} and snapd%{?_isa})
 
 %description snap
 Adds support for Snap packages from the Snap store.
+%endif
 
 %prep
 %autosetup -p1
 
 %build
 %meson \
-    -Denable-snap=true \
-    -Denable-gudev=true \
-    -Denable-packagekit=true \
-    -Denable-external-appstream=false \
-    -Denable-rpm-ostree=true \
-    -Denable-tests=false \
-    -Denable-ubuntuone=false \
-    -Denable-ubuntu-reviews=false
+%if 0%{?fedora}
+    -Dsnap=true \
+%else
+    -Dsnap=false \
+%endif
+    -Dgudev=true \
+    -Dpackagekit=true \
+    -Dexternal_appstream=false \
+    -Drpm_ostree=true \
+    -Dtests=false \
+    -Dubuntuone=false \
+    -Dubuntu_reviews=false
 %meson_build
 
 %install
@@ -131,7 +139,6 @@ FOE
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
-DESTDIR=%{buildroot} appstream-util check-root
 
 %files -f %{name}.lang
 %doc AUTHORS README.md
@@ -175,6 +182,7 @@ DESTDIR=%{buildroot} appstream-util check-root
 %{_libdir}/gs-plugins-%{gs_plugin_version}/libgs_plugin_packagekit-local.so
 %{_libdir}/gs-plugins-%{gs_plugin_version}/libgs_plugin_packagekit-offline.so
 %{_libdir}/gs-plugins-%{gs_plugin_version}/libgs_plugin_packagekit-proxy.so
+%{_libdir}/gs-plugins-%{gs_plugin_version}/libgs_plugin_packagekit-refine-repos.so
 %{_libdir}/gs-plugins-%{gs_plugin_version}/libgs_plugin_packagekit-refine.so
 %{_libdir}/gs-plugins-%{gs_plugin_version}/libgs_plugin_packagekit-refresh.so
 %{_libdir}/gs-plugins-%{gs_plugin_version}/libgs_plugin_packagekit-upgrade.so
@@ -189,6 +197,7 @@ DESTDIR=%{buildroot} appstream-util check-root
 %{_libdir}/gs-plugins-%{gs_plugin_version}/libgs_plugin_steam.so
 %{_libdir}/gs-plugins-%{gs_plugin_version}/libgs_plugin_systemd-updates.so
 %{_sysconfdir}/xdg/autostart/gnome-software-service.desktop
+%{_datadir}/app-info/xmls/org.gnome.Software.Featured.xml
 %{_datadir}/dbus-1/services/org.freedesktop.PackageKit.service
 %{_datadir}/dbus-1/services/org.gnome.Software.service
 %{_datadir}/gnome-shell/search-providers/org.gnome.Software-search-provider.ini
@@ -197,9 +206,11 @@ DESTDIR=%{buildroot} appstream-util check-root
 %{_libexecdir}/gnome-software-cmd
 %{_libexecdir}/gnome-software-restarter
 
+%if 0%{?fedora}
 %files snap
 %{_libdir}/gs-plugins-%{gs_plugin_version}/libgs_plugin_snap.so
 %{_datadir}/metainfo/org.gnome.Software.Plugin.Snap.metainfo.xml
+%endif
 
 %files devel
 %{_libdir}/pkgconfig/gnome-software.pc
@@ -209,7 +220,6 @@ DESTDIR=%{buildroot} appstream-util check-root
 
 %files editor
 %{_bindir}/gnome-software-editor
-%{_datadir}/app-info/xmls/org.gnome.Software.Featured.xml
 %{_datadir}/applications/org.gnome.Software.Editor.desktop
 %{_mandir}/man1/gnome-software-editor.1*
 

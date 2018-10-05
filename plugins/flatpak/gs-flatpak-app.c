@@ -1,6 +1,6 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
  *
- * Copyright (C) 2017 Richard Hughes <richard@hughsie.com>
+ * Copyright (C) 2017-2018 Richard Hughes <richard@hughsie.com>
  *
  * Licensed under the GNU General Public License Version 2
  *
@@ -58,10 +58,10 @@ gs_flatpak_app_get_file_kind (GsApp *app)
 	return g_variant_get_uint32 (tmp);
 }
 
-GsApp *
-gs_flatpak_app_get_runtime_repo (GsApp *app)
+const gchar *
+gs_flatpak_app_get_runtime_url (GsApp *app)
 {
-	return g_object_get_data (G_OBJECT (app), "flatpak::RuntimeRepo");
+	return gs_app_get_metadata_item (app, "flatpak::RuntimeUrl");
 }
 
 FlatpakRefKind
@@ -105,11 +105,21 @@ gs_flatpak_app_get_repo_url (GsApp *app)
 gchar *
 gs_flatpak_app_get_ref_display (GsApp *app)
 {
+	const gchar *ref_kind_as_str = gs_flatpak_app_get_ref_kind_as_str (app);
+	const gchar *ref_name = gs_flatpak_app_get_ref_name (app);
+	const gchar *ref_arch = gs_flatpak_app_get_ref_arch (app);
+	const gchar *ref_branch = gs_flatpak_app_get_ref_branch (app);
+
+	g_assert (ref_kind_as_str != NULL);
+	g_assert (ref_name != NULL);
+	g_assert (ref_arch != NULL);
+	g_assert (ref_branch != NULL);
+
 	return g_strdup_printf ("%s/%s/%s/%s",
-				gs_flatpak_app_get_ref_kind_as_str (app),
-				gs_flatpak_app_get_ref_name (app),
-				gs_flatpak_app_get_ref_arch (app),
-				gs_flatpak_app_get_ref_branch (app));
+	                        ref_kind_as_str,
+	                        ref_name,
+	                        ref_arch,
+	                        ref_branch);
 }
 
 void
@@ -144,12 +154,9 @@ gs_flatpak_app_set_file_kind (GsApp *app, GsFlatpakAppFileKind file_kind)
 }
 
 void
-gs_flatpak_app_set_runtime_repo (GsApp *app, GsApp *runtime_repo)
+gs_flatpak_app_set_runtime_url (GsApp *app, const gchar *val)
 {
-	g_object_set_data_full (G_OBJECT (app),
-				"flatpak::RuntimeRepo",
-				g_object_ref (runtime_repo),
-				(GDestroyNotify) g_object_unref);
+	gs_app_set_metadata (app, "flatpak::RuntimeUrl", val);
 }
 
 void

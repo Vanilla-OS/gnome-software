@@ -1,8 +1,8 @@
 project('gnome-software', 'c',
-  version : '3.28.2',
+  version : '3.30.1',
   license : 'GPL-2.0+',
   default_options : ['warning_level=1', 'c_std=c99'],
-  meson_version : '>=0.37.0'
+  meson_version : '>=0.40.0'
 )
 
 conf = configuration_data()
@@ -12,7 +12,7 @@ conf.set_quoted('PACKAGE_VERSION', meson.project_version())
 
 # this refers to the gnome-software plugin API version
 # this is not in any way related to a package or soname version
-gs_plugin_api_version = '11'
+gs_plugin_api_version = '12'
 conf.set_quoted('GS_PLUGIN_API_VERSION', gs_plugin_api_version)
 
 # install docs
@@ -91,6 +91,10 @@ add_global_link_arguments(
 
 # Needed for PATH_MAX and symlink()
 add_project_arguments('-D_XOPEN_SOURCE=700', language : 'c')
+# Needed for syscall()
+add_project_arguments('-D_GNU_SOURCE', language : 'c')
+
+conf.set('HAVE_LINUX_UNISTD_H', cc.has_header('linux/unistd.h'))
 
 appstream_glib = dependency('appstream-glib', version : '>= 0.7.3')
 gdk_pixbuf = dependency('gdk-pixbuf-2.0', version : '>= 2.32.0')
@@ -103,7 +107,7 @@ libsecret = dependency('libsecret-1')
 libsoup = dependency('libsoup-2.4', version : '>= 2.52.0')
 sqlite3 = dependency('sqlite3')
 
-if get_option('enable-valgrind')
+if get_option('valgrind')
   message(meson.version())
   # urgh, meson is broken
   if meson.version().version_compare('>0.41.0')
@@ -118,55 +122,56 @@ else
   valgrind = []
 endif
 
-if get_option('enable-gnome-desktop')
+if get_option('gnome_desktop')
   gnome_desktop = dependency('gnome-desktop-3.0', version : '>= 3.18.0')
   conf.set('HAVE_GNOME_DESKTOP', 1)
 endif
 
-if get_option('enable-gspell')
+if get_option('gspell')
   gspell = dependency('gspell-1')
   conf.set('HAVE_GSPELL', 1)
 endif
 
-if get_option('enable-polkit')
+if get_option('polkit')
   polkit = dependency('polkit-gobject-1')
   conf.set('HAVE_POLKIT', 1)
 endif
 
-if get_option('enable-packagekit')
+if get_option('packagekit')
   packagekit = dependency('packagekit-glib2', version : '>= 1.1.0')
   conf.set('HAVE_PACKAGEKIT', '1')
   add_project_arguments('-DI_KNOW_THE_PACKAGEKIT_GLIB2_API_IS_SUBJECT_TO_CHANGE',
                         language : 'c')
+  if get_option('packagekit_autoremove')
+      conf.set('GS_PACKAGEKIT_AUTOREMOVE', 'TRUE')
+  else
+      conf.set('GS_PACKAGEKIT_AUTOREMOVE', 'FALSE')
+  endif
 endif
 
-if get_option('enable-fwupd')
+if get_option('fwupd')
   fwupd = dependency('fwupd', version : '>= 1.0.3')
 endif
 
-if get_option('enable-flatpak')
-  flatpak = dependency('flatpak', version : '>= 0.6.12')
+if get_option('flatpak')
+  flatpak = dependency('flatpak', version : '>= 0.99.3')
 endif
 
-if get_option('enable-limba')
-  limba = dependency('limba', version : '>= 0.5.6')
-endif
-
-if get_option('enable-rpm-ostree')
+if get_option('rpm_ostree')
   ostree = dependency('ostree-1')
   rpm_ostree = dependency('rpm-ostree-1', version : '>= 2018.4')
 endif
 
-if get_option('enable-ubuntu-reviews')
+if get_option('ubuntu_reviews')
   oauth = dependency('oauth')
 endif
 
-if get_option('enable-gudev')
+if get_option('gudev')
   gudev = dependency('gudev-1.0')
 endif
 
-if get_option('enable-snap')
-  snap = dependency('snapd-glib', version : '>= 1.19')
+if get_option('snap')
+  snap = dependency('snapd-glib', version : '>= 1.41')
 endif
 
 gnome = import('gnome')

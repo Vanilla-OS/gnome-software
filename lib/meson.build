@@ -65,7 +65,7 @@ librarydeps = [
   valgrind,
 ]
 
-if get_option('enable-polkit')
+if get_option('polkit')
   librarydeps += polkit
 endif
 
@@ -77,6 +77,8 @@ libgnomesoftware = static_library(
     'gs-auth.c',
     'gs-category.c',
     'gs-debug.c',
+    'gs-ioprio.c',
+    'gs-ioprio.h',
     'gs-os-release.c',
     'gs-plugin.c',
     'gs-plugin-event.c',
@@ -121,7 +123,7 @@ executable(
   install_dir : get_option('libexecdir')
 )
 
-if get_option('enable-tests')
+if get_option('tests')
   cargs += ['-DTESTDATADIR="' + join_paths(meson.current_source_dir(), '..', 'data') + '"']
   e = executable(
     'gs-self-test',

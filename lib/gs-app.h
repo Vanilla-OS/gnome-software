@@ -138,7 +138,7 @@ void		 gs_app_set_progress		(GsApp		*app,
 						 guint		 percentage);
 gboolean	gs_app_get_allow_cancel		(GsApp	*app);
 void		gs_app_set_allow_cancel		 (GsApp	*app,
-						  gboolean	can_cancel);
+						  gboolean	allow_cancel);
 const gchar	*gs_app_get_unique_id		(GsApp		*app);
 const gchar	*gs_app_get_branch		(GsApp		*app);
 void		 gs_app_set_branch		(GsApp		*app,
@@ -224,9 +224,6 @@ void		 gs_app_set_update_details	(GsApp		*app,
 AsUrgencyKind	 gs_app_get_update_urgency	(GsApp		*app);
 void		 gs_app_set_update_urgency	(GsApp		*app,
 						 AsUrgencyKind	 update_urgency);
-GsApp		*gs_app_get_update_runtime	(GsApp		*app);
-void		 gs_app_set_update_runtime	(GsApp		*app,
-						 GsApp		*runtime);
 const gchar	*gs_app_get_management_plugin	(GsApp		*app);
 void		 gs_app_set_management_plugin	(GsApp		*app,
 						 const gchar	*management_plugin);
@@ -279,13 +276,10 @@ void		 gs_app_set_size_installed	(GsApp		*app,
 guint64		 gs_app_get_size_download	(GsApp		*app);
 void		 gs_app_set_size_download	(GsApp		*app,
 						 guint64	 size_download);
-GPtrArray	*gs_app_get_addons		(GsApp		*app);
-void		 gs_app_add_addon		(GsApp		*app,
-						 GsApp		*addon);
-GPtrArray	*gs_app_get_related		(GsApp		*app);
 void		 gs_app_add_related		(GsApp		*app,
 						 GsApp		*app2);
-GPtrArray	*gs_app_get_history		(GsApp		*app);
+void		 gs_app_add_addon		(GsApp		*app,
+						 GsApp		*addon);
 void		 gs_app_add_history		(GsApp		*app,
 						 GsApp		*app2);
 guint64		 gs_app_get_install_date	(GsApp		*app);
@@ -309,6 +303,8 @@ GPtrArray	*gs_app_get_keywords		(GsApp		*app);
 void		 gs_app_set_keywords		(GsApp		*app,
 						 GPtrArray	*keywords);
 void		 gs_app_add_kudo		(GsApp		*app,
+						 GsAppKudo	 kudo);
+void		 gs_app_remove_kudo		(GsApp		*app,
 						 GsAppKudo	 kudo);
 gboolean	 gs_app_has_kudo		(GsApp		*app,
 						 GsAppKudo	 kudo);

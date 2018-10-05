@@ -38,6 +38,7 @@
 #include "gs-category-page.h"
 #include "gs-extras-page.h"
 #include "gs-repos-dialog.h"
+#include "gs-prefs-dialog.h"
 #include "gs-update-dialog.h"
 #include "gs-update-monitor.h"
 #include "gs-utils.h"
@@ -242,6 +243,17 @@ gs_shell_clean_back_entry_stack (GsShell *shell)
 	}
 }
 
+static void
+gs_shell_update_account_button_visibility (GsShell *shell)
+{
+	GsShellPrivate *priv = gs_shell_get_instance_private (shell);
+	GPtrArray *auths = gs_plugin_loader_get_auths (priv->plugin_loader);
+	GtkWidget *account_button;
+
+	account_button = GTK_WIDGET (gtk_builder_get_object (priv->builder, "account_button"));
+	gtk_widget_set_visible (account_button, auths->len > 0);
+}
+
 void
 gs_shell_change_mode (GsShell *shell,
 		      GsShellMode mode,
@@ -377,6 +389,8 @@ gs_shell_change_mode (GsShell *shell,
 	widget = gs_page_get_header_end_widget (page);
 	gs_shell_set_header_end_widget (shell, widget);
 
+	gs_shell_update_account_button_visibility (shell);
+
 	/* destroy any existing modals */
 	if (priv->modal_dialogs != NULL) {
 		gsize i = 0;
@@ -410,6 +424,12 @@ save_back_entry (GsShell *shell)
 	BackEntry *entry;
 	GsPage *page;
 
+	/* never go back to a details page */
+	if (priv->mode == GS_SHELL_MODE_DETAILS) {
+		g_debug ("ignoring back entry for details");
+		return;
+	}
+
 	entry = g_new0 (BackEntry, 1);
 	entry->mode = priv->mode;
 
@@ -426,14 +446,6 @@ save_back_entry (GsShell *shell)
 		g_debug ("pushing back entry for %s with %s",
 			 page_name[entry->mode],
 			 gs_category_get_id (entry->category));
-		break;
-	case GS_SHELL_MODE_DETAILS:
-		page = GS_PAGE (g_hash_table_lookup (priv->pages, "details"));
-		entry->app = gs_details_page_get_app (GS_DETAILS_PAGE (page));
-		g_object_ref (entry->app);
-		g_debug ("pushing back entry for %s with %s",
-			 page_name[entry->mode],
-			 gs_app_get_id (entry->app));
 		break;
 	case GS_SHELL_MODE_SEARCH:
 		page = GS_PAGE (g_hash_table_lookup (priv->pages, "search"));
@@ -648,6 +660,133 @@ search_mode_enabled_cb (GtkSearchBar *search_bar, GParamSpec *pspec, GsShell *sh
 	                              gtk_search_bar_get_search_mode (search_bar));
 }
 
+static void
+gs_shell_signin_button_cb (GtkButton *button, GsShell *shell)
+{
+	GsShellPrivate *priv = gs_shell_get_instance_private (shell);
+	GsAuth *auth;
+
+	auth = GS_AUTH (g_object_get_data (G_OBJECT (button), "auth"));
+	gs_page_authenticate (priv->page_last, NULL,
+			      gs_auth_get_provider_id (auth),
+			      priv->cancellable,
+			      NULL, NULL);
+}
+
+static void
+gs_shell_logout_cb (GObject *source,
+		    GAsyncResult *res,
+		    gpointer user_data)
+{
+	GsPluginLoader *plugin_loader = GS_PLUGIN_LOADER (source);
+	g_autoptr(GError) error = NULL;
+
+	if (!gs_plugin_loader_job_action_finish (plugin_loader, res, &error)) {
+		g_warning ("failed to logout: %s",  error->message);
+		return;
+	}
+}
+
+static void
+gs_shell_signout_button_cb (GtkButton *button, GsShell *shell)
+{
+	GsShellPrivate *priv = gs_shell_get_instance_private (shell);
+	g_autoptr(GsPluginJob) plugin_job = NULL;
+
+	plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_AUTH_LOGOUT,
+					 "interactive", TRUE,
+					 "auth", g_object_get_data (G_OBJECT (button), "auth"),
+					 NULL);
+
+	gs_plugin_loader_job_process_async (priv->plugin_loader, plugin_job,
+					    priv->cancellable,
+					    gs_shell_logout_cb,
+					    shell);
+
+}
+
+static void
+add_buttons_for_auth (GsShell *shell, GsAuth *auth)
+{
+	GsShellPrivate *priv = gs_shell_get_instance_private (shell);
+	GtkWidget *account_box;
+	gboolean logged_in;
+	GtkWidget *signin_button;
+	GtkWidget *signout_button;
+	g_autofree gchar *signout_label = NULL;
+	g_autofree gchar *signin_label = NULL;
+
+	account_box = GTK_WIDGET (gtk_builder_get_object (priv->builder, "account_box"));
+	logged_in = gs_auth_has_flag (auth, GS_AUTH_FLAG_VALID);
+	signin_button = gtk_model_button_new ();
+	signout_button = gtk_model_button_new ();
+
+	signout_label = g_strdup_printf (_("Sign out from %s"),
+					 gs_auth_get_provider_name (auth));
+	if (logged_in)
+		signin_label = g_strdup_printf (_("Signed in into %s as %s"),
+						gs_auth_get_provider_name (auth),
+						gs_auth_get_username (auth));
+	else
+		signin_label = g_strdup_printf (_("Sign in to %s…"),
+						gs_auth_get_provider_name (auth));
+
+	g_object_set (signin_button,
+		      "text", signin_label,
+		      "sensitive", !logged_in, NULL);
+	g_object_set_data (G_OBJECT (signin_button), "auth", auth);
+
+	g_object_set (signout_button,
+		      "text", signout_label,
+		      "sensitive", logged_in, NULL);
+	g_object_set_data (G_OBJECT (signout_button), "auth", auth);
+
+	g_signal_connect (signin_button, "clicked",
+			  G_CALLBACK (gs_shell_signin_button_cb), shell);
+	g_signal_connect (signout_button, "clicked",
+			  G_CALLBACK (gs_shell_signout_button_cb), shell);
+
+	gtk_widget_show (signin_button);
+	gtk_widget_show (signout_button);
+	gtk_box_pack_start (GTK_BOX (account_box), signin_button, TRUE, TRUE, 0);
+	gtk_box_pack_start (GTK_BOX (account_box), signout_button, TRUE, TRUE, 0);
+}
+
+static void
+account_button_clicked_cb (GtkButton *button, GsShell *shell)
+{
+	GsShellPrivate *priv = gs_shell_get_instance_private (shell);
+	GPtrArray *auth_array;
+	GtkWidget *account_popover;
+	GtkWidget *account_box;
+	g_autoptr(GList) children = NULL;
+
+	auth_array = gs_plugin_loader_get_auths (priv->plugin_loader);
+	account_popover = GTK_WIDGET (gtk_builder_get_object (priv->builder, "account_popover"));
+	account_box = GTK_WIDGET (gtk_builder_get_object (priv->builder, "account_box"));
+
+	/* Remove existing buttons... */
+	children = gtk_container_get_children (GTK_CONTAINER (account_box));
+	for (GList *l = children; l != NULL; l = l->next)
+		gtk_container_remove (GTK_CONTAINER (account_box), GTK_WIDGET (l->data));
+
+	/* Add new ones... */
+	for (guint i = 0; i < auth_array->len; i++) {
+		GsAuth *auth = g_ptr_array_index (auth_array, i);
+		add_buttons_for_auth (shell, auth);
+
+		/* Add sepeartor between each block */
+		if (i < auth_array->len - 1) {
+			GtkWidget *seprator = gtk_separator_new (GTK_ORIENTATION_HORIZONTAL);
+			gtk_widget_show (seprator);
+			gtk_box_pack_start (GTK_BOX (account_box), seprator, TRUE, TRUE, 0);
+		}
+	}
+
+	gtk_popover_set_relative_to (GTK_POPOVER (account_popover), GTK_WIDGET (button));
+	gtk_popover_popup (GTK_POPOVER (account_popover));
+}
+
 static gboolean
 window_key_press_event (GtkWidget *win, GdkEventKey *event, GsShell *shell)
 {
@@ -781,6 +920,13 @@ typedef enum {
 	GS_SHELL_EVENT_BUTTON_LAST
 } GsShellEventButtons;
 
+static gboolean
+gs_shell_has_disk_examination_app (void)
+{
+	g_autofree gchar *baobab = g_find_program_in_path ("baobab");
+	return (baobab != NULL);
+}
+
 static void
 gs_shell_show_event_app_notify (GsShell *shell,
 				const gchar *title,
@@ -799,7 +945,8 @@ gs_shell_show_event_app_notify (GsShell *shell,
 
 	/* no-space button */
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "button_events_no_space"));
-	gtk_widget_set_visible (widget, (buttons & GS_SHELL_EVENT_BUTTON_NO_SPACE) > 0);
+	gtk_widget_set_visible (widget, (buttons & GS_SHELL_EVENT_BUTTON_NO_SPACE) > 0 &&
+					gs_shell_has_disk_examination_app());
 
 	/* network settings button */
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "button_events_network_settings"));
@@ -963,6 +1110,9 @@ gs_shell_show_event_refresh (GsShell *shell, GsPluginEvent *event)
 	case GS_PLUGIN_ERROR_CANCELLED:
 		break;
 	default:
+		/* non-interactive generic */
+		if (!gs_plugin_event_has_flag (event, GS_PLUGIN_EVENT_FLAG_INTERACTIVE))
+			return FALSE;
 		/* TRANSLATORS: failure text for the in-app notification */
 		g_string_append (str, _("Unable to get list of updates"));
 		break;
@@ -1455,6 +1605,9 @@ gs_shell_show_event_remove (GsShell *shell, GsPluginEvent *event)
 	case GS_PLUGIN_ERROR_CANCELLED:
 		break;
 	default:
+		/* non-interactive generic */
+		if (!gs_plugin_event_has_flag (event, GS_PLUGIN_EVENT_FLAG_INTERACTIVE))
+			return FALSE;
 		/* TRANSLATORS: failure text for the in-app notification,
 		 * where the %s is the application name (e.g. "GIMP") */
 		g_string_append_printf (str, _("Unable to remove %s"), str_app);
@@ -1517,6 +1670,9 @@ gs_shell_show_event_launch (GsShell *shell, GsPluginEvent *event)
 	case GS_PLUGIN_ERROR_CANCELLED:
 		break;
 	default:
+		/* non-interactive generic */
+		if (!gs_plugin_event_has_flag (event, GS_PLUGIN_EVENT_FLAG_INTERACTIVE))
+			return FALSE;
 		/* TRANSLATORS: we failed to get a proper error code */
 		g_string_append (str, _("Sorry, something went wrong"));
 		break;
@@ -1551,10 +1707,13 @@ gs_shell_show_event_file_to_app (GsShell *shell, GsPluginEvent *event)
 	g_autoptr(GString) str = g_string_new (NULL);
 
 	switch (error->code) {
+	case GS_PLUGIN_ERROR_NOT_SUPPORTED:
+		/* TRANSLATORS: failure text for the in-app notification */
+		g_string_append (str, _("Failed to install file: not supported"));
+		break;
 	case GS_PLUGIN_ERROR_NO_SECURITY:
 		/* TRANSLATORS: failure text for the in-app notification */
-		g_string_append (str, _("Failed to install file: "
-					"authentication failed"));
+		g_string_append (str, _("Failed to install file: authentication failed"));
 		break;
 	case GS_PLUGIN_ERROR_NO_SPACE:
 		/* TRANSLATORS: failure text for the in-app notification */
@@ -1565,6 +1724,9 @@ gs_shell_show_event_file_to_app (GsShell *shell, GsPluginEvent *event)
 	case GS_PLUGIN_ERROR_CANCELLED:
 		break;
 	default:
+		/* non-interactive generic */
+		if (!gs_plugin_event_has_flag (event, GS_PLUGIN_EVENT_FLAG_INTERACTIVE))
+			return FALSE;
 		/* TRANSLATORS: we failed to get a proper error code */
 		g_string_append (str, _("Sorry, something went wrong"));
 		break;
@@ -1575,6 +1737,50 @@ gs_shell_show_event_file_to_app (GsShell *shell, GsPluginEvent *event)
 	/* add extra debugging for debug builds */
 	if (gs_shell_show_detailed_error (shell, error))
 		gs_shell_append_detailed_error (shell, str, error);
+
+	/* show in-app notification */
+	gs_shell_show_event_app_notify (shell, str->str, buttons);
+	return TRUE;
+}
+
+static gboolean
+gs_shell_show_event_url_to_app (GsShell *shell, GsPluginEvent *event)
+{
+	GsShellEventButtons buttons = GS_SHELL_EVENT_BUTTON_NONE;
+	const GError *error = gs_plugin_event_get_error (event);
+	g_autoptr(GString) str = g_string_new (NULL);
+
+	switch (error->code) {
+	case GS_PLUGIN_ERROR_NOT_SUPPORTED:
+		/* TRANSLATORS: failure text for the in-app notification */
+		g_string_append (str, _("Failed to install: not supported"));
+		break;
+	case GS_PLUGIN_ERROR_NO_SECURITY:
+		/* TRANSLATORS: failure text for the in-app notification */
+		g_string_append (str, _("Failed to install: authentication failed"));
+		break;
+	case GS_PLUGIN_ERROR_NO_SPACE:
+		/* TRANSLATORS: failure text for the in-app notification */
+		g_string_append (str, _("Not enough disk space — free up some space "
+					"and try again"));
+		buttons |= GS_SHELL_EVENT_BUTTON_NO_SPACE;
+		break;
+	case GS_PLUGIN_ERROR_CANCELLED:
+		break;
+	default:
+		/* non-interactive generic */
+		if (!gs_plugin_event_has_flag (event, GS_PLUGIN_EVENT_FLAG_INTERACTIVE))
+			return FALSE;
+		/* TRANSLATORS: we failed to get a proper error code */
+		g_string_append (str, _("Sorry, something went wrong"));
+		break;
+	}
+	if (str->len == 0)
+		return FALSE;
+
+	/* add extra debugging for debug builds */
+	if (gs_shell_show_detailed_error (shell, error))
+		g_string_append_printf (str, "\n%s", error->message);
 
 	/* show in-app notification */
 	gs_shell_show_event_app_notify (shell, str->str, buttons);
@@ -1632,6 +1838,9 @@ gs_shell_show_event_fallback (GsShell *shell, GsPluginEvent *event)
 	case GS_PLUGIN_ERROR_CANCELLED:
 		break;
 	default:
+		/* non-interactive generic */
+		if (!gs_plugin_event_has_flag (event, GS_PLUGIN_EVENT_FLAG_INTERACTIVE))
+			return FALSE;
 		/* TRANSLATORS: we failed to get a proper error code */
 		g_string_append (str, _("Sorry, something went wrong"));
 		break;
@@ -1684,6 +1893,7 @@ gs_shell_show_event (GsShell *shell, GsPluginEvent *event)
 	case GS_PLUGIN_ACTION_PURCHASE:
 		return gs_shell_show_event_purchase (shell, event);
 	case GS_PLUGIN_ACTION_INSTALL:
+	case GS_PLUGIN_ACTION_DOWNLOAD:
 		return gs_shell_show_event_install (shell, event);
 	case GS_PLUGIN_ACTION_UPDATE:
 		return gs_shell_show_event_update (shell, event);
@@ -1694,8 +1904,9 @@ gs_shell_show_event (GsShell *shell, GsPluginEvent *event)
 	case GS_PLUGIN_ACTION_LAUNCH:
 		return gs_shell_show_event_launch (shell, event);
 	case GS_PLUGIN_ACTION_FILE_TO_APP:
-	case GS_PLUGIN_ACTION_URL_TO_APP:
 		return gs_shell_show_event_file_to_app (shell, event);
+	case GS_PLUGIN_ACTION_URL_TO_APP:
+		return gs_shell_show_event_url_to_app (shell, event);
 	default:
 		break;
 	}
@@ -1850,6 +2061,12 @@ gs_shell_setup (GsShell *shell, GsPluginLoader *plugin_loader, GCancellable *can
 	                  G_CALLBACK (search_mode_enabled_cb),
 	                  shell);
 
+	/* show the account popover when clicking on the account button */
+	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "account_button"));
+	g_signal_connect (widget, "clicked",
+	                  G_CALLBACK (account_button_clicked_cb),
+	                  shell);
+
 	/* setup buttons */
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "button_back"));
 	g_signal_connect (widget, "clicked",
@@ -2001,6 +2218,20 @@ gs_shell_show_sources (GsShell *shell)
 		return;
 
 	dialog = gs_repos_dialog_new (priv->main_window, priv->plugin_loader);
+	gs_shell_modal_dialog_present (shell, GTK_DIALOG (dialog));
+
+	/* just destroy */
+	g_signal_connect_swapped (dialog, "response",
+				  G_CALLBACK (gtk_widget_destroy), dialog);
+}
+
+void
+gs_shell_show_prefs (GsShell *shell)
+{
+	GsShellPrivate *priv = gs_shell_get_instance_private (shell);
+	GtkWidget *dialog;
+
+	dialog = gs_prefs_dialog_new (priv->main_window, priv->plugin_loader);
 	gs_shell_modal_dialog_present (shell, GTK_DIALOG (dialog));
 
 	/* just destroy */
