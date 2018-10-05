@@ -4,41 +4,41 @@ export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 
 GS_CONFIGURE_FLAGS = \
-	-Denable-gnome-desktop=true \
-	-Denable-odrs=true \
-	-Denable-ostree=false \
-	-Denable-packagekit=true \
-	-Denable-rpm-ostree=false \
+	-Dgnome-desktop=true \
+	-Dodrs=true \
+	-Dostree=false \
+	-Dpackagekit=true \
+	-Drpm-ostree=false \
 
 # these are conditionally re-enabled later
 GS_CONFIGURE_FLAGS += \
-	-Denable-fwupd=false \
-	-Denable-flatpak=false \
-	-Denable-limba=false \
-	-Denable-gudev=false \
-	-Denable-ubuntu-reviews=true \
-	-Denable-valgrind=false
+	-Dfwupd=false \
+	-Dflatpak=false \
+	-Dlimba=false \
+	-Dgudev=false \
+	-Dubuntu-reviews=true \
+	-Dvalgrind=false
 
 ifeq ($(DEB_HOST_ARCH_OS), linux)
 	# Enable Flatpak and Limba support on Linux
-	GS_CONFIGURE_FLAGS += -Denable-limba=true -Denable-flatpak=true
+	GS_CONFIGURE_FLAGS += -Dlimba=true -Dflatpak=true
 
 	# Enable GUdev support on Linux
-	GS_CONFIGURE_FLAGS += -Denable-gudev=true
+	GS_CONFIGURE_FLAGS += -Dgudev=true
 	
 	# Enable fwupd support on supported architectures
 	ifneq (,$(findstring $(DEB_HOST_ARCH), amd64 arm64 armhf i386))
-		GS_CONFIGURE_FLAGS += -Denable-fwupd=true
+		GS_CONFIGURE_FLAGS += -Dfwupd=true
 	endif
 
 	# Enable snap support on supported architectures
 	ifneq (,$(findstring $(DEB_HOST_ARCH), amd64 arm64 armel armhf i386 ppc64 ppc64el s390x))
-		GS_CONFIGURE_FLAGS += -Denable-snap=true
+		GS_CONFIGURE_FLAGS += -Dsnap=true
 	endif
 
 	# Enable valgrind support on supported architectures
 	ifneq (,$(findstring $(DEB_HOST_ARCH), amd64 arm64 armhf i386 mips mips64 mips64el mipsel powerpc ppc64 ppc64el s390x))
-		GS_CONFIGURE_FLAGS += -Denable-valgrind=true
+		GS_CONFIGURE_FLAGS += -Dvalgrind=true
 	endif
 endif
 
@@ -47,7 +47,7 @@ FREE_URL = https:\/\/www.debian.org\/social_contract\#guidelines
 ifeq (yes,$(shell dpkg-vendor --derives-from Ubuntu && echo yes))
 	DISTRO_ID = ubuntu
 	FREE_URL = https:\/\/www.ubuntu.com\/about\/about-ubuntu\/licensing
-	GS_CONFIGURE_FLAGS += -Denable-ubuntu-reviews=true
+	GS_CONFIGURE_FLAGS += -Dubuntu-reviews=true
 else ifeq (yes,$(shell dpkg-vendor --derives-from Tanglu && echo yes))
 	DISTRO_ID = tanglu
 else ifeq (yes,$(shell dpkg-vendor --derives-from PureOS && echo yes))
