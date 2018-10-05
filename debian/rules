@@ -14,14 +14,13 @@ GS_CONFIGURE_FLAGS = \
 GS_CONFIGURE_FLAGS += \
 	-Dfwupd=false \
 	-Dflatpak=false \
-	-Dlimba=false \
 	-Dgudev=false \
 	-Dubuntu-reviews=true \
 	-Dvalgrind=false
 
 ifeq ($(DEB_HOST_ARCH_OS), linux)
-	# Enable Flatpak and Limba support on Linux
-	GS_CONFIGURE_FLAGS += -Dlimba=true -Dflatpak=true
+	# Enable Flatpak support on Linux
+	GS_CONFIGURE_FLAGS += -Dflatpak=true
 
 	# Enable GUdev support on Linux
 	GS_CONFIGURE_FLAGS += -Dgudev=true
@@ -87,7 +86,6 @@ override_dh_missing:
 
 	# These files are split out to separate packages
 	rm -f debian/gnome-software/usr/lib/*/gs-plugins-*/libgs_plugin_flatpak*
-	rm -f debian/gnome-software/usr/lib/*/gs-plugins-*/libgs_plugin_limba*
 	rm -f debian/gnome-software/usr/lib/*/gs-plugins-*/libgs_plugin_snap*
 	rm -f debian/gnome-software/usr/share/metainfo/org.gnome.Software.Plugin.Flatpak.metainfo.xml
 	rm -f debian/gnome-software/usr/share/metainfo/org.gnome.Software.Plugin.Limba.metainfo.xml

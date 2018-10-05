@@ -6,7 +6,7 @@ Source: gnome-software
 Section: gnome
 Priority: optional
 Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
-Uploaders: Jeremy Bicha <jbicha@debian.org>
+Uploaders: Jeremy Bicha <jbicha@debian.org>, Laurent Bigonville <bigon@debian.org>
 Build-Depends: appstream,
                appstream-util,
                debhelper (>= 11),
@@ -24,7 +24,6 @@ Build-Depends: appstream,
                libgtk-3-dev (>= 3.22.4),
                libgudev-1.0-dev [linux-any],
                libjson-glib-dev (>= 1.2.0),
-               liblimba-dev (>= 0.5.6) [linux-any],
                liboauth-dev,
                libpackagekit-glib2-dev (>= 1.1.4),
                libpolkit-gobject-1-dev,
@@ -58,7 +57,6 @@ Breaks: gnome-packagekit-session (<< 3.16.0-2~)
 Suggests: apt-config-icons-hidpi,
           fwupd [amd64 arm64 armhf i386],
           gnome-software-plugin-flatpak [linux-any],
-          gnome-software-plugin-limba [linux-any],
           gnome-software-plugin-snap [linux-any]
 Description: Software Center for GNOME
  Software lets you install and update applications and system extensions.
@@ -100,25 +98,6 @@ Description: Flatpak support for GNOME Software
  appdata format.
  .
  This package contains the Flatpak plugin.
-
-Package: gnome-software-plugin-limba
-Architecture: linux-any
-Depends: gnome-software (= ${binary:Version}),
-         limba,
-         ${misc:Depends},
-         ${shlibs:Depends}
-Breaks: gnome-software (<< 3.21.92)
-Replaces: gnome-software (<< 3.21.92)
-Description: Limba support for GNOME Software
- Software lets you install and update applications and system extensions.
- .
- Software uses a plugin architecture to separate the frontend from the
- technologies that are used underneath. Currently, a PackageKit plugin provides
- data from a number of traditional packaging systems, such as rpm or apt. An
- appdata plugin provides additional metadata from locally installed data in the
- appdata format.
- .
- This package contains the Limba plugin.
 
 Package: gnome-software-plugin-snap
 Architecture: amd64 arm64 armel armhf i386 ppc64 ppc64el s390x
