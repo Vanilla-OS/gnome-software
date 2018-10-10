@@ -88,7 +88,6 @@ override_dh_missing:
 	rm -f debian/gnome-software/usr/lib/*/gs-plugins-*/libgs_plugin_flatpak*
 	rm -f debian/gnome-software/usr/lib/*/gs-plugins-*/libgs_plugin_snap*
 	rm -f debian/gnome-software/usr/share/metainfo/org.gnome.Software.Plugin.Flatpak.metainfo.xml
-	rm -f debian/gnome-software/usr/share/metainfo/org.gnome.Software.Plugin.Limba.metainfo.xml
 	rm -f debian/gnome-software/usr/share/metainfo/org.gnome.Software.Plugin.Snap.metainfo.xml
 
 override_dh_makeshlibs:
