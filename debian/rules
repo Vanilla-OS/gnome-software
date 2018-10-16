@@ -15,7 +15,7 @@ GS_CONFIGURE_FLAGS += \
 	-Dfwupd=false \
 	-Dflatpak=false \
 	-Dgudev=false \
-	-Dubuntu-reviews=true \
+	-Dubuntu-reviews=false \
 	-Dvalgrind=false
 
 ifeq ($(DEB_HOST_ARCH_OS), linux)
