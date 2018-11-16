@@ -1,3 +1,11 @@
+gnome-software (3.30.1-2) UNRELEASED; urgency=medium
+
+  [ Andrea Azzarone ]
+  * Bump Standards-Version to 4.2.1
+  * Set Rules-Requires-Root to no
+
+ -- Jeremy Bicha <jbicha@debian.org>  Fri, 16 Nov 2018 16:00:04 -0500
+
 gnome-software (3.30.1-1) unstable; urgency=medium
 
   * New upstream release
