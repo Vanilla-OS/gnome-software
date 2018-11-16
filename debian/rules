@@ -8,6 +8,7 @@ GS_CONFIGURE_FLAGS = \
 	-Dodrs=true \
 	-Dostree=false \
 	-Dpackagekit=true \
+	-Dpackagekit_autoremove=true \
 	-Drpm-ostree=false \
 
 # these are conditionally re-enabled later
