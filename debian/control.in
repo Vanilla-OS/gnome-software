@@ -43,7 +43,7 @@ Depends: appstream,
          gnome-software-common (= ${source:Version}),
          gsettings-desktop-schemas (>= 3.18),
          libgtk3-perl,
-         packagekit (>= 1.1.4),
+         packagekit (>= 1.1.11),
          software-properties-gtk,
          ${misc:Depends},
          ${shlibs:Depends}
