@@ -1,8 +1,15 @@
-gnome-software (3.30.6-1) UNRELEASED; urgency=medium
+gnome-software (3.30.6-1) unstable; urgency=medium
 
   * New upstream release
+  * Bump required libappstream-glib-dev to >= 0.7.14
+  * Bump minimum PackageKit to 1.1.11 for autoremove support
+  * Drop obsolete Build-Depends on liboauth-dev and libsqlite3-dev
+  * Update configure flags
+  * Add -Wl,-O1 to our LDFLAGS
+  * Recommend gnome-software-plugin-snap on Ubuntu
+  * Mark universe packages as free on Ubuntu
 
- -- Jeremy Bicha <jbicha@debian.org>  Fri, 21 Dec 2018 08:59:53 -0500
+ -- Jeremy Bicha <jbicha@debian.org>  Fri, 21 Dec 2018 10:16:34 -0500
 
 gnome-software (3.30.5-1) unstable; urgency=medium
 
