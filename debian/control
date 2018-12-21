@@ -53,10 +53,11 @@ Depends: appstream,
          ${shlibs:Depends}
 Replaces: gnome-packagekit-session (<< 3.16.0-2~)
 Breaks: gnome-packagekit-session (<< 3.16.0-2~)
+Recommends: ${plugin:Recommends}
 Suggests: apt-config-icons-hidpi,
           fwupd [amd64 arm64 armhf i386],
           gnome-software-plugin-flatpak [linux-any],
-          gnome-software-plugin-snap [linux-any]
+          ${plugin:Suggests}
 Description: Software Center for GNOME
  Software lets you install and update applications and system extensions.
  .

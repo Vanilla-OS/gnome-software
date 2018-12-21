@@ -96,6 +96,13 @@ override_dh_makeshlibs:
 override_dh_auto_test:
 	# DISABLED
 
+override_dh_gencontrol:
+ifeq ($(shell dpkg-vendor --query vendor),Ubuntu)
+	dh_gencontrol -- -Vplugin:Recommends='gnome-software-plugin-snap [linux-any]'
+else
+	dh_gencontrol -- -Vplugin:Suggests='gnome-software-plugin-snap [linux-any]'
+endif
+
 override_dh_clean:
 	rm -f debian/gnome-software.gsettings-override
 	dh_clean
