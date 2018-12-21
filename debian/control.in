@@ -11,7 +11,7 @@ Build-Depends: appstream,
                gsettings-desktop-schemas-dev (>= 3.18),
                gtk-doc-tools,
                intltool (>= 0.35.0),
-               libappstream-glib-dev (>= 0.7.3),
+               libappstream-glib-dev (>= 0.7.14),
                libflatpak-dev (>= 0.99.3) [linux-any],
                libfwupd-dev (>= 1.0.3) [amd64 arm64 armhf i386],
                libglib2.0-dev (>= 2.56.0),
@@ -132,7 +132,7 @@ Package: gnome-software-dev
 Section: libdevel
 Architecture: any
 Multi-Arch: same
-Depends: libappstream-glib-dev,
+Depends: libappstream-glib-dev (>= 0.7.14),
          libglib2.0-dev (>= 2.56.0),
          libgtk-3-dev (>= 3.22.4),
          libsoup2.4-dev (>= 2.52.0),
