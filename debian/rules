@@ -4,19 +4,19 @@ export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 export DEB_LDFLAGS_MAINT_APPEND = -Wl,-O1 -Wl,--as-needed
 
 GS_CONFIGURE_FLAGS = \
-	-Dgnome-desktop=true \
+	-Dgnome_desktop=true \
 	-Dodrs=true \
 	-Dostree=false \
 	-Dpackagekit=true \
 	-Dpackagekit_autoremove=true \
-	-Drpm-ostree=false \
+	-Drpm_ostree=false \
+	-Dubuntu_reviews=false \
 
 # these are conditionally re-enabled later
 GS_CONFIGURE_FLAGS += \
 	-Dfwupd=false \
 	-Dflatpak=false \
 	-Dgudev=false \
-	-Dubuntu-reviews=false \
 	-Dvalgrind=false
 
 ifeq ($(DEB_HOST_ARCH_OS), linux)
@@ -47,7 +47,6 @@ FREE_URL = https:\/\/www.debian.org\/social_contract\#guidelines
 ifeq (yes,$(shell dpkg-vendor --derives-from Ubuntu && echo yes))
 	DISTRO_ID = ubuntu
 	FREE_URL = https:\/\/www.ubuntu.com\/about\/about-ubuntu\/licensing
-	GS_CONFIGURE_FLAGS += -Dubuntu-reviews=true
 else ifeq (yes,$(shell dpkg-vendor --derives-from Tanglu && echo yes))
 	DISTRO_ID = tanglu
 else ifeq (yes,$(shell dpkg-vendor --derives-from PureOS && echo yes))
