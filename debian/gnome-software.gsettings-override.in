@@ -1,4 +1,4 @@
 [org.gnome.software]
 official-repos=['@DISTRO@-*']
-free-repos=['@DISTRO@-*-main']
+free-repos=[@FREE_REPOS@]
 free-repos-url='@URL@'
