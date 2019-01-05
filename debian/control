@@ -17,7 +17,7 @@ Build-Depends: appstream,
                intltool (>= 0.35.0),
                libappstream-glib-dev (>= 0.7.14),
                libflatpak-dev (>= 0.99.3) [linux-any],
-               libfwupd-dev (>= 1.0.3) [amd64 arm64 armhf i386],
+               libfwupd-dev (>= 1.0.3) [linux-any],
                libglib2.0-dev (>= 2.56.0),
                libgnome-desktop-3-dev (>= 3.18.0),
                libgspell-1-dev,
@@ -54,7 +54,7 @@ Depends: appstream,
 Replaces: gnome-packagekit-session (<< 3.16.0-2~)
 Breaks: gnome-packagekit-session (<< 3.16.0-2~)
 Recommends: ${plugin:Recommends},
-            fwupd [amd64 arm64 armhf i386]
+            fwupd [linux-any]
 Suggests: apt-config-icons-hidpi,
           gnome-software-plugin-flatpak [linux-any],
           ${plugin:Suggests}
