@@ -1,3 +1,15 @@
+gnome-software (3.30.6-2) unstable; urgency=medium
+
+  * Recommend instead of Suggest fwupd (Closes: #916036)
+  * Enable fwupd on all Linux architectures
+  * Drop obsolete Build-Depends on intltool
+  * Add Conflicts: sessioninstaller
+    - since it also provides the PackageKit session interface
+  * Build-Depend on debhelper-compat 12 and drop debian/compat
+  * Bump Standards-Version to 4.3.0
+
+ -- Jeremy Bicha <jbicha@debian.org>  Sat, 05 Jan 2019 17:26:30 -0500
+
 gnome-software (3.30.6-1) unstable; urgency=medium
 
   * New upstream release
