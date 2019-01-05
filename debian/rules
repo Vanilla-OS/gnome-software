@@ -30,7 +30,7 @@ ifeq ($(DEB_HOST_ARCH_OS), linux)
 	GS_CONFIGURE_FLAGS += -Dfwupd=true
 
 	# Enable snap support on supported architectures
-	ifneq (,$(findstring $(DEB_HOST_ARCH), amd64 arm64 armel armhf i386 ppc64 ppc64el s390x))
+	ifneq (,$(findstring $(DEB_HOST_ARCH), amd64 arm64 armel armhf i386 ppc64el s390x))
 		GS_CONFIGURE_FLAGS += -Dsnap=true
 	endif
 

@@ -27,7 +27,7 @@ Build-Depends: appstream,
                libpackagekit-glib2-dev (>= 1.1.11),
                libpolkit-gobject-1-dev,
                libsecret-1-dev,
-               libsnapd-glib-dev (>= 1.41) [amd64 arm64 armel armhf i386 ppc64 ppc64el s390x],
+               libsnapd-glib-dev (>= 1.41) [amd64 arm64 armel armhf i386 ppc64el s390x],
                libsoup2.4-dev (>= 2.52.0),
                libxml2-utils,
                meson (>= 0.40),
@@ -100,9 +100,9 @@ Description: Flatpak support for GNOME Software
  This package contains the Flatpak plugin.
 
 Package: gnome-software-plugin-snap
-Architecture: amd64 arm64 armel armhf i386 ppc64 ppc64el s390x
+Architecture: amd64 arm64 armel armhf i386 ppc64el s390x
 Depends: gnome-software (= ${binary:Version}),
-         snapd [amd64 arm64 armel armhf i386 ppc64 ppc64el],
+         snapd [amd64 arm64 armel armhf i386 ppc64el],
          ${misc:Depends},
          ${shlibs:Depends}
 Recommends: snapd [s390x]
