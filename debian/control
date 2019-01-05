@@ -52,6 +52,7 @@ Depends: appstream,
          ${shlibs:Depends}
 Replaces: gnome-packagekit-session (<< 3.16.0-2~)
 Breaks: gnome-packagekit-session (<< 3.16.0-2~)
+Conflicts: sessioninstaller
 Recommends: ${plugin:Recommends},
             fwupd [linux-any]
 Suggests: apt-config-icons-hidpi,
