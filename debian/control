@@ -53,9 +53,9 @@ Depends: appstream,
          ${shlibs:Depends}
 Replaces: gnome-packagekit-session (<< 3.16.0-2~)
 Breaks: gnome-packagekit-session (<< 3.16.0-2~)
-Recommends: ${plugin:Recommends}
+Recommends: ${plugin:Recommends},
+            fwupd [amd64 arm64 armhf i386]
 Suggests: apt-config-icons-hidpi,
-          fwupd [amd64 arm64 armhf i386],
           gnome-software-plugin-flatpak [linux-any],
           ${plugin:Suggests}
 Description: Software Center for GNOME
