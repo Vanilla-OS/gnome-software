@@ -40,7 +40,7 @@ ifeq ($(DEB_HOST_ARCH_OS), linux)
 	endif
 
 	# Enable valgrind support on supported architectures
-	ifneq (,$(findstring $(DEB_HOST_ARCH), amd64 arm64 armhf i386 mips mips64 mips64el mipsel powerpc ppc64 ppc64el s390x))
+	ifneq (,$(findstring $(DEB_HOST_ARCH), amd64 arm64 armhf i386 mips mips64 mips64el mipsel powerpc ppc64el s390x))
 		GS_CONFIGURE_FLAGS += -Dvalgrind=true
 	endif
 endif
