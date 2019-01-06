@@ -23,8 +23,10 @@ GS_CONFIGURE_FLAGS += \
 	-Dvalgrind=false
 
 ifeq ($(DEB_HOST_ARCH_OS), linux)
-	# Enable Flatpak support on Linux
-	GS_CONFIGURE_FLAGS += -Dflatpak=true
+	# Enable Flatpak support on supported architectures
+	ifneq (,$(findstring $(DEB_HOST_ARCH), amd64 arm64 armel armhf i386 mips mips64el ppc64el s390x hppa powerpc powerpcspe ppc64))
+		GS_CONFIGURE_FLAGS += -Dflatpak=true
+	endif
 
 	# Enable GUdev support on Linux
 	GS_CONFIGURE_FLAGS += -Dgudev=true
