@@ -1,3 +1,10 @@
+gnome-software (3.30.6-4) unstable; urgency=medium
+
+  * Re-enable Flatpak on mipsel
+  * Don't enable snap on ppc64 since snapd never built there
+
+ -- Jeremy Bicha <jbicha@debian.org>  Thu, 10 Jan 2019 17:25:24 -0500
+
 gnome-software (3.30.6-3) unstable; urgency=medium
 
   * Don't try building Flatpak support on architectures where Flatpak
