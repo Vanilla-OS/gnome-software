@@ -1,0 +1,35 @@
+From: Robert Ancell <robert.ancell@canonical.com>
+Date: Tue, 10 Jul 2018 11:48:04 +0200
+Subject: [PATCH 02/26] snap: Set verified developer flag
+
+---
+ meson.build                   | 2 +-
+ plugins/snap/gs-plugin-snap.c | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 0e09225..f5a80ce 100644
+--- a/meson.build
++++ b/meson.build
+@@ -171,7 +171,7 @@ if get_option('gudev')
+ endif
+ 
+ if get_option('snap')
+-  snap = dependency('snapd-glib', version : '>= 1.41')
++  snap = dependency('snapd-glib', version : '>= 1.42')
+ endif
+ 
+ gnome = import('gnome')
+diff --git a/plugins/snap/gs-plugin-snap.c b/plugins/snap/gs-plugin-snap.c
+index 8658aaf..d34948f 100644
+--- a/plugins/snap/gs-plugin-snap.c
++++ b/plugins/snap/gs-plugin-snap.c
+@@ -820,6 +820,8 @@ gs_plugin_refine_app (GsPlugin *plugin,
+ 	if (developer_name == NULL)
+ 		developer_name = snapd_snap_get_publisher_username (snap);
+ 	gs_app_set_developer_name (app, developer_name);
++	if (snapd_snap_get_publisher_validation (snap) == SNAPD_PUBLISHER_VALIDATION_VERIFIED)
++		gs_app_add_quirk (app, AS_APP_QUIRK_DEVELOPER_VERIFIED);
+ 
+ 	snap = local_snap != NULL ? local_snap : store_snap;
+ 	gs_app_set_version (app, snapd_snap_get_version (snap));
