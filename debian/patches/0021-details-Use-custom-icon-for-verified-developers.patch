@@ -1,3 +1,4 @@
+From 36d4b7f4f8779febd2408d590b85be5bb5c1519e Mon Sep 17 00:00:00 2001
 From: Robert Ancell <robert.ancell@canonical.com>
 Date: Tue, 28 Aug 2018 12:43:15 +1200
 Subject: [PATCH 21/24] details: Use custom icon for verified developers
@@ -11,7 +12,7 @@ Subject: [PATCH 21/24] details: Use custom icon for verified developers
 
 diff --git a/src/developer-verified.svg b/src/developer-verified.svg
 new file mode 100644
-index 0000000..57c0f11
+index 00000000..57c0f11b
 --- /dev/null
 +++ b/src/developer-verified.svg
 @@ -0,0 +1,12 @@
@@ -29,7 +30,7 @@ index 0000000..57c0f11
 +</svg>
 \ No newline at end of file
 diff --git a/src/gnome-software.gresource.xml b/src/gnome-software.gresource.xml
-index b6c9916..7d3b9bc 100644
+index 2243c400..6ea5278a 100644
 --- a/src/gnome-software.gresource.xml
 +++ b/src/gnome-software.gresource.xml
 @@ -39,5 +39,6 @@
@@ -40,15 +41,18 @@ index b6c9916..7d3b9bc 100644
   </gresource>
  </gresources>
 diff --git a/src/gs-details-page.ui b/src/gs-details-page.ui
-index a3f2ccb..168f7a6 100644
+index 307ec638..5fcfefd2 100644
 --- a/src/gs-details-page.ui
 +++ b/src/gs-details-page.ui
-@@ -1164,7 +1164,7 @@
+@@ -981,7 +981,7 @@
+                                       <object class="GtkImage" id="image_details_developer_verified">
                                          <property name="visible">True</property>
-                                         <property name="can_focus">False</property>
                                          <property name="pixel_size">16</property>
 -                                        <property name="icon_name">emblem-ok-symbolic</property>
 +                                        <property name="resource">/org/gnome/Software/developer-verified.svg</property>
                                        </object>
                                      </child>
                                    </object>
+-- 
+2.20.1
+

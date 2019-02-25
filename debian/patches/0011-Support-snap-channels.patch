@@ -4,7 +4,7 @@ Subject: [PATCH 11/24] Support snap channels
 
 ---
  lib/gs-app.c                    |  91 ++++++++++++++
- lib/gs-app.h                    |   7 ++
+ lib/gs-app.h                    |   8 ++
  lib/gs-channel.c                | 116 ++++++++++++++++++
  lib/gs-channel.h                |  44 +++++++
  lib/gs-plugin-job-private.h     |   1 +
@@ -23,15 +23,15 @@ Subject: [PATCH 11/24] Support snap channels
  src/gs-details-page.c           | 199 +++++++++++++++++++++++++++++--
  src/gs-details-page.ui          | 104 +++++++++++++---
  src/gtk-style.css               |  31 +++++
- 20 files changed, 944 insertions(+), 43 deletions(-)
+ 20 files changed, 945 insertions(+), 43 deletions(-)
  create mode 100644 lib/gs-channel.c
  create mode 100644 lib/gs-channel.h
 
 diff --git a/lib/gs-app.c b/lib/gs-app.c
-index 6fbfeac..c2b486f 100644
+index cb5e93b..04c4a71 100644
 --- a/lib/gs-app.c
 +++ b/lib/gs-app.c
-@@ -126,6 +126,8 @@ typedef struct
+@@ -113,6 +113,8 @@ typedef struct
  	AsContentRating		*content_rating;
  	GdkPixbuf		*pixbuf;
  	GsPrice			*price;
@@ -39,10 +39,10 @@ index 6fbfeac..c2b486f 100644
 +	GsChannel		*active_channel;
  	GCancellable		*cancellable;
  	GsPluginAction		 pending_action;
- } GsAppPrivate;
-@@ -595,6 +597,18 @@ gs_app_to_string_append (GsApp *app, GString *str)
- 			gs_app_kv_lpad (str, "keyword", tmp);
- 		}
+ 	GsAppPermissions         permissions;
+@@ -605,6 +607,18 @@ gs_app_to_string_append (GsApp *app, GString *str)
+ 				  color->green * 255.f,
+ 				  color->blue * 255.f);
  	}
 +	for (i = 0; i < priv->channels->len; i++) {
 +		GsChannel *channel = g_ptr_array_index (priv->channels, i);
@@ -59,7 +59,7 @@ index 6fbfeac..c2b486f 100644
  	keys = g_hash_table_get_keys (priv->metadata);
  	for (GList *l = keys; l != NULL; l = l->next) {
  		GVariant *val;
-@@ -3989,6 +4003,80 @@ gs_app_get_priority (GsApp *app)
+@@ -3959,6 +3973,80 @@ gs_app_get_priority (GsApp *app)
  	return priv->priority;
  }
  
@@ -140,7 +140,7 @@ index 6fbfeac..c2b486f 100644
  /**
   * gs_app_get_cancellable:
   * @app: a #GsApp
-@@ -4170,6 +4258,8 @@ gs_app_dispose (GObject *object)
+@@ -4140,6 +4228,8 @@ gs_app_dispose (GObject *object)
  	g_clear_pointer (&priv->reviews, g_ptr_array_unref);
  	g_clear_pointer (&priv->provides, g_ptr_array_unref);
  	g_clear_pointer (&priv->icons, g_ptr_array_unref);
@@ -149,7 +149,7 @@ index 6fbfeac..c2b486f 100644
  
  	G_OBJECT_CLASS (gs_app_parent_class)->dispose (object);
  }
-@@ -4357,6 +4447,7 @@ gs_app_init (GsApp *app)
+@@ -4325,6 +4415,7 @@ gs_app_init (GsApp *app)
  	priv->reviews = g_ptr_array_new_with_free_func ((GDestroyNotify) g_object_unref);
  	priv->provides = g_ptr_array_new_with_free_func ((GDestroyNotify) g_object_unref);
  	priv->icons = g_ptr_array_new_with_free_func ((GDestroyNotify) g_object_unref);
@@ -158,10 +158,10 @@ index 6fbfeac..c2b486f 100644
  	                                        g_str_equal,
  	                                        g_free,
 diff --git a/lib/gs-app.h b/lib/gs-app.h
-index f05779a..225d870 100644
+index 18d4bb4..5ce4205 100644
 --- a/lib/gs-app.h
 +++ b/lib/gs-app.h
-@@ -28,6 +28,7 @@
+@@ -13,6 +13,7 @@
  #include <gdk-pixbuf/gdk-pixbuf.h>
  #include <appstream-glib.h>
  
@@ -169,19 +169,19 @@ index f05779a..225d870 100644
  #include "gs-price.h"
  
  G_BEGIN_DECLS
-@@ -325,6 +326,12 @@ void		 gs_app_remove_quirk		(GsApp		*app,
- 						 AsAppQuirk	 quirk);
- gboolean	 gs_app_is_installed		(GsApp		*app);
- gboolean	 gs_app_is_updatable		(GsApp		*app);
+@@ -381,5 +382,12 @@ void		 gs_app_set_permissions		(GsApp		*app,
+ GsAppPermissions gs_app_get_update_permissions	(GsApp		*app);
+ void		 gs_app_set_update_permissions	(GsApp		*app,
+ 						 GsAppPermissions update_permissions);
 +GPtrArray	*gs_app_get_channels		(GsApp		*app);
 +void		 gs_app_add_channel		(GsApp		*app,
 +						 GsChannel	*channel);
 +void		 gs_app_set_active_channel	(GsApp		*app,
 +						 GsChannel	*channel);
 +GsChannel	*gs_app_get_active_channel	(GsApp		*app);
- G_END_DECLS
  
- #endif /* __GS_APP_H */
+ G_END_DECLS
++
 diff --git a/lib/gs-channel.c b/lib/gs-channel.c
 new file mode 100644
 index 0000000..658a33b
@@ -355,10 +355,10 @@ index 0000000..64610ab
 +
 +/* vim: set noexpandtab: */
 diff --git a/lib/gs-plugin-job-private.h b/lib/gs-plugin-job-private.h
-index 6daadd0..7a85910 100644
+index 64ee39b..03c827b 100644
 --- a/lib/gs-plugin-job-private.h
 +++ b/lib/gs-plugin-job-private.h
-@@ -52,6 +52,7 @@ GsPlugin		*gs_plugin_job_get_plugin		(GsPluginJob	*self);
+@@ -38,6 +38,7 @@ GsPlugin		*gs_plugin_job_get_plugin		(GsPluginJob	*self);
  GsCategory		*gs_plugin_job_get_category		(GsPluginJob	*self);
  AsReview		*gs_plugin_job_get_review		(GsPluginJob	*self);
  GsPrice			*gs_plugin_job_get_price		(GsPluginJob	*self);
@@ -367,10 +367,10 @@ index 6daadd0..7a85910 100644
  void			 gs_plugin_job_set_action		(GsPluginJob	*self,
  								 GsPluginAction	 action);
 diff --git a/lib/gs-plugin-job.c b/lib/gs-plugin-job.c
-index 74cec3c..d9c0722 100644
+index bc00101..4830b36 100644
 --- a/lib/gs-plugin-job.c
 +++ b/lib/gs-plugin-job.c
-@@ -48,6 +48,7 @@ struct _GsPluginJob
+@@ -35,6 +35,7 @@ struct _GsPluginJob
  	GsCategory		*category;
  	AsReview		*review;
  	GsPrice			*price;
@@ -378,7 +378,7 @@ index 74cec3c..d9c0722 100644
  	gint64			 time_created;
  };
  
-@@ -67,6 +68,7 @@ enum {
+@@ -55,6 +56,7 @@ enum {
  	PROP_REVIEW,
  	PROP_MAX_RESULTS,
  	PROP_PRICE,
@@ -386,7 +386,7 @@ index 74cec3c..d9c0722 100644
  	PROP_TIMEOUT,
  	PROP_LAST
  };
-@@ -125,6 +127,9 @@ gs_plugin_job_to_string (GsPluginJob *self)
+@@ -115,6 +117,9 @@ gs_plugin_job_to_string (GsPluginJob *self)
  		g_autofree gchar *price_string = gs_price_to_string (self->price);
  		g_string_append_printf (str, " with price=%s", price_string);
  	}
@@ -395,8 +395,8 @@ index 74cec3c..d9c0722 100644
 +	}
  	if (self->auth != NULL) {
  		g_string_append_printf (str, " with auth=%s",
- 					gs_auth_get_provider_id (self->auth));
-@@ -435,6 +440,20 @@ gs_plugin_job_get_price (GsPluginJob *self)
+ 					gs_auth_get_auth_id (self->auth));
+@@ -439,6 +444,20 @@ gs_plugin_job_get_price (GsPluginJob *self)
  	return self->price;
  }
  
@@ -417,7 +417,7 @@ index 74cec3c..d9c0722 100644
  static void
  gs_plugin_job_get_property (GObject *obj, guint prop_id, GValue *value, GParamSpec *pspec)
  {
-@@ -480,6 +499,9 @@ gs_plugin_job_get_property (GObject *obj, guint prop_id, GValue *value, GParamSp
+@@ -487,6 +506,9 @@ gs_plugin_job_get_property (GObject *obj, guint prop_id, GValue *value, GParamSp
  	case PROP_PRICE:
  		g_value_set_object (value, self->price);
  		break;
@@ -427,7 +427,7 @@ index 74cec3c..d9c0722 100644
  	case PROP_MAX_RESULTS:
  		g_value_set_uint (value, self->max_results);
  		break;
-@@ -543,6 +565,9 @@ gs_plugin_job_set_property (GObject *obj, guint prop_id, const GValue *value, GP
+@@ -553,6 +575,9 @@ gs_plugin_job_set_property (GObject *obj, guint prop_id, const GValue *value, GP
  	case PROP_PRICE:
  		gs_plugin_job_set_price (self, g_value_get_object (value));
  		break;
@@ -437,7 +437,7 @@ index 74cec3c..d9c0722 100644
  	default:
  		G_OBJECT_WARN_INVALID_PROPERTY_ID (obj, prop_id, pspec);
  		break;
-@@ -562,6 +587,7 @@ gs_plugin_job_finalize (GObject *obj)
+@@ -572,6 +597,7 @@ gs_plugin_job_finalize (GObject *obj)
  	g_clear_object (&self->category);
  	g_clear_object (&self->review);
  	g_clear_object (&self->price);
@@ -445,7 +445,7 @@ index 74cec3c..d9c0722 100644
  	G_OBJECT_CLASS (gs_plugin_job_parent_class)->finalize (obj);
  }
  
-@@ -651,6 +677,11 @@ gs_plugin_job_class_init (GsPluginJobClass *klass)
+@@ -666,6 +692,11 @@ gs_plugin_job_class_init (GsPluginJobClass *klass)
  				     GS_TYPE_PRICE,
  				     G_PARAM_READWRITE);
  	g_object_class_install_property (object_class, PROP_PRICE, pspec);
@@ -458,10 +458,10 @@ index 74cec3c..d9c0722 100644
  
  static void
 diff --git a/lib/gs-plugin-job.h b/lib/gs-plugin-job.h
-index fdca686..cfd9af7 100644
+index a986334..46227cf 100644
 --- a/lib/gs-plugin-job.h
 +++ b/lib/gs-plugin-job.h
-@@ -70,6 +70,8 @@ void		 gs_plugin_job_set_review		(GsPluginJob	*self,
+@@ -57,6 +57,8 @@ void		 gs_plugin_job_set_review		(GsPluginJob	*self,
  							 AsReview	*review);
  void		 gs_plugin_job_set_price		(GsPluginJob	*self,
  							 GsPrice	*price);
@@ -471,10 +471,10 @@ index fdca686..cfd9af7 100644
  #define		 gs_plugin_job_newv(a,...)		GS_PLUGIN_JOB(g_object_new(GS_TYPE_PLUGIN_JOB, "action", a, __VA_ARGS__))
  
 diff --git a/lib/gs-plugin-loader.c b/lib/gs-plugin-loader.c
-index a6bf67c..884533c 100644
+index d132edb..6ca32af 100644
 --- a/lib/gs-plugin-loader.c
 +++ b/lib/gs-plugin-loader.c
-@@ -135,6 +135,11 @@ typedef gboolean	 (*GsPluginPurchaseFunc)	(GsPlugin	*plugin,
+@@ -126,6 +126,11 @@ typedef gboolean	 (*GsPluginPurchaseFunc)	(GsPlugin	*plugin,
  							 GsPrice	*price,
  							 GCancellable	*cancellable,
  							 GError		**error);
@@ -486,7 +486,7 @@ index a6bf67c..884533c 100644
  typedef gboolean	 (*GsPluginReviewFunc)		(GsPlugin	*plugin,
  							 GsApp		*app,
  							 AsReview	*review,
-@@ -657,6 +662,14 @@ gs_plugin_loader_call_vfunc (GsPluginLoaderHelper *helper,
+@@ -609,6 +614,14 @@ gs_plugin_loader_call_vfunc (GsPluginLoaderHelper *helper,
  					   cancellable, &error_local);
  		}
  		break;
@@ -502,46 +502,46 @@ index a6bf67c..884533c 100644
  	case GS_PLUGIN_ACTION_REVIEW_UPVOTE:
  	case GS_PLUGIN_ACTION_REVIEW_DOWNVOTE:
 diff --git a/lib/gs-plugin-types.h b/lib/gs-plugin-types.h
-index 14dfdff..dbd0fd4 100644
+index 2c1eabe..81e83bf 100644
 --- a/lib/gs-plugin-types.h
 +++ b/lib/gs-plugin-types.h
-@@ -153,6 +153,7 @@ typedef enum {
-  * @GS_PLUGIN_REFINE_FLAGS_REQUIRE_ORIGIN_UI:		Require the origin for UI
-  * @GS_PLUGIN_REFINE_FLAGS_REQUIRE_RUNTIME:		Require the runtime
-  * @GS_PLUGIN_REFINE_FLAGS_REQUIRE_SCREENSHOTS:		Require screenshot information
+@@ -129,6 +129,7 @@ typedef enum {
+  * @GS_PLUGIN_REFINE_FLAGS_REQUIRE_DEVELOPER_NAME:	Require developer name
+  * @GS_PLUGIN_REFINE_FLAGS_REQUIRE_KUDOS:		Require kudos
+  * @GS_PLUGIN_REFINE_FLAGS_REQUIRE_CONTENT_RATING:	Require content rating
 + * @GS_PLUGIN_REFINE_FLAGS_REQUIRE_CHANNELS:		Require channel information
   *
   * The refine flags.
   **/
-@@ -184,6 +185,7 @@ typedef enum {
- #define GS_PLUGIN_REFINE_FLAGS_REQUIRE_ORIGIN_UI	((guint64) 1 << 24)
- #define GS_PLUGIN_REFINE_FLAGS_REQUIRE_RUNTIME		((guint64) 1 << 25)
- #define GS_PLUGIN_REFINE_FLAGS_REQUIRE_SCREENSHOTS	((guint64) 1 << 26)
-+#define GS_PLUGIN_REFINE_FLAGS_REQUIRE_CHANNELS		((guint64) 1 << 28)
+@@ -165,6 +166,7 @@ typedef enum {
+ #define GS_PLUGIN_REFINE_FLAGS_REQUIRE_DEVELOPER_NAME	((guint64) 1 << 29)
+ #define GS_PLUGIN_REFINE_FLAGS_REQUIRE_KUDOS		((guint64) 1 << 30)
+ #define GS_PLUGIN_REFINE_FLAGS_REQUIRE_CONTENT_RATING	((guint64) 1 << 31)
++#define GS_PLUGIN_REFINE_FLAGS_REQUIRE_CHANNELS		((guint64) 1 << 33)
  typedef guint64 GsPluginRefineFlags;
  
  /**
-@@ -251,6 +253,7 @@ typedef enum {
-  * @GS_PLUGIN_ACTION_DESTROY:			Destroy the plugin
+@@ -229,6 +231,7 @@ typedef enum {
   * @GS_PLUGIN_ACTION_PURCHASE:			Purchase an app
   * @GS_PLUGIN_ACTION_DOWNLOAD:			Download an application
+  * @GS_PLUGIN_ACTION_GET_ALTERNATES:		Get the alternates for a specific application
 + * @GS_PLUGIN_ACTION_SWITCH_CHANNEL:		Switch app channel
   *
   * The plugin action.
   **/
-@@ -299,6 +302,7 @@ typedef enum {
- 	GS_PLUGIN_ACTION_DESTROY,
+@@ -274,6 +277,7 @@ typedef enum {
  	GS_PLUGIN_ACTION_PURCHASE,
  	GS_PLUGIN_ACTION_DOWNLOAD,
+ 	GS_PLUGIN_ACTION_GET_ALTERNATES,
 +	GS_PLUGIN_ACTION_SWITCH_CHANNEL,
  	/*< private >*/
  	GS_PLUGIN_ACTION_LAST
  } GsPluginAction;
 diff --git a/lib/gs-plugin-vfuncs.h b/lib/gs-plugin-vfuncs.h
-index 121dc51..61609b6 100644
+index 4cd28cb..f280c39 100644
 --- a/lib/gs-plugin-vfuncs.h
 +++ b/lib/gs-plugin-vfuncs.h
-@@ -591,6 +591,24 @@ gboolean	 gs_plugin_app_install			(GsPlugin	*plugin,
+@@ -596,6 +596,24 @@ gboolean	 gs_plugin_app_install			(GsPlugin	*plugin,
  							 GCancellable	*cancellable,
  							 GError		**error);
  
@@ -567,41 +567,41 @@ index 121dc51..61609b6 100644
   * gs_plugin_app_remove:
   * @plugin: a #GsPlugin
 diff --git a/lib/gs-plugin.c b/lib/gs-plugin.c
-index 6d7518a..31bb08b 100644
+index 32bdb80..6797993 100644
 --- a/lib/gs-plugin.c
 +++ b/lib/gs-plugin.c
-@@ -1763,6 +1763,8 @@ gs_plugin_action_to_function_name (GsPluginAction action)
- 		return "gs_plugin_destroy";
- 	if (action == GS_PLUGIN_ACTION_PURCHASE)
+@@ -1646,6 +1646,8 @@ gs_plugin_action_to_function_name (GsPluginAction action)
  		return "gs_plugin_app_purchase";
+ 	if (action == GS_PLUGIN_ACTION_GET_ALTERNATES)
+ 		return "gs_plugin_add_alternates";
 +	if (action == GS_PLUGIN_ACTION_SWITCH_CHANNEL)
 +		return "gs_plugin_app_switch_channel";
  	return NULL;
  }
  
-@@ -1865,6 +1867,8 @@ gs_plugin_action_to_string (GsPluginAction action)
- 		return "destroy";
- 	if (action == GS_PLUGIN_ACTION_PURCHASE)
+@@ -1742,6 +1744,8 @@ gs_plugin_action_to_string (GsPluginAction action)
  		return "purchase";
+ 	if (action == GS_PLUGIN_ACTION_GET_ALTERNATES)
+ 		return "get-alternates";
 +	if (action == GS_PLUGIN_ACTION_SWITCH_CHANNEL)
 +		return "switch-channel";
  	return NULL;
  }
  
-@@ -1967,6 +1971,8 @@ gs_plugin_action_from_string (const gchar *action)
- 		return GS_PLUGIN_ACTION_DESTROY;
- 	if (g_strcmp0 (action, "purchase") == 0)
+@@ -1838,6 +1842,8 @@ gs_plugin_action_from_string (const gchar *action)
  		return GS_PLUGIN_ACTION_PURCHASE;
+ 	if (g_strcmp0 (action, "get-alternates") == 0)
+ 		return GS_PLUGIN_ACTION_GET_ALTERNATES;
 +	if (g_strcmp0 (action, "switch-channel") == 0)
 +		return GS_PLUGIN_ACTION_SWITCH_CHANNEL;
  	return GS_PLUGIN_ACTION_UNKNOWN;
  }
  
 diff --git a/lib/gs-self-test.c b/lib/gs-self-test.c
-index e8f5230..751b33b 100644
+index 01efeca..26512d9 100644
 --- a/lib/gs-self-test.c
 +++ b/lib/gs-self-test.c
-@@ -44,6 +44,11 @@ gs_utils_url_func (void)
+@@ -30,6 +30,11 @@ gs_utils_url_func (void)
  	g_autofree gchar *path3 = NULL;
  	g_autofree gchar *scheme1 = NULL;
  	g_autofree gchar *scheme2 = NULL;
@@ -613,7 +613,7 @@ index e8f5230..751b33b 100644
  
  	scheme1 = gs_utils_get_url_scheme ("appstream://gimp.desktop");
  	g_assert_cmpstr (scheme1, ==, "appstream");
-@@ -56,6 +61,17 @@ gs_utils_url_func (void)
+@@ -42,6 +47,17 @@ gs_utils_url_func (void)
  	g_assert_cmpstr (path2, ==, "gimp.desktop");
  	path3 = gs_utils_get_url_path ("apt:/gimp");
  	g_assert_cmpstr (path3, ==, "gimp");
@@ -632,10 +632,10 @@ index e8f5230..751b33b 100644
  
  static void
 diff --git a/lib/gs-utils.c b/lib/gs-utils.c
-index f95e7fb..978e256 100644
+index d4f9505..0c04b3b 100644
 --- a/lib/gs-utils.c
 +++ b/lib/gs-utils.c
-@@ -1048,6 +1048,41 @@ gs_utils_get_url_path (const gchar *url)
+@@ -1040,6 +1040,41 @@ gs_utils_get_url_path (const gchar *url)
  	return g_strdup (path);
  }
  
@@ -678,10 +678,10 @@ index f95e7fb..978e256 100644
   * gs_user_agent:
   *
 diff --git a/lib/gs-utils.h b/lib/gs-utils.h
-index 792a815..d5819f0 100644
+index 9dd11e5..5dbbd74 100644
 --- a/lib/gs-utils.h
 +++ b/lib/gs-utils.h
-@@ -93,6 +93,8 @@ gboolean	 gs_utils_is_low_resolution	  (GtkWidget     *toplevel);
+@@ -78,6 +78,8 @@ gboolean	 gs_utils_is_low_resolution	  (GtkWidget     *toplevel);
  
  gchar		*gs_utils_get_url_scheme	(const gchar	*url);
  gchar		*gs_utils_get_url_path		(const gchar	*url);
@@ -691,7 +691,7 @@ index 792a815..d5819f0 100644
  void		 gs_utils_append_key_value	(GString	*str,
  						 gsize		 align_len,
 diff --git a/lib/meson.build b/lib/meson.build
-index 7b11e72..ae5ad87 100644
+index 766d379..47a3d01 100644
 --- a/lib/meson.build
 +++ b/lib/meson.build
 @@ -42,6 +42,7 @@ install_headers([
@@ -711,10 +711,10 @@ index 7b11e72..ae5ad87 100644
      'gs-ioprio.c',
      'gs-ioprio.h',
 diff --git a/plugins/dummy/gs-plugin-dummy.c b/plugins/dummy/gs-plugin-dummy.c
-index 623092c..2d81c5a 100644
+index bb3b1b1..658ec10 100644
 --- a/plugins/dummy/gs-plugin-dummy.c
 +++ b/plugins/dummy/gs-plugin-dummy.c
-@@ -834,6 +834,17 @@ gs_plugin_refresh (GsPlugin *plugin,
+@@ -832,6 +832,17 @@ gs_plugin_refresh (GsPlugin *plugin,
  	return gs_plugin_dummy_delay (plugin, app, 3100, cancellable, error);
  }
  
@@ -733,10 +733,10 @@ index 623092c..2d81c5a 100644
  gs_plugin_app_upgrade_download (GsPlugin *plugin, GsApp *app,
  			        GCancellable *cancellable, GError **error)
 diff --git a/plugins/snap/gs-plugin-snap.c b/plugins/snap/gs-plugin-snap.c
-index d34948f..b2630f2 100644
+index 00d2e38..5d7e427 100644
 --- a/plugins/snap/gs-plugin-snap.c
 +++ b/plugins/snap/gs-plugin-snap.c
-@@ -36,6 +36,27 @@ struct GsPluginData {
+@@ -22,6 +22,27 @@ struct GsPluginData {
  	GHashTable		*store_snaps;
  };
  
@@ -764,16 +764,16 @@ index d34948f..b2630f2 100644
  static SnapdClient *
  get_client (GsPlugin *plugin, GError **error)
  {
-@@ -70,7 +91,7 @@ gs_plugin_initialize (GsPlugin *plugin)
+@@ -59,7 +80,7 @@ gs_plugin_initialize (GsPlugin *plugin)
  	}
  
  	priv->store_snaps = g_hash_table_new_full (g_str_hash, g_str_equal,
 -						   g_free, (GDestroyNotify) g_object_unref);
 +						   g_free, (GDestroyNotify) cache_entry_free);
  
- 	priv->auth = gs_auth_new ("snapd");
- 	gs_auth_set_provider_name (priv->auth, "Snap Store");
-@@ -220,21 +241,24 @@ gs_plugin_setup (GsPlugin *plugin, GCancellable *cancellable, GError **error)
+ 	priv->auth = gs_auth_new ("snapd", "ubuntusso", &error);
+ 	if (priv->auth) {
+@@ -229,21 +250,24 @@ gs_plugin_setup (GsPlugin *plugin, GCancellable *cancellable, GError **error)
  }
  
  static SnapdSnap *
@@ -804,7 +804,7 @@ index d34948f..b2630f2 100644
  {
  	GsPluginData *priv = gs_plugin_get_data (plugin);
  	g_autoptr(GMutexLocker) locker = g_mutex_locker_new (&priv->store_snaps_lock);
-@@ -242,7 +266,7 @@ store_snap_cache_update (GsPlugin *plugin, GPtrArray *snaps)
+@@ -251,7 +275,7 @@ store_snap_cache_update (GsPlugin *plugin, GPtrArray *snaps)
  
  	for (i = 0; i < snaps->len; i++) {
  		SnapdSnap *snap = snaps->pdata[i];
@@ -813,7 +813,7 @@ index d34948f..b2630f2 100644
  	}
  }
  
-@@ -262,7 +286,7 @@ find_snaps (GsPlugin *plugin, SnapdFindFlags flags, const gchar *section, const
+@@ -271,7 +295,7 @@ find_snaps (GsPlugin *plugin, SnapdFindFlags flags, const gchar *section, const
  		return NULL;
  	}
  
@@ -822,7 +822,7 @@ index d34948f..b2630f2 100644
  
  	return g_steal_pointer (&snaps);
  }
-@@ -322,6 +346,8 @@ snap_to_app (GsPlugin *plugin, SnapdSnap *snap)
+@@ -332,6 +356,8 @@ snap_to_app (GsPlugin *plugin, SnapdSnap *snap)
  
  	if (priv->system_confinement == SNAPD_SYSTEM_CONFINEMENT_STRICT && confinement == SNAPD_CONFINEMENT_STRICT)
  		gs_app_add_kudo (app, GS_APP_KUDO_SANDBOXED);
@@ -831,7 +831,7 @@ index d34948f..b2630f2 100644
  
  	return g_steal_pointer (&app);
  }
-@@ -337,6 +363,7 @@ gs_plugin_url_to_app (GsPlugin *plugin,
+@@ -347,6 +373,7 @@ gs_plugin_url_to_app (GsPlugin *plugin,
  	g_autofree gchar *path = NULL;
  	g_autoptr(GPtrArray) snaps = NULL;
  	g_autoptr(GsApp) app = NULL;
@@ -839,7 +839,7 @@ index d34948f..b2630f2 100644
  
  	/* not us */
  	scheme = gs_utils_get_url_scheme (url);
-@@ -350,6 +377,9 @@ gs_plugin_url_to_app (GsPlugin *plugin,
+@@ -360,6 +387,9 @@ gs_plugin_url_to_app (GsPlugin *plugin,
  		return TRUE;
  
  	app = snap_to_app (plugin, g_ptr_array_index (snaps, 0));
@@ -849,7 +849,7 @@ index d34948f..b2630f2 100644
  	gs_app_list_add (list, app);
  
  	return TRUE;
-@@ -592,13 +622,13 @@ gs_plugin_add_search (GsPlugin *plugin,
+@@ -631,13 +661,13 @@ gs_plugin_add_search (GsPlugin *plugin,
  }
  
  static SnapdSnap *
@@ -865,7 +865,7 @@ index d34948f..b2630f2 100644
  	if (snap != NULL)
  		return g_object_ref (snap);
  
-@@ -753,7 +783,7 @@ load_icon (GsPlugin *plugin, SnapdClient *client, GsApp *app, const gchar *id, S
+@@ -792,7 +822,7 @@ load_icon (GsPlugin *plugin, SnapdClient *client, GsApp *app, const gchar *id, S
  	}
  
  	if (store_snap == NULL)
@@ -874,8 +874,8 @@ index d34948f..b2630f2 100644
  	if (store_snap != NULL)
  		return load_store_icon (app, store_snap);
  
-@@ -769,6 +799,102 @@ gs_plugin_snap_get_description_safe (SnapdSnap *snap)
- 	return g_string_free (str, FALSE);
+@@ -874,6 +904,102 @@ G_GNUC_END_IGNORE_DEPRECATIONS
+ 	}
  }
  
 +static void
@@ -977,7 +977,7 @@ index d34948f..b2630f2 100644
  gboolean
  gs_plugin_refine_app (GsPlugin *plugin,
  		      GsApp *app,
-@@ -778,7 +904,7 @@ gs_plugin_refine_app (GsPlugin *plugin,
+@@ -883,7 +1009,7 @@ gs_plugin_refine_app (GsPlugin *plugin,
  {
  	GsPluginData *priv = gs_plugin_get_data (plugin);
  	g_autoptr(SnapdClient) client = NULL;
@@ -986,7 +986,7 @@ index d34948f..b2630f2 100644
  	g_autoptr(SnapdSnap) local_snap = NULL;
  	g_autoptr(SnapdSnap) store_snap = NULL;
  	SnapdSnap *snap;
-@@ -795,13 +921,52 @@ gs_plugin_refine_app (GsPlugin *plugin,
+@@ -900,13 +1026,52 @@ gs_plugin_refine_app (GsPlugin *plugin,
  
  	/* get information from local snaps and store */
  	local_snap = snapd_client_get_snap_sync (client, gs_app_get_metadata_item (app, "snap::name"), cancellable, NULL);
@@ -1042,7 +1042,7 @@ index d34948f..b2630f2 100644
  	else
  		gs_app_set_state (app, AS_APP_STATE_AVAILABLE);
  
-@@ -913,6 +1078,7 @@ gs_plugin_app_install (GsPlugin *plugin,
+@@ -991,6 +1156,7 @@ gs_plugin_app_install (GsPlugin *plugin,
  {
  	g_autoptr(SnapdClient) client = NULL;
  	SnapdInstallFlags flags = SNAPD_INSTALL_FLAGS_NONE;
@@ -1050,7 +1050,7 @@ index d34948f..b2630f2 100644
  
  	/* We can only install apps we know of */
  	if (g_strcmp0 (gs_app_get_management_plugin (app), "snap") != 0)
-@@ -922,10 +1088,39 @@ gs_plugin_app_install (GsPlugin *plugin,
+@@ -1000,10 +1166,39 @@ gs_plugin_app_install (GsPlugin *plugin,
  	if (client == NULL)
  		return FALSE;
  
@@ -1091,7 +1091,7 @@ index d34948f..b2630f2 100644
  		gs_app_set_state_recover (app);
  		snapd_error_convert (error);
  		return FALSE;
-@@ -1014,6 +1209,31 @@ gs_plugin_launch (GsPlugin *plugin,
+@@ -1092,6 +1287,31 @@ gs_plugin_launch (GsPlugin *plugin,
  	return g_app_info_launch (info, NULL, NULL, error);
  }
  
@@ -1124,19 +1124,19 @@ index d34948f..b2630f2 100644
  gs_plugin_app_remove (GsPlugin *plugin,
  		      GsApp *app,
 diff --git a/src/gs-details-page.c b/src/gs-details-page.c
-index 68cde5a..cb16876 100644
+index d0ca6c7..50369fd 100644
 --- a/src/gs-details-page.c
 +++ b/src/gs-details-page.c
-@@ -113,6 +113,8 @@ struct _GsDetailsPage
+@@ -104,6 +104,8 @@ struct _GsDetailsPage
  	GtkWidget		*label_details_size_download_value;
  	GtkWidget		*label_details_updated_title;
  	GtkWidget		*label_details_updated_value;
 +	GtkWidget		*label_details_channel_title;
 +	GtkWidget		*button_details_channel;
  	GtkWidget		*label_details_version_value;
- 	GtkWidget		*label_failed;
- 	GtkWidget		*label_license_nonfree_details;
-@@ -128,6 +130,7 @@ struct _GsDetailsPage
+ 	GtkWidget		*label_details_permissions_title;
+ 	GtkWidget		*button_details_permissions_value;
+@@ -121,6 +123,7 @@ struct _GsDetailsPage
  	GtkWidget		*spinner_remove;
  	GtkWidget		*stack_details;
  	GtkWidget		*grid_details_kudo;
@@ -1144,7 +1144,7 @@ index 68cde5a..cb16876 100644
  	GtkWidget		*image_details_kudo_docs;
  	GtkWidget		*image_details_kudo_sandboxed;
  	GtkWidget		*image_details_kudo_integration;
-@@ -139,6 +142,7 @@ struct _GsDetailsPage
+@@ -132,6 +135,7 @@ struct _GsDetailsPage
  	GtkWidget		*label_details_kudo_translated;
  	GtkWidget		*label_details_kudo_updated;
  	GtkWidget		*progressbar_top;
@@ -1152,15 +1152,15 @@ index 68cde5a..cb16876 100644
  	GtkWidget		*popover_license_free;
  	GtkWidget		*popover_license_nonfree;
  	GtkWidget		*popover_license_unknown;
-@@ -890,6 +894,7 @@ gs_details_page_refresh_all (GsDetailsPage *self)
- 	guint64 updated;
+@@ -1047,6 +1051,7 @@ gs_details_page_refresh_all (GsDetailsPage *self)
  	guint64 user_integration_bf;
  	gboolean show_support_box = FALSE;
+ 	g_autofree gchar *origin = NULL;
 +	GsChannel *channel;
  	g_autoptr(GError) error = NULL;
  
  	/* change widgets */
-@@ -970,13 +975,22 @@ gs_details_page_refresh_all (GsDetailsPage *self)
+@@ -1130,13 +1135,22 @@ gs_details_page_refresh_all (GsDetailsPage *self)
  		gtk_widget_set_visible (self->button_details_license_unknown, FALSE);
  	}
  
@@ -1189,35 +1189,35 @@ index 68cde5a..cb16876 100644
  	}
  
  	/* refresh size information */
-@@ -1710,7 +1724,8 @@ gs_details_page_set_local_file (GsDetailsPage *self, GFile *file)
- 							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_RELATED |
- 							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_RUNTIME |
- 							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_PERMISSIONS |
+@@ -1895,7 +1909,8 @@ gs_details_page_set_local_file (GsDetailsPage *self, GFile *file)
+ 							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_DEVELOPER_NAME |
+ 							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_KUDOS |
+ 							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_CONTENT_RATING |
 -							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_SCREENSHOTS,
 +							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_SCREENSHOTS |
 +							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_CHANNELS,
  					 NULL);
  	gs_plugin_loader_job_process_async (self->plugin_loader, plugin_job,
  					    self->cancellable,
-@@ -1739,6 +1754,7 @@ gs_details_page_set_url (GsDetailsPage *self, const gchar *url)
- 							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_RUNTIME |
- 							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_PERMISSIONS |
+@@ -1929,6 +1944,7 @@ gs_details_page_set_url (GsDetailsPage *self, const gchar *url)
+ 							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_KUDOS |
  							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_SCREENSHOTS |
+ 							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_CONTENT_RATING |
 +							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_CHANNELS |
  							 GS_PLUGIN_REFINE_FLAGS_ALLOW_PACKAGES,
  					 NULL);
  	gs_plugin_loader_job_process_async (self->plugin_loader, plugin_job,
-@@ -1766,7 +1782,8 @@ gs_details_page_load (GsDetailsPage *self)
- 							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_PROVENANCE |
- 							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_RUNTIME |
- 							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_ADDONS |
+@@ -1967,7 +1983,8 @@ gs_details_page_load_stage1 (GsDetailsPage *self)
+ 							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_DEVELOPER_NAME |
+ 							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_KUDOS |
+ 							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_CONTENT_RATING |
 -							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_SCREENSHOTS,
 +							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_SCREENSHOTS |
 +							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_CHANNELS,
  					 NULL);
  	gs_plugin_loader_job_process_async (self->plugin_loader, plugin_job,
  					    self->cancellable,
-@@ -1882,6 +1899,165 @@ gs_details_page_app_cancel_button_cb (GtkWidget *widget, GsDetailsPage *self)
+@@ -2064,6 +2081,165 @@ gs_details_page_app_cancel_button_cb (GtkWidget *widget, GsDetailsPage *self)
  		gs_details_page_remove_app (self);
  }
  
@@ -1383,7 +1383,7 @@ index 68cde5a..cb16876 100644
  static void
  gs_details_page_app_install_button_cb (GtkWidget *widget, GsDetailsPage *self)
  {
-@@ -2355,6 +2531,9 @@ gs_details_page_setup (GsPage *page,
+@@ -2557,6 +2733,9 @@ gs_details_page_setup (GsPage *page,
  	g_signal_connect (self->button_donate, "clicked",
  			  G_CALLBACK (gs_details_page_donate_cb),
  			  self);
@@ -1393,7 +1393,7 @@ index 68cde5a..cb16876 100644
  	g_signal_connect (self->button_details_license_free, "clicked",
  			  G_CALLBACK (gs_details_page_license_free_cb),
  			  self);
-@@ -2455,6 +2634,10 @@ gs_details_page_class_init (GsDetailsPageClass *klass)
+@@ -2668,6 +2847,10 @@ gs_details_page_class_init (GsDetailsPageClass *klass)
  	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, label_details_size_installed_value);
  	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, label_details_updated_title);
  	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, label_details_updated_value);
@@ -1402,16 +1402,16 @@ index 68cde5a..cb16876 100644
 +	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, popover_channel);
 +	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, grid_popover_channel);
  	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, label_details_version_value);
- 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, label_failed);
- 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, list_box_addons);
+ 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, label_details_permissions_title);
+ 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, button_details_permissions_value);
 diff --git a/src/gs-details-page.ui b/src/gs-details-page.ui
-index 206d99f..3c18beb 100644
+index 40814e2..a815e6d 100644
 --- a/src/gs-details-page.ui
 +++ b/src/gs-details-page.ui
-@@ -776,6 +776,51 @@
-                                 <property name="can_focus">False</property>
+@@ -583,6 +583,51 @@
                                  <property name="row_spacing">9</property>
                                  <property name="column_spacing">24</property>
+                                 <property name="hexpand">True</property>
 +                                <child>
 +                                  <object class="GtkLabel" id="label_details_channel_title">
 +                                    <property name="visible">True</property>
@@ -1460,7 +1460,7 @@ index 206d99f..3c18beb 100644
                                  <child>
                                    <object class="GtkLabel" id="label_details_version_title">
                                      <property name="visible">True</property>
-@@ -790,7 +835,7 @@
+@@ -596,7 +641,7 @@
                                    </object>
                                    <packing>
                                      <property name="left_attach">0</property>
@@ -1469,7 +1469,7 @@ index 206d99f..3c18beb 100644
                                    </packing>
                                  </child>
                                  <child>
-@@ -809,7 +854,7 @@
+@@ -615,7 +660,7 @@
                                    </object>
                                    <packing>
                                      <property name="left_attach">1</property>
@@ -1478,7 +1478,7 @@ index 206d99f..3c18beb 100644
                                    </packing>
                                  </child>
  
-@@ -827,7 +872,7 @@
+@@ -632,7 +677,7 @@
                                    </object>
                                    <packing>
                                      <property name="left_attach">0</property>
@@ -1487,7 +1487,7 @@ index 206d99f..3c18beb 100644
                                    </packing>
                                  </child>
                                  <child>
-@@ -847,7 +892,7 @@
+@@ -653,7 +698,7 @@
                                    </object>
                                    <packing>
                                      <property name="left_attach">1</property>
@@ -1496,7 +1496,7 @@ index 206d99f..3c18beb 100644
                                    </packing>
                                  </child>
  
-@@ -865,7 +910,7 @@
+@@ -708,7 +753,7 @@
                                    </object>
                                    <packing>
                                      <property name="left_attach">0</property>
@@ -1505,7 +1505,7 @@ index 206d99f..3c18beb 100644
                                    </packing>
                                  </child>
                                  <child>
-@@ -883,7 +928,7 @@
+@@ -726,7 +771,7 @@
                                    </object>
                                    <packing>
                                      <property name="left_attach">1</property>
@@ -1514,7 +1514,7 @@ index 206d99f..3c18beb 100644
                                    </packing>
                                  </child>
                                  <child>
-@@ -900,7 +945,7 @@
+@@ -742,7 +787,7 @@
                                    </object>
                                    <packing>
                                      <property name="left_attach">0</property>
@@ -1523,7 +1523,7 @@ index 206d99f..3c18beb 100644
                                    </packing>
                                  </child>
                                  <child>
-@@ -920,7 +965,7 @@
+@@ -762,7 +807,7 @@
                                    </object>
                                    <packing>
                                      <property name="left_attach">1</property>
@@ -1532,7 +1532,7 @@ index 206d99f..3c18beb 100644
                                    </packing>
                                  </child>
  
-@@ -938,7 +983,7 @@
+@@ -779,7 +824,7 @@
                                    </object>
                                    <packing>
                                      <property name="left_attach">0</property>
@@ -1541,7 +1541,7 @@ index 206d99f..3c18beb 100644
                                    </packing>
                                  </child>
                                  <child>
-@@ -953,7 +998,7 @@
+@@ -793,7 +838,7 @@
                                    </object>
                                    <packing>
                                      <property name="left_attach">1</property>
@@ -1550,7 +1550,7 @@ index 206d99f..3c18beb 100644
                                    </packing>
                                  </child>
  
-@@ -971,7 +1016,7 @@
+@@ -810,7 +855,7 @@
                                    </object>
                                    <packing>
                                      <property name="left_attach">0</property>
@@ -1559,7 +1559,7 @@ index 206d99f..3c18beb 100644
                                    </packing>
                                  </child>
                                  <child>
-@@ -986,7 +1031,7 @@
+@@ -824,7 +869,7 @@
                                    </object>
                                    <packing>
                                      <property name="left_attach">1</property>
@@ -1568,7 +1568,7 @@ index 206d99f..3c18beb 100644
                                    </packing>
                                  </child>
  
-@@ -1004,7 +1049,7 @@
+@@ -841,7 +886,7 @@
                                    </object>
                                    <packing>
                                      <property name="left_attach">0</property>
@@ -1577,7 +1577,7 @@ index 206d99f..3c18beb 100644
                                    </packing>
                                  </child>
                                  <child>
-@@ -1020,7 +1065,7 @@
+@@ -856,7 +901,7 @@
                                    </object>
                                    <packing>
                                      <property name="left_attach">1</property>
@@ -1586,7 +1586,7 @@ index 206d99f..3c18beb 100644
                                    </packing>
                                  </child>
                                  <child>
-@@ -1037,7 +1082,7 @@
+@@ -872,7 +917,7 @@
                                    </object>
                                    <packing>
                                      <property name="left_attach">0</property>
@@ -1595,7 +1595,7 @@ index 206d99f..3c18beb 100644
                                    </packing>
                                  </child>
                                  <child>
-@@ -1069,7 +1114,7 @@
+@@ -901,7 +946,7 @@
                                    </object>
                                    <packing>
                                      <property name="left_attach">1</property>
@@ -1604,7 +1604,7 @@ index 206d99f..3c18beb 100644
                                    </packing>
                                  </child>
                                  <child>
-@@ -1086,7 +1131,7 @@
+@@ -917,7 +962,7 @@
                                    </object>
                                    <packing>
                                      <property name="left_attach">0</property>
@@ -1613,7 +1613,7 @@ index 206d99f..3c18beb 100644
                                    </packing>
                                  </child>
                                  <child>
-@@ -1148,7 +1193,7 @@
+@@ -963,7 +1008,7 @@
                                    </object>
                                    <packing>
                                      <property name="left_attach">1</property>
@@ -1622,7 +1622,7 @@ index 206d99f..3c18beb 100644
                                    </packing>
                                  </child>
                                </object>
-@@ -1389,6 +1434,29 @@
+@@ -1181,6 +1226,29 @@
        <widget name="button_details_license_unknown"/>
      </widgets>
    </object>
@@ -1650,14 +1650,14 @@ index 206d99f..3c18beb 100644
 +    </child>
 +  </object>
    <object class="GtkPopover" id="popover_license_free">
-     <property name="can_focus">False</property>
+     <property name="visible">False</property>
      <property name="border_width">21</property>
 diff --git a/src/gtk-style.css b/src/gtk-style.css
-index e37447a..5376dfa 100644
+index 01a260d..a9ec686 100644
 --- a/src/gtk-style.css
 +++ b/src/gtk-style.css
-@@ -53,6 +53,37 @@
- 	border-radius: 16px;
+@@ -54,6 +54,37 @@
+ 	-gtk-outline-radius: 16px;
  }
  
 +.details-channel,
