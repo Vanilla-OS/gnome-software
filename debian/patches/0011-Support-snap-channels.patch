@@ -31,10 +31,9 @@ diff --git a/lib/gs-app.c b/lib/gs-app.c
 index cb5e93b..04c4a71 100644
 --- a/lib/gs-app.c
 +++ b/lib/gs-app.c
-@@ -113,6 +113,8 @@ typedef struct
+@@ -113,5 +113,7 @@ typedef struct
  	AsContentRating		*content_rating;
  	GdkPixbuf		*pixbuf;
- 	GsPrice			*price;
 +	GPtrArray		*channels;
 +	GsChannel		*active_channel;
  	GCancellable		*cancellable;
@@ -161,13 +160,12 @@ diff --git a/lib/gs-app.h b/lib/gs-app.h
 index 18d4bb4..5ce4205 100644
 --- a/lib/gs-app.h
 +++ b/lib/gs-app.h
-@@ -13,6 +13,7 @@
+@@ -13,4 +13,6 @@
  #include <gdk-pixbuf/gdk-pixbuf.h>
  #include <appstream-glib.h>
  
 +#include "gs-channel.h"
- #include "gs-price.h"
- 
++ 
  G_BEGIN_DECLS
 @@ -381,5 +382,12 @@ void		 gs_app_set_permissions		(GsApp		*app,
  GsAppPermissions gs_app_get_update_permissions	(GsApp		*app);
@@ -358,10 +356,9 @@ diff --git a/lib/gs-plugin-job-private.h b/lib/gs-plugin-job-private.h
 index 64ee39b..03c827b 100644
 --- a/lib/gs-plugin-job-private.h
 +++ b/lib/gs-plugin-job-private.h
-@@ -38,6 +38,7 @@ GsPlugin		*gs_plugin_job_get_plugin		(GsPluginJob	*self);
+@@ -38,5 +38,6 @@ GsPlugin		*gs_plugin_job_get_plugin		(GsPluginJob	*self);
  GsCategory		*gs_plugin_job_get_category		(GsPluginJob	*self);
  AsReview		*gs_plugin_job_get_review		(GsPluginJob	*self);
- GsPrice			*gs_plugin_job_get_price		(GsPluginJob	*self);
 +GsChannel		*gs_plugin_job_get_channel		(GsPluginJob	*self);
  gchar			*gs_plugin_job_to_string		(GsPluginJob	*self);
  void			 gs_plugin_job_set_action		(GsPluginJob	*self,
@@ -370,32 +367,30 @@ diff --git a/lib/gs-plugin-job.c b/lib/gs-plugin-job.c
 index bc00101..4830b36 100644
 --- a/lib/gs-plugin-job.c
 +++ b/lib/gs-plugin-job.c
-@@ -35,6 +35,7 @@ struct _GsPluginJob
+@@ -35,5 +35,6 @@ struct _GsPluginJob
  	GsCategory		*category;
  	AsReview		*review;
- 	GsPrice			*price;
 +	GsChannel		*channel;
  	gint64			 time_created;
  };
  
-@@ -55,6 +56,7 @@ enum {
+@@ -55,5 +56,6 @@ enum {
  	PROP_REVIEW,
  	PROP_MAX_RESULTS,
- 	PROP_PRICE,
 +	PROP_CHANNEL,
  	PROP_TIMEOUT,
  	PROP_LAST
  };
 @@ -115,6 +117,9 @@ gs_plugin_job_to_string (GsPluginJob *self)
- 		g_autofree gchar *price_string = gs_price_to_string (self->price);
- 		g_string_append_printf (str, " with price=%s", price_string);
+ 		g_string_append_printf (str, " with review=%s",
+ 					as_review_get_id (self->review));
  	}
 +	if (self->channel != NULL) {
 +		g_string_append_printf (str, " with channel=%s", gs_channel_get_name (self->channel));
 +	}
- 	if (self->auth != NULL) {
- 		g_string_append_printf (str, " with auth=%s",
- 					gs_auth_get_auth_id (self->auth));
+ 	if (self->file != NULL) {
+ 		g_autofree gchar *path = g_file_get_path (self->file);
+ 		g_string_append_printf (str, " with file=%s", path);
 @@ -439,6 +444,20 @@ gs_plugin_job_get_price (GsPluginJob *self)
  	return self->price;
  }
@@ -437,18 +432,17 @@ index bc00101..4830b36 100644
  	default:
  		G_OBJECT_WARN_INVALID_PROPERTY_ID (obj, prop_id, pspec);
  		break;
-@@ -572,6 +597,7 @@ gs_plugin_job_finalize (GObject *obj)
+@@ -572,5 +597,6 @@ gs_plugin_job_finalize (GObject *obj)
  	g_clear_object (&self->category);
  	g_clear_object (&self->review);
- 	g_clear_object (&self->price);
 +	g_clear_object (&self->channel);
  	G_OBJECT_CLASS (gs_plugin_job_parent_class)->finalize (obj);
  }
  
 @@ -666,6 +692,11 @@ gs_plugin_job_class_init (GsPluginJobClass *klass)
- 				     GS_TYPE_PRICE,
- 				     G_PARAM_READWRITE);
- 	g_object_class_install_property (object_class, PROP_PRICE, pspec);
+ 				     0, G_MAXUINT, 60,
+ 				     G_PARAM_READWRITE | G_PARAM_CONSTRUCT);
+ 	g_object_class_install_property (object_class, PROP_TIMEOUT, pspec);
 +
 +	pspec = g_param_spec_object ("channel", NULL, NULL,
 +				     GS_TYPE_CHANNEL,
@@ -461,10 +455,8 @@ diff --git a/lib/gs-plugin-job.h b/lib/gs-plugin-job.h
 index a986334..46227cf 100644
 --- a/lib/gs-plugin-job.h
 +++ b/lib/gs-plugin-job.h
-@@ -57,6 +57,8 @@ void		 gs_plugin_job_set_review		(GsPluginJob	*self,
+@@ -57,4 +57,6 @@ void		 gs_plugin_job_set_review		(GsPluginJob	*self,
  							 AsReview	*review);
- void		 gs_plugin_job_set_price		(GsPluginJob	*self,
- 							 GsPrice	*price);
 +void		 gs_plugin_job_set_channel		(GsPluginJob	*self,
 +							 GsChannel	*channel);
  
@@ -522,17 +514,17 @@ index 2c1eabe..81e83bf 100644
  
  /**
 @@ -229,6 +231,7 @@ typedef enum {
-  * @GS_PLUGIN_ACTION_PURCHASE:			Purchase an app
   * @GS_PLUGIN_ACTION_DOWNLOAD:			Download an application
   * @GS_PLUGIN_ACTION_GET_ALTERNATES:		Get the alternates for a specific application
+  * @GS_PLUGIN_ACTION_GET_LANGPACKS:		Get appropriate language pack
 + * @GS_PLUGIN_ACTION_SWITCH_CHANNEL:		Switch app channel
   *
   * The plugin action.
   **/
 @@ -274,6 +277,7 @@ typedef enum {
- 	GS_PLUGIN_ACTION_PURCHASE,
  	GS_PLUGIN_ACTION_DOWNLOAD,
  	GS_PLUGIN_ACTION_GET_ALTERNATES,
+ 	GS_PLUGIN_ACTION_GET_LANGPACKS,
 +	GS_PLUGIN_ACTION_SWITCH_CHANNEL,
  	/*< private >*/
  	GS_PLUGIN_ACTION_LAST
@@ -571,27 +563,27 @@ index 32bdb80..6797993 100644
 --- a/lib/gs-plugin.c
 +++ b/lib/gs-plugin.c
 @@ -1646,6 +1646,8 @@ gs_plugin_action_to_function_name (GsPluginAction action)
- 		return "gs_plugin_app_purchase";
- 	if (action == GS_PLUGIN_ACTION_GET_ALTERNATES)
  		return "gs_plugin_add_alternates";
+ 	if (action == GS_PLUGIN_ACTION_GET_LANGPACKS)
+ 		return "gs_plugin_add_langpacks";
 +	if (action == GS_PLUGIN_ACTION_SWITCH_CHANNEL)
 +		return "gs_plugin_app_switch_channel";
  	return NULL;
  }
  
 @@ -1742,6 +1744,8 @@ gs_plugin_action_to_string (GsPluginAction action)
- 		return "purchase";
- 	if (action == GS_PLUGIN_ACTION_GET_ALTERNATES)
  		return "get-alternates";
+ 	if (action == GS_PLUGIN_ACTION_GET_LANGPACKS)
+ 		return "get-langpacks";
 +	if (action == GS_PLUGIN_ACTION_SWITCH_CHANNEL)
 +		return "switch-channel";
  	return NULL;
  }
  
 @@ -1838,6 +1842,8 @@ gs_plugin_action_from_string (const gchar *action)
- 		return GS_PLUGIN_ACTION_PURCHASE;
- 	if (g_strcmp0 (action, "get-alternates") == 0)
  		return GS_PLUGIN_ACTION_GET_ALTERNATES;
+ 	if (g_strcmp0 (action, "get-langpacks") == 0)
+ 		return GS_PLUGIN_ACTION_GET_LANGPACKS;
 +	if (g_strcmp0 (action, "switch-channel") == 0)
 +		return GS_PLUGIN_ACTION_SWITCH_CHANNEL;
  	return GS_PLUGIN_ACTION_UNKNOWN;
@@ -695,16 +687,16 @@ index 766d379..47a3d01 100644
 --- a/lib/meson.build
 +++ b/lib/meson.build
 @@ -42,6 +42,7 @@ install_headers([
+     'gs-app.h',
      'gs-app-list.h',
-     'gs-auth.h',
      'gs-category.h',
 +    'gs-channel.h',
+     'gs-metered.h',
      'gs-os-release.h',
      'gs-plugin.h',
-     'gs-plugin-event.h',
 @@ -76,6 +77,7 @@ libgnomesoftware = static_library(
+     'gs-app.c',
      'gs-app-list.c',
-     'gs-auth.c',
      'gs-category.c',
 +    'gs-channel.c',
      'gs-debug.c',
@@ -1133,9 +1125,9 @@ index d0ca6c7..50369fd 100644
  	GtkWidget		*label_details_updated_value;
 +	GtkWidget		*label_details_channel_title;
 +	GtkWidget		*button_details_channel;
+ 	GtkWidget		*label_details_version_title;
  	GtkWidget		*label_details_version_value;
  	GtkWidget		*label_details_permissions_title;
- 	GtkWidget		*button_details_permissions_value;
 @@ -121,6 +123,7 @@ struct _GsDetailsPage
  	GtkWidget		*spinner_remove;
  	GtkWidget		*stack_details;
@@ -1152,12 +1144,11 @@ index d0ca6c7..50369fd 100644
  	GtkWidget		*popover_license_free;
  	GtkWidget		*popover_license_nonfree;
  	GtkWidget		*popover_license_unknown;
-@@ -1047,6 +1051,7 @@ gs_details_page_refresh_all (GsDetailsPage *self)
+@@ -1047,5 +1051,6 @@ gs_details_page_refresh_all (GsDetailsPage *self)
  	guint64 user_integration_bf;
  	gboolean show_support_box = FALSE;
  	g_autofree gchar *origin = NULL;
 +	GsChannel *channel;
- 	g_autoptr(GError) error = NULL;
  
  	/* change widgets */
 @@ -1130,13 +1135,22 @@ gs_details_page_refresh_all (GsDetailsPage *self)
@@ -1401,9 +1392,9 @@ index d0ca6c7..50369fd 100644
 +	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, button_details_channel);
 +	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, popover_channel);
 +	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, grid_popover_channel);
+ 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, label_details_version_title);
  	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, label_details_version_value);
  	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, label_details_permissions_title);
- 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, button_details_permissions_value);
 diff --git a/src/gs-details-page.ui b/src/gs-details-page.ui
 index 40814e2..a815e6d 100644
 --- a/src/gs-details-page.ui
