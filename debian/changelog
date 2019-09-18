@@ -1,8 +1,12 @@
-gnome-software (3.31.90-1) UNRELEASED; urgency=medium
+gnome-software (3.34.0-1) UNRELEASED; urgency=medium
 
+  [ Jeremy Bicha ]
   * New upstream release
 
- -- Jeremy Bicha <jbicha@debian.org>  Sun, 24 Feb 2019 21:10:52 -0500
+  [ Andreas Henriksson ]
+  * New upstream release
+
+ -- Andreas Henriksson <andreas@fatal.se>  Thu, 19 Sep 2019 00:54:17 +0200
 
 gnome-software (3.30.6-5) unstable; urgency=medium
 
