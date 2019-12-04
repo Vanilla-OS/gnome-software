@@ -17,7 +17,11 @@ gnome-software (3.34.0-1) UNRELEASED; urgency=medium
   * Let quilt refresh d/p/0011-Support-snap-channels.patch
   * Let quilt refresh d/p/0021-details-Use-custom-icon-for-verified-developers.patch
 
- -- Andreas Henriksson <andreas@fatal.se>  Thu, 19 Sep 2019 01:46:21 +0200
+  [ Laurent Bigonville ]
+  * debian/control.in: Bump libsnapd-glib-dev to 1.54 to avoid a bug in the
+    .pc file not setting the include directory
+
+ -- Laurent Bigonville <bigon@debian.org>  Wed, 04 Dec 2019 12:53:59 +0100
 
 gnome-software (3.30.6-5) unstable; urgency=medium
 
