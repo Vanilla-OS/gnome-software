@@ -1,4 +1,4 @@
-gnome-software (3.34.0-1) UNRELEASED; urgency=medium
+gnome-software (3.34.0-1) unstable; urgency=medium
 
   [ Jeremy Bicha ]
   * New upstream release (3.31.90)
@@ -15,14 +15,15 @@ gnome-software (3.34.0-1) UNRELEASED; urgency=medium
     "Refactor screenshots and hide those unavailable when offline"
   * Massage d/p/0011-Support-snap-channels.patch to apply
   * Let quilt refresh d/p/0011-Support-snap-channels.patch
-  * Let quilt refresh d/p/0021-details-Use-custom-icon-for-verified-developers.patch
+  * Let quilt refresh
+    d/p/0021-details-Use-custom-icon-for-verified-developers.patch
 
   [ Laurent Bigonville ]
   * debian/control.in: Bump libsnapd-glib-dev to 1.54 to avoid a bug in the
     .pc file not setting the include directory
   * debian/control.in: Bump Standards-Version to 4.4.1 (no further changes)
 
- -- Laurent Bigonville <bigon@debian.org>  Wed, 04 Dec 2019 13:54:29 +0100
+ -- Laurent Bigonville <bigon@debian.org>  Wed, 04 Dec 2019 13:55:11 +0100
 
 gnome-software (3.30.6-5) unstable; urgency=medium
 
