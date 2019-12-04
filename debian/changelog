@@ -20,8 +20,9 @@ gnome-software (3.34.0-1) UNRELEASED; urgency=medium
   [ Laurent Bigonville ]
   * debian/control.in: Bump libsnapd-glib-dev to 1.54 to avoid a bug in the
     .pc file not setting the include directory
+  * debian/control.in: Bump Standards-Version to 4.4.1 (no further changes)
 
- -- Laurent Bigonville <bigon@debian.org>  Wed, 04 Dec 2019 12:53:59 +0100
+ -- Laurent Bigonville <bigon@debian.org>  Wed, 04 Dec 2019 13:54:29 +0100
 
 gnome-software (3.30.6-5) unstable; urgency=medium
 
