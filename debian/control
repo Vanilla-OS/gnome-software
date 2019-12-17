@@ -51,8 +51,6 @@ Depends: appstream,
          software-properties-gtk,
          ${misc:Depends},
          ${shlibs:Depends}
-Replaces: gnome-packagekit-session (<< 3.16.0-2~)
-Breaks: gnome-packagekit-session (<< 3.16.0-2~)
 Conflicts: sessioninstaller
 Recommends: ${plugin:Recommends},
             fwupd [linux-any]
@@ -119,18 +117,6 @@ Description: Snap support for GNOME Software
  appdata format.
  .
  This package contains the Snap plugin.
-
-Package: gnome-packagekit-session
-Architecture: all
-Section: oldlibs
-Depends: gnome-software (>= ${source:Version}),
-         ${misc:Depends}
-Description: Transitional package (gnome-packagekit-session -> gnome-software)
- Transitional dummy package replacing gnome-packagekit-session with
- gnome-software.
- .
- The PackageKit session interface is no separate component anymore, but built
- into GNOME-Software.
 
 Package: gnome-software-dev
 Section: libdevel

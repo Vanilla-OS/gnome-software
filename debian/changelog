@@ -5,8 +5,10 @@ gnome-software (3.34.2-1) UNRELEASED; urgency=medium
   * New upstream release
     - debian/patches/series: Disable d/p/0011-Support-snap-channels.patch patch
       for now, it doesn't apply cleanly anymore
+  * debian/control.in: Drop gnome-packagekit-session transitional package,
+    this was released with stretch. (Closes: #939207)
 
- -- Laurent Bigonville <bigon@debian.org>  Tue, 17 Dec 2019 17:50:55 +0100
+ -- Laurent Bigonville <bigon@debian.org>  Tue, 17 Dec 2019 17:57:30 +0100
 
 gnome-software (3.34.0-1) unstable; urgency=medium
 
