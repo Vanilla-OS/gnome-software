@@ -1,4 +1,4 @@
-gnome-software (3.34.2-1) UNRELEASED; urgency=medium
+gnome-software (3.34.2-1) unstable; urgency=medium
 
   * debian/rules: Use filter instead of findstring to detect the architecture,
     this will avoid matching partial names like ppc64 and ppc64el
@@ -8,7 +8,7 @@ gnome-software (3.34.2-1) UNRELEASED; urgency=medium
   * debian/control.in: Drop gnome-packagekit-session transitional package,
     this was released with stretch. (Closes: #939207)
 
- -- Laurent Bigonville <bigon@debian.org>  Tue, 17 Dec 2019 17:57:30 +0100
+ -- Laurent Bigonville <bigon@debian.org>  Tue, 17 Dec 2019 18:17:52 +0100
 
 gnome-software (3.34.0-1) unstable; urgency=medium
 
