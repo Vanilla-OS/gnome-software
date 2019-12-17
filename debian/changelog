@@ -1,9 +1,10 @@
-gnome-software (3.34.0-2) UNRELEASED; urgency=medium
+gnome-software (3.34.2-1) UNRELEASED; urgency=medium
 
   * debian/rules: Use filter instead of findstring to detect the architecture,
     this will avoid matching partial names like ppc64 and ppc64el
+  * New upstream release
 
- -- Laurent Bigonville <bigon@debian.org>  Wed, 04 Dec 2019 16:36:32 +0100
+ -- Laurent Bigonville <bigon@debian.org>  Tue, 17 Dec 2019 17:31:11 +0100
 
 gnome-software (3.34.0-1) unstable; urgency=medium
 
