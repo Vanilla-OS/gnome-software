@@ -1,0 +1,26 @@
+From e6c0c1569fbe2089e86b09675e22f86eb05b2859 Mon Sep 17 00:00:00 2001
+From: Robert Ancell <robert.ancell@canonical.com>
+Date: Tue, 21 Jan 2020 16:03:36 +1300
+Subject: [PATCH] gs-appstream: Fix loading of icons from AppStream YAML
+
+Only the XML directories were being supported.
+---
+ plugins/core/gs-appstream.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/core/gs-appstream.c b/plugins/core/gs-appstream.c
+index fcba7053..7b33a19f 100644
+--- a/plugins/core/gs-appstream.c
++++ b/plugins/core/gs-appstream.c
+@@ -121,7 +121,7 @@ gs_appstream_build_icon_prefix (XbNode *component)
+ 	/* check format */
+ 	path = g_strsplit (tmp, "/", -1);
+ 	npath = g_strv_length (path);
+-	if (npath < 3 || g_strcmp0 (path[npath-2], "xmls") != 0)
++	if (npath < 3 || !(g_strcmp0 (path[npath-2], "xmls") == 0 || g_strcmp0 (path[npath-2], "yaml") == 0))
+ 		return NULL;
+ 
+ 	/* fix the new path */
+-- 
+2.24.0
+
