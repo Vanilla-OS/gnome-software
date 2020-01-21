@@ -1,8 +1,8 @@
 etc/xdg/autostart/
 usr/bin/gnome-software
 usr/bin/gnome-software-editor
-usr/lib/*/gnome-software/gnome-software-cmd
-usr/lib/*/gnome-software/gnome-software-restarter
+usr/libexec/gnome-software-cmd
+usr/libexec/gnome-software-restarter
 usr/lib/*/gs-plugins-*/*.so
 usr/share/applications/
 usr/share/dbus-1/
