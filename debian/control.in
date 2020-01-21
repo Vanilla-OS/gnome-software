@@ -24,13 +24,18 @@ Build-Depends: appstream,
                libpolkit-gobject-1-dev,
                libsnapd-glib-dev (>= 1.54) [amd64 arm64 armel armhf i386 ppc64el s390x],
                libsoup2.4-dev (>= 2.52.0),
-               libxmlb-dev (>= 0.1.7),
                libxml2-utils,
+               libxmlb-dev (>= 0.1.7),
                meson (>= 0.46),
                pkg-config,
                valgrind [amd64 arm64 armhf i386 mips mips64 mips64el mipsel powerpc ppc64 ppc64el s390x],
                xsltproc
-Build-Depends-Indep: libglib2.0-doc <!nodoc>, libgtk-3-doc <!nodoc>, appstream-glib-doc <!nodoc>, libsoup2.4-doc <!nodoc>, libgdk-pixbuf2.0-doc <!nodoc>, libjson-glib-doc <!nodoc>
+Build-Depends-Indep: appstream-glib-doc <!nodoc>,
+                     libgdk-pixbuf2.0-doc <!nodoc>,
+                     libglib2.0-doc <!nodoc>,
+                     libgtk-3-doc <!nodoc>,
+                     libjson-glib-doc <!nodoc>,
+                     libsoup2.4-doc <!nodoc>
 Rules-Requires-Root: no
 Standards-Version: 4.4.1
 Vcs-Browser: https://salsa.debian.org/gnome-team/gnome-software
@@ -49,8 +54,7 @@ Depends: appstream,
          ${misc:Depends},
          ${shlibs:Depends}
 Conflicts: sessioninstaller
-Recommends: ${plugin:Recommends},
-            fwupd [linux-any]
+Recommends: fwupd [linux-any], ${plugin:Recommends}
 Suggests: apt-config-icons-hidpi,
           gnome-software-plugin-flatpak [amd64 arm64 armel armhf i386 mips mipsel mips64el ppc64el s390x hppa powerpc powerpcspe ppc64],
           ${plugin:Suggests}
@@ -79,7 +83,7 @@ Description: Software Center for GNOME (common files)
  This package contains the architecture-independent files.
 
 Package: gnome-software-plugin-flatpak
-Architecture: amd64 arm64 armel armhf i386 mips mips64el ppc64el s390x hppa powerpc powerpcspe ppc64
+Architecture: amd64 arm64 armel armhf hppa i386 mips mips64el powerpc powerpcspe ppc64 ppc64el s390x
 Depends: flatpak,
          gnome-software (= ${binary:Version}),
          ${misc:Depends},
