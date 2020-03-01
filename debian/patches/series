@@ -1,4 +1,2 @@
-0001-gs-appstream-Fix-loading-of-icons-from-AppStream-YAM.patch
 #0011-Support-snap-channels.patch
 0021-details-Use-custom-icon-for-verified-developers.patch
-snap-Don-t-try-to-get-alternatives-for-non-snaps.patch
