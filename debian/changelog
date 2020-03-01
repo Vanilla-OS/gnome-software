@@ -1,3 +1,9 @@
+gnome-software (3.35.91-1) UNRELEASED; urgency=medium
+
+  * New upstream release
+
+ -- Laurent Bigonville <bigon@debian.org>  Sun, 01 Mar 2020 12:54:30 +0100
+
 gnome-software (3.34.2-2) unstable; urgency=medium
 
   * Stop overriding libexecdir and move the daemons to /usr/libexec now that
