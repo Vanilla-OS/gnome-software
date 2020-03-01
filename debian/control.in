@@ -27,7 +27,7 @@ Build-Depends: appstream,
                libsoup2.4-dev (>= 2.52.0),
                libxml2-utils,
                libxmlb-dev (>= 0.1.7),
-               meson (>= 0.46),
+               meson (>= 0.47),
                pkg-config,
                valgrind [amd64 arm64 armhf i386 mips mips64 mips64el mipsel powerpc ppc64 ppc64el s390x],
                xsltproc
