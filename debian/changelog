@@ -1,8 +1,18 @@
-gnome-software (3.35.91-1) UNRELEASED; urgency=medium
+gnome-software (3.35.91-1) experimental; urgency=medium
 
   * New upstream release
+    - Drop d/p/0001-gs-appstream-Fix-loading-of-icons-from-AppStream-YAM.patch
+      and d/p/snap-Don-t-try-to-get-alternatives-for-non-snaps.patch, applied
+      upstream
+    - debian/control.in: Add libostree-dev to the build-dependencies as it's
+      explicityly required by flatpak plugin now
+    - debian/gnome-software.install: Remove the banner editor, it's now a
+      standalone app
+    - debian/control.in: Bump minimal meson to 0.47
+  * Disable malcontent for now as it's not in the archive yet
+  * debian/control.in: Bump Standards-Version to 4.5.0 (no further changes)
 
- -- Laurent Bigonville <bigon@debian.org>  Sun, 01 Mar 2020 12:54:30 +0100
+ -- Laurent Bigonville <bigon@debian.org>  Sun, 01 Mar 2020 13:33:18 +0100
 
 gnome-software (3.34.2-2) unstable; urgency=medium
 
