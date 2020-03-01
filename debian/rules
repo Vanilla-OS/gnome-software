@@ -9,6 +9,7 @@ export DEB_LDFLAGS_MAINT_STRIP := -Wl,-Bsymbolic-functions
 GS_CONFIGURE_FLAGS = \
 	-Dgnome_desktop=true \
 	-Dodrs=true \
+	-Dmalcontent=false \
 	-Dostree=false \
 	-Dpackagekit=true \
 	-Dpackagekit_autoremove=true \
