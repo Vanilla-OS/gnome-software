@@ -1,3 +1,13 @@
+gnome-software (3.36.0-2) unstable; urgency=medium
+
+  * Add fix-appstream-featured-data.patch
+    - This restores a regression fix that was accidentally reverted
+      in the 3.36.0 release. The issue caused invalid AppStream data to
+      be added to the global metadata pool, resulting in a confusing
+      warning to people using APT or an AppStream cache (Closes: #932747)
+
+ -- Matthias Klumpp <mak@debian.org>  Thu, 02 Apr 2020 18:16:58 +0200
+
 gnome-software (3.36.0-1) unstable; urgency=medium
 
   * New upstream release
