@@ -1,0 +1,30 @@
+From: Matthias Klumpp <matthias@tenstral.net>
+Date: Fri, 24 Apr 2020 04:22:13 +0200
+Subject: appstream: Don't solely add a stock icon for an app,
+ as it may not exist
+
+This resolves #918
+Missing stock icons occur quite frequently, as pretty much any icon can
+be overridden by the theme and therefore stock icon entries are
+plentiful, but no theme covers all icons.
+---
+ plugins/core/gs-appstream.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/plugins/core/gs-appstream.c b/plugins/core/gs-appstream.c
+index a98696b..a387f2e 100644
+--- a/plugins/core/gs-appstream.c
++++ b/plugins/core/gs-appstream.c
+@@ -203,8 +203,11 @@ gs_appstream_refine_icon (GsPlugin *plugin, GsApp *app, XbNode *component)
+ 	/* try a stock icon first */
+ 	icon = gs_appstream_get_icon_by_kind (component, AS_ICON_KIND_STOCK);
+ 	if (icon != NULL) {
++		/* the stock icon referenced by the AppStream data may not be present in the current
++		 * theme (usually more stock icon entries are added to permit huge themes like Papirus
++		 * to style all apps in the software center). Since we can not rely on the icon's presence,
++		 * we also add other icons to the list and do not return here. */
+ 		gs_app_add_icon (app, icon);
+-		return;
+ 	}
+ 
+ 	/* if HiDPI get a 128px cached icon */
