@@ -1,3 +1,12 @@
+gnome-software (3.36.0-3) unstable; urgency=medium
+
+  * Fix missing icons in the store, patch from upstream.
+    Thanks to Matthias Klumpp <matthias@tenstral.net>
+  * Do not fail to load the appstream plugin if any of the metadata
+    directories doesn't exist (Closes: #958915)
+
+ -- Laurent Bigonville <bigon@debian.org>  Mon, 27 Apr 2020 15:13:57 +0200
+
 gnome-software (3.36.0-2) unstable; urgency=medium
 
   * Add fix-appstream-featured-data.patch
