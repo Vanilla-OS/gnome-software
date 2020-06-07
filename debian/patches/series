@@ -1,4 +1,1 @@
 01_details-Use-custom-icon-for-verified-developers.patch
-02_fix-appstream-featured-data.patch
-appstream-Don-t-solely-add-a-stock-icon-for-an-app-as-it-.patch
-appstream-Do-not-fail-if-any-of-the-metadata-directories-.patch
