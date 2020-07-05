@@ -1,3 +1,9 @@
+gnome-software (3.36.1-2) unstable; urgency=medium
+
+  * Enable malcontent on supported architectures
+
+ -- Laurent Bigonville <bigon@debian.org>  Sun, 05 Jul 2020 18:24:31 +0200
+
 gnome-software (3.36.1-1) unstable; urgency=medium
 
   * New upstream release
