@@ -6,7 +6,7 @@ Source: gnome-software
 Section: gnome
 Priority: optional
 Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
-Uploaders: Jeremy Bicha <jbicha@debian.org>, Laurent Bigonville <bigon@debian.org>
+Uploaders: Jeremy Bicha <jbicha@debian.org>, Laurent Bigonville <bigon@debian.org>, Matthias Klumpp <mak@debian.org>
 Build-Depends: appstream,
                appstream-util,
                debhelper-compat (= 12),
@@ -25,6 +25,7 @@ Build-Depends: appstream,
                libgudev-1.0-dev [linux-any],
                libjson-glib-dev (>= 1.2.0),
                libostree-dev [linux-any],
+               libmalcontent-0-dev [amd64 arm64 armel armhf i386 mips mipsel mips64el ppc64el s390x hppa powerpc powerpcspe ppc64],
                libpackagekit-glib2-dev (>= 1.1.11),
                libpolkit-gobject-1-dev,
                libsnapd-glib-dev (>= 1.54) [amd64 arm64 armel armhf i386 ppc64el s390x],

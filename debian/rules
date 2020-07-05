@@ -9,7 +9,6 @@ export DEB_LDFLAGS_MAINT_STRIP := -Wl,-Bsymbolic-functions
 GS_CONFIGURE_FLAGS = \
 	-Dgnome_desktop=true \
 	-Dodrs=true \
-	-Dmalcontent=false \
 	-Dostree=false \
 	-Dpackagekit=true \
 	-Dpackagekit_autoremove=true \
@@ -21,12 +20,13 @@ GS_CONFIGURE_FLAGS += \
 	-Dfwupd=false \
 	-Dflatpak=false \
 	-Dgudev=false \
+	-Dmalcontent=false \
 	-Dvalgrind=false
 
 ifeq ($(DEB_HOST_ARCH_OS), linux)
 	# Enable Flatpak support on supported architectures
 	ifneq (,$(filter $(DEB_HOST_ARCH), amd64 arm64 armel armhf i386 mips mipsel mips64el ppc64el s390x hppa powerpc powerpcspe ppc64))
-		GS_CONFIGURE_FLAGS += -Dflatpak=true
+		GS_CONFIGURE_FLAGS += -Dflatpak=true -Dmalcontent=true
 	endif
 
 	# Enable GUdev support on Linux
