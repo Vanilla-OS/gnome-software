@@ -1,6 +1,7 @@
 gnome-software (3.38.0-1) UNRELEASED; urgency=medium
 
   * New upstream release
+  * Bump debhelper-compat to 13
 
  -- Gunnar Hjalmarsson <gunnarhj@ubuntu.com>  Mon, 05 Oct 2020 11:03:04 +0200
 
