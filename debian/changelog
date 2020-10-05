@@ -1,4 +1,6 @@
-gnome-software (3.38.0-2) UNRELEASED; urgency=medium
+gnome-software (3.38.0-2) unstable; urgency=medium
+
+  * Team upload
 
   [ Gunnar Hjalmarsson ]
   * d/control changes needed for Ubuntu's language packs:
@@ -11,7 +13,7 @@ gnome-software (3.38.0-2) UNRELEASED; urgency=medium
     This fixes FTBFS (from dh_missing --fail-missing) when only building
     the arch-indep packages.
 
- -- Simon McVittie <smcv@debian.org>  Mon, 05 Oct 2020 18:31:28 +0100
+ -- Simon McVittie <smcv@debian.org>  Mon, 05 Oct 2020 18:42:42 +0100
 
 gnome-software (3.38.0-1) unstable; urgency=medium
 
