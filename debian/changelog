@@ -1,11 +1,17 @@
 gnome-software (3.38.0-2) UNRELEASED; urgency=medium
 
+  [ Gunnar Hjalmarsson ]
   * d/control changes needed for Ubuntu's language packs:
     - Set X-Ubuntu-Use-Langpack header
     - Add policykit-1 to Build-Depends to make xgettext able to handle
       org.gnome.software.external-appstream.policy.in.in
 
- -- Gunnar Hjalmarsson <gunnarhj@ubuntu.com>  Mon, 05 Oct 2020 15:59:00 +0200
+  [ Simon McVittie ]
+  * d/rules: Remove unused files even in purely arch-indep builds.
+    This fixes FTBFS (from dh_missing --fail-missing) when only building
+    the arch-indep packages.
+
+ -- Simon McVittie <smcv@debian.org>  Mon, 05 Oct 2020 18:31:28 +0100
 
 gnome-software (3.38.0-1) unstable; urgency=medium
 
