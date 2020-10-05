@@ -1,10 +1,10 @@
-gnome-software (3.38.0-1) UNRELEASED; urgency=medium
+gnome-software (3.38.0-1) unstable; urgency=medium
 
   * New upstream release
   * Bump debhelper-compat to 13
   * debian/rules: Remove libgnomesoftware.a
 
- -- Gunnar Hjalmarsson <gunnarhj@ubuntu.com>  Mon, 05 Oct 2020 11:03:04 +0200
+ -- Gunnar Hjalmarsson <gunnarhj@ubuntu.com>  Mon, 05 Oct 2020 12:25:03 +0200
 
 gnome-software (3.36.1-2) unstable; urgency=medium
 
