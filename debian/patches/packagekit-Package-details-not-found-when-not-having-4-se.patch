@@ -1,0 +1,39 @@
+From: Milan Crha <mcrha@redhat.com>
+Date: Wed, 23 Sep 2020 08:14:06 +0200
+Subject: packagekit: Package details not found when not having 4 semicolons
+
+Correct package_id_equal() to count also with packages, which do not have
+4 semicolons in the ID (like `hedgewars;1.0.0-9.fc32;x86_64;updates`).
+
+Closes https://gitlab.gnome.org/GNOME/gnome-software/-/issues/1069
+Closes https://gitlab.gnome.org/GNOME/gnome-software/-/merge_requests/517
+---
+ plugins/packagekit/packagekit-common.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/plugins/packagekit/packagekit-common.c b/plugins/packagekit/packagekit-common.c
+index 495960d..ed77b34 100644
+--- a/plugins/packagekit/packagekit-common.c
++++ b/plugins/packagekit/packagekit-common.c
+@@ -433,10 +433,10 @@ package_id_equal (gconstpointer a,
+ {
+ 	const gchar *package_id_a = a;
+ 	const gchar *package_id_b = b;
+-	gsize n_semicolons = 0;
++	gsize i, n_semicolons = 0;
+ 
+ 	/* compare up to and including the last semicolon */
+-	for (gsize i = 0; package_id_a[i] != '\0' && package_id_b[i] != '\0'; i++) {
++	for (i = 0; package_id_a[i] != '\0' && package_id_b[i] != '\0'; i++) {
+ 		if (package_id_a[i] != package_id_b[i])
+ 			return FALSE;
+ 		if (package_id_a[i] == ';')
+@@ -445,7 +445,7 @@ package_id_equal (gconstpointer a,
+ 			return TRUE;
+ 	}
+ 
+-	return FALSE;
++	return package_id_a[i] == package_id_b[i];
+ }
+ 
+ GHashTable *
