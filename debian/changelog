@@ -1,3 +1,9 @@
+gnome-software (3.38.1-1) UNRELEASED; urgency=medium
+
+  * New upstream release
+
+ -- Simon McVittie <smcv@debian.org>  Thu, 18 Feb 2021 14:54:18 +0000
+
 gnome-software (3.38.0-3) unstable; urgency=medium
 
   * Add an upstream patch to fix offline updates (Closes: #972506)
