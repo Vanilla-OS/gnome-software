@@ -1,8 +1,13 @@
-gnome-software (3.38.1-1) UNRELEASED; urgency=medium
+gnome-software (3.38.1-1) unstable; urgency=medium
 
+  * Team upload
   * New upstream release
+    - Fix package details not found for some packages
+    - Ignore harmless warnings when using unusual fwupd versions
+    - Translation updates
+  * Drop patch that was applied upstream
 
- -- Simon McVittie <smcv@debian.org>  Thu, 18 Feb 2021 14:54:18 +0000
+ -- Simon McVittie <smcv@debian.org>  Thu, 18 Feb 2021 15:08:20 +0000
 
 gnome-software (3.38.0-3) unstable; urgency=medium
 
