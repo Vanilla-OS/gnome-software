@@ -7,8 +7,7 @@ Section: gnome
 Priority: optional
 Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
 Uploaders: Laurent Bigonville <bigon@debian.org>, Matthias Klumpp <mak@debian.org>
-Build-Depends: appstream,
-               appstream-util,
+Build-Depends: appstream-util,
                debhelper-compat (= 13),
                docbook-xsl,
                gnome-pkg-tools (>= 0.10),
