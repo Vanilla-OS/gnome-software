@@ -90,7 +90,7 @@ Description: Software Center for GNOME (common files)
  This package contains the architecture-independent files.
 
 Package: gnome-software-plugin-flatpak
-Architecture: amd64 arm64 armel armhf hppa i386 mips mips64el powerpc powerpcspe ppc64 ppc64el s390x
+Architecture: amd64 arm64 armel armhf hppa i386 mips mipsel mips64el powerpc powerpcspe ppc64 ppc64el s390x
 Depends: flatpak,
          gnome-software (= ${binary:Version}),
          ${misc:Depends},
