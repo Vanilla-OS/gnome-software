@@ -14,6 +14,7 @@ GS_CONFIGURE_FLAGS = \
 	-Dpackagekit_autoremove=true \
 	-Drpm_ostree=false \
 	-Dubuntu_reviews=false \
+	-Dapt=true \
 
 # these are conditionally re-enabled later
 GS_CONFIGURE_FLAGS += \
