@@ -11,6 +11,7 @@ gnome-software (40.4-1) UNRELEASED; urgency=medium
   [ Laurent Bigonville ]
   * debian/watch: Update the URL to follow the new version scheme
   * New upstream release
+    - Adjust the build-dependencies
 
  -- Laurent Bigonville <bigon@debian.org>  Sun, 12 Sep 2021 18:54:15 +0200
 
