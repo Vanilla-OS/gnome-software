@@ -12,9 +12,11 @@ gnome-software (40.4-1) UNRELEASED; urgency=medium
   * debian/watch: Update the URL to follow the new version scheme
   * New upstream release
     - Adjust the build-dependencies
+    - Fix the installation paths of the plugins, they have moved to another
+      directory. Also remove deprecated rules and options
   * debian/rules: Enable the apt URL handler in the .desktop file
 
- -- Laurent Bigonville <bigon@debian.org>  Mon, 13 Sep 2021 00:45:25 +0200
+ -- Laurent Bigonville <bigon@debian.org>  Mon, 13 Sep 2021 01:02:46 +0200
 
 gnome-software (3.38.1-1) unstable; urgency=medium
 
