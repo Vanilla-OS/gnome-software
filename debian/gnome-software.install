@@ -1,5 +1,6 @@
 etc/xdg/autostart/
 usr/bin/gnome-software
+usr/lib/*/gnome-software/libgnomesoftware.so
 usr/lib/*/gnome-software/plugins-*/*.so
 usr/libexec/gnome-software-cmd
 usr/libexec/gnome-software-restarter
