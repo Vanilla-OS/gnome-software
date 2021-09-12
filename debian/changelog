@@ -5,7 +5,13 @@ gnome-software (3.38.1-2) UNRELEASED; urgency=medium
     - This prevents that irrelevant translatable strings are extracted
       when building for Ubuntu (LP: #1927149).
 
- -- Gunnar Hjalmarsson <gunnarhj@debian.org>  Tue, 04 May 2021 21:29:12 +0200
+  [ Adrian Bunk ]
+  * Add mipsel to the gnome-software-plugin-flatpak architecture list
+
+  [ Laurent Bigonville ]
+  * debian/watch: Update the URL to follow the new version scheme
+
+ -- Laurent Bigonville <bigon@debian.org>  Sun, 12 Sep 2021 18:53:47 +0200
 
 gnome-software (3.38.1-1) unstable; urgency=medium
 
