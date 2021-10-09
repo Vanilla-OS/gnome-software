@@ -1,8 +1,15 @@
-gnome-software (41.0-1) UNRELEASED; urgency=medium
+gnome-software (41.0-1) unstable; urgency=medium
 
   * New upstream release
+  * debian/control.in: Adjust the build-dependencies
+  * d/p/01_details-Use-custom-icon-for-verified-developers.patch: Refreshed
+  * debian/rules: Odrs support is not an optional plugin anymore, remove the
+    option
+  * Fix installation and dependency detection of libgnomesoftware private
+    library
+  * debian/control.in: Bump Standards-Version to 4.6.0 (no further changes)
 
- -- Laurent Bigonville <bigon@debian.org>  Sat, 09 Oct 2021 08:54:16 +0200
+ -- Laurent Bigonville <bigon@debian.org>  Sat, 09 Oct 2021 09:57:51 +0200
 
 gnome-software (40.4-1) unstable; urgency=medium
 
