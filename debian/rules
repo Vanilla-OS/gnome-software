@@ -8,7 +8,6 @@ export DEB_LDFLAGS_MAINT_STRIP := -Wl,-Bsymbolic-functions
 
 GS_CONFIGURE_FLAGS = \
 	-Dgsettings_desktop_schemas=enabled \
-	-Dodrs=true \
 	-Dpackagekit=true \
 	-Dpackagekit_autoremove=true \
 	-Drpm_ostree=false \
