@@ -86,6 +86,9 @@ override_dh_missing:
 override_dh_makeshlibs:
 	dh_makeshlibs -Xlibgs_plugin
 
+override_dh_shlibdeps:
+	dh_shlibdeps -l/usr/lib/$(DEB_HOST_MULTIARCH)/gnome-software/
+
 # DISABLED
 override_dh_auto_test:
 
