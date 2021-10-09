@@ -1,3 +1,9 @@
+gnome-software (41.0-1) UNRELEASED; urgency=medium
+
+  * New upstream release
+
+ -- Laurent Bigonville <bigon@debian.org>  Sat, 09 Oct 2021 08:54:16 +0200
+
 gnome-software (40.4-1) unstable; urgency=medium
 
   [ Gunnar Hjalmarsson ]
