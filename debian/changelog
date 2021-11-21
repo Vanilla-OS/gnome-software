@@ -1,3 +1,9 @@
+gnome-software (41.1-1) UNRELEASED; urgency=medium
+
+  * New upstream release
+
+ -- Gunnar Hjalmarsson <gunnarhj@ubuntu.com>  Sun, 21 Nov 2021 12:02:22 +0100
+
 gnome-software (41.0-1) unstable; urgency=medium
 
   * New upstream release
