@@ -1,3 +1,9 @@
+gnome-software (41.2-1) UNRELEASED; urgency=medium
+
+  * New upstream release
+
+ -- Jeremy Bicha <jbicha@debian.org>  Mon, 06 Dec 2021 21:08:42 -0500
+
 gnome-software (41.1-1) unstable; urgency=medium
 
   * Team upload
