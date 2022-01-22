@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
-export DEB_LDFLAGS_MAINT_APPEND = -Wl,-O1
+export DEB_LDFLAGS_MAINT_APPEND = -Wl,-O1 -Wl,-z,defs
 
 # Fix the Flatpak plugin: https://launchpad.net/bugs/1650783
 export DEB_LDFLAGS_MAINT_STRIP := -Wl,-Bsymbolic-functions
