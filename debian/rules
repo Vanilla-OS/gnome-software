@@ -58,7 +58,7 @@ else ifeq (yes,$(shell dpkg-vendor --derives-from PureOS && echo yes))
 endif
 
 %:
-	dh $@ --with gnome
+	dh $@
 
 override_dh_auto_configure:
 	dh_auto_configure -- $(GS_CONFIGURE_FLAGS)

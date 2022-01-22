@@ -6,10 +6,10 @@ Source: gnome-software
 Section: gnome
 Priority: optional
 Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
-Uploaders: Laurent Bigonville <bigon@debian.org>, Matthias Klumpp <mak@debian.org>
+Uploaders: Gunnar Hjalmarsson <gunnarhj@debian.org>, Jeremy Bicha <jbicha@debian.org>, Laurent Bigonville <bigon@debian.org>, Matthias Klumpp <mak@debian.org>
 Build-Depends: debhelper-compat (= 13),
+               dh-sequence-gnome,
                docbook-xsl,
-               gnome-pkg-tools (>= 0.10),
                gsettings-desktop-schemas-dev (>= 3.18),
                gtk-doc-tools,
                libappstream-dev (>= 0.14.0),
