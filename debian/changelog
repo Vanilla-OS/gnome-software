@@ -1,3 +1,10 @@
+gnome-software (41.2-2) UNRELEASED; urgency=medium
+
+  [ Philip Withnall ]
+  * debian/control: Fix -dev package pulling in libappstream-glib-dev
+
+ -- Jeremy Bicha <jbicha@debian.org>  Sat, 22 Jan 2022 08:00:50 -0500
+
 gnome-software (41.2-1) unstable; urgency=medium
 
   * New upstream release
