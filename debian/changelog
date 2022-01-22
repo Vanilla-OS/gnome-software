@@ -1,12 +1,15 @@
-gnome-software (41.3-1) UNRELEASED; urgency=medium
+gnome-software (41.3-1) unstable; urgency=medium
 
   [ Jeremy Bicha ]
   * New upstream release
+  * Build-Depend on dh-sequence-gnome instead of gnome-pkg-tools
+  * debian/rules: Drop unneeded -Wl,--as-needed
+  * debian/rules: Add -Wl,-z,defs to our LDFLAGS
 
   [ Philip Withnall ]
   * debian/control: Fix -dev package pulling in libappstream-glib-dev
 
- -- Jeremy Bicha <jbicha@debian.org>  Sat, 22 Jan 2022 08:01:41 -0500
+ -- Jeremy Bicha <jbicha@debian.org>  Sat, 22 Jan 2022 08:10:02 -0500
 
 gnome-software (41.2-1) unstable; urgency=medium
 
