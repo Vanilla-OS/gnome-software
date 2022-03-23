@@ -49,7 +49,7 @@ index 4dfe505..5088b7a 100644
                                                  <property name="visible">True</property>
                                                  <property name="pixel-size">16</property>
 -                                                <property name="icon-name">emblem-ok-symbolic</property>
-+                                                <property name="icon-name">/org/gnome/Software/developer-verified.svg</property>
++                                                <property name="resource">/org/gnome/Software/developer-verified.svg</property>
                                                </object>
                                              </child>
                                            </object>
