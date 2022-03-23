@@ -1,3 +1,9 @@
+gnome-software (41.5-2) unstable; urgency=medium
+
+  * Fix verified-developers icon patch
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Wed, 23 Mar 2022 09:58:25 -0400
+
 gnome-software (41.5-1) unstable; urgency=medium
 
   * New upstream release
