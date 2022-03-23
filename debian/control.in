@@ -125,7 +125,11 @@ Multi-Arch: same
 Depends: libappstream-dev (>= 0.14.0),
          libglib2.0-dev (>= 2.56.0),
          libgtk-4-dev (>= 4.6),
+         libjson-glib-dev (>= 1.6.0),
+         libpolkit-gobject-1-dev,
          libsoup2.4-dev (>= 2.52.0),
+         libxmlb-dev (>= 0.1.7),
+         valgrind [amd64 arm64 armhf i386 mips mips64 mips64el mipsel powerpc ppc64 ppc64el s390x],
          ${misc:Depends}
 Suggests: gnome-software-doc
 Description: Software Center for GNOME - development files
