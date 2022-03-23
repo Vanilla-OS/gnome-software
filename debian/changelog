@@ -1,3 +1,9 @@
+gnome-software (42.0-1) UNRELEASED; urgency=medium
+
+  * New upstream release
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Wed, 23 Mar 2022 09:12:12 -0400
+
 gnome-software (41.5-2) unstable; urgency=medium
 
   * Fix verified-developers icon patch
