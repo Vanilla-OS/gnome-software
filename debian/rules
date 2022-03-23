@@ -12,6 +12,7 @@ GS_CONFIGURE_FLAGS = \
 	-Dpackagekit_autoremove=true \
 	-Drpm_ostree=false \
 	-Dapt=true \
+	-Dsoup2=true \
 
 # these are conditionally re-enabled later
 GS_CONFIGURE_FLAGS += \
