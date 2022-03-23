@@ -1,8 +1,13 @@
-gnome-software (42.0-1) UNRELEASED; urgency=medium
+gnome-software (42.0-1) unstable; urgency=medium
 
   * New upstream release
+  * Switch to GTK4 and libadwaita
+  * Build with libsoup2 for now
+  * debian/control.in: Bump minimum dependencies to match meson.build
+  * debian/control.in: Update gnome-software-dev depends per its pkgconfig
+  * debian/gnome-software-common.install: Update for no longer installed file
 
- -- Jeremy Bicha <jbicha@ubuntu.com>  Wed, 23 Mar 2022 09:12:12 -0400
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Wed, 23 Mar 2022 10:02:40 -0400
 
 gnome-software (41.5-2) unstable; urgency=medium
 
