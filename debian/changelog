@@ -1,8 +1,11 @@
-gnome-software (42.1-1) UNRELEASED; urgency=medium
+gnome-software (42.1-1) unstable; urgency=medium
 
   * New upstream release
+  * Cherry-pick proposed patch to fix inability to remove apps (LP: #1969303)
+  * debian/gnome-software-common.install: Install usr/share/swcatalog
+    instead of usr/share/app-info
 
- -- Jeremy Bicha <jbicha@ubuntu.com>  Sun, 01 May 2022 07:12:04 -0400
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Sun, 01 May 2022 12:16:07 -0400
 
 gnome-software (42.0-1) unstable; urgency=medium
 
