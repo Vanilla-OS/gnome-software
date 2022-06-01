@@ -1,4 +1,4 @@
-gnome-software (42.1-1ubuntu1) UNRELEASED; urgency=medium
+gnome-software (42.2-1) UNRELEASED; urgency=medium
 
   [ Debian Janitor ]
   * Refer to common license file for CC0-1.0.
@@ -6,8 +6,9 @@ gnome-software (42.1-1ubuntu1) UNRELEASED; urgency=medium
 
   [ Nathan Pratta Teodosio ]
   * Revert "Cherry-pick proposed patch to fix inability to remove apps"
+  * New upstream release
 
- -- Nathan Pratta Teodosio <nathan.teodosio@canonical.com>  Wed, 01 Jun 2022 11:45:42 -0300
+ -- Nathan Pratta Teodosio <nathan.teodosio@canonical.com>  Wed, 01 Jun 2022 11:47:21 -0300
 
 gnome-software (42.1-1) unstable; urgency=medium
 
