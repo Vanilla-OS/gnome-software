@@ -1,12 +1,15 @@
-gnome-software (42.2-1) UNRELEASED; urgency=medium
+gnome-software (42.2-1) unstable; urgency=medium
+
+  * Team upload
+
+  [ Nathan Pratta Teodosio ]
+  * New upstream release
+  * Revert "Cherry-pick proposed patch to fix inability to remove apps":
+    applied in new release
 
   [ Debian Janitor ]
   * Refer to common license file for CC0-1.0.
-  * Set upstream metadata fields: Bug-Database, Bug-Submit, Contact, Repository, Repository-Browse.
-
-  [ Nathan Pratta Teodosio ]
-  * Revert "Cherry-pick proposed patch to fix inability to remove apps"
-  * New upstream release
+  * Set upstream metadata fields
 
  -- Nathan Pratta Teodosio <nathan.teodosio@canonical.com>  Wed, 01 Jun 2022 11:47:21 -0300
 
