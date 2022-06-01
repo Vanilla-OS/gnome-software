@@ -1,3 +1,14 @@
+gnome-software (42.1-1ubuntu1) UNRELEASED; urgency=medium
+
+  [ Debian Janitor ]
+  * Refer to common license file for CC0-1.0.
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Contact, Repository, Repository-Browse.
+
+  [ Nathan Pratta Teodosio ]
+  * Revert "Cherry-pick proposed patch to fix inability to remove apps"
+
+ -- Nathan Pratta Teodosio <nathan.teodosio@canonical.com>  Wed, 01 Jun 2022 11:45:42 -0300
+
 gnome-software (42.1-1) unstable; urgency=medium
 
   * New upstream release
