@@ -21,31 +21,31 @@
   </description>
   <screenshots>
     <screenshot type="default">
-      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/HEAD/data/appdata/ss-overview.png</image>
+      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/gnome-42/data/appdata/ss-overview.png</image>
       <caption>Overview panel</caption>
     </screenshot>
     <screenshot>
-      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/HEAD/data/appdata/ss-details.png</image>
+      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/gnome-42/data/appdata/ss-details.png</image>
       <caption>Details panel</caption>
     </screenshot>
     <screenshot>
-      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/HEAD/data/appdata/ss-details2.png</image>
+      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/gnome-42/data/appdata/ss-details2.png</image>
       <caption>Details panel</caption>
     </screenshot>
     <screenshot>
-      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/HEAD/data/appdata/ss-installed.png</image>
+      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/gnome-42/data/appdata/ss-installed.png</image>
       <caption>Installed panel</caption>
     </screenshot>
     <screenshot>
-      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/HEAD/data/appdata/ss-up-to-date.png</image>
+      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/gnome-42/data/appdata/ss-up-to-date.png</image>
       <caption>Updates panel</caption>
     </screenshot>
     <screenshot>
-      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/HEAD/data/appdata/ss-updates.png</image>
+      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/gnome-42/data/appdata/ss-updates.png</image>
       <caption>Updates panel</caption>
     </screenshot>
     <screenshot>
-      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/HEAD/data/appdata/ss-updates-details.png</image>
+      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/gnome-42/data/appdata/ss-updates-details.png</image>
       <caption>The update details</caption>
     </screenshot>
   </screenshots>
@@ -66,6 +66,22 @@
    Validate with `appstreamcli validate *.appdata.xml`
   -->
   <releases>
+    <release date="2022-06-30" version="42.3" type="stable">
+      <description>
+        <p>This is a stable release with the following notable changes:</p>
+        <ul>
+          <li>Fix some crashes when handling flatpaks</li>
+          <li>Fix incorrectly showing a restart notification after a failed firmware update</li>
+          <li>Fix a mismatch between app review ratings at the top and bottom of the page</li>
+          <li>Fix prompt dialogs when updating firmware on devices which need user interaction</li>
+        </ul>
+        <p>This release also updates translations:</p>
+        <ul>
+          <li>Catalan</li>
+          <li>Czech</li>
+        </ul>
+      </description>
+    </release>
     <release date="2022-05-30" version="42.2" type="stable">
       <description>
         <p>This is a stable release with the following notable changes:</p>
