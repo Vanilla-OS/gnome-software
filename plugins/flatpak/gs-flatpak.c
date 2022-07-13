@@ -467,10 +467,18 @@ gs_flatpak_create_source (GsFlatpak *self, FlatpakRemote *xremote)
 }
 
 static void
+gs_flatpak_invalidate_silo (GsFlatpak *self)
+{
+	g_rw_lock_writer_lock (&self->silo_lock);
+	if (self->silo != NULL)
+		xb_silo_invalidate (self->silo);
+	g_rw_lock_writer_unlock (&self->silo_lock);
+}
+
+static void
 gs_flatpak_internal_data_changed (GsFlatpak *self)
 {
 	g_autoptr(GMutexLocker) locker = NULL;
-	g_autoptr(GRWLockWriterLocker) writer_locker = NULL;
 
 	/* drop the installed refs cache */
 	locker = g_mutex_locker_new (&self->installed_refs_mutex);
@@ -487,10 +495,7 @@ gs_flatpak_internal_data_changed (GsFlatpak *self)
 	g_hash_table_remove_all (self->broken_remotes);
 	g_clear_pointer (&locker, g_mutex_locker_free);
 
-	writer_locker = g_rw_lock_writer_locker_new (&self->silo_lock);
-	if (self->silo)
-		xb_silo_invalidate (self->silo);
-	g_clear_pointer (&writer_locker, g_rw_lock_writer_locker_free);
+	gs_flatpak_invalidate_silo (self);
 
 	self->requires_full_rescan = TRUE;
 }
@@ -1122,6 +1127,41 @@ gs_flatpak_rescan_app_data (GsFlatpak *self,
 	if (!gs_flatpak_rescan_appstream_store (self, interactive, cancellable, error)) {
 		gs_flatpak_internal_data_changed (self);
 		return FALSE;
+	}
+
+	return TRUE;
+}
+
+/* Returns with a read lock held on @self->silo_lock on success.
+   The *locker should be NULL when being called. */
+static gboolean
+ensure_flatpak_silo_with_locker (GsFlatpak            *self,
+				 GRWLockReaderLocker **locker,
+				 gboolean              interactive,
+				 GCancellable         *cancellable,
+				 GError              **error)
+{
+	/* should not hold the lock when called */
+	g_return_val_if_fail (*locker == NULL, FALSE);
+
+	/* ensure valid */
+	if (!gs_flatpak_rescan_app_data (self, interactive, cancellable, error))
+		return FALSE;
+
+	*locker = g_rw_lock_reader_locker_new (&self->silo_lock);
+
+	while (self->silo == NULL) {
+		g_clear_pointer (locker, g_rw_lock_reader_locker_free);
+
+		if (!gs_flatpak_rescan_appstream_store (self, interactive, cancellable, error)) {
+			gs_flatpak_internal_data_changed (self);
+			return FALSE;
+		}
+
+		/* At this point either rescan_appstream_store() returned an error or it successfully
+		 * initialised self->silo. There is the possibility that another thread will invalidate
+		 * the silo before we regain the lock. If so, we’ll have to rescan again. */
+		*locker = g_rw_lock_reader_locker_new (&self->silo_lock);
 	}
 
 	return TRUE;
@@ -2009,10 +2049,7 @@ gs_flatpak_refresh (GsFlatpak *self,
 	g_mutex_unlock (&self->installed_refs_mutex);
 
 	/* manually do this in case we created the first appstream file */
-	g_rw_lock_reader_lock (&self->silo_lock);
-	if (self->silo != NULL)
-		xb_silo_invalidate (self->silo);
-	g_rw_lock_reader_unlock (&self->silo_lock);
+	gs_flatpak_invalidate_silo (self);
 
 	/* update AppStream metadata */
 	if (!gs_flatpak_refresh_appstream (self, cache_age_secs, interactive, cancellable, error))
@@ -2369,21 +2406,32 @@ gs_flatpak_create_runtime (GsFlatpak   *self,
 
 	/* search in the cache */
 	app_cache = gs_plugin_cache_lookup (self->plugin, gs_app_get_unique_id (app));
-	if (app_cache != NULL) {
+	if (app_cache != NULL &&
+	    g_strcmp0 (gs_flatpak_app_get_ref_name (app_cache), split[0]) == 0 &&
+	    g_strcmp0 (gs_flatpak_app_get_ref_arch (app_cache), split[1]) == 0 &&
+	    g_strcmp0 (gs_app_get_branch (app_cache), split[2]) == 0) {
 		/* since the cached runtime can have been created somewhere else
 		 * (we're using a global cache), we need to make sure that a
 		 * source is set */
 		if (gs_app_get_source_default (app_cache) == NULL)
 			gs_app_add_source (app_cache, source);
 		return g_steal_pointer (&app_cache);
+	} else {
+		g_clear_object (&app_cache);
 	}
 
 	/* if the app is per-user we can also use the installed system runtime */
 	if (gs_app_get_scope (parent) == AS_COMPONENT_SCOPE_USER) {
 		gs_app_set_scope (app, AS_COMPONENT_SCOPE_UNKNOWN);
 		app_cache = gs_plugin_cache_lookup (self->plugin, gs_app_get_unique_id (app));
-		if (app_cache != NULL)
+		if (app_cache != NULL &&
+		    g_strcmp0 (gs_flatpak_app_get_ref_name (app_cache), split[0]) == 0 &&
+		    g_strcmp0 (gs_flatpak_app_get_ref_arch (app_cache), split[1]) == 0 &&
+		    g_strcmp0 (gs_app_get_branch (app_cache), split[2]) == 0) {
 			return g_steal_pointer (&app_cache);
+		} else {
+			g_clear_object (&app_cache);
+		}
 	}
 
 	/* set superclassed app properties */
@@ -2831,8 +2879,8 @@ gs_plugin_refine_item_size (GsFlatpak *self,
 								   &error_local);
 
 		if (!ret) {
-			g_warning ("libflatpak failed to return application "
-				   "size: %s", error_local->message);
+			/* This can happen when the remote is filtered */
+			g_debug ("libflatpak failed to return application size: %s", error_local->message);
 			g_clear_error (&error_local);
 		}
 	}
@@ -3195,7 +3243,8 @@ gs_flatpak_refine_app_unlocked (GsFlatpak *self,
 	if (gs_app_get_bundle_kind (app) != AS_BUNDLE_KIND_FLATPAK)
 		return TRUE;
 
-	locker = g_rw_lock_reader_locker_new (&self->silo_lock);
+	if (!ensure_flatpak_silo_with_locker (self, &locker, interactive, cancellable, error))
+		return FALSE;
 
 	/* always do AppStream properties */
 	if (!gs_flatpak_refine_appstream (self, app, self->silo, flags, interactive, cancellable, error))
@@ -3388,11 +3437,8 @@ gs_flatpak_refine_wildcard (GsFlatpak *self, GsApp *app,
 	if (id == NULL)
 		return TRUE;
 
-	/* ensure valid */
-	if (!gs_flatpak_rescan_app_data (self, interactive, cancellable, error))
+	if (!ensure_flatpak_silo_with_locker (self, &locker, interactive, cancellable, error))
 		return FALSE;
-
-	locker = g_rw_lock_reader_locker_new (&self->silo_lock);
 
 	/* find all apps when matching any prefixes */
 	xpath = g_strdup_printf ("components/component/id[text()='%s']/..", id);
@@ -3487,10 +3533,7 @@ gs_flatpak_app_remove_source (GsFlatpak *self,
 	}
 
 	/* invalidate cache */
-	g_rw_lock_reader_lock (&self->silo_lock);
-	if (self->silo != NULL)
-		xb_silo_invalidate (self->silo);
-	g_rw_lock_reader_unlock (&self->silo_lock);
+	gs_flatpak_invalidate_silo (self);
 
 	gs_app_set_state (app, is_remove ? GS_APP_STATE_UNAVAILABLE : GS_APP_STATE_AVAILABLE);
 
@@ -3949,10 +3992,9 @@ gs_flatpak_search (GsFlatpak *self,
 	GHashTableIter iter;
 	gpointer key, value;
 
-	if (!gs_flatpak_rescan_app_data (self, interactive, cancellable, error))
+	if (!ensure_flatpak_silo_with_locker (self, &locker, interactive, cancellable, error))
 		return FALSE;
 
-	locker = g_rw_lock_reader_locker_new (&self->silo_lock);
 	if (!gs_appstream_search (self->plugin, self->silo, values, list_tmp,
 				  cancellable, error))
 		return FALSE;
@@ -4018,10 +4060,9 @@ gs_flatpak_add_category_apps (GsFlatpak *self,
 {
 	g_autoptr(GRWLockReaderLocker) locker = NULL;
 
-	if (!gs_flatpak_rescan_app_data (self, interactive, cancellable, error))
+	if (!ensure_flatpak_silo_with_locker (self, &locker, interactive, cancellable, error))
 		return FALSE;
 
-	locker = g_rw_lock_reader_locker_new (&self->silo_lock);
 	return gs_appstream_add_category_apps (self->plugin, self->silo,
 					       category, list,
 					       cancellable, error);
@@ -4036,10 +4077,9 @@ gs_flatpak_add_categories (GsFlatpak *self,
 {
 	g_autoptr(GRWLockReaderLocker) locker = NULL;
 
-	if (!gs_flatpak_rescan_app_data (self, interactive, cancellable, error))
+	if (!ensure_flatpak_silo_with_locker (self, &locker, interactive, cancellable, error))
 		return FALSE;
 
-	locker = g_rw_lock_reader_locker_new (&self->silo_lock);
 	return gs_appstream_add_categories (self->silo,
 					    list, cancellable, error);
 }
@@ -4054,10 +4094,9 @@ gs_flatpak_add_popular (GsFlatpak *self,
 	g_autoptr(GsAppList) list_tmp = gs_app_list_new ();
 	g_autoptr(GRWLockReaderLocker) locker = NULL;
 
-	if (!gs_flatpak_rescan_app_data (self, interactive, cancellable, error))
+	if (!ensure_flatpak_silo_with_locker (self, &locker, interactive, cancellable, error))
 		return FALSE;
 
-	locker = g_rw_lock_reader_locker_new (&self->silo_lock);
 	if (!gs_appstream_add_popular (self->silo, list_tmp,
 				       cancellable, error))
 		return FALSE;
@@ -4077,10 +4116,9 @@ gs_flatpak_add_featured (GsFlatpak *self,
 	g_autoptr(GsAppList) list_tmp = gs_app_list_new ();
 	g_autoptr(GRWLockReaderLocker) locker = NULL;
 
-	if (!gs_flatpak_rescan_app_data (self, interactive, cancellable, error))
+	if (!ensure_flatpak_silo_with_locker (self, &locker, interactive, cancellable, error))
 		return FALSE;
 
-	locker = g_rw_lock_reader_locker_new (&self->silo_lock);
 	if (!gs_appstream_add_featured (self->silo, list_tmp,
 					cancellable, error))
 		return FALSE;
@@ -4101,10 +4139,9 @@ gs_flatpak_add_alternates (GsFlatpak *self,
 	g_autoptr(GsAppList) list_tmp = gs_app_list_new ();
 	g_autoptr(GRWLockReaderLocker) locker = NULL;
 
-	if (!gs_flatpak_rescan_app_data (self, interactive, cancellable, error))
+	if (!ensure_flatpak_silo_with_locker (self, &locker, interactive, cancellable, error))
 		return FALSE;
 
-	locker = g_rw_lock_reader_locker_new (&self->silo_lock);
 	if (!gs_appstream_add_alternates (self->silo, app, list_tmp,
 					  cancellable, error))
 		return FALSE;
@@ -4125,10 +4162,9 @@ gs_flatpak_add_recent (GsFlatpak *self,
 	g_autoptr(GsAppList) list_tmp = gs_app_list_new ();
 	g_autoptr(GRWLockReaderLocker) locker = NULL;
 
-	if (!gs_flatpak_rescan_app_data (self, interactive, cancellable, error))
+	if (!ensure_flatpak_silo_with_locker (self, &locker, interactive, cancellable, error))
 		return FALSE;
 
-	locker = g_rw_lock_reader_locker_new (&self->silo_lock);
 	if (!gs_appstream_add_recent (self->plugin, self->silo, list_tmp, age,
 				      cancellable, error))
 		return FALSE;
@@ -4150,10 +4186,9 @@ gs_flatpak_url_to_app (GsFlatpak *self,
 	g_autoptr(GsAppList) list_tmp = gs_app_list_new ();
 	g_autoptr(GRWLockReaderLocker) locker = NULL;
 
-	if (!gs_flatpak_rescan_app_data (self, interactive, cancellable, error))
+	if (!ensure_flatpak_silo_with_locker (self, &locker, interactive, cancellable, error))
 		return FALSE;
 
-	locker = g_rw_lock_reader_locker_new (&self->silo_lock);
 	if (!gs_appstream_url_to_app (self->plugin, self->silo, list_tmp, url, cancellable, error))
 		return FALSE;
 
