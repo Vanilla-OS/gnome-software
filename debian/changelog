@@ -1,8 +1,14 @@
-gnome-software (43~beta-1) UNRELEASED; urgency=medium
+gnome-software (43~beta-1) unstable; urgency=medium
 
   * New upstream release
+  * Drop obsolete valgrind dependency
+  * Build-Depend on appstream for build tests
+  * debian/control.in: Build-Depend on libglib-testing-0-dev
+  * Add patch to allow building the Flatpak plugin with libsoup3
+  * Add proposed patch to allow building the Snap plugin with libsoup3
+  * Keep building with libsoup2 until we are ready for the librest transition
 
- -- Jeremy Bicha <jbicha@ubuntu.com>  Tue, 23 Aug 2022 20:34:16 -0400
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Wed, 24 Aug 2022 07:31:49 -0400
 
 gnome-software (42.4-1) unstable; urgency=medium
 
