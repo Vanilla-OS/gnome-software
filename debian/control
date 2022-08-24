@@ -15,7 +15,7 @@ Build-Depends: debhelper-compat (= 13),
                gtk-doc-tools,
                libadwaita-1-dev (>= 1.0.1),
                libappstream-dev (>= 0.14.0),
-               libflatpak-dev (>= 1.14.0) [amd64 arm64 armel armhf i386 mips mipsel mips64el ppc64el s390x hppa powerpc powerpcspe ppc64],
+               libflatpak-dev (>= 1.14.0) [amd64 arm64 armel armhf i386 mipsel mips64el ppc64el s390x hppa powerpc ppc64 riscv64 x32],
                libfwupd-dev (>= 1.5.6) [linux-any],
                libglib2.0-dev (>= 2.56.0),
                libglib-testing-0-dev,
@@ -60,7 +60,7 @@ Depends: appstream,
 Conflicts: sessioninstaller
 Recommends: fwupd [linux-any], ${plugin:Recommends}
 Suggests: apt-config-icons-hidpi,
-          gnome-software-plugin-flatpak [amd64 arm64 armel armhf i386 mips mipsel mips64el ppc64el s390x hppa powerpc powerpcspe ppc64],
+          gnome-software-plugin-flatpak [amd64 arm64 armel armhf i386 mipsel mips64el ppc64el s390x hppa powerpc ppc64 riscv64 x32],
           ${plugin:Suggests}
 Description: Software Center for GNOME
  Software lets you install and update applications and system extensions.
@@ -87,7 +87,7 @@ Description: Software Center for GNOME (common files)
  This package contains the architecture-independent files.
 
 Package: gnome-software-plugin-flatpak
-Architecture: amd64 arm64 armel armhf hppa i386 mips mipsel mips64el powerpc powerpcspe ppc64 ppc64el s390x
+Architecture: amd64 arm64 armel armhf i386 mipsel mips64el ppc64el s390x hppa powerpc ppc64 riscv64 x32
 Depends: flatpak (>= 1.14.0),
          gnome-software (= ${binary:Version}),
          ${misc:Depends},
