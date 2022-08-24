@@ -36,7 +36,9 @@
 #include "gs-age-rating-context-dialog.h"
 #include "gs-app.h"
 #include "gs-app-context-bar.h"
+#include "gs-common.h"
 #include "gs-hardware-support-context-dialog.h"
+#include "gs-lozenge.h"
 #include "gs-safety-context-dialog.h"
 #include "gs-storage-context-dialog.h"
 
@@ -44,7 +46,6 @@ typedef struct
 {
 	GtkWidget	*tile;
 	GtkWidget	*lozenge;
-	GtkWidget	*lozenge_content;
 	GtkLabel	*title;
 	GtkLabel	*description;
 } GsAppContextTile;
@@ -116,24 +117,29 @@ static void
 update_storage_tile (GsAppContextBar *self)
 {
 	g_autofree gchar *lozenge_text = NULL;
+	gboolean lozenge_text_is_markup = FALSE;
 	const gchar *title;
 	g_autofree gchar *description = NULL;
 	guint64 size_bytes;
+	GsSizeType size_type;
 
 	g_assert (self->app != NULL);
 
 	if (gs_app_is_installed (self->app)) {
-		guint64 size_installed = gs_app_get_size_installed (self->app);
-		guint64 size_user_data = gs_app_get_size_user_data (self->app);
-		guint64 size_cache_data = gs_app_get_size_cache_data (self->app);
+		guint64 size_installed, size_user_data, size_cache_data;
+		GsSizeType size_installed_type, size_user_data_type, size_cache_data_type;
 		g_autofree gchar *size_user_data_str = NULL;
 		g_autofree gchar *size_cache_data_str = NULL;
 
+		size_installed_type = gs_app_get_size_installed (self->app, &size_installed);
+		size_user_data_type = gs_app_get_size_user_data (self->app, &size_user_data);
+		size_cache_data_type = gs_app_get_size_cache_data (self->app, &size_cache_data);
+
 		/* Treat `0` sizes as `unknown`, to not show `0 bytes` in the text. */
 		if (size_user_data == 0)
-			size_user_data = GS_APP_SIZE_UNKNOWABLE;
+			size_user_data_type = GS_SIZE_TYPE_UNKNOWN;
 		if (size_cache_data == 0)
-			size_cache_data = GS_APP_SIZE_UNKNOWABLE;
+			size_cache_data_type = GS_SIZE_TYPE_UNKNOWN;
 
 		/* If any installed sizes are unknowable, ignore them. This
 		 * means the stated installed size is a lower bound on the
@@ -142,9 +148,10 @@ update_storage_tile (GsAppContextBar *self)
 		 * because uninstalling the app won’t reclaim that space unless
 		 * it’s the last app using those dependencies. */
 		size_bytes = size_installed;
-		if (size_user_data != GS_APP_SIZE_UNKNOWABLE)
+		size_type = size_installed_type;
+		if (size_user_data_type == GS_SIZE_TYPE_VALID)
 			size_bytes += size_user_data;
-		if (size_cache_data != GS_APP_SIZE_UNKNOWABLE)
+		if (size_cache_data_type == GS_SIZE_TYPE_VALID)
 			size_bytes += size_cache_data;
 
 		size_user_data_str = g_format_size (size_user_data);
@@ -154,30 +161,35 @@ update_storage_tile (GsAppContextBar *self)
 		 * This is displayed in a context tile, so the string should be short. */
 		title = _("Installed Size");
 
-		if (size_user_data != GS_APP_SIZE_UNKNOWABLE && size_cache_data != GS_APP_SIZE_UNKNOWABLE)
+		if (size_user_data_type == GS_SIZE_TYPE_VALID && size_cache_data_type == GS_SIZE_TYPE_VALID)
 			description = g_strdup_printf (_("Includes %s of data and %s of cache"),
 						       size_user_data_str, size_cache_data_str);
-		else if (size_user_data != GS_APP_SIZE_UNKNOWABLE)
+		else if (size_user_data_type == GS_SIZE_TYPE_VALID)
 			description = g_strdup_printf (_("Includes %s of data"),
 						       size_user_data_str);
-		else if (size_cache_data != GS_APP_SIZE_UNKNOWABLE)
+		else if (size_cache_data_type == GS_SIZE_TYPE_VALID)
 			description = g_strdup_printf (_("Includes %s of cache"),
 						       size_cache_data_str);
 		else
 			description = g_strdup (_("Cache and data usage unknown"));
 	} else {
-		guint64 app_download_size_bytes = gs_app_get_size_download (self->app);
-		guint64 dependencies_download_size_bytes = gs_app_get_size_download_dependencies (self->app);
+		guint64 app_download_size_bytes, dependencies_download_size_bytes;
+		GsSizeType app_download_size_type, dependencies_download_size_type;
+
+		app_download_size_type = gs_app_get_size_download (self->app, &app_download_size_bytes);
+		dependencies_download_size_type = gs_app_get_size_download_dependencies (self->app, &dependencies_download_size_bytes);
 
 		size_bytes = app_download_size_bytes;
+		size_type = app_download_size_type;
 
 		/* Translators: The download size of an application.
 		 * This is displayed in a context tile, so the string should be short. */
 		title = _("Download Size");
 
-		if (dependencies_download_size_bytes == 0) {
+		if (dependencies_download_size_type == GS_SIZE_TYPE_VALID &&
+		    dependencies_download_size_bytes == 0) {
 			description = g_strdup (_("Needs no additional system downloads"));
-		} else if (dependencies_download_size_bytes == GS_APP_SIZE_UNKNOWABLE) {
+		} else if (dependencies_download_size_type != GS_SIZE_TYPE_VALID) {
 			description = g_strdup (_("Needs an unknown size of additional system downloads"));
 		} else {
 			g_autofree gchar *size = g_format_size (dependencies_download_size_bytes);
@@ -187,7 +199,7 @@ update_storage_tile (GsAppContextBar *self)
 		}
 	}
 
-	if (size_bytes == 0 || size_bytes == GS_APP_SIZE_UNKNOWABLE) {
+	if (size_type != GS_SIZE_TYPE_VALID) {
 		/* Translators: This is displayed for the download size in an
 		 * app’s context tile if the size is unknown. It should be short
 		 * (at most a couple of characters wide). */
@@ -199,10 +211,13 @@ update_storage_tile (GsAppContextBar *self)
 		 * This is displayed in a context tile, so the string should be short. */
 		description = g_strdup (_("Size is unknown"));
 	} else {
-		lozenge_text = g_format_size (size_bytes);
+		lozenge_text = gs_utils_format_size (size_bytes, &lozenge_text_is_markup);
 	}
 
-	gtk_label_set_text (GTK_LABEL (self->tiles[STORAGE_TILE].lozenge_content), lozenge_text);
+	if (lozenge_text_is_markup)
+		gs_lozenge_set_markup (GS_LOZENGE (self->tiles[STORAGE_TILE].lozenge), lozenge_text);
+	else
+		gs_lozenge_set_text (GS_LOZENGE (self->tiles[STORAGE_TILE].lozenge), lozenge_text);
 	gtk_label_set_text (self->tiles[STORAGE_TILE].title, title);
 	gtk_label_set_text (self->tiles[STORAGE_TILE].description, description);
 }
@@ -239,9 +254,10 @@ static void
 update_safety_tile (GsAppContextBar *self)
 {
 	const gchar *icon_name, *title, *css_class;
-	g_autoptr(GPtrArray) descriptions = g_ptr_array_new_with_free_func (NULL);
 	g_autofree gchar *description = NULL;
-	GsAppPermissions permissions;
+	g_autoptr(GPtrArray) descriptions = g_ptr_array_new_with_free_func (NULL);
+	g_autoptr(GsAppPermissions) permissions = NULL;
+	GsAppPermissionsFlags perm_flags = GS_APP_PERMISSIONS_FLAGS_UNKNOWN;
 	GtkStyleContext *context;
 
 	/* Treat everything as safe to begin with, and downgrade its safety
@@ -250,20 +266,22 @@ update_safety_tile (GsAppContextBar *self)
 
 	g_assert (self->app != NULL);
 
-	permissions = gs_app_get_permissions (self->app);
-	for (GsAppPermissions i = GS_APP_PERMISSIONS_NONE; i < GS_APP_PERMISSIONS_LAST; i <<= 1) {
-		if (!(permissions & i))
+	permissions = gs_app_dup_permissions (self->app);
+	if (permissions != NULL)
+		perm_flags = gs_app_permissions_get_flags (permissions);
+	for (GsAppPermissionsFlags i = GS_APP_PERMISSIONS_FLAGS_NONE; i < GS_APP_PERMISSIONS_FLAGS_LAST; i <<= 1) {
+		if (!(perm_flags & i))
 			continue;
 
 		switch (i) {
-		case GS_APP_PERMISSIONS_NONE:
+		case GS_APP_PERMISSIONS_FLAGS_NONE:
 			add_to_safety_rating (&chosen_rating, descriptions,
 					      SAFETY_SAFE,
 					      /* Translators: This indicates an app requires no permissions to run.
 					       * It’s used in a context tile, so should be short. */
 					      _("No permissions"));
 			break;
-		case GS_APP_PERMISSIONS_NETWORK:
+		case GS_APP_PERMISSIONS_FLAGS_NETWORK:
 			add_to_safety_rating (&chosen_rating, descriptions,
 					      /* This isn’t actually safe (network access can expand a local
 					       * vulnerability into a remotely exploitable one), but it’s
@@ -274,31 +292,31 @@ update_safety_tile (GsAppContextBar *self)
 					       * It’s used in a context tile, so should be short. */
 					      _("Has network access"));
 			break;
-		case GS_APP_PERMISSIONS_SYSTEM_BUS:
+		case GS_APP_PERMISSIONS_FLAGS_SYSTEM_BUS:
 			add_to_safety_rating (&chosen_rating, descriptions,
 					      SAFETY_POTENTIALLY_UNSAFE,
 					      /* Translators: This indicates an app uses D-Bus system services.
 					       * It’s used in a context tile, so should be short. */
 					      _("Uses system services"));
 			break;
-		case GS_APP_PERMISSIONS_SESSION_BUS:
+		case GS_APP_PERMISSIONS_FLAGS_SESSION_BUS:
 			add_to_safety_rating (&chosen_rating, descriptions,
 					      SAFETY_UNSAFE,
 					      /* Translators: This indicates an app uses D-Bus session services.
 					       * It’s used in a context tile, so should be short. */
 					      _("Uses session services"));
 			break;
-		case GS_APP_PERMISSIONS_DEVICES:
+		case GS_APP_PERMISSIONS_FLAGS_DEVICES:
 			add_to_safety_rating (&chosen_rating, descriptions,
 					      SAFETY_POTENTIALLY_UNSAFE,
 					      /* Translators: This indicates an app can access arbitrary hardware devices.
 					       * It’s used in a context tile, so should be short. */
 					      _("Can access hardware devices"));
 			break;
-		case GS_APP_PERMISSIONS_HOME_FULL:
-		case GS_APP_PERMISSIONS_FILESYSTEM_FULL:
+		case GS_APP_PERMISSIONS_FLAGS_HOME_FULL:
+		case GS_APP_PERMISSIONS_FLAGS_FILESYSTEM_FULL:
 			/* Don’t add twice. */
-			if (i == GS_APP_PERMISSIONS_HOME_FULL && (permissions & GS_APP_PERMISSIONS_FILESYSTEM_FULL))
+			if (i == GS_APP_PERMISSIONS_FLAGS_HOME_FULL && (perm_flags & GS_APP_PERMISSIONS_FLAGS_FILESYSTEM_FULL))
 				break;
 
 			add_to_safety_rating (&chosen_rating, descriptions,
@@ -307,10 +325,10 @@ update_safety_tile (GsAppContextBar *self)
 					       * It’s used in a context tile, so should be short. */
 					      _("Can read/write all your data"));
 			break;
-		case GS_APP_PERMISSIONS_HOME_READ:
-		case GS_APP_PERMISSIONS_FILESYSTEM_READ:
+		case GS_APP_PERMISSIONS_FLAGS_HOME_READ:
+		case GS_APP_PERMISSIONS_FLAGS_FILESYSTEM_READ:
 			/* Don’t add twice. */
-			if (i == GS_APP_PERMISSIONS_HOME_READ && (permissions & GS_APP_PERMISSIONS_FILESYSTEM_READ))
+			if (i == GS_APP_PERMISSIONS_FLAGS_HOME_READ && (perm_flags & GS_APP_PERMISSIONS_FLAGS_FILESYSTEM_READ))
 				break;
 
 			add_to_safety_rating (&chosen_rating, descriptions,
@@ -319,42 +337,42 @@ update_safety_tile (GsAppContextBar *self)
 					       * It’s used in a context tile, so should be short. */
 					      _("Can read all your data"));
 			break;
-		case GS_APP_PERMISSIONS_DOWNLOADS_FULL:
+		case GS_APP_PERMISSIONS_FLAGS_DOWNLOADS_FULL:
 			add_to_safety_rating (&chosen_rating, descriptions,
 					      SAFETY_POTENTIALLY_UNSAFE,
 					      /* Translators: This indicates an app can read/write to the user’s Downloads directory.
 					       * It’s used in a context tile, so should be short. */
 					      _("Can read/write your downloads"));
 			break;
-		case GS_APP_PERMISSIONS_DOWNLOADS_READ:
+		case GS_APP_PERMISSIONS_FLAGS_DOWNLOADS_READ:
 			add_to_safety_rating (&chosen_rating, descriptions,
 					      SAFETY_POTENTIALLY_UNSAFE,
 					      /* Translators: This indicates an app can read (but not write) from the user’s Downloads directory.
 					       * It’s used in a context tile, so should be short. */
 					      _("Can read your downloads"));
 			break;
-		case GS_APP_PERMISSIONS_FILESYSTEM_OTHER:
+		case GS_APP_PERMISSIONS_FLAGS_FILESYSTEM_OTHER:
 			add_to_safety_rating (&chosen_rating, descriptions,
 					      SAFETY_POTENTIALLY_UNSAFE,
 					      /* Translators: This indicates an app can access data in the system unknown to the Software.
 					       * It’s used in a context tile, so should be short. */
 					      _("Can access arbitrary files"));
 			break;
-		case GS_APP_PERMISSIONS_SETTINGS:
+		case GS_APP_PERMISSIONS_FLAGS_SETTINGS:
 			add_to_safety_rating (&chosen_rating, descriptions,
 					      SAFETY_POTENTIALLY_UNSAFE,
 					      /* Translators: This indicates an app can access or change user settings.
 					       * It’s used in a context tile, so should be short. */
 					      _("Can access and change user settings"));
 			break;
-		case GS_APP_PERMISSIONS_X11:
+		case GS_APP_PERMISSIONS_FLAGS_X11:
 			add_to_safety_rating (&chosen_rating, descriptions,
 					      SAFETY_UNSAFE,
 					      /* Translators: This indicates an app uses the X11 windowing system.
 					       * It’s used in a context tile, so should be short. */
 					      _("Uses a legacy windowing system"));
 			break;
-		case GS_APP_PERMISSIONS_ESCAPE_SANDBOX:
+		case GS_APP_PERMISSIONS_FLAGS_ESCAPE_SANDBOX:
 			add_to_safety_rating (&chosen_rating, descriptions,
 					      SAFETY_UNSAFE,
 					      /* Translators: This indicates an app can escape its sandbox.
@@ -378,7 +396,7 @@ update_safety_tile (GsAppContextBar *self)
 	 * FIXME: We could do better by potentially adding a ‘trusted’ state
 	 * to indicate that something is probably safe, but isn’t sandboxed.
 	 * See https://gitlab.gnome.org/GNOME/gnome-software/-/issues/1451 */
-	if (permissions == GS_APP_PERMISSIONS_UNKNOWN &&
+	if (perm_flags == GS_APP_PERMISSIONS_FLAGS_UNKNOWN &&
 	    gs_app_has_quirk (self->app, GS_APP_QUIRK_PROVENANCE))
 		add_to_safety_rating (&chosen_rating, descriptions,
 				      SAFETY_SAFE,
@@ -386,7 +404,7 @@ update_safety_tile (GsAppContextBar *self)
 				       * by the user’s distribution and is safe.
 				       * It’s used in a context tile, so should be short. */
 				      _("Reviewed by your distribution"));
-	else if (permissions == GS_APP_PERMISSIONS_UNKNOWN)
+	else if (perm_flags == GS_APP_PERMISSIONS_FLAGS_UNKNOWN)
 		add_to_safety_rating (&chosen_rating, descriptions,
 				      SAFETY_POTENTIALLY_UNSAFE,
 				      /* Translators: This indicates that an application has been packaged
@@ -467,7 +485,7 @@ update_safety_tile (GsAppContextBar *self)
 		g_assert_not_reached ();
 	}
 
-	gtk_image_set_from_icon_name (GTK_IMAGE (self->tiles[SAFETY_TILE].lozenge_content), icon_name);
+	gs_lozenge_set_icon_name (GS_LOZENGE (self->tiles[SAFETY_TILE].lozenge), icon_name);
 	gtk_label_set_text (self->tiles[SAFETY_TILE].title, title);
 	gtk_label_set_text (self->tiles[SAFETY_TILE].description, description);
 
@@ -604,10 +622,20 @@ update_hardware_support_tile (GsAppContextBar *self)
 
 	/* Otherwise, is it adaptive? Note that %AS_RELATION_KIND_RECOMMENDS
 	 * means more like ‘supports’ than ‘recommends’. */
+#if AS_CHECK_VERSION(0, 15, 0)
+	if (icon_name == NULL &&
+	    (control_relations[AS_CONTROL_KIND_TOUCH] == AS_RELATION_KIND_RECOMMENDS ||
+	     control_relations[AS_CONTROL_KIND_TOUCH] == AS_RELATION_KIND_SUPPORTS) &&
+	    (control_relations[AS_CONTROL_KIND_KEYBOARD] == AS_RELATION_KIND_RECOMMENDS ||
+	     control_relations[AS_CONTROL_KIND_KEYBOARD] == AS_RELATION_KIND_SUPPORTS) &&
+	    (control_relations[AS_CONTROL_KIND_POINTING] == AS_RELATION_KIND_RECOMMENDS ||
+	     control_relations[AS_CONTROL_KIND_POINTING] == AS_RELATION_KIND_SUPPORTS)) {
+#else
 	if (icon_name == NULL &&
 	    control_relations[AS_CONTROL_KIND_TOUCH] == AS_RELATION_KIND_RECOMMENDS &&
 	    control_relations[AS_CONTROL_KIND_KEYBOARD] == AS_RELATION_KIND_RECOMMENDS &&
 	    control_relations[AS_CONTROL_KIND_POINTING] == AS_RELATION_KIND_RECOMMENDS) {
+#endif
 		icon_name = "adaptive-symbolic";
 		/* Translators: This is used in a context tile to indicate that
 		 * an app works on phones, tablets *and* desktops. It should be
@@ -639,8 +667,8 @@ update_hardware_support_tile (GsAppContextBar *self)
 	/* Update the UI. The `adaptive-symbolic` icon needs a special size to
 	 * be set, as it is wider than it is tall. Setting the size ensures it’s
 	 * rendered at the right height. */
-	gtk_image_set_from_icon_name (GTK_IMAGE (self->tiles[HARDWARE_SUPPORT_TILE].lozenge_content), icon_name);
-	gtk_image_set_pixel_size (GTK_IMAGE (self->tiles[HARDWARE_SUPPORT_TILE].lozenge_content), g_str_equal (icon_name, "adaptive-symbolic") ? 56 : -1);
+	gs_lozenge_set_icon_name (GS_LOZENGE (self->tiles[HARDWARE_SUPPORT_TILE].lozenge), icon_name);
+	gs_lozenge_set_pixel_size (GS_LOZENGE (self->tiles[HARDWARE_SUPPORT_TILE].lozenge), g_str_equal (icon_name, "adaptive-symbolic") ? 56 : -1);
 
 	gtk_label_set_text (self->tiles[HARDWARE_SUPPORT_TILE].title, title);
 	gtk_label_set_text (self->tiles[HARDWARE_SUPPORT_TILE].description, description);
@@ -717,8 +745,7 @@ update_age_rating_tile (GsAppContextBar *self)
 
 	content_rating = gs_app_dup_content_rating (self->app);
 	gs_age_rating_context_dialog_update_lozenge (self->app,
-						     self->tiles[AGE_RATING_TILE].lozenge,
-						     GTK_LABEL (self->tiles[AGE_RATING_TILE].lozenge_content),
+						     GS_LOZENGE (self->tiles[AGE_RATING_TILE].lozenge),
 						     &is_unknown);
 
 	/* Description */
@@ -870,22 +897,18 @@ gs_app_context_bar_class_init (GsAppContextBarClass *klass)
 
 	gtk_widget_class_bind_template_child_full (widget_class, "storage_tile", FALSE, G_STRUCT_OFFSET (GsAppContextBar, tiles[STORAGE_TILE].tile));
 	gtk_widget_class_bind_template_child_full (widget_class, "storage_tile_lozenge", FALSE, G_STRUCT_OFFSET (GsAppContextBar, tiles[STORAGE_TILE].lozenge));
-	gtk_widget_class_bind_template_child_full (widget_class, "storage_tile_lozenge_content", FALSE, G_STRUCT_OFFSET (GsAppContextBar, tiles[STORAGE_TILE].lozenge_content));
 	gtk_widget_class_bind_template_child_full (widget_class, "storage_tile_title", FALSE, G_STRUCT_OFFSET (GsAppContextBar, tiles[STORAGE_TILE].title));
 	gtk_widget_class_bind_template_child_full (widget_class, "storage_tile_description", FALSE, G_STRUCT_OFFSET (GsAppContextBar, tiles[STORAGE_TILE].description));
 	gtk_widget_class_bind_template_child_full (widget_class, "safety_tile", FALSE, G_STRUCT_OFFSET (GsAppContextBar, tiles[SAFETY_TILE].tile));
 	gtk_widget_class_bind_template_child_full (widget_class, "safety_tile_lozenge", FALSE, G_STRUCT_OFFSET (GsAppContextBar, tiles[SAFETY_TILE].lozenge));
-	gtk_widget_class_bind_template_child_full (widget_class, "safety_tile_lozenge_content", FALSE, G_STRUCT_OFFSET (GsAppContextBar, tiles[SAFETY_TILE].lozenge_content));
 	gtk_widget_class_bind_template_child_full (widget_class, "safety_tile_title", FALSE, G_STRUCT_OFFSET (GsAppContextBar, tiles[SAFETY_TILE].title));
 	gtk_widget_class_bind_template_child_full (widget_class, "safety_tile_description", FALSE, G_STRUCT_OFFSET (GsAppContextBar, tiles[SAFETY_TILE].description));
 	gtk_widget_class_bind_template_child_full (widget_class, "hardware_support_tile", FALSE, G_STRUCT_OFFSET (GsAppContextBar, tiles[HARDWARE_SUPPORT_TILE].tile));
 	gtk_widget_class_bind_template_child_full (widget_class, "hardware_support_tile_lozenge", FALSE, G_STRUCT_OFFSET (GsAppContextBar, tiles[HARDWARE_SUPPORT_TILE].lozenge));
-	gtk_widget_class_bind_template_child_full (widget_class, "hardware_support_tile_lozenge_content", FALSE, G_STRUCT_OFFSET (GsAppContextBar, tiles[HARDWARE_SUPPORT_TILE].lozenge_content));
 	gtk_widget_class_bind_template_child_full (widget_class, "hardware_support_tile_title", FALSE, G_STRUCT_OFFSET (GsAppContextBar, tiles[HARDWARE_SUPPORT_TILE].title));
 	gtk_widget_class_bind_template_child_full (widget_class, "hardware_support_tile_description", FALSE, G_STRUCT_OFFSET (GsAppContextBar, tiles[HARDWARE_SUPPORT_TILE].description));
 	gtk_widget_class_bind_template_child_full (widget_class, "age_rating_tile", FALSE, G_STRUCT_OFFSET (GsAppContextBar, tiles[AGE_RATING_TILE].tile));
 	gtk_widget_class_bind_template_child_full (widget_class, "age_rating_tile_lozenge", FALSE, G_STRUCT_OFFSET (GsAppContextBar, tiles[AGE_RATING_TILE].lozenge));
-	gtk_widget_class_bind_template_child_full (widget_class, "age_rating_tile_lozenge_content", FALSE, G_STRUCT_OFFSET (GsAppContextBar, tiles[AGE_RATING_TILE].lozenge_content));
 	gtk_widget_class_bind_template_child_full (widget_class, "age_rating_tile_title", FALSE, G_STRUCT_OFFSET (GsAppContextBar, tiles[AGE_RATING_TILE].title));
 	gtk_widget_class_bind_template_child_full (widget_class, "age_rating_tile_description", FALSE, G_STRUCT_OFFSET (GsAppContextBar, tiles[AGE_RATING_TILE].description));
 	gtk_widget_class_bind_template_callback (widget_class, tile_clicked_cb);

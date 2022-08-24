@@ -21,18 +21,14 @@
                     <property name="show_close_button">True</property>
                     <child>
                       <object class="GtkBox">
-                        <property name="spacing">6</property>
-                        <child/>
-                      </object>
-                    </child>
-                    <child type="action">
-                      <object class="GtkBox">
                         <property name="orientation">vertical</property>
-                        <property name="spacing">6</property>
-                        <property name="margin-top">12</property>
-                        <property name="margin-bottom">12</property>
-                        <property name="margin-start">12</property>
-                        <property name="margin-end">12</property>
+                        <property name="spacing">3</property>
+                        <property name="margin-top">6</property>
+                        <property name="margin-bottom">6</property>
+                        <property name="margin-start">6</property>
+                        <property name="margin-end">6</property>
+                        <property name="halign">start</property>
+                        <property name="hexpand">True</property>
                         <child>
                           <object class="GtkLabel" id="label_third_party_title">
                             <property name="halign">start</property>
@@ -105,7 +101,7 @@
                                 </child>
 
                                 <child>
-                                  <object class="GtkLabel" id="popular_heading">
+                                  <object class="GtkLabel" id="curated_heading">
                                     <property name="xalign">0</property>
                                     <property name="label" translatable="yes" comments="Translators: This is a heading for software which has been featured (&apos;picked&apos;) by the distribution.">Editor’s Choice</property>
                                     <property name="margin-top">21</property>
@@ -116,13 +112,13 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkFlowBox" id="box_popular">
+                                  <object class="GtkFlowBox" id="box_curated">
                                     <property name="homogeneous">True</property>
                                     <property name="column-spacing">14</property>
                                     <property name="row-spacing">14</property>
                                     <property name="valign">start</property>
                                     <accessibility>
-                                      <relation name="labelled-by">popular_heading</relation>
+                                      <relation name="labelled-by">curated_heading</relation>
                                     </accessibility>
                                   </object>
                                 </child>
@@ -147,6 +143,33 @@
                                     <property name="selection-mode">none</property>
                                     <accessibility>
                                       <relation name="labelled-by">recent_heading</relation>
+                                    </accessibility>
+                                  </object>
+                                </child>
+
+                                <child>
+                                  <object class="GtkLabel" id="deployment_featured_heading">
+                                    <property name="visible">False</property>
+                                    <property name="xalign">0</property>
+                                    <property name="label">Available for Deployment</property> <!-- placeholder, set in the code -->
+                                    <property name="margin-top">21</property>
+                                    <property name="margin-bottom">6</property>
+                                    <style>
+                                      <class name="heading"/>
+                                    </style>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkFlowBox" id="box_deployment_featured">
+                                    <property name="visible">False</property>
+                                    <property name="row_spacing">14</property>
+                                    <property name="column_spacing">14</property>
+                                    <property name="homogeneous">True</property>
+                                    <property name="min_children_per_line">2</property>
+                                    <property name="max_children_per_line">3</property>
+                                    <property name="selection_mode">none</property>
+                                    <accessibility>
+                                      <relation name="labelled-by">deployment_featured_heading</relation>
                                     </accessibility>
                                   </object>
                                 </child>

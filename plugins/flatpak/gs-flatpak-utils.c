@@ -84,9 +84,9 @@ gs_flatpak_app_new_from_remote (GsPlugin *plugin,
 	gs_app_add_quirk (app, GS_APP_QUIRK_NOT_LAUNCHABLE);
 	gs_app_set_name (app, GS_APP_QUALITY_LOWEST,
 			 flatpak_remote_get_name (xremote));
-	gs_app_set_size_download (app, GS_APP_SIZE_UNKNOWABLE);
+	gs_app_set_size_download (app, GS_SIZE_TYPE_UNKNOWABLE, 0);
 	gs_app_set_management_plugin (app, plugin);
-	gs_app_set_bundle_kind (app, AS_BUNDLE_KIND_FLATPAK);
+	gs_flatpak_app_set_packaging_info (app);
 	gs_app_set_scope (app, is_user ? AS_COMPONENT_SCOPE_USER : AS_COMPONENT_SCOPE_SYSTEM);
 
 	gs_app_set_metadata (app, "GnomeSoftware::SortKey", "100");
@@ -213,7 +213,7 @@ gs_flatpak_app_new_from_repo_file (GFile *file,
 	gs_app_set_state (app, GS_APP_STATE_AVAILABLE_LOCAL);
 	gs_app_add_quirk (app, GS_APP_QUIRK_NOT_LAUNCHABLE);
 	gs_app_set_name (app, GS_APP_QUALITY_NORMAL, repo_title);
-	gs_app_set_size_download (app, GS_APP_SIZE_UNKNOWABLE);
+	gs_app_set_size_download (app, GS_SIZE_TYPE_UNKNOWABLE, 0);
 	gs_flatpak_app_set_repo_url (app, repo_url);
 	gs_app_set_origin_ui (app, repo_title);
 	gs_app_set_origin_hostname (app, repo_url);
@@ -258,4 +258,14 @@ gs_flatpak_app_new_from_repo_file (GFile *file,
 
 	/* success */
 	return g_steal_pointer (&app);
+}
+
+void
+gs_flatpak_app_set_packaging_info (GsApp *app)
+{
+	g_return_if_fail (GS_IS_APP (app));
+
+	gs_app_set_bundle_kind (app, AS_BUNDLE_KIND_FLATPAK);
+	gs_app_set_metadata (app, "GnomeSoftware::PackagingBaseCssColor", "accent_bg_color");
+	gs_app_set_metadata (app, "GnomeSoftware::PackagingIcon", "flatpak-symbolic");
 }

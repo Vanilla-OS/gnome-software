@@ -75,7 +75,7 @@ Featured apps and Editor’s Choice
 
 There are several ways to promote and highlight specific applications in GNOME
 Software. On the overview page, there’s a carousel of featured applications
-(`featured_carousel`), and an “Editor’s Choice” section (`box_popular`). Both of
+(`featured_carousel`), and an “Editor’s Choice” section (`box_curated`). Both of
 them highlight curated sets of applications. The same is true on each category
 page: a carousel (`top_carousel`) and an “Editor’s Choice” section
 (`featured_flow_box`) are present.
@@ -85,7 +85,8 @@ Both pages also have a “New & Updated” section (`box_recent` or
 listed in the new and updated section are not curated: they are chosen as the
 applications which have had a recent release, according to the
 `component/releases/release[@timestamp]` attribute in their metainfo.
-Technically these are the results of the `gs_plugin_add_recent()` vfunc.
+Technically these are the results of a `GsPlugin.list_apps_async()` query with
+`GsAppQuery:released-since` set.
 
 Applications are included in any of the curated sets through having special
 metadata in their metainfo. The required metadata is different for the different
@@ -95,12 +96,12 @@ sections:
    `component/custom/value[@key='GnomeSoftware::FeatureTile-css]` set in their
    metainfo. They are also required to have a high-resolution icon, and the set
    of applications shown in the carousel is randomised and limited to (for
-   example) 5. Technically these are the results of the
-   `gs_plugin_add_featured()` vfunc.
+   example) 5. Technically these are the results of a
+   `GsPlugin.list_apps_async()` query with `GsAppQuery:is-featured` set.
  * “Editor’s Choice” on the overview page: Applications are included if they
    have `component/kudos/kudo[text()='GnomeSoftware::popular']` set in their
-   metainfo. Technically these are the results of the `gs_plugin_add_popular()`
-   vfunc.
+   metainfo. Technically these are the results of a `GsPlugin.list_apps_async()`
+   query with `GsAppQuery:is-curated` set.
  * Carousel on the category page: Applications are included if they are in the
    `Featured` subcategory of the displayed category. They are also required to
    have a high-resolution icon, and the set of applications shown in the carousel
@@ -172,10 +173,42 @@ GNOME Software ships a default list of featured applications, chosen to match
 the [GNOME Circle](https://circle.gnome.org/). See
 `data/assets/org.gnome.Software.Featured.xml` for this list, and for an example
 of the metainfo XML needed to feature or highlight applications. See
-`data/assets/org.gnome.Software.Popular.xml` for a default hard-coded list of
-popular applications, which is displayed in the “Editor’s Choice” section of the
-overview page.
+`data/assets/org.gnome.Software.Curated.xml` for a default hard-coded list of
+curated high quality applications, which is displayed in the “Editor’s Choice”
+section of the overview page.
 
 Pass `-Ddefault_featured_apps=false` when configuring GNOME Software to disable
-the default list of featured applications. Pass `-Dhardcoded_popular=false` to
+the default list of featured applications. Pass `-Dhardcoded_curated=false` to
 disable the default list of “Editor’s Choice” applications.
+
+Deployment Featured Apps
+------------------------
+
+Deployments can feature their own applications, which will be shown in the Explore
+page in its own section. To have the section shown, two files need to be provided.
+The number of deployment-featured apps is limited in the UI, and if not enough
+deployment-featured apps are found, then the section will not be shown at all.
+
+The first file is `org.gnome.Software.DeploymentFeatured.xml`, which works similarly
+to `org.gnome.Software.Featured.xml` and should be saved beside it in an appstream
+directory. It sets the `GnomeSoftware::DeploymentFeatured` key on apps which should
+be featured for this distribution or deployment. The value of this key is a string
+containing the deployment name as an identifier.
+
+The second file is `deployment-featured.ini`, which contains a human-readable title and
+the selector for the section. The title is a localized key, and is used to set the heading
+for the section on the Explore page. The selector defines which apps should be picked.
+It is a semicolon-separated list of `GnomeSoftware::DeploymentFeatured` key values, thus
+the deployment can feature apps from zero or more vendors.
+
+The `deployment-featured.ini` file should be saved in one of the `sysconfdir`, system
+config dirs or system data dirs. They are checked, in that order, for existence of
+the `gnome-software/deployment-featured.ini` file. The first directory containing
+it will be used. The relevant file names are `/etc/xdg/gnome-software/deployment-featured.ini`,
+`/usr/local/share/gnome-software/deployment-featured.ini` and
+`/usr/share/gnome-software/deployment-featured.ini`.
+
+Any changes to these files, including adding or removing them, will only be noticed
+when gnome-software is restarted.
+
+Example files can be found in the `contrib/` directory.

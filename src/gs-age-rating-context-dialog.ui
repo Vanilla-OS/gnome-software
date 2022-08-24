@@ -23,25 +23,15 @@
                     <property name="spacing">12</property>
 
                     <child>
-                      <object class="GtkBox" id="lozenge">
-                        <property name="halign">center</property>
+                      <object class="GsLozenge" id="lozenge">
+                        <property name="circular">True</property>
                         <style>
-                          <class name="context-tile-lozenge"/>
                           <class name="large"/>
                           <class name="grey"/>
                         </style>
-                        <child>
-                          <object class="GtkLabel" id="age">
-                            <property name="halign">center</property>
-                            <property name="hexpand">True</property>
-                            <!-- this is a placeholder: the text is actually set in code -->
-                            <property name="label">All</property>
-                            <property name="xalign">0.5</property>
-                            <accessibility>
-                              <relation name="labelled-by">title</relation>
-                            </accessibility>
-                          </object>
-                        </child>
+                        <accessibility>
+                          <relation name="labelled-by">title</relation>
+                        </accessibility>
                       </object>
                     </child>
 
@@ -75,7 +65,7 @@
 
                 <child>
                   <object class="GtkLinkButton">
-                    <property name="label" translatable="yes">How to add missing information</property>
+                    <property name="label" translatable="yes">How to contribute missing information</property>
                     <property name="margin-top">16</property>
                     <property name="uri">https://gitlab.gnome.org/GNOME/gnome-software/-/wikis/software-metadata#age-rating</property>
                   </object>

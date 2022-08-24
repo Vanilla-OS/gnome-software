@@ -21,31 +21,31 @@
   </description>
   <screenshots>
     <screenshot type="default">
-      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/gnome-42/data/appdata/ss-overview.png</image>
+      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/HEAD/data/metainfo/ss-overview.png</image>
       <caption>Overview panel</caption>
     </screenshot>
     <screenshot>
-      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/gnome-42/data/appdata/ss-details.png</image>
+      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/HEAD/data/metainfo/ss-details.png</image>
       <caption>Details panel</caption>
     </screenshot>
     <screenshot>
-      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/gnome-42/data/appdata/ss-details2.png</image>
+      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/HEAD/data/metainfo/ss-details2.png</image>
       <caption>Details panel</caption>
     </screenshot>
     <screenshot>
-      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/gnome-42/data/appdata/ss-installed.png</image>
+      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/HEAD/data/metainfo/ss-installed.png</image>
       <caption>Installed panel</caption>
     </screenshot>
     <screenshot>
-      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/gnome-42/data/appdata/ss-up-to-date.png</image>
+      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/HEAD/data/metainfo/ss-up-to-date.png</image>
       <caption>Updates panel</caption>
     </screenshot>
     <screenshot>
-      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/gnome-42/data/appdata/ss-updates.png</image>
+      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/HEAD/data/metainfo/ss-updates.png</image>
       <caption>Updates panel</caption>
     </screenshot>
     <screenshot>
-      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/gnome-42/data/appdata/ss-updates-details.png</image>
+      <image>https://gitlab.gnome.org/GNOME/gnome-software/raw/HEAD/data/metainfo/ss-updates-details.png</image>
       <caption>The update details</caption>
     </screenshot>
   </screenshots>
@@ -63,90 +63,70 @@
   </requires>
 
   <!--
-   Validate with `appstreamcli validate *.appdata.xml`
+   Validate with `appstreamcli validate *.metainfo.xml`
   -->
   <releases>
-    <release date="2022-08-05" version="42.4" type="stable">
+    <release date="2022-08-05" version="43.beta" type="development">
       <description>
-        <p>This is a stable release with the following change:</p>
+        <p>This is the second unstable release for GNOME 43.</p>
         <ul>
-          <li>Fix update detail text, when it contains markup</li>
+          <li>Various fixes related to changed threading model</li>
+          <li>Various UI parts updated</li>
+          <li>Sources dropdown had been reworked</li>
+          <li>Fixes a rare crash when showing app details</li>
         </ul>
         <p>This release also updates translations:</p>
         <ul>
-          <li>Italian</li>
-          <li>Serbian</li>
-        </ul>
-      </description>
-    </release>
-    <release date="2022-06-30" version="42.3" type="stable">
-      <description>
-        <p>This is a stable release with the following notable changes:</p>
-        <ul>
-          <li>Fix some crashes when handling flatpaks</li>
-          <li>Fix incorrectly showing a restart notification after a failed firmware update</li>
-          <li>Fix a mismatch between app review ratings at the top and bottom of the page</li>
-          <li>Fix prompt dialogs when updating firmware on devices which need user interaction</li>
-        </ul>
-        <p>This release also updates translations:</p>
-        <ul>
-          <li>Catalan</li>
-          <li>Czech</li>
-        </ul>
-      </description>
-    </release>
-    <release date="2022-05-30" version="42.2" type="stable">
-      <description>
-        <p>This is a stable release with the following notable changes:</p>
-        <ul>
-          <li>Fix installing langpacks for certain locales (#1747)</li>
-          <li>Improve UI presentation of flatpak apps with complex permissions (!1332)</li>
-          <li>Fix minor UI glitches on updates page (!1334)</li>
-          <li>Fix installation of .deb packages with PackageKit ≥ 1.2.5 (!1333)</li>
-          <li>Fix the ‘Remove’ button for your own app reviews (!1369)</li>
-          <li>Minor UI fixes when using a dark theme (!1371)</li>
-        </ul>
-        <p>This release also updates translations:</p>
-        <ul>
-          <li>Bulgarian</li>
+          <li>Abkhazian</li>
           <li>Catalan</li>
           <li>Chinese (China)</li>
-          <li>Chinese (Taiwan)</li>
-          <li>Finnish</li>
-          <li>French</li>
-          <li>Galician</li>
-          <li>German</li>
+          <li>Dutch</li>
+          <li>Georgian</li>
+          <li>Hebrew</li>
           <li>Indonesian</li>
+          <li>Italian</li>
           <li>Lithuanian</li>
-          <li>Nepali</li>
           <li>Persian</li>
-          <li>Polish</li>
           <li>Portuguese</li>
-          <li>Portuguese (Brazil)</li>
           <li>Russian</li>
-          <li>Swedish</li>
+          <li>Serbian</li>
+          <li>Spanish</li>
           <li>Turkish</li>
           <li>Ukrainian</li>
           <li>Vietnamese</li>
         </ul>
       </description>
     </release>
-    <release date="2022-04-26" version="42.1" type="stable">
+    <release date="2022-06-30" version="43.alpha" type="development">
       <description>
-        <p>This is a stable release with the following notable changes:</p>
+        <p>This is the first unstable release for GNOME 43.</p>
         <ul>
-          <li>#1514 GNOME OS: Most system apps have no icons in installed list</li>
-          <li>#1690 Button to go back is missing in "OS Updates" page opened from "Installed Updates" window</li>
-          <li>#1693 Fix an issue where Software would sometimes display a "Software Updates Failed" error message on startup</li>
-          <li>#1712 Clicking "Fedora Flathub Selection" does not update the filtered Flathub AppStream metadata until reboot</li>
-          <li>#1723 Installed Updates dialog UI papercuts</li>
-          <li>#1727 Wrong direction of arrows in updates list in RTL languages</li>
-          <li>!794 flatpak: Prefer to install runtimes from the same remote as the application</li>
-          <li>!1235 Find AppStream metadata in every possible location</li>
-          <li>!1299 Avoid re-downloads of not-yet-stale data in some cases</li>
-          <li>!1307 Change thread I/O priority depending on job priority</li>
-          <li>!1313 Ensure labels don't overlap in app lists</li>
-          <li>!1318 Fix an issue preventing the user from disabling some repositories on Fedora</li>
+          <li>Various improvements to notifications</li>
+          <li>Fix several crashes when handling flatpak apps</li>
+          <li>Add ‘Other Apps by Author’ section in the app details page</li>
+          <li>Improve styling of app context lozenges</li>
+          <li>Add ‘Available for Distro’ section to the overview page (if configured by your distribution)</li>
+          <li>Show more details about file system permissions requested by flatpak apps</li>
+          <li>Show more types of URI from app metainfo</li>
+          <li>Fix a few issues when using a dark mode theme</li>
+          <li>Fix some issues with arrows in right-to-left locales</li>
+          <li>Fix language pack installation for certain locales</li>
+          <li>Improve debug output to make user bug reports more useful</li>
+          <li>Add `--uninstall=ID` command line option</li>
+          <li>Allow scrolling screenshots by clicking on next and previous screenshots</li>
+          <li>Add support for webapps</li>
+          <li>Allow swiping back in the shell using touch gestures</li>
+          <li>Improved caching of downloaded metadata</li>
+          <li>Many internal architectural changes to make the code more maintainable</li>
+          <li>
+            The <code>popular-overrides</code> GSettings key has been removed;
+            distribution vendors wishing to mark their apps as popular should
+            see `doc/vendor-customisation.md` for examples of how to do this now
+          </li>
+          <li>
+            The <code>hardcoded_popular</code> Meson option has been renamed to
+            <code>hardcoded_curated</code>.
+          </li>
         </ul>
         <p>This release also updates translations:</p>
         <ul>
@@ -154,17 +134,24 @@
           <li>Bulgarian</li>
           <li>Catalan</li>
           <li>Chinese (China)</li>
+          <li>Chinese (Taiwan)</li>
           <li>Croatian</li>
           <li>Czech</li>
           <li>Danish</li>
           <li>Dutch</li>
           <li>English (United Kingdom)</li>
+          <li>Finnish</li>
+          <li>French</li>
           <li>Friulian</li>
           <li>Galician</li>
+          <li>Georgian</li>
+          <li>German</li>
           <li>Hebrew</li>
           <li>Hungarian</li>
           <li>Indonesian</li>
           <li>Lithuanian</li>
+          <li>Nepali</li>
+          <li>Occitan (post 1500)</li>
           <li>Persian</li>
           <li>Polish</li>
           <li>Portuguese</li>
@@ -1985,6 +1972,7 @@
   <url type="donation">https://www.gnome.org/donate/</url>
   <url type="homepage">https://wiki.gnome.org/Design/Apps/Software</url>
   <url type="translate">https://wiki.gnome.org/TranslationProject</url>
+  <url type="vcs-browser">https://gitlab.gnome.org/GNOME/gnome-software/</url>
   <update_contact>richard_at_hughsie.com</update_contact>
   <compulsory_for_desktop>GNOME</compulsory_for_desktop>
   <project_group>GNOME</project_group>

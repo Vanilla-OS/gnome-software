@@ -35,7 +35,8 @@ struct _GsOverviewPage
 	GsShell			*shell;
 	gint			 action_cnt;
 	gboolean		 loading_featured;
-	gboolean		 loading_popular;
+	gboolean		 loading_curated;
+	gboolean		 loading_deployment_featured;
 	gboolean		 loading_recent;
 	gboolean		 loading_categories;
 	gboolean		 empty;
@@ -43,18 +44,21 @@ struct _GsOverviewPage
 	GHashTable		*category_hash;		/* id : GsCategory */
 	GsFedoraThirdParty	*third_party;
 	gboolean		 third_party_needs_question;
+	gchar		       **deployment_featured;
 
 	GtkWidget		*infobar_third_party;
 	GtkWidget		*label_third_party;
 	GtkWidget		*featured_carousel;
 	GtkWidget		*box_overview;
-	GtkWidget		*box_popular;
+	GtkWidget		*box_curated;
 	GtkWidget		*box_recent;
+	GtkWidget		*box_deployment_featured;
 	GtkWidget		*flowbox_categories;
 	GtkWidget		*flowbox_iconless_categories;
 	GtkWidget		*iconless_categories_heading;
-	GtkWidget		*popular_heading;
+	GtkWidget		*curated_heading;
 	GtkWidget		*recent_heading;
+	GtkWidget		*deployment_featured_heading;
 	GtkWidget		*scrolledwindow_overview;
 	GtkWidget		*stack_overview;
 };
@@ -114,13 +118,14 @@ gs_overview_page_decrement_action_cnt (GsOverviewPage *self)
 	self->cache_valid = TRUE;
 	g_signal_emit (self, signals[SIGNAL_REFRESHED], 0);
 	self->loading_categories = FALSE;
+	self->loading_deployment_featured = FALSE;
 	self->loading_featured = FALSE;
-	self->loading_popular = FALSE;
+	self->loading_curated = FALSE;
 	self->loading_recent = FALSE;
 }
 
 static void
-gs_overview_page_get_popular_cb (GObject *source_object,
+gs_overview_page_get_curated_cb (GObject *source_object,
                                  GAsyncResult *res,
                                  gpointer user_data)
 {
@@ -132,37 +137,37 @@ gs_overview_page_get_popular_cb (GObject *source_object,
 	g_autoptr(GError) error = NULL;
 	g_autoptr(GsAppList) list = NULL;
 
-	/* get popular apps */
+	/* get curated apps */
 	list = gs_plugin_loader_job_process_finish (plugin_loader, res, &error);
 	if (list == NULL) {
 		if (!g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_CANCELLED) &&
 		    !g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
-			g_warning ("failed to get popular apps: %s", error->message);
+			g_warning ("failed to get curated apps: %s", error->message);
 		goto out;
 	}
 
 	/* not enough to show */
 	if (gs_app_list_length (list) < N_TILES) {
-		g_warning ("Only %u apps for popular list, hiding",
+		g_warning ("Only %u apps for curated list, hiding",
 		           gs_app_list_length (list));
-		gtk_widget_set_visible (self->box_popular, FALSE);
-		gtk_widget_set_visible (self->popular_heading, FALSE);
+		gtk_widget_set_visible (self->box_curated, FALSE);
+		gtk_widget_set_visible (self->curated_heading, FALSE);
 		goto out;
 	}
 
-	gs_app_list_randomize (list);
+	g_assert (gs_app_list_length (list) == N_TILES);
 
-	gs_widget_remove_all (self->box_popular, (GsRemoveFunc) gtk_flow_box_remove);
+	gs_widget_remove_all (self->box_curated, (GsRemoveFunc) gtk_flow_box_remove);
 
-	for (i = 0; i < gs_app_list_length (list) && i < N_TILES; i++) {
+	for (i = 0; i < gs_app_list_length (list); i++) {
 		app = gs_app_list_index (list, i);
 		tile = gs_summary_tile_new (app);
 		g_signal_connect (tile, "clicked",
 			  G_CALLBACK (app_tile_clicked), self);
-		gtk_flow_box_insert (GTK_FLOW_BOX (self->box_popular), tile, -1);
+		gtk_flow_box_insert (GTK_FLOW_BOX (self->box_curated), tile, -1);
 	}
-	gtk_widget_set_visible (self->box_popular, TRUE);
-	gtk_widget_set_visible (self->popular_heading, TRUE);
+	gtk_widget_set_visible (self->box_curated, TRUE);
+	gtk_widget_set_visible (self->curated_heading, TRUE);
 
 	self->empty = FALSE;
 
@@ -180,6 +185,14 @@ gs_overview_page_sort_recent_cb (GsApp *app1,
 	if (gs_app_get_release_date (app1) == gs_app_get_release_date (app2))
 		return g_strcmp0 (gs_app_get_name (app1), gs_app_get_name (app2));
 	return -1;
+}
+
+static gboolean
+gs_overview_page_filter_recent_cb (GsApp    *app,
+                                   gpointer  user_data)
+{
+	return (!gs_app_has_quirk (app, GS_APP_QUIRK_COMPULSORY) &&
+		gs_app_get_kind (app) == AS_COMPONENT_KIND_DESKTOP_APP);
 }
 
 static void
@@ -212,11 +225,11 @@ gs_overview_page_get_recent_cb (GObject *source_object, GAsyncResult *res, gpoin
 		goto out;
 	}
 
-	gs_app_list_sort (list, gs_overview_page_sort_recent_cb, NULL);
+	g_assert (gs_app_list_length (list) <= N_TILES);
 
 	gs_widget_remove_all (self->box_recent, (GsRemoveFunc) gtk_flow_box_remove);
 
-	for (i = 0; i < gs_app_list_length (list) && i < N_TILES; i++) {
+	for (i = 0; i < gs_app_list_length (list); i++) {
 		app = gs_app_list_index (list, i);
 		tile = gs_summary_tile_new (app);
 		g_signal_connect (tile, "clicked",
@@ -283,25 +296,61 @@ gs_overview_page_get_featured_cb (GObject *source_object,
 		goto out;
 	}
 
-	if (g_getenv ("GNOME_SOFTWARE_FEATURED") == NULL) {
-		gs_app_list_filter_duplicates (list, GS_APP_LIST_FILTER_FLAG_KEY_ID);
-		gs_app_list_randomize (list);
-	}
-
-	/* Filter out apps which don’t have a suitable hi-res icon. */
-	gs_app_list_filter (list, filter_hi_res_icon, self);
-
-	if (gs_app_list_length (list) > 5) {
-		g_debug ("%s: Received %u apps, truncated to 5", G_STRFUNC, gs_app_list_length (list));
-		gs_app_list_truncate (list, 5);
-	}
-
 	gtk_widget_set_visible (self->featured_carousel, gs_app_list_length (list) > 0);
 	gs_featured_carousel_set_apps (GS_FEATURED_CAROUSEL (self->featured_carousel), list);
 
 	self->empty = self->empty && (gs_app_list_length (list) == 0);
 
 out:
+	gs_overview_page_decrement_action_cnt (self);
+}
+
+static void
+gs_overview_page_get_deployment_featured_cb (GObject *source_object,
+					     GAsyncResult *res,
+					     gpointer user_data)
+{
+	GsOverviewPage *self = GS_OVERVIEW_PAGE (user_data);
+	GsPluginLoader *plugin_loader = GS_PLUGIN_LOADER (source_object);
+	guint i;
+	GsApp *app;
+	GtkWidget *tile;
+	g_autoptr(GError) error = NULL;
+	g_autoptr(GsAppList) list = NULL;
+
+	/* get deployment-featured apps */
+	list = gs_plugin_loader_job_process_finish (plugin_loader, res, &error);
+	if (list == NULL) {
+		if (!g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_CANCELLED))
+			g_warning ("failed to get deployment-featured apps: %s", error->message);
+		goto out;
+	}
+
+	/* not enough to show */
+	if (gs_app_list_length (list) < N_TILES) {
+		g_warning ("Only %u apps for deployment-featured list, hiding",
+		           gs_app_list_length (list));
+		gtk_widget_set_visible (self->box_deployment_featured, FALSE);
+		gtk_widget_set_visible (self->deployment_featured_heading, FALSE);
+		goto out;
+	}
+
+	g_assert (gs_app_list_length (list) == N_TILES);
+	gs_widget_remove_all (self->box_deployment_featured, (GsRemoveFunc) gtk_flow_box_remove);
+
+	for (i = 0; i < gs_app_list_length (list); i++) {
+		app = gs_app_list_index (list, i);
+		tile = gs_summary_tile_new (app);
+		g_signal_connect (tile, "clicked",
+			  G_CALLBACK (app_tile_clicked), self);
+		gtk_flow_box_insert (GTK_FLOW_BOX (self->box_deployment_featured), tile, -1);
+	}
+	gtk_widget_set_visible (self->box_deployment_featured, TRUE);
+	gtk_widget_set_visible (self->deployment_featured_heading, TRUE);
+
+	self->empty = FALSE;
+
+ out:
 	gs_overview_page_decrement_action_cnt (self);
 }
 
@@ -315,12 +364,27 @@ category_tile_clicked (GsCategoryTile *tile, gpointer data)
 	gs_shell_show_category (self->shell, category);
 }
 
+typedef struct {
+	GsOverviewPage *page;  /* (unowned) */
+	GsPluginJobListCategories *job;  /* (owned) */
+} GetCategoriesData;
+
+static void
+get_categories_data_free (GetCategoriesData *data)
+{
+	g_clear_object (&data->job);
+	g_free (data);
+}
+
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (GetCategoriesData, get_categories_data_free)
+
 static void
 gs_overview_page_get_categories_cb (GObject *source_object,
                                     GAsyncResult *res,
                                     gpointer user_data)
 {
-	GsOverviewPage *self = GS_OVERVIEW_PAGE (user_data);
+	g_autoptr(GetCategoriesData) data = g_steal_pointer (&user_data);
+	GsOverviewPage *self = GS_OVERVIEW_PAGE (data->page);
 	GsPluginLoader *plugin_loader = GS_PLUGIN_LOADER (source_object);
 	guint i;
 	GsCategory *cat;
@@ -328,15 +392,16 @@ gs_overview_page_get_categories_cb (GObject *source_object,
 	GtkWidget *tile;
 	guint added_cnt = 0;
 	g_autoptr(GError) error = NULL;
-	g_autoptr(GPtrArray) list = NULL;
+	GPtrArray *list = NULL;  /* (element-type GsCategory) */
 
-	list = gs_plugin_loader_job_get_categories_finish (plugin_loader, res, &error);
-	if (list == NULL) {
+	if (!gs_plugin_loader_job_action_finish (plugin_loader, res, &error)) {
 		if (!g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_CANCELLED) &&
 		    !g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
 			g_warning ("failed to get categories: %s", error->message);
 		goto out;
 	}
+
+	list = gs_plugin_job_list_categories_get_result_list (data->job);
 
 	gs_widget_remove_all (self->flowbox_categories, (GsRemoveFunc) gtk_flow_box_remove);
 	gs_widget_remove_all (self->flowbox_iconless_categories, (GsRemoveFunc) gtk_flow_box_remove);
@@ -481,6 +546,106 @@ fedora_third_party_disable (GsOverviewPage *self)
 	gs_fedora_third_party_opt_out (self->third_party, self->cancellable, fedora_third_party_disable_done_cb, g_object_ref (self));
 }
 
+static gchar *
+gs_overview_page_dup_deployment_featured_filename (void)
+{
+	g_autoptr(GPtrArray) dirs = NULL;
+	g_autofree gchar *filename = NULL;
+	const gchar * const *sys_dirs;
+
+	#define FILENAME "deployment-featured.ini"
+
+	filename = g_build_filename (SYSCONFDIR, "gnome-software", FILENAME, NULL);
+	if (g_file_test (filename, G_FILE_TEST_IS_REGULAR)) {
+		g_debug ("Found '%s'", filename);
+		return g_steal_pointer (&filename);
+	}
+	g_debug ("File '%s' does not exist, trying next", filename);
+	g_clear_pointer (&filename, g_free);
+
+	sys_dirs = g_get_system_config_dirs ();
+
+	for (guint i = 0; sys_dirs != NULL && sys_dirs[i]; i++) {
+		g_autofree gchar *tmp = g_build_filename (sys_dirs[i], "gnome-software", FILENAME, NULL);
+		if (g_file_test (tmp, G_FILE_TEST_IS_REGULAR)) {
+			g_debug ("Found '%s'", tmp);
+			return g_steal_pointer (&tmp);
+		}
+		g_debug ("File '%s' does not exist, trying next", tmp);
+	}
+
+	sys_dirs = g_get_system_data_dirs ();
+
+	for (guint i = 0; sys_dirs != NULL && sys_dirs[i]; i++) {
+		g_autofree gchar *tmp = g_build_filename (sys_dirs[i], "gnome-software", FILENAME, NULL);
+		if (g_file_test (tmp, G_FILE_TEST_IS_REGULAR)) {
+			g_debug ("Found '%s'", tmp);
+			return g_steal_pointer (&tmp);
+		}
+		g_debug ("File '%s' does not exist, %s", tmp, sys_dirs[i + 1] ? "trying next" : "no more files to try");
+	}
+
+	#undef FILENAME
+
+	return NULL;
+}
+
+static gboolean
+gs_overview_page_read_deployment_featured_keys (gchar **out_label,
+						gchar ***out_deployment_featured)
+{
+	g_autoptr(GKeyFile) key_file = NULL;
+	g_autoptr(GPtrArray) array = NULL;
+	g_auto(GStrv) selector = NULL;
+	g_autoptr(GError) error = NULL;
+	g_autofree gchar *filename = NULL;
+
+	filename = gs_overview_page_dup_deployment_featured_filename ();
+
+	if (filename == NULL)
+		return FALSE;
+
+	key_file = g_key_file_new ();
+	if (!g_key_file_load_from_file (key_file, filename, G_KEY_FILE_NONE, &error)) {
+		g_debug ("Failed to read '%s': %s", filename, error->message);
+		return FALSE;
+	}
+
+	*out_label = g_key_file_get_locale_string (key_file, "Deployment Featured Apps", "Title", NULL, NULL);
+
+	if (*out_label == NULL || **out_label == '\0') {
+		g_clear_pointer (out_label, g_free);
+		return FALSE;
+	}
+
+	selector = g_key_file_get_string_list (key_file, "Deployment Featured Apps", "Selector", NULL, NULL);
+
+	/* Sanitize the content */
+	if (selector == NULL) {
+		g_clear_pointer (out_label, g_free);
+		return FALSE;
+	}
+
+	array = g_ptr_array_sized_new (g_strv_length (selector) + 1);
+
+	for (guint i = 0; selector[i] != NULL; i++) {
+		const gchar *value = g_strstrip (selector[i]);
+		if (*value != '\0')
+			g_ptr_array_add (array, g_strdup (value));
+	}
+
+	if (array->len == 0) {
+		g_clear_pointer (out_label, g_free);
+		return FALSE;
+	}
+
+	g_ptr_array_add (array, NULL);
+
+	*out_deployment_featured = (gchar **) g_ptr_array_free (g_steal_pointer (&array), FALSE);
+
+	return TRUE;
+}
+
 static void
 gs_overview_page_load (GsOverviewPage *self)
 {
@@ -488,15 +653,21 @@ gs_overview_page_load (GsOverviewPage *self)
 
 	if (!self->loading_featured) {
 		g_autoptr(GsPluginJob) plugin_job = NULL;
+		g_autoptr(GsAppQuery) query = NULL;
+		GsPluginListAppsFlags flags = GS_PLUGIN_LIST_APPS_FLAGS_INTERACTIVE;
 
-		/* Ask for more than 5, the list will be shrunk based on usability of the returned apps. */
+		query = gs_app_query_new ("is-featured", GS_APP_QUERY_TRISTATE_TRUE,
+					  "max-results", 5,
+					  "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON,
+					  "dedupe-flags", GS_APP_LIST_FILTER_FLAG_PREFER_INSTALLED |
+							  GS_APP_LIST_FILTER_FLAG_KEY_ID_PROVIDES,
+					  "filter-func", filter_hi_res_icon,
+					  "filter-user-data", self,
+					  NULL);
+
+		plugin_job = gs_plugin_job_list_apps_new (query, flags);
+
 		self->loading_featured = TRUE;
-		plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_GET_FEATURED,
-						 "max-results", 20,
-						 "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON,
-						 "dedupe-flags", GS_APP_LIST_FILTER_FLAG_PREFER_INSTALLED |
-								 GS_APP_LIST_FILTER_FLAG_KEY_ID_PROVIDES,
-						 NULL);
 		gs_plugin_loader_job_process_async (self->plugin_loader,
 						    plugin_job,
 						    self->cancellable,
@@ -505,40 +676,80 @@ gs_overview_page_load (GsOverviewPage *self)
 		self->action_cnt++;
 	}
 
-	if (!self->loading_popular) {
+	if (!self->loading_deployment_featured && self->deployment_featured != NULL) {
 		g_autoptr(GsPluginJob) plugin_job = NULL;
+		g_autoptr(GsAppQuery) query = NULL;
+		GsPluginListAppsFlags flags = GS_PLUGIN_LIST_APPS_FLAGS_INTERACTIVE;
 
-		self->loading_popular = TRUE;
-		plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_GET_POPULAR,
-						 "max-results", 20,
-						 "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_RATING |
-								 GS_PLUGIN_REFINE_FLAGS_REQUIRE_CATEGORIES |
-								 GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON,
-						 "dedupe-flags", GS_APP_LIST_FILTER_FLAG_PREFER_INSTALLED |
-								 GS_APP_LIST_FILTER_FLAG_KEY_ID_PROVIDES,
-						 NULL);
+		self->loading_deployment_featured = TRUE;
+
+		query = gs_app_query_new ("deployment-featured", self->deployment_featured,
+					  "max-results", N_TILES,
+					  "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_RATING |
+							  GS_PLUGIN_REFINE_FLAGS_REQUIRE_CATEGORIES |
+							  GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON,
+					  "dedupe-flags", GS_APP_LIST_FILTER_FLAG_PREFER_INSTALLED |
+							  GS_APP_LIST_FILTER_FLAG_KEY_ID_PROVIDES,
+					  NULL);
+
+		plugin_job = gs_plugin_job_list_apps_new (query, flags);
+
 		gs_plugin_loader_job_process_async (self->plugin_loader,
 						    plugin_job,
 						    self->cancellable,
-						    gs_overview_page_get_popular_cb,
+						    gs_overview_page_get_deployment_featured_cb,
+						    self);
+		self->action_cnt++;
+	}
+
+	if (!self->loading_curated) {
+		g_autoptr(GsPluginJob) plugin_job = NULL;
+		g_autoptr(GsAppQuery) query = NULL;
+		GsPluginListAppsFlags flags = GS_PLUGIN_LIST_APPS_FLAGS_INTERACTIVE;
+
+		query = gs_app_query_new ("is-curated", GS_APP_QUERY_TRISTATE_TRUE,
+					  "max-results", N_TILES,
+					  "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_RATING |
+							  GS_PLUGIN_REFINE_FLAGS_REQUIRE_CATEGORIES |
+							  GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON,
+					  "dedupe-flags", GS_APP_LIST_FILTER_FLAG_PREFER_INSTALLED |
+							  GS_APP_LIST_FILTER_FLAG_KEY_ID_PROVIDES,
+					  NULL);
+
+		plugin_job = gs_plugin_job_list_apps_new (query, flags);
+
+		self->loading_curated = TRUE;
+		gs_plugin_loader_job_process_async (self->plugin_loader,
+						    plugin_job,
+						    self->cancellable,
+						    gs_overview_page_get_curated_cb,
 						    self);
 		self->action_cnt++;
 	}
 
 	if (!self->loading_recent) {
 		g_autoptr(GsPluginJob) plugin_job = NULL;
+		g_autoptr(GDateTime) now = NULL;
+		g_autoptr(GDateTime) released_since = NULL;
+		g_autoptr(GsAppQuery) query = NULL;
+		GsPluginListAppsFlags flags = GS_PLUGIN_LIST_APPS_FLAGS_INTERACTIVE;
+
+		now = g_date_time_new_now_local ();
+		released_since = g_date_time_add_seconds (now, -(60 * 60 * 24 * 30));
+		query = gs_app_query_new ("released-since", released_since,
+					  "max-results", N_TILES,
+					  "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_RATING |
+							  GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON,
+					  "dedupe-flags", GS_APP_LIST_FILTER_FLAG_KEY_ID |
+							  GS_APP_LIST_FILTER_FLAG_PREFER_INSTALLED |
+							  GS_APP_LIST_FILTER_FLAG_KEY_ID_PROVIDES,
+					  "sort-func", gs_overview_page_sort_recent_cb,
+					  "filter-func", gs_overview_page_filter_recent_cb,
+					  NULL);
+
+		plugin_job = gs_plugin_job_list_apps_new (query, flags);
 
 		self->loading_recent = TRUE;
-		plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_GET_RECENT,
-						 "age", (guint64) (60 * 60 * 24 * 30),
-						 /* To have large-enough set, in case filtering removes some non-applicable apps */
-						 "max-results", 3 * N_TILES,
-						 "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_RATING |
-								 GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON,
-						 "dedupe-flags", GS_APP_LIST_FILTER_FLAG_PREFER_INSTALLED |
-								 GS_APP_LIST_FILTER_FLAG_KEY_ID_PROVIDES,
-						 NULL);
-		gs_plugin_job_set_sort_func (plugin_job, gs_overview_page_sort_recent_cb, NULL);
 		gs_plugin_loader_job_process_async (self->plugin_loader,
 						    plugin_job,
 						    self->cancellable,
@@ -549,12 +760,20 @@ gs_overview_page_load (GsOverviewPage *self)
 
 	if (!self->loading_categories) {
 		g_autoptr(GsPluginJob) plugin_job = NULL;
+		GsPluginRefineCategoriesFlags flags = GS_PLUGIN_REFINE_CATEGORIES_FLAGS_INTERACTIVE |
+		                                      GS_PLUGIN_REFINE_CATEGORIES_FLAGS_SIZE;
+		g_autoptr(GetCategoriesData) data = NULL;
+
 		self->loading_categories = TRUE;
-		plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_GET_CATEGORIES, NULL);
-		gs_plugin_loader_job_get_categories_async (self->plugin_loader, plugin_job,
-							  self->cancellable,
-							  gs_overview_page_get_categories_cb,
-							  self);
+		plugin_job = gs_plugin_job_list_categories_new (flags);
+
+		data = g_new0 (GetCategoriesData, 1);
+		data->page = self;
+		data->job = g_object_ref (GS_PLUGIN_JOB_LIST_CATEGORIES (plugin_job));
+
+		gs_plugin_loader_job_process_async (self->plugin_loader, plugin_job,
+						    self->cancellable, gs_overview_page_get_categories_cb,
+						    g_steal_pointer (&data));
 		self->action_cnt++;
 	}
 
@@ -675,7 +894,7 @@ gs_overview_page_setup (GsPage *page,
 
 	for (i = 0; i < N_TILES; i++) {
 		tile = gs_summary_tile_new (NULL);
-		gtk_flow_box_insert (GTK_FLOW_BOX (self->box_popular), tile, -1);
+		gtk_flow_box_insert (GTK_FLOW_BOX (self->box_curated), tile, -1);
 	}
 
 	for (i = 0; i < N_TILES; i++) {
@@ -699,11 +918,16 @@ refreshed_cb (GsOverviewPage *self, gpointer user_data)
 static void
 gs_overview_page_init (GsOverviewPage *self)
 {
+	g_autofree gchar *tmp_label = NULL;
+
 	gtk_widget_init_template (GTK_WIDGET (self));
 
 	gs_featured_carousel_set_apps (GS_FEATURED_CAROUSEL (self->featured_carousel), NULL);
 
 	g_signal_connect (self, "refreshed", G_CALLBACK (refreshed_cb), self);
+
+	if (gs_overview_page_read_deployment_featured_keys (&tmp_label, &self->deployment_featured))
+		gtk_label_set_text (GTK_LABEL (self->deployment_featured_heading), tmp_label);
 }
 
 static void
@@ -755,6 +979,7 @@ gs_overview_page_dispose (GObject *object)
 	g_clear_object (&self->cancellable);
 	g_clear_object (&self->third_party);
 	g_clear_pointer (&self->category_hash, g_hash_table_unref);
+	g_clear_pointer (&self->deployment_featured, g_strfreev);
 
 	G_OBJECT_CLASS (gs_overview_page_parent_class)->dispose (object);
 }
@@ -789,13 +1014,15 @@ gs_overview_page_class_init (GsOverviewPageClass *klass)
 	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, label_third_party);
 	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, featured_carousel);
 	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, box_overview);
-	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, box_popular);
+	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, box_curated);
 	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, box_recent);
+	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, box_deployment_featured);
 	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, flowbox_categories);
 	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, flowbox_iconless_categories);
 	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, iconless_categories_heading);
-	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, popular_heading);
+	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, curated_heading);
 	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, recent_heading);
+	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, deployment_featured_heading);
 	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, scrolledwindow_overview);
 	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, stack_overview);
 	gtk_widget_class_bind_template_callback (widget_class, featured_carousel_app_clicked_cb);

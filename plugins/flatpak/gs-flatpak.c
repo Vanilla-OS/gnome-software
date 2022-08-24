@@ -80,7 +80,7 @@ gs_flatpak_claim_app (GsFlatpak *self, GsApp *app)
 		return;
 
 	gs_app_set_management_plugin (app, self->plugin);
-	gs_app_set_bundle_kind (app, AS_BUNDLE_KIND_FLATPAK);
+	gs_flatpak_app_set_packaging_info (app);
 
 	/* only when we have a non-temp object */
 	if ((self->flags & GS_FLATPAK_FLAG_IS_TEMPORARY) == 0) {
@@ -167,6 +167,12 @@ gs_flatpak_set_app_origin (GsFlatpak *self,
 		}
 	}
 
+	if (g_strcmp0 (origin, "flathub-beta") == 0 ||
+	    g_strcmp0 (gs_app_get_branch (app), "devel") == 0 ||
+	    g_strcmp0 (gs_app_get_branch (app), "master") == 0 ||
+	    (gs_app_get_branch (app) && g_str_has_suffix (gs_app_get_branch (app), "beta")))
+		gs_app_add_quirk (app, GS_APP_QUIRK_DEVELOPMENT_SOURCE);
+
 	gs_app_set_origin (app, origin);
 	gs_app_set_origin_ui (app, title);
 }
@@ -212,95 +218,207 @@ gs_flatpak_set_kind_from_flatpak (GsApp *app, FlatpakRef *xref)
 	}
 }
 
-static GsAppPermissions
+static guint
+gs_get_strv_index (const gchar * const *strv,
+		   const gchar *value)
+{
+	guint ii;
+
+	for (ii = 0; strv[ii]; ii++) {
+		if (g_str_equal (strv[ii], value))
+			break;
+	}
+
+	return ii;
+}
+
+static GsAppPermissions *
 perms_from_metadata (GKeyFile *keyfile)
 {
 	char **strv;
 	char *str;
-	GsAppPermissions permissions = GS_APP_PERMISSIONS_UNKNOWN;
+	GsAppPermissions *permissions = gs_app_permissions_new ();
+	GsAppPermissionsFlags flags = GS_APP_PERMISSIONS_FLAGS_UNKNOWN;
 
 	strv = g_key_file_get_string_list (keyfile, "Context", "sockets", NULL, NULL);
 	if (strv != NULL && g_strv_contains ((const gchar * const*)strv, "system-bus"))
-		permissions |= GS_APP_PERMISSIONS_SYSTEM_BUS;
+		flags |= GS_APP_PERMISSIONS_FLAGS_SYSTEM_BUS;
 	if (strv != NULL && g_strv_contains ((const gchar * const*)strv, "session-bus"))
-		permissions |= GS_APP_PERMISSIONS_SESSION_BUS;
+		flags |= GS_APP_PERMISSIONS_FLAGS_SESSION_BUS;
 	if (strv != NULL &&
 	    !g_strv_contains ((const gchar * const*)strv, "fallback-x11") &&
 	    g_strv_contains ((const gchar * const*)strv, "x11"))
-		permissions |= GS_APP_PERMISSIONS_X11;
+		flags |= GS_APP_PERMISSIONS_FLAGS_X11;
 	g_strfreev (strv);
 
 	strv = g_key_file_get_string_list (keyfile, "Context", "devices", NULL, NULL);
 	if (strv != NULL && g_strv_contains ((const gchar * const*)strv, "all"))
-		permissions |= GS_APP_PERMISSIONS_DEVICES;
+		flags |= GS_APP_PERMISSIONS_FLAGS_DEVICES;
 	g_strfreev (strv);
 
 	strv = g_key_file_get_string_list (keyfile, "Context", "shared", NULL, NULL);
 	if (strv != NULL && g_strv_contains ((const gchar * const*)strv, "network"))
-		permissions |= GS_APP_PERMISSIONS_NETWORK;
+		flags |= GS_APP_PERMISSIONS_FLAGS_NETWORK;
 	g_strfreev (strv);
 
 	strv = g_key_file_get_string_list (keyfile, "Context", "filesystems", NULL, NULL);
 	if (strv != NULL) {
 		const struct {
 			const gchar *key;
-			GsAppPermissions perm;
+			GsAppPermissionsFlags perm;
 		} filesystems_access[] = {
 			/* Reference: https://docs.flatpak.org/en/latest/flatpak-command-reference.html#idm45858571325264 */
-			{ "home", GS_APP_PERMISSIONS_HOME_FULL },
-			{ "home:rw", GS_APP_PERMISSIONS_HOME_FULL },
-			{ "home:ro", GS_APP_PERMISSIONS_HOME_READ },
-			{ "host", GS_APP_PERMISSIONS_FILESYSTEM_FULL },
-			{ "host:rw", GS_APP_PERMISSIONS_FILESYSTEM_FULL },
-			{ "host:ro", GS_APP_PERMISSIONS_FILESYSTEM_READ },
-			{ "xdg-download", GS_APP_PERMISSIONS_DOWNLOADS_FULL },
-			{ "xdg-download:rw", GS_APP_PERMISSIONS_DOWNLOADS_FULL },
-			{ "xdg-download:ro", GS_APP_PERMISSIONS_DOWNLOADS_READ },
-			{ "xdg-data/flatpak/overrides:create", GS_APP_PERMISSIONS_ESCAPE_SANDBOX }
+			{ "home", GS_APP_PERMISSIONS_FLAGS_HOME_FULL },
+			{ "home:rw", GS_APP_PERMISSIONS_FLAGS_HOME_FULL },
+			{ "home:ro", GS_APP_PERMISSIONS_FLAGS_HOME_READ },
+			{ "~", GS_APP_PERMISSIONS_FLAGS_HOME_FULL },
+			{ "~:rw", GS_APP_PERMISSIONS_FLAGS_HOME_FULL },
+			{ "~:ro", GS_APP_PERMISSIONS_FLAGS_HOME_READ },
+			{ "host", GS_APP_PERMISSIONS_FLAGS_FILESYSTEM_FULL },
+			{ "host:rw", GS_APP_PERMISSIONS_FLAGS_FILESYSTEM_FULL },
+			{ "host:ro", GS_APP_PERMISSIONS_FLAGS_FILESYSTEM_READ },
+			{ "xdg-download", GS_APP_PERMISSIONS_FLAGS_DOWNLOADS_FULL },
+			{ "xdg-download:rw", GS_APP_PERMISSIONS_FLAGS_DOWNLOADS_FULL },
+			{ "xdg-download:ro", GS_APP_PERMISSIONS_FLAGS_DOWNLOADS_READ },
+			{ "xdg-data/flatpak/overrides:create", GS_APP_PERMISSIONS_FLAGS_ESCAPE_SANDBOX }
 		};
 		guint filesystems_hits = 0;
+		guint strv_len = g_strv_length (strv);
 
 		for (guint i = 0; i < G_N_ELEMENTS (filesystems_access); i++) {
-			if (g_strv_contains ((const gchar * const *) strv, filesystems_access[i].key)) {
-				permissions |= filesystems_access[i].perm;
+			guint index = gs_get_strv_index ((const gchar * const *) strv, filesystems_access[i].key);
+			if (index < strv_len) {
+				flags |= filesystems_access[i].perm;
 				filesystems_hits++;
+				/* Mark it as used */
+				strv[index][0] = '\0';
 			}
 		}
 
-		if ((permissions & GS_APP_PERMISSIONS_HOME_FULL) != 0)
-			permissions = permissions & ~GS_APP_PERMISSIONS_HOME_READ;
-		if ((permissions & GS_APP_PERMISSIONS_FILESYSTEM_FULL) != 0)
-			permissions = permissions & ~GS_APP_PERMISSIONS_FILESYSTEM_READ;
-		if ((permissions & GS_APP_PERMISSIONS_DOWNLOADS_FULL) != 0)
-			permissions = permissions & ~GS_APP_PERMISSIONS_DOWNLOADS_READ;
+		if ((flags & GS_APP_PERMISSIONS_FLAGS_HOME_FULL) != 0)
+			flags = flags & ~GS_APP_PERMISSIONS_FLAGS_HOME_READ;
+		if ((flags & GS_APP_PERMISSIONS_FLAGS_FILESYSTEM_FULL) != 0)
+			flags = flags & ~GS_APP_PERMISSIONS_FLAGS_FILESYSTEM_READ;
+		if ((flags & GS_APP_PERMISSIONS_FLAGS_DOWNLOADS_FULL) != 0)
+			flags = flags & ~GS_APP_PERMISSIONS_FLAGS_DOWNLOADS_READ;
 
-		if (g_strv_length (strv) > filesystems_hits)
-			permissions |= GS_APP_PERMISSIONS_FILESYSTEM_OTHER;
+		if (strv_len > filesystems_hits) {
+			/* Cover those not being part of the above filesystem_access array */
+			const struct {
+				const gchar *prefix;
+				const gchar *title;
+				const gchar *title_subdir;
+			} filesystems_other[] = {
+				/* Reference: https://docs.flatpak.org/en/latest/flatpak-command-reference.html#idm45858571325264 */
+				{ "/",			NULL,					   N_("System folder %s") },
+				{ "home/",		NULL,					   N_("Home subfolder %s") },
+				{ "~/",			NULL,					   N_("Home subfolder %s") },
+				{ "host-os",		N_("Host system folders"),		   NULL },
+				{ "host-etc",		N_("Host system configuration from /etc"), NULL },
+				{ "xdg-desktop",	N_("Desktop folder"),			   N_("Desktop subfolder %s") },
+				{ "xdg-documents",	N_("Documents folder"),			   N_("Documents subfolder %s") },
+				{ "xdg-music",		N_("Music folder"),			   N_("Music subfolder %s") },
+				{ "xdg-pictures",	N_("Pictures folder"),			   N_("Pictures subfolder %s") },
+				{ "xdg-public-share",	N_("Public Share folder"),		   N_("Public Share subfolder %s") },
+				{ "xdg-videos",		N_("Videos folder"),			   N_("Videos subfolder %s") },
+				{ "xdg-templates",	N_("Templates folder"),			   N_("Templates subfolder %s") },
+				{ "xdg-cache",		N_("User cache folder"),		   N_("User cache subfolder %s") },
+				{ "xdg-config",		N_("User configuration folder"),	   N_("User configuration subfolder %s") },
+				{ "xdg-data",		N_("User data folder"),			   N_("User data subfolder %s") },
+				{ "xdg-run",		N_("User runtime folder"),		   N_("User runtime subfolder %s") }
+			};
+
+			flags |= GS_APP_PERMISSIONS_FLAGS_FILESYSTEM_OTHER;
+
+			for (guint j = 0; strv[j]; j++) {
+				gchar *perm = strv[j];
+				gboolean is_readonly;
+				gchar *colon;
+				guint i;
+
+				/* Already handled by the flags */
+				if (!perm[0])
+					continue;
+
+				is_readonly = g_str_has_suffix (perm, ":ro");
+				colon = strrchr (perm, ':');
+				/* modifiers are ":ro", ":rw", ":create", where ":create" is ":rw" + create
+				   and ":rw" is default; treat ":create" as ":rw" */
+				if (colon) {
+					/* Completeness check */
+					if (!g_str_equal (colon, ":ro") &&
+					    !g_str_equal (colon, ":rw") &&
+					    !g_str_equal (colon, ":create"))
+						g_debug ("Unknown filesystem permission modifier '%s' from '%s'", colon, perm);
+					/* cut it off */
+					*colon = '\0';
+				}
+
+				for (i = 0; i < G_N_ELEMENTS (filesystems_other); i++) {
+					if (g_str_has_prefix (perm, filesystems_other[i].prefix)) {
+						g_autofree gchar *title_tmp = NULL;
+						const gchar *slash, *title = NULL;
+						slash = strchr (perm, '/');
+						/* Catch and ignore invalid permission definitions */
+						if (slash && filesystems_other[i].title_subdir != NULL) {
+							#pragma GCC diagnostic push
+							#pragma GCC diagnostic ignored "-Wformat-nonliteral"
+							title_tmp = g_strdup_printf (
+								_(filesystems_other[i].title_subdir),
+								slash + (slash == perm ? 0 : 1));
+							#pragma GCC diagnostic pop
+							title = title_tmp;
+						} else if (!slash && filesystems_other[i].title != NULL) {
+							title = _(filesystems_other[i].title);
+						}
+						if (title != NULL) {
+							if (is_readonly)
+								gs_app_permissions_add_filesystem_read (permissions, title);
+							else
+								gs_app_permissions_add_filesystem_full (permissions, title);
+						}
+						break;
+					}
+				}
+
+				/* Nothing matched, use a generic entry */
+				if (i == G_N_ELEMENTS (filesystems_other)) {
+					g_autofree gchar *title = g_strdup_printf (_("Filesystem access to %s"), perm);
+					if (is_readonly)
+						gs_app_permissions_add_filesystem_read (permissions, title);
+					else
+						gs_app_permissions_add_filesystem_full (permissions, title);
+				}
+			}
+		}
 	}
 	g_strfreev (strv);
 
 	str = g_key_file_get_string (keyfile, "Session Bus Policy", "ca.desrt.dconf", NULL);
 	if (str != NULL && g_str_equal (str, "talk"))
-		permissions |= GS_APP_PERMISSIONS_SETTINGS;
+		flags |= GS_APP_PERMISSIONS_FLAGS_SETTINGS;
 	g_free (str);
 
-	if (!(permissions & GS_APP_PERMISSIONS_ESCAPE_SANDBOX)) {
+	if (!(flags & GS_APP_PERMISSIONS_FLAGS_ESCAPE_SANDBOX)) {
 		str = g_key_file_get_string (keyfile, "Session Bus Policy", "org.freedesktop.Flatpak", NULL);
 		if (str != NULL && g_str_equal (str, "talk"))
-			permissions |= GS_APP_PERMISSIONS_ESCAPE_SANDBOX;
+			flags |= GS_APP_PERMISSIONS_FLAGS_ESCAPE_SANDBOX;
 		g_free (str);
 	}
 
-	if (!(permissions & GS_APP_PERMISSIONS_ESCAPE_SANDBOX)) {
+	if (!(flags & GS_APP_PERMISSIONS_FLAGS_ESCAPE_SANDBOX)) {
 		str = g_key_file_get_string (keyfile, "Session Bus Policy", "org.freedesktop.impl.portal.PermissionStore", NULL);
 		if (str != NULL && g_str_equal (str, "talk"))
-			permissions |= GS_APP_PERMISSIONS_ESCAPE_SANDBOX;
+			flags |= GS_APP_PERMISSIONS_FLAGS_ESCAPE_SANDBOX;
 		g_free (str);
 	}
 
 	/* no permissions set */
-	if (permissions == GS_APP_PERMISSIONS_UNKNOWN)
-		return GS_APP_PERMISSIONS_NONE;
+	if (flags == GS_APP_PERMISSIONS_FLAGS_UNKNOWN)
+		flags = GS_APP_PERMISSIONS_FLAGS_NONE;
+
+	gs_app_permissions_set_flags (permissions, flags);
+	gs_app_permissions_seal (permissions);
 
 	return permissions;
 }
@@ -316,7 +434,7 @@ gs_flatpak_set_update_permissions (GsFlatpak           *self,
 	g_autoptr(GKeyFile) old_keyfile = NULL;
 	g_autoptr(GBytes) bytes = NULL;
 	g_autoptr(GKeyFile) keyfile = NULL;
-	GsAppPermissions permissions;
+	g_autoptr(GsAppPermissions) additional_permissions = gs_app_permissions_new ();
 	g_autoptr(GError) error_local = NULL;
 
 	old_bytes = flatpak_installed_ref_load_metadata (FLATPAK_INSTALLED_REF (xref), NULL, NULL);
@@ -335,24 +453,51 @@ gs_flatpak_set_update_permissions (GsFlatpak           *self,
 		g_debug ("Failed to get metadata for remote ‘%s’: %s",
 			 gs_app_get_origin (app), error_local->message);
 		g_clear_error (&error_local);
-		permissions = GS_APP_PERMISSIONS_UNKNOWN;
+		gs_app_permissions_set_flags (additional_permissions, GS_APP_PERMISSIONS_FLAGS_UNKNOWN);
 	} else {
+		g_autoptr(GsAppPermissions) old_permissions = NULL;
+		g_autoptr(GsAppPermissions) new_permissions = NULL;
+		const GPtrArray *new_paths;
+
 		keyfile = g_key_file_new ();
 		g_key_file_load_from_data (keyfile,
 			                   g_bytes_get_data (bytes, NULL),
 			                   g_bytes_get_size (bytes),
 			                   0, NULL);
-		permissions = perms_from_metadata (keyfile) & ~perms_from_metadata (old_keyfile);
+
+		old_permissions = perms_from_metadata (old_keyfile);
+		new_permissions = perms_from_metadata (keyfile);
+
+		gs_app_permissions_set_flags (additional_permissions,
+					      gs_app_permissions_get_flags (new_permissions) &
+					     ~gs_app_permissions_get_flags (old_permissions));
+
+		new_paths = gs_app_permissions_get_filesystem_read (new_permissions);
+		for (guint i = 0; new_paths && i < new_paths->len; i++) {
+			const gchar *new_path = g_ptr_array_index (new_paths, i);
+			if (!gs_app_permissions_contains_filesystem_read (old_permissions, new_path))
+				gs_app_permissions_add_filesystem_read (additional_permissions, new_path);
+		}
+
+		new_paths = gs_app_permissions_get_filesystem_full (new_permissions);
+		for (guint i = 0; new_paths && i < new_paths->len; i++) {
+			const gchar *new_path = g_ptr_array_index (new_paths, i);
+			if (!gs_app_permissions_contains_filesystem_full (old_permissions, new_path))
+				gs_app_permissions_add_filesystem_full (additional_permissions, new_path);
+		}
 	}
 
 	/* no new permissions set */
-	if (permissions == GS_APP_PERMISSIONS_UNKNOWN)
-		permissions = GS_APP_PERMISSIONS_NONE;
+	if (gs_app_permissions_get_flags (additional_permissions) == GS_APP_PERMISSIONS_FLAGS_UNKNOWN)
+		gs_app_permissions_set_flags (additional_permissions, GS_APP_PERMISSIONS_FLAGS_NONE);
 
-	gs_app_set_update_permissions (app, permissions);
+	gs_app_permissions_seal (additional_permissions);
+	gs_app_set_update_permissions (app, additional_permissions);
 
-	if (permissions != GS_APP_PERMISSIONS_NONE)
+	if (gs_app_permissions_get_flags (additional_permissions) != GS_APP_PERMISSIONS_FLAGS_NONE)
 		gs_app_add_quirk (app, GS_APP_QUIRK_NEW_PERMISSIONS);
+	else
+		gs_app_remove_quirk (app, GS_APP_QUIRK_NEW_PERMISSIONS);
 }
 
 static void
@@ -390,10 +535,9 @@ gs_flatpak_set_metadata (GsFlatpak *self, GsApp *app, FlatpakRef *xref)
 	} else if (FLATPAK_IS_INSTALLED_REF (xref)) {
 		installed_size = flatpak_installed_ref_get_installed_size (FLATPAK_INSTALLED_REF (xref));
 	}
-	if (installed_size != 0)
-		gs_app_set_size_installed (app, installed_size);
-	if (download_size != 0)
-		gs_app_set_size_download (app, download_size);
+
+	gs_app_set_size_installed (app, (installed_size != 0) ? GS_SIZE_TYPE_VALID : GS_SIZE_TYPE_UNKNOWN, installed_size);
+	gs_app_set_size_download (app, (download_size != 0) ? GS_SIZE_TYPE_VALID : GS_SIZE_TYPE_UNKNOWN, download_size);
 }
 
 static GsApp *
@@ -1457,8 +1601,7 @@ gs_flatpak_set_metadata_installed (GsFlatpak *self,
 
 	/* this is faster than flatpak_installation_fetch_remote_size_sync() */
 	size_installed = flatpak_installed_ref_get_installed_size (xref);
-	if (size_installed != 0)
-		gs_app_set_size_installed (app, size_installed);
+	gs_app_set_size_installed (app, (size_installed != 0) ? GS_SIZE_TYPE_VALID : GS_SIZE_TYPE_UNKNOWN, size_installed);
 
 	appdata_version = flatpak_installed_ref_get_appdata_version (xref);
 	if (appdata_version != NULL)
@@ -1981,7 +2124,7 @@ gs_flatpak_add_updates (GsFlatpak *self,
 			gs_app_set_update_details_markup (main_app, NULL);
 			gs_app_set_update_version (main_app, NULL);
 			gs_app_set_update_urgency (main_app, AS_URGENCY_KIND_UNKNOWN);
-			gs_app_set_size_download (main_app, 0);
+			gs_app_set_size_download (main_app, GS_SIZE_TYPE_VALID, 0);
 
 		/* needs download */
 		} else {
@@ -1990,7 +2133,7 @@ gs_flatpak_add_updates (GsFlatpak *self,
 				 flatpak_ref_get_name (FLATPAK_REF (xref)));
 
 			/* get the current download size */
-			if (gs_app_get_size_download (main_app) == 0) {
+			if (gs_app_get_size_download (main_app, NULL) != GS_SIZE_TYPE_VALID) {
 				if (!flatpak_installation_fetch_remote_size_sync (installation,
 										  gs_app_get_origin (app),
 										  FLATPAK_REF (xref),
@@ -2001,9 +2144,9 @@ gs_flatpak_add_updates (GsFlatpak *self,
 					g_warning ("failed to get download size: %s",
 						   error_local->message);
 					g_clear_error (&error_local);
-					gs_app_set_size_download (main_app, GS_APP_SIZE_UNKNOWABLE);
+					gs_app_set_size_download (main_app, GS_SIZE_TYPE_UNKNOWABLE, 0);
 				} else {
-					gs_app_set_size_download (main_app, download_size);
+					gs_app_set_size_download (main_app, GS_SIZE_TYPE_VALID, download_size);
 				}
 			}
 		}
@@ -2461,6 +2604,7 @@ gs_flatpak_set_app_metadata (GsFlatpak *self,
 	g_autofree gchar *runtime = NULL;
 	g_autoptr(GKeyFile) kf = NULL;
 	g_autoptr(GsApp) app_runtime = NULL;
+	g_autoptr(GsAppPermissions) permissions = NULL;
 	g_auto(GStrv) shared = NULL;
 	g_auto(GStrv) sockets = NULL;
 	g_auto(GStrv) filesystems = NULL;
@@ -2501,7 +2645,8 @@ gs_flatpak_set_app_metadata (GsFlatpak *self,
 			secure = FALSE;
 	}
 
-	gs_app_set_permissions (app, perms_from_metadata (kf));
+	permissions = perms_from_metadata (kf);
+	gs_app_set_permissions (app, permissions);
 	/* this is actually quite hard to achieve */
 	if (secure)
 		gs_app_add_kudo (app, GS_APP_KUDO_SANDBOXED_SECURE);
@@ -2645,15 +2790,15 @@ gs_flatpak_prune_addons_list (GsFlatpak *self,
 			      GCancellable *cancellable,
 			      GError **error)
 {
-	GsAppList *addons_list;
+	g_autoptr(GsAppList) addons_list = NULL;
 	g_autoptr(GPtrArray) installed_related_refs = NULL;
 	g_autoptr(GPtrArray) remote_related_refs = NULL;
 	g_autofree gchar *ref = NULL;
 	FlatpakInstallation *installation = gs_flatpak_get_installation (self, interactive);
 	g_autoptr(GError) error_local = NULL;
 
-	addons_list = gs_app_get_addons (app);
-	if (gs_app_list_length (addons_list) == 0)
+	addons_list = gs_app_dup_addons (app);
+	if (addons_list == NULL || gs_app_list_length (addons_list) == 0)
 		return TRUE;
 
 	if (gs_app_get_origin (app) == NULL)
@@ -2789,8 +2934,9 @@ gs_plugin_refine_item_size (GsFlatpak *self,
 			    GError **error)
 {
 	gboolean ret;
-	guint64 download_size = GS_APP_SIZE_UNKNOWABLE;
-	guint64 installed_size = GS_APP_SIZE_UNKNOWABLE;
+	guint64 download_size = 0;
+	guint64 installed_size = 0;
+	GsSizeType size_type = GS_SIZE_TYPE_UNKNOWABLE;
 
 	/* not applicable */
 	if (gs_app_get_state (app) == GS_APP_STATE_AVAILABLE_LOCAL)
@@ -2801,11 +2947,11 @@ gs_plugin_refine_item_size (GsFlatpak *self,
 	/* already set */
 	if (gs_app_is_installed (app)) {
 		/* only care about the installed size if the app is installed */
-		if (gs_app_get_size_installed (app) > 0)
+		if (gs_app_get_size_installed (app, NULL) == GS_SIZE_TYPE_VALID)
 			return TRUE;
 	} else {
-		if (gs_app_get_size_installed (app) > 0 &&
-		    gs_app_get_size_download (app) > 0)
+		if (gs_app_get_size_installed (app, NULL) == GS_SIZE_TYPE_VALID &&
+		    gs_app_get_size_download (app, NULL) == GS_SIZE_TYPE_VALID)
 		return TRUE;
 	}
 
@@ -2852,8 +2998,7 @@ gs_plugin_refine_item_size (GsFlatpak *self,
 		if (xref == NULL)
 			return FALSE;
 		installed_size = flatpak_installed_ref_get_installed_size (xref);
-		if (installed_size == 0)
-			installed_size = GS_APP_SIZE_UNKNOWABLE;
+		size_type = (installed_size > 0) ? GS_SIZE_TYPE_VALID : GS_SIZE_TYPE_UNKNOWABLE;
 	} else {
 		g_autoptr(FlatpakRef) xref = NULL;
 		g_autoptr(GError) error_local = NULL;
@@ -2882,11 +3027,13 @@ gs_plugin_refine_item_size (GsFlatpak *self,
 			/* This can happen when the remote is filtered */
 			g_debug ("libflatpak failed to return application size: %s", error_local->message);
 			g_clear_error (&error_local);
+		} else {
+			size_type = GS_SIZE_TYPE_VALID;
 		}
 	}
 
-	gs_app_set_size_installed (app, installed_size);
-	gs_app_set_size_download (app, download_size);
+	gs_app_set_size_installed (app, size_type, installed_size);
+	gs_app_set_size_download (app, size_type, download_size);
 
 	return TRUE;
 }
@@ -3309,15 +3456,17 @@ gs_flatpak_refine_app_unlocked (GsFlatpak *self,
 	if ((flags & GS_PLUGIN_REFINE_FLAGS_REQUIRE_SIZE_DATA) != 0 &&
 	    gs_app_is_installed (app) &&
 	    gs_app_get_kind (app) != AS_COMPONENT_KIND_RUNTIME) {
-		if (gs_app_get_size_cache_data (app) == GS_APP_SIZE_UNKNOWABLE)
-			gs_app_set_size_cache_data (app, gs_flatpak_get_app_directory_size (app, "cache", cancellable));
-		if (gs_app_get_size_user_data (app) == GS_APP_SIZE_UNKNOWABLE)
-			gs_app_set_size_user_data (app, gs_flatpak_get_app_directory_size (app, "config", cancellable) +
-							gs_flatpak_get_app_directory_size (app, "data", cancellable));
+		if (gs_app_get_size_cache_data (app, NULL) != GS_SIZE_TYPE_VALID)
+			gs_app_set_size_cache_data (app, GS_SIZE_TYPE_VALID,
+						    gs_flatpak_get_app_directory_size (app, "cache", cancellable));
+		if (gs_app_get_size_user_data (app, NULL) != GS_SIZE_TYPE_VALID)
+			gs_app_set_size_user_data (app, GS_SIZE_TYPE_VALID,
+						   gs_flatpak_get_app_directory_size (app, "config", cancellable) +
+						   gs_flatpak_get_app_directory_size (app, "data", cancellable));
 
 		if (g_cancellable_is_cancelled (cancellable)) {
-			gs_app_set_size_cache_data (app, GS_APP_SIZE_UNKNOWABLE);
-			gs_app_set_size_user_data (app, GS_APP_SIZE_UNKNOWABLE);
+			gs_app_set_size_cache_data (app, GS_SIZE_TYPE_UNKNOWABLE, 0);
+			gs_app_set_size_user_data (app, GS_SIZE_TYPE_UNKNOWABLE, 0);
 		}
 	}
 
@@ -3366,11 +3515,11 @@ gs_flatpak_refine_addons (GsFlatpak *self,
 			  gboolean interactive,
 			  GCancellable *cancellable)
 {
-	GsAppList *addons;
+	g_autoptr(GsAppList) addons = NULL;
 	g_autoptr(GString) errors = NULL;
 	guint ii, sz;
 
-	addons = gs_app_get_addons (parent_app);
+	addons = gs_app_dup_addons (parent_app);
 	sz = addons ? gs_app_list_length (addons) : 0;
 
 	for (ii = 0; ii < sz; ii++) {
@@ -3571,7 +3720,7 @@ gs_flatpak_file_to_app_bundle (GsFlatpak *self,
 
 	gs_flatpak_app_set_file_kind (app, GS_FLATPAK_APP_FILE_KIND_BUNDLE);
 	gs_app_set_state (app, GS_APP_STATE_AVAILABLE_LOCAL);
-	gs_app_set_size_installed (app, flatpak_bundle_ref_get_installed_size (xref_bundle));
+	gs_app_set_size_installed (app, GS_SIZE_TYPE_VALID, flatpak_bundle_ref_get_installed_size (xref_bundle));
 	gs_flatpak_set_metadata (self, app, FLATPAK_REF (xref_bundle));
 	metadata = flatpak_bundle_ref_get_metadata (xref_bundle);
 	if (!gs_flatpak_set_app_metadata (self, app,
@@ -3841,10 +3990,8 @@ gs_flatpak_file_to_app_ref (GsFlatpak *self,
 	app = gs_flatpak_create_app (self, remote_name, FLATPAK_REF (remote_ref), NULL, interactive, cancellable);
 #else
 	app = gs_flatpak_create_app (self, remote_name, parsed_ref, NULL, interactive, cancellable);
-	if (app_download_size != 0)
-		gs_app_set_size_download (app, app_download_size);
-	if (app_installed_size != 0)
-		gs_app_set_size_installed (app, app_installed_size);
+	gs_app_set_size_download (app, (app_download_size != 0) ? GS_SIZE_TYPE_VALID : GS_SIZE_TYPE_UNKNOWN, app_download_size);
+	gs_app_set_size_installed (app, (app_installed_size != 0) ? GS_SIZE_TYPE_VALID : GS_SIZE_TYPE_UNKNOWN, app_installed_size);
 #endif
 
 	gs_app_add_quirk (app, GS_APP_QUIRK_HAS_SOURCE);
@@ -3872,11 +4019,9 @@ gs_flatpak_file_to_app_ref (GsFlatpak *self,
 			if (g_strcmp0 (runtime_ref, op_ref) == 0) {
 				guint64 installed_size = 0, download_size = 0;
 				download_size = flatpak_transaction_operation_get_download_size (op);
-				if (download_size != 0)
-					gs_app_set_size_download (runtime, download_size);
+				gs_app_set_size_download (runtime, (download_size != 0) ? GS_SIZE_TYPE_VALID : GS_SIZE_TYPE_UNKNOWN, download_size);
 				installed_size = flatpak_transaction_operation_get_installed_size (op);
-				if (installed_size != 0)
-					gs_app_set_size_installed (runtime, installed_size);
+				gs_app_set_size_installed (runtime, (installed_size != 0) ? GS_SIZE_TYPE_VALID : GS_SIZE_TYPE_UNKNOWN, installed_size);
 				break;
 			}
 		}
@@ -4051,6 +4196,79 @@ gs_flatpak_search (GsFlatpak *self,
 }
 
 gboolean
+gs_flatpak_search_developer_apps (GsFlatpak *self,
+				  const gchar * const *values,
+				  GsAppList *list,
+				  gboolean interactive,
+				  GCancellable *cancellable,
+				  GError **error)
+{
+	g_autoptr(GsAppList) list_tmp = gs_app_list_new ();
+	g_autoptr(GRWLockReaderLocker) locker = NULL;
+	g_autoptr(GMutexLocker) app_silo_locker = NULL;
+	g_autoptr(GPtrArray) silos_to_remove = g_ptr_array_new ();
+	GHashTableIter iter;
+	gpointer key, value;
+
+	if (!ensure_flatpak_silo_with_locker (self, &locker, interactive, cancellable, error))
+		return FALSE;
+
+	if (!gs_appstream_search_developer_apps (self->plugin, self->silo, values, list_tmp,
+						 cancellable, error))
+		return FALSE;
+
+	gs_flatpak_ensure_remote_title (self, interactive, cancellable);
+
+	gs_flatpak_claim_app_list (self, list_tmp, interactive);
+	gs_app_list_add_list (list, list_tmp);
+
+	/* Also search silos from installed apps which were missing from self->silo */
+	app_silo_locker = g_mutex_locker_new (&self->app_silos_mutex);
+	g_hash_table_iter_init (&iter, self->app_silos);
+	while (g_hash_table_iter_next (&iter, &key, &value)) {
+		g_autoptr(XbSilo) app_silo = g_object_ref (value);
+		g_autoptr(GsAppList) app_list_tmp = gs_app_list_new ();
+		const char *app_ref = (char *)key;
+		g_autoptr(FlatpakInstalledRef) installed_ref = NULL;
+		g_auto(GStrv) split = NULL;
+		FlatpakRefKind kind;
+
+		/* Ignore any silos of apps that have since been removed.
+		 * FIXME: can we use self->installed_refs here? */
+		split = g_strsplit (app_ref, "/", -1);
+		g_assert (g_strv_length (split) == 4);
+		if (g_strcmp0 (split[0], "app") == 0)
+			kind = FLATPAK_REF_KIND_APP;
+		else
+			kind = FLATPAK_REF_KIND_RUNTIME;
+		installed_ref = flatpak_installation_get_installed_ref (gs_flatpak_get_installation (self, interactive),
+									kind,
+									split[1],
+									split[2],
+									split[3],
+									NULL, NULL);
+		if (installed_ref == NULL) {
+			g_ptr_array_add (silos_to_remove, (gpointer) app_ref);
+			continue;
+		}
+
+		if (!gs_appstream_search_developer_apps (self->plugin, app_silo, values, app_list_tmp,
+							 cancellable, error))
+			return FALSE;
+
+		gs_flatpak_claim_app_list (self, app_list_tmp, interactive);
+		gs_app_list_add_list (list, app_list_tmp);
+	}
+
+	for (guint i = 0; i < silos_to_remove->len; i++) {
+		const char *silo = g_ptr_array_index (silos_to_remove, i);
+		g_hash_table_remove (self->app_silos, silo);
+	}
+
+	return TRUE;
+}
+
+gboolean
 gs_flatpak_add_category_apps (GsFlatpak *self,
 			      GsCategory *category,
 			      GsAppList *list,
@@ -4069,19 +4287,18 @@ gs_flatpak_add_category_apps (GsFlatpak *self,
 }
 
 gboolean
-gs_flatpak_add_categories (GsFlatpak *self,
-			   GPtrArray *list,
-			   gboolean interactive,
-			   GCancellable *cancellable,
-			   GError **error)
+gs_flatpak_refine_category_sizes (GsFlatpak     *self,
+                                  GPtrArray     *list,
+                                  gboolean       interactive,
+                                  GCancellable  *cancellable,
+                                  GError       **error)
 {
 	g_autoptr(GRWLockReaderLocker) locker = NULL;
 
 	if (!ensure_flatpak_silo_with_locker (self, &locker, interactive, cancellable, error))
 		return FALSE;
 
-	return gs_appstream_add_categories (self->silo,
-					    list, cancellable, error);
+	return gs_appstream_refine_category_sizes (self->silo, list, cancellable, error);
 }
 
 gboolean
@@ -4126,6 +4343,22 @@ gs_flatpak_add_featured (GsFlatpak *self,
 	gs_app_list_add_list (list, list_tmp);
 
 	return TRUE;
+}
+
+gboolean
+gs_flatpak_add_deployment_featured (GsFlatpak *self,
+				    GsAppList *list,
+				    gboolean interactive,
+				    const gchar *const *deployments,
+				    GCancellable *cancellable,
+				    GError **error)
+{
+	g_autoptr(GRWLockReaderLocker) locker = NULL;
+
+	if (!ensure_flatpak_silo_with_locker (self, &locker, interactive, cancellable, error))
+		return FALSE;
+
+	return gs_appstream_add_deployment_featured (self->silo, deployments, list, cancellable, error);
 }
 
 gboolean

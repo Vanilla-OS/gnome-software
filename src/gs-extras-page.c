@@ -31,6 +31,7 @@ typedef enum {
 typedef struct {
 	gchar		*title;
 	gchar		*search;
+	GsAppQueryProvidesType search_provides_type;
 	gchar		*search_filename;
 	gchar		*package_filename;
 	gchar		*url_not_found;
@@ -194,12 +195,12 @@ gs_extras_page_update_ui_state (GsExtrasPage *self)
 	/* main spinner */
 	switch (self->state) {
 	case GS_EXTRAS_PAGE_STATE_LOADING:
-		gs_start_spinner (GTK_SPINNER (self->spinner));
+		gtk_spinner_start (GTK_SPINNER (self->spinner));
 		break;
 	case GS_EXTRAS_PAGE_STATE_READY:
 	case GS_EXTRAS_PAGE_STATE_NO_RESULTS:
 	case GS_EXTRAS_PAGE_STATE_FAILED:
-		gs_stop_spinner (GTK_SPINNER (self->spinner));
+		gtk_spinner_stop (GTK_SPINNER (self->spinner));
 		break;
 	default:
 		g_assert_not_reached ();
@@ -738,10 +739,15 @@ gs_extras_page_load (GsExtrasPage *self, GPtrArray *array_search_data)
 		search_data = g_ptr_array_index (self->array_search_data, i);
 		if (search_data->search_filename != NULL) {
 			g_autoptr(GsPluginJob) plugin_job = NULL;
-			plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_SEARCH_FILES,
-							 "search", search_data->search_filename,
-							 "refine-flags", refine_flags,
-							 NULL);
+			g_autoptr(GsAppQuery) query = NULL;
+			const gchar *provides_files[2] = { search_data->search_filename, NULL };
+
+			query = gs_app_query_new ("provides-files", provides_files,
+						  "refine-flags", refine_flags,
+						  NULL);
+
+			plugin_job = gs_plugin_job_list_apps_new (query, GS_PLUGIN_LIST_APPS_FLAGS_INTERACTIVE);
+
 			g_debug ("searching filename: '%s'", search_data->search_filename);
 			gs_plugin_loader_job_process_async (self->plugin_loader,
 							    plugin_job,
@@ -763,12 +769,18 @@ gs_extras_page_load (GsExtrasPage *self, GPtrArray *array_search_data)
 							    search_data);
 		} else {
 			g_autoptr(GsPluginJob) plugin_job = NULL;
+			g_autoptr(GsAppQuery) query = NULL;
+
+			query = gs_app_query_new ("provides-tag", search_data->search,
+						  "provides-type", search_data->search_provides_type,
+						  "refine-flags", refine_flags,
+						  NULL);
+
+			plugin_job = gs_plugin_job_list_apps_new (query, GS_PLUGIN_LIST_APPS_FLAGS_INTERACTIVE);
+
 			g_debug ("searching what provides: '%s'", search_data->search);
-			plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_SEARCH_PROVIDES,
-							 "search", search_data->search,
-							 "refine-flags", refine_flags,
-							 NULL);
-			gs_plugin_loader_job_process_async (self->plugin_loader, plugin_job,
+			gs_plugin_loader_job_process_async (self->plugin_loader,
+							    plugin_job,
 							    self->search_cancellable,
 							    get_search_what_provides_cb,
 							    search_data);
@@ -840,6 +852,7 @@ gs_extras_page_search_package_names (GsExtrasPage *self, gchar **package_names)
 		search_data = g_slice_new0 (SearchData);
 		search_data->title = g_strdup (package_names[i]);
 		search_data->search = g_strdup (package_names[i]);
+		search_data->search_provides_type = GS_APP_QUERY_PROVIDES_PACKAGE_NAME;
 		search_data->url_not_found = gs_vendor_get_not_found_url (self->vendor, GS_VENDOR_URL_TYPE_DEFAULT);
 		search_data->self = g_object_ref (self);
 		g_ptr_array_add (array_search_data, search_data);
@@ -860,6 +873,7 @@ gs_extras_page_search_mime_types (GsExtrasPage *self, gchar **mime_types)
 		search_data = g_slice_new0 (SearchData);
 		search_data->title = g_strdup_printf (_("%s file format"), mime_types[i]);
 		search_data->search = g_strdup (mime_types[i]);
+		search_data->search_provides_type = GS_APP_QUERY_PROVIDES_MIME_HANDLER;
 		search_data->url_not_found = gs_vendor_get_not_found_url (self->vendor, GS_VENDOR_URL_TYPE_MIME);
 		search_data->self = g_object_ref (self);
 		g_ptr_array_add (array_search_data, search_data);
@@ -918,6 +932,7 @@ gs_extras_page_search_fontconfig_resources (GsExtrasPage *self, gchar **resource
 		search_data = g_slice_new0 (SearchData);
 		search_data->title = gs_extras_page_font_tag_to_localised_name (self, resources[i]);
 		search_data->search = g_strdup (resources[i]);
+		search_data->search_provides_type = GS_APP_QUERY_PROVIDES_FONT;
 		search_data->url_not_found = gs_vendor_get_not_found_url (self->vendor, GS_VENDOR_URL_TYPE_FONT);
 		search_data->self = g_object_ref (self);
 		g_ptr_array_add (array_search_data, search_data);
@@ -941,6 +956,7 @@ gs_extras_page_search_gstreamer_resources (GsExtrasPage *self, gchar **resources
 		search_data = g_slice_new0 (SearchData);
 		search_data->title = g_strdup (parts[0]);
 		search_data->search = g_strdup (parts[1]);
+		search_data->search_provides_type = GS_APP_QUERY_PROVIDES_GSTREAMER;
 		search_data->url_not_found = gs_vendor_get_not_found_url (self->vendor, GS_VENDOR_URL_TYPE_CODEC);
 		search_data->self = g_object_ref (self);
 		g_ptr_array_add (array_search_data, search_data);
@@ -961,6 +977,7 @@ gs_extras_page_search_plasma_resources (GsExtrasPage *self, gchar **resources)
 		search_data = g_slice_new0 (SearchData);
 		search_data->title = g_strdup (resources[i]);
 		search_data->search = g_strdup (resources[i]);
+		search_data->search_provides_type = GS_APP_QUERY_PROVIDES_PLASMA;
 		search_data->url_not_found = gs_vendor_get_not_found_url (self->vendor, GS_VENDOR_URL_TYPE_DEFAULT);
 		search_data->self = g_object_ref (self);
 		g_ptr_array_add (array_search_data, search_data);
@@ -1017,6 +1034,7 @@ gs_extras_page_search_printer_drivers (GsExtrasPage *self, gchar **device_ids)
 		search_data = g_slice_new0 (SearchData);
 		search_data->title = g_strdup_printf ("%s %s", mfg, mdl);
 		search_data->search = g_ascii_strdown (tag, -1);
+		search_data->search_provides_type = GS_APP_QUERY_PROVIDES_PS_DRIVER;
 		search_data->url_not_found = gs_vendor_get_not_found_url (self->vendor, GS_VENDOR_URL_TYPE_HARDWARE);
 		search_data->self = g_object_ref (self);
 		g_ptr_array_add (array_search_data, search_data);

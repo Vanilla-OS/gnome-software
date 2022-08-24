@@ -57,7 +57,6 @@ struct _GsUpdatesPage
 	GsUpdatesPageFlags	 result_flags;
 	GtkWidget		*button_refresh;
 	GtkWidget		*header_spinner_start;
-	GtkWidget		*header_checking_label;
 	GtkWidget		*header_start_box;
 	gboolean		 has_agreed_to_mobile_data;
 	gboolean		 ampm_available;
@@ -280,21 +279,12 @@ gs_updates_page_update_ui_state (GsUpdatesPage *self)
 	case GS_UPDATES_PAGE_STATE_STARTUP:
 	case GS_UPDATES_PAGE_STATE_ACTION_GET_UPDATES:
 	case GS_UPDATES_PAGE_STATE_ACTION_REFRESH:
-		/* if we have updates, avoid clearing the page with a spinner */
-		if (self->result_flags != GS_UPDATES_PAGE_FLAG_NONE) {
-			gs_stop_spinner (GTK_SPINNER (self->spinner_updates));
-			gtk_spinner_start (GTK_SPINNER (self->header_spinner_start));
-			gtk_widget_show (self->header_spinner_start);
-			gtk_widget_show (self->header_checking_label);
-		} else {
-			gs_start_spinner (GTK_SPINNER (self->spinner_updates));
-		}
+		gtk_spinner_start (GTK_SPINNER (self->spinner_updates));
 		break;
 	default:
-		gs_stop_spinner (GTK_SPINNER (self->spinner_updates));
+		gtk_spinner_stop (GTK_SPINNER (self->spinner_updates));
 		gtk_spinner_stop (GTK_SPINNER (self->header_spinner_start));
 		gtk_widget_hide (self->header_spinner_start);
-		gtk_widget_hide (self->header_checking_label);
 		break;
 	}
 
@@ -344,11 +334,7 @@ gs_updates_page_update_ui_state (GsUpdatesPage *self)
 						  "spinner");
 		break;
 	case GS_UPDATES_PAGE_STATE_ACTION_REFRESH:
-		if (self->result_flags != GS_UPDATES_PAGE_FLAG_NONE) {
-			gtk_stack_set_visible_child_name (GTK_STACK (self->stack_updates), "view");
-		} else {
-			gtk_stack_set_visible_child_name (GTK_STACK (self->stack_updates), "spinner");
-		}
+		gtk_stack_set_visible_child_name (GTK_STACK (self->stack_updates), "spinner");
 		break;
 	case GS_UPDATES_PAGE_STATE_STARTUP:
 	case GS_UPDATES_PAGE_STATE_IDLE:
@@ -975,17 +961,15 @@ upgrade_reboot_failed_cb (GObject *source,
 	GsApp *app;
 	g_autoptr(GError) error = NULL;
 	g_autoptr(GsPluginJob) plugin_job = NULL;
-	g_autoptr(GVariant) retval = NULL;
 
 	/* get result */
-	retval = g_dbus_connection_call_finish (G_DBUS_CONNECTION (source), res, &error);
-	if (retval != NULL)
+	if (gs_utils_invoke_reboot_finish (source, res, &error))
 		return;
 
-	if (error != NULL) {
-		g_warning ("Calling org.gnome.SessionManager.Reboot failed: %s",
-			   error->message);
-	}
+	if (g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
+		g_debug ("Calling reboot had been cancelled");
+	else if (error != NULL)
+		g_warning ("Calling reboot failed: %s", error->message);
 
 	app = gs_upgrade_banner_get_app (GS_UPGRADE_BANNER (self->upgrade_banner));
 	if (app == NULL) {
@@ -1009,7 +993,6 @@ upgrade_trigger_finished_cb (GObject *source,
                              gpointer user_data)
 {
 	GsUpdatesPage *self = (GsUpdatesPage *) user_data;
-	g_autoptr(GDBusConnection) bus = NULL;
 	g_autoptr(GError) error = NULL;
 
 	/* get the results */
@@ -1019,16 +1002,7 @@ upgrade_trigger_finished_cb (GObject *source,
 	}
 
 	/* trigger reboot */
-	bus = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, NULL);
-	g_dbus_connection_call (bus,
-				"org.gnome.SessionManager",
-				"/org/gnome/SessionManager",
-				"org.gnome.SessionManager",
-				"Reboot",
-				NULL, NULL, G_DBUS_CALL_FLAGS_NONE,
-				G_MAXINT, NULL,
-				upgrade_reboot_failed_cb,
-				self);
+	gs_utils_invoke_reboot_async (NULL, upgrade_reboot_failed_cb, self);
 }
 
 static void
@@ -1218,7 +1192,6 @@ gs_updates_page_setup (GsPage *page,
                        GError **error)
 {
 	GsUpdatesPage *self = GS_UPDATES_PAGE (page);
-	GtkWidget *widget;
 
 	g_return_val_if_fail (GS_IS_UPDATES_PAGE (self), TRUE);
 
@@ -1268,23 +1241,6 @@ gs_updates_page_setup (GsPage *page,
 	gtk_widget_set_visible (self->header_start_box, TRUE);
 	gs_page_set_header_start_widget (GS_PAGE (self), self->header_start_box);
 
-	/* This label indicates that the update check is in progress */
-	self->header_checking_label = adw_squeezer_new ();
-	adw_squeezer_set_xalign (ADW_SQUEEZER (self->header_checking_label), 0);
-	adw_squeezer_set_transition_type (ADW_SQUEEZER (self->header_checking_label), ADW_SQUEEZER_TRANSITION_TYPE_CROSSFADE);
-
-	widget = gtk_label_new (_("Checking…"));
-	gtk_widget_show (widget);
-	adw_squeezer_add (ADW_SQUEEZER (self->header_checking_label), widget);
-
-	/* FIXME: This box is just a 0x0 widget the squeezer will show when it
-	 * hasn't enough space to show the label. In GTK 4, we will be able to
-	 * use AdwSqueezer:allow-none instead. */
-	widget = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-	gtk_widget_show (widget);
-	adw_squeezer_add (ADW_SQUEEZER (self->header_checking_label), widget);
-
-	gtk_box_prepend (GTK_BOX (self->header_start_box), self->header_checking_label);
 	self->header_spinner_start = gtk_spinner_new ();
 	gtk_box_prepend (GTK_BOX (self->header_start_box), self->header_spinner_start);
 
@@ -1327,7 +1283,7 @@ gs_updates_page_get_property (GObject    *object,
 		g_value_set_object (value, gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (self->scrolledwindow_updates)));
 		break;
 	case PROP_TITLE:
-		g_value_set_string (value, _("Updates"));
+		g_value_set_string (value, C_("Apps to be updated", "Updates"));
 		break;
 	case PROP_COUNTER:
 		g_value_set_uint (value, self->updates_counter);

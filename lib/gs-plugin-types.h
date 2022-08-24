@@ -171,18 +171,34 @@ typedef enum {
 } GsPluginRefineFlags;
 
 /**
- * GsPluginListInstalledAppsFlags:
- * @GS_PLUGIN_LIST_INSTALLED_APPS_FLAGS_NONE: No flags set.
- * @GS_PLUGIN_LIST_INSTALLED_APPS_FLAGS_INTERACTIVE: User initiated the job.
+ * GsPluginListAppsFlags:
+ * @GS_PLUGIN_LIST_APPS_FLAGS_NONE: No flags set.
+ * @GS_PLUGIN_LIST_APPS_FLAGS_INTERACTIVE: User initiated the job.
  *
- * Flags for an operation to list installed apps.
+ * Flags for an operation to list apps matching a given query.
  *
- * Since: 42
+ * Since: 43
  */
 typedef enum {
-	GS_PLUGIN_LIST_INSTALLED_APPS_FLAGS_NONE = 0,
-	GS_PLUGIN_LIST_INSTALLED_APPS_FLAGS_INTERACTIVE = 1 << 0,
-} GsPluginListInstalledAppsFlags;
+	GS_PLUGIN_LIST_APPS_FLAGS_NONE = 0,
+	GS_PLUGIN_LIST_APPS_FLAGS_INTERACTIVE = 1 << 0,
+} GsPluginListAppsFlags;
+
+/**
+ * GsPluginRefineCategoriesFlags:
+ * @GS_PLUGIN_REFINE_CATEGORIES_FLAGS_NONE: No flags set.
+ * @GS_PLUGIN_REFINE_CATEGORIES_FLAGS_INTERACTIVE: User initiated the job.
+ * @GS_PLUGIN_REFINE_CATEGORIES_FLAGS_SIZE: Work out the number of apps in each category.
+ *
+ * Flags for an operation to refine categories.
+ *
+ * Since: 43
+ */
+typedef enum {
+	GS_PLUGIN_REFINE_CATEGORIES_FLAGS_NONE = 0,
+	GS_PLUGIN_REFINE_CATEGORIES_FLAGS_INTERACTIVE = 1 << 0,
+	GS_PLUGIN_REFINE_CATEGORIES_FLAGS_SIZE = 1 << 1,
+} GsPluginRefineCategoriesFlags;
 
 /**
  * GsPluginRefreshMetadataFlags:
@@ -211,6 +227,28 @@ typedef enum {
 	GS_PLUGIN_LIST_DISTRO_UPGRADES_FLAGS_NONE = 0,
 	GS_PLUGIN_LIST_DISTRO_UPGRADES_FLAGS_INTERACTIVE = 1 << 0,
 } GsPluginListDistroUpgradesFlags;
+
+/**
+ * GsPluginManageRepositoryFlags:
+ * @GS_PLUGIN_MANAGE_REPOSITORY_FLAGS_NONE: No flags set.
+ * @GS_PLUGIN_MANAGE_REPOSITORY_FLAGS_INTERACTIVE: User initiated the job.
+ * @GS_PLUGIN_MANAGE_REPOSITORY_FLAGS_INSTALL: Install the repository.
+ * @GS_PLUGIN_MANAGE_REPOSITORY_FLAGS_REMOVE: Remove the repository.
+ * @GS_PLUGIN_MANAGE_REPOSITORY_FLAGS_ENABLE: Enable the repository.
+ * @GS_PLUGIN_MANAGE_REPOSITORY_FLAGS_DISABLE: Disable the repository.
+ *
+ * Flags for an operation on a repository.
+ *
+ * Since: 42
+ */
+typedef enum {
+	GS_PLUGIN_MANAGE_REPOSITORY_FLAGS_NONE		= 0,
+	GS_PLUGIN_MANAGE_REPOSITORY_FLAGS_INTERACTIVE	= 1 << 0,
+	GS_PLUGIN_MANAGE_REPOSITORY_FLAGS_INSTALL	= 1 << 1,
+	GS_PLUGIN_MANAGE_REPOSITORY_FLAGS_REMOVE	= 1 << 2,
+	GS_PLUGIN_MANAGE_REPOSITORY_FLAGS_ENABLE	= 1 << 3,
+	GS_PLUGIN_MANAGE_REPOSITORY_FLAGS_DISABLE	= 1 << 4,
+} GsPluginManageRepositoryFlags;
 
 /**
  * GsPluginRule:
@@ -243,19 +281,10 @@ typedef enum {
  * @GS_PLUGIN_ACTION_UPDATE_CANCEL:		Cancel the update
  * @GS_PLUGIN_ACTION_GET_UPDATES:		Get the list of updates
  * @GS_PLUGIN_ACTION_GET_SOURCES:		Get the list of sources
- * @GS_PLUGIN_ACTION_GET_POPULAR:		Get the list of popular applications
- * @GS_PLUGIN_ACTION_GET_FEATURED:		Get the list of featured applications
- * @GS_PLUGIN_ACTION_SEARCH:			Get the search results for a query
- * @GS_PLUGIN_ACTION_SEARCH_FILES:		Get the search results for a file query
- * @GS_PLUGIN_ACTION_SEARCH_PROVIDES:		Get the search results for a provide query
- * @GS_PLUGIN_ACTION_GET_CATEGORIES:		Get the list of categories
- * @GS_PLUGIN_ACTION_GET_CATEGORY_APPS:		Get the apps for a specific category
  * @GS_PLUGIN_ACTION_FILE_TO_APP:		Convert the file to an application
  * @GS_PLUGIN_ACTION_URL_TO_APP:		Convert the URI to an application
- * @GS_PLUGIN_ACTION_GET_RECENT:		Get the apps recently released
  * @GS_PLUGIN_ACTION_GET_UPDATES_HISTORICAL:    Get the list of historical updates
  * @GS_PLUGIN_ACTION_DOWNLOAD:			Download an application
- * @GS_PLUGIN_ACTION_GET_ALTERNATES:		Get the alternates for a specific application
  * @GS_PLUGIN_ACTION_GET_LANGPACKS:		Get appropriate language pack
  * @GS_PLUGIN_ACTION_INSTALL_REPO:		Install a repository (Since: 41)
  * @GS_PLUGIN_ACTION_REMOVE_REPO:		Remove a repository (Since: 41)
@@ -275,19 +304,10 @@ typedef enum {
 	GS_PLUGIN_ACTION_UPDATE_CANCEL,
 	GS_PLUGIN_ACTION_GET_UPDATES,
 	GS_PLUGIN_ACTION_GET_SOURCES,
-	GS_PLUGIN_ACTION_GET_POPULAR,
-	GS_PLUGIN_ACTION_GET_FEATURED,
-	GS_PLUGIN_ACTION_SEARCH,
-	GS_PLUGIN_ACTION_SEARCH_FILES,
-	GS_PLUGIN_ACTION_SEARCH_PROVIDES,
-	GS_PLUGIN_ACTION_GET_CATEGORIES,
-	GS_PLUGIN_ACTION_GET_CATEGORY_APPS,
 	GS_PLUGIN_ACTION_FILE_TO_APP,
 	GS_PLUGIN_ACTION_URL_TO_APP,
-	GS_PLUGIN_ACTION_GET_RECENT,
 	GS_PLUGIN_ACTION_GET_UPDATES_HISTORICAL,
 	GS_PLUGIN_ACTION_DOWNLOAD,
-	GS_PLUGIN_ACTION_GET_ALTERNATES,
 	GS_PLUGIN_ACTION_GET_LANGPACKS,
 	GS_PLUGIN_ACTION_INSTALL_REPO,
 	GS_PLUGIN_ACTION_REMOVE_REPO,

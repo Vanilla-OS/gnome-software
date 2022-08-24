@@ -214,15 +214,20 @@ gs_fwupd_release_get_name (FwupdRelease *release)
 			 * PCI card, not the logical wired connection */
 			return g_strdup_printf (_("%s Network Interface Update"), name);
 		}
-		if (g_strcmp0(cat, "X-VideoDisplay") == 0) {
+		if (g_strcmp0 (cat, "X-VideoDisplay") == 0) {
 			/* TRANSLATORS: Video Display refers to the laptop internal display or
 			 * external monitor */
 			return g_strdup_printf (_("%s Display Update"), name);
 		}
-		if (g_strcmp0(cat, "X-BaseboardManagementController") == 0) {
+		if (g_strcmp0 (cat, "X-BaseboardManagementController") == 0) {
 			/* TRANSLATORS: BMC refers to baseboard management controller which
 			 * is the device that updates all the other firmware on the system */
 			return g_strdup_printf (_("%s BMC Update"), name);
+		}
+		if (g_strcmp0 (cat, "X-UsbReceiver") == 0) {
+			/* TRANSLATORS: Receiver refers to a radio device, e.g. a tiny Bluetooth
+			 * device that stays in the USB port so the wireless peripheral works */
+			return g_strdup_printf (_("%s USB Receiver Update"), name);
 		}
 	}
 
@@ -248,8 +253,8 @@ gs_fwupd_app_set_from_release (GsApp *app, FwupdRelease *rel)
 				fwupd_release_get_homepage (rel));
 	}
 	if (fwupd_release_get_size (rel) != 0) {
-		gs_app_set_size_installed (app, 0);
-		gs_app_set_size_download (app, fwupd_release_get_size (rel));
+		gs_app_set_size_installed (app, GS_SIZE_TYPE_VALID, 0);
+		gs_app_set_size_download (app, GS_SIZE_TYPE_VALID, fwupd_release_get_size (rel));
 	}
 	if (fwupd_release_get_version (rel) != NULL)
 		gs_app_set_update_version (app, fwupd_release_get_version (rel));

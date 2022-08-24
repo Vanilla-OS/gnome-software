@@ -25,7 +25,8 @@ G_DECLARE_FINAL_TYPE (GsPluginLoader, gs_plugin_loader, GS, PLUGIN_LOADER, GObje
 
 #include "gs-plugin-job.h"
 
-GsPluginLoader	*gs_plugin_loader_new			(void);
+GsPluginLoader	*gs_plugin_loader_new			(GDBusConnection *session_bus_connection,
+							 GDBusConnection *system_bus_connection);
 void		 gs_plugin_loader_job_process_async	(GsPluginLoader	*plugin_loader,
 							 GsPluginJob	*plugin_job,
 							 GCancellable	*cancellable,
@@ -35,14 +36,6 @@ GsAppList	*gs_plugin_loader_job_process_finish	(GsPluginLoader	*plugin_loader,
 							 GAsyncResult	*res,
 							 GError		**error);
 gboolean	 gs_plugin_loader_job_action_finish	(GsPluginLoader	*plugin_loader,
-							 GAsyncResult	*res,
-							 GError		**error);
-void		 gs_plugin_loader_job_get_categories_async (GsPluginLoader *plugin_loader,
-							 GsPluginJob	*plugin_job,
-							 GCancellable	*cancellable,
-							 GAsyncReadyCallback callback,
-							 gpointer	 user_data);
-GPtrArray	*gs_plugin_loader_job_get_categories_finish (GsPluginLoader *plugin_loader,
 							 GAsyncResult	*res,
 							 GError		**error);
 void		 gs_plugin_loader_setup_async		(GsPluginLoader	*plugin_loader,
@@ -119,10 +112,11 @@ void		 gs_plugin_loader_claim_job_error	(GsPluginLoader *plugin_loader,
 
 gboolean	 gs_plugin_loader_app_is_valid		(GsApp *app,
 							 GsPluginRefineFlags flags);
+gboolean	 gs_plugin_loader_app_is_compatible	(GsPluginLoader *plugin_loader,
+							 GsApp *app);
 
 void		 gs_plugin_loader_run_adopt		(GsPluginLoader *plugin_loader,
 							 GsAppList *list);
-
-void		 gs_plugin_loader_hint_job_finished	(GsPluginLoader *plugin_loader);
+void		 gs_plugin_loader_emit_updates_changed	(GsPluginLoader *self);
 
 G_END_DECLS

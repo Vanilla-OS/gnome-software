@@ -307,136 +307,52 @@ gs_plugin_url_to_app (GsPlugin *plugin,
 	return TRUE;
 }
 
-typedef struct {
-	GMainLoop	*loop;
-	GCancellable	*cancellable;
-	guint		 timer_id;
-	gulong		 cancellable_id;
-} GsPluginDummyTimeoutHelper;
+static gboolean timeout_cb (gpointer user_data);
+
+/* Simulate a cancellable delay */
+static void
+gs_plugin_dummy_timeout_async (GsPluginDummy       *self,
+                               guint                timeout_ms,
+                               GCancellable        *cancellable,
+                               GAsyncReadyCallback  callback,
+                               gpointer             user_data)
+{
+	g_autoptr(GTask) task = NULL;
+	g_autoptr(GSource) source = NULL;
+
+	task = g_task_new (self, cancellable, callback, user_data);
+	g_task_set_source_tag (task, gs_plugin_dummy_timeout_async);
+
+	source = g_timeout_source_new (timeout_ms);
+
+	if (cancellable != NULL) {
+		g_autoptr(GSource) cancellable_source = NULL;
+
+		cancellable_source = g_cancellable_source_new (cancellable);
+		g_source_set_dummy_callback (cancellable_source);
+		g_source_add_child_source (source, cancellable_source);
+	}
+
+	g_task_attach_source (task, source, timeout_cb);
+}
 
 static gboolean
-gs_plugin_dummy_timeout_hang_cb (gpointer user_data)
+timeout_cb (gpointer user_data)
 {
-	GsPluginDummyTimeoutHelper *helper = (GsPluginDummyTimeoutHelper *) user_data;
-	helper->timer_id = 0;
-	g_debug ("timeout hang");
-	g_main_loop_quit (helper->loop);
-	return FALSE;
+	GTask *task = G_TASK (user_data);
+
+	if (!g_task_return_error_if_cancelled (task))
+		g_task_return_boolean (task, TRUE);
+
+	return G_SOURCE_REMOVE;
 }
 
-static void
-gs_plugin_dummy_timeout_cancelled_cb (GCancellable *cancellable, gpointer user_data)
+static gboolean
+gs_plugin_dummy_timeout_finish (GsPluginDummy  *self,
+                                GAsyncResult   *result,
+                                GError        **error)
 {
-	GsPluginDummyTimeoutHelper *helper = (GsPluginDummyTimeoutHelper *) user_data;
-	g_debug ("calling cancel");
-	g_main_loop_quit (helper->loop);
-}
-
-static void
-gs_plugin_dummy_timeout_helper_free (GsPluginDummyTimeoutHelper *helper)
-{
-	if (helper->cancellable_id != 0)
-		g_signal_handler_disconnect (helper->cancellable, helper->cancellable_id);
-	if (helper->timer_id != 0)
-		g_source_remove (helper->timer_id);
-	if (helper->cancellable != NULL)
-		g_object_unref (helper->cancellable);
-	g_main_loop_unref (helper->loop);
-	g_free (helper);
-}
-
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GsPluginDummyTimeoutHelper, gs_plugin_dummy_timeout_helper_free)
-
-static void
-gs_plugin_dummy_timeout_add (guint timeout_ms, GCancellable *cancellable)
-{
-	g_autoptr(GsPluginDummyTimeoutHelper) helper = g_new0 (GsPluginDummyTimeoutHelper, 1);
-	helper->loop = g_main_loop_new (NULL, TRUE);
-	if (cancellable != NULL) {
-		helper->cancellable = g_object_ref (cancellable);
-		helper->cancellable_id =
-			g_signal_connect (cancellable, "cancelled",
-					  G_CALLBACK (gs_plugin_dummy_timeout_cancelled_cb),
-					  helper);
-	}
-	helper->timer_id = g_timeout_add (timeout_ms,
-					  gs_plugin_dummy_timeout_hang_cb,
-					  helper);
-	g_main_loop_run (helper->loop);
-}
-
-gboolean
-gs_plugin_add_alternates (GsPlugin *plugin,
-			  GsApp *app,
-			  GsAppList *list,
-			  GCancellable *cancellable,
-			  GError **error)
-{
-	if (g_strcmp0 (gs_app_get_id (app), "zeus.desktop") == 0) {
-		g_autoptr(GsApp) app2 = gs_app_new ("chiron.desktop");
-		gs_app_list_add (list, app2);
-	}
-	return TRUE;
-}
-
-gboolean
-gs_plugin_add_search (GsPlugin *plugin,
-		      gchar **values,
-		      GsAppList *list,
-		      GCancellable *cancellable,
-		      GError **error)
-{
-	GsPluginDummy *self = GS_PLUGIN_DUMMY (plugin);
-	g_autoptr(GsApp) app = NULL;
-	g_autoptr(GIcon) ic = NULL;
-
-	/* hang the plugin for 5 seconds */
-	if (g_strcmp0 (values[0], "hang") == 0) {
-		gs_plugin_dummy_timeout_add (5000, cancellable);
-		if (g_cancellable_set_error_if_cancelled (cancellable, error)) {
-			gs_utils_error_convert_gio (error);
-			return FALSE;
-		}
-		return TRUE;
-	}
-
-	/* we're very specific */
-	if (g_strcmp0 (values[0], "chiron") != 0)
-		return TRUE;
-
-	/* does the app already exist? */
-	app = gs_plugin_cache_lookup (plugin, "chiron");
-	if (app != NULL) {
-		g_debug ("using %s fom the cache", gs_app_get_id (app));
-		gs_app_list_add (list, app);
-		return TRUE;
-	}
-
-	/* set up a timeout to emulate getting a GFileMonitor callback */
-	self->quirk_id =
-		g_timeout_add_seconds (1, gs_plugin_dummy_poll_cb, plugin);
-
-	/* use a generic stock icon */
-	ic = g_themed_icon_new ("drive-harddisk");
-
-	/* add a live updatable normal application */
-	app = gs_app_new ("chiron.desktop");
-	gs_app_set_name (app, GS_APP_QUALITY_NORMAL, "Chiron");
-	gs_app_set_summary (app, GS_APP_QUALITY_NORMAL, "A teaching application");
-	gs_app_add_icon (app, ic);
-	gs_app_set_size_installed (app, 42 * 1024 * 1024);
-	gs_app_set_size_download (app, 50 * 1024 * 1024);
-	gs_app_set_kind (app, AS_COMPONENT_KIND_DESKTOP_APP);
-	gs_app_set_state (app, GS_APP_STATE_INSTALLED);
-	gs_app_set_management_plugin (app, plugin);
-	gs_app_set_metadata (app, "GnomeSoftware::Creator",
-			     gs_plugin_get_name (plugin));
-	gs_app_list_add (list, app);
-
-	/* add to cache so it can be found by the flashing callback */
-	gs_plugin_cache_add (plugin, NULL, app);
-
-	return TRUE;
+	return g_task_propagate_boolean (G_TASK (result), error);
 }
 
 gboolean
@@ -538,79 +454,6 @@ gs_plugin_add_updates (GsPlugin *plugin,
 	gs_app_add_related (proxy, app);
 	g_object_unref (app);
 
-	return TRUE;
-}
-
-static void
-gs_plugin_dummy_list_installed_apps_async (GsPlugin                       *plugin,
-                                           GsPluginListInstalledAppsFlags  flags,
-                                           GCancellable                   *cancellable,
-                                           GAsyncReadyCallback             callback,
-                                           gpointer                        user_data)
-{
-	const gchar *packages[] = { "zeus", "zeus-common", NULL };
-	const gchar *app_ids[] = { "Uninstall Zeus.desktop", NULL };
-	g_autoptr(GsAppList) list = gs_app_list_new ();
-	g_autoptr(GTask) task = NULL;
-	guint i;
-
-	task = g_task_new (plugin, cancellable, callback, user_data);
-	g_task_set_source_tag (task, gs_plugin_dummy_list_installed_apps_async);
-
-	/* add all packages */
-	for (i = 0; packages[i] != NULL; i++) {
-		g_autoptr(GsApp) app = gs_app_new (NULL);
-		gs_app_add_source (app, packages[i]);
-		gs_app_set_state (app, GS_APP_STATE_INSTALLED);
-		gs_app_set_kind (app, AS_COMPONENT_KIND_GENERIC);
-		gs_app_set_origin (app, "london-west");
-		gs_app_set_management_plugin (app, plugin);
-		gs_app_list_add (list, app);
-	}
-
-	/* add all app-ids */
-	for (i = 0; app_ids[i] != NULL; i++) {
-		g_autoptr(GsApp) app = gs_app_new (app_ids[i]);
-		gs_app_set_state (app, GS_APP_STATE_INSTALLED);
-		gs_app_set_kind (app, AS_COMPONENT_KIND_DESKTOP_APP);
-		gs_app_set_management_plugin (app, plugin);
-		gs_app_list_add (list, app);
-	}
-
-	g_task_return_pointer (task, g_steal_pointer (&list), g_object_unref);
-}
-
-static GsAppList *
-gs_plugin_dummy_list_installed_apps_finish (GsPlugin      *plugin,
-                                            GAsyncResult  *result,
-                                            GError       **error)
-{
-	return g_task_propagate_pointer (G_TASK (result), error);
-}
-
-gboolean
-gs_plugin_add_popular (GsPlugin *plugin,
-		       GsAppList *list,
-		       GCancellable *cancellable,
-		       GError **error)
-{
-	g_autoptr(GsApp) app1 = NULL;
-	g_autoptr(GsApp) app2 = NULL;
-
-	/* add wildcard */
-	app1 = gs_app_new ("zeus.desktop");
-	gs_app_add_quirk (app1, GS_APP_QUIRK_IS_WILDCARD);
-	gs_app_set_metadata (app1, "GnomeSoftware::Creator",
-			     gs_plugin_get_name (plugin));
-	gs_app_list_add (list, app1);
-
-	/* add again, this time with a prefix so it gets deduplicated */
-	app2 = gs_app_new ("zeus.desktop");
-	gs_app_set_scope (app2, AS_COMPONENT_SCOPE_USER);
-	gs_app_set_bundle_kind (app2, AS_BUNDLE_KIND_SNAP);
-	gs_app_set_metadata (app2, "GnomeSoftware::Creator",
-			     gs_plugin_get_name (plugin));
-	gs_app_list_add (list, app2);
 	return TRUE;
 }
 
@@ -862,46 +705,213 @@ gs_plugin_dummy_refine_finish (GsPlugin      *plugin,
 	return g_task_propagate_boolean (G_TASK (result), error);
 }
 
-gboolean
-gs_plugin_add_category_apps (GsPlugin *plugin,
-			     GsCategory *category,
-			     GsAppList *list,
-			     GCancellable *cancellable,
-			     GError **error)
+static void list_apps_timeout_cb (GObject      *object,
+                                  GAsyncResult *result,
+                                  gpointer      user_data);
+
+static void
+gs_plugin_dummy_list_apps_async (GsPlugin              *plugin,
+                                 GsAppQuery            *query,
+                                 GsPluginListAppsFlags  flags,
+                                 GCancellable          *cancellable,
+                                 GAsyncReadyCallback    callback,
+                                 gpointer               user_data)
 {
-	g_autoptr(GIcon) icon = g_themed_icon_new ("chiron.desktop");
-	g_autoptr(GsApp) app = gs_app_new ("chiron.desktop");
-	gs_app_set_name (app, GS_APP_QUALITY_NORMAL, "Chiron");
-	gs_app_set_summary (app, GS_APP_QUALITY_NORMAL, "View and use virtual machines");
-	gs_app_set_url (app, AS_URL_KIND_HOMEPAGE, "http://www.box.org");
-	gs_app_set_kind (app, AS_COMPONENT_KIND_DESKTOP_APP);
-	gs_app_set_state (app, GS_APP_STATE_AVAILABLE);
-	gs_app_add_icon (app, icon);
-	gs_app_set_kind (app, AS_COMPONENT_KIND_DESKTOP_APP);
-	gs_app_set_management_plugin (app, plugin);
-	gs_app_list_add (list, app);
-	return TRUE;
+	GsPluginDummy *self = GS_PLUGIN_DUMMY (plugin);
+	g_autoptr(GTask) task = NULL;
+	g_autoptr(GsAppList) list = gs_app_list_new ();
+	GDateTime *released_since = NULL;
+	GsAppQueryTristate is_curated = GS_APP_QUERY_TRISTATE_UNSET;
+	guint max_results = 0;
+	GsCategory *category = NULL;
+	GsAppQueryTristate is_installed = GS_APP_QUERY_TRISTATE_UNSET;
+	const gchar * const *keywords = NULL;
+	GsApp *alternate_of = NULL;
+
+	task = g_task_new (plugin, cancellable, callback, user_data);
+	g_task_set_source_tag (task, gs_plugin_dummy_list_apps_async);
+
+	if (query != NULL) {
+		released_since = gs_app_query_get_released_since (query);
+		is_curated = gs_app_query_get_is_curated (query);
+		max_results = gs_app_query_get_max_results (query);
+		category = gs_app_query_get_category (query);
+		is_installed = gs_app_query_get_is_installed (query);
+		keywords = gs_app_query_get_keywords (query);
+		alternate_of = gs_app_query_get_alternate_of (query);
+	}
+
+	/* Currently only support a subset of query properties, and only one set at once.
+	 * Also don’t currently support GS_APP_QUERY_TRISTATE_FALSE. */
+	if ((released_since == NULL &&
+	     is_curated == GS_APP_QUERY_TRISTATE_UNSET &&
+	     category == NULL &&
+	     is_installed == GS_APP_QUERY_TRISTATE_UNSET &&
+	     keywords == NULL &&
+	     alternate_of == NULL) ||
+	    is_curated == GS_APP_QUERY_TRISTATE_FALSE ||
+	    is_installed == GS_APP_QUERY_TRISTATE_FALSE ||
+	    gs_app_query_get_n_properties_set (query) != 1) {
+		g_task_return_new_error (task, G_IO_ERROR, G_IO_ERROR_NOT_SUPPORTED,
+					 "Unsupported query");
+		return;
+	}
+
+	if (released_since != NULL) {
+		g_autoptr(GIcon) icon = g_themed_icon_new ("chiron.desktop");
+		g_autoptr(GsApp) app = gs_app_new ("chiron.desktop");
+		gs_app_set_name (app, GS_APP_QUALITY_NORMAL, "Chiron");
+		gs_app_set_summary (app, GS_APP_QUALITY_NORMAL, "View and use virtual machines");
+		gs_app_set_url (app, AS_URL_KIND_HOMEPAGE, "http://www.box.org");
+		gs_app_set_kind (app, AS_COMPONENT_KIND_DESKTOP_APP);
+		gs_app_set_state (app, GS_APP_STATE_AVAILABLE);
+		gs_app_add_icon (app, icon);
+		gs_app_set_kind (app, AS_COMPONENT_KIND_DESKTOP_APP);
+		gs_app_set_management_plugin (app, plugin);
+
+		gs_app_list_add (list, app);
+	}
+
+	if (is_curated != GS_APP_QUERY_TRISTATE_UNSET) {
+		g_autoptr(GsApp) app1 = NULL;
+		g_autoptr(GsApp) app2 = NULL;
+
+		/* Hacky way of letting callers indicate which set of results
+		 * they want, for unit testing. */
+		if (max_results == 6) {
+			const gchar *apps[] = { "chiron.desktop", "zeus.desktop" };
+			for (gsize i = 0; i < G_N_ELEMENTS (apps); i++) {
+				g_autoptr(GsApp) app = gs_app_new (apps[i]);
+				gs_app_add_quirk (app, GS_APP_QUIRK_IS_WILDCARD);
+				gs_app_list_add (list, app);
+			}
+		} else {
+			/* add wildcard */
+			app1 = gs_app_new ("zeus.desktop");
+			gs_app_add_quirk (app1, GS_APP_QUIRK_IS_WILDCARD);
+			gs_app_set_metadata (app1, "GnomeSoftware::Creator",
+					     gs_plugin_get_name (plugin));
+			gs_app_list_add (list, app1);
+		}
+	}
+
+	if (category != NULL) {
+		g_autoptr(GIcon) icon = g_themed_icon_new ("chiron.desktop");
+		g_autoptr(GsApp) app = gs_app_new ("chiron.desktop");
+		gs_app_set_name (app, GS_APP_QUALITY_NORMAL, "Chiron");
+		gs_app_set_summary (app, GS_APP_QUALITY_NORMAL, "View and use virtual machines");
+		gs_app_set_url (app, AS_URL_KIND_HOMEPAGE, "http://www.box.org");
+		gs_app_set_kind (app, AS_COMPONENT_KIND_DESKTOP_APP);
+		gs_app_set_state (app, GS_APP_STATE_AVAILABLE);
+		gs_app_add_icon (app, icon);
+		gs_app_set_kind (app, AS_COMPONENT_KIND_DESKTOP_APP);
+		gs_app_set_management_plugin (app, plugin);
+		gs_app_list_add (list, app);
+	}
+
+	if (is_installed != GS_APP_QUERY_TRISTATE_UNSET) {
+		const gchar *packages[] = { "zeus", "zeus-common", NULL };
+		const gchar *app_ids[] = { "Uninstall Zeus.desktop", NULL };
+
+		/* add all packages */
+		for (gsize i = 0; packages[i] != NULL; i++) {
+			g_autoptr(GsApp) app = gs_app_new (NULL);
+			gs_app_add_source (app, packages[i]);
+			gs_app_set_state (app, GS_APP_STATE_INSTALLED);
+			gs_app_set_kind (app, AS_COMPONENT_KIND_GENERIC);
+			gs_app_set_origin (app, "london-west");
+			gs_app_set_management_plugin (app, plugin);
+			gs_app_list_add (list, app);
+		}
+
+		/* add all app-ids */
+		for (gsize i = 0; app_ids[i] != NULL; i++) {
+			g_autoptr(GsApp) app = gs_app_new (app_ids[i]);
+			gs_app_set_state (app, GS_APP_STATE_INSTALLED);
+			gs_app_set_kind (app, AS_COMPONENT_KIND_DESKTOP_APP);
+			gs_app_set_management_plugin (app, plugin);
+			gs_app_list_add (list, app);
+		}
+	}
+
+	if (keywords != NULL) {
+		if (g_strcmp0 (keywords[0], "hang") == 0) {
+			/* hang the plugin for 5 seconds */
+			gs_plugin_dummy_timeout_async (self, 5000, cancellable,
+						       list_apps_timeout_cb, g_steal_pointer (&task));
+			return;
+		} else if (g_strcmp0 (keywords[0], "chiron") == 0) {
+			g_autoptr(GsApp) app = NULL;
+
+			/* does the app already exist? */
+			app = gs_plugin_cache_lookup (plugin, "chiron");
+			if (app != NULL) {
+				g_debug ("using %s fom the cache", gs_app_get_id (app));
+				gs_app_list_add (list, app);
+			} else {
+				g_autoptr(GIcon) icon = NULL;
+
+				/* set up a timeout to emulate getting a GFileMonitor callback */
+				self->quirk_id =
+					g_timeout_add_seconds (1, gs_plugin_dummy_poll_cb, plugin);
+
+				/* use a generic stock icon */
+				icon = g_themed_icon_new ("drive-harddisk");
+
+				/* add a live updatable normal application */
+				app = gs_app_new ("chiron.desktop");
+				gs_app_set_name (app, GS_APP_QUALITY_NORMAL, "Chiron");
+				gs_app_set_summary (app, GS_APP_QUALITY_NORMAL, "A teaching application");
+				gs_app_add_icon (app, icon);
+				gs_app_set_size_installed (app, GS_SIZE_TYPE_VALID, 42 * 1024 * 1024);
+				gs_app_set_size_download (app, GS_SIZE_TYPE_VALID, 50 * 1024 * 1024);
+				gs_app_set_kind (app, AS_COMPONENT_KIND_DESKTOP_APP);
+				gs_app_set_state (app, GS_APP_STATE_INSTALLED);
+				gs_app_set_management_plugin (app, plugin);
+				gs_app_set_metadata (app, "GnomeSoftware::Creator",
+						     gs_plugin_get_name (plugin));
+				gs_app_list_add (list, app);
+
+				/* add to cache so it can be found by the flashing callback */
+				gs_plugin_cache_add (plugin, NULL, app);
+			}
+		} else {
+			/* Don’t do anything */
+		}
+	}
+
+	if (alternate_of != NULL) {
+		if (g_strcmp0 (gs_app_get_id (alternate_of), "zeus.desktop") == 0) {
+			g_autoptr(GsApp) app = gs_app_new ("chiron.desktop");
+			gs_app_list_add (list, app);
+		}
+	}
+
+	g_task_return_pointer (task, g_steal_pointer (&list), (GDestroyNotify) g_object_unref);
 }
 
-gboolean
-gs_plugin_add_recent (GsPlugin *plugin,
-		      GsAppList *list,
-		      guint64 age,
-		      GCancellable *cancellable,
-		      GError **error)
+static void
+list_apps_timeout_cb (GObject      *object,
+                      GAsyncResult *result,
+                      gpointer      user_data)
 {
-	g_autoptr(GIcon) icon = g_themed_icon_new ("chiron.desktop");
-	g_autoptr(GsApp) app = gs_app_new ("chiron.desktop");
-	gs_app_set_name (app, GS_APP_QUALITY_NORMAL, "Chiron");
-	gs_app_set_summary (app, GS_APP_QUALITY_NORMAL, "View and use virtual machines");
-	gs_app_set_url (app, AS_URL_KIND_HOMEPAGE, "http://www.box.org");
-	gs_app_set_kind (app, AS_COMPONENT_KIND_DESKTOP_APP);
-	gs_app_set_state (app, GS_APP_STATE_AVAILABLE);
-	gs_app_add_icon (app, icon);
-	gs_app_set_kind (app, AS_COMPONENT_KIND_DESKTOP_APP);
-	gs_app_set_management_plugin (app, plugin);
-	gs_app_list_add (list, app);
-	return TRUE;
+	GsPluginDummy *self = GS_PLUGIN_DUMMY (object);
+	g_autoptr(GTask) task = g_steal_pointer (&user_data);
+	g_autoptr(GError) local_error = NULL;
+
+	/* Return a cancelled error, or an empty app list after hanging. */
+	if (gs_plugin_dummy_timeout_finish (self, result, &local_error))
+		g_task_return_pointer (task, gs_app_list_new (), (GDestroyNotify) g_object_unref);
+	else
+		g_task_return_error (task, g_steal_pointer (&local_error));
+}
+
+static GsAppList *
+gs_plugin_dummy_list_apps_finish (GsPlugin      *plugin,
+                                  GAsyncResult  *result,
+                                  GError       **error)
+{
+	return g_task_propagate_pointer (G_TASK (result), error);
 }
 
 static void
@@ -947,8 +957,8 @@ gs_plugin_dummy_list_distro_upgrades_async (GsPlugin                        *plu
 	gs_app_add_quirk (app, GS_APP_QUIRK_PROVENANCE);
 	gs_app_add_quirk (app, GS_APP_QUIRK_NOT_REVIEWABLE);
 	gs_app_set_version (app, "34");
-	gs_app_set_size_installed (app, 256 * 1024 * 1024);
-	gs_app_set_size_download (app, 1024 * 1024 * 1024);
+	gs_app_set_size_installed (app, GS_SIZE_TYPE_VALID, 256 * 1024 * 1024);
+	gs_app_set_size_download (app, GS_SIZE_TYPE_VALID, 1024 * 1024 * 1024);
 	gs_app_set_license (app, GS_APP_QUALITY_LOWEST, "LicenseRef-free");
 	gs_app_set_management_plugin (app, plugin);
 
@@ -1079,8 +1089,8 @@ gs_plugin_dummy_class_init (GsPluginDummyClass *klass)
 	plugin_class->setup_finish = gs_plugin_dummy_setup_finish;
 	plugin_class->refine_async = gs_plugin_dummy_refine_async;
 	plugin_class->refine_finish = gs_plugin_dummy_refine_finish;
-	plugin_class->list_installed_apps_async = gs_plugin_dummy_list_installed_apps_async;
-	plugin_class->list_installed_apps_finish = gs_plugin_dummy_list_installed_apps_finish;
+	plugin_class->list_apps_async = gs_plugin_dummy_list_apps_async;
+	plugin_class->list_apps_finish = gs_plugin_dummy_list_apps_finish;
 	plugin_class->refresh_metadata_async = gs_plugin_dummy_refresh_metadata_async;
 	plugin_class->refresh_metadata_finish = gs_plugin_dummy_refresh_metadata_finish;
 	plugin_class->list_distro_upgrades_async = gs_plugin_dummy_list_distro_upgrades_async;

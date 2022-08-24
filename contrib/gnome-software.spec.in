@@ -43,7 +43,6 @@ BuildRequires: ostree-devel
 BuildRequires: rpm-devel
 BuildRequires: rpm-ostree-devel
 BuildRequires: libgudev1-devel
-BuildRequires: valgrind-devel
 
 Requires: appstream-data
 Requires: flatpak%{?_isa} >= %{flatpak_version}
@@ -140,15 +139,16 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 %{_mandir}/man1/gnome-software.1.gz
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Software.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Software-symbolic.svg
-%{_datadir}/icons/hicolor/scalable/status/software-installed-symbolic.svg
 %{_datadir}/gnome-software/featured-*.svg
 %{_datadir}/gnome-software/featured-*.jpg
-%{_datadir}/metainfo/org.gnome.Software.appdata.xml
+%{_datadir}/metainfo/org.gnome.Software.metainfo.xml
+%{_datadir}/metainfo/org.gnome.Software.Plugin.Epiphany.metainfo.xml
 %{_datadir}/metainfo/org.gnome.Software.Plugin.Flatpak.metainfo.xml
 %{_datadir}/metainfo/org.gnome.Software.Plugin.Fwupd.metainfo.xml
 %dir %{gs_plugin_dir}
 %{gs_plugin_dir}/libgs_plugin_appstream.so
 %{gs_plugin_dir}/libgs_plugin_dummy.so
+%{gs_plugin_dir}/libgs_plugin_epiphany.so
 %{gs_plugin_dir}/libgs_plugin_fedora-langpacks.so
 %{gs_plugin_dir}/libgs_plugin_fedora-pkgdb-collections.so
 %{gs_plugin_dir}/libgs_plugin_flatpak.so

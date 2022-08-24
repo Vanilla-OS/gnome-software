@@ -29,6 +29,8 @@
 typedef struct {
 	GWeakRef plugin_weakref; /* GsPlugin * */
 	GsPluginAction action;
+	GsPackagekitHelper *helper;
+
 } GsPackagekitTaskPrivate;
 
 G_DEFINE_TYPE_WITH_PRIVATE (GsPackagekitTask, gs_packagekit_task, PK_TYPE_TASK)
@@ -178,6 +180,7 @@ gs_packagekit_task_finalize (GObject *object)
 	GsPackagekitTaskPrivate *priv = gs_packagekit_task_get_instance_private (task);
 
 	g_weak_ref_clear (&priv->plugin_weakref);
+	g_clear_object (&priv->helper);
 
 	G_OBJECT_CLASS (gs_packagekit_task_parent_class)->finalize (object);
 }
@@ -229,7 +232,17 @@ gs_packagekit_task_setup (GsPackagekitTask *task,
 	g_return_if_fail (GS_IS_PACKAGEKIT_TASK (task));
 
 	priv->action = action;
+
+	/* The :interactive and :background properties have slightly different
+	 * purposes:
+	 *  - :interactive controls whether the task can create interactive
+	 *    authentication (polkit) prompts
+	 *  - :background controls the scheduling of the task relative to other
+	 *    PackageKit tasks from this client and other clients
+	 * However, we always want to set them both based on the same
+	 * conditions. */
 	pk_client_set_interactive (PK_CLIENT (task), interactive);
+	pk_client_set_background (PK_CLIENT (task), !interactive);
 }
 
 GsPluginAction
@@ -240,4 +253,28 @@ gs_packagekit_task_get_action (GsPackagekitTask *task)
 	g_return_val_if_fail (GS_IS_PACKAGEKIT_TASK (task), GS_PLUGIN_ACTION_UNKNOWN);
 
 	return priv->action;
+}
+
+void
+gs_packagekit_task_take_helper (GsPackagekitTask *task,
+				GsPackagekitHelper *helper)
+{
+	GsPackagekitTaskPrivate *priv = gs_packagekit_task_get_instance_private (task);
+
+	g_return_if_fail (GS_IS_PACKAGEKIT_TASK (task));
+
+	if (priv->helper != helper) {
+		g_clear_object (&priv->helper);
+		priv->helper = helper;
+	}
+}
+
+GsPackagekitHelper *
+gs_packagekit_task_get_helper (GsPackagekitTask *task)
+{
+	GsPackagekitTaskPrivate *priv = gs_packagekit_task_get_instance_private (task);
+
+	g_return_val_if_fail (GS_IS_PACKAGEKIT_TASK (task), NULL);
+
+	return priv->helper;
 }

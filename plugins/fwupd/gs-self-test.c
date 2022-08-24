@@ -22,6 +22,8 @@ gs_plugins_fwupd_func (GsPluginLoader *plugin_loader)
 	g_autoptr(GFile) file = NULL;
 	g_autoptr(GsApp) app = NULL;
 	g_autoptr(GsPluginJob) plugin_job = NULL;
+	GsSizeType size_download_type;
+	guint64 size_download_bytes;
 
 	/* no fwupd, abort */
 	if (!gs_plugin_loader_get_enabled (plugin_loader, "fwupd")) {
@@ -48,22 +50,23 @@ gs_plugins_fwupd_func (GsPluginLoader *plugin_loader)
 	g_assert_cmpstr (gs_app_get_name (app), ==, "Chiron");
 	g_assert_cmpstr (gs_app_get_summary (app), ==, "Single line synopsis");
 	g_assert_cmpstr (gs_app_get_version (app), ==, "0.2");
-	g_assert_cmpint ((gint64) gs_app_get_size_download (app), ==, 32784);
+	size_download_type = gs_app_get_size_download (app, &size_download_bytes);
+	g_assert_cmpint (size_download_type, ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpuint (size_download_bytes, ==, 32784);
 	g_assert_cmpstr (gs_app_get_description (app), ==,
 			 "This is the first paragraph in the example "
 			 "cab file.\n\nThis is the second paragraph.");
-
-	/* The message is different if BitLocker Full Disk Encryption is
-	 * detected. See
-	 * https://github.com/fwupd/fwupd/wiki/Full-Disk-Encryption-Detected */
-	if (g_strcmp0 (gs_app_get_update_details_markup (app),
-		       "Some of the platform secrets may be invalidated when "
-		       "updating this firmware. Please ensure you have the "
-		       "volume recovery key before continuing.\n\nLatest "
-		       "firmware release.") != 0) {
-		g_assert_cmpstr (gs_app_get_update_details_markup (app), ==,
-				 "Latest firmware release.");
-	}
+#if FWUPD_CHECK_VERSION(1, 7, 1)
+	/* Changes introduced in fwupd commit d3706e0e0b0fc210796da839b84ac391f7a251f8 */
+	g_assert_cmpstr (gs_app_get_update_details_markup (app), ==,
+			 "Some of the platform secrets may be invalidated when "
+			 "updating this firmware. Please ensure you have the "
+			 "volume recovery key before continuing.\n\nLatest "
+			 "firmware release.");
+#else
+	g_assert_cmpstr (gs_app_get_update_details_markup (app), ==,
+			 "Latest firmware release.");
+#endif
 
 	/* seems wrong, but this is only set if the update is available */
 	g_assert_cmpint (gs_app_get_state (app), ==, GS_APP_STATE_UNKNOWN);
@@ -88,7 +91,7 @@ main (int argc, char **argv)
 	gs_test_init (&argc, &argv);
 
 	/* we can only load this once per process */
-	plugin_loader = gs_plugin_loader_new ();
+	plugin_loader = gs_plugin_loader_new (NULL, NULL);
 	gs_plugin_loader_add_location (plugin_loader, LOCALPLUGINDIR);
 	ret = gs_plugin_loader_setup (plugin_loader,
 				      allowlist,

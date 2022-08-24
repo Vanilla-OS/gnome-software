@@ -15,6 +15,8 @@
 #include <gs-app.h>
 #include <gs-app-list.h>
 #include <gs-app-collation.h>
+#include <gs-app-permissions.h>
+#include <gs-app-query.h>
 #include <gs-category.h>
 #include <gs-category-manager.h>
 #include <gs-desktop-data.h>
@@ -27,8 +29,10 @@
 #include <gs-plugin.h>
 #include <gs-plugin-helpers.h>
 #include <gs-plugin-job.h>
+#include <gs-plugin-job-list-apps.h>
+#include <gs-plugin-job-list-categories.h>
 #include <gs-plugin-job-list-distro-upgrades.h>
-#include <gs-plugin-job-list-installed-apps.h>
+#include <gs-plugin-job-manage-repository.h>
 #include <gs-plugin-job-refine.h>
 #include <gs-plugin-job-refresh-metadata.h>
 #include <gs-plugin-vfuncs.h>

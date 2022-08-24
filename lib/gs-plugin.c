@@ -36,10 +36,6 @@
 #include <gdk/gdk.h>
 #include <string.h>
 
-#ifdef USE_VALGRIND
-#include <valgrind.h>
-#endif
-
 #include "gs-app-list-private.h"
 #include "gs-download-utils.h"
 #include "gs-enums.h"
@@ -69,17 +65,22 @@ typedef struct
 	guint			 timer_id;
 	GMutex			 timer_mutex;
 	GNetworkMonitor		*network_monitor;
+
+	GDBusConnection		*session_bus_connection;  /* (owned) (not nullable) */
+	GDBusConnection		*system_bus_connection;  /* (owned) (not nullable) */
 } GsPluginPrivate;
 
 G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GsPlugin, gs_plugin, G_TYPE_OBJECT)
 
 G_DEFINE_QUARK (gs-plugin-error-quark, gs_plugin_error)
 
-enum {
-	PROP_0,
-	PROP_FLAGS,
-	PROP_LAST
-};
+typedef enum {
+	PROP_FLAGS = 1,
+	PROP_SESSION_BUS_CONNECTION,
+	PROP_SYSTEM_BUS_CONNECTION,
+} GsPluginProperty;
+
+static GParamSpec *obj_props[PROP_SYSTEM_BUS_CONNECTION + 1] = { NULL, };
 
 enum {
 	SIGNAL_UPDATES_CHANGED,
@@ -151,16 +152,23 @@ gs_plugin_set_name (GsPlugin *plugin, const gchar *name)
 /**
  * gs_plugin_create:
  * @filename: an absolute filename
+ * @session_bus_connection: (not nullable) (transfer none): a session bus
+ *   connection to use
+ * @system_bus_connection: (not nullable) (transfer none): a system bus
+ *   connection to use
  * @error: a #GError, or %NULL
  *
  * Creates a new plugin from an external module.
  *
- * Returns: the #GsPlugin or %NULL
+ * Returns: (transfer full): the #GsPlugin, or %NULL on error
  *
- * Since: 3.22
+ * Since: 43
  **/
 GsPlugin *
-gs_plugin_create (const gchar *filename, GError **error)
+gs_plugin_create (const gchar      *filename,
+                  GDBusConnection  *session_bus_connection,
+                  GDBusConnection  *system_bus_connection,
+                  GError          **error)
 {
 	GsPlugin *plugin = NULL;
 	GsPluginPrivate *priv;
@@ -195,15 +203,36 @@ gs_plugin_create (const gchar *filename, GError **error)
 		return NULL;
 	}
 
+	/* Make the module resident so it can’t be unloaded: without using a
+	 * full #GTypePlugin implementation for the modules, it’s not safe to
+	 * re-load a module and re-register its types with GObject, as that will
+	 * confuse the GType system. */
+	g_module_make_resident (module);
+
 	plugin_type = query_type_function ();
 	g_assert (g_type_is_a (plugin_type, GS_TYPE_PLUGIN));
 
-	plugin = g_object_new (plugin_type, NULL);
+	plugin = g_object_new (plugin_type,
+			       "session-bus-connection", session_bus_connection,
+			       "system-bus-connection", system_bus_connection,
+			       NULL);
 	priv = gs_plugin_get_instance_private (plugin);
 	priv->module = g_steal_pointer (&module);
 
 	gs_plugin_set_name (plugin, basename + 13);
 	return plugin;
+}
+
+static void
+gs_plugin_dispose (GObject *object)
+{
+	GsPlugin *plugin = GS_PLUGIN (object);
+	GsPluginPrivate *priv = gs_plugin_get_instance_private (plugin);
+
+	g_clear_object (&priv->session_bus_connection);
+	g_clear_object (&priv->system_bus_connection);
+
+	G_OBJECT_CLASS (gs_plugin_parent_class)->dispose (object);
 }
 
 static void
@@ -229,10 +258,8 @@ gs_plugin_finalize (GObject *object)
 	g_mutex_clear (&priv->interactive_mutex);
 	g_mutex_clear (&priv->timer_mutex);
 	g_mutex_clear (&priv->vfuncs_mutex);
-#ifndef RUNNING_ON_VALGRIND
 	if (priv->module != NULL)
 		g_module_close (priv->module);
-#endif
 
 	G_OBJECT_CLASS (gs_plugin_parent_class)->finalize (object);
 }
@@ -588,6 +615,7 @@ gs_plugin_add_flags (GsPlugin *plugin, GsPluginFlags flags)
 {
 	GsPluginPrivate *priv = gs_plugin_get_instance_private (plugin);
 	priv->flags |= flags;
+	g_object_notify_by_pspec (G_OBJECT (plugin), obj_props[PROP_FLAGS]);
 }
 
 /**
@@ -604,6 +632,7 @@ gs_plugin_remove_flags (GsPlugin *plugin, GsPluginFlags flags)
 {
 	GsPluginPrivate *priv = gs_plugin_get_instance_private (plugin);
 	priv->flags &= ~flags;
+	g_object_notify_by_pspec (G_OBJECT (plugin), obj_props[PROP_FLAGS]);
 }
 
 /**
@@ -860,6 +889,131 @@ gs_plugin_app_launch (GsPlugin *plugin, GsApp *app, GError **error)
 			 gs_plugin_app_launch_cb,
 			 g_object_ref (appinfo),
 			 (GDestroyNotify) g_object_unref);
+	return TRUE;
+}
+
+static GDesktopAppInfo *
+check_directory_for_desktop_file (GsPlugin *plugin,
+				  GsApp *app,
+				  GsPluginPickDesktopFileCallback cb,
+				  gpointer user_data,
+				  const gchar *desktop_id,
+				  const gchar *data_dir)
+{
+	g_autofree gchar *filename = NULL;
+	g_autoptr(GKeyFile) key_file = NULL;
+
+	filename = g_build_filename (data_dir, "applications", desktop_id, NULL);
+	key_file = g_key_file_new ();
+
+	if (g_key_file_load_from_file (key_file, filename, G_KEY_FILE_KEEP_TRANSLATIONS, NULL) &&
+	    cb (plugin, app, filename, key_file)) {
+		g_autoptr(GDesktopAppInfo) appinfo = NULL;
+		appinfo = g_desktop_app_info_new_from_keyfile (key_file);
+		if (appinfo != NULL)
+			return g_steal_pointer (&appinfo);
+		g_debug ("Failed to load '%s' as a GDesktopAppInfo", filename);
+		return NULL;
+	}
+
+	if (!g_str_has_suffix (desktop_id, ".desktop")) {
+		g_autofree gchar *desktop_filename = g_strconcat (filename, ".desktop", NULL);
+		if (g_key_file_load_from_file (key_file, desktop_filename, G_KEY_FILE_KEEP_TRANSLATIONS, NULL) &&
+		    cb (plugin, app, desktop_filename, key_file)) {
+			g_autoptr(GDesktopAppInfo) appinfo = NULL;
+			appinfo = g_desktop_app_info_new_from_keyfile (key_file);
+			if (appinfo != NULL)
+				return g_steal_pointer (&appinfo);
+			g_debug ("Failed to load '%s' as a GDesktopAppInfo", desktop_filename);
+			return NULL;
+		}
+	}
+
+	return NULL;
+}
+
+/**
+ * gs_plugin_app_launch_filtered:
+ * @plugin: a #GsPlugin
+ * @app: a #GsApp to launch
+ * @cb: a callback to pick the correct .desktop file
+ * @user_data: (closure cb) (scope call): user data for the @cb
+ * @error: a #GError, or %NULL
+ *
+ * Launches application @app, using the .desktop file picked by the @cb.
+ * This can help in case multiple versions of the @app are installed
+ * in the system (like a Flatpak and RPM versions).
+ *
+ * Returns: %TRUE on success
+ *
+ * Since: 43
+ **/
+gboolean
+gs_plugin_app_launch_filtered (GsPlugin *plugin,
+			       GsApp *app,
+			       GsPluginPickDesktopFileCallback cb,
+			       gpointer user_data,
+			       GError **error)
+{
+	const gchar *desktop_id;
+	g_autoptr(GDesktopAppInfo) appinfo = NULL;
+
+	g_return_val_if_fail (GS_IS_PLUGIN (plugin), FALSE);
+	g_return_val_if_fail (GS_IS_APP (app), FALSE);
+	g_return_val_if_fail (cb != NULL, FALSE);
+
+	desktop_id = gs_app_get_launchable (app, AS_LAUNCHABLE_KIND_DESKTOP_ID);
+	if (desktop_id == NULL)
+		desktop_id = gs_app_get_id (app);
+	if (desktop_id == NULL) {
+		g_set_error (error,
+			     GS_PLUGIN_ERROR,
+			     GS_PLUGIN_ERROR_NOT_SUPPORTED,
+			     "no desktop file for app: %s",
+			     gs_app_get_name (app));
+		return FALSE;
+	}
+
+	/* First, the configs.  Highest priority: the user's ~/.config */
+	appinfo = check_directory_for_desktop_file (plugin, app, cb, user_data, desktop_id, g_get_user_config_dir ());
+
+	if (appinfo == NULL) {
+		/* Next, the system configs (/etc/xdg, and so on). */
+		const gchar * const *dirs;
+		dirs = g_get_system_config_dirs ();
+		for (guint i = 0; dirs[i] && appinfo == NULL; i++) {
+			appinfo = check_directory_for_desktop_file (plugin, app, cb, user_data, desktop_id, dirs[i]);
+		}
+	}
+
+	if (appinfo == NULL) {
+		/* Now the data.  Highest priority: the user's ~/.local/share/applications */
+		appinfo = check_directory_for_desktop_file (plugin, app, cb, user_data, desktop_id, g_get_user_data_dir ());
+	}
+
+	if (appinfo == NULL) {
+		/* Following that, XDG_DATA_DIRS/applications, in order */
+		const gchar * const *dirs;
+		dirs = g_get_system_data_dirs ();
+		for (guint i = 0; dirs[i] && appinfo == NULL; i++) {
+			appinfo = check_directory_for_desktop_file (plugin, app, cb, user_data, desktop_id, dirs[i]);
+		}
+	}
+
+	if (appinfo == NULL) {
+		g_set_error (error,
+			     GS_PLUGIN_ERROR,
+			     GS_PLUGIN_ERROR_NOT_SUPPORTED,
+			     "no appropriate desktop file found: %s",
+			     desktop_id);
+		return FALSE;
+	}
+
+	g_idle_add_full (G_PRIORITY_DEFAULT,
+			 gs_plugin_app_launch_cb,
+			 g_object_ref (appinfo),
+			 (GDestroyNotify) g_object_unref);
+
 	return TRUE;
 }
 
@@ -1428,38 +1582,12 @@ gs_plugin_action_to_function_name (GsPluginAction action)
 		return "gs_plugin_url_to_app";
 	if (action == GS_PLUGIN_ACTION_GET_SOURCES)
 		return "gs_plugin_add_sources";
-	if (action == GS_PLUGIN_ACTION_GET_FEATURED)
-		return "gs_plugin_add_featured";
 	if (action == GS_PLUGIN_ACTION_GET_UPDATES_HISTORICAL)
 		return "gs_plugin_add_updates_historical";
 	if (action == GS_PLUGIN_ACTION_GET_UPDATES)
 		return "gs_plugin_add_updates";
-	if (action == GS_PLUGIN_ACTION_GET_POPULAR)
-		return "gs_plugin_add_popular";
-	if (action == GS_PLUGIN_ACTION_GET_RECENT)
-		return "gs_plugin_add_recent";
-	if (action == GS_PLUGIN_ACTION_SEARCH)
-		return "gs_plugin_add_search";
-	if (action == GS_PLUGIN_ACTION_SEARCH_FILES)
-		return "gs_plugin_add_search_files";
-	if (action == GS_PLUGIN_ACTION_SEARCH_PROVIDES)
-		return "gs_plugin_add_search_what_provides";
-	if (action == GS_PLUGIN_ACTION_GET_CATEGORY_APPS)
-		return "gs_plugin_add_category_apps";
-	if (action == GS_PLUGIN_ACTION_GET_CATEGORIES)
-		return "gs_plugin_add_categories";
-	if (action == GS_PLUGIN_ACTION_GET_ALTERNATES)
-		return "gs_plugin_add_alternates";
 	if (action == GS_PLUGIN_ACTION_GET_LANGPACKS)
 		return "gs_plugin_add_langpacks";
-	if (action == GS_PLUGIN_ACTION_INSTALL_REPO)
-		return "gs_plugin_install_repo";
-	if (action == GS_PLUGIN_ACTION_REMOVE_REPO)
-		return "gs_plugin_remove_repo";
-	if (action == GS_PLUGIN_ACTION_ENABLE_REPO)
-		return "gs_plugin_enable_repo";
-	if (action == GS_PLUGIN_ACTION_DISABLE_REPO)
-		return "gs_plugin_disable_repo";
 	return NULL;
 }
 
@@ -1496,30 +1624,12 @@ gs_plugin_action_to_string (GsPluginAction action)
 		return "get-updates";
 	if (action == GS_PLUGIN_ACTION_GET_SOURCES)
 		return "get-sources";
-	if (action == GS_PLUGIN_ACTION_GET_POPULAR)
-		return "get-popular";
-	if (action == GS_PLUGIN_ACTION_GET_FEATURED)
-		return "get-featured";
-	if (action == GS_PLUGIN_ACTION_SEARCH)
-		return "search";
-	if (action == GS_PLUGIN_ACTION_SEARCH_FILES)
-		return "search-files";
-	if (action == GS_PLUGIN_ACTION_SEARCH_PROVIDES)
-		return "search-provides";
-	if (action == GS_PLUGIN_ACTION_GET_CATEGORIES)
-		return "get-categories";
-	if (action == GS_PLUGIN_ACTION_GET_CATEGORY_APPS)
-		return "get-category-apps";
 	if (action == GS_PLUGIN_ACTION_FILE_TO_APP)
 		return "file-to-app";
 	if (action == GS_PLUGIN_ACTION_URL_TO_APP)
 		return "url-to-app";
-	if (action == GS_PLUGIN_ACTION_GET_RECENT)
-		return "get-recent";
 	if (action == GS_PLUGIN_ACTION_GET_UPDATES_HISTORICAL)
 		return "get-updates-historical";
-	if (action == GS_PLUGIN_ACTION_GET_ALTERNATES)
-		return "get-alternates";
 	if (action == GS_PLUGIN_ACTION_GET_LANGPACKS)
 		return "get-langpacks";
 	if (action == GS_PLUGIN_ACTION_INSTALL_REPO)
@@ -1566,30 +1676,12 @@ gs_plugin_action_from_string (const gchar *action)
 		return GS_PLUGIN_ACTION_GET_UPDATES;
 	if (g_strcmp0 (action, "get-sources") == 0)
 		return GS_PLUGIN_ACTION_GET_SOURCES;
-	if (g_strcmp0 (action, "get-popular") == 0)
-		return GS_PLUGIN_ACTION_GET_POPULAR;
-	if (g_strcmp0 (action, "get-featured") == 0)
-		return GS_PLUGIN_ACTION_GET_FEATURED;
-	if (g_strcmp0 (action, "search") == 0)
-		return GS_PLUGIN_ACTION_SEARCH;
-	if (g_strcmp0 (action, "search-files") == 0)
-		return GS_PLUGIN_ACTION_SEARCH_FILES;
-	if (g_strcmp0 (action, "search-provides") == 0)
-		return GS_PLUGIN_ACTION_SEARCH_PROVIDES;
-	if (g_strcmp0 (action, "get-categories") == 0)
-		return GS_PLUGIN_ACTION_GET_CATEGORIES;
-	if (g_strcmp0 (action, "get-category-apps") == 0)
-		return GS_PLUGIN_ACTION_GET_CATEGORY_APPS;
 	if (g_strcmp0 (action, "file-to-app") == 0)
 		return GS_PLUGIN_ACTION_FILE_TO_APP;
 	if (g_strcmp0 (action, "url-to-app") == 0)
 		return GS_PLUGIN_ACTION_URL_TO_APP;
-	if (g_strcmp0 (action, "get-recent") == 0)
-		return GS_PLUGIN_ACTION_GET_RECENT;
 	if (g_strcmp0 (action, "get-updates-historical") == 0)
 		return GS_PLUGIN_ACTION_GET_UPDATES_HISTORICAL;
-	if (g_strcmp0 (action, "get-alternates") == 0)
-		return GS_PLUGIN_ACTION_GET_ALTERNATES;
 	if (g_strcmp0 (action, "get-langpacks") == 0)
 		return GS_PLUGIN_ACTION_GET_LANGPACKS;
 	if (g_strcmp0 (action, "repo-install") == 0)
@@ -1685,13 +1777,38 @@ gs_plugin_refine_flags_to_string (GsPluginRefineFlags refine_flags)
 }
 
 static void
+gs_plugin_constructed (GObject *object)
+{
+	GsPlugin *plugin = GS_PLUGIN (object);
+	GsPluginPrivate *priv = gs_plugin_get_instance_private (plugin);
+
+	G_OBJECT_CLASS (gs_plugin_parent_class)->constructed (object);
+
+	/* Check all required properties have been set. */
+	g_assert (priv->session_bus_connection != NULL);
+	g_assert (priv->system_bus_connection != NULL);
+}
+
+static void
 gs_plugin_set_property (GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec)
 {
 	GsPlugin *plugin = GS_PLUGIN (object);
 	GsPluginPrivate *priv = gs_plugin_get_instance_private (plugin);
-	switch (prop_id) {
+
+	switch ((GsPluginProperty) prop_id) {
 	case PROP_FLAGS:
 		priv->flags = g_value_get_flags (value);
+		g_object_notify_by_pspec (G_OBJECT (plugin), obj_props[PROP_FLAGS]);
+		break;
+	case PROP_SESSION_BUS_CONNECTION:
+		/* Construct only */
+		g_assert (priv->session_bus_connection == NULL);
+		priv->session_bus_connection = g_value_dup_object (value);
+		break;
+	case PROP_SYSTEM_BUS_CONNECTION:
+		/* Construct only */
+		g_assert (priv->system_bus_connection == NULL);
+		priv->system_bus_connection = g_value_dup_object (value);
 		break;
 	default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -1704,9 +1821,16 @@ gs_plugin_get_property (GObject *object, guint prop_id, GValue *value, GParamSpe
 {
 	GsPlugin *plugin = GS_PLUGIN (object);
 	GsPluginPrivate *priv = gs_plugin_get_instance_private (plugin);
-	switch (prop_id) {
+
+	switch ((GsPluginProperty) prop_id) {
 	case PROP_FLAGS:
 		g_value_set_flags (value, priv->flags);
+		break;
+	case PROP_SESSION_BUS_CONNECTION:
+		g_value_set_object (value, priv->session_bus_connection);
+		break;
+	case PROP_SYSTEM_BUS_CONNECTION:
+		g_value_set_object (value, priv->system_bus_connection);
 		break;
 	default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -1717,17 +1841,57 @@ gs_plugin_get_property (GObject *object, guint prop_id, GValue *value, GParamSpe
 static void
 gs_plugin_class_init (GsPluginClass *klass)
 {
-	GParamSpec *pspec;
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
+	object_class->constructed = gs_plugin_constructed;
 	object_class->set_property = gs_plugin_set_property;
 	object_class->get_property = gs_plugin_get_property;
+	object_class->dispose = gs_plugin_dispose;
 	object_class->finalize = gs_plugin_finalize;
 
-	pspec = g_param_spec_flags ("flags", NULL, NULL,
+	/**
+	 * GsPlugin:flags:
+	 *
+	 * Flags which indicate various boolean properties of the plugin.
+	 *
+	 * These may change during the plugin’s lifetime.
+	 */
+	obj_props[PROP_FLAGS] =
+		g_param_spec_flags ("flags", NULL, NULL,
 				    GS_TYPE_PLUGIN_FLAGS, GS_PLUGIN_FLAGS_NONE,
-				    G_PARAM_READWRITE);
-	g_object_class_install_property (object_class, PROP_FLAGS, pspec);
+				    G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS | G_PARAM_EXPLICIT_NOTIFY);
+
+	/**
+	 * GsPlugin:session-bus-connection: (not nullable)
+	 *
+	 * A connection to the D-Bus session bus.
+	 *
+	 * This must be set at construction time and will not be %NULL
+	 * afterwards.
+	 *
+	 * Since: 43
+	 */
+	obj_props[PROP_SESSION_BUS_CONNECTION] =
+		g_param_spec_object ("session-bus-connection", NULL, NULL,
+				     G_TYPE_DBUS_CONNECTION,
+				     G_PARAM_CONSTRUCT_ONLY | G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS | G_PARAM_EXPLICIT_NOTIFY);
+
+	/**
+	 * GsPlugin:system-bus-connection: (not nullable)
+	 *
+	 * A connection to the D-Bus system bus.
+	 *
+	 * This must be set at construction time and will not be %NULL
+	 * afterwards.
+	 *
+	 * Since: 43
+	 */
+	obj_props[PROP_SYSTEM_BUS_CONNECTION] =
+		g_param_spec_object ("system-bus-connection", NULL, NULL,
+				     G_TYPE_DBUS_CONNECTION,
+				     G_PARAM_CONSTRUCT_ONLY | G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS | G_PARAM_EXPLICIT_NOTIFY);
+
+	g_object_class_install_properties (object_class, G_N_ELEMENTS (obj_props), obj_props);
 
 	signals [SIGNAL_UPDATES_CHANGED] =
 		g_signal_new ("updates-changed",
@@ -1811,19 +1975,28 @@ gs_plugin_init (GsPlugin *plugin)
 
 /**
  * gs_plugin_new:
+ * @session_bus_connection: (not nullable) (transfer none): a session bus
+ *   connection to use
+ * @system_bus_connection: (not nullable) (transfer none): a system bus
+ *   connection to use
  *
  * Creates a new plugin.
  *
  * Returns: a #GsPlugin
  *
- * Since: 3.22
+ * Since: 43
  **/
 GsPlugin *
-gs_plugin_new (void)
+gs_plugin_new (GDBusConnection *session_bus_connection,
+               GDBusConnection *system_bus_connection)
 {
-	GsPlugin *plugin;
-	plugin = g_object_new (GS_TYPE_PLUGIN, NULL);
-	return plugin;
+	g_return_val_if_fail (G_IS_DBUS_CONNECTION (session_bus_connection), NULL);
+	g_return_val_if_fail (G_IS_DBUS_CONNECTION (system_bus_connection), NULL);
+
+	return g_object_new (GS_TYPE_PLUGIN,
+			     "session-bus-connection", session_bus_connection,
+			     "system-bus-connection", system_bus_connection,
+			     NULL);
 }
 
 typedef struct {
@@ -1930,32 +2103,6 @@ gs_plugin_update_cache_state_for_repository (GsPlugin *plugin,
 }
 
 /**
- * gs_plugin_get_action_supported:
- * @plugin: a #GsPlugin
- * @action: a #GsPluginAction
- *
- * Checks whether the @plugin supports @action, meaning whether
- * the @plugin can execute the @action.
- *
- * Returns: Whether the @plugin supports the @action
- *
- * Since: 41
- **/
-gboolean
-gs_plugin_get_action_supported (GsPlugin *plugin,
-				GsPluginAction action)
-{
-	const gchar *function_name;
-
-	g_return_val_if_fail (GS_IS_PLUGIN (plugin), FALSE);
-
-	function_name = gs_plugin_action_to_function_name (action);
-	g_return_val_if_fail (function_name != NULL, FALSE);
-
-	return gs_plugin_get_symbol (plugin, function_name) != NULL;
-}
-
-/**
  * gs_plugin_ask_untrusted:
  * @plugin: a #GsPlugin
  * @title: the title for the question
@@ -1988,4 +2135,42 @@ gs_plugin_ask_untrusted (GsPlugin *plugin,
 		       accept_label,
 		       &accepts);
 	return accepts;
+}
+
+/**
+ * gs_plugin_get_session_bus_connection:
+ * @self: a #GsPlugin
+ *
+ * Get the D-Bus session bus connection in use by the plugin.
+ *
+ * Returns: (transfer none) (not nullable): a D-Bus connection
+ * Since: 43
+ */
+GDBusConnection *
+gs_plugin_get_session_bus_connection (GsPlugin *self)
+{
+	GsPluginPrivate *priv = gs_plugin_get_instance_private (self);
+
+	g_return_val_if_fail (GS_IS_PLUGIN (self), NULL);
+
+	return priv->session_bus_connection;
+}
+
+/**
+ * gs_plugin_get_system_bus_connection:
+ * @self: a #GsPlugin
+ *
+ * Get the D-Bus system bus connection in use by the plugin.
+ *
+ * Returns: (transfer none) (not nullable): a D-Bus connection
+ * Since: 43
+ */
+GDBusConnection *
+gs_plugin_get_system_bus_connection (GsPlugin *self)
+{
+	GsPluginPrivate *priv = gs_plugin_get_instance_private (self);
+
+	g_return_val_if_fail (GS_IS_PLUGIN (self), NULL);
+
+	return priv->system_bus_connection;
 }

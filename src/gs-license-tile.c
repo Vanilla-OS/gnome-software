@@ -30,6 +30,7 @@
 
 #include "gs-common.h"
 #include "gs-license-tile.h"
+#include "gs-lozenge.h"
 
 struct _GsLicenseTile
 {
@@ -40,10 +41,9 @@ struct _GsLicenseTile
 	gulong		 notify_urls_handler;
 
 	GtkWidget	*lozenges[3];
-	GtkImage	*lozenge_images[3];
 	GtkLabel	*title_label;
 	GtkLabel	*description_label;
-	GtkListBoxRow	*get_involved_row;
+	GtkLabel	*get_involved_label;
 };
 
 G_DEFINE_TYPE (GsLicenseTile, gs_license_tile, GTK_TYPE_WIDGET)
@@ -84,50 +84,71 @@ gs_license_tile_refresh (GsLicenseTile *self)
 	const gchar *lozenge_icon_names[3];
 	g_autofree gchar *description = NULL;
 	gboolean get_involved_visible;
+	const gchar *get_involved_label;
 
 	/* Widget behaviour is undefined if the app is unspecified. */
 	if (self->app == NULL)
 		return;
 
 	if (gs_app_get_license_is_free (self->app)) {
+		const gchar *license_spdx, *license_url;
+
 		title = _("Community Built");
 		css_class = "green";
 		lozenge_icon_names[0] = "heart-filled-symbolic";
 		lozenge_icon_names[1] = "community-symbolic";
 		lozenge_icon_names[2] = "sign-language-symbolic";
+#if AS_CHECK_VERSION(0, 15, 3)
+		get_involved_visible = (gs_app_get_url (self->app, AS_URL_KIND_HOMEPAGE) != NULL ||
+					gs_app_get_url (self->app, AS_URL_KIND_CONTRIBUTE) != NULL);
+#else
 		get_involved_visible = (gs_app_get_url (self->app, AS_URL_KIND_HOMEPAGE) != NULL);
+#endif
+		get_involved_label = _("_Get Involved");
 
-		/* Translators: The placeholder here is the name of a software license. */
-		description = g_strdup_printf (_("This software is developed in the open by a community of volunteers, and released under the %s license."
-						 "\n\n"
-						 "You can contribute and help make it even better."),
-						 gs_app_get_license (self->app));
+		license_spdx = gs_app_get_license (self->app);
+		license_url = as_get_license_url (license_spdx);
+
+		if (license_url != NULL) {
+			/* Translators: The first placeholder here is a link to information about the license, and the second placeholder here is the name of a software license. */
+			description = g_strdup_printf (_("This software is developed in the open by a community of volunteers, and released under the <a href=\"%s\">%s license</a>."
+							 "\n\n"
+							 "You can contribute and help make it even better."),
+							 license_url,
+							 license_spdx);
+		} else {
+			/* Translators: The placeholder here is the name of a software license. */
+			description = g_strdup_printf (_("This software is developed in the open by a community of volunteers, and released under the %s license."
+							 "\n\n"
+							 "You can contribute and help make it even better."),
+							 license_spdx);
+		}
 	} else {
 		title = _("Proprietary");
-		css_class = "grey";
-		lozenge_icon_names[0] = "dialog-warning-symbolic";
-		lozenge_icon_names[1] = "face-sad-symbolic";
-		lozenge_icon_names[2] = "padlock-open-symbolic";
-		get_involved_visible = FALSE;
+		css_class = "yellow";
+		lozenge_icon_names[0] = "hand-open-symbolic";
+		lozenge_icon_names[1] = "dialog-warning-symbolic";
+		lozenge_icon_names[2] = "community-none-symbolic";
+		get_involved_visible = TRUE;
+		get_involved_label = _("_Learn More");
 
-		description = g_strdup (_("This software is not developed in the open, so only its developers know how it works. There may be restrictions on its use, and it may be harder to tell if the software is insecure."
+		description = g_strdup (_("This software is not developed in the open, so only its developers know how it works. It may be insecure in ways that are hard to detect, and it may change without oversight."
 					  "\n\n"
-					  "You may not be able to contribute to this software or influence its development."));
+					  "You may not be able to contribute to this software."));
 	}
 
 	for (gsize i = 0; i < G_N_ELEMENTS (self->lozenges); i++) {
 		GtkStyleContext *context = gtk_widget_get_style_context (self->lozenges[i]);
 		gtk_style_context_remove_class (context, "green");
-		gtk_style_context_remove_class (context, "grey");
+		gtk_style_context_remove_class (context, "yellow");
 		gtk_style_context_add_class (context, css_class);
+		gs_lozenge_set_icon_name (GS_LOZENGE (self->lozenges[i]), lozenge_icon_names[i]);
 	}
-
-	for (gsize i = 0; i < G_N_ELEMENTS (self->lozenge_images); i++)
-		gtk_image_set_from_icon_name (self->lozenge_images[i], lozenge_icon_names[i]);
 
 	gtk_label_set_label (self->title_label, title);
 	gtk_label_set_label (self->description_label, description);
-	gtk_widget_set_visible (GTK_WIDGET (self->get_involved_row), get_involved_visible);
+	gtk_widget_set_visible (GTK_WIDGET (self->get_involved_label), get_involved_visible);
+	gtk_label_set_label (self->get_involved_label, get_involved_label);
 }
 
 static void
@@ -231,14 +252,11 @@ gs_license_tile_class_init (GsLicenseTileClass *klass)
 	gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Software/gs-license-tile.ui");
 
 	gtk_widget_class_bind_template_child_full (widget_class, "lozenge0", FALSE, G_STRUCT_OFFSET (GsLicenseTile, lozenges[0]));
-	gtk_widget_class_bind_template_child_full (widget_class, "lozenge0_image", FALSE, G_STRUCT_OFFSET (GsLicenseTile, lozenge_images[0]));
 	gtk_widget_class_bind_template_child_full (widget_class, "lozenge1", FALSE, G_STRUCT_OFFSET (GsLicenseTile, lozenges[1]));
-	gtk_widget_class_bind_template_child_full (widget_class, "lozenge1_image", FALSE, G_STRUCT_OFFSET (GsLicenseTile, lozenge_images[1]));
 	gtk_widget_class_bind_template_child_full (widget_class, "lozenge2", FALSE, G_STRUCT_OFFSET (GsLicenseTile, lozenges[2]));
-	gtk_widget_class_bind_template_child_full (widget_class, "lozenge2_image", FALSE, G_STRUCT_OFFSET (GsLicenseTile, lozenge_images[2]));
 	gtk_widget_class_bind_template_child (widget_class, GsLicenseTile, title_label);
 	gtk_widget_class_bind_template_child (widget_class, GsLicenseTile, description_label);
-	gtk_widget_class_bind_template_child (widget_class, GsLicenseTile, get_involved_row);
+	gtk_widget_class_bind_template_child (widget_class, GsLicenseTile, get_involved_label);
 
 	gtk_widget_class_bind_template_callback (widget_class, gs_license_tile_row_activated_cb);
 

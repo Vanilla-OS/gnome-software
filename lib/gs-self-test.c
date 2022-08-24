@@ -174,6 +174,7 @@ gs_plugin_download_rewrite_func (void)
 {
 	g_autofree gchar *css = NULL;
 	g_autoptr(GError) error = NULL;
+	g_autoptr(GDBusConnection) bus_connection = NULL;
 	g_autoptr(GsPlugin) plugin = NULL;
 	const gchar *resource = "background:\n"
 				" url('file://" DATADIR "/gnome-software/featured-maps.png')\n"
@@ -187,7 +188,10 @@ gs_plugin_download_rewrite_func (void)
 	}
 
 	/* test rewrite */
-	plugin = gs_plugin_new ();
+	bus_connection = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, &error);
+	g_assert_no_error (error);
+
+	plugin = gs_plugin_new (bus_connection, bus_connection);
 	gs_plugin_set_name (plugin, "self-test");
 	css = gs_plugin_download_rewrite_resource (plugin,
 						   NULL, /* app */
@@ -215,8 +219,15 @@ gs_plugin_func (void)
 	}
 	for (guint i = 1; i < GS_PLUGIN_ACTION_LAST; i++) {
 		const gchar *tmp = gs_plugin_action_to_function_name (i);
-		if (tmp == NULL)
+		if (tmp == NULL) {
+			/* These do not have function, they exist only for better error messages. */
+			if (i == GS_PLUGIN_ACTION_INSTALL_REPO ||
+			    i == GS_PLUGIN_ACTION_REMOVE_REPO ||
+			    i == GS_PLUGIN_ACTION_ENABLE_REPO ||
+			    i == GS_PLUGIN_ACTION_DISABLE_REPO)
+				continue;
 			g_critical ("failed to convert %u", i);
+		}
 	}
 
 	/* add a couple of duplicate IDs */
@@ -564,12 +575,15 @@ static void
 gs_app_addons_func (void)
 {
 	g_autoptr(GsApp) app = gs_app_new ("test.desktop");
-	GsApp *addon;
+	g_autoptr(GsApp) addon = NULL;
+	g_autoptr(GsAppList) addons_list = NULL;
 
 	/* create, add then drop ref, so @app has the only refcount of addon */
 	addon = gs_app_new ("test.desktop");
-	gs_app_add_addon (app, addon);
-	g_object_unref (addon);
+	addons_list = gs_app_list_new ();
+	gs_app_list_add (addons_list, addon);
+
+	gs_app_add_addons (app, addons_list);
 
 	gs_app_remove_addon (app, addon);
 }
