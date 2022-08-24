@@ -1,0 +1,34 @@
+From: Jeremy Bicha <jeremy.bicha@canonical.com>
+Date: Tue, 23 Aug 2022 21:01:47 -0400
+Subject: build: allow building flatpak plugin
+
+https://gitlab.gnome.org/GNOME/gnome-software/-/issues/1877
+---
+ meson.build | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 1730a3e..685cf4a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -227,13 +227,13 @@ if get_option('flatpak')
+   flatpak = dependency('flatpak', version : '>= 1.9.1')
+   ostree = dependency('ostree-1')
+ 
+-  flatpak_soupapiversion = flatpak.get_variable('soupapiversion')
+-  if flatpak_soupapiversion == ''
+-    flatpak_soupapiversion = '2.4' # Pre libsoup3 support
+-  endif
+-  if flatpak_soupapiversion != libsoupapiversion
+-    error('flatpak was built against a different API of libsoup. @0@ instead of @1@.'.format(flatpak_soupapiversion, libsoupapiversion))
+-  endif
++#  flatpak_soupapiversion = flatpak.get_variable('soupapiversion')
++#  if flatpak_soupapiversion == ''
++#    flatpak_soupapiversion = '2.4' # Pre libsoup3 support
++#  endif
++#  if flatpak_soupapiversion != libsoupapiversion
++#    error('flatpak was built against a different API of libsoup. @0@ instead of @1@.'.format(flatpak_soupapiversion, libsoupapiversion))
++#  endif
+ endif
+ 
+ if get_option('malcontent')
