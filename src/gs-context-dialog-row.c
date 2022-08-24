@@ -30,6 +30,7 @@
 #include <gtk/gtk.h>
 
 #include "gs-context-dialog-row.h"
+#include "gs-lozenge.h"
 #include "gs-enums.h"
 
 struct _GsContextDialogRow
@@ -38,9 +39,7 @@ struct _GsContextDialogRow
 
 	GsContextDialogRowImportance	 importance;
 
-	GtkWidget			*lozenge;  /* (unowned) */
-	GtkImage			*lozenge_content_image;  /* (unowned) */
-	GtkLabel			*lozenge_content_text;  /* (unowned) */
+	GsLozenge			*lozenge;  /* (unowned) */
 };
 
 G_DEFINE_TYPE (GsContextDialogRow, gs_context_dialog_row, ADW_TYPE_ACTION_ROW)
@@ -75,6 +74,10 @@ static void
 gs_context_dialog_row_init (GsContextDialogRow *self)
 {
 	gtk_widget_init_template (GTK_WIDGET (self));
+
+#if ADW_CHECK_VERSION(1,2,0)
+	adw_preferences_row_set_use_markup (ADW_PREFERENCES_ROW (self), FALSE);
+#endif
 }
 
 static void
@@ -111,14 +114,10 @@ gs_context_dialog_row_set_property (GObject      *object,
 
 	switch ((GsContextDialogRowProperty) prop_id) {
 	case PROP_ICON_NAME:
-		gtk_image_set_from_icon_name (self->lozenge_content_image, g_value_get_string (value));
-		gtk_widget_set_visible (GTK_WIDGET (self->lozenge_content_image), TRUE);
-		gtk_widget_set_visible (GTK_WIDGET (self->lozenge_content_text), FALSE);
+		gs_lozenge_set_icon_name (self->lozenge, g_value_get_string (value));
 		break;
 	case PROP_CONTENT:
-		gtk_label_set_text (self->lozenge_content_text, g_value_get_string (value));
-		gtk_widget_set_visible (GTK_WIDGET (self->lozenge_content_image), FALSE);
-		gtk_widget_set_visible (GTK_WIDGET (self->lozenge_content_text), TRUE);
+		gs_lozenge_set_text (self->lozenge, g_value_get_string (value));
 		break;
 	case PROP_IMPORTANCE: {
 		GtkStyleContext *context;
@@ -127,7 +126,7 @@ gs_context_dialog_row_set_property (GObject      *object,
 		self->importance = g_value_get_enum (value);
 		css_class = css_class_for_importance (self->importance);
 
-		context = gtk_widget_get_style_context (self->lozenge);
+		context = gtk_widget_get_style_context (GTK_WIDGET (self->lozenge));
 
 		gtk_style_context_remove_class (context, "green");
 		gtk_style_context_remove_class (context, "yellow");
@@ -204,8 +203,6 @@ gs_context_dialog_row_class_init (GsContextDialogRowClass *klass)
 	gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Software/gs-context-dialog-row.ui");
 
 	gtk_widget_class_bind_template_child (widget_class, GsContextDialogRow, lozenge);
-	gtk_widget_class_bind_template_child (widget_class, GsContextDialogRow, lozenge_content_image);
-	gtk_widget_class_bind_template_child (widget_class, GsContextDialogRow, lozenge_content_text);
 }
 
 /**
@@ -282,7 +279,7 @@ gs_context_dialog_row_get_icon_name (GsContextDialogRow *self)
 {
 	g_return_val_if_fail (GS_IS_CONTEXT_DIALOG_ROW (self), NULL);
 
-	return gtk_image_get_icon_name (self->lozenge_content_image);
+	return gs_lozenge_get_icon_name (self->lozenge);
 }
 
 /**
@@ -299,7 +296,42 @@ gs_context_dialog_row_get_content (GsContextDialogRow *self)
 {
 	g_return_val_if_fail (GS_IS_CONTEXT_DIALOG_ROW (self), NULL);
 
-	return gtk_label_get_text (self->lozenge_content_text);
+	return gs_lozenge_get_text (self->lozenge);
+}
+
+/**
+ * gs_context_dialog_row_get_content_is_markup:
+ * @self: a #GsContextDialogRow
+ *
+ * Get whether the #GsContextDialogRow:content is markup.
+ *
+ * Returns: %TRUE when then content text is markup
+ * Since: 43
+ */
+gboolean
+gs_context_dialog_row_get_content_is_markup (GsContextDialogRow *self)
+{
+	g_return_val_if_fail (GS_IS_CONTEXT_DIALOG_ROW (self), FALSE);
+
+	return gs_lozenge_get_use_markup (self->lozenge);
+}
+
+/**
+ * gs_context_dialog_row_set_content_markup:
+ * @self: a #GsContextDialogRow
+ * @markup: markup to set
+ *
+ * Set the @markup content as markup.
+ *
+ * Since: 43
+ */
+void
+gs_context_dialog_row_set_content_markup (GsContextDialogRow *self,
+					  const gchar *markup)
+{
+	g_return_if_fail (GS_IS_CONTEXT_DIALOG_ROW (self));
+
+	gs_lozenge_set_markup (self->lozenge, markup);
 }
 
 /**
@@ -343,5 +375,5 @@ gs_context_dialog_row_set_size_groups (GsContextDialogRow *self,
 	g_return_if_fail (description == NULL || GTK_IS_SIZE_GROUP (description));
 
 	if (lozenge != NULL)
-		gtk_size_group_add_widget (lozenge, self->lozenge);
+		gtk_size_group_add_widget (lozenge, GTK_WIDGET (self->lozenge));
 }

@@ -58,6 +58,8 @@ typedef struct {
 	GtkWidget	*focus;
 	GsCategory	*category;
 	gchar		*search;
+	GsApp		*app;
+	gdouble		 vscroll_position;
 } BackEntry;
 
 struct _GsShell
@@ -69,7 +71,6 @@ struct _GsShell
 	GsPluginLoader		*plugin_loader;
 	GtkWidget		*header_start_widget;
 	GtkWidget		*header_end_widget;
-	GtkWidget		*details_header_end_widget;
 	GQueue			*back_entry_stack;
 	GPtrArray		*modal_dialogs;
 	gchar			*events_info_uri;
@@ -107,6 +108,7 @@ struct _GsShell
 	GtkWidget		*primary_menu;
 	GtkWidget		*sub_page_header_title;
 
+	gboolean		 activate_after_setup;
 	gboolean		 is_narrow;
 	guint			 allocation_changed_cb_id;
 
@@ -165,6 +167,12 @@ gs_shell_modal_dialog_present (GsShell *shell, GtkWindow *window)
 void
 gs_shell_activate (GsShell *shell)
 {
+	/* Waiting for plugin loader to setup first */
+	if (shell->plugin_loader == NULL) {
+		shell->activate_after_setup = TRUE;
+		return;
+	}
+
 	gtk_widget_show (GTK_WIDGET (shell));
 	gtk_window_present (GTK_WINDOW (shell));
 }
@@ -211,29 +219,6 @@ gs_shell_set_header_end_widget (GsShell *shell, GtkWidget *widget)
 
 	if (old_widget != NULL) {
 		adw_header_bar_remove (ADW_HEADER_BAR (shell->main_header), old_widget);
-		g_object_unref (old_widget);
-	}
-}
-
-static void
-gs_shell_set_details_header_end_widget (GsShell *shell, GtkWidget *widget)
-{
-	GtkWidget *old_widget;
-
-	old_widget = shell->details_header_end_widget;
-
-	if (shell->details_header_end_widget == widget)
-		return;
-
-	if (widget != NULL) {
-		g_object_ref (widget);
-		adw_header_bar_pack_end (ADW_HEADER_BAR (shell->details_header), widget);
-	}
-
-	shell->details_header_end_widget = widget;
-
-	if (old_widget != NULL) {
-		adw_header_bar_remove (ADW_HEADER_BAR (shell->details_header), old_widget);
 		g_object_unref (old_widget);
 	}
 }
@@ -431,6 +416,7 @@ free_back_entry (BackEntry *entry)
 		g_object_remove_weak_pointer (G_OBJECT (entry->focus),
 		                              (gpointer *) &entry->focus);
 	g_clear_object (&entry->category);
+	g_clear_object (&entry->app);
 	g_free (entry->search);
 	g_free (entry);
 }
@@ -548,9 +534,6 @@ stack_notify_visible_child_cb (GObject    *object,
 	case GS_SHELL_MODE_SEARCH:
 		gs_shell_set_header_end_widget (shell, widget);
 		break;
-	case GS_SHELL_MODE_DETAILS:
-		gs_shell_set_details_header_end_widget (shell, widget);
-		break;
 	default:
 		g_assert (widget == NULL);
 		break;
@@ -598,8 +581,11 @@ gs_shell_change_mode (GsShell *shell,
 	GsPage *page;
 	gboolean mode_is_main = gs_shell_get_mode_is_main (mode);
 
-	if (gs_shell_get_mode (shell) == mode)
+	if (gs_shell_get_mode (shell) == mode &&
+	    (mode != GS_SHELL_MODE_DETAILS ||
+	     data == gs_details_page_get_app (GS_DETAILS_PAGE (shell->pages[mode])))) {
 		return;
+	}
 
 	/* switch page */
 	if (mode == GS_SHELL_MODE_LOADING) {
@@ -711,6 +697,10 @@ save_back_entry (GsShell *shell)
 		entry->search = g_strdup (gs_search_page_get_text (GS_SEARCH_PAGE (shell->pages[GS_SHELL_MODE_SEARCH])));
 		g_debug ("pushing back entry for %s with %s",
 			 page_name[entry->mode], entry->search);
+		break;
+	case GS_SHELL_MODE_DETAILS:
+		entry->app = g_object_ref (gs_details_page_get_app (GS_DETAILS_PAGE (shell->pages[GS_SHELL_MODE_DETAILS])));
+		entry->vscroll_position = gs_details_page_get_vscroll_position (GS_DETAILS_PAGE (shell->pages[GS_SHELL_MODE_DETAILS]));
 		break;
 	default:
 		g_debug ("pushing back entry for %s", page_name[entry->mode]);
@@ -824,6 +814,14 @@ gs_shell_go_back (GsShell *shell)
 		/* set the mode directly */
 		gs_shell_change_mode (shell, entry->mode,
 				      (gpointer) entry->search, FALSE);
+		break;
+	case GS_SHELL_MODE_DETAILS:
+		g_debug ("popping back entry for %s with app %s and vscroll position %f",
+			 page_name[entry->mode],
+			 gs_app_get_unique_id (entry->app),
+			 entry->vscroll_position);
+		gs_shell_change_mode (shell, entry->mode, entry->app, FALSE);
+		gs_details_page_set_vscroll_position (GS_DETAILS_PAGE (shell->pages[GS_SHELL_MODE_DETAILS]), entry->vscroll_position);
 		break;
 	default:
 		g_debug ("popping back entry for %s", page_name[entry->mode]);
@@ -2181,6 +2179,16 @@ category_page_app_clicked_cb (GsCategoryPage *page,
 	gs_shell_show_app (shell, app);
 }
 
+static void
+details_page_app_clicked_cb (GsDetailsPage *page,
+			     GsApp         *app,
+			     gpointer       user_data)
+{
+	GsShell *shell = GS_SHELL (user_data);
+
+	gs_shell_show_app (shell, app);
+}
+
 void
 gs_shell_setup (GsShell *shell, GsPluginLoader *plugin_loader, GCancellable *cancellable)
 {
@@ -2236,6 +2244,11 @@ gs_shell_setup (GsShell *shell, GsPluginLoader *plugin_loader, GCancellable *can
 
 		if (g_settings_get_boolean (shell->settings, "first-run"))
 			g_settings_set_boolean (shell->settings, "first-run", FALSE);
+	}
+
+	if (shell->activate_after_setup) {
+		shell->activate_after_setup = FALSE;
+		gs_shell_activate (shell);
 	}
 }
 
@@ -2293,6 +2306,14 @@ gs_shell_install (GsShell *shell, GsApp *app, GsShellInteraction interaction)
 	gs_shell_change_mode (shell, GS_SHELL_MODE_DETAILS,
 			      (gpointer) app, TRUE);
 	gs_page_install_app (shell->pages[GS_SHELL_MODE_DETAILS], app, interaction, shell->cancellable);
+}
+
+void
+gs_shell_uninstall (GsShell *shell, GsApp *app)
+{
+	save_back_entry (shell);
+	gs_shell_change_mode (shell, GS_SHELL_MODE_DETAILS, (gpointer) app, TRUE);
+	gs_page_remove_app (shell->pages[GS_SHELL_MODE_DETAILS], app, shell->cancellable);
 }
 
 void
@@ -2642,6 +2663,7 @@ gs_shell_class_init (GsShellClass *klass)
 	gtk_widget_class_bind_template_callback (widget_class, initial_refresh_done);
 	gtk_widget_class_bind_template_callback (widget_class, overlay_get_child_position_cb);
 	gtk_widget_class_bind_template_callback (widget_class, gs_shell_details_page_metainfo_loaded_cb);
+	gtk_widget_class_bind_template_callback (widget_class, details_page_app_clicked_cb);
 
 	gtk_widget_class_add_binding_action (widget_class, GDK_KEY_q, GDK_CONTROL_MASK, "window.close", NULL);
 }

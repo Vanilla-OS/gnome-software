@@ -11,6 +11,7 @@
 
 #include <locale.h>
 #include <glib/gi18n.h>
+#include <glib/gstdio.h>
 #include <appstream.h>
 #include <math.h>
 
@@ -49,12 +50,12 @@ struct _GsPluginLoader
 	gboolean		 plugin_dir_dirty;
 	GPtrArray		*file_monitors;
 	GsPluginStatus		 global_status_last;
-	AsPool			*as_pool;
 
 	GMutex			 pending_apps_mutex;
-	GPtrArray		*pending_apps;
+	GsAppList		*pending_apps;		/* (nullable) (owned) */
 
 	GThreadPool		*queued_ops_pool;
+	gint			 active_jobs;
 
 	GSettings		*settings;
 
@@ -80,6 +81,9 @@ struct _GsPluginLoader
 #ifdef HAVE_SYSPROF
 	SysprofCaptureWriter	*sysprof_writer;  /* (owned) (nullable) */
 #endif
+
+	GDBusConnection		*session_bus_connection;  /* (owned); (not nullable) after setup */
+	GDBusConnection		*system_bus_connection;  /* (owned); (not nullable) after setup */
 };
 
 static void gs_plugin_loader_monitor_network (GsPluginLoader *plugin_loader);
@@ -105,16 +109,18 @@ enum {
 	SIGNAL_LAST
 };
 
-enum {
-	PROP_0,
-	PROP_EVENTS,
+static guint signals [SIGNAL_LAST] = { 0 };
+
+typedef enum {
+	PROP_EVENTS = 1,
 	PROP_ALLOW_UPDATES,
 	PROP_NETWORK_AVAILABLE,
 	PROP_NETWORK_METERED,
-	PROP_LAST
-};
+	PROP_SESSION_BUS_CONNECTION,
+	PROP_SYSTEM_BUS_CONNECTION,
+} GsPluginLoaderProperty;
 
-static guint signals [SIGNAL_LAST] = { 0 };
+static GParamSpec *obj_props[PROP_SYSTEM_BUS_CONNECTION + 1] = { NULL, };
 
 typedef void		 (*GsPluginFunc)		(GsPlugin	*plugin);
 typedef gboolean	 (*GsPluginSetupFunc)		(GsPlugin	*plugin,
@@ -187,8 +193,6 @@ typedef struct {
 	GPtrArray			*catlist;
 	GsPluginJob			*plugin_job;
 	gboolean			 anything_ran;
-	guint				 timeout_id;
-	gboolean			 timeout_triggered;
 	gchar				**tokens;
 } GsPluginLoaderHelper;
 
@@ -206,12 +210,12 @@ gs_plugin_loader_helper_new (GsPluginLoader *plugin_loader, GsPluginJob *plugin_
 static void
 reset_app_progress (GsApp *app)
 {
-	GsAppList *addons = gs_app_get_addons (app);
+	g_autoptr(GsAppList) addons = gs_app_dup_addons (app);
 	GsAppList *related = gs_app_get_related (app);
 
 	gs_app_set_progress (app, GS_APP_PROGRESS_UNKNOWN);
 
-	for (guint i = 0; i < gs_app_list_length (addons); i++) {
+	for (guint i = 0; addons != NULL && i < gs_app_list_length (addons); i++) {
 		GsApp *app_addons = gs_app_list_index (addons, i);
 		gs_app_set_progress (app_addons, GS_APP_PROGRESS_UNKNOWN);
 	}
@@ -230,10 +234,6 @@ gs_plugin_loader_helper_free (GsPluginLoaderHelper *helper)
 	case GS_PLUGIN_ACTION_REMOVE:
 	case GS_PLUGIN_ACTION_UPDATE:
 	case GS_PLUGIN_ACTION_DOWNLOAD:
-	case GS_PLUGIN_ACTION_INSTALL_REPO:
-	case GS_PLUGIN_ACTION_REMOVE_REPO:
-	case GS_PLUGIN_ACTION_ENABLE_REPO:
-	case GS_PLUGIN_ACTION_DISABLE_REPO:
 		{
 			GsApp *app;
 			GsAppList *list;
@@ -254,8 +254,6 @@ gs_plugin_loader_helper_free (GsPluginLoaderHelper *helper)
 	}
 
 	g_object_unref (helper->plugin_loader);
-	if (helper->timeout_id != 0)
-		g_source_remove (helper->timeout_id);
 	if (helper->plugin_job != NULL)
 		g_object_unref (helper->plugin_job);
 	if (helper->catlist != NULL)
@@ -265,12 +263,6 @@ gs_plugin_loader_helper_free (GsPluginLoaderHelper *helper)
 }
 
 G_DEFINE_AUTOPTR_CLEANUP_FUNC(GsPluginLoaderHelper, gs_plugin_loader_helper_free)
-
-static gint
-gs_plugin_loader_app_sort_name_cb (GsApp *app1, GsApp *app2, gpointer user_data)
-{
-	return gs_utils_sort_strcmp (gs_app_get_name (app1), gs_app_get_name (app2));
-}
 
 GsPlugin *
 gs_plugin_loader_find_plugin (GsPluginLoader *plugin_loader,
@@ -288,7 +280,7 @@ static gboolean
 gs_plugin_loader_notify_idle_cb (gpointer user_data)
 {
 	GsPluginLoader *plugin_loader = GS_PLUGIN_LOADER (user_data);
-	g_object_notify (G_OBJECT (plugin_loader), "events");
+	g_object_notify_by_pspec (G_OBJECT (plugin_loader), obj_props[PROP_EVENTS]);
 	return FALSE;
 }
 
@@ -634,70 +626,17 @@ gs_plugin_loader_call_vfunc (GsPluginLoaderHelper *helper,
 	case GS_PLUGIN_ACTION_UPGRADE_TRIGGER:
 	case GS_PLUGIN_ACTION_LAUNCH:
 	case GS_PLUGIN_ACTION_UPDATE_CANCEL:
-	case GS_PLUGIN_ACTION_INSTALL_REPO:
-	case GS_PLUGIN_ACTION_REMOVE_REPO:
-	case GS_PLUGIN_ACTION_ENABLE_REPO:
-	case GS_PLUGIN_ACTION_DISABLE_REPO:
 		{
 			GsPluginActionFunc plugin_func = func;
 			ret = plugin_func (plugin, app, cancellable, &error_local);
 		}
 		break;
-	case GS_PLUGIN_ACTION_GET_RECENT:
-		{
-			GsPluginGetRecentFunc plugin_func = func;
-			ret = plugin_func (plugin, list,
-					   gs_plugin_job_get_age (helper->plugin_job),
-					   cancellable, &error_local);
-		}
-		break;
 	case GS_PLUGIN_ACTION_GET_UPDATES:
 	case GS_PLUGIN_ACTION_GET_UPDATES_HISTORICAL:
 	case GS_PLUGIN_ACTION_GET_SOURCES:
-	case GS_PLUGIN_ACTION_GET_POPULAR:
-	case GS_PLUGIN_ACTION_GET_FEATURED:
 		{
 			GsPluginResultsFunc plugin_func = func;
 			ret = plugin_func (plugin, list, cancellable, &error_local);
-		}
-		break;
-	case GS_PLUGIN_ACTION_SEARCH:
-		{
-			GsPluginSearchFunc plugin_func = func;
-			ret = plugin_func (plugin, helper->tokens, list,
-					   cancellable, &error_local);
-		}
-		break;
-	case GS_PLUGIN_ACTION_SEARCH_FILES:
-	case GS_PLUGIN_ACTION_SEARCH_PROVIDES:
-		{
-			GsPluginSearchFunc plugin_func = func;
-			const gchar *search[2] = { gs_plugin_job_get_search (helper->plugin_job), NULL };
-			ret = plugin_func (plugin, (gchar **) search, list,
-					   cancellable, &error_local);
-		}
-		break;
-	case GS_PLUGIN_ACTION_GET_ALTERNATES:
-		{
-			GsPluginAlternatesFunc plugin_func = func;
-			ret = plugin_func (plugin, app, list,
-					   cancellable, &error_local);
-		}
-		break;
-	case GS_PLUGIN_ACTION_GET_CATEGORIES:
-		{
-			GsPluginCategoriesFunc plugin_func = func;
-			ret = plugin_func (plugin, helper->catlist,
-					   cancellable, &error_local);
-		}
-		break;
-	case GS_PLUGIN_ACTION_GET_CATEGORY_APPS:
-		{
-			GsPluginCategoryFunc plugin_func = func;
-			ret = plugin_func (plugin,
-					   gs_plugin_job_get_category (helper->plugin_job),
-					   list,
-					   cancellable, &error_local);
 		}
 		break;
 	case GS_PLUGIN_ACTION_FILE_TO_APP:
@@ -741,20 +680,6 @@ gs_plugin_loader_call_vfunc (GsPluginLoaderHelper *helper,
 
 	/* failed */
 	if (!ret) {
-		/* we returned cancelled, but this was because of a timeout,
-		 * so re-create error, throwing the plugin under the bus */
-		if (helper->timeout_triggered &&
-		    (g_error_matches (error_local, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_CANCELLED) ||
-		     g_error_matches (error_local, G_IO_ERROR, G_IO_ERROR_CANCELLED))) {
-			g_debug ("converting cancelled to timeout");
-			g_clear_error (&error_local);
-			g_set_error (&error_local,
-				     GS_PLUGIN_ERROR,
-				     GS_PLUGIN_ERROR_TIMED_OUT,
-				     "Timeout was reached as %s took "
-				     "too long to return results",
-				     gs_plugin_get_name (plugin));
-		}
 		return gs_plugin_error_handle_failure (helper,
 							plugin,
 							error_local,
@@ -762,7 +687,7 @@ gs_plugin_loader_call_vfunc (GsPluginLoaderHelper *helper,
 	}
 
 	/* add app to the pending installation queue if necessary */
-	if ((action == GS_PLUGIN_ACTION_INSTALL || action == GS_PLUGIN_ACTION_INSTALL_REPO) &&
+	if (action == GS_PLUGIN_ACTION_INSTALL &&
 	    app != NULL && gs_app_get_state (app) == GS_APP_STATE_QUEUED_FOR_INSTALL) {
 	        add_app_to_install_queue (plugin_loader, app);
 	}
@@ -1045,54 +970,10 @@ gs_plugin_loader_app_is_valid_updatable (GsApp *app, gpointer user_data)
 		(gs_app_is_updatable (app) || gs_app_get_state (app) == GS_APP_STATE_INSTALLING);
 }
 
-static gboolean
-gs_plugin_loader_filter_qt_for_gtk (GsApp *app, gpointer user_data)
+gboolean
+gs_plugin_loader_app_is_compatible (GsPluginLoader *plugin_loader,
+                                    GsApp          *app)
 {
-	/* hide the QT versions in preference to the GTK ones */
-	if (g_strcmp0 (gs_app_get_id (app), "transmission-qt.desktop") == 0 ||
-	    g_strcmp0 (gs_app_get_id (app), "nntpgrab_qt.desktop") == 0 ||
-	    g_strcmp0 (gs_app_get_id (app), "gimagereader-qt4.desktop") == 0 ||
-	    g_strcmp0 (gs_app_get_id (app), "gimagereader-qt5.desktop") == 0 ||
-	    g_strcmp0 (gs_app_get_id (app), "nntpgrab_server_qt.desktop") == 0 ||
-	    g_strcmp0 (gs_app_get_id (app), "hotot-qt.desktop") == 0) {
-		g_debug ("removing QT version of %s",
-			 gs_plugin_loader_get_app_str (app));
-		return FALSE;
-	}
-
-	/* hide the KDE version in preference to the GTK one */
-	if (g_strcmp0 (gs_app_get_id (app), "qalculate_kde.desktop") == 0) {
-		g_debug ("removing KDE version of %s",
-			 gs_plugin_loader_get_app_str (app));
-		return FALSE;
-	}
-
-	/* hide the KDE version in preference to the Qt one */
-	if (g_strcmp0 (gs_app_get_id (app), "kid3.desktop") == 0 ||
-	    g_strcmp0 (gs_app_get_id (app), "kchmviewer.desktop") == 0) {
-		g_debug ("removing KDE version of %s",
-			 gs_plugin_loader_get_app_str (app));
-		return FALSE;
-	}
-	return TRUE;
-}
-
-static gboolean
-gs_plugin_loader_app_is_non_compulsory (GsApp *app, gpointer user_data)
-{
-	return !gs_app_has_quirk (app, GS_APP_QUIRK_COMPULSORY);
-}
-
-static gboolean
-gs_plugin_loader_app_is_desktop (GsApp *app, gpointer user_data)
-{
-	return gs_app_get_kind (app) == AS_COMPONENT_KIND_DESKTOP_APP;
-}
-
-static gboolean
-gs_plugin_loader_get_app_is_compatible (GsApp *app, gpointer user_data)
-{
-	GsPluginLoader *plugin_loader = GS_PLUGIN_LOADER (user_data);
 	const gchar *tmp;
 	guint i;
 
@@ -1107,43 +988,6 @@ gs_plugin_loader_get_app_is_compatible (GsApp *app, gpointer user_data)
 	g_debug ("removing incompatible %s from project group %s",
 		 gs_app_get_id (app), gs_app_get_project_group (app));
 	return FALSE;
-}
-
-/******************************************************************************/
-
-static gboolean
-gs_plugin_loader_featured_debug (GsApp *app, gpointer user_data)
-{
-	if (g_strcmp0 (gs_app_get_id (app),
-	    g_getenv ("GNOME_SOFTWARE_FEATURED")) == 0)
-		return TRUE;
-	return FALSE;
-}
-
-static gint
-gs_plugin_loader_app_sort_kind_cb (GsApp *app1, GsApp *app2, gpointer user_data)
-{
-	if (gs_app_get_kind (app1) == AS_COMPONENT_KIND_DESKTOP_APP)
-		return -1;
-	if (gs_app_get_kind (app2) == AS_COMPONENT_KIND_DESKTOP_APP)
-		return 1;
-	return 0;
-}
-
-static gint
-gs_plugin_loader_app_sort_match_value_cb (GsApp *app1, GsApp *app2, gpointer user_data)
-{
-	if (gs_app_get_match_value (app1) > gs_app_get_match_value (app2))
-		return -1;
-	if (gs_app_get_match_value (app1) < gs_app_get_match_value (app2))
-		return 1;
-	return 0;
-}
-
-static gint
-gs_plugin_loader_app_sort_prio_cb (GsApp *app1, GsApp *app2, gpointer user_data)
-{
-	return gs_app_compare_priority (app1, app2);
 }
 
 /******************************************************************************/
@@ -1220,147 +1064,6 @@ gs_plugin_loader_job_action_finish (GsPluginLoader *plugin_loader,
 
 /******************************************************************************/
 
-static gint
-gs_plugin_loader_category_sort_cb (gconstpointer a, gconstpointer b)
-{
-	GsCategory *cata = GS_CATEGORY (*(GsCategory **) a);
-	GsCategory *catb = GS_CATEGORY (*(GsCategory **) b);
-	if (gs_category_get_score (cata) < gs_category_get_score (catb))
-		return 1;
-	if (gs_category_get_score (cata) > gs_category_get_score (catb))
-		return -1;
-	return gs_utils_sort_strcmp (gs_category_get_name (cata),
-				     gs_category_get_name (catb));
-}
-
-static void
-gs_plugin_loader_job_get_categories_thread_cb (GTask *task,
-					      gpointer object,
-					      gpointer task_data,
-					      GCancellable *cancellable)
-{
-	GsPluginLoader *plugin_loader = GS_PLUGIN_LOADER (g_task_get_source_object (task));
-	GError *error = NULL;
-	GsPluginLoaderHelper *helper = (GsPluginLoaderHelper *) task_data;
-	g_autoptr(GMainContext) context = g_main_context_new ();
-	g_autoptr(GMainContextPusher) pusher = g_main_context_pusher_new (context);
-	GsCategory * const *categories = NULL;
-	gsize n_categories;
-	g_autofree gchar *job_debug = NULL;
-#ifdef HAVE_SYSPROF
-	gint64 begin_time_nsec G_GNUC_UNUSED = SYSPROF_CAPTURE_CURRENT_TIME;
-#endif
-
-	/* get the categories */
-	categories = gs_category_manager_get_categories (plugin_loader->category_manager, &n_categories);
-
-	for (gsize i = 0; i < n_categories; i++)
-		g_ptr_array_add (helper->catlist, g_object_ref (categories[i]));
-
-	/* run each plugin */
-	if (!gs_plugin_loader_run_results (helper, cancellable, &error)) {
-		g_task_return_error (task, error);
-		return;
-	}
-
-	/* sort by name */
-	g_ptr_array_sort (helper->catlist, gs_plugin_loader_category_sort_cb);
-	for (guint i = 0; i < helper->catlist->len; i++) {
-		GsCategory *cat = GS_CATEGORY (g_ptr_array_index (helper->catlist, i));
-		gs_category_sort_children (cat);
-	}
-
-#ifdef HAVE_SYSPROF
-	if (plugin_loader->sysprof_writer != NULL) {
-		g_autofree gchar *sysprof_message = gs_plugin_job_to_string (helper->plugin_job);
-		sysprof_capture_writer_add_mark (plugin_loader->sysprof_writer,
-						 begin_time_nsec,
-						 sched_getcpu (),
-						 getpid (),
-						 SYSPROF_CAPTURE_CURRENT_TIME - begin_time_nsec,
-						 "gnome-software",
-						 "get-categories",
-						 sysprof_message);
-	}
-#endif  /* HAVE_SYSPROF */
-
-	/* show elapsed time */
-	job_debug = gs_plugin_job_to_string (helper->plugin_job);
-	g_debug ("%s", job_debug);
-
-	/* success */
-	if (helper->catlist->len == 0)
-		g_task_return_new_error (task,
-					 GS_PLUGIN_ERROR,
-					 GS_PLUGIN_ERROR_NOT_SUPPORTED,
-					 "no categories to show");
-	else
-		g_task_return_pointer (task, g_ptr_array_ref (helper->catlist), (GDestroyNotify) g_ptr_array_unref);
-}
-
-/**
- * gs_plugin_loader_job_get_categories_async:
- * @plugin_loader: A #GsPluginLoader
- * @plugin_job: job to process
- * @cancellable: a #GCancellable, or %NULL
- * @callback: function to call when complete
- * @user_data: user data to pass to @callback
- *
- * This method calls all plugins that implement the gs_plugin_add_categories()
- * function. The plugins return #GsCategory objects.
- **/
-void
-gs_plugin_loader_job_get_categories_async (GsPluginLoader *plugin_loader,
-				       GsPluginJob *plugin_job,
-				       GCancellable *cancellable,
-				       GAsyncReadyCallback callback,
-				       gpointer user_data)
-{
-	GsPluginLoaderHelper *helper;
-	g_autoptr(GTask) task = NULL;
-
-	g_return_if_fail (GS_IS_PLUGIN_LOADER (plugin_loader));
-	g_return_if_fail (GS_IS_PLUGIN_JOB (plugin_job));
-	g_return_if_fail (cancellable == NULL || G_IS_CANCELLABLE (cancellable));
-
-	/* save helper */
-	helper = gs_plugin_loader_helper_new (plugin_loader, plugin_job);
-	helper->catlist = g_ptr_array_new_with_free_func ((GDestroyNotify) g_object_unref);
-
-	/* run in a thread */
-	task = g_task_new (plugin_loader, cancellable, callback, user_data);
-	g_task_set_source_tag (task, gs_plugin_loader_job_get_categories_async);
-	g_task_set_task_data (task, helper, (GDestroyNotify) gs_plugin_loader_helper_free);
-	g_task_run_in_thread (task, gs_plugin_loader_job_get_categories_thread_cb);
-}
-
-/**
- * gs_plugin_loader_job_get_categories_finish:
- * @plugin_loader: A #GsPluginLoader
- * @res: a #GAsyncResult
- * @error: A #GError, or %NULL
- *
- * Return value: (element-type GsCategory) (transfer full): A list of applications
- **/
-GPtrArray *
-gs_plugin_loader_job_get_categories_finish (GsPluginLoader *plugin_loader,
-					   GAsyncResult *res,
-					   GError **error)
-{
-	GPtrArray *array;
-
-	g_return_val_if_fail (GS_IS_PLUGIN_LOADER (plugin_loader), NULL);
-	g_return_val_if_fail (G_IS_TASK (res), NULL);
-	g_return_val_if_fail (g_task_is_valid (res, plugin_loader), NULL);
-	g_return_val_if_fail (error == NULL || *error == NULL, NULL);
-
-	array = g_task_propagate_pointer (G_TASK (res), error);
-	gs_utils_error_convert_gio (error);
-	return array;
-}
-
-/******************************************************************************/
-
 static gboolean
 emit_pending_apps_idle (gpointer loader)
 {
@@ -1377,10 +1080,13 @@ gs_plugin_loader_pending_apps_add (GsPluginLoader *plugin_loader,
 	GsAppList *list = gs_plugin_job_get_list (helper->plugin_job);
 	g_autoptr(GMutexLocker) locker = g_mutex_locker_new (&plugin_loader->pending_apps_mutex);
 
+	if (plugin_loader->pending_apps == NULL)
+		plugin_loader->pending_apps = gs_app_list_new ();
+
 	g_assert (gs_app_list_length (list) > 0);
 	for (guint i = 0; i < gs_app_list_length (list); i++) {
 		GsApp *app = gs_app_list_index (list, i);
-		g_ptr_array_add (plugin_loader->pending_apps, g_object_ref (app));
+		gs_app_list_add (plugin_loader->pending_apps, app);
 		/* make sure the progress is properly initialized */
 		gs_app_set_progress (app, GS_APP_PROGRESS_UNKNOWN);
 	}
@@ -1397,7 +1103,8 @@ gs_plugin_loader_pending_apps_remove (GsPluginLoader *plugin_loader,
 	g_assert (gs_app_list_length (list) > 0);
 	for (guint i = 0; i < gs_app_list_length (list); i++) {
 		GsApp *app = gs_app_list_index (list, i);
-		g_ptr_array_remove (plugin_loader->pending_apps, app);
+		if (plugin_loader->pending_apps != NULL)
+			gs_app_list_remove (plugin_loader->pending_apps, app);
 
 		/* check the app is not still in an action helper */
 		switch (gs_app_get_state (app)) {
@@ -1455,10 +1162,13 @@ load_install_queue (GsPluginLoader  *plugin_loader,
 	names = g_strsplit (contents, "\n", 0);
 	for (guint i = 0; names[i] != NULL; i++) {
 		g_autoptr(GsApp) app = NULL;
-		if (strlen (names[i]) == 0)
+		g_auto(GStrv) split = g_strsplit (names[i], "\t", -1);
+		if (split[0] == NULL || split[1] == NULL)
 			continue;
-		app = gs_app_new (names[i]);
+		app = gs_app_new (NULL);
+		gs_app_set_from_unique_id (app, split[0], as_component_kind_from_string (split[1]));
 		gs_app_set_state (app, GS_APP_STATE_QUEUED_FOR_INSTALL);
+		gs_app_add_quirk (app, GS_APP_QUIRK_IS_WILDCARD);
 		gs_app_list_add (list, app);
 	}
 
@@ -1467,7 +1177,9 @@ load_install_queue (GsPluginLoader  *plugin_loader,
 	for (guint i = 0; i < gs_app_list_length (list); i++) {
 		GsApp *app = gs_app_list_index (list, i);
 		g_debug ("adding pending app %s", gs_app_get_unique_id (app));
-		g_ptr_array_add (plugin_loader->pending_apps, g_object_ref (app));
+		if (plugin_loader->pending_apps == NULL)
+			plugin_loader->pending_apps = gs_app_list_new ();
+		gs_app_list_add (plugin_loader->pending_apps, app);
 	}
 	g_mutex_unlock (&plugin_loader->pending_apps_mutex);
 
@@ -1477,21 +1189,19 @@ load_install_queue (GsPluginLoader  *plugin_loader,
 static void
 save_install_queue (GsPluginLoader *plugin_loader)
 {
-	GPtrArray *pending_apps;
 	gboolean ret;
-	gint i;
 	g_autoptr(GError) error = NULL;
 	g_autoptr(GString) s = NULL;
 	g_autofree gchar *file = NULL;
 
 	s = g_string_new ("");
-	pending_apps = plugin_loader->pending_apps;
 	g_mutex_lock (&plugin_loader->pending_apps_mutex);
-	for (i = (gint) pending_apps->len - 1; i >= 0; i--) {
-		GsApp *app;
-		app = g_ptr_array_index (pending_apps, i);
+	for (guint i = 0; plugin_loader->pending_apps != NULL && i < gs_app_list_length (plugin_loader->pending_apps); i++) {
+		GsApp *app = gs_app_list_index (plugin_loader->pending_apps, i);
 		if (gs_app_get_state (app) == GS_APP_STATE_QUEUED_FOR_INSTALL) {
-			g_string_append (s, gs_app_get_id (app));
+			g_string_append (s, gs_app_get_unique_id (app));
+			g_string_append_c (s, '\t');
+			g_string_append (s, as_component_kind_to_string (gs_app_get_kind (app)));
 			g_string_append_c (s, '\n');
 		}
 	}
@@ -1502,6 +1212,14 @@ save_install_queue (GsPluginLoader *plugin_loader)
 				 "gnome-software",
 				 "install-queue",
 				 NULL);
+	if (s->len == 0) {
+		if (g_unlink (file) == -1 && errno != ENOENT) {
+			gint errn = errno;
+			g_warning ("Failed to unlink '%s': %s", file, g_strerror (errn));
+		}
+		return;
+	}
+
 	if (!gs_mkdir_parent (file, &error)) {
 		g_warning ("failed to create dir for %s: %s",
 			   file, error->message);
@@ -1516,13 +1234,15 @@ save_install_queue (GsPluginLoader *plugin_loader)
 static void
 add_app_to_install_queue (GsPluginLoader *plugin_loader, GsApp *app)
 {
-	GsAppList *addons;
+	g_autoptr(GsAppList) addons = NULL;
 	guint i;
 	guint id;
 
 	/* queue the app itself */
 	g_mutex_lock (&plugin_loader->pending_apps_mutex);
-	g_ptr_array_add (plugin_loader->pending_apps, g_object_ref (app));
+	if (plugin_loader->pending_apps == NULL)
+		plugin_loader->pending_apps = gs_app_list_new ();
+	gs_app_list_add (plugin_loader->pending_apps, app);
 	g_mutex_unlock (&plugin_loader->pending_apps_mutex);
 
 	gs_app_set_state (app, GS_APP_STATE_QUEUED_FOR_INSTALL);
@@ -1531,8 +1251,8 @@ add_app_to_install_queue (GsPluginLoader *plugin_loader, GsApp *app)
 	save_install_queue (plugin_loader);
 
 	/* recursively queue any addons */
-	addons = gs_app_get_addons (app);
-	for (i = 0; i < gs_app_list_length (addons); i++) {
+	addons = gs_app_dup_addons (app);
+	for (i = 0; addons != NULL && i < gs_app_list_length (addons); i++) {
 		GsApp *addon = gs_app_list_index (addons, i);
 		if (gs_app_get_to_be_installed (addon))
 			add_app_to_install_queue (plugin_loader, addon);
@@ -1542,24 +1262,23 @@ add_app_to_install_queue (GsPluginLoader *plugin_loader, GsApp *app)
 static gboolean
 remove_app_from_install_queue (GsPluginLoader *plugin_loader, GsApp *app)
 {
-	GsAppList *addons;
+	g_autoptr(GsAppList) addons = NULL;
 	gboolean ret;
 	guint i;
 	guint id;
 
 	g_mutex_lock (&plugin_loader->pending_apps_mutex);
-	ret = g_ptr_array_remove (plugin_loader->pending_apps, app);
+	ret = plugin_loader->pending_apps != NULL && gs_app_list_remove (plugin_loader->pending_apps, app);
 	g_mutex_unlock (&plugin_loader->pending_apps_mutex);
 
 	if (ret) {
-		gs_app_set_state (app, GS_APP_STATE_AVAILABLE);
 		id = g_idle_add (emit_pending_apps_idle, g_object_ref (plugin_loader));
 		g_source_set_name_by_id (id, "[gnome-software] emit_pending_apps_idle");
 		save_install_queue (plugin_loader);
 
 		/* recursively remove any queued addons */
-		addons = gs_app_get_addons (app);
-		for (i = 0; i < gs_app_list_length (addons); i++) {
+		addons = gs_app_dup_addons (app);
+		for (i = 0; addons != NULL && i < gs_app_list_length (addons); i++) {
 			GsApp *addon = gs_app_list_index (addons, i);
 			remove_app_from_install_queue (plugin_loader, addon);
 		}
@@ -1593,14 +1312,11 @@ GsAppList *
 gs_plugin_loader_get_pending (GsPluginLoader *plugin_loader)
 {
 	GsAppList *array;
-	guint i;
 
 	array = gs_app_list_new ();
 	g_mutex_lock (&plugin_loader->pending_apps_mutex);
-	for (i = 0; i < plugin_loader->pending_apps->len; i++) {
-		GsApp *app = g_ptr_array_index (plugin_loader->pending_apps, i);
-		gs_app_list_add (array, app);
-	}
+	if (plugin_loader->pending_apps != NULL)
+		gs_app_list_add_list (array, plugin_loader->pending_apps);
 	g_mutex_unlock (&plugin_loader->pending_apps_mutex);
 
 	return array;
@@ -1730,7 +1446,7 @@ gs_plugin_loader_allow_updates_cb (GsPlugin *plugin,
 
 	/* notify display layer */
 	if (changed)
-		g_object_notify (G_OBJECT (plugin_loader), "allow-updates");
+		g_object_notify_by_pspec (G_OBJECT (plugin_loader), obj_props[PROP_ALLOW_UPDATES]);
 }
 
 static void
@@ -1795,7 +1511,7 @@ gs_plugin_loader_ask_untrusted_cb (GsPlugin *plugin,
 }
 
 static gboolean
-gs_plugin_loader_job_actions_changed_delay_cb (gpointer user_data)
+gs_plugin_loader_job_updates_changed_delay_cb (gpointer user_data)
 {
 	GsPluginLoader *plugin_loader = GS_PLUGIN_LOADER (user_data);
 
@@ -1805,14 +1521,7 @@ gs_plugin_loader_job_actions_changed_delay_cb (gpointer user_data)
 	plugin_loader->updates_changed_id = 0;
 	plugin_loader->updates_changed_cnt = 0;
 
-	g_object_unref (plugin_loader);
 	return FALSE;
-}
-
-static void
-gs_plugin_loader_job_actions_changed_cb (GsPlugin *plugin, GsPluginLoader *plugin_loader)
-{
-	plugin_loader->updates_changed_cnt++;
 }
 
 static void
@@ -1821,9 +1530,25 @@ gs_plugin_loader_updates_changed (GsPluginLoader *plugin_loader)
 	if (plugin_loader->updates_changed_id != 0)
 		return;
 	plugin_loader->updates_changed_id =
-		g_timeout_add_seconds (GS_PLUGIN_LOADER_UPDATES_CHANGED_DELAY,
-				       gs_plugin_loader_job_actions_changed_delay_cb,
-				       g_object_ref (plugin_loader));
+		g_timeout_add_seconds_full (G_PRIORITY_DEFAULT,
+					    GS_PLUGIN_LOADER_UPDATES_CHANGED_DELAY,
+					    gs_plugin_loader_job_updates_changed_delay_cb,
+					    g_object_ref (plugin_loader),
+					    g_object_unref);
+}
+
+static void
+gs_plugin_loader_job_updates_changed_cb (GsPlugin *plugin,
+					 GsPluginLoader *plugin_loader)
+{
+	plugin_loader->updates_changed_cnt++;
+
+	/* Schedule emit of updates changed when no job is active.
+	   This helps to avoid a race condition when a plugin calls
+	   updates-changed at the end of the job, but the job is
+	   finished before the callback gets called in the main thread. */
+	if (!g_atomic_int_get (&plugin_loader->active_jobs))
+		gs_plugin_loader_updates_changed (plugin_loader);
 }
 
 static gboolean
@@ -1875,13 +1600,16 @@ gs_plugin_loader_open_plugin (GsPluginLoader *plugin_loader,
 	g_autoptr(GError) error = NULL;
 
 	/* create plugin from file */
-	plugin = gs_plugin_create (filename, &error);
+	plugin = gs_plugin_create (filename,
+				   plugin_loader->session_bus_connection,
+				   plugin_loader->system_bus_connection,
+				   &error);
 	if (plugin == NULL) {
 		g_warning ("Failed to load %s: %s", filename, error->message);
 		return;
 	}
 	g_signal_connect (plugin, "updates-changed",
-			  G_CALLBACK (gs_plugin_loader_job_actions_changed_cb),
+			  G_CALLBACK (gs_plugin_loader_job_updates_changed_cb),
 			  plugin_loader);
 	g_signal_connect (plugin, "reload",
 			  G_CALLBACK (gs_plugin_loader_reload_cb),
@@ -2142,6 +1870,8 @@ gs_plugin_loader_find_plugins (const gchar *path, GError **error)
 
 typedef struct {
 	guint n_pending;
+	gchar **allowlist;
+	gchar **blocklist;
 #ifdef HAVE_SYSPROF
 	gint64 setup_begin_time_nsec;
 	gint64 plugins_begin_time_nsec;
@@ -2151,11 +1881,20 @@ typedef struct {
 static void
 setup_data_free (SetupData *data)
 {
+	g_clear_pointer (&data->allowlist, g_strfreev);
+	g_clear_pointer (&data->blocklist, g_strfreev);
 	g_free (data);
 }
 
 G_DEFINE_AUTOPTR_CLEANUP_FUNC (SetupData, setup_data_free)
 
+static void get_session_bus_cb (GObject      *object,
+                                GAsyncResult *result,
+                                gpointer      user_data);
+static void get_system_bus_cb (GObject      *object,
+                               GAsyncResult *result,
+                               gpointer      user_data);
+static void finish_setup_get_bus (GTask *task);
 static void plugin_setup_cb (GObject      *source_object,
                              GAsyncResult *result,
                              gpointer      user_data);
@@ -2196,19 +1935,8 @@ gs_plugin_loader_setup_async (GsPluginLoader      *plugin_loader,
                               GAsyncReadyCallback  callback,
                               gpointer             user_data)
 {
-	const gchar *plugin_name;
-	gboolean changes;
-	GPtrArray *deps;
-	GsPlugin *dep;
-	GsPlugin *plugin;
-	guint dep_loop_check = 0;
-	guint i;
-	guint j;
 	SetupData *setup_data;
 	g_autoptr(SetupData) setup_data_owned = NULL;
-	g_autoptr(GsPluginLoaderHelper) helper = NULL;
-	g_autoptr(GsPluginJob) plugin_job = NULL;
-	g_autoptr(GPtrArray) locations = NULL;
 	g_autoptr(GTask) task = NULL;
 	g_autoptr(GError) local_error = NULL;
 #ifdef HAVE_SYSPROF
@@ -2223,6 +1951,94 @@ gs_plugin_loader_setup_async (GsPluginLoader      *plugin_loader,
 		g_task_return_boolean (task, TRUE);
 		return;
 	}
+
+	/* Setup data closure. */
+	setup_data = setup_data_owned = g_new0 (SetupData, 1);
+	setup_data->allowlist = g_strdupv ((gchar **) allowlist);
+	setup_data->blocklist = g_strdupv ((gchar **) blocklist);
+#ifdef HAVE_SYSPROF
+	setup_data->setup_begin_time_nsec = begin_time_nsec;
+#endif
+
+	g_task_set_task_data (task, g_steal_pointer (&setup_data_owned), (GDestroyNotify) setup_data_free);
+
+	/* Connect to D-Bus if connections haven’t been provided at construction
+	 * time. */
+	if (plugin_loader->session_bus_connection == NULL)
+		g_bus_get (G_BUS_TYPE_SESSION, cancellable, get_session_bus_cb, g_object_ref (task));
+	if (plugin_loader->system_bus_connection == NULL)
+		g_bus_get (G_BUS_TYPE_SYSTEM, cancellable, get_system_bus_cb, g_object_ref (task));
+
+	finish_setup_get_bus (task);
+}
+
+static void
+get_session_bus_cb (GObject      *object,
+                    GAsyncResult *result,
+                    gpointer      user_data)
+{
+	g_autoptr(GTask) task = g_steal_pointer (&user_data);
+	GsPluginLoader *plugin_loader = g_task_get_source_object (task);
+	g_autoptr(GError) local_error = NULL;
+
+	plugin_loader->session_bus_connection = g_bus_get_finish (result, &local_error);
+	if (plugin_loader->session_bus_connection == NULL) {
+		notify_setup_complete (plugin_loader);
+		g_prefix_error_literal (&local_error, "Error getting session bus: ");
+		g_task_return_error (task, g_steal_pointer (&local_error));
+		return;
+	}
+
+	g_object_notify_by_pspec (G_OBJECT (plugin_loader), obj_props[PROP_SESSION_BUS_CONNECTION]);
+
+	finish_setup_get_bus (task);
+}
+
+static void
+get_system_bus_cb (GObject      *object,
+                   GAsyncResult *result,
+                   gpointer      user_data)
+{
+	g_autoptr(GTask) task = g_steal_pointer (&user_data);
+	GsPluginLoader *plugin_loader = g_task_get_source_object (task);
+	g_autoptr(GError) local_error = NULL;
+
+	plugin_loader->system_bus_connection = g_bus_get_finish (result, &local_error);
+	if (plugin_loader->system_bus_connection == NULL) {
+		notify_setup_complete (plugin_loader);
+		g_prefix_error_literal (&local_error, "Error getting system bus: ");
+		g_task_return_error (task, g_steal_pointer (&local_error));
+		return;
+	}
+
+	g_object_notify_by_pspec (G_OBJECT (plugin_loader), obj_props[PROP_SYSTEM_BUS_CONNECTION]);
+
+	finish_setup_get_bus (task);
+}
+
+static void
+finish_setup_get_bus (GTask *task)
+{
+	SetupData *data = g_task_get_task_data (task);
+	GsPluginLoader *plugin_loader = g_task_get_source_object (task);
+	GCancellable *cancellable = g_task_get_cancellable (task);
+	const gchar *plugin_name;
+	gboolean changes;
+	GPtrArray *deps;
+	GsPlugin *dep;
+	GsPlugin *plugin;
+	guint dep_loop_check = 0;
+	guint i;
+	guint j;
+	g_autoptr(GsPluginLoaderHelper) helper = NULL;
+	g_autoptr(GsPluginJob) plugin_job = NULL;
+	g_autoptr(GPtrArray) locations = NULL;
+	g_autoptr(GError) local_error = NULL;
+
+	/* Wait until we’ve got all the buses we need. */
+	if (plugin_loader->session_bus_connection == NULL ||
+	    plugin_loader->system_bus_connection == NULL)
+		return;
 
 	/* use the default, but this requires a 'make install' */
 	if (plugin_loader->locations->len == 0) {
@@ -2275,13 +2091,13 @@ gs_plugin_loader_setup_async (GsPluginLoader      *plugin_loader,
 	}
 
 	/* optional allowlist */
-	if (allowlist != NULL) {
+	if (data->allowlist != NULL) {
 		for (i = 0; i < plugin_loader->plugins->len; i++) {
 			gboolean ret;
 			plugin = g_ptr_array_index (plugin_loader->plugins, i);
 			if (!gs_plugin_get_enabled (plugin))
 				continue;
-			ret = g_strv_contains ((const gchar * const *) allowlist,
+			ret = g_strv_contains ((const gchar * const *) data->allowlist,
 					       gs_plugin_get_name (plugin));
 			if (!ret) {
 				g_debug ("%s not in allowlist, disabling",
@@ -2292,13 +2108,13 @@ gs_plugin_loader_setup_async (GsPluginLoader      *plugin_loader,
 	}
 
 	/* optional blocklist */
-	if (blocklist != NULL) {
+	if (data->blocklist != NULL) {
 		for (i = 0; i < plugin_loader->plugins->len; i++) {
 			gboolean ret;
 			plugin = g_ptr_array_index (plugin_loader->plugins, i);
 			if (!gs_plugin_get_enabled (plugin))
 				continue;
-			ret = g_strv_contains ((const gchar * const *) blocklist,
+			ret = g_strv_contains ((const gchar * const *) data->blocklist,
 					       gs_plugin_get_name (plugin));
 			if (ret)
 				gs_plugin_set_enabled (plugin, FALSE);
@@ -2427,14 +2243,10 @@ gs_plugin_loader_setup_async (GsPluginLoader      *plugin_loader,
 	} while (changes);
 
 	/* run setup */
-	setup_data = setup_data_owned = g_new0 (SetupData, 1);
-	setup_data->n_pending = 1;  /* incremented until all operations have been started */
+	data->n_pending = 1;  /* incremented until all operations have been started */
 #ifdef HAVE_SYSPROF
-	setup_data->setup_begin_time_nsec = begin_time_nsec;
-	setup_data->plugins_begin_time_nsec = SYSPROF_CAPTURE_CURRENT_TIME;
+	data->plugins_begin_time_nsec = SYSPROF_CAPTURE_CURRENT_TIME;
 #endif
-
-	g_task_set_task_data (task, g_steal_pointer (&setup_data_owned), (GDestroyNotify) setup_data_free);
 
 	for (i = 0; i < plugin_loader->plugins->len; i++) {
 		plugin = GS_PLUGIN (plugin_loader->plugins->pdata[i]);
@@ -2443,7 +2255,7 @@ gs_plugin_loader_setup_async (GsPluginLoader      *plugin_loader,
 			continue;
 
 		if (GS_PLUGIN_GET_CLASS (plugin)->setup_async != NULL) {
-			setup_data->n_pending++;
+			data->n_pending++;
 			GS_PLUGIN_GET_CLASS (plugin)->setup_async (plugin, cancellable,
 								   plugin_setup_cb, g_object_ref (task));
 		}
@@ -2459,9 +2271,11 @@ plugin_setup_cb (GObject      *source_object,
 {
 	GsPlugin *plugin = GS_PLUGIN (source_object);
 	g_autoptr(GTask) task = g_steal_pointer (&user_data);
+	g_autoptr(GError) local_error = NULL;
+#ifdef HAVE_SYSPROF
 	GsPluginLoader *plugin_loader = g_task_get_source_object (task);
 	SetupData *data = g_task_get_task_data (task);
-	g_autoptr(GError) local_error = NULL;
+#endif /* HAVE_SYSPROF */
 
 	g_assert (GS_PLUGIN_GET_CLASS (plugin)->setup_finish != NULL);
 
@@ -2534,7 +2348,10 @@ finish_setup_op (GTask *task)
 	if (gs_app_list_length (install_queue) > 0) {
 		g_autoptr(GsPluginJob) refine_job = NULL;
 
-		refine_job = gs_plugin_job_refine_new (install_queue, GS_PLUGIN_REFINE_FLAGS_REQUIRE_ID | GS_PLUGIN_REFINE_FLAGS_DISABLE_FILTERING);
+		/* Require ID and Origin to get complete unique IDs */
+		refine_job = gs_plugin_job_refine_new (install_queue, GS_PLUGIN_REFINE_FLAGS_REQUIRE_ID |
+								      GS_PLUGIN_REFINE_FLAGS_REQUIRE_ORIGIN |
+								      GS_PLUGIN_REFINE_FLAGS_DISABLE_FILTERING);
 		gs_plugin_loader_job_process_async (plugin_loader, refine_job,
 						    cancellable,
 						    finish_setup_install_queue_cb,
@@ -2543,6 +2360,8 @@ finish_setup_op (GTask *task)
 		g_task_return_boolean (task, TRUE);
 	}
 }
+
+static void gs_plugin_loader_maybe_flush_pending_install_queue (GsPluginLoader *plugin_loader);
 
 static void
 finish_setup_install_queue_cb (GObject      *source_object,
@@ -2555,10 +2374,47 @@ finish_setup_install_queue_cb (GObject      *source_object,
 	g_autoptr(GError) local_error = NULL;
 
 	new_list = gs_plugin_loader_job_process_finish (plugin_loader, result, &local_error);
-	if (new_list == NULL)
+	if (new_list == NULL) {
 		g_task_return_error (task, g_steal_pointer (&local_error));
-	else
+	} else {
+		g_autoptr(GsAppList) old_pending_apps = NULL;
+		gboolean has_pending_apps = FALSE;
+		gboolean changed;
+		g_mutex_lock (&plugin_loader->pending_apps_mutex);
+		changed = plugin_loader->pending_apps != NULL;
+		/* Merge the existing and newly-loaded lists, in case pending apps were added
+		   while the install-queue file was being loaded */
+		old_pending_apps = g_steal_pointer (&plugin_loader->pending_apps);
+		if (old_pending_apps != NULL && gs_app_list_length (new_list) > 0) {
+			g_autoptr(GHashTable) expected_unique_ids = g_hash_table_new (g_str_hash, g_str_equal);
+			for (guint i = 0; i < gs_app_list_length (old_pending_apps); i++) {
+				GsApp *app = gs_app_list_index (old_pending_apps, i);
+				if (gs_app_get_unique_id (app) != NULL)
+					g_hash_table_add (expected_unique_ids, (gpointer) gs_app_get_unique_id (app));
+			}
+			for (guint i = 0; i < gs_app_list_length (new_list); i++) {
+				GsApp *app = gs_app_list_index (new_list, i);
+				if (gs_app_get_state (app) == GS_APP_STATE_AVAILABLE &&
+				    gs_app_get_unique_id (app) != NULL &&
+				    g_hash_table_contains (expected_unique_ids, gs_app_get_unique_id (app))) {
+					if (plugin_loader->pending_apps == NULL)
+						plugin_loader->pending_apps = gs_app_list_new ();
+					gs_app_set_state (app, GS_APP_STATE_QUEUED_FOR_INSTALL);
+					gs_app_set_pending_action (app, GS_PLUGIN_ACTION_INSTALL);
+					gs_app_list_add (plugin_loader->pending_apps, app);
+				}
+			}
+			has_pending_apps = plugin_loader->pending_apps != NULL;
+			changed = TRUE;
+		}
+		g_mutex_unlock (&plugin_loader->pending_apps_mutex);
 		g_task_return_boolean (task, TRUE);
+
+		if (changed)
+			save_install_queue (plugin_loader);
+		if (has_pending_apps)
+			gs_plugin_loader_maybe_flush_pending_install_queue (plugin_loader);
+	}
 }
 
 /**
@@ -2615,7 +2471,7 @@ gs_plugin_loader_get_property (GObject *object, guint prop_id,
 {
 	GsPluginLoader *plugin_loader = GS_PLUGIN_LOADER (object);
 
-	switch (prop_id) {
+	switch ((GsPluginLoaderProperty) prop_id) {
 	case PROP_EVENTS:
 		g_value_set_pointer (value, plugin_loader->events_by_id);
 		break;
@@ -2628,6 +2484,12 @@ gs_plugin_loader_get_property (GObject *object, guint prop_id,
 	case PROP_NETWORK_METERED:
 		g_value_set_boolean (value, gs_plugin_loader_get_network_metered (plugin_loader));
 		break;
+	case PROP_SESSION_BUS_CONNECTION:
+		g_value_set_object (value, plugin_loader->session_bus_connection);
+		break;
+	case PROP_SYSTEM_BUS_CONNECTION:
+		g_value_set_object (value, plugin_loader->system_bus_connection);
+		break;
 	default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 		break;
@@ -2638,7 +2500,26 @@ static void
 gs_plugin_loader_set_property (GObject *object, guint prop_id,
 			       const GValue *value, GParamSpec *pspec)
 {
-	switch (prop_id) {
+	GsPluginLoader *plugin_loader = GS_PLUGIN_LOADER (object);
+
+	switch ((GsPluginLoaderProperty) prop_id) {
+	case PROP_EVENTS:
+	case PROP_ALLOW_UPDATES:
+	case PROP_NETWORK_AVAILABLE:
+	case PROP_NETWORK_METERED:
+		/* Read only */
+		g_assert_not_reached ();
+		break;
+	case PROP_SESSION_BUS_CONNECTION:
+		/* Construct only */
+		g_assert (plugin_loader->session_bus_connection == NULL);
+		plugin_loader->session_bus_connection = g_value_dup_object (value);
+		break;
+	case PROP_SYSTEM_BUS_CONNECTION:
+		/* Construct only */
+		g_assert (plugin_loader->system_bus_connection == NULL);
+		plugin_loader->system_bus_connection = g_value_dup_object (value);
+		break;
 	default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 		break;
@@ -2683,7 +2564,7 @@ gs_plugin_loader_dispose (GObject *object)
 	}
 	g_clear_object (&plugin_loader->network_monitor);
 	g_clear_object (&plugin_loader->settings);
-	g_clear_pointer (&plugin_loader->pending_apps, g_ptr_array_unref);
+	g_clear_object (&plugin_loader->pending_apps);
 	g_clear_object (&plugin_loader->category_manager);
 	g_clear_object (&plugin_loader->odrs_provider);
 	g_clear_object (&plugin_loader->setup_complete_cancellable);
@@ -2691,6 +2572,9 @@ gs_plugin_loader_dispose (GObject *object)
 #ifdef HAVE_SYSPROF
 	g_clear_pointer (&plugin_loader->sysprof_writer, sysprof_capture_writer_unref);
 #endif
+
+	g_clear_object (&plugin_loader->session_bus_connection);
+	g_clear_object (&plugin_loader->system_bus_connection);
 
 	G_OBJECT_CLASS (gs_plugin_loader_parent_class)->dispose (object);
 }
@@ -2706,7 +2590,6 @@ gs_plugin_loader_finalize (GObject *object)
 	g_ptr_array_unref (plugin_loader->file_monitors);
 	g_hash_table_unref (plugin_loader->events_by_id);
 	g_hash_table_unref (plugin_loader->disallow_updates);
-	g_clear_object (&plugin_loader->as_pool);
 
 	g_mutex_clear (&plugin_loader->pending_apps_mutex);
 	g_mutex_clear (&plugin_loader->events_by_id_mutex);
@@ -2717,7 +2600,6 @@ gs_plugin_loader_finalize (GObject *object)
 static void
 gs_plugin_loader_class_init (GsPluginLoaderClass *klass)
 {
-	GParamSpec *pspec;
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
 	object_class->get_property = gs_plugin_loader_get_property;
@@ -2725,25 +2607,86 @@ gs_plugin_loader_class_init (GsPluginLoaderClass *klass)
 	object_class->dispose = gs_plugin_loader_dispose;
 	object_class->finalize = gs_plugin_loader_finalize;
 
-	pspec = g_param_spec_string ("events", NULL, NULL,
+	/**
+	 * GsPluginLoader:events:
+	 *
+	 * Events added on the plugin loader using gs_plugin_loader_add_event().
+	 */
+	obj_props[PROP_EVENTS] =
+		g_param_spec_string ("events", NULL, NULL,
 				     NULL,
-				     G_PARAM_READABLE);
-	g_object_class_install_property (object_class, PROP_EVENTS, pspec);
+				     G_PARAM_READABLE | G_PARAM_STATIC_STRINGS | G_PARAM_EXPLICIT_NOTIFY);
 
-	pspec = g_param_spec_boolean ("allow-updates", NULL, NULL,
+	/**
+	 * GsPluginLoader:allow-updates:
+	 *
+	 * Whether updates and upgrades are managed by gnome-software.
+	 *
+	 * If not, the updates UI should be hidden and no automatic updates
+	 * performed.
+	 */
+	obj_props[PROP_ALLOW_UPDATES] =
+		g_param_spec_boolean ("allow-updates", NULL, NULL,
 				      TRUE,
-				      G_PARAM_READABLE);
-	g_object_class_install_property (object_class, PROP_ALLOW_UPDATES, pspec);
+				      G_PARAM_READABLE | G_PARAM_STATIC_STRINGS | G_PARAM_EXPLICIT_NOTIFY);
 
-	pspec = g_param_spec_boolean ("network-available", NULL, NULL,
+	/**
+	 * GsPluginLoader:network-available:
+	 *
+	 * Whether the network is considered available.
+	 *
+	 * This has the same semantics as #GNetworkMonitor:network-available.
+	 */
+	obj_props[PROP_NETWORK_AVAILABLE] =
+		g_param_spec_boolean ("network-available", NULL, NULL,
 				      FALSE,
-				      G_PARAM_READABLE);
-	g_object_class_install_property (object_class, PROP_NETWORK_AVAILABLE, pspec);
+				      G_PARAM_READABLE | G_PARAM_STATIC_STRINGS | G_PARAM_EXPLICIT_NOTIFY);
 
-	pspec = g_param_spec_boolean ("network-metered", NULL, NULL,
+	/**
+	 * GsPluginLoader:network-metered:
+	 *
+	 * Whether the network is considered metered.
+	 *
+	 * This has the same semantics as #GNetworkMonitor:network-metered.
+	 */
+	obj_props[PROP_NETWORK_METERED] =
+		g_param_spec_boolean ("network-metered", NULL, NULL,
 				      FALSE,
-				      G_PARAM_READABLE);
-	g_object_class_install_property (object_class, PROP_NETWORK_METERED, pspec);
+				      G_PARAM_READABLE | G_PARAM_STATIC_STRINGS | G_PARAM_EXPLICIT_NOTIFY);
+
+	/**
+	 * GsPluginLoader:session-bus-connection: (nullable)
+	 *
+	 * A connection to the D-Bus session bus.
+	 *
+	 * This may be %NULL at construction time. If so, the default session
+	 * bus connection will be used (and returned as the value of this
+	 * property) after gs_plugin_loader_setup_async() is called.
+	 *
+	 * Since: 43
+	 */
+	obj_props[PROP_SESSION_BUS_CONNECTION] =
+		g_param_spec_object ("session-bus-connection", NULL, NULL,
+				     G_TYPE_DBUS_CONNECTION,
+				     G_PARAM_CONSTRUCT_ONLY | G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS | G_PARAM_EXPLICIT_NOTIFY);
+
+	/**
+	 * GsPluginLoader:system-bus-connection: (not nullable)
+	 *
+	 * A connection to the D-Bus system bus.
+	 *
+	 * This may be %NULL at construction time. If so, the default system
+	 * bus connection will be used (and returned as the value of this
+	 * property) after gs_plugin_loader_setup_async() is called.
+	 *
+	 * Since: 43
+	 */
+	obj_props[PROP_SYSTEM_BUS_CONNECTION] =
+		g_param_spec_object ("system-bus-connection", NULL, NULL,
+				     G_TYPE_DBUS_CONNECTION,
+				     G_PARAM_CONSTRUCT_ONLY | G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS | G_PARAM_EXPLICIT_NOTIFY);
+
+	g_object_class_install_properties (object_class, G_N_ELEMENTS (obj_props), obj_props);
 
 	signals [SIGNAL_STATUS_CHANGED] =
 		g_signal_new ("status-changed",
@@ -2829,7 +2772,7 @@ gs_plugin_loader_init (GsPluginLoader *plugin_loader)
 	plugin_loader->setup_complete_cancellable = g_cancellable_new ();
 	plugin_loader->scale = 1;
 	plugin_loader->plugins = g_ptr_array_new_with_free_func (g_object_unref);
-	plugin_loader->pending_apps = g_ptr_array_new_with_free_func (g_object_unref);
+	plugin_loader->pending_apps = NULL;
 	plugin_loader->queued_ops_pool = g_thread_pool_new (gs_plugin_loader_process_in_thread_pool_cb,
 						   NULL,
 						   get_max_parallel_ops (),
@@ -2922,15 +2865,30 @@ gs_plugin_loader_init (GsPluginLoader *plugin_loader)
 
 /**
  * gs_plugin_loader_new:
+ * @session_bus_connection: (nullable) (transfer none): a D-Bus session bus
+ *   connection to use, or %NULL to use the default
+ * @system_bus_connection: (nullable) (transfer none): a D-Bus system bus
+ *   connection to use, or %NULL to use the default
  *
- * Return value: a new GsPluginLoader object.
+ * Create a new #GsPluginLoader.
+ *
+ * The D-Bus connection arguments should typically be %NULL, and only be
+ * non-%NULL when doing unit tests.
+ *
+ * Return value: (transfer full) (not nullable): a new #GsPluginLoader
+ * Since: 43
  **/
 GsPluginLoader *
-gs_plugin_loader_new (void)
+gs_plugin_loader_new (GDBusConnection *session_bus_connection,
+                      GDBusConnection *system_bus_connection)
 {
-	GsPluginLoader *plugin_loader;
-	plugin_loader = g_object_new (GS_TYPE_PLUGIN_LOADER, NULL);
-	return GS_PLUGIN_LOADER (plugin_loader);
+	g_return_val_if_fail (session_bus_connection == NULL || G_IS_DBUS_CONNECTION (session_bus_connection), NULL);
+	g_return_val_if_fail (system_bus_connection == NULL || G_IS_DBUS_CONNECTION (system_bus_connection), NULL);
+
+	return g_object_new (GS_TYPE_PLUGIN_LOADER,
+			     "session-bus-connection", session_bus_connection,
+			     "system-bus-connection", system_bus_connection,
+			     NULL);
 }
 
 static void
@@ -2946,8 +2904,9 @@ gs_plugin_loader_app_installed_cb (GObject *source,
 	ret = gs_plugin_loader_job_action_finish (plugin_loader,
 						   res,
 						   &error);
+	remove_app_from_install_queue (plugin_loader, app);
 	if (!ret) {
-		remove_app_from_install_queue (plugin_loader, app);
+		gs_app_set_state_recover (app);
 		g_warning ("failed to install %s: %s",
 			   gs_app_get_unique_id (app), error->message);
 	}
@@ -2974,6 +2933,63 @@ gs_plugin_loader_get_network_metered (GsPluginLoader *plugin_loader)
 }
 
 static void
+gs_plugin_loader_maybe_flush_pending_install_queue (GsPluginLoader *plugin_loader)
+{
+	g_autoptr(GsAppList) obsolete = NULL;
+	g_autoptr(GsAppList) queue = NULL;
+
+	if (!gs_plugin_loader_get_network_available (plugin_loader) ||
+	    gs_plugin_loader_get_network_metered (plugin_loader)) {
+		/* Print the debug message only when had anything to skip */
+		g_mutex_lock (&plugin_loader->pending_apps_mutex);
+		if (plugin_loader->pending_apps != NULL) {
+			g_debug ("Cannot flush pending install queue, because is %sonline and is %smetered",
+				 !gs_plugin_loader_get_network_available (plugin_loader) ? "not " : "",
+				 gs_plugin_loader_get_network_metered (plugin_loader) ? "" : "not ");
+		}
+		g_mutex_unlock (&plugin_loader->pending_apps_mutex);
+		return;
+	}
+
+	queue = gs_app_list_new ();
+	obsolete = gs_app_list_new ();
+	g_mutex_lock (&plugin_loader->pending_apps_mutex);
+	for (guint i = 0; plugin_loader->pending_apps != NULL && i < gs_app_list_length (plugin_loader->pending_apps); i++) {
+		GsApp *app = gs_app_list_index (plugin_loader->pending_apps, i);
+		if (gs_app_get_state (app) == GS_APP_STATE_QUEUED_FOR_INSTALL) {
+			gs_app_set_state (app, GS_APP_STATE_AVAILABLE);
+			gs_app_list_add (queue, app);
+		} else {
+			gs_app_list_add (obsolete, app);
+		}
+	}
+	g_mutex_unlock (&plugin_loader->pending_apps_mutex);
+	for (guint i = 0; i < gs_app_list_length (obsolete); i++) {
+		GsApp *app = gs_app_list_index (obsolete, i);
+		remove_app_from_install_queue (plugin_loader, app);
+	}
+	for (guint i = 0; i < gs_app_list_length (queue); i++) {
+		GsApp *app = gs_app_list_index (queue, i);
+		g_autoptr(GsPluginJob) plugin_job = NULL;
+		/* The 'interactive' is needed for credentials prompt, otherwise it just fails */
+		if (gs_app_get_kind (app) == AS_COMPONENT_KIND_REPOSITORY) {
+			plugin_job = gs_plugin_job_manage_repository_new (app,
+									  GS_PLUGIN_MANAGE_REPOSITORY_FLAGS_INTERACTIVE |
+									  GS_PLUGIN_MANAGE_REPOSITORY_FLAGS_INSTALL);
+		} else {
+			plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_INSTALL,
+							 "app", app,
+							 "interactive", TRUE,
+							 NULL);
+		}
+		gs_plugin_loader_job_process_async (plugin_loader, plugin_job,
+						    gs_app_get_cancellable (app),
+						    gs_plugin_loader_app_installed_cb,
+						    g_object_ref (app));
+	}
+}
+
+static void
 gs_plugin_loader_network_changed_cb (GNetworkMonitor *monitor,
 				     gboolean available,
 				     GsPluginLoader *plugin_loader)
@@ -2984,34 +3000,10 @@ gs_plugin_loader_network_changed_cb (GNetworkMonitor *monitor,
 		 available ? "online" : "offline",
 		 metered ? "metered" : "unmetered");
 
-	g_object_notify (G_OBJECT (plugin_loader), "network-available");
-	g_object_notify (G_OBJECT (plugin_loader), "network-metered");
+	g_object_notify_by_pspec (G_OBJECT (plugin_loader), obj_props[PROP_NETWORK_AVAILABLE]);
+	g_object_notify_by_pspec (G_OBJECT (plugin_loader), obj_props[PROP_NETWORK_METERED]);
 
-	if (available && !metered) {
-		g_autoptr(GsAppList) queue = NULL;
-		g_mutex_lock (&plugin_loader->pending_apps_mutex);
-		queue = gs_app_list_new ();
-		for (guint i = 0; i < plugin_loader->pending_apps->len; i++) {
-			GsApp *app = g_ptr_array_index (plugin_loader->pending_apps, i);
-			if (gs_app_get_state (app) == GS_APP_STATE_QUEUED_FOR_INSTALL) {
-				gs_app_set_state (app, GS_APP_STATE_AVAILABLE);
-				gs_app_list_add (queue, app);
-			}
-		}
-		g_mutex_unlock (&plugin_loader->pending_apps_mutex);
-		for (guint i = 0; i < gs_app_list_length (queue); i++) {
-			GsApp *app = gs_app_list_index (queue, i);
-			GsPluginAction action = gs_app_get_kind (app) == AS_COMPONENT_KIND_REPOSITORY ? GS_PLUGIN_ACTION_INSTALL_REPO : GS_PLUGIN_ACTION_INSTALL;
-			g_autoptr(GsPluginJob) plugin_job = NULL;
-			plugin_job = gs_plugin_job_newv (action,
-							 "app", app,
-							 NULL);
-			gs_plugin_loader_job_process_async (plugin_loader, plugin_job,
-							    NULL,
-							    gs_plugin_loader_app_installed_cb,
-							    g_object_ref (app));
-		}
-	}
+	gs_plugin_loader_maybe_flush_pending_install_queue (plugin_loader);
 }
 
 static void
@@ -3143,8 +3135,6 @@ gs_plugin_loader_inherit_list_props (GsAppList *des_list,
 {
 	if (gs_app_list_has_flag (src_list, GS_APP_LIST_FLAG_IS_TRUNCATED))
 		gs_app_list_add_flag (des_list, GS_APP_LIST_FLAG_IS_TRUNCATED);
-	if (gs_app_list_has_flag (src_list, GS_APP_LIST_FLAG_IS_RANDOMIZED))
-		gs_app_list_add_flag (des_list, GS_APP_LIST_FLAG_IS_RANDOMIZED);
 
 	gs_app_list_set_size_peak (des_list, gs_app_list_get_size_peak (src_list));
 }
@@ -3254,12 +3244,7 @@ gs_plugin_loader_process_thread_cb (GTask *task,
 	case GS_PLUGIN_ACTION_DOWNLOAD:
 	case GS_PLUGIN_ACTION_LAUNCH:
 	case GS_PLUGIN_ACTION_REMOVE:
-	case GS_PLUGIN_ACTION_SEARCH:
 	case GS_PLUGIN_ACTION_UPDATE:
-	case GS_PLUGIN_ACTION_INSTALL_REPO:
-	case GS_PLUGIN_ACTION_REMOVE_REPO:
-	case GS_PLUGIN_ACTION_ENABLE_REPO:
-	case GS_PLUGIN_ACTION_DISABLE_REPO:
 		if (!helper->anything_ran) {
 			g_set_error (&error,
 				     GS_PLUGIN_ERROR,
@@ -3280,20 +3265,13 @@ gs_plugin_loader_process_thread_cb (GTask *task,
 
 	/* unstage addons */
 	if (add_to_pending_array) {
-		GsAppList *addons;
-		addons = gs_app_get_addons (gs_plugin_job_get_app (helper->plugin_job));
-		for (guint i = 0; i < gs_app_list_length (addons); i++) {
+		g_autoptr(GsAppList) addons = gs_app_dup_addons (gs_plugin_job_get_app (helper->plugin_job));
+
+		for (guint i = 0; addons != NULL && i < gs_app_list_length (addons); i++) {
 			GsApp *addon = gs_app_list_index (addons, i);
 			if (gs_app_get_to_be_installed (addon))
 				gs_app_set_to_be_installed (addon, FALSE);
 		}
-	}
-
-	if (action == GS_PLUGIN_ACTION_GET_RECENT) {
-		/* Preliminary filter recent apps, to have truncated a meaningful list */
-		gs_app_list_filter_duplicates (list, GS_APP_LIST_FILTER_FLAG_KEY_ID);
-		gs_app_list_filter (list, gs_plugin_loader_app_is_non_compulsory, NULL);
-		gs_app_list_filter (list, gs_plugin_loader_app_is_desktop, NULL);
 	}
 
 	/* filter to reduce to a sane set */
@@ -3315,8 +3293,6 @@ gs_plugin_loader_process_thread_cb (GTask *task,
 	switch (action) {
 	case GS_PLUGIN_ACTION_INSTALL:
 	case GS_PLUGIN_ACTION_REMOVE:
-	case GS_PLUGIN_ACTION_INSTALL_REPO:
-	case GS_PLUGIN_ACTION_REMOVE_REPO:
 		gs_plugin_job_add_refine_flags (helper->plugin_job,
 		                                GS_PLUGIN_REFINE_FLAGS_REQUIRE_ORIGIN |
 		                                GS_PLUGIN_REFINE_FLAGS_REQUIRE_SETUP_ACTION);
@@ -3415,41 +3391,8 @@ gs_plugin_loader_process_thread_cb (GTask *task,
 	case GS_PLUGIN_ACTION_URL_TO_APP:
 		gs_app_list_filter (list, gs_plugin_loader_app_is_valid_filter, helper);
 		break;
-	case GS_PLUGIN_ACTION_SEARCH:
-	case GS_PLUGIN_ACTION_SEARCH_FILES:
-	case GS_PLUGIN_ACTION_SEARCH_PROVIDES:
-	case GS_PLUGIN_ACTION_GET_ALTERNATES:
-		gs_app_list_filter (list, gs_plugin_loader_app_is_valid_filter, helper);
-		gs_app_list_filter (list, gs_plugin_loader_filter_qt_for_gtk, NULL);
-		gs_app_list_filter (list, gs_plugin_loader_get_app_is_compatible, plugin_loader);
-		break;
-	case GS_PLUGIN_ACTION_GET_CATEGORY_APPS:
-		gs_app_list_filter (list, gs_plugin_loader_app_is_valid_filter, helper);
-		gs_app_list_filter (list, gs_plugin_loader_filter_qt_for_gtk, NULL);
-		gs_app_list_filter (list, gs_plugin_loader_get_app_is_compatible, plugin_loader);
-		break;
-	case GS_PLUGIN_ACTION_GET_FEATURED:
-		if (g_getenv ("GNOME_SOFTWARE_FEATURED") != NULL) {
-			gs_app_list_filter (list, gs_plugin_loader_featured_debug, NULL);
-		} else {
-			gs_app_list_filter (list, gs_plugin_loader_app_is_valid_filter, helper);
-			gs_app_list_filter (list, gs_plugin_loader_get_app_is_compatible, plugin_loader);
-		}
-		break;
 	case GS_PLUGIN_ACTION_GET_UPDATES:
 		gs_app_list_filter (list, gs_plugin_loader_app_is_valid_updatable, helper);
-		break;
-	case GS_PLUGIN_ACTION_GET_RECENT:
-		gs_app_list_filter (list, gs_plugin_loader_app_is_non_compulsory, NULL);
-		gs_app_list_filter (list, gs_plugin_loader_app_is_desktop, NULL);
-		gs_app_list_filter (list, gs_plugin_loader_app_is_valid_filter, helper);
-		gs_app_list_filter (list, gs_plugin_loader_filter_qt_for_gtk, NULL);
-		gs_app_list_filter (list, gs_plugin_loader_get_app_is_compatible, plugin_loader);
-		break;
-	case GS_PLUGIN_ACTION_GET_POPULAR:
-		gs_app_list_filter (list, gs_plugin_loader_app_is_valid_filter, helper);
-		gs_app_list_filter (list, gs_plugin_loader_filter_qt_for_gtk, NULL);
-		gs_app_list_filter (list, gs_plugin_loader_get_app_is_compatible, plugin_loader);
 		break;
 	default:
 		break;
@@ -3484,9 +3427,6 @@ gs_plugin_loader_process_thread_cb (GTask *task,
 
 	/* sort these again as the refine may have added useful metadata */
 	gs_plugin_loader_job_sorted_truncation_again (helper->plugin_job, list);
-
-	/* Hint that the job has finished. */
-	gs_plugin_loader_hint_job_finished (plugin_loader);
 
 #ifdef HAVE_SYSPROF
 	if (plugin_loader->sysprof_writer != NULL) {
@@ -3534,75 +3474,6 @@ gs_plugin_loader_process_in_thread_pool_cb (gpointer data,
 	g_object_unref (task);
 }
 
-/* This needs to err on the side of being fast, rather than perfectly accurate.
- * False positives (saying the program is running under gdb when it isn’t) are
- * not OK. False negatives (saying the program is not running under gdb when it
- * is) are OK. */
-static gboolean
-is_running_under_gdb (void)
-{
-	g_autofree gchar *status = NULL;
-	gsize status_len = 0;
-	const gchar *tracer_pid, *end;
-
-	/* Look for a line of the form:
-	 * ```
-	 * TracerPid:	748899
-	 * ```
-	 * or
-	 * ```
-	 * TracerPid:	0
-	 * ```
-	 * in `/proc/self/status`. If it’s 0, the process is not being traced. */
-	if (!g_file_get_contents ("/proc/self/status", &status, &status_len, NULL))
-		return FALSE;
-
-	tracer_pid = g_strstr_len (status, status_len, "TracerPid:");
-	if (tracer_pid == NULL)
-		return FALSE;
-
-	end = status + status_len;
-
-	/* Find the number. */
-	for (tracer_pid += strlen ("TracerPid:");
-	     tracer_pid < end &&
-	     g_ascii_isspace (*tracer_pid);
-	     tracer_pid++);
-
-	if (tracer_pid >= end)
-		return FALSE;
-
-	return (*tracer_pid != '0');
-}
-
-static gboolean
-gs_plugin_loader_job_timeout_cb (gpointer user_data)
-{
-	GTask *task = G_TASK (user_data);
-	GsPluginLoaderHelper *helper = g_task_get_task_data (task);
-
-	/* Don’t impose timeouts if running under gdb. */
-	if (is_running_under_gdb ()) {
-		g_debug ("Not cancelling job %s even though it took longer "
-			 "than %u seconds, as running under gdb",
-			 helper->function_name,
-			 gs_plugin_job_get_timeout (helper->plugin_job));
-		helper->timeout_id = 0;
-		return G_SOURCE_REMOVE;
-	}
-
-	/* call the cancellable */
-	g_debug ("cancelling job %s as it took longer than %u seconds",
-		 helper->function_name,
-		 gs_plugin_job_get_timeout (helper->plugin_job));
-	g_cancellable_cancel (g_task_get_cancellable (task));
-
-	/* failed */
-	helper->timeout_triggered = TRUE;
-	helper->timeout_id = 0;
-	return G_SOURCE_REMOVE;
-}
-
 static void
 gs_plugin_loader_cancelled_cb (GCancellable *cancellable,
                                gpointer      user_data)
@@ -3625,6 +3496,9 @@ gs_plugin_loader_schedule_task (GsPluginLoader *plugin_loader,
 		/* set the pending-action to the app */
 		GsPluginAction action = gs_plugin_job_get_action (helper->plugin_job);
 		gs_app_set_pending_action (app, action);
+
+		if (action == GS_PLUGIN_ACTION_INSTALL)
+			add_app_to_install_queue (plugin_loader, app);
 	}
 	g_thread_pool_push (plugin_loader->queued_ops_pool, g_object_ref (task), NULL);
 }
@@ -3637,13 +3511,11 @@ run_job_cb (GObject      *source_object,
 	GsPluginJob *plugin_job = GS_PLUGIN_JOB (source_object);
 	GsPluginJobClass *job_class;
 	g_autoptr(GTask) task = g_steal_pointer (&user_data);
-	GsPluginLoader *plugin_loader = g_task_get_source_object (task);
-#ifdef HAVE_SYSPROF
-	gint64 begin_time_nsec = GPOINTER_TO_SIZE (g_task_get_task_data (task));
-#endif  /* HAVE_SYSPROF */
 	g_autoptr(GError) local_error = NULL;
-
 #ifdef HAVE_SYSPROF
+	GsPluginLoader *plugin_loader = g_task_get_source_object (task);
+	gint64 begin_time_nsec = GPOINTER_TO_SIZE (g_task_get_task_data (task));
+
 	if (plugin_loader->sysprof_writer != NULL) {
 		g_autofree gchar *sysprof_name = g_strconcat ("process-thread:", G_OBJECT_TYPE_NAME (plugin_job), NULL);
 		g_autofree gchar *sysprof_message = gs_plugin_job_to_string (plugin_job);
@@ -3657,9 +3529,6 @@ run_job_cb (GObject      *source_object,
 						 sysprof_message);
 	}
 #endif  /* HAVE_SYSPROF */
-
-	/* Hint that the job has finished. */
-	gs_plugin_loader_hint_job_finished (plugin_loader);
 
 	/* FIXME: This will eventually go away when
 	 * gs_plugin_loader_job_process_finish() is removed. */
@@ -3676,8 +3545,8 @@ run_job_cb (GObject      *source_object,
 		GsAppList *list = gs_plugin_job_refine_get_result_list (GS_PLUGIN_JOB_REFINE (plugin_job));
 		g_task_return_pointer (task, g_object_ref (list), (GDestroyNotify) g_object_unref);
 		return;
-	} else if (GS_IS_PLUGIN_JOB_LIST_INSTALLED_APPS (plugin_job)) {
-		GsAppList *list = gs_plugin_job_list_installed_apps_get_result_list (GS_PLUGIN_JOB_LIST_INSTALLED_APPS (plugin_job));
+	} else if (GS_IS_PLUGIN_JOB_LIST_APPS (plugin_job)) {
+		GsAppList *list = gs_plugin_job_list_apps_get_result_list (GS_PLUGIN_JOB_LIST_APPS (plugin_job));
 		g_task_return_pointer (task, g_object_ref (list), (GDestroyNotify) g_object_unref);
 		return;
 	} else if (GS_IS_PLUGIN_JOB_LIST_DISTRO_UPGRADES (plugin_job)) {
@@ -3690,6 +3559,12 @@ run_job_cb (GObject      *source_object,
 		 * they don’t use its contents. It’s just used to distinguish
 		 * against returning an error. This will go away when
 		 * job_process_async() does. */
+		g_task_return_pointer (task, gs_app_list_new (), g_object_unref);
+		return;
+	} else if (GS_IS_PLUGIN_JOB_MANAGE_REPOSITORY (plugin_job) ||
+		   GS_IS_PLUGIN_JOB_LIST_CATEGORIES (plugin_job)) {
+		/* FIXME: The gs_plugin_loader_job_action_finish() expects a #GsAppList
+		 * pointer on success, thus return it. */
 		g_task_return_pointer (task, gs_app_list_new (), g_object_unref);
 		return;
 	}
@@ -3716,12 +3591,22 @@ cancellable_data_free (CancellableData *data)
 
 G_DEFINE_AUTOPTR_CLEANUP_FUNC (CancellableData, cancellable_data_free)
 
+static void
+plugin_loader_task_freed_cb (gpointer user_data,
+			     GObject *freed_object)
+{
+	g_autoptr(GsPluginLoader) plugin_loader = user_data;
+	if (g_atomic_int_dec_and_test (&plugin_loader->active_jobs)) {
+		/* if the plugin used updates-changed during its job, actually schedule
+		 * the signal emission now */
+		if (plugin_loader->updates_changed_cnt > 0)
+			gs_plugin_loader_updates_changed (plugin_loader);
+	}
+}
+
 static gboolean job_process_setup_complete_cb (GCancellable *cancellable,
                                                gpointer      user_data);
 static void job_process_cb (GTask *task);
-static void job_process_refine_cb (GObject      *source_object,
-                                   GAsyncResult *result,
-                                   gpointer      user_data);
 
 /**
  * gs_plugin_loader_job_process_async:
@@ -3784,6 +3669,10 @@ gs_plugin_loader_job_process_async (GsPluginLoader *plugin_loader,
 	task = g_task_new (plugin_loader, cancellable_job, callback, user_data);
 	g_task_set_name (task, task_name);
 	g_task_set_task_data (task, g_object_ref (plugin_job), (GDestroyNotify) g_object_unref);
+
+	g_atomic_int_inc (&plugin_loader->active_jobs);
+	g_object_weak_ref (G_OBJECT (task),
+		plugin_loader_task_freed_cb, g_object_ref (plugin_loader));
 
 	/* Wait until the plugin has finished setting up.
 	 *
@@ -3851,38 +3740,10 @@ job_process_cb (GTask *task)
 	}
 
 	/* deal with the install queue */
-	if (action == GS_PLUGIN_ACTION_REMOVE || action == GS_PLUGIN_ACTION_REMOVE_REPO) {
+	if (action == GS_PLUGIN_ACTION_REMOVE) {
 		if (remove_app_from_install_queue (plugin_loader, gs_plugin_job_get_app (plugin_job))) {
 			GsAppList *list = gs_plugin_job_get_list (plugin_job);
 			g_task_return_pointer (task, g_object_ref (list), (GDestroyNotify) g_object_unref);
-			return;
-		}
-	}
-
-	/* hardcoded, so resolve a set list */
-	if (action == GS_PLUGIN_ACTION_GET_POPULAR) {
-		g_auto(GStrv) apps = NULL;
-		if (g_getenv ("GNOME_SOFTWARE_POPULAR") != NULL) {
-			apps = g_strsplit (g_getenv ("GNOME_SOFTWARE_POPULAR"), ",", 0);
-		} else {
-			apps = g_settings_get_strv (plugin_loader->settings, "popular-overrides");
-		}
-		if (apps != NULL && g_strv_length (apps) > 0) {
-			GsAppList *list = gs_plugin_job_get_list (plugin_job);
-			g_autoptr(GsPluginJob) refine_job = NULL;
-
-			for (guint i = 0; apps[i] != NULL; i++) {
-				g_autoptr(GsApp) app = gs_app_new (apps[i]);
-				gs_app_add_quirk (app, GS_APP_QUIRK_IS_WILDCARD);
-				gs_app_list_add (list, app);
-			}
-
-			/* Refine the list of wildcard popular apps and return
-			 * to the caller. */
-			refine_job = gs_plugin_job_refine_new (list, GS_PLUGIN_REFINE_FLAGS_REQUIRE_ID | GS_PLUGIN_REFINE_FLAGS_DISABLE_FILTERING);
-			gs_plugin_loader_job_process_async (plugin_loader, refine_job,
-							    cancellable,
-							    job_process_refine_cb, g_object_ref (task));
 			return;
 		}
 	}
@@ -3910,18 +3771,8 @@ job_process_cb (GTask *task)
 						GS_PLUGIN_REFINE_FLAGS_REQUIRE_SETUP_ACTION);
 	}
 
-	/* get alternates is unusual in that it needs an app input and a list
-	 * output -- so undo the helpful app add in gs_plugin_job_set_app() */
-	if (action == GS_PLUGIN_ACTION_GET_ALTERNATES) {
-		GsAppList *list = gs_plugin_job_get_list (plugin_job);
-		gs_app_list_remove_all (list);
-	}
-
 	/* check required args */
 	switch (action) {
-	case GS_PLUGIN_ACTION_SEARCH:
-	case GS_PLUGIN_ACTION_SEARCH_FILES:
-	case GS_PLUGIN_ACTION_SEARCH_PROVIDES:
 	case GS_PLUGIN_ACTION_URL_TO_APP:
 		if (gs_plugin_job_get_search (plugin_job) == NULL) {
 			g_task_return_new_error (task,
@@ -3929,36 +3780,6 @@ job_process_cb (GTask *task)
 						 GS_PLUGIN_ERROR_NOT_SUPPORTED,
 						 "no valid search terms");
 			return;
-		}
-		break;
-	default:
-		break;
-	}
-
-	/* sorting fallbacks */
-	switch (action) {
-	case GS_PLUGIN_ACTION_SEARCH:
-		if (gs_plugin_job_get_sort_func (plugin_job, NULL) == NULL) {
-			gs_plugin_job_set_sort_func (plugin_job,
-						     gs_plugin_loader_app_sort_match_value_cb, NULL);
-		}
-		break;
-	case GS_PLUGIN_ACTION_GET_RECENT:
-		if (gs_plugin_job_get_sort_func (plugin_job, NULL) == NULL) {
-			gs_plugin_job_set_sort_func (plugin_job,
-						     gs_plugin_loader_app_sort_kind_cb, NULL);
-		}
-		break;
-	case GS_PLUGIN_ACTION_GET_CATEGORY_APPS:
-		if (gs_plugin_job_get_sort_func (plugin_job, NULL) == NULL) {
-			gs_plugin_job_set_sort_func (plugin_job,
-						     gs_plugin_loader_app_sort_name_cb, NULL);
-		}
-		break;
-	case GS_PLUGIN_ACTION_GET_ALTERNATES:
-		if (gs_plugin_job_get_sort_func (plugin_job, NULL) == NULL) {
-			gs_plugin_job_set_sort_func (plugin_job,
-						     gs_plugin_loader_app_sort_prio_cb, NULL);
 		}
 		break;
 	default:
@@ -3973,47 +3794,8 @@ job_process_cb (GTask *task)
 	g_task_set_check_cancellable (task, FALSE);
 	g_task_set_return_on_cancel (task, FALSE);
 
-	/* AppStream metadata pool, we only need it to create good search tokens */
-	if (plugin_loader->as_pool == NULL)
-		plugin_loader->as_pool = as_pool_new ();
-
-	/* pre-tokenize search */
-	if (action == GS_PLUGIN_ACTION_SEARCH) {
-		const gchar *search = gs_plugin_job_get_search (plugin_job);
-		helper->tokens = as_pool_build_search_tokens (plugin_loader->as_pool, search);
-		if (helper->tokens == NULL) {
-			g_task_return_new_error (task,
-						 GS_PLUGIN_ERROR,
-						 GS_PLUGIN_ERROR_NOT_SUPPORTED,
-						 "failed to tokenize %s", search);
-			return;
-		}
-	}
-
-	/* set up a hang handler */
-	switch (action) {
-	case GS_PLUGIN_ACTION_GET_ALTERNATES:
-	case GS_PLUGIN_ACTION_GET_CATEGORY_APPS:
-	case GS_PLUGIN_ACTION_GET_FEATURED:
-	case GS_PLUGIN_ACTION_GET_POPULAR:
-	case GS_PLUGIN_ACTION_GET_RECENT:
-	case GS_PLUGIN_ACTION_SEARCH:
-	case GS_PLUGIN_ACTION_SEARCH_FILES:
-	case GS_PLUGIN_ACTION_SEARCH_PROVIDES:
-		if (gs_plugin_job_get_timeout (plugin_job) > 0) {
-			helper->timeout_id =
-				g_timeout_add_seconds (gs_plugin_job_get_timeout (plugin_job),
-						       gs_plugin_loader_job_timeout_cb,
-						       task);
-		}
-		break;
-	default:
-		break;
-	}
-
 	switch (action) {
 	case GS_PLUGIN_ACTION_INSTALL:
-	case GS_PLUGIN_ACTION_INSTALL_REPO:
 	case GS_PLUGIN_ACTION_UPDATE:
 	case GS_PLUGIN_ACTION_UPGRADE_DOWNLOAD:
 		/* these actions must be performed by the thread pool because we
@@ -4026,24 +3808,6 @@ job_process_cb (GTask *task)
 
 	/* run in a thread */
 	g_task_run_in_thread (task, gs_plugin_loader_process_thread_cb);
-}
-
-static void
-job_process_refine_cb (GObject      *source_object,
-                       GAsyncResult *result,
-                       gpointer      user_data)
-{
-	GsPluginLoader *plugin_loader = GS_PLUGIN_LOADER (source_object);
-	g_autoptr(GsAppList) results = NULL;
-	g_autoptr(GTask) task = g_steal_pointer (&user_data);
-	g_autoptr(GError) local_error = NULL;
-
-	results = gs_plugin_loader_job_process_finish (plugin_loader, result, &local_error);
-
-	if (results == NULL)
-		g_task_return_error (task, g_steal_pointer (&local_error));
-	else
-		g_task_return_pointer (task, g_steal_pointer (&results), (GDestroyNotify) g_object_unref);
 }
 
 /******************************************************************************/
@@ -4316,23 +4080,24 @@ gs_plugin_loader_get_category_manager (GsPluginLoader *plugin_loader)
 }
 
 /**
- * gs_plugin_loader_hint_job_finished:
- * @plugin_loader: a #GsPluginLoader
+ * gs_plugin_loader_emit_updates_changed:
+ * @self: a #GsPluginLoader
  *
- * Hint to the @plugin_loader that the set of changes caused by the current
- * #GsPluginJob is likely to be finished.
+ * Emits the #GsPluginLoader:updates-changed signal in the nearest
+ * idle in the main thread.
  *
- * The @plugin_loader may emit queued-up signals as a result.
- *
- * Since: 42
- */
+ * Since: 43
+ **/
 void
-gs_plugin_loader_hint_job_finished (GsPluginLoader *plugin_loader)
+gs_plugin_loader_emit_updates_changed (GsPluginLoader *self)
 {
-	g_return_if_fail (GS_IS_PLUGIN_LOADER (plugin_loader));
+	g_return_if_fail (GS_IS_PLUGIN_LOADER (self));
 
-	/* if the plugin used updates-changed during its job, actually schedule
-	 * the signal emission now */
-	if (plugin_loader->updates_changed_cnt > 0)
-		gs_plugin_loader_updates_changed (plugin_loader);
+	if (self->updates_changed_id != 0)
+		g_source_remove (self->updates_changed_id);
+
+	self->updates_changed_id =
+		g_idle_add_full (G_PRIORITY_HIGH_IDLE,
+				 gs_plugin_loader_job_updates_changed_delay_cb,
+				 g_object_ref (self), g_object_unref);
 }

@@ -37,6 +37,7 @@
 
 #include "gs-eos-updater-generated.h"
 #include "gs-plugin-eos-updater.h"
+#include "gs-plugin-private.h"
 
 /*
  * SECTION:
@@ -387,19 +388,23 @@ sync_state_from_updater_unlocked (GsPluginEosUpdater *self)
 		/* Nothing to do here. */
 		break;
 	} case EOS_UPDATER_STATE_UPDATE_AVAILABLE: {
-		guint64 total_size;
+		gint64 total_size;
 
 		app_set_state (plugin, app, GS_APP_STATE_AVAILABLE);
 
+		/* The property returns -1 to indicate unknown size */
 		total_size = gs_eos_updater_get_download_size (self->updater_proxy);
-		gs_app_set_size_download (app, total_size);
+		if (total_size >= 0)
+			gs_app_set_size_download (app, GS_SIZE_TYPE_VALID, total_size);
+		else
+			gs_app_set_size_download (app, GS_SIZE_TYPE_UNKNOWN, 0);
 
 		break;
 	}
 	case EOS_UPDATER_STATE_FETCHING: {
-		guint64 total_size = 0;
-		guint64 downloaded = 0;
-		gfloat progress = 0;
+		gint64 total_size = 0;
+		gint64 downloaded = 0;
+		guint progress = 0;
 
 		/* FIXME: Set to QUEUED_FOR_INSTALL if we’re waiting for metered
 		 * data permission. */
@@ -411,13 +416,17 @@ sync_state_from_updater_unlocked (GsPluginEosUpdater *self)
 		if (total_size == 0) {
 			g_debug ("OS upgrade %s total size is 0!",
 				 gs_app_get_unique_id (app));
+			progress = GS_APP_PROGRESS_UNKNOWN;
+		} else if (downloaded < 0 || total_size < 0) {
+			/* Both properties return -1 to indicate unknown */
+			progress = GS_APP_PROGRESS_UNKNOWN;
 		} else {
 			/* set progress only up to a max percentage, leaving the
 			 * remaining for applying the update */
 			progress = (gfloat) downloaded / (gfloat) total_size *
 				   (gfloat) max_progress_for_update;
 		}
-		gs_app_set_progress (app, (guint) progress);
+		gs_app_set_progress (app, progress);
 
 		break;
 	}
@@ -532,13 +541,13 @@ gs_plugin_eos_updater_setup_async (GsPlugin            *plugin,
 	 * the poll/fetch/apply sequence is run through again to recover from
 	 * the error. This is the only point in the plugin where we consider an
 	 * error from eos-updater to be fatal to the plugin. */
-	gs_eos_updater_proxy_new_for_bus (G_BUS_TYPE_SYSTEM,
-					  G_DBUS_PROXY_FLAGS_NONE,
-					  "com.endlessm.Updater",
-					  "/com/endlessm/Updater",
-					  cancellable,
-					  proxy_new_cb,
-					  g_steal_pointer (&task));
+	gs_eos_updater_proxy_new (gs_plugin_get_system_bus_connection (plugin),
+				  G_DBUS_PROXY_FLAGS_NONE,
+				  "com.endlessm.Updater",
+				  "/com/endlessm/Updater",
+				  cancellable,
+				  proxy_new_cb,
+				  g_steal_pointer (&task));
 }
 
 static void
@@ -553,12 +562,16 @@ proxy_new_cb (GObject      *source_object,
 	g_autoptr(GIcon) ic = NULL;
 	g_autofree gchar *background_filename = NULL;
 	g_autofree gchar *css = NULL;
+	g_autofree gchar *summary = NULL;
+	g_autofree gchar *version = NULL;
+	g_autoptr(GsOsRelease) os_release = NULL;
 	g_autoptr(GMutexLocker) locker = NULL;
 	g_autoptr(GError) local_error = NULL;
+	const gchar *os_name;
 
 	locker = g_mutex_locker_new (&self->mutex);
 
-	self->updater_proxy = gs_eos_updater_proxy_new_for_bus_finish (result, &local_error);
+	self->updater_proxy = gs_eos_updater_proxy_new_finish (result, &local_error);
 	if (self->updater_proxy == NULL) {
 		gs_eos_updater_error_convert (&local_error);
 		g_task_return_error (task, g_steal_pointer (&local_error));
@@ -596,19 +609,42 @@ proxy_new_cb (GObject      *source_object,
 		css = g_strconcat ("background: url('file://", background_filename, "');"
 				   "background-size: 100% 100%;", NULL);
 
+	os_release = gs_os_release_new (&local_error);
+	if (local_error) {
+		g_warning ("Failed to get OS release information: %s", local_error->message);
+		/* Just a fallback, do not localize */
+		os_name = "Endless OS";
+		g_clear_error (&local_error);
+	} else {
+		os_name = gs_os_release_get_name (os_release);
+	}
+
+	g_object_get (G_OBJECT (self->updater_proxy),
+		"version", &version,
+		"update-message", &summary,
+		NULL);
+
+	if (summary == NULL || *summary == '\0') {
+		g_clear_pointer (&summary, g_free);
+		g_object_get (G_OBJECT (self->updater_proxy),
+			"update-label", &summary,
+			NULL);
+	}
+
+	if (summary == NULL || *summary == '\0') {
+		g_clear_pointer (&summary, g_free);
+		/* Translators: The '%s' is replaced with the OS name, like "Endless OS" */
+		summary = g_strdup_printf (_("%s update with new features and fixes."), os_name);
+	}
+
 	/* create the OS upgrade */
 	app = gs_app_new ("com.endlessm.EOS.upgrade");
 	gs_app_add_icon (app, ic);
 	gs_app_set_scope (app, AS_COMPONENT_SCOPE_SYSTEM);
 	gs_app_set_kind (app, AS_COMPONENT_KIND_OPERATING_SYSTEM);
-	/* TRANSLATORS: ‘Endless OS’ is a brand name; https://endlessos.com/ */
-	gs_app_set_name (app, GS_APP_QUALITY_LOWEST, _("Endless OS"));
-	gs_app_set_summary (app, GS_APP_QUALITY_NORMAL,
-			    /* TRANSLATORS: ‘Endless OS’ is a brand name; https://endlessos.com/ */
-			    _("An Endless OS update with new features and fixes."));
-	/* ensure that the version doesn't appear as (NULL) in the banner, it
-	 * should be changed to the right value when it changes in the eos-updater */
-	gs_app_set_version (app, "");
+	gs_app_set_name (app, GS_APP_QUALITY_LOWEST, os_name);
+	gs_app_set_summary (app, GS_APP_QUALITY_NORMAL, summary);
+	gs_app_set_version (app, version == NULL ? "" : version);
 	gs_app_add_quirk (app, GS_APP_QUIRK_NEEDS_REBOOT);
 	gs_app_add_quirk (app, GS_APP_QUIRK_PROVENANCE);
 	gs_app_add_quirk (app, GS_APP_QUIRK_NOT_REVIEWABLE);

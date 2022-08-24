@@ -265,6 +265,10 @@ gs_plugins_snap_test_func (GsPluginLoader *plugin_loader)
 	g_autoptr(GInputStream) icon_stream = NULL;
 	g_autoptr(GdkPixbuf) pixbuf = NULL;
 	g_autoptr(GError) error = NULL;
+	GsSizeType size_installed_type, size_download_type;
+	guint64 size_installed_bytes, size_download_bytes;
+	const gchar *keywords[] = { NULL, };
+	g_autoptr(GsAppQuery) query = NULL;
 
 	/* no snap, abort */
 	if (!gs_plugin_loader_get_enabled (plugin_loader, "snap")) {
@@ -272,10 +276,14 @@ gs_plugins_snap_test_func (GsPluginLoader *plugin_loader)
 		return;
 	}
 
-	plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_SEARCH,
-					 "search", "snap",
-					 "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON | GS_PLUGIN_REFINE_FLAGS_REQUIRE_SCREENSHOTS,
-					 NULL);
+	keywords[0] = "snap";
+	query = gs_app_query_new ("keywords", keywords,
+				  "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON |
+						  GS_PLUGIN_REFINE_FLAGS_REQUIRE_SCREENSHOTS,
+				  "dedupe-flags", GS_PLUGIN_JOB_DEDUPE_FLAGS_DEFAULT,
+				  "sort-func", gs_utils_app_sort_match_value,
+				  NULL);
+	plugin_job = gs_plugin_job_list_apps_new (query, GS_PLUGIN_LIST_APPS_FLAGS_NONE);
 	apps = gs_plugin_loader_job_process (plugin_loader, plugin_job, NULL, &error);
 	g_assert_no_error (error);
 	g_assert (apps != NULL);
@@ -304,8 +312,15 @@ gs_plugins_snap_test_func (GsPluginLoader *plugin_loader)
 	g_assert_cmpint (as_image_get_height (image), ==, 768);
 	icon = gs_app_get_icon_for_size (app, 64, 1, NULL);
 	g_assert_null (icon);
-	g_assert_cmpint (gs_app_get_size_installed (app), ==, 0);
-	g_assert_cmpint (gs_app_get_size_download (app), ==, 500);
+
+	size_installed_type = gs_app_get_size_installed (app, &size_installed_bytes);
+	g_assert_cmpint (size_installed_type, ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpuint (size_installed_bytes, ==, 0);
+
+	size_download_type = gs_app_get_size_download (app, &size_download_bytes);
+	g_assert_cmpint (size_download_type, ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpuint (size_download_bytes, ==, 500);
+
 	g_assert_cmpint (gs_app_get_install_date (app), ==, 0);
 
 	g_object_unref (plugin_job);
@@ -318,7 +333,11 @@ gs_plugins_snap_test_func (GsPluginLoader *plugin_loader)
 	g_assert_no_error (error);
 	g_assert (ret);
 	g_assert_cmpint (gs_app_get_state (app), ==, GS_APP_STATE_INSTALLED);
-	g_assert_cmpint (gs_app_get_size_installed (app), ==, 1000);
+
+	size_installed_type = gs_app_get_size_installed (app, &size_installed_bytes);
+	g_assert_cmpint (size_installed_type, ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpuint (size_installed_bytes, ==, 1000);
+
 	g_assert_cmpint (gs_app_get_install_date (app), ==, g_date_time_to_unix (g_date_time_new_utc (2017, 1, 2, 11, 23, 58)));
 
 	icon = gs_app_get_icon_for_size (app, 128, 1, NULL);
@@ -357,7 +376,7 @@ main (int argc, char **argv)
 	gs_test_init (&argc, &argv);
 
 	/* we can only load this once per process */
-	plugin_loader = gs_plugin_loader_new ();
+	plugin_loader = gs_plugin_loader_new (NULL, NULL);
 	gs_plugin_loader_add_location (plugin_loader, LOCALPLUGINDIR);
 	gs_plugin_loader_add_location (plugin_loader, LOCALPLUGINDIR_CORE);
 	ret = gs_plugin_loader_setup (plugin_loader,

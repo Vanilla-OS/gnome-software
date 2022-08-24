@@ -33,6 +33,7 @@ RUN dnf -y install \
     libcurl-devel \
     libdnf-devel \
     libepoxy-devel \
+    libglib-testing-devel \
     libgudev-devel \
     libjpeg-turbo-devel \
     liboauth-devel \
@@ -71,7 +72,6 @@ RUN dnf -y install \
     sysprof-capture-devel \
     unzip \
     valgrind \
-    valgrind-devel \
     wayland-protocols-devel \
     wget \
     xz \

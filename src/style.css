@@ -34,6 +34,21 @@ screenshot-carousel button,
 	padding: 6px;
 }
 
+.origin-rounded-box {
+	border-radius: 14px;
+	padding: 6px 8px;
+}
+
+.origin-beta {
+	color: @warning_bg_color;
+	background-color: alpha(@warning_bg_color, .15);
+}
+
+.origin-scope-user {
+	color: @window_fg_color;
+	background-color: alpha(@window_fg_color, .15);
+}
+
 /* This mimicks the style of list and row from Adwaita, and of list.content from
  * Libhandy. */
 
@@ -42,6 +57,7 @@ screenshot-carousel button,
 	min-width: 140px;
 	padding: 20px 10px;
 	font-weight: 900;
+	font-size: larger;
 }
 
 clamp.medium .category-tile:not(.category-tile-iconless) {
@@ -53,9 +69,11 @@ clamp.large .category-tile:not(.category-tile-iconless) {
 }
 
 .category-tile.category-tile-iconless {
+	/* We have to remove the padding: 160px - 2*15px = 130px */
+	min-width: 130px;
+	padding: 10px 15px;
 	font-size: 105%;
 	font-weight: normal;
-	padding: 10px 15px;
 }
 
 /* Styling for specific category buttons. */
@@ -165,7 +183,6 @@ clamp.large .category-tile:not(.category-tile-iconless) {
 	border-color: darker(shade(@theme_bg_color, 0.9));
 	border-style: solid;
 	border-width: 1px;
-	padding: 12px;
 }
 
 .application-details-infobar.warning {
@@ -358,7 +375,7 @@ clamp.status-page .title:not(:last-child) {
 }
 
 app-context-bar .context-tile {
-	border: 1px solid @borders;
+	border: 1px solid @card_shade_color;
 	background-color: transparent;
 	border-radius: 0;
 	padding: 24px 12px 21px 12px;
@@ -484,7 +501,10 @@ window.narrow .app-developer {
 	font-size: small;
 }
 
-.install-progress-label { font-size: smaller; }
+.install-progress-label {
+	font-size: smaller;
+	font-feature-settings: "tnum";
+}
 
 /* FIXME: These are needed in the updates page until we can use AdwStatusPage
  * again. See the note in gs-updates-page.ui. */
@@ -536,4 +556,26 @@ row.app > box.header > image {
 
 row.app label.warning {
   color: @error_color;
+}
+
+/**************
+ * GtkSpinner *
+ **************/
+
+/* Ensure the spinner is hidden before the animation is triggered. */
+@keyframes pre-delay {
+  from { opacity: 0; }
+  to { opacity: 0; }
+}
+
+/* We don't use the opacity CSS property because it's used by the spinner and we
+ * want to leave it untouched. */
+@keyframes fade-in {
+  from { filter: opacity(0%); }
+}
+
+/* Give a fade-in animation to spinners. */
+spinner.fade-in:checked {
+  animation: pre-delay 0.5s linear 1, fade-in 1s linear 1, spin 1s linear infinite;
+  animation-delay: 0s, 0.5s, 0.5s;
 }

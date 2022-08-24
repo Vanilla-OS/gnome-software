@@ -23,25 +23,18 @@
                     <property name="spacing">12</property>
 
                     <child>
-                      <object class="GtkBox" id="lozenge">
-                        <property name="halign">center</property>
+                      <object class="GsLozenge" id="lozenge">
+                        <property name="circular">False</property>
+                        <!-- this is a placeholder: the icon is actually set in code -->
+                        <property name="icon-name">safety-symbolic</property>
+                        <property name="pixel-size">24</property>
                         <style>
-                          <class name="context-tile-lozenge"/>
                           <class name="large"/>
                           <class name="grey"/>
                         </style>
-                        <child>
-                          <object class="GtkImage" id="icon">
-                            <property name="halign">center</property>
-                            <property name="hexpand">True</property>
-                            <!-- this is a placeholder: the icon is actually set in code -->
-                            <property name="icon-name">safety-symbolic</property>
-                            <property name="pixel-size">24</property>
-                            <accessibility>
-                              <relation name="labelled-by">title</relation>
-                            </accessibility>
-                          </object>
-                        </child>
+                        <accessibility>
+                          <relation name="labelled-by">title</relation>
+                        </accessibility>
                       </object>
                     </child>
 
@@ -75,7 +68,7 @@
 
                 <child>
                   <object class="GtkLinkButton">
-                    <property name="label" translatable="yes">How to add missing information</property>
+                    <property name="label" translatable="yes">How to contribute missing information</property>
                     <property name="margin-top">16</property>
                     <property name="uri">https://gitlab.gnome.org/GNOME/gnome-software/-/wikis/software-metadata#hardware-support</property>
                   </object>

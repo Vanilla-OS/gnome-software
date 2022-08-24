@@ -46,6 +46,9 @@ struct _GsApplication {
 	GSimpleActionGroup	*action_map;
 	guint		 shell_loaded_handler_id;
 	GsDebug		*debug;  /* (owned) (not nullable) */
+
+	/* Created/freed on demand */
+	GHashTable *withdraw_notifications; /* gchar *notification_id ~> GUINT_TO_POINTER (timeout_id) */
 };
 
 G_DEFINE_TYPE (GsApplication, gs_application, ADW_TYPE_APPLICATION);
@@ -127,6 +130,8 @@ gs_application_init (GsApplication *application)
 		  _("Show application details (using package name)"), _("PKGNAME") },
 		{ "install", '\0', 0, G_OPTION_ARG_STRING, NULL,
 		  _("Install the application (using application ID)"), _("ID") },
+		{ "uninstall", '\0', 0, G_OPTION_ARG_STRING, NULL,
+		  _("Uninstall the application (using application ID)"), _("ID") },
 		{ "local-filename", '\0', 0, G_OPTION_ARG_FILENAME, NULL,
 		  _("Open a local package file"), _("FILENAME") },
 		{ "interaction", '\0', 0, G_OPTION_ARG_STRING, NULL,
@@ -219,7 +224,7 @@ about_activated (GSimpleAction *action,
 		 gpointer       user_data)
 {
 	GsApplication *app = GS_APPLICATION (user_data);
-	const gchar *authors[] = {
+	const gchar *developers[] = {
 		"Richard Hughes",
 		"Matthias Clasen",
 		"Kalev Lember",
@@ -232,26 +237,30 @@ about_activated (GSimpleAction *action,
 		"Philip Withnall",
 		NULL
 	};
-	GtkAboutDialog *dialog;
-	g_autofree gchar *program_name_alloc = NULL;
-	const gchar *program_name;
 
+#if ADW_CHECK_VERSION(1,2,0)
+	adw_show_about_window (app->main_window,
+			       "application-name", g_get_application_name (),
+			       "application-icon", APPLICATION_ID,
+			       "developer-name", _("The GNOME Project"),
+			       "version", get_version(),
+			       "website", "https://wiki.gnome.org/Apps/Software",
+			       "issue-url", "https://gitlab.gnome.org/GNOME/gnome-software/-/issues/new",
+			       "developers", developers,
+			       "copyright", _("Copyright \xc2\xa9 2016–2022 GNOME Software contributors"),
+			       "license-type", GTK_LICENSE_GPL_2_0,
+			       "translator-credits", _("translator-credits"),
+			       NULL);
+#else
+	GtkAboutDialog *dialog;
 	dialog = GTK_ABOUT_DIALOG (gtk_about_dialog_new ());
-	gtk_about_dialog_set_authors (dialog, authors);
+	gtk_about_dialog_set_authors (dialog, developers);
 	gtk_about_dialog_set_copyright (dialog, _("Copyright \xc2\xa9 2016–2022 GNOME Software contributors"));
 	gtk_about_dialog_set_license_type (dialog, GTK_LICENSE_GPL_2_0);
 	gtk_about_dialog_set_logo_icon_name (dialog, APPLICATION_ID);
 	gtk_about_dialog_set_translator_credits (dialog, _("translator-credits"));
-	gtk_about_dialog_set_version (dialog, get_version());
-
-	if (g_strcmp0 (BUILD_PROFILE, "Devel") == 0) {
-		/* This isn’t translated as it’s never released */
-		program_name = program_name_alloc = g_strdup_printf ("%s (Development Snapshot)",
-								     g_get_application_name ());
-	} else {
-		program_name = g_get_application_name ();
-	}
-	gtk_about_dialog_set_program_name (dialog, program_name);
+	gtk_about_dialog_set_version (dialog, get_version ());
+	gtk_about_dialog_set_program_name (dialog, g_get_application_name ());
 
 	/* TRANSLATORS: this is the title of the about window */
 	gtk_window_set_title (GTK_WINDOW (dialog), _("About Software"));
@@ -261,6 +270,7 @@ about_activated (GSimpleAction *action,
 						 "software on your system."));
 
 	gs_shell_modal_dialog_present (app->shell, GTK_WINDOW (dialog));
+#endif
 }
 
 static void
@@ -279,18 +289,16 @@ reboot_failed_cb (GObject *source, GAsyncResult *res, gpointer user_data)
 {
 	GsApplication *app = GS_APPLICATION (user_data);
 	g_autoptr(GError) error = NULL;
-	g_autoptr(GVariant) retval = NULL;
 	g_autoptr(GsPluginJob) plugin_job = NULL;
 
 	/* get result */
-	retval = g_dbus_connection_call_finish (G_DBUS_CONNECTION (source), res, &error);
-	if (retval != NULL)
+	if (gs_utils_invoke_reboot_finish (source, res, &error))
 		return;
 
-	if (error != NULL) {
-		g_warning ("Calling org.gnome.SessionManager.Reboot failed: %s",
-			   error->message);
-	}
+	if (g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
+		g_debug ("Calling reboot had been cancelled");
+	else if (error != NULL)
+		g_warning ("Calling reboot failed: %s", error->message);
 
 	/* cancel trigger */
 	plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_UPDATE_CANCEL, NULL);
@@ -495,6 +503,9 @@ details_activated (GSimpleAction *action,
 	} else {
 		g_autofree gchar *data_id = NULL;
 		g_autoptr(GsPluginJob) plugin_job = NULL;
+		g_autoptr(GsAppQuery) query = NULL;
+		const gchar *keywords[] = { id, NULL };
+
 		data_id = gs_utils_unique_id_compat_convert (id);
 		if (data_id != NULL) {
 			gs_plugin_loader_app_create_async (app->plugin_loader, data_id, app->cancellable,
@@ -503,12 +514,13 @@ details_activated (GSimpleAction *action,
 		}
 
 		/* find by launchable */
-		plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_SEARCH,
-						 "search", id,
-						 "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON,
-						 "dedupe-flags", GS_APP_LIST_FILTER_FLAG_PREFER_INSTALLED |
-								 GS_APP_LIST_FILTER_FLAG_KEY_ID_PROVIDES,
-						 NULL);
+		query = gs_app_query_new ("keywords", keywords,
+					  "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON,
+					  "dedupe-flags", GS_APP_LIST_FILTER_FLAG_PREFER_INSTALLED |
+							  GS_APP_LIST_FILTER_FLAG_KEY_ID_PROVIDES,
+					  "sort-func", gs_utils_app_sort_match_value,
+					  NULL);
+		plugin_job = gs_plugin_job_list_apps_new (query, GS_PLUGIN_LIST_APPS_FLAGS_NONE);
 		gs_plugin_loader_job_process_async (app->plugin_loader, plugin_job,
 						    app->cancellable,
 						    _search_launchable_details_cb,
@@ -627,6 +639,68 @@ install_activated (GSimpleAction *action,
 		gs_application_app_to_install_created_cb, helper);
 }
 
+typedef struct {
+	GWeakRef gs_application_weakref;
+	gchar *data_id;
+} UninstallActivatedHelper;
+
+static void
+gs_application_app_to_uninstall_created_cb (GObject *source_object,
+					    GAsyncResult *result,
+					    gpointer user_data)
+{
+	UninstallActivatedHelper *helper = user_data;
+	g_autoptr(GsApp) app = NULL;
+	g_autoptr(GError) error = NULL;
+	g_autoptr (GsApplication) self = g_weak_ref_get (&helper->gs_application_weakref);
+
+	app = gs_plugin_loader_app_create_finish (GS_PLUGIN_LOADER (source_object), result, &error);
+
+	if (app == NULL) {
+		if (!g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED) &&
+		    !g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_CANCELLED)) {
+			g_warning ("Failed to create application '%s': %s", helper->data_id, error->message);
+		}
+	} else {
+		if (self != NULL) {
+			gs_shell_reset_state (self->shell);
+			gs_shell_uninstall (self->shell, app);
+		}
+	}
+
+	g_weak_ref_clear (&helper->gs_application_weakref);
+	g_free (helper->data_id);
+}
+
+
+static void
+uninstall_activated (GSimpleAction *action,
+		     GVariant	   *parameter,
+		     gpointer	   data)
+{
+	GsApplication *self = GS_APPLICATION (data);
+	const gchar *id;
+	g_autofree gchar *data_id = NULL;
+	UninstallActivatedHelper *helper;
+
+	g_variant_get (parameter, "&s", &id);
+
+	data_id = gs_utils_unique_id_compat_convert (id);
+	if (data_id == NULL) {
+		g_warning ("Need to use a valid unique-id: %s", id);
+		return;
+	}
+
+	gs_application_present_window (self, NULL);
+
+	helper = g_slice_new0 (UninstallActivatedHelper);
+	g_weak_ref_init (&helper->gs_application_weakref, self);
+	helper->data_id = g_strdup (data_id);
+
+	gs_plugin_loader_app_create_async (self->plugin_loader, data_id, self->cancellable,
+		gs_application_app_to_uninstall_created_cb, helper);
+}
+
 static GFile *
 _copy_file_to_cache (GFile *file_src, GError **error)
 {
@@ -714,15 +788,20 @@ launch_activated (GSimpleAction *action,
 	g_autoptr(GError) error = NULL;
 	guint ii, len;
 	GsPlugin *management_plugin;
+	g_autoptr(GsAppQuery) query = NULL;
+	const gchar *keywords[2] = { NULL, };
 
 	g_variant_get (parameter, "(&s&s)", &id, &management_plugin_name);
 
-	search_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_SEARCH,
-					 "search", id,
-					 "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_DESCRIPTION |
-							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_PERMISSIONS |
-							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_RUNTIME,
-					 NULL);
+	keywords[0] = id;
+	query = gs_app_query_new ("keywords", keywords,
+				  "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_DESCRIPTION |
+						  GS_PLUGIN_REFINE_FLAGS_REQUIRE_PERMISSIONS |
+						  GS_PLUGIN_REFINE_FLAGS_REQUIRE_RUNTIME,
+				  "dedupe-flags", GS_PLUGIN_JOB_DEDUPE_FLAGS_DEFAULT,
+				  "sort-func", gs_utils_app_sort_match_value,
+				  NULL);
+	search_job = gs_plugin_job_list_apps_new (query, GS_PLUGIN_LIST_APPS_FLAGS_NONE);
 	list = gs_plugin_loader_job_process (self->plugin_loader, search_job, self->cancellable, &error);
 	if (!list) {
 		g_warning ("Failed to search for application '%s' (from '%s'): %s", id, management_plugin_name, error ? error->message : "Unknown error");
@@ -828,6 +907,7 @@ static GActionEntry actions_after_loading[] = {
 	{ "details-pkg", details_pkg_activated, "(ss)", NULL, NULL },
 	{ "details-url", details_url_activated, "(s)", NULL, NULL },
 	{ "install", install_activated, "(su)", NULL, NULL },
+	{ "uninstall", uninstall_activated, "s", NULL, NULL },
 	{ "filename", filename_activated, "(s)", NULL, NULL },
 	{ "install-resources", install_resources_activated, "(sassss)", NULL, NULL },
 	{ "show-metainfo", show_metainfo_activated, "(ay)", NULL, NULL },
@@ -945,17 +1025,17 @@ gs_application_startup (GApplication *application)
 	if (tmp != NULL)
 		plugin_allowlist = g_strsplit (tmp, ",", -1);
 
-	app->plugin_loader = gs_plugin_loader_new ();
+	app->plugin_loader = gs_plugin_loader_new (g_application_get_dbus_connection (application), NULL);
 	if (g_file_test (LOCALPLUGINDIR, G_FILE_TEST_EXISTS))
 		gs_plugin_loader_add_location (app->plugin_loader, LOCALPLUGINDIR);
 
 	gs_shell_search_provider_setup (app->search_provider, app->plugin_loader);
 
 #ifdef HAVE_PACKAGEKIT
-	GS_APPLICATION (application)->dbus_helper = gs_dbus_helper_new ();
+	app->dbus_helper = gs_dbus_helper_new (g_application_get_dbus_connection (application));
 #endif
 	settings = g_settings_new ("org.gnome.software");
-	GS_APPLICATION (application)->settings = settings;
+	app->settings = settings;
 	g_signal_connect_swapped (settings, "changed",
 				  G_CALLBACK (gs_application_settings_changed_cb),
 				  application);
@@ -968,13 +1048,19 @@ gs_application_startup (GApplication *application)
 							 G_CALLBACK (gs_application_shell_loaded_cb),
 							 app);
 
-	gs_shell_setup (app->shell, app->plugin_loader, app->cancellable);
 	app->main_window = GTK_WINDOW (app->shell);
 	gtk_application_add_window (GTK_APPLICATION (app), app->main_window);
 
-	app->update_monitor = gs_update_monitor_new (app, app->plugin_loader);
-
 	gs_application_update_software_sources_presence (application);
+
+	/* Remove possibly obsolete notifications */
+	g_application_withdraw_notification (application, "installed");
+	g_application_withdraw_notification (application, "restart-required");
+	g_application_withdraw_notification (application, "updates-available");
+	g_application_withdraw_notification (application, "updates-installed");
+	g_application_withdraw_notification (application, "upgrades-available");
+	g_application_withdraw_notification (application, "offline-updates");
+	g_application_withdraw_notification (application, "eol");
 
 	/* Set up the plugins. */
 	gs_plugin_loader_setup_async (app->plugin_loader,
@@ -990,6 +1076,7 @@ startup_cb (GObject      *source_object,
             GAsyncResult *result,
             gpointer      user_data)
 {
+	GsApplication *app = GS_APPLICATION (user_data);
 	GsPluginLoader *plugin_loader = GS_PLUGIN_LOADER (source_object);
 	g_autoptr(GError) local_error = NULL;
 
@@ -1002,6 +1089,11 @@ startup_cb (GObject      *source_object,
 
 	/* show the priority of each plugin */
 	gs_plugin_loader_dump_state (plugin_loader);
+
+	/* Setup the shell only after the plugin loader finished its setup,
+	   thus all plugins are loaded and ready for the jobs. */
+	gs_shell_setup (app->shell, app->plugin_loader, app->cancellable);
+	app->update_monitor = gs_update_monitor_new (app, app->plugin_loader);
 }
 
 static void
@@ -1088,6 +1180,7 @@ gs_application_dispose (GObject *object)
 	g_clear_object (&app->settings);
 	g_clear_object (&app->action_map);
 	g_clear_object (&app->debug);
+	g_clear_pointer (&app->withdraw_notifications, g_hash_table_unref);
 
 	G_OBJECT_CLASS (gs_application_parent_class)->dispose (object);
 }
@@ -1187,6 +1280,11 @@ gs_application_handle_local_options (GApplication *app, GVariantDict *options)
 						"install",
 						g_variant_new ("(su)", id,
 							       interaction));
+		rc = 0;
+	} else if (g_variant_dict_lookup (options, "uninstall", "&s", &id)) {
+		g_action_group_activate_action (G_ACTION_GROUP (app),
+						"uninstall",
+						g_variant_new_string (id));
 		rc = 0;
 	} else if (g_variant_dict_lookup (options, "local-filename", "^&ay", &local_filename)) {
 		g_autoptr(GFile) file = NULL;
@@ -1329,4 +1427,89 @@ gs_application_emit_install_resources_done (GsApplication *application,
 					    const GError *op_error)
 {
 	g_signal_emit (application, signals[INSTALL_RESOURCES_DONE], 0, ident, op_error, NULL);
+}
+
+static gboolean
+gs_application_withdraw_notification_cb (gpointer user_data)
+{
+	GApplication *application = g_application_get_default ();
+	const gchar *notification_id = user_data;
+
+	gs_application_withdraw_notification (GS_APPLICATION (application), notification_id);
+
+	return G_SOURCE_REMOVE;
+}
+
+/**
+ * gs_application_send_notification:
+ * @self: a #GsApplication
+ * @notification_id: the @notification ID
+ * @notification: a #GNotification
+ * @timeout_minutes: how many minutes to wait, before withdraw the notification; 0 for not withdraw
+ *
+ * Sends the @notification and schedules withdraw of it after
+ * @timeout_minutes. This is used to auto-hide notifications
+ * after certain period of time. The @timeout_minutes set to 0
+ * means to not auto-withdraw it.
+ *
+ * Since: 43
+ **/
+void
+gs_application_send_notification (GsApplication *self,
+				  const gchar *notification_id,
+				  GNotification *notification,
+				  guint timeout_minutes)
+{
+	guint timeout_id;
+
+	g_return_if_fail (GS_IS_APPLICATION (self));
+	g_return_if_fail (notification_id != NULL);
+	g_return_if_fail (G_IS_NOTIFICATION (notification));
+	g_return_if_fail (timeout_minutes < G_MAXUINT / 60);
+
+	g_application_send_notification (G_APPLICATION (self), notification_id, notification);
+
+	if (timeout_minutes > 0) {
+		if (self->withdraw_notifications == NULL)
+			self->withdraw_notifications = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
+
+		timeout_id = GPOINTER_TO_UINT (g_hash_table_lookup (self->withdraw_notifications, notification_id));
+		if (timeout_id)
+			g_source_remove (timeout_id);
+		timeout_id = g_timeout_add_seconds_full (G_PRIORITY_DEFAULT, timeout_minutes * 60,
+			gs_application_withdraw_notification_cb, g_strdup (notification_id), g_free);
+		g_hash_table_insert (self->withdraw_notifications, g_strdup (notification_id), GUINT_TO_POINTER (timeout_id));
+	} else if (self->withdraw_notifications != NULL) {
+		timeout_id = GPOINTER_TO_UINT (g_hash_table_lookup (self->withdraw_notifications, notification_id));
+		if (timeout_id) {
+			g_source_remove (timeout_id);
+			g_hash_table_remove (self->withdraw_notifications, notification_id);
+		}
+	}
+}
+
+/**
+ * gs_application_withdraw_notification:
+ * @self: a #GsApplication
+ * @notification_id: a #GNotification ID
+ *
+ * Immediately withdraws the notification @notification_id and
+ * removes any previously scheduled withdraw by gs_application_schedule_withdraw_notification().
+ *
+ * Since: 43
+ **/
+void
+gs_application_withdraw_notification (GsApplication *self,
+				      const gchar *notification_id)
+{
+	g_return_if_fail (GS_IS_APPLICATION (self));
+	g_return_if_fail (notification_id != NULL);
+
+	g_application_withdraw_notification (G_APPLICATION (self), notification_id);
+
+	if (self->withdraw_notifications != NULL) {
+		g_hash_table_remove (self->withdraw_notifications, notification_id);
+		if (g_hash_table_size (self->withdraw_notifications) == 0)
+			g_clear_pointer (&self->withdraw_notifications, g_hash_table_unref);
+	}
 }

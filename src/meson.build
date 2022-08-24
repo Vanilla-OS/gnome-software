@@ -50,8 +50,10 @@ gnome_software_sources = [
   'gs-info-window.c',
   'gs-installed-page.c',
   'gs-language.c',
+  'gs-layout-manager.c',
   'gs-license-tile.c',
   'gs-loading-page.c',
+  'gs-lozenge.c',
   'gs-main.c',
   'gs-metered-data-dialog.c',
   'gs-moderate-page.c',
@@ -79,7 +81,6 @@ gnome_software_sources = [
   'gs-star-widget.c',
   'gs-storage-context-dialog.c',
   'gs-summary-tile.c',
-  'gs-summary-tile-layout.c',
   'gs-update-dialog.c',
   'gs-update-list.c',
   'gs-update-monitor.c',
@@ -195,7 +196,7 @@ i18n.merge_file(
     ),
   output: application_id + '.desktop',
   type: 'desktop',
-  po_dir: join_paths(meson.source_root(), 'po'),
+  po_dir: join_paths(meson.project_source_root(), 'po'),
   install: true,
   install_dir: join_paths(get_option('datadir'), 'applications')
 )
@@ -204,7 +205,7 @@ i18n.merge_file(
   input: 'gnome-software-local-file.desktop.in',
   output: 'gnome-software-local-file.desktop',
   type: 'desktop',
-  po_dir: join_paths(meson.source_root(), 'po'),
+  po_dir: join_paths(meson.project_source_root(), 'po'),
   install: true,
   install_dir: join_paths(get_option('datadir'), 'applications')
 )

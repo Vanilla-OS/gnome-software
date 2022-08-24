@@ -155,6 +155,7 @@
                 </child>
                 <child>
                   <object class="AdwLeaflet" id="details_leaflet">
+                    <property name="can-navigate-back">True</property>
                     <property name="can-unfold">False</property>
                     <signal name="notify::visible-child" handler="stack_notify_visible_child_cb"/>
 
@@ -164,6 +165,7 @@
                         <property name="name">main</property>
                         <property name="child">
                           <object class="AdwLeaflet" id="main_leaflet">
+                            <property name="can-navigate-back">True</property>
                             <property name="can-unfold">False</property>
                             <signal name="notify::visible-child" handler="stack_notify_visible_child_cb"/>
 
@@ -302,7 +304,7 @@
                                             <property name="name">installed</property>
                                             <!-- FIXME: Add mnemonics support when it’s supported in GTK (same for the other pages).
                                                  See https://gitlab.gnome.org/GNOME/gtk/-/issues/3134 -->
-                                            <property name="title" translatable="yes" comments="Translators: A label for a button to show only software which is already installed.">Installed</property>
+                                            <property name="title" translatable="yes" comments="Translators: A label for a button to show only software which is already installed." context="List of installed apps">Installed</property>
                                             <property name="icon-name">app-installed-symbolic</property>
                                             <property name="child">
                                               <object class="GsInstalledPage" id="installed_page">
@@ -323,7 +325,7 @@
                                         <child>
                                           <object class="AdwViewStackPage">
                                             <property name="name">updates</property>
-                                            <property name="title" translatable="yes" comments="Translators: A label for a button to show only updates which are available to install.">Updates</property>
+                                            <property name="title" translatable="yes" comments="Translators: A label for a button to show only updates which are available to install." context="Header bar button for list of apps to be updated">Updates</property>
                                             <property name="icon-name">emblem-synchronizing-symbolic</property>
                                             <property name="badge-number" bind-source="updates_page" bind-property="counter" bind-flags="sync-create"/>
                                             <property name="child">
@@ -472,6 +474,7 @@
                               <object class="GsDetailsPage" id="details_page">
                                 <property name="is-narrow" bind-source="GsShell" bind-property="is-narrow" bind-flags="sync-create"/>
                                 <signal name="metainfo-loaded" handler="gs_shell_details_page_metainfo_loaded_cb"/>
+                                <signal name="app-clicked" handler="details_page_app_clicked_cb"/>
                               </object>
                             </child>
                           </object>

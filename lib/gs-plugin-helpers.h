@@ -44,4 +44,53 @@ GsPluginRefreshMetadataData *gs_plugin_refresh_metadata_data_new (guint64       
 void gs_plugin_refresh_metadata_data_free (GsPluginRefreshMetadataData *data);
 G_DEFINE_AUTOPTR_CLEANUP_FUNC (GsPluginRefreshMetadataData, gs_plugin_refresh_metadata_data_free)
 
+typedef struct {
+	GsAppQuery *query;  /* (owned) (nullable) */
+	GsPluginListAppsFlags flags;
+} GsPluginListAppsData;
+
+GsPluginListAppsData *gs_plugin_list_apps_data_new (GsAppQuery            *query,
+                                                    GsPluginListAppsFlags  flags);
+GTask *gs_plugin_list_apps_data_new_task (gpointer               source_object,
+                                          GsAppQuery            *query,
+                                          GsPluginListAppsFlags  flags,
+                                          GCancellable          *cancellable,
+                                          GAsyncReadyCallback    callback,
+                                          gpointer               user_data);
+void gs_plugin_list_apps_data_free (GsPluginListAppsData *data);
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (GsPluginListAppsData, gs_plugin_list_apps_data_free)
+
+typedef struct {
+	GsApp *repository;  /* (owned) (nullable) */
+	GsPluginManageRepositoryFlags flags;
+} GsPluginManageRepositoryData;
+
+GsPluginManageRepositoryData *
+		gs_plugin_manage_repository_data_new		(GsApp				*repository,
+								 GsPluginManageRepositoryFlags   flags);
+GTask *		gs_plugin_manage_repository_data_new_task	(gpointer			 source_object,
+								 GsApp				*repository,
+								 GsPluginManageRepositoryFlags	 flags,
+								 GCancellable			*cancellable,
+								 GAsyncReadyCallback		 callback,
+								 gpointer			 user_data);
+void		gs_plugin_manage_repository_data_free		(GsPluginManageRepositoryData	*data);
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (GsPluginManageRepositoryData, gs_plugin_manage_repository_data_free)
+
+typedef struct {
+	GPtrArray *list;  /* (element-type GsCategory) (owned) (not nullable) */
+	GsPluginRefineCategoriesFlags flags;
+} GsPluginRefineCategoriesData;
+
+GsPluginRefineCategoriesData *gs_plugin_refine_categories_data_new (GPtrArray                     *list,
+                                                                    GsPluginRefineCategoriesFlags  flags);
+GTask *gs_plugin_refine_categories_data_new_task (gpointer                       source_object,
+                                                  GPtrArray                     *list,
+                                                  GsPluginRefineCategoriesFlags  flags,
+                                                  GCancellable                  *cancellable,
+                                                  GAsyncReadyCallback            callback,
+                                                  gpointer                       user_data);
+void gs_plugin_refine_categories_data_free (GsPluginRefineCategoriesData *data);
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (GsPluginRefineCategoriesData, gs_plugin_refine_categories_data_free)
+
 G_END_DECLS

@@ -15,6 +15,7 @@
 
 #include "gs-app.h"
 #include "gs-app-list.h"
+#include "gs-app-query.h"
 #include "gs-category.h"
 #include "gs-plugin-event.h"
 #include "gs-plugin-types.h"
@@ -48,22 +49,45 @@ G_DECLARE_DERIVABLE_TYPE (GsPlugin, gs_plugin, GS, PLUGIN, GObject)
  *   look up and add. Refining certain kinds of data can be very expensive (for
  *   example, requiring network requests), which is why it’s not all loaded by
  *   default. By refining multiple applications at once, data requests can be
- *   batched by the plugin where possible.
+ *   batched by the plugin where possible. (Since: 43)
  * @refine_finish: (nullable): Finish method for @refine_async. Must be
- *   implemented if @refine_async is implemented.
- * @list_installed_apps_async: (nullable): Get the list of installed apps
- *   belonging to this plugin.
- * @list_installed_apps_finish: (nullable): Finish method for
- *   @list_installed_apps_async. Must be implemented if
- *   @list_installed_apps_async is implemented.
- * @refresh_metadata_async: (nullable): Refresh plugin metadata.
+ *   implemented if @refine_async is implemented. (Since: 43)
+ * @list_apps_async: (nullable): List apps matching a given query. (Since: 43)
+ * @list_apps_finish: (nullable): Finish method for @list_apps_async. Must be
+ *   implemented if @list_apps_async is implemented. (Since: 43)
+ * @refresh_metadata_async: (nullable): Refresh plugin metadata. (Since: 43)
  * @refresh_metadata_finish: (nullable): Finish method for
  *   @refresh_metadata_async. Must be implemented if @refresh_metadata_async is
- *   implemented.
- * @list_distro_upgrades_async: (nullable): List available distro upgrades.
+ *   implemented. (Since: 43)
+ * @list_distro_upgrades_async: (nullable): List available distro upgrades. (Since: 43)
  * @list_distro_upgrades_finish: (nullable): Finish method for
  *   @list_distro_upgrades_async. Must be implemented if
- *   @list_distro_upgrades_async is implemented.
+ *   @list_distro_upgrades_async is implemented. (Since: 43)
+ * @install_repository_async: (nullable): Install repository. (Since: 43)
+ * @install_repository_finish: (nullable): Finish method for
+ *   @install_repository_async. Must be implemented if
+ *   @install_repository_async is implemented. (Since: 43)
+ * @remove_repository_async: (nullable): Remove repository. (Since: 43)
+ * @remove_repository_finish: (nullable): Finish method for
+ *   @remove_repository_async. Must be implemented if
+ *   @remove_repository_async is implemented. (Since: 43)
+ * @enable_repository_async: (nullable): Enable repository. (Since: 43)
+ * @enable_repository_finish: (nullable): Finish method for
+ *   @enable_repository_async. Must be implemented if
+ *   @enable_repository_async is implemented. (Since: 43)
+ * @disable_repository_async: (nullable): Disable repository. (Since: 43)
+ * @disable_repository_finish: (nullable): Finish method for
+ *   @disable_repository_async. Must be implemented if
+ *   @disable_repository_async is implemented. (Since: 43)
+ * @refine_categories_async: (nullable): Refining looks up and adds data to
+ *   #GsCategorys. The categories to refine are provided in a list, and the
+ *   flags specify what data to look up and add. Refining certain kinds of data
+ *   can be very expensive (for example, requiring network requests), which is
+ *   why it’s not all loaded by default. By refining multiple categories at
+ *   once, data requests can be batched by the plugin where possible. (Since: 43)
+ * @refine_categories_finish: (nullable): Finish method for
+ *   @refine_categories_async. Must be implemented if @refine_categories_async
+ *   is implemented. (Since: 43)
  *
  * The class structure for a #GsPlugin. Virtual methods here should be
  * implemented by plugin implementations derived from #GsPlugin to provide their
@@ -120,12 +144,13 @@ struct _GsPluginClass
 							 GAsyncResult		*result,
 							 GError			**error);
 
-	void			(*list_installed_apps_async)	(GsPlugin		*plugin,
-								 GsPluginListInstalledAppsFlags flags,
+	void			(*list_apps_async)		(GsPlugin		*plugin,
+								 GsAppQuery		*query,
+								 GsPluginListAppsFlags	 flags,
 								 GCancellable		*cancellable,
 								 GAsyncReadyCallback	 callback,
 								 gpointer		 user_data);
-	GsAppList *		(*list_installed_apps_finish)	(GsPlugin		*plugin,
+	GsAppList *		(*list_apps_finish)		(GsPlugin		*plugin,
 								 GAsyncResult		*result,
 								 GError			**error);
 
@@ -147,6 +172,53 @@ struct _GsPluginClass
 	GsAppList *		(*list_distro_upgrades_finish)	(GsPlugin		*plugin,
 								 GAsyncResult		*result,
 								 GError			**error);
+
+	void			(*install_repository_async)	(GsPlugin		*plugin,
+								 GsApp			*repository,
+								 GsPluginManageRepositoryFlags flags,
+								 GCancellable		*cancellable,
+								 GAsyncReadyCallback	 callback,
+								 gpointer		 user_data);
+	gboolean		(*install_repository_finish)	(GsPlugin		*plugin,
+								 GAsyncResult		*result,
+								 GError			**error);
+	void			(*remove_repository_async)	(GsPlugin		*plugin,
+								 GsApp			*repository,
+								 GsPluginManageRepositoryFlags flags,
+								 GCancellable		*cancellable,
+								 GAsyncReadyCallback	 callback,
+								 gpointer		 user_data);
+	gboolean		(*remove_repository_finish)	(GsPlugin		*plugin,
+								 GAsyncResult		*result,
+								 GError			**error);
+	void			(*enable_repository_async)	(GsPlugin		*plugin,
+								 GsApp			*repository,
+								 GsPluginManageRepositoryFlags flags,
+								 GCancellable		*cancellable,
+								 GAsyncReadyCallback	 callback,
+								 gpointer		 user_data);
+	gboolean		(*enable_repository_finish)	(GsPlugin		*plugin,
+								 GAsyncResult		*result,
+								 GError			**error);
+	void			(*disable_repository_async)	(GsPlugin		*plugin,
+								 GsApp			*repository,
+								 GsPluginManageRepositoryFlags flags,
+								 GCancellable		*cancellable,
+								 GAsyncReadyCallback	 callback,
+								 gpointer		 user_data);
+	gboolean		(*disable_repository_finish)	(GsPlugin		*plugin,
+								 GAsyncResult		*result,
+								 GError			**error);
+
+	void			(*refine_categories_async)	(GsPlugin			*plugin,
+								 GPtrArray			*list,
+								 GsPluginRefineCategoriesFlags	 flags,
+								 GCancellable			*cancellable,
+								 GAsyncReadyCallback		 callback,
+								 gpointer			 user_data);
+	gboolean		(*refine_categories_finish)	(GsPlugin			*plugin,
+								 GAsyncResult			*result,
+								 GError				**error);
 
 	gpointer		 padding[23];
 };
@@ -208,6 +280,30 @@ void		 gs_plugin_status_update		(GsPlugin	*plugin,
 gboolean	 gs_plugin_app_launch			(GsPlugin	*plugin,
 							 GsApp		*app,
 							 GError		**error);
+typedef gboolean (* GsPluginPickDesktopFileCallback)	(GsPlugin	*plugin,
+							 GsApp		*app,
+							 const gchar	*filename,
+							 GKeyFile	*key_file);
+/**
+ * GsPluginPickDesktopFileCallback:
+ * @plugin: a #GsPlugin
+ * @app: a #GsApp
+ * @filename: a .desktop file name
+ * @key_file: a #GKeyFile with @filename loaded
+ *
+ * A callback used by gs_plugin_app_launch_filtered() to filter which
+ * of the candidate .desktop files should be used to launch the @app.
+ *
+ * Returns: %TRUE, when the @key_file should be used, %FALSE to continue
+ *    searching.
+ *
+ * Since: 43
+ **/
+gboolean	 gs_plugin_app_launch_filtered		(GsPlugin	*plugin,
+							 GsApp		*app,
+							 GsPluginPickDesktopFileCallback cb,
+							 gpointer	user_data,
+							 GError		**error);
 void		 gs_plugin_updates_changed		(GsPlugin	*plugin);
 void		 gs_plugin_reload			(GsPlugin	*plugin);
 const gchar	*gs_plugin_status_to_string		(GsPluginStatus	 status);
@@ -226,8 +322,6 @@ void		gs_plugin_repository_changed		(GsPlugin	*plugin,
 void		gs_plugin_update_cache_state_for_repository
 							(GsPlugin *plugin,
 							 GsApp *repository);
-gboolean	gs_plugin_get_action_supported		(GsPlugin	*plugin,
-							 GsPluginAction	 action);
 gboolean	gs_plugin_ask_untrusted			(GsPlugin	*plugin,
 							 const gchar	*title,
 							 const gchar	*msg,

@@ -12,6 +12,10 @@
 #include <glib/gi18n.h>
 #include <gio/gdesktopappinfo.h>
 
+#ifndef TESTDATADIR
+#include "gs-application.h"
+#endif
+
 #include "gs-common.h"
 
 #ifdef HAVE_GSETTINGS_DESKTOP_SCHEMAS
@@ -19,72 +23,6 @@
 #endif
 
 #include <langinfo.h>
-
-#define SPINNER_DELAY 500
-
-static gboolean
-fade_in (gpointer data)
-{
-	GtkWidget *spinner = data;
-	gdouble opacity;
-
-	opacity = gtk_widget_get_opacity (spinner);
-	opacity = opacity + 0.1;
-	gtk_widget_set_opacity (spinner, opacity);
-
-	if (opacity >= 1.0) {
-		g_object_steal_data (G_OBJECT (spinner), "fade-timeout");
-		return G_SOURCE_REMOVE;
-	}
-	return G_SOURCE_CONTINUE;
-}
-
-static void
-remove_source (gpointer data)
-{
-	g_source_remove (GPOINTER_TO_UINT (data));
-}
-
-static gboolean
-start_spinning (gpointer data)
-{
-	GtkWidget *spinner = data;
-	guint id;
-
-	gtk_widget_set_opacity (spinner, 0);
-	gtk_spinner_start (GTK_SPINNER (spinner));
-	id = g_timeout_add (100, fade_in, spinner);
-	g_object_set_data_full (G_OBJECT (spinner), "fade-timeout",
-				GUINT_TO_POINTER (id), remove_source);
-
-	/* don't try to remove this source in the future */
-	g_object_steal_data (G_OBJECT (spinner), "start-timeout");
-	return G_SOURCE_REMOVE;
-}
-
-void
-gs_stop_spinner (GtkSpinner *spinner)
-{
-	g_object_set_data (G_OBJECT (spinner), "start-timeout", NULL);
-	gtk_spinner_stop (spinner);
-}
-
-void
-gs_start_spinner (GtkSpinner *spinner)
-{
-	gboolean spinning;
-	guint id;
-
-	/* Don't do anything if it's already spinning */
-	g_object_get (spinner, "spinning", &spinning, NULL);
-	if (spinning || g_object_get_data (G_OBJECT (spinner), "start-timeout") != NULL)
-		return;
-
-	gtk_widget_set_opacity (GTK_WIDGET (spinner), 0);
-	id = g_timeout_add (SPINNER_DELAY, start_spinning, spinner);
-	g_object_set_data_full (G_OBJECT (spinner), "start-timeout",
-				GUINT_TO_POINTER (id), remove_source);
-}
 
 void
 gs_widget_remove_all (GtkWidget    *container,
@@ -178,7 +116,11 @@ gs_app_notify_installed (GsApp *app)
 	}
 	g_notification_set_default_action_and_target  (n, "app.details", "(ss)",
 						       gs_app_get_unique_id (app), "");
+	#ifdef TESTDATADIR
 	g_application_send_notification (g_application_get_default (), "installed", n);
+	#else
+	gs_application_send_notification (GS_APPLICATION (g_application_get_default ()), "installed", n, 24 * 60);
+	#endif
 }
 
 typedef enum {
@@ -287,7 +229,7 @@ gs_app_notify_unavailable (GsApp *app, GtkWindow *parent)
 	gtk_message_dialog_set_markup (GTK_MESSAGE_DIALOG (dialog), title->str);
 
 	body = g_string_new ("");
-	origin_ui = gs_app_get_origin_ui (app);
+	origin_ui = gs_app_dup_origin_ui (app, TRUE);
 
 	if (hint & GS_APP_LICENSE_NONFREE) {
 		g_string_append_printf (body,
@@ -391,7 +333,7 @@ gs_utils_widget_css_parsing_error_cb (GtkCssProvider *provider,
 	const GtkCssLocation *start_location;
 
 	start_location = gtk_css_section_get_start_location (section);
-	g_warning ("CSS parse error %lu:%lu: %s",
+	g_warning ("CSS parse error %" G_GSIZE_FORMAT ":%" G_GSIZE_FORMAT ": %s",
 		   start_location->lines + 1,
 		   start_location->line_chars,
 		   error->message);
@@ -833,7 +775,11 @@ gs_utils_reboot_notify (GsAppList *list,
 	g_notification_add_button_with_target (n, _("Restart"), "app.reboot", NULL);
 	g_notification_set_default_action_and_target (n, "app.set-mode", "s", "updates");
 	g_notification_set_priority (n, G_NOTIFICATION_PRIORITY_URGENT);
+	#ifdef TESTDATADIR
 	g_application_send_notification (g_application_get_default (), "restart-required", n);
+	#else
+	gs_application_send_notification (GS_APPLICATION (g_application_get_default ()), "restart-required", n, 0);
+	#endif
 }
 
 /**
@@ -952,17 +898,261 @@ gs_utils_reboot_call_done_cb (GObject *source,
 			      GAsyncResult *res,
 			      gpointer user_data)
 {
-	g_autoptr(GError) error = NULL;
-	g_autoptr(GVariant) retval = NULL;
+	g_autoptr(GError) local_error = NULL;
 
 	/* get result */
-	retval = g_dbus_connection_call_finish (G_DBUS_CONNECTION (source), res, &error);
-	if (retval != NULL)
+	if (gs_utils_invoke_reboot_finish (source, res, &local_error))
 		return;
-	if (error != NULL) {
-		g_warning ("Calling org.gnome.SessionManager.Reboot failed: %s",
-			   error->message);
+	if (g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
+		g_debug ("Calling reboot had been cancelled");
+	else if (local_error != NULL)
+		g_warning ("Calling reboot failed: %s", local_error->message);
+}
+
+static void
+gs_utils_invoke_reboot_ready3_cb (GObject *source_object,
+				  GAsyncResult *result,
+				  gpointer user_data)
+{
+	g_autoptr(GTask) task = user_data;
+	g_autoptr(GVariant) ret_val = NULL;
+	g_autoptr(GError) local_error = NULL;
+
+	ret_val = g_dbus_connection_call_finish (G_DBUS_CONNECTION (source_object), result, &local_error);
+	if (ret_val != NULL) {
+		g_task_return_boolean (task, TRUE);
+	} else {
+		const gchar *method_name = g_task_get_task_data (task);
+		g_dbus_error_strip_remote_error (local_error);
+		g_prefix_error (&local_error, "Failed to call %s: ", method_name);
+		g_task_return_error (task, g_steal_pointer (&local_error));
 	}
+}
+
+static void
+gs_utils_invoke_reboot_ready2_got_session_bus_cb (GObject *source_object,
+						  GAsyncResult *result,
+						  gpointer user_data)
+{
+	g_autoptr(GTask) task = user_data;
+	g_autoptr(GDBusConnection) bus = NULL;
+	g_autoptr(GError) local_error = NULL;
+	GCancellable *cancellable;
+
+	bus = g_bus_get_finish (result, &local_error);
+	if (bus == NULL) {
+		g_dbus_error_strip_remote_error (local_error);
+		g_prefix_error_literal (&local_error, "Failed to get D-Bus session bus: ");
+		g_task_return_error (task, g_steal_pointer (&local_error));
+		return;
+	}
+
+	cancellable = g_task_get_cancellable (task);
+
+	g_task_set_task_data (task, (gpointer) "org.gnome.SessionManager.Reboot", NULL);
+	g_dbus_connection_call (bus,
+				"org.gnome.SessionManager",
+				"/org/gnome/SessionManager",
+				"org.gnome.SessionManager",
+				"Reboot",
+				NULL, NULL, G_DBUS_CALL_FLAGS_NONE,
+				G_MAXINT, cancellable,
+				gs_utils_invoke_reboot_ready3_cb,
+				g_steal_pointer (&task));
+}
+
+static void
+gs_utils_invoke_reboot_ready2_cb (GObject *source_object,
+				  GAsyncResult *result,
+				  gpointer user_data)
+{
+	g_autoptr(GTask) task = user_data;
+	g_autoptr(GVariant) ret_val = NULL;
+	g_autoptr(GError) local_error = NULL;
+
+	ret_val = g_dbus_connection_call_finish (G_DBUS_CONNECTION (source_object), result, &local_error);
+	if (ret_val != NULL) {
+		g_task_return_boolean (task, TRUE);
+	} else {
+		g_autoptr(GDBusConnection) bus = NULL;
+		GCancellable *cancellable;
+		const gchar *method_name = g_task_get_task_data (task);
+
+		g_dbus_error_strip_remote_error (local_error);
+		g_prefix_error (&local_error, "Failed to call %s: ", method_name);
+
+		if (g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
+			g_task_return_error (task, g_steal_pointer (&local_error));
+			return;
+		}
+
+		g_debug ("%s", local_error->message);
+		g_clear_error (&local_error);
+
+		cancellable = g_task_get_cancellable (task);
+
+		g_bus_get (G_BUS_TYPE_SESSION, cancellable,
+			   gs_utils_invoke_reboot_ready2_got_session_bus_cb,
+			   g_steal_pointer (&task));
+	}
+}
+
+static void
+gs_utils_invoke_reboot_ready1_got_session_bus_cb (GObject *source_object,
+						  GAsyncResult *result,
+						  gpointer user_data)
+{
+	g_autoptr(GTask) task = user_data;
+	g_autoptr(GDBusConnection) bus = NULL;
+	g_autoptr(GError) local_error = NULL;
+	GCancellable *cancellable;
+	const gchar *xdg_desktop;
+	gboolean call_session_manager = FALSE;
+
+	bus = g_bus_get_finish (result, &local_error);
+	if (bus == NULL) {
+		g_dbus_error_strip_remote_error (local_error);
+		g_prefix_error_literal (&local_error, "Failed to get D-Bus session bus: ");
+		g_task_return_error (task, g_steal_pointer (&local_error));
+		return;
+	}
+
+	cancellable = g_task_get_cancellable (task);
+
+	xdg_desktop = g_getenv ("XDG_CURRENT_DESKTOP");
+	if (xdg_desktop != NULL) {
+		if (strstr (xdg_desktop, "KDE")) {
+			g_task_set_task_data (task, (gpointer) "org.kde.Shutdown.logoutAndReboot", NULL);
+			g_dbus_connection_call (bus,
+						"org.kde.Shutdown",
+						"/Shutdown",
+						"org.kde.Shutdown",
+						"logoutAndReboot",
+						NULL, NULL, G_DBUS_CALL_FLAGS_NONE,
+						G_MAXINT, cancellable,
+						gs_utils_invoke_reboot_ready2_cb,
+						g_steal_pointer (&task));
+		} else if (strstr (xdg_desktop, "LXDE")) {
+			g_task_set_task_data (task, (gpointer) "org.lxde.SessionManager.RequestReboot", NULL);
+			g_dbus_connection_call (bus,
+						"org.lxde.SessionManager",
+						"/org/lxde/SessionManager",
+						"org.lxde.SessionManager",
+						"RequestReboot",
+						NULL, NULL, G_DBUS_CALL_FLAGS_NONE,
+						G_MAXINT, cancellable,
+						gs_utils_invoke_reboot_ready2_cb,
+						g_steal_pointer (&task));
+		} else if (strstr (xdg_desktop, "MATE")) {
+			g_task_set_task_data (task, (gpointer) "org.gnome.SessionManager.RequestReboot", NULL);
+			g_dbus_connection_call (bus,
+						"org.gnome.SessionManager",
+						"/org/gnome/SessionManager",
+						"org.gnome.SessionManager",
+						"RequestReboot",
+						NULL, NULL, G_DBUS_CALL_FLAGS_NONE,
+						G_MAXINT, cancellable,
+						gs_utils_invoke_reboot_ready2_cb,
+						g_steal_pointer (&task));
+		} else if (strstr (xdg_desktop, "XFCE")) {
+			g_task_set_task_data (task, (gpointer) "org.xfce.Session.Manager.Restart", NULL);
+			g_dbus_connection_call (bus,
+						"org.xfce.SessionManager",
+						"/org/xfce/SessionManager",
+						"org.xfce.Session.Manager",
+						"Restart",
+						g_variant_new ("(b)", TRUE), /* allow_save */
+						NULL, G_DBUS_CALL_FLAGS_NONE,
+						G_MAXINT, cancellable,
+						gs_utils_invoke_reboot_ready2_cb,
+						g_steal_pointer (&task));
+		} else {
+			/* Let the "GNOME" and "X-Cinnamon" be the default */
+			call_session_manager = TRUE;
+		}
+	} else {
+		call_session_manager = TRUE;
+	}
+
+	if (call_session_manager) {
+		g_task_set_task_data (task, (gpointer) "org.gnome.SessionManager.Reboot", NULL);
+		g_dbus_connection_call (bus,
+					"org.gnome.SessionManager",
+					"/org/gnome/SessionManager",
+					"org.gnome.SessionManager",
+					"Reboot",
+					NULL, NULL, G_DBUS_CALL_FLAGS_NONE,
+					G_MAXINT, cancellable,
+					gs_utils_invoke_reboot_ready3_cb,
+					g_steal_pointer (&task));
+	}
+}
+
+static void
+gs_utils_invoke_reboot_ready1_cb (GObject *source_object,
+				  GAsyncResult *result,
+				  gpointer user_data)
+{
+	g_autoptr(GTask) task = user_data;
+	g_autoptr(GVariant) ret_val = NULL;
+	g_autoptr(GError) local_error = NULL;
+
+	ret_val = g_dbus_connection_call_finish (G_DBUS_CONNECTION (source_object), result, &local_error);
+	if (ret_val != NULL) {
+		g_task_return_boolean (task, TRUE);
+	} else {
+		GCancellable *cancellable;
+		const gchar *method_name = g_task_get_task_data (task);
+
+		g_dbus_error_strip_remote_error (local_error);
+		g_prefix_error (&local_error, "Failed to call %s: ", method_name);
+
+		if (g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
+			g_task_return_error (task, g_steal_pointer (&local_error));
+			return;
+		}
+
+		g_debug ("%s", local_error->message);
+		g_clear_error (&local_error);
+
+		cancellable = g_task_get_cancellable (task);
+
+		g_bus_get (G_BUS_TYPE_SESSION, cancellable,
+			   gs_utils_invoke_reboot_ready1_got_session_bus_cb,
+			   g_steal_pointer (&task));
+	}
+}
+
+static void
+gs_utils_invoke_reboot_got_system_bus_cb (GObject *source_object,
+					  GAsyncResult *result,
+					  gpointer user_data)
+{
+	g_autoptr(GTask) task = user_data;
+	g_autoptr(GDBusConnection) bus = NULL;
+	g_autoptr(GError) local_error = NULL;
+	GCancellable *cancellable;
+
+	bus = g_bus_get_finish (result, &local_error);
+	if (bus == NULL) {
+		g_dbus_error_strip_remote_error (local_error);
+		g_prefix_error_literal (&local_error, "Failed to get D-Bus system bus: ");
+		g_task_return_error (task, g_steal_pointer (&local_error));
+		return;
+	}
+
+	cancellable = g_task_get_cancellable (task);
+
+	g_dbus_connection_call (bus,
+				"org.freedesktop.login1",
+				"/org/freedesktop/login1",
+				"org.freedesktop.login1.Manager",
+				"Reboot",
+				g_variant_new ("(b)", TRUE), /* interactive */
+				NULL, G_DBUS_CALL_FLAGS_NONE,
+				G_MAXINT, cancellable,
+				gs_utils_invoke_reboot_ready1_cb,
+				g_steal_pointer (&task));
 }
 
 /**
@@ -971,9 +1161,8 @@ gs_utils_reboot_call_done_cb (GObject *source,
  * @ready_callback: (nullable): a callback to be called after the call is finished, or %NULL
  * @user_data: user data for the @ready_callback
  *
- * Asynchronously invokes a reboot request using D-Bus. The @ready_callback should
- * use g_dbus_connection_call_finish (G_DBUS_CONNECTION (source), result, &error);
- * to get the result of the operation.
+ * Asynchronously invokes a reboot request. Finish the operation
+ * with gs_utils_invoke_reboot_finish().
  *
  * When the @ready_callback is %NULL, a default callback is used, which shows
  * a runtime warning (using g_warning) on the console when the call fails.
@@ -985,19 +1174,79 @@ gs_utils_invoke_reboot_async (GCancellable *cancellable,
 			      GAsyncReadyCallback ready_callback,
 			      gpointer user_data)
 {
-	g_autoptr(GDBusConnection) bus = NULL;
-	bus = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, NULL);
+	g_autoptr(GTask) task = NULL;
 
 	if (!ready_callback)
 		ready_callback = gs_utils_reboot_call_done_cb;
 
-	g_dbus_connection_call (bus,
-				"org.gnome.SessionManager",
-				"/org/gnome/SessionManager",
-				"org.gnome.SessionManager",
-				"Reboot",
-				NULL, NULL, G_DBUS_CALL_FLAGS_NONE,
-				G_MAXINT, cancellable,
-				ready_callback,
-				user_data);
+	task = g_task_new (NULL, cancellable, ready_callback, user_data);
+	g_task_set_source_tag (task, gs_utils_invoke_reboot_async);
+	g_task_set_task_data (task, (gpointer) "org.freedesktop.login1.Manager.Reboot", NULL);
+
+	g_bus_get (G_BUS_TYPE_SYSTEM, cancellable,
+		   gs_utils_invoke_reboot_got_system_bus_cb,
+		   g_steal_pointer (&task));
+}
+
+/**
+ * gs_utils_invoke_reboot_finish:
+ * @source_object: the source object provided in the ready callback
+ * @result: the result object provided in the ready callback
+ * @error: a #GError, or %NULL
+ *
+ * Finishes gs_utils_invoke_reboot_async() call.
+ *
+ * Returns: Whether succeeded. If failed, the @error is set.
+ *
+ * Since: 43
+ **/
+gboolean
+gs_utils_invoke_reboot_finish (GObject *source_object,
+			       GAsyncResult *result,
+			       GError **error)
+{
+	g_return_val_if_fail (G_IS_TASK (result), FALSE);
+	g_return_val_if_fail (g_task_is_valid (result, source_object), FALSE);
+	g_return_val_if_fail (g_task_get_source_tag (G_TASK (result)) == gs_utils_invoke_reboot_async, FALSE);
+
+	return g_task_propagate_boolean (G_TASK (result), error);
+}
+
+/**
+ * gs_utils_format_size:
+ * @size_bytes: size to format, in bytes
+ * @out_is_markup: (out) (not nullable): stores whther the returned string is a markup
+ *
+ * Similar to `g_format_size`, only splits the value and the unit into
+ * separate parts and draws the unit with a smaller font, in case
+ * the relevant code is available in GLib while compiling.
+ *
+ * The @out_is_markup is always set, providing the information about
+ * used format of the returned string.
+ *
+ * Returns: (transfer full): a new string, containing the @size_bytes formatted as string
+ *
+ * Since: 43
+ **/
+gchar *
+gs_utils_format_size (guint64 size_bytes,
+		      gboolean *out_is_markup)
+{
+#ifdef HAVE_G_FORMAT_SIZE_ONLY_VALUE
+	g_autofree gchar *value_str = g_format_size_full (size_bytes, G_FORMAT_SIZE_ONLY_VALUE);
+	g_autofree gchar *unit_str = g_format_size_full (size_bytes, G_FORMAT_SIZE_ONLY_UNIT);
+	g_autofree gchar *value_escaped = g_markup_escape_text (value_str, -1);
+	g_autofree gchar *unit_escaped = g_markup_printf_escaped ("<span font_size='x-small'>%s</span>", unit_str);
+	g_return_val_if_fail (out_is_markup != NULL, NULL);
+	*out_is_markup = TRUE;
+	/* Translators: This is to construct a disk size string consisting of the value and its unit, while
+	 * the unit is drawn with a smaller font. If you need to flip the order, then you can use "%2$s %1$s".
+	 * Make sure you'll preserve the no break space between the values.
+	 * Example result: "13.0 MB" */
+	return g_strdup_printf (C_("format-size", "%s\302\240%s"), value_escaped, unit_escaped);
+#else /* HAVE_G_FORMAT_SIZE_ONLY_VALUE */
+	g_return_val_if_fail (out_is_markup != NULL, NULL);
+	*out_is_markup = FALSE;
+	return g_format_size (size_bytes);
+#endif /* HAVE_G_FORMAT_SIZE_ONLY_VALUE */
 }

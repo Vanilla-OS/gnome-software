@@ -347,15 +347,23 @@ gs_plugins_dummy_distro_upgrades_func (GsPluginLoader *plugin_loader)
 	g_assert_cmpint (gs_app_get_state (app), ==, GS_APP_STATE_UPDATABLE);
 }
 
+static gboolean
+filter_valid_cb (GsApp    *app,
+                 gpointer  user_data)
+{
+	return gs_plugin_loader_app_is_valid (app, GS_PLUGIN_REFINE_FLAGS_NONE);
+}
+
 static void
 gs_plugins_dummy_installed_func (GsPluginLoader *plugin_loader)
 {
 	GsApp *app;
 	GsApp *addon;
-	GsAppList *addons;
+	g_autoptr(GsAppList) addons = NULL;
 	g_autofree gchar *menu_path = NULL;
 	g_autoptr(GError) error = NULL;
 	g_autoptr(GsAppList) list = NULL;
+	g_autoptr(GsAppQuery) query = NULL;
 	g_autoptr(GsPluginJob) plugin_job = NULL;
 	g_autoptr(GIcon) icon = NULL;
 	GsPluginRefineFlags refine_flags;
@@ -369,8 +377,12 @@ gs_plugins_dummy_installed_func (GsPluginLoader *plugin_loader)
 			GS_PLUGIN_REFINE_FLAGS_REQUIRE_CATEGORIES |
 			GS_PLUGIN_REFINE_FLAGS_REQUIRE_PROVENANCE);
 
-	plugin_job = gs_plugin_job_list_installed_apps_new (refine_flags, 0, GS_PLUGIN_JOB_DEDUPE_FLAGS_DEFAULT,
-							    GS_PLUGIN_LIST_INSTALLED_APPS_FLAGS_NONE);
+	query = gs_app_query_new ("is-installed", GS_APP_QUERY_TRISTATE_TRUE,
+				  "refine-flags", refine_flags,
+				  "dedupe-flags", GS_PLUGIN_JOB_DEDUPE_FLAGS_DEFAULT,
+				  "filter-func", filter_valid_cb,
+				  NULL);
+	plugin_job = gs_plugin_job_list_apps_new (query, GS_PLUGIN_LIST_APPS_FLAGS_NONE);
 	list = gs_plugin_loader_job_process (plugin_loader, plugin_job, NULL, &error);
 	gs_test_flush_main_context ();
 	g_assert_no_error (error);
@@ -405,7 +417,8 @@ gs_plugins_dummy_installed_func (GsPluginLoader *plugin_loader)
 	g_assert_cmpstr (menu_path, ==, "Create->Music Players");
 
 	/* check addon */
-	addons = gs_app_get_addons (app);
+	addons = gs_app_dup_addons (app);
+	g_assert_nonnull (addons);
 	g_assert_cmpint (gs_app_list_length (addons), ==, 1);
 	addon = gs_app_list_index (addons, 0);
 	g_assert_cmpstr (gs_app_get_id (addon), ==, "zeus-spell.addon");
@@ -426,19 +439,24 @@ gs_plugins_dummy_search_func (GsPluginLoader *plugin_loader)
 	g_autoptr(GError) error = NULL;
 	g_autoptr(GsAppList) list = NULL;
 	g_autoptr(GsPluginJob) plugin_job = NULL;
+	g_autoptr(GsAppQuery) query = NULL;
+	const gchar *keywords[2] = { NULL, };
 
 	/* get search result based on addon keyword */
-	plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_SEARCH,
-					 "search", "zeus",
-					 "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON,
-					 NULL);
+	keywords[0] = "zeus";
+	query = gs_app_query_new ("keywords", keywords,
+				  "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON,
+				  "dedupe-flags", GS_PLUGIN_JOB_DEDUPE_FLAGS_DEFAULT,
+				  "sort-func", gs_utils_app_sort_match_value,
+				  NULL);
+	plugin_job = gs_plugin_job_list_apps_new (query, GS_PLUGIN_LIST_APPS_FLAGS_NONE);
 	list = gs_plugin_loader_job_process (plugin_loader, plugin_job, NULL, &error);
 	gs_test_flush_main_context ();
 	g_assert_no_error (error);
 	g_assert (list != NULL);
 
-	/* make sure there is one entry, the parent app */
-	g_assert_cmpint (gs_app_list_length (list), ==, 1);
+	/* make sure there is at least one entry, the parent app, which must be first */
+	g_assert_cmpint (gs_app_list_length (list), >=, 1);
 	app = gs_app_list_index (list, 0);
 	g_assert_cmpstr (gs_app_get_id (app), ==, "zeus.desktop");
 	g_assert_cmpint (gs_app_get_kind (app), ==, AS_COMPONENT_KIND_DESKTOP_APP);
@@ -451,14 +469,17 @@ gs_plugins_dummy_search_alternate_func (GsPluginLoader *plugin_loader)
 	g_autoptr(GError) error = NULL;
 	g_autoptr(GsAppList) list = NULL;
 	g_autoptr(GsApp) app = NULL;
+	g_autoptr(GsAppQuery) query = NULL;
 	g_autoptr(GsPluginJob) plugin_job = NULL;
 
 	/* get search result based on addon keyword */
 	app = gs_app_new ("zeus.desktop");
-	plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_GET_ALTERNATES,
-					 "app", app,
-					 "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON,
-					 NULL);
+	query = gs_app_query_new ("alternate-of", app,
+				  "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON,
+				  "dedupe-flags", GS_PLUGIN_JOB_DEDUPE_FLAGS_DEFAULT,
+				  "sort-func", gs_utils_app_sort_priority,
+				  NULL);
+	plugin_job = gs_plugin_job_list_apps_new (query, GS_PLUGIN_LIST_APPS_FLAGS_NONE);
 	list = gs_plugin_loader_job_process (plugin_loader, plugin_job, NULL, &error);
 	gs_test_flush_main_context ();
 	g_assert_no_error (error);
@@ -472,46 +493,6 @@ gs_plugins_dummy_search_alternate_func (GsPluginLoader *plugin_loader)
 	app_tmp = gs_app_list_index (list, 1);
 	g_assert_cmpstr (gs_app_get_id (app_tmp), ==, "zeus.desktop");
 	g_assert_cmpint (gs_app_get_kind (app_tmp), ==, AS_COMPONENT_KIND_DESKTOP_APP);
-}
-
-static void
-gs_plugins_dummy_hang_func (GsPluginLoader *plugin_loader)
-{
-	g_autoptr(GCancellable) cancellable = g_cancellable_new ();
-	g_autoptr(GError) error = NULL;
-	g_autoptr(GsAppList) list = NULL;
-	g_autoptr(GsPluginJob) plugin_job = NULL;
-
-	/* drop all caches */
-	gs_utils_rmtree (g_getenv ("GS_SELF_TEST_CACHEDIR"), NULL);
-	gs_test_reinitialise_plugin_loader (plugin_loader, allowlist, NULL);
-
-	/* get search result based on addon keyword */
-	plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_SEARCH,
-					 "search", "hang",
-					 "timeout", 1, /* seconds */
-					 NULL);
-	list = gs_plugin_loader_job_process (plugin_loader, plugin_job, cancellable, &error);
-	gs_test_flush_main_context ();
-	g_assert_error (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_TIMED_OUT);
-	g_assert (list == NULL);
-}
-
-static void
-gs_plugins_dummy_search_invalid_func (GsPluginLoader *plugin_loader)
-{
-	g_autoptr(GError) error = NULL;
-	g_autoptr(GsAppList) list = NULL;
-	g_autoptr(GsPluginJob) plugin_job = NULL;
-
-	/* get search result based on addon keyword */
-	plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_SEARCH,
-					 "search", "X",
-					 NULL);
-	list = gs_plugin_loader_job_process (plugin_loader, plugin_job, NULL, &error);
-	gs_test_flush_main_context ();
-	g_assert_error (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_NOT_SUPPORTED);
-	g_assert (list == NULL);
 }
 
 static void
@@ -574,37 +555,42 @@ gs_plugins_dummy_wildcard_func (GsPluginLoader *plugin_loader)
 	g_autoptr(GError) error = NULL;
 	g_autoptr(GsAppList) list1 = NULL;
 	g_autoptr(GsAppList) list2 = NULL;
-	const gchar *popular_override = "chiron.desktop,zeus.desktop";
-	g_auto(GStrv) apps = NULL;
+	const gchar *expected_apps2[] = { "chiron.desktop", "zeus.desktop", NULL };
 	g_autoptr(GsPluginJob) plugin_job = NULL;
+	g_autoptr(GsAppQuery) query = NULL;
 
-	/* use the plugin's add_popular function */
-	plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_GET_POPULAR,
-					 "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON,
-					 NULL);
+	/* use the plugin's default curated list, indicated by setting max-results=5 */
+	query = gs_app_query_new ("is-curated", GS_APP_QUERY_TRISTATE_TRUE,
+				  "max-results", 5,
+				  "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON,
+				  NULL);
+	plugin_job = gs_plugin_job_list_apps_new (query, GS_PLUGIN_LIST_APPS_FLAGS_NONE);
+
 	list1 = gs_plugin_loader_job_process (plugin_loader, plugin_job, NULL, &error);
 	gs_test_flush_main_context ();
 	g_assert_no_error (error);
 	g_assert (list1 != NULL);
 	g_assert_cmpint (gs_app_list_length (list1), ==, 1);
-
-	/* override the popular list (do not use the add_popular function) */
-	g_setenv ("GNOME_SOFTWARE_POPULAR", popular_override, TRUE);
 	g_object_unref (plugin_job);
-	plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_GET_POPULAR,
-					 "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON,
-					 NULL);
+	g_object_unref (query);
+
+	/* use the plugin’s second list, indicated by setting max-results=6 */
+	query = gs_app_query_new ("is-curated", GS_APP_QUERY_TRISTATE_TRUE,
+				  "max-results", 6,
+				  "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON,
+				  NULL);
+	plugin_job = gs_plugin_job_list_apps_new (query, GS_PLUGIN_LIST_APPS_FLAGS_NONE);
+
 	list2 = gs_plugin_loader_job_process (plugin_loader, plugin_job, NULL, &error);
 	gs_test_flush_main_context ();
 	g_assert_no_error (error);
 	g_assert (list2 != NULL);
 
-	apps = g_strsplit (popular_override, ",", 0);
-	g_assert_cmpint (gs_app_list_length (list2), ==, g_strv_length (apps));
+	g_assert_cmpint (gs_app_list_length (list2), ==, g_strv_length ((gchar **) expected_apps2));
 
 	for (guint i = 0; i < gs_app_list_length (list2); ++i) {
 		GsApp *app = gs_app_list_index (list2, i);
-		g_assert (g_strv_contains ((const gchar * const *) apps, gs_app_get_id (app)));
+		g_assert (g_strv_contains (expected_apps2, gs_app_get_id (app)));
 	}
 }
 
@@ -706,7 +692,7 @@ gs_plugins_dummy_limit_parallel_ops_func (GsPluginLoader *plugin_loader)
 
 	/* since we have only 1 parallel installation op possible,
 	 * verify the last operations are pending */
-	g_assert_cmpint (gs_app_get_state (app2), ==, GS_APP_STATE_AVAILABLE);
+	g_assert_cmpint (gs_app_get_state (app2), ==, GS_APP_STATE_QUEUED_FOR_INSTALL);
 	g_assert_cmpint (gs_app_get_pending_action (app2), ==, GS_PLUGIN_ACTION_INSTALL);
 	g_assert_cmpint (gs_app_get_state (app3), ==, GS_APP_STATE_UPDATABLE_LIVE);
 	g_assert_cmpint (gs_app_get_pending_action (app3), ==, GS_PLUGIN_ACTION_UPDATE);
@@ -727,6 +713,93 @@ gs_plugins_dummy_limit_parallel_ops_func (GsPluginLoader *plugin_loader)
 
 	/* set the default max parallel ops */
 	gs_plugin_loader_set_max_parallel_ops (plugin_loader, 0);
+}
+
+static void
+gs_plugins_dummy_app_size_calc_func (GsPluginLoader *loader)
+{
+	g_autoptr(GsApp) app1 = NULL;
+	g_autoptr(GsApp) app2 = NULL;
+	g_autoptr(GsApp) runtime = NULL;
+	guint64 value = 0;
+
+	app1 = gs_app_new ("app1");
+	gs_app_set_state (app1, GS_APP_STATE_AVAILABLE);
+	gs_app_set_size_download (app1, GS_SIZE_TYPE_VALID, 1);
+	gs_app_set_size_installed (app1, GS_SIZE_TYPE_VALID, 1000);
+	g_assert_cmpint (gs_app_get_size_download (app1, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 1);
+	g_assert_cmpint (gs_app_get_size_download_dependencies (app1, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 0);
+	g_assert_cmpint (gs_app_get_size_installed (app1, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 1000);
+	g_assert_cmpint (gs_app_get_size_installed_dependencies (app1, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 0);
+
+	app2 = gs_app_new ("app2");
+	gs_app_set_state (app2, GS_APP_STATE_AVAILABLE);
+	gs_app_set_size_download (app2, GS_SIZE_TYPE_VALID, 20);
+	gs_app_set_size_installed (app2, GS_SIZE_TYPE_VALID, 20000);
+	g_assert_cmpint (gs_app_get_size_download (app2, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 20);
+	g_assert_cmpint (gs_app_get_size_download_dependencies (app2, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 0);
+	g_assert_cmpint (gs_app_get_size_installed (app2, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 20000);
+	g_assert_cmpint (gs_app_get_size_installed_dependencies (app2, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 0);
+
+	runtime = gs_app_new ("runtime");
+	gs_app_set_state (runtime, GS_APP_STATE_AVAILABLE);
+	gs_app_set_size_download (runtime, GS_SIZE_TYPE_VALID, 300);
+	gs_app_set_size_installed (runtime, GS_SIZE_TYPE_VALID, 300000);
+	g_assert_cmpint (gs_app_get_size_download (runtime, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 300);
+	g_assert_cmpint (gs_app_get_size_download_dependencies (runtime, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 0);
+	g_assert_cmpint (gs_app_get_size_installed (runtime, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 300000);
+	g_assert_cmpint (gs_app_get_size_installed_dependencies (runtime, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 0);
+
+	gs_app_set_runtime (app1, runtime);
+	g_assert_cmpint (gs_app_get_size_download (app1, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 1);
+	g_assert_cmpint (gs_app_get_size_download_dependencies (app1, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 300);
+	g_assert_cmpint (gs_app_get_size_installed (app1, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 1000);
+	g_assert_cmpint (gs_app_get_size_installed_dependencies (app1, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 0);
+
+	gs_app_set_runtime (app2, runtime);
+	g_assert_cmpint (gs_app_get_size_download (app2, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 20);
+	g_assert_cmpint (gs_app_get_size_download_dependencies (app2, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 300);
+	g_assert_cmpint (gs_app_get_size_installed (app2, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 20000);
+	g_assert_cmpint (gs_app_get_size_installed_dependencies (app2, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 0);
+
+	gs_app_add_related (app1, app2);
+	g_assert_cmpint (gs_app_get_size_download (app1, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 1);
+	g_assert_cmpint (gs_app_get_size_download_dependencies (app1, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 320);
+	g_assert_cmpint (gs_app_get_size_installed (app1, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 1000);
+	g_assert_cmpint (gs_app_get_size_installed_dependencies (app1, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 20000);
+
+	g_assert_cmpint (gs_app_get_size_download (app2, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 20);
+	g_assert_cmpint (gs_app_get_size_download_dependencies (app2, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 300);
+	g_assert_cmpint (gs_app_get_size_installed (app2, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 20000);
+	g_assert_cmpint (gs_app_get_size_installed_dependencies (app2, &value), ==, GS_SIZE_TYPE_VALID);
+	g_assert_cmpint (value, ==, 0);
 }
 
 int
@@ -760,7 +833,6 @@ main (int argc, char **argv)
 	g_setenv ("GS_SELF_TEST_PROVENANCE_SOURCES", "london*,boston", TRUE);
 	g_setenv ("GS_SELF_TEST_PROVENANCE_LICENSE_SOURCES", "london*,boston", TRUE);
 	g_setenv ("GS_SELF_TEST_PROVENANCE_LICENSE_URL", "https://www.debian.org/", TRUE);
-	g_setenv ("GNOME_SOFTWARE_POPULAR", "", TRUE);
 
 	/* Use a common cache directory for all tests, since the appstream
 	 * plugin uses it and cannot be reinitialised for each test. */
@@ -823,7 +895,7 @@ main (int argc, char **argv)
 	g_setenv ("GS_SELF_TEST_APPSTREAM_XML", xml, TRUE);
 
 	/* we can only load this once per process */
-	plugin_loader = gs_plugin_loader_new ();
+	plugin_loader = gs_plugin_loader_new (NULL, NULL);
 	g_signal_connect (plugin_loader, "status-changed",
 			  G_CALLBACK (gs_plugin_loader_status_changed_cb), NULL);
 	gs_plugin_loader_add_location (plugin_loader, LOCALPLUGINDIR);
@@ -855,12 +927,6 @@ main (int argc, char **argv)
 	g_test_add_data_func ("/gnome-software/plugins/dummy/search-alternate",
 			      plugin_loader,
 			      (GTestDataFunc) gs_plugins_dummy_search_alternate_func);
-	g_test_add_data_func ("/gnome-software/plugins/dummy/hang",
-			      plugin_loader,
-			      (GTestDataFunc) gs_plugins_dummy_hang_func);
-	g_test_add_data_func ("/gnome-software/plugins/dummy/search{invalid}",
-			      plugin_loader,
-			      (GTestDataFunc) gs_plugins_dummy_search_invalid_func);
 	g_test_add_data_func ("/gnome-software/plugins/dummy/url-to-app",
 			      plugin_loader,
 			      (GTestDataFunc) gs_plugins_dummy_url_to_app_func);
@@ -888,6 +954,9 @@ main (int argc, char **argv)
 	g_test_add_data_func ("/gnome-software/plugins/dummy/limit-parallel-ops",
 			      plugin_loader,
 			      (GTestDataFunc) gs_plugins_dummy_limit_parallel_ops_func);
+	g_test_add_data_func ("/gnome-software/plugins/dummy/app-size-calc",
+			      plugin_loader,
+			      (GTestDataFunc) gs_plugins_dummy_app_size_calc_func);
 	retval = g_test_run ();
 
 	/* Clean up. */

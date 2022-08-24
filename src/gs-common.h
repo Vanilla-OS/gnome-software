@@ -19,8 +19,6 @@ G_BEGIN_DECLS
 typedef void (*GsRemoveFunc) (GtkWidget *container,
 			      GtkWidget *child);
 
-void	 gs_start_spinner		(GtkSpinner	*spinner);
-void	 gs_stop_spinner		(GtkSpinner	*spinner);
 void	 gs_widget_remove_all		(GtkWidget	*container,
 					 GsRemoveFunc    remove_func);
 void	 gs_grab_focus_when_mapped	(GtkWidget	*widget);
@@ -57,6 +55,9 @@ gchar		*gs_utils_time_to_string	(gint64		 unix_time_seconds);
 void		 gs_utils_invoke_reboot_async	(GCancellable	*cancellable,
 						 GAsyncReadyCallback ready_callback,
 						 gpointer	 user_data);
+gboolean	 gs_utils_invoke_reboot_finish	(GObject	*source_object,
+						 GAsyncResult	*result,
+						 GError		**error);
 gboolean	gs_utils_split_time_difference	(gint64 unix_time_seconds,
 						 gint *out_minutes_ago,
 						 gint *out_hours_ago,
@@ -64,5 +65,7 @@ gboolean	gs_utils_split_time_difference	(gint64 unix_time_seconds,
 						 gint *out_weeks_ago,
 						 gint *out_months_ago,
 						 gint *out_years_ago);
+gchar		*gs_utils_format_size		(guint64 size_bytes,
+						 gboolean *out_is_markup);
 
 G_END_DECLS

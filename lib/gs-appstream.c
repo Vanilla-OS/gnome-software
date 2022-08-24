@@ -22,7 +22,7 @@ gs_appstream_create_app (GsPlugin *plugin, XbSilo *silo, XbNode *component, GErr
 	GsApp *app;
 	g_autoptr(GsApp) app_new = NULL;
 
-	g_return_val_if_fail (GS_IS_PLUGIN (plugin), NULL);
+	/* The 'plugin' can be NULL, when creating app for --show-metainfo */
 	g_return_val_if_fail (XB_IS_SILO (silo), NULL);
 	g_return_val_if_fail (XB_IS_NODE (component), NULL);
 
@@ -37,6 +37,9 @@ gs_appstream_create_app (GsPlugin *plugin, XbSilo *silo, XbNode *component, GErr
 	/* never add wildcard apps to the plugin cache, and only add to
 	 * the cache if it’s available */
 	if (gs_app_has_quirk (app_new, GS_APP_QUIRK_IS_WILDCARD) || plugin == NULL)
+		return g_steal_pointer (&app_new);
+
+	if (plugin == NULL)
 		return g_steal_pointer (&app_new);
 
 	/* look for existing object */
@@ -356,6 +359,7 @@ gs_appstream_refine_add_addons (GsPlugin *plugin,
 	g_autofree gchar *xpath = NULL;
 	g_autoptr(GError) error_local = NULL;
 	g_autoptr(GPtrArray) addons = NULL;
+	g_autoptr(GsAppList) addons_list = NULL;
 
 	/* get all components */
 	xpath = g_strdup_printf ("components/component/extends[text()='%s']/..",
@@ -367,14 +371,22 @@ gs_appstream_refine_add_addons (GsPlugin *plugin,
 		g_propagate_error (error, g_steal_pointer (&error_local));
 		return FALSE;
 	}
+
+	addons_list = gs_app_list_new ();
+
 	for (guint i = 0; i < addons->len; i++) {
 		XbNode *addon = g_ptr_array_index (addons, i);
-		g_autoptr(GsApp) app2 = NULL;
-		app2 = gs_appstream_create_app (plugin, silo, addon, error);
-		if (app2 == NULL)
+		g_autoptr(GsApp) addon_app = NULL;
+
+		addon_app = gs_appstream_create_app (plugin, silo, addon, error);
+		if (addon_app == NULL)
 			return FALSE;
-		gs_app_add_addon (app, app2);
+
+		gs_app_list_add (addons_list, addon_app);
 	}
+
+	gs_app_add_addons (app, addons_list);
+
 	return TRUE;
 }
 
@@ -883,14 +895,14 @@ gs_appstream_refine_app_relation (GsApp           *app,
 		as_relation_set_kind (relation, kind);
 
 		if (g_str_equal (item_kind, "control")) {
-			/* https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-requires-recommends-control */
+			/* https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-relations-control */
 			as_relation_set_item_kind (relation, AS_RELATION_ITEM_KIND_CONTROL);
 			as_relation_set_value_control_kind (relation, as_control_kind_from_string (xb_node_get_text (child)));
 		} else if (g_str_equal (item_kind, "display_length")) {
 			AsDisplayLengthKind display_length_kind;
 			const gchar *compare;
 
-			/* https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-requires-recommends-display_length */
+			/* https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-relations-display_length */
 			as_relation_set_item_kind (relation, AS_RELATION_ITEM_KIND_DISPLAY_LENGTH);
 
 			compare = xb_node_get_attr (child, "compare");
@@ -922,38 +934,34 @@ gs_appstream_refine_app_relations (GsApp     *app,
                                    XbNode    *component,
                                    GError   **error)
 {
-	g_autoptr(GPtrArray) recommends = NULL;
-	g_autoptr(GPtrArray) requires = NULL;
-	g_autoptr(GError) error_local = NULL;
+	const struct {
+		const gchar *element_name;
+		AsRelationKind relation_kind;
+	} relation_types[] = {
+#if AS_CHECK_VERSION(0, 15, 0)
+		{ "supports", AS_RELATION_KIND_SUPPORTS },
+#endif
+		{ "recommends", AS_RELATION_KIND_RECOMMENDS },
+		{ "requires", AS_RELATION_KIND_REQUIRES },
+	};
 
-	/* find any recommends */
-	recommends = xb_node_query (component, "recommends", 0, &error_local);
-	if (recommends == NULL &&
-	    !g_error_matches (error_local, G_IO_ERROR, G_IO_ERROR_NOT_FOUND)) {
-		g_propagate_error (error, g_steal_pointer (&error_local));
-		return FALSE;
-	}
+	for (gsize i = 0; i < G_N_ELEMENTS (relation_types); i++) {
+		g_autoptr(GPtrArray) relations = NULL;
+		g_autoptr(GError) error_local = NULL;
 
-	for (guint i = 0; recommends != NULL && i < recommends->len; i++) {
-		XbNode *recommend = g_ptr_array_index (recommends, i);
-		if (!gs_appstream_refine_app_relation (app, recommend, AS_RELATION_KIND_RECOMMENDS, error))
+		/* find any instances of this @element_name */
+		relations = xb_node_query (component, relation_types[i].element_name, 0, &error_local);
+		if (relations == NULL &&
+		    !g_error_matches (error_local, G_IO_ERROR, G_IO_ERROR_NOT_FOUND)) {
+			g_propagate_error (error, g_steal_pointer (&error_local));
 			return FALSE;
-	}
+		}
 
-	g_clear_error (&error_local);
-
-	/* find any requires */
-	requires = xb_node_query (component, "requires", 0, &error_local);
-	if (requires == NULL &&
-	    !g_error_matches (error_local, G_IO_ERROR, G_IO_ERROR_NOT_FOUND)) {
-		g_propagate_error (error, g_steal_pointer (&error_local));
-		return FALSE;
-	}
-
-	for (guint i = 0; requires != NULL && i < requires->len; i++) {
-		XbNode *require = g_ptr_array_index (requires, i);
-		if (!gs_appstream_refine_app_relation (app, require, AS_RELATION_KIND_REQUIRES, error))
-			return FALSE;
+		for (guint j = 0; relations != NULL && j < relations->len; j++) {
+			XbNode *relation = g_ptr_array_index (relations, j);
+			if (!gs_appstream_refine_app_relation (app, relation, relation_types[i].relation_kind, error))
+				return FALSE;
+		}
 	}
 
 	return TRUE;
@@ -973,7 +981,7 @@ gs_appstream_refine_app (GsPlugin *plugin,
 	g_autoptr(GPtrArray) launchables = NULL;
 	g_autoptr(XbNode) req = NULL;
 
-	g_return_val_if_fail (GS_IS_PLUGIN (plugin), FALSE);
+	/* The 'plugin' can be NULL, when creating app for --show-metainfo */
 	g_return_val_if_fail (GS_IS_APP (app), FALSE);
 	g_return_val_if_fail (XB_IS_SILO (silo), FALSE);
 	g_return_val_if_fail (XB_IS_NODE (component), FALSE);
@@ -1395,32 +1403,24 @@ gs_appstream_silo_search_component (GPtrArray *array, XbNode *component, const g
 	return matches_sum;
 }
 
-gboolean
-gs_appstream_search (GsPlugin *plugin,
-		     XbSilo *silo,
-		     const gchar * const *values,
-		     GsAppList *list,
-		     GCancellable *cancellable,
-		     GError **error)
+typedef struct {
+	AsSearchTokenMatch	match_value;
+	const gchar		*xpath;
+} Query;
+
+static gboolean
+gs_appstream_do_search (GsPlugin *plugin,
+			XbSilo *silo,
+			const gchar * const *values,
+			const Query queries[],
+			GsAppList *list,
+			GCancellable *cancellable,
+			GError **error)
 {
 	g_autoptr(GError) error_local = NULL;
 	g_autoptr(GPtrArray) array = g_ptr_array_new_with_free_func ((GDestroyNotify) gs_appstream_search_helper_free);
 	g_autoptr(GPtrArray) components = NULL;
 	g_autoptr(GTimer) timer = g_timer_new ();
-	const struct {
-		AsSearchTokenMatch	match_value;
-		const gchar		*xpath;
-	} queries[] = {
-		{ AS_SEARCH_TOKEN_MATCH_MIMETYPE,	"mimetypes/mimetype[text()~=stem(?)]" },
-		{ AS_SEARCH_TOKEN_MATCH_PKGNAME,	"pkgname[text()~=stem(?)]" },
-		{ AS_SEARCH_TOKEN_MATCH_SUMMARY,	"summary[text()~=stem(?)]" },
-		{ AS_SEARCH_TOKEN_MATCH_NAME,	"name[text()~=stem(?)]" },
-		{ AS_SEARCH_TOKEN_MATCH_KEYWORD,	"keywords/keyword[text()~=stem(?)]" },
-		{ AS_SEARCH_TOKEN_MATCH_ID,	"id[text()~=stem(?)]" },
-		{ AS_SEARCH_TOKEN_MATCH_ID,	"launchable[text()~=stem(?)]" },
-		{ AS_SEARCH_TOKEN_MATCH_ORIGIN,	"../components[@origin~=stem(?)]" },
-		{ AS_SEARCH_TOKEN_MATCH_NONE,	NULL }
-	};
 
 	g_return_val_if_fail (GS_IS_PLUGIN (plugin), FALSE);
 	g_return_val_if_fail (XB_IS_SILO (silo), FALSE);
@@ -1491,6 +1491,48 @@ gs_appstream_search (GsPlugin *plugin,
 	}
 	g_debug ("search took %fms", g_timer_elapsed (timer, NULL) * 1000);
 	return TRUE;
+}
+
+/* This tokenises and stems @values internally for comparison against the
+ * already-stemmed tokens in the libxmlb silo */
+gboolean
+gs_appstream_search (GsPlugin *plugin,
+		     XbSilo *silo,
+		     const gchar * const *values,
+		     GsAppList *list,
+		     GCancellable *cancellable,
+		     GError **error)
+{
+	const Query queries[] = {
+		{ AS_SEARCH_TOKEN_MATCH_MIMETYPE,	"mimetypes/mimetype[text()~=stem(?)]" },
+		{ AS_SEARCH_TOKEN_MATCH_PKGNAME,	"pkgname[text()~=stem(?)]" },
+		{ AS_SEARCH_TOKEN_MATCH_SUMMARY,	"summary[text()~=stem(?)]" },
+		{ AS_SEARCH_TOKEN_MATCH_NAME,	"name[text()~=stem(?)]" },
+		{ AS_SEARCH_TOKEN_MATCH_KEYWORD,	"keywords/keyword[text()~=stem(?)]" },
+		{ AS_SEARCH_TOKEN_MATCH_ID,	"id[text()~=stem(?)]" },
+		{ AS_SEARCH_TOKEN_MATCH_ID,	"launchable[text()~=stem(?)]" },
+		{ AS_SEARCH_TOKEN_MATCH_ORIGIN,	"../components[@origin~=stem(?)]" },
+		{ AS_SEARCH_TOKEN_MATCH_NONE,	NULL }
+	};
+
+	return gs_appstream_do_search (plugin, silo, values, queries, list, cancellable, error);
+}
+
+gboolean
+gs_appstream_search_developer_apps (GsPlugin *plugin,
+				    XbSilo *silo,
+				    const gchar * const *values,
+				    GsAppList *list,
+				    GCancellable *cancellable,
+				    GError **error)
+{
+	const Query queries[] = {
+		{ AS_SEARCH_TOKEN_MATCH_PKGNAME,	"developer_name[text()~=stem(?)]" },
+		{ AS_SEARCH_TOKEN_MATCH_SUMMARY,	"project_group[text()~=stem(?)]" },
+		{ AS_SEARCH_TOKEN_MATCH_NONE,		NULL }
+	};
+
+	return gs_appstream_do_search (plugin, silo, values, queries, list, cancellable, error);
 }
 
 gboolean
@@ -1593,10 +1635,10 @@ gs_appstream_count_component_for_groups (XbSilo      *silo,
 /* we're not actually adding categories here, we're just setting the number of
  * applications available in each category */
 gboolean
-gs_appstream_add_categories (XbSilo *silo,
-			     GPtrArray *list,
-			     GCancellable *cancellable,
-			     GError **error)
+gs_appstream_refine_category_sizes (XbSilo        *silo,
+                                    GPtrArray     *list,
+                                    GCancellable  *cancellable,
+                                    GError       **error)
 {
 	g_return_val_if_fail (XB_IS_SILO (silo), FALSE);
 	g_return_val_if_fail (list != NULL, FALSE);
@@ -1611,18 +1653,54 @@ gs_appstream_add_categories (XbSilo *silo,
 			for (guint k = 0; k < groups->len; k++) {
 				const gchar *group = g_ptr_array_index (groups, k);
 				guint cnt = gs_appstream_count_component_for_groups (silo, group);
-				for (guint l = 0; l < cnt; l++) {
-					gs_category_increment_size (parent);
+				if (cnt > 0) {
+					gs_category_increment_size (parent, cnt);
 					if (children->len > 1) {
 						/* Parent category has multiple groups, so increment
 						 * each group's size too */
-						gs_category_increment_size (cat);
+						gs_category_increment_size (cat, cnt);
 					}
 				}
 			}
 		}
 		continue;
 	}
+	return TRUE;
+}
+
+gboolean
+gs_appstream_add_installed (GsPlugin      *plugin,
+                            XbSilo        *silo,
+                            GsAppList     *list,
+                            GCancellable  *cancellable,
+                            GError       **error)
+{
+	g_autoptr(GPtrArray) components = NULL;
+	g_autoptr(GError) local_error = NULL;
+
+	g_return_val_if_fail (GS_IS_PLUGIN (plugin), FALSE);
+	g_return_val_if_fail (XB_IS_SILO (silo), FALSE);
+	g_return_val_if_fail (GS_IS_APP_LIST (list), FALSE);
+
+	/* get all installed appdata files (notice no 'components/' prefix...) */
+	components = xb_silo_query (silo, "component/description/..", 0, NULL);
+	if (components == NULL)
+		return TRUE;
+
+	for (guint i = 0; i < components->len; i++) {
+		XbNode *component = g_ptr_array_index (components, i);
+		g_autoptr(GsApp) app = gs_appstream_create_app (plugin, silo, component, error);
+		if (app == NULL)
+			return FALSE;
+
+		/* Can get cached GsApp, which has the state already updated */
+		if (gs_app_get_state (app) != GS_APP_STATE_UPDATABLE &&
+		    gs_app_get_state (app) != GS_APP_STATE_UPDATABLE_LIVE)
+			gs_app_set_state (app, GS_APP_STATE_INSTALLED);
+		gs_app_set_scope (app, AS_COMPONENT_SCOPE_SYSTEM);
+		gs_app_list_add (list, app);
+	}
+
 	return TRUE;
 }
 
@@ -1769,11 +1847,12 @@ gs_appstream_add_alternates (XbSilo *silo,
 	return TRUE;
 }
 
-gboolean
-gs_appstream_add_featured (XbSilo *silo,
-			   GsAppList *list,
-			   GCancellable *cancellable,
-			   GError **error)
+static gboolean
+gs_appstream_add_featured_with_query (XbSilo *silo,
+				      const gchar *query,
+				      GsAppList *list,
+				      GCancellable *cancellable,
+				      GError **error)
 {
 	g_autoptr(GError) error_local = NULL;
 	g_autoptr(GPtrArray) array = NULL;
@@ -1782,10 +1861,7 @@ gs_appstream_add_featured (XbSilo *silo,
 	g_return_val_if_fail (GS_IS_APP_LIST (list), FALSE);
 
 	/* find out how many packages are in each category */
-	array = xb_silo_query (silo,
-			       "components/component/custom/value[@key='GnomeSoftware::FeatureTile']/../..|"
-			       "components/component/custom/value[@key='GnomeSoftware::FeatureTile-css']/../..",
-			       0, &error_local);
+	array = xb_silo_query (silo, query, 0, &error_local);
 	if (array == NULL) {
 		if (g_error_matches (error_local, G_IO_ERROR, G_IO_ERROR_NOT_FOUND))
 			return TRUE;
@@ -1805,6 +1881,41 @@ gs_appstream_add_featured (XbSilo *silo,
 		gs_app_list_add (list, app);
 	}
 	return TRUE;
+}
+
+gboolean
+gs_appstream_add_featured (XbSilo *silo,
+			   GsAppList *list,
+			   GCancellable *cancellable,
+			   GError **error)
+{
+	const gchar *query = "components/component/custom/value[@key='GnomeSoftware::FeatureTile']/../..|"
+			     "components/component/custom/value[@key='GnomeSoftware::FeatureTile-css']/../..";
+	return gs_appstream_add_featured_with_query (silo, query, list, cancellable, error);
+}
+
+gboolean
+gs_appstream_add_deployment_featured (XbSilo *silo,
+				      const gchar * const *deployments,
+				      GsAppList *list,
+				      GCancellable *cancellable,
+				      GError **error)
+{
+	g_autoptr(GString) query = g_string_new (NULL);
+	g_return_val_if_fail (XB_IS_SILO (silo), FALSE);
+	g_return_val_if_fail (deployments != NULL, FALSE);
+	g_return_val_if_fail (GS_IS_APP_LIST (list), FALSE);
+	for (guint ii = 0; deployments[ii] != NULL; ii++) {
+		g_autofree gchar *escaped = xb_string_escape (deployments[ii]);
+		if (escaped != NULL && *escaped != '\0') {
+			xb_string_append_union (query,
+				"components/component/custom/value[@key='GnomeSoftware::DeploymentFeatured'][text()='%s']/../..",
+				escaped);
+		}
+	}
+	if (!query->len)
+		return TRUE;
+	return gs_appstream_add_featured_with_query (silo, query->str, list, cancellable, error);
 }
 
 gboolean

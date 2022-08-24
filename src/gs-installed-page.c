@@ -39,11 +39,13 @@ struct _GsInstalledPage
 	GtkWidget		*group_install_apps;
 	GtkWidget		*group_install_system_apps;
 	GtkWidget		*group_install_addons;
+	GtkWidget		*group_install_web_apps;
 
 	GtkWidget		*list_box_install_in_progress;
 	GtkWidget		*list_box_install_apps;
 	GtkWidget		*list_box_install_system_apps;
 	GtkWidget		*list_box_install_addons;
+	GtkWidget		*list_box_install_web_apps;
 	GtkWidget		*scrolledwindow_install;
 	GtkWidget		*spinner_install;
 	GtkWidget		*stack_install;
@@ -60,8 +62,10 @@ typedef enum {
 
 static GParamSpec *obj_props[PROP_IS_NARROW + 1] = { NULL, };
 
-static void gs_installed_page_pending_apps_changed_cb (GsPluginLoader *plugin_loader,
-                                                       GsInstalledPage *self);
+static void gs_installed_page_pending_apps_refined_cb (GObject *source,
+						       GAsyncResult *res,
+						       gpointer user_data);
+static GsPluginRefineFlags gs_installed_page_get_refine_flags (GsInstalledPage *self);
 static void gs_installed_page_notify_state_changed_cb (GsApp *app,
 						       GParamSpec *pspec,
 						       GsInstalledPage *self);
@@ -71,6 +75,7 @@ typedef enum {
 	GS_UPDATE_LIST_SECTION_REMOVABLE_APPS,
 	GS_UPDATE_LIST_SECTION_SYSTEM_APPS,
 	GS_UPDATE_LIST_SECTION_ADDONS,
+	GS_UPDATE_LIST_SECTION_WEB_APPS,
 	GS_UPDATE_LIST_SECTION_LAST
 } GsInstalledPageSection;
 
@@ -87,12 +92,14 @@ gs_installed_page_get_app_section (GsApp *app)
 	    state == GS_APP_STATE_REMOVING)
 		return GS_UPDATE_LIST_SECTION_INSTALLING_AND_REMOVING;
 
-	if (kind == AS_COMPONENT_KIND_DESKTOP_APP ||
-	    kind == AS_COMPONENT_KIND_WEB_APP) {
+	if (kind == AS_COMPONENT_KIND_DESKTOP_APP) {
 		if (gs_app_has_quirk (app, GS_APP_QUIRK_COMPULSORY))
 			return GS_UPDATE_LIST_SECTION_SYSTEM_APPS;
 		return GS_UPDATE_LIST_SECTION_REMOVABLE_APPS;
 	}
+
+	if (kind == AS_COMPONENT_KIND_WEB_APP)
+		return GS_UPDATE_LIST_SECTION_WEB_APPS;
 
 	return GS_UPDATE_LIST_SECTION_ADDONS;
 }
@@ -108,6 +115,8 @@ update_groups (GsInstalledPage *self)
 				gtk_widget_get_first_child (self->list_box_install_system_apps) != NULL);
 	gtk_widget_set_visible (self->group_install_addons,
 				gtk_widget_get_first_child (self->list_box_install_addons) != NULL);
+	gtk_widget_set_visible (self->group_install_web_apps,
+				gtk_widget_get_first_child (self->list_box_install_web_apps) != NULL);
 }
 
 static GsInstalledPageSection
@@ -128,6 +137,8 @@ gs_installed_page_get_row_section (GsInstalledPage *self,
 		return GS_UPDATE_LIST_SECTION_SYSTEM_APPS;
 	if (parent == self->list_box_install_addons)
 		return GS_UPDATE_LIST_SECTION_ADDONS;
+	if (parent == self->list_box_install_web_apps)
+		return GS_UPDATE_LIST_SECTION_WEB_APPS;
 
 	g_warn_if_reached ();
 
@@ -195,6 +206,7 @@ gs_installed_page_find_app_row (GsInstalledPage *self,
 		self->list_box_install_apps,
 		self->list_box_install_system_apps,
 		self->list_box_install_addons,
+		self->list_box_install_web_apps,
 		NULL
 	};
 
@@ -260,6 +272,9 @@ gs_installed_page_maybe_move_app_row (GsInstalledPage *self,
 		case GS_UPDATE_LIST_SECTION_ADDONS:
 			widget = self->list_box_install_addons;
 			break;
+		case GS_UPDATE_LIST_SECTION_WEB_APPS:
+			widget = self->list_box_install_web_apps;
+			break;
 		default:
 			g_warn_if_reached ();
 			widget = NULL;
@@ -309,9 +324,15 @@ gs_installed_page_is_actual_app (GsApp *app)
 {
 	if (gs_app_get_description (app) != NULL)
 		return TRUE;
+
 	/* special snowflake */
 	if (g_strcmp0 (gs_app_get_id (app), "google-chrome.desktop") == 0)
 		return TRUE;
+
+	/* web apps sometimes don't have descriptions */
+	if (gs_app_get_kind (app) == AS_COMPONENT_KIND_WEB_APP)
+		return TRUE;
+
 	g_debug ("%s is not an actual app", gs_app_get_unique_id (app));
 	return FALSE;
 }
@@ -351,6 +372,9 @@ gs_installed_page_add_app (GsInstalledPage *self, GsAppList *list, GsApp *app)
 	case GS_UPDATE_LIST_SECTION_ADDONS:
 		gtk_list_box_append (GTK_LIST_BOX (self->list_box_install_addons), app_row);
 		break;
+	case GS_UPDATE_LIST_SECTION_WEB_APPS:
+		gtk_list_box_append (GTK_LIST_BOX (self->list_box_install_web_apps), app_row);
+		break;
 	default:
 		g_assert_not_reached ();
 	}
@@ -378,8 +402,10 @@ gs_installed_page_get_installed_cb (GObject *source_object,
 	GsPluginLoader *plugin_loader = GS_PLUGIN_LOADER (source_object);
 	g_autoptr(GError) error = NULL;
 	g_autoptr(GsAppList) list = NULL;
+	g_autoptr(GsAppList) pending = gs_plugin_loader_get_pending (plugin_loader);
+	g_autoptr(GsPluginJob) plugin_job = NULL;
 
-	gs_stop_spinner (GTK_SPINNER (self->spinner_install));
+	gtk_spinner_stop (GTK_SPINNER (self->spinner_install));
 	gtk_stack_set_visible_child_name (GTK_STACK (self->stack_install), "view");
 
 	self->waiting = FALSE;
@@ -399,7 +425,15 @@ gs_installed_page_get_installed_cb (GObject *source_object,
 		gs_installed_page_add_app (self, list, app);
 	}
 out:
-	gs_installed_page_pending_apps_changed_cb (plugin_loader, self);
+	if (gs_app_list_length (pending) > 0) {
+		plugin_job = gs_plugin_job_refine_new (pending,
+						       gs_installed_page_get_refine_flags (self));
+		gs_plugin_loader_job_process_async (self->plugin_loader, plugin_job,
+						    self->cancellable,
+						    gs_installed_page_pending_apps_refined_cb,
+						    self);
+
+	}
 }
 
 static void
@@ -419,22 +453,31 @@ gs_installed_page_remove_all_cb (GtkWidget *container,
 	gtk_list_box_remove (GTK_LIST_BOX (container), child);
 }
 
-static void
-gs_installed_page_load (GsInstalledPage *self)
+static gboolean
+filter_app_kinds_cb (GsApp    *app,
+                     gpointer  user_data)
+{
+	/* Remove invalid apps. */
+	if (!gs_plugin_loader_app_is_valid (app, GS_PLUGIN_REFINE_FLAGS_NONE))
+		return FALSE;
+
+	switch (gs_app_get_kind (app)) {
+	case AS_COMPONENT_KIND_OPERATING_SYSTEM:
+	case AS_COMPONENT_KIND_CODEC:
+	case AS_COMPONENT_KIND_FONT:
+		g_debug ("app invalid as %s: %s",
+			 as_component_kind_to_string (gs_app_get_kind (app)),
+			 gs_app_get_unique_id (app));
+		return FALSE;
+	default:
+		return TRUE;
+	}
+}
+
+static GsPluginRefineFlags
+gs_installed_page_get_refine_flags (GsInstalledPage *self)
 {
 	GsPluginRefineFlags flags;
-	g_autoptr(GsPluginJob) plugin_job = NULL;
-
-	if (self->waiting)
-		return;
-	self->waiting = TRUE;
-
-	/* remove old entries */
-	gs_widget_remove_all (self->list_box_install_in_progress, gs_installed_page_remove_all_cb);
-	gs_widget_remove_all (self->list_box_install_apps, gs_installed_page_remove_all_cb);
-	gs_widget_remove_all (self->list_box_install_system_apps, gs_installed_page_remove_all_cb);
-	gs_widget_remove_all (self->list_box_install_addons, gs_installed_page_remove_all_cb);
-	update_groups (self);
 
 	flags = GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON |
 		GS_PLUGIN_REFINE_FLAGS_REQUIRE_HISTORY |
@@ -451,15 +494,39 @@ gs_installed_page_load (GsInstalledPage *self)
 	if (should_show_installed_size (self))
 		flags |= GS_PLUGIN_REFINE_FLAGS_REQUIRE_SIZE;
 
+	return flags;
+}
+
+static void
+gs_installed_page_load (GsInstalledPage *self)
+{
+	g_autoptr(GsAppQuery) query = NULL;
+	g_autoptr(GsPluginJob) plugin_job = NULL;
+
+	if (self->waiting)
+		return;
+	self->waiting = TRUE;
+
+	/* remove old entries */
+	gs_widget_remove_all (self->list_box_install_in_progress, gs_installed_page_remove_all_cb);
+	gs_widget_remove_all (self->list_box_install_apps, gs_installed_page_remove_all_cb);
+	gs_widget_remove_all (self->list_box_install_system_apps, gs_installed_page_remove_all_cb);
+	gs_widget_remove_all (self->list_box_install_addons, gs_installed_page_remove_all_cb);
+	gs_widget_remove_all (self->list_box_install_web_apps, gs_installed_page_remove_all_cb);
+	update_groups (self);
+
 	/* get installed apps */
-	plugin_job = gs_plugin_job_list_installed_apps_new (flags, 0, GS_APP_LIST_FILTER_FLAG_NONE,
-							    GS_PLUGIN_LIST_INSTALLED_APPS_FLAGS_INTERACTIVE);
+	query = gs_app_query_new ("is-installed", GS_APP_QUERY_TRISTATE_TRUE,
+				  "refine-flags", gs_installed_page_get_refine_flags (self),
+				  "filter-func", filter_app_kinds_cb,
+				  NULL);
+	plugin_job = gs_plugin_job_list_apps_new (query, GS_PLUGIN_LIST_APPS_FLAGS_INTERACTIVE);
 	gs_plugin_loader_job_process_async (self->plugin_loader,
 					    plugin_job,
 					    self->cancellable,
 					    gs_installed_page_get_installed_cb,
 					    self);
-	gs_start_spinner (GTK_SPINNER (self->spinner_install));
+	gtk_spinner_start (GTK_SPINNER (self->spinner_install));
 	gtk_stack_set_visible_child_name (GTK_STACK (self->stack_install), "spinner");
 }
 
@@ -604,6 +671,7 @@ gs_installed_page_has_app (GsInstalledPage *self,
 		self->list_box_install_apps,
 		self->list_box_install_system_apps,
 		self->list_box_install_addons,
+		self->list_box_install_web_apps,
 		NULL
 	};
 
@@ -621,37 +689,77 @@ gs_installed_page_has_app (GsInstalledPage *self,
 }
 
 static void
-gs_installed_page_pending_apps_changed_cb (GsPluginLoader *plugin_loader,
-                                           GsInstalledPage *self)
+gs_installed_page_add_pending_apps (GsInstalledPage *self,
+				    GsAppList *list,
+				    gboolean should_install)
 {
-	GsApp *app;
-	guint i;
-	guint cnt = 0;
-	g_autoptr(GsAppList) pending = NULL;
+	guint pending_apps_count = 0;
 
-	/* add new apps to the list */
-	pending = gs_plugin_loader_get_pending (plugin_loader);
-	for (i = 0; i < gs_app_list_length (pending); i++) {
-		app = gs_app_list_index (pending, i);
+	for (guint i = 0; i < gs_app_list_length (list); ++i) {
+		GsApp *app = gs_app_list_index (list, i);
+		if (gs_app_is_installed (app)) {
+			continue;
+		}
 
 		/* never show OS upgrades, we handle the scheduling and
 		 * cancellation in GsUpgradeBanner */
 		if (gs_app_get_kind (app) == AS_COMPONENT_KIND_OPERATING_SYSTEM)
 			continue;
 
-		/* do not to add pending apps more than once. */
-		if (gs_installed_page_has_app (self, app) == FALSE)
-			gs_installed_page_add_app (self, pending, app);
+		if (gs_app_get_state (app) == GS_APP_STATE_AVAILABLE)
+			gs_app_set_state (app, GS_APP_STATE_QUEUED_FOR_INSTALL);
 
-		/* incremement the label */
-		cnt++;
+		if (should_install &&
+		    gs_app_get_state (app) == GS_APP_STATE_QUEUED_FOR_INSTALL &&
+		    gs_plugin_loader_get_network_available (self->plugin_loader) &&
+		    !gs_plugin_loader_get_network_metered (self->plugin_loader))
+			gs_page_install_app (GS_PAGE (self), app,
+					     GS_SHELL_INTERACTION_FULL,
+					     gs_app_get_cancellable (app));
+
+		++pending_apps_count;
+		if (!gs_installed_page_has_app (self, app))
+			gs_installed_page_add_app (self, list, app);
 	}
 
 	/* update the number of on-going operations */
-	if (cnt != self->pending_apps_counter) {
-		self->pending_apps_counter = cnt;
+	if (pending_apps_count != self->pending_apps_counter) {
+		self->pending_apps_counter = pending_apps_count;
 		g_object_notify (G_OBJECT (self), "counter");
 	}
+}
+
+static void
+gs_installed_page_pending_apps_refined_cb (GObject *source,
+					   GAsyncResult *res,
+					   gpointer user_data)
+{
+	GsPluginLoader *plugin_loader = GS_PLUGIN_LOADER (source);
+	GsInstalledPage *self = GS_INSTALLED_PAGE (user_data);
+	g_autoptr(GError) error = NULL;
+	g_autoptr(GsAppList) list = gs_plugin_loader_job_process_finish (plugin_loader,
+									 res,
+									 &error);
+	if (list == NULL) {
+		if (!g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_CANCELLED))
+			g_warning ("failed to refine pending apps: %s", error->message);
+		return;
+	}
+
+	/* we add the pending apps and install them because this is called after we
+	 * populate the page, and there may be pending apps coming from the saved list
+	 * (i.e. after loading the saved pending apps from the disk) */
+	gs_installed_page_add_pending_apps (self, list, TRUE);
+}
+
+static void
+gs_installed_page_pending_apps_changed_cb (GsPluginLoader *plugin_loader,
+                                           GsInstalledPage *self)
+{
+	g_autoptr(GsAppList) pending = gs_plugin_loader_get_pending (plugin_loader);
+	/* we don't call install every time the pending apps list changes because
+	 * it may be queued in the plugin loader */
+	gs_installed_page_add_pending_apps (self, pending, FALSE);
 }
 
 static gboolean
@@ -686,6 +794,9 @@ gs_installed_page_setup (GsPage *page,
 	gtk_list_box_set_sort_func (GTK_LIST_BOX (self->list_box_install_addons),
 				    gs_installed_page_sort_func,
 				    self, NULL);
+	gtk_list_box_set_sort_func (GTK_LIST_BOX (self->list_box_install_web_apps),
+				    gs_installed_page_sort_func,
+				    self, NULL);
 	return TRUE;
 }
 
@@ -706,7 +817,7 @@ gs_installed_page_get_property (GObject    *object,
 		break;
 	case PROP_TITLE:
 		/* Translators: This is in the context of a list of apps which are installed on the system. */
-		g_value_set_string (value, _("Installed"));
+		g_value_set_string (value, C_("List of installed apps", "Installed"));
 		break;
 	default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -796,10 +907,12 @@ gs_installed_page_class_init (GsInstalledPageClass *klass)
 	gtk_widget_class_bind_template_child (widget_class, GsInstalledPage, group_install_apps);
 	gtk_widget_class_bind_template_child (widget_class, GsInstalledPage, group_install_system_apps);
 	gtk_widget_class_bind_template_child (widget_class, GsInstalledPage, group_install_addons);
+	gtk_widget_class_bind_template_child (widget_class, GsInstalledPage, group_install_web_apps);
 	gtk_widget_class_bind_template_child (widget_class, GsInstalledPage, list_box_install_in_progress);
 	gtk_widget_class_bind_template_child (widget_class, GsInstalledPage, list_box_install_apps);
 	gtk_widget_class_bind_template_child (widget_class, GsInstalledPage, list_box_install_system_apps);
 	gtk_widget_class_bind_template_child (widget_class, GsInstalledPage, list_box_install_addons);
+	gtk_widget_class_bind_template_child (widget_class, GsInstalledPage, list_box_install_web_apps);
 	gtk_widget_class_bind_template_child (widget_class, GsInstalledPage, scrolledwindow_install);
 	gtk_widget_class_bind_template_child (widget_class, GsInstalledPage, spinner_install);
 	gtk_widget_class_bind_template_child (widget_class, GsInstalledPage, stack_install);

@@ -32,12 +32,17 @@
 #include "gs-progress-button.h"
 #include "gs-screenshot-carousel.h"
 #include "gs-star-widget.h"
+#include "gs-summary-tile.h"
 #include "gs-review-histogram.h"
 #include "gs-review-dialog.h"
 #include "gs-review-row.h"
 
 /* the number of reviews to show before clicking the 'More Reviews' button */
 #define SHOW_NR_REVIEWS_INITIAL		4
+
+/* How many other developer apps can be shown; should be divisible by 3 and 2,
+   to catch full width and smaller width without bottom gap */
+#define N_DEVELOPER_APPS 18
 
 #define GS_DETAILS_PAGE_REFINE_FLAGS	GS_PLUGIN_REFINE_FLAGS_REQUIRE_ADDONS | \
 					GS_PLUGIN_REFINE_FLAGS_REQUIRE_CATEGORIES | \
@@ -83,11 +88,11 @@ struct _GsDetailsPage
 	GsShell			*shell;
 	gboolean		 show_all_reviews;
 	GSettings		*settings;
-	GtkSizeGroup		*size_group_origin_popover;
 	GsOdrsProvider		*odrs_provider;  /* (nullable) (owned), NULL if reviews are disabled */
 	GAppInfoMonitor		*app_info_monitor; /* (owned) */
 	GHashTable		*packaging_format_preference; /* gchar * ~> gint */
 	GtkWidget		*app_reviews_dialog;
+	GtkCssProvider		*origin_css_provider; /* (nullable) (owned) */
 	gboolean		 origin_by_packaging_format; /* when TRUE, change the 'app' to the most preferred
 								packaging format when the alternatives are found */
 	gboolean		 is_narrow;
@@ -142,17 +147,22 @@ struct _GsDetailsPage
 	GtkWidget		*origin_popover;
 	GtkWidget		*origin_popover_list_box;
 	GtkWidget		*origin_box;
-	GtkWidget		*origin_button;
+	GtkWidget		*origin_packaging_image;
+	GtkWidget		*origin_packaging_label;
 	GtkWidget		*box_license;
 	GsLicenseTile		*license_tile;
 	GtkInfoBar		*translation_infobar;
 	GtkButton		*translation_infobar_button;
+	GtkWidget		*developer_apps_heading;
+	GtkWidget		*box_developer_apps;
+	gchar			*last_developer_name;
 };
 
 G_DEFINE_TYPE (GsDetailsPage, gs_details_page, GS_TYPE_PAGE)
 
 enum {
 	SIGNAL_METAINFO_LOADED,
+	SIGNAL_APP_CLICKED,
 	SIGNAL_LAST
 };
 
@@ -201,13 +211,11 @@ gs_details_page_set_state (GsDetailsPage *self,
 	/* spinner */
 	switch (state) {
 	case GS_DETAILS_PAGE_STATE_LOADING:
-		gs_start_spinner (GTK_SPINNER (self->spinner_details));
-		gtk_widget_show (self->spinner_details);
+		gtk_spinner_start (GTK_SPINNER (self->spinner_details));
 		break;
 	case GS_DETAILS_PAGE_STATE_READY:
 	case GS_DETAILS_PAGE_STATE_FAILED:
-		gs_stop_spinner (GTK_SPINNER (self->spinner_details));
-		gtk_widget_hide (self->spinner_details);
+		gtk_spinner_stop (GTK_SPINNER (self->spinner_details));
 		break;
 	default:
 		g_assert_not_reached ();
@@ -251,6 +259,7 @@ static void
 gs_details_page_update_origin_button (GsDetailsPage *self,
 				      gboolean sensitive)
 {
+	const gchar *packaging_icon;
 	g_autofree gchar *origin_ui = NULL;
 
 	if (self->app == NULL ||
@@ -259,14 +268,32 @@ gs_details_page_update_origin_button (GsDetailsPage *self,
 		return;
 	}
 
-	origin_ui = gs_app_get_origin_ui (self->app);
-	if (origin_ui != NULL)
-		gtk_menu_button_set_label (GTK_MENU_BUTTON (self->origin_button), origin_ui);
-	else
-		gtk_menu_button_set_label (GTK_MENU_BUTTON (self->origin_button), "");
+	origin_ui = gs_app_dup_origin_ui (self->app, FALSE);
+	gtk_label_set_text (GTK_LABEL (self->origin_packaging_label), origin_ui != NULL ? origin_ui : "");
 
 	gtk_widget_set_sensitive (self->origin_box, sensitive);
 	gtk_widget_show (self->origin_box);
+
+	packaging_icon = gs_app_get_metadata_item (self->app, "GnomeSoftware::PackagingIcon");
+
+	if (packaging_icon != NULL) {
+		const gchar *packaging_base_css_color;
+		g_autofree gchar *css = NULL;
+
+		packaging_base_css_color = gs_app_get_metadata_item (self->app, "GnomeSoftware::PackagingBaseCssColor");
+
+		gtk_image_set_from_icon_name (GTK_IMAGE (self->origin_packaging_image), packaging_icon);
+
+		if (packaging_base_css_color == NULL)
+			packaging_base_css_color = "window_fg_color";
+
+		css = g_strdup_printf ("color: @%s;\n", packaging_base_css_color);
+
+		gs_utils_widget_set_css (self->origin_packaging_image, &self->origin_css_provider, "packaging-color", css);
+		gtk_widget_show (self->origin_packaging_image);
+	} else {
+		gtk_widget_hide (self->origin_packaging_image);
+	}
 }
 
 static void
@@ -488,7 +515,27 @@ static void
 gs_details_page_license_tile_get_involved_activated_cb (GsLicenseTile *license_tile,
 							GsDetailsPage *self)
 {
-	gs_shell_show_uri (self->shell, gs_app_get_url (self->app, AS_URL_KIND_HOMEPAGE));
+	const gchar *uri = NULL;
+
+	if (gs_app_get_license_is_free (self->app)) {
+#if AS_CHECK_VERSION(0, 15, 3)
+		uri = gs_app_get_url (self->app, AS_URL_KIND_CONTRIBUTE);
+#endif
+		if (uri == NULL)
+			uri = gs_app_get_url (self->app, AS_URL_KIND_HOMEPAGE);
+	} else {
+		/* Page to explain the differences between FOSS and proprietary
+		 * software. This is a page on the gnome-software wiki for now,
+		 * so that we can update the content independently of the release
+		 * cycle. Likely, we will link to a more authoritative source
+		 * to explain the differences.
+		 * Ultimately, we could ship a user manual page to explain the
+		 * differences (so that it’s available offline), but that’s too
+		 * much work for right now. */
+		uri = "https://gitlab.gnome.org/GNOME/gnome-software/-/wikis/Software-licensing";
+	}
+
+	gs_shell_show_uri (self->shell, uri);
 }
 
 static void
@@ -521,8 +568,8 @@ app_origin_equal (GsApp *a,
 	if (a == b)
 		return TRUE;
 
-	a_origin_ui = gs_app_get_origin_ui (a);
-	b_origin_ui = gs_app_get_origin_ui (b);
+	a_origin_ui = gs_app_dup_origin_ui (a, TRUE);
+	b_origin_ui = gs_app_dup_origin_ui (b, TRUE);
 
 	a_local_file = gs_app_get_local_file (a);
 	b_local_file = gs_app_get_local_file (b);
@@ -690,8 +737,6 @@ gs_details_page_get_alternates_cb (GObject *source_object,
 			}
 			select_row = row;
 		}
-		gs_origin_popover_row_set_size_group (GS_ORIGIN_POPOVER_ROW (row),
-		                                      self->size_group_origin_popover);
 		gtk_list_box_append (GTK_LIST_BOX (self->origin_popover_list_box), row);
 
 		if (origin_by_packaging_format) {
@@ -938,13 +983,100 @@ update_action_row_from_link (AdwActionRow *row,
                              AsUrlKind     url_kind)
 {
 	const gchar *url = gs_app_get_url (app, url_kind);
+
+#if ADW_CHECK_VERSION(1,2,0)
+	adw_preferences_row_set_use_markup (ADW_PREFERENCES_ROW (row), FALSE);
+
+	if (url != NULL)
+		adw_action_row_set_subtitle (row, url);
+#else
 	if (url != NULL) {
 		g_autofree gchar *escaped_url = g_markup_escape_text (url, -1);
 		adw_action_row_set_subtitle (row, escaped_url);
 	}
+#endif
+
 	gtk_widget_set_visible (GTK_WIDGET (row), url != NULL);
 
 	return (url != NULL);
+}
+
+static void
+gs_details_page_app_tile_clicked (GsAppTile *tile,
+				  gpointer user_data)
+{
+	GsDetailsPage *self = GS_DETAILS_PAGE (user_data);
+	GsApp *app;
+
+	app = gs_app_tile_get_app (tile);
+	g_signal_emit (self, signals[SIGNAL_APP_CLICKED], 0, app);
+}
+
+/* Consider app IDs with and without the ".desktop" suffix being the same app */
+static gboolean
+gs_details_page_app_id_equal (GsApp *app1,
+			      GsApp *app2)
+{
+	const gchar *id1, *id2;
+
+	id1 = gs_app_get_id (app1);
+	id2 = gs_app_get_id (app2);
+	if (g_strcmp0 (id1, id2) == 0)
+		return TRUE;
+
+	if (id1 == NULL || id2 == NULL)
+		return FALSE;
+
+	if (g_str_has_suffix (id1, ".desktop")) {
+		return !g_str_has_suffix (id2, ".desktop") &&
+			strlen (id1) == strlen (id2) + 8 /* strlen (".desktop") */ &&
+			g_str_has_prefix (id1, id2);
+	}
+
+	return g_str_has_suffix (id2, ".desktop") &&
+		!g_str_has_suffix (id1, ".desktop") &&
+		strlen (id2) == strlen (id1) + 8 /* strlen (".desktop") */ &&
+		g_str_has_prefix (id2, id1);
+}
+
+static void
+gs_details_page_search_developer_apps_cb (GObject *source_object,
+					  GAsyncResult *result,
+					  gpointer user_data)
+{
+	GsDetailsPage *self = GS_DETAILS_PAGE (user_data);
+	g_autoptr(GsAppList) list = NULL;
+	g_autoptr(GError) local_error = NULL;
+	guint n_added = 0;
+
+	list = gs_plugin_loader_job_process_finish (GS_PLUGIN_LOADER (source_object), result, &local_error);
+	if (list == NULL) {
+		if (g_error_matches (local_error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_CANCELLED) ||
+		    g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
+			g_debug ("search cancelled");
+			return;
+		}
+		g_warning ("failed to get other apps: %s", local_error->message);
+		return;
+	}
+
+	if (!self->app || !gs_page_is_active (GS_PAGE (self)))
+		return;
+
+	for (guint i = 0; i < gs_app_list_length (list); i++) {
+		GsApp *app = gs_app_list_index (list, i);
+		if (app != self->app && !gs_details_page_app_id_equal (app, self->app)) {
+			GtkWidget *tile = gs_summary_tile_new (app);
+			g_signal_connect (tile, "clicked", G_CALLBACK (gs_details_page_app_tile_clicked), self);
+			gtk_flow_box_insert (GTK_FLOW_BOX (self->box_developer_apps), tile, -1);
+
+			n_added++;
+			if (n_added == N_DEVELOPER_APPS)
+				break;
+		}
+	}
+
+	gtk_widget_set_visible (self->box_developer_apps, n_added > 0);
 }
 
 static void
@@ -1027,8 +1159,47 @@ gs_details_page_refresh_all (GsDetailsPage *self)
 	tmp = gs_app_get_developer_name (self->app);
 	if (tmp == NULL)
 		tmp = gs_app_get_project_group (self->app);
-	if (tmp != NULL)
+	if (tmp != NULL) {
 		gtk_label_set_label (GTK_LABEL (self->developer_name_label), tmp);
+
+		if (g_strcmp0 (tmp, self->last_developer_name) != 0) {
+			g_autoptr(GsAppQuery) query = NULL;
+			g_autoptr(GsPluginJob) plugin_job = NULL;
+			g_autofree gchar *heading = NULL;
+			const gchar *names[2] = { NULL, NULL };
+
+			/* Hide the section, it will be shown only if any other app had been found */
+			gtk_widget_set_visible (self->box_developer_apps, FALSE);
+
+			g_clear_pointer (&self->last_developer_name, g_free);
+			self->last_developer_name = g_strdup (tmp);
+
+			/* Translators: the '%s' is replaced with a developer name or a project group */
+			heading = g_strdup_printf (_("Other Apps by %s"), self->last_developer_name);
+			gtk_label_set_label (GTK_LABEL (self->developer_apps_heading), heading);
+			gs_widget_remove_all (self->box_developer_apps, (GsRemoveFunc) gtk_flow_box_remove);
+
+			names[0] = self->last_developer_name;
+			query = gs_app_query_new ("developers", names,
+						  "max-results", N_DEVELOPER_APPS * 3, /* Ask for more, some can be skipped */
+						  "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON,
+						  "dedupe-flags", GS_APP_LIST_FILTER_FLAG_KEY_ID_PROVIDES,
+						  NULL);
+
+			plugin_job = gs_plugin_job_list_apps_new (query, GS_PLUGIN_LIST_APPS_FLAGS_INTERACTIVE);
+
+			g_debug ("searching other apps for: '%s'", names[0]);
+			gs_plugin_loader_job_process_async (self->plugin_loader, plugin_job,
+							    self->cancellable,
+							    gs_details_page_search_developer_apps_cb,
+							    self);
+		}
+	} else if (tmp == NULL) {
+		g_clear_pointer (&self->last_developer_name, g_free);
+		gs_widget_remove_all (self->box_developer_apps, (GsRemoveFunc) gtk_flow_box_remove);
+		gtk_widget_set_visible (self->box_developer_apps, FALSE);
+	}
+
 	gtk_widget_set_visible (GTK_WIDGET (self->developer_name_label), tmp != NULL);
 	gtk_widget_set_visible (GTK_WIDGET (self->developer_verified_image), gs_app_has_quirk (self->app, GS_APP_QUIRK_DEVELOPER_VERIFIED));
 
@@ -1209,13 +1380,13 @@ static void gs_details_page_addon_remove_cb (GsAppAddonRow *row, gpointer user_d
 static void
 gs_details_page_refresh_addons (GsDetailsPage *self)
 {
-	GsAppList *addons;
+	g_autoptr(GsAppList) addons = NULL;
 	guint i, rows = 0;
 
 	gs_widget_remove_all (self->list_box_addons, (GsRemoveFunc) gtk_list_box_remove);
 
-	addons = gs_app_get_addons (self->app);
-	for (i = 0; i < gs_app_list_length (addons); i++) {
+	addons = gs_app_dup_addons (self->app);
+	for (i = 0; addons != NULL && i < gs_app_list_length (addons); i++) {
 		GsApp *addon;
 		GtkWidget *row;
 
@@ -1473,6 +1644,7 @@ gs_details_page_load_stage2 (GsDetailsPage *self,
 			     gboolean continue_loading)
 {
 	g_autofree gchar *tmp = NULL;
+	g_autoptr(GsAppQuery) query = NULL;
 	g_autoptr(GsPluginJob) plugin_job1 = NULL;
 	g_autoptr(GsPluginJob) plugin_job2 = NULL;
 	gboolean is_online = gs_plugin_loader_get_network_available (self->plugin_loader);
@@ -1501,12 +1673,14 @@ gs_details_page_load_stage2 (GsDetailsPage *self,
 							GS_PLUGIN_REFINE_FLAGS_REQUIRE_REVIEW_RATINGS |
 							GS_PLUGIN_REFINE_FLAGS_REQUIRE_REVIEWS |
 							GS_PLUGIN_REFINE_FLAGS_REQUIRE_SIZE);
-	plugin_job2 = gs_plugin_job_newv (GS_PLUGIN_ACTION_GET_ALTERNATES,
-					  "interactive", TRUE,
-					  "app", self->app,
-					  "refine-flags", GS_DETAILS_PAGE_REFINE_FLAGS,
-					  "dedupe-flags", GS_APP_LIST_FILTER_FLAG_NONE,
-					  NULL);
+
+	query = gs_app_query_new ("alternate-of", self->app,
+				  "refine-flags", GS_DETAILS_PAGE_REFINE_FLAGS,
+				  "dedupe-flags", GS_APP_LIST_FILTER_FLAG_NONE,
+				  "sort-func", gs_utils_app_sort_priority,
+				  NULL);
+	plugin_job2 = gs_plugin_job_list_apps_new (query, GS_PLUGIN_LIST_APPS_FLAGS_INTERACTIVE);
+
 	gs_plugin_loader_job_process_async (self->plugin_loader, plugin_job1,
 					    self->cancellable,
 					    gs_details_page_app_refine_cb,
@@ -1697,8 +1871,8 @@ origin_popover_list_sort_func (GtkListBoxRow *a,
 {
 	GsApp *a1 = gs_origin_popover_row_get_app (GS_ORIGIN_POPOVER_ROW (a));
 	GsApp *a2 = gs_origin_popover_row_get_app (GS_ORIGIN_POPOVER_ROW (b));
-	g_autofree gchar *a1_origin = gs_app_get_origin_ui (a1);
-	g_autofree gchar *a2_origin = gs_app_get_origin_ui (a2);
+	g_autofree gchar *a1_origin = gs_app_dup_origin_ui (a1, TRUE);
+	g_autofree gchar *a2_origin = gs_app_dup_origin_ui (a2, TRUE);
 
 	return gs_utils_sort_strcmp (a1_origin, a2_origin);
 }
@@ -1979,12 +2153,12 @@ static void
 gs_details_page_app_installed (GsPage *page, GsApp *app)
 {
 	GsDetailsPage *self = GS_DETAILS_PAGE (page);
-	GsAppList *addons;
+	g_autoptr(GsAppList) addons = NULL;
 	guint i;
 
 	/* if the app is just an addon, no need for a full refresh */
-	addons = gs_app_get_addons (self->app);
-	for (i = 0; i < gs_app_list_length (addons); i++) {
+	addons = gs_app_dup_addons (self->app);
+	for (i = 0; addons != NULL && i < gs_app_list_length (addons); i++) {
 		GsApp *addon;
 		addon = gs_app_list_index (addons, i);
 		if (addon == app)
@@ -2146,14 +2320,15 @@ gs_details_page_dispose (GObject *object)
 		g_hash_table_unref (self->packaging_format_preference);
 		self->packaging_format_preference = NULL;
 	}
+	g_clear_object (&self->origin_css_provider);
 	g_clear_object (&self->app_local_file);
 	g_clear_object (&self->app_reviews_dialog);
 	g_clear_object (&self->plugin_loader);
 	g_clear_object (&self->cancellable);
 	g_clear_object (&self->app_cancellable);
-	g_clear_object (&self->size_group_origin_popover);
 	g_clear_object (&self->odrs_provider);
 	g_clear_object (&self->app_info_monitor);
+	g_clear_pointer (&self->last_developer_name, g_free);
 
 	G_OBJECT_CLASS (gs_details_page_parent_class)->dispose (object);
 }
@@ -2225,6 +2400,21 @@ gs_details_page_class_init (GsDetailsPageClass *klass)
 			      0, NULL, NULL, g_cclosure_marshal_VOID__OBJECT,
 			      G_TYPE_NONE, 1, GS_TYPE_APP);
 
+	/**
+	 * GsDetailsPage::app-clicked:
+	 * @app: the #GsApp which was clicked on
+	 *
+	 * Emitted when one of the app tiles is clicked. Typically the caller
+	 * should display the details of the given app in the callback.
+	 *
+	 * Since: 43
+	 */
+	signals[SIGNAL_APP_CLICKED] =
+		g_signal_new ("app-clicked",
+			      G_TYPE_FROM_CLASS (object_class), G_SIGNAL_RUN_LAST,
+			      0, NULL, NULL, g_cclosure_marshal_VOID__OBJECT,
+			      G_TYPE_NONE, 1, GS_TYPE_APP);
+
 	gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Software/gs-details-page.ui");
 
 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, application_details_icon);
@@ -2277,11 +2467,14 @@ gs_details_page_class_init (GsDetailsPageClass *klass)
 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, origin_popover);
 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, origin_popover_list_box);
 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, origin_box);
-	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, origin_button);
+	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, origin_packaging_image);
+	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, origin_packaging_label);
 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, box_license);
 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, license_tile);
 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, translation_infobar);
 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, translation_infobar_button);
+	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, developer_apps_heading);
+	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, box_developer_apps);
 
 	gtk_widget_class_bind_template_callback (widget_class, gs_details_page_link_row_activated_cb);
 	gtk_widget_class_bind_template_callback (widget_class, gs_details_page_license_tile_get_involved_activated_cb);
@@ -2329,7 +2522,6 @@ gs_details_page_init (GsDetailsPage *self)
 	g_signal_connect_swapped (self->settings, "changed",
 				  G_CALLBACK (settings_changed_cb),
 				  self);
-	self->size_group_origin_popover = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 	self->app_info_monitor = g_app_info_monitor_get ();
 	g_signal_connect_object (self->app_info_monitor, "changed",
 				 G_CALLBACK (gs_details_page_app_info_changed_cb), self, 0);
@@ -2349,8 +2541,6 @@ gs_details_page_init (GsDetailsPage *self)
 
 	g_signal_connect (self->list_box_featured_review, "row-activated",
 			  G_CALLBACK (featured_review_list_row_activated_cb), self);
-
-	gs_page_set_header_end_widget (GS_PAGE (self), self->origin_box);
 
 	gs_details_page_read_packaging_format_preference (self);
 
@@ -2606,4 +2796,28 @@ gs_details_page_set_metainfo (GsDetailsPage *self,
 	g_task_set_source_tag (task, gs_details_page_set_metainfo);
 	g_task_set_task_data (task, g_object_ref (file), g_object_unref);
 	g_task_run_in_thread (task, gs_details_page_metainfo_thread);
+}
+
+gdouble
+gs_details_page_get_vscroll_position (GsDetailsPage *self)
+{
+	GtkAdjustment *adj;
+
+	g_return_val_if_fail (GS_IS_DETAILS_PAGE (self), -1);
+
+	adj = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (self->scrolledwindow_details));
+	return gtk_adjustment_get_value (adj);
+}
+
+void
+gs_details_page_set_vscroll_position (GsDetailsPage *self,
+				      gdouble value)
+{
+	GtkAdjustment *adj;
+
+	g_return_if_fail (GS_IS_DETAILS_PAGE (self));
+
+	adj = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (self->scrolledwindow_details));
+	if (value >= 0.0)
+		gtk_adjustment_set_value (adj, value);
 }

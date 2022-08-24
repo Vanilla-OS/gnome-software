@@ -38,6 +38,7 @@
 #include "gs-app.h"
 #include "gs-common.h"
 #include "gs-context-dialog-row.h"
+#include "gs-lozenge.h"
 #include "gs-storage-context-dialog.h"
 
 struct _GsStorageContextDialog
@@ -48,7 +49,6 @@ struct _GsStorageContextDialog
 	gulong			 app_notify_handler;
 
 	GtkSizeGroup		*lozenge_size_group;
-	GtkLabel		*lozenge_content;
 	GtkWidget		*lozenge;
 	GtkLabel		*title;
 	GtkListBox		*sizes_list;
@@ -73,14 +73,16 @@ typedef enum {
 static void
 add_size_row (GtkListBox   *list_box,
               GtkSizeGroup *lozenge_size_group,
+              GsSizeType    size_type,
               guint64       size_bytes,
               const gchar  *title,
               const gchar  *description)
 {
 	GtkListBoxRow *row;
 	g_autofree gchar *size_bytes_str = NULL;
+	gboolean is_markup = FALSE;
 
-	if (size_bytes == GS_APP_SIZE_UNKNOWABLE)
+	if (size_type != GS_SIZE_TYPE_VALID)
 		/* Translators: This is shown in a bubble if the storage
 		 * size of an application is not known. The bubble is small,
 		 * so the string should be as short as possible. */
@@ -92,10 +94,12 @@ add_size_row (GtkListBox   *list_box,
 		 * possible. */
 		size_bytes_str = g_strdup (_("None"));
 	else
-		size_bytes_str = g_format_size (size_bytes);
+		size_bytes_str = gs_utils_format_size (size_bytes, &is_markup);
 
 	row = gs_context_dialog_row_new_text (size_bytes_str, GS_CONTEXT_DIALOG_ROW_IMPORTANCE_NEUTRAL,
 					      title, description);
+	if (is_markup)
+		gs_context_dialog_row_set_content_markup (GS_CONTEXT_DIALOG_ROW (row), size_bytes_str);
 	gs_context_dialog_row_set_size_groups (GS_CONTEXT_DIALOG_ROW (row), lozenge_size_group, NULL, NULL);
 	gtk_list_box_append (list_box, GTK_WIDGET (row));
 }
@@ -103,10 +107,12 @@ add_size_row (GtkListBox   *list_box,
 static void
 update_sizes_list (GsStorageContextDialog *self)
 {
+	GsSizeType title_size_type;
 	guint64 title_size_bytes;
 	g_autofree gchar *title_size_bytes_str = NULL;
 	const gchar *title;
 	gboolean cache_row_added = FALSE;
+	gboolean is_markup = FALSE;
 
 	gs_widget_remove_all (GTK_WIDGET (self->sizes_list), (GsRemoveFunc) gtk_list_box_remove);
 
@@ -115,63 +121,77 @@ update_sizes_list (GsStorageContextDialog *self)
 		return;
 
 	if (gs_app_is_installed (self->app)) {
-		guint64 size_installed;
-		guint64 size_user_data;
-		guint64 size_cache_data;
+		guint64 size_installed_bytes, size_user_data_bytes, size_cache_data_bytes;
+		GsSizeType size_installed_type, size_user_data_type, size_cache_data_type;
 
 		/* Don’t list the size of the dependencies as that space likely
 		 * won’t be reclaimed unless many other apps are removed. */
-		size_installed = gs_app_get_size_installed (self->app);
-		size_user_data = gs_app_get_size_user_data (self->app);
-		size_cache_data = gs_app_get_size_cache_data (self->app);
+		size_installed_type = gs_app_get_size_installed (self->app, &size_installed_bytes);
+		size_user_data_type = gs_app_get_size_user_data (self->app, &size_user_data_bytes);
+		size_cache_data_type = gs_app_get_size_cache_data (self->app, &size_cache_data_bytes);
 
 		title = _("Installed Size");
-		title_size_bytes = size_installed;
+		title_size_bytes = size_installed_bytes;
+		title_size_type = size_installed_type;
 
-		add_size_row (self->sizes_list, self->lozenge_size_group, size_installed,
+		add_size_row (self->sizes_list, self->lozenge_size_group,
+			      size_installed_type, size_installed_bytes,
 			      _("Application Data"),
 			      _("Data needed for the application to run"));
 
-		if (size_user_data != GS_APP_SIZE_UNKNOWABLE) {
-			add_size_row (self->sizes_list, self->lozenge_size_group, size_user_data,
+		if (size_user_data_type == GS_SIZE_TYPE_VALID) {
+			add_size_row (self->sizes_list, self->lozenge_size_group,
+				      size_user_data_type, size_user_data_bytes,
 				      _("User Data"),
 				      _("Data created by you in the application"));
-			title_size_bytes += size_user_data;
+			title_size_bytes += size_user_data_bytes;
 		}
 
-		if (size_cache_data != GS_APP_SIZE_UNKNOWABLE) {
-			add_size_row (self->sizes_list, self->lozenge_size_group, size_cache_data,
+		if (size_cache_data_type == GS_SIZE_TYPE_VALID) {
+			add_size_row (self->sizes_list, self->lozenge_size_group,
+				      size_cache_data_type, size_cache_data_bytes,
 				      _("Cache Data"),
 				      _("Temporary cached data"));
-			title_size_bytes += size_cache_data;
+			title_size_bytes += size_cache_data_bytes;
 			cache_row_added = TRUE;
 		}
 	} else {
-		guint64 size_download;
-		guint64 size_download_dependencies;
+		guint64 size_download_bytes, size_download_dependencies_bytes;
+		GsSizeType size_download_type, size_download_dependencies_type;
 
-		size_download = gs_app_get_size_download (self->app);
-		size_download_dependencies = gs_app_get_size_download_dependencies (self->app);
+		size_download_type = gs_app_get_size_download (self->app, &size_download_bytes);
+		size_download_dependencies_type = gs_app_get_size_download_dependencies (self->app, &size_download_dependencies_bytes);
 
 		title = _("Download Size");
-		title_size_bytes = size_download;
+		title_size_bytes = size_download_bytes;
+		title_size_type = size_download_type;
 
-		add_size_row (self->sizes_list, self->lozenge_size_group, size_download,
+		add_size_row (self->sizes_list, self->lozenge_size_group,
+			      size_download_type, size_download_bytes,
 			      gs_app_get_name (self->app),
 			      _("The application itself"));
 
-		if (size_download_dependencies != GS_APP_SIZE_UNKNOWABLE) {
-			add_size_row (self->sizes_list, self->lozenge_size_group, size_download_dependencies,
+		if (size_download_dependencies_type == GS_SIZE_TYPE_VALID) {
+			add_size_row (self->sizes_list, self->lozenge_size_group,
+				      size_download_dependencies_type, size_download_dependencies_bytes,
 				      _("Required Dependencies"),
 				      _("Shared system components required by this application"));
-			title_size_bytes += size_download_dependencies;
+			title_size_bytes += size_download_dependencies_bytes;
 		}
 
 		/* FIXME: Addons, Potential Additional Downloads */
 	}
 
-	title_size_bytes_str = g_format_size (title_size_bytes);
-	gtk_label_set_text (self->lozenge_content, title_size_bytes_str);
+	if (title_size_type == GS_SIZE_TYPE_VALID)
+		title_size_bytes_str = gs_utils_format_size (title_size_bytes, &is_markup);
+	else
+		title_size_bytes_str = g_strdup (C_("Download size", "Unknown"));
+
+	if (is_markup)
+		gs_lozenge_set_markup (GS_LOZENGE (self->lozenge), title_size_bytes_str);
+	else
+		gs_lozenge_set_text (GS_LOZENGE (self->lozenge), title_size_bytes_str);
+
 	gtk_label_set_text (self->title, title);
 
 	/* Update the Manage Storage label. */
@@ -313,7 +333,6 @@ gs_storage_context_dialog_class_init (GsStorageContextDialogClass *klass)
 	gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Software/gs-storage-context-dialog.ui");
 
 	gtk_widget_class_bind_template_child (widget_class, GsStorageContextDialog, lozenge_size_group);
-	gtk_widget_class_bind_template_child (widget_class, GsStorageContextDialog, lozenge_content);
 	gtk_widget_class_bind_template_child (widget_class, GsStorageContextDialog, lozenge);
 	gtk_widget_class_bind_template_child (widget_class, GsStorageContextDialog, title);
 	gtk_widget_class_bind_template_child (widget_class, GsStorageContextDialog, sizes_list);

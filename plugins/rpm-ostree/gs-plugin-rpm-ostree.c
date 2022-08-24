@@ -22,6 +22,7 @@
 #include <rpm/rpmts.h>
 #include <rpmostree.h>
 
+#include "gs-plugin-private.h"
 #include "gs-plugin-rpm-ostree.h"
 #include "gs-rpmostree-generated.h"
 
@@ -228,12 +229,12 @@ gs_rpmostree_ref_proxies_locked (GsPluginRpmOstree *self,
 	if (self->sysroot_proxy == NULL) {
 		g_autoptr(GVariantBuilder) options_builder = NULL;
 
-		self->sysroot_proxy = gs_rpmostree_sysroot_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
-		                                                                   G_DBUS_PROXY_FLAGS_NONE,
-		                                                                   "org.projectatomic.rpmostree1",
-		                                                                   "/org/projectatomic/rpmostree1/Sysroot",
-		                                                                   cancellable,
-		                                                                   error);
+		self->sysroot_proxy = gs_rpmostree_sysroot_proxy_new_sync (gs_plugin_get_system_bus_connection (GS_PLUGIN (self)),
+		                                                           G_DBUS_PROXY_FLAGS_NONE,
+		                                                           "org.projectatomic.rpmostree1",
+		                                                           "/org/projectatomic/rpmostree1/Sysroot",
+		                                                           cancellable,
+		                                                           error);
 		if (self->sysroot_proxy == NULL) {
 			gs_rpmostree_error_convert (error);
 			return FALSE;
@@ -271,12 +272,12 @@ gs_rpmostree_ref_proxies_locked (GsPluginRpmOstree *self,
 			return FALSE;
 		}
 
-		self->os_proxy = gs_rpmostree_os_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
-		                                                         G_DBUS_PROXY_FLAGS_NONE,
-		                                                         "org.projectatomic.rpmostree1",
-		                                                         os_object_path,
-		                                                         cancellable,
-		                                                         error);
+		self->os_proxy = gs_rpmostree_os_proxy_new_sync (gs_plugin_get_system_bus_connection (GS_PLUGIN (self)),
+		                                                 G_DBUS_PROXY_FLAGS_NONE,
+		                                                 "org.projectatomic.rpmostree1",
+		                                                 os_object_path,
+		                                                 cancellable,
+		                                                 error);
 		if (self->os_proxy == NULL) {
 			gs_rpmostree_error_convert (error);
 			g_clear_object (&self->sysroot_proxy);
@@ -451,6 +452,8 @@ static void
 app_set_rpm_ostree_packaging_format (GsApp *app)
 {
 	gs_app_set_metadata (app, "GnomeSoftware::PackagingFormat", "RPM");
+	gs_app_set_metadata (app, "GnomeSoftware::PackagingBaseCssColor", "error_bg_color");
+	gs_app_set_metadata (app, "GnomeSoftware::PackagingIcon", "package-x-generic-symbolic");
 }
 
 void
@@ -747,7 +750,7 @@ app_from_modified_pkg_variant (GsPlugin *plugin, GVariant *variant)
 	gs_app_set_management_plugin (app, plugin);
 	gs_app_add_quirk (app, GS_APP_QUIRK_NEEDS_REBOOT);
 	app_set_rpm_ostree_packaging_format (app);
-	gs_app_set_size_download (app, 0);
+	gs_app_set_size_download (app, GS_SIZE_TYPE_UNKNOWN, 0);
 	gs_app_set_kind (app, AS_COMPONENT_KIND_GENERIC);
 	gs_app_set_bundle_kind (app, AS_BUNDLE_KIND_PACKAGE);
 	gs_app_set_scope (app, AS_COMPONENT_SCOPE_SYSTEM);
@@ -786,7 +789,7 @@ app_from_single_pkg_variant (GsPlugin *plugin, GVariant *variant, gboolean addit
 	gs_app_set_management_plugin (app, plugin);
 	gs_app_add_quirk (app, GS_APP_QUIRK_NEEDS_REBOOT);
 	app_set_rpm_ostree_packaging_format (app);
-	gs_app_set_size_download (app, 0);
+	gs_app_set_size_download (app, GS_SIZE_TYPE_UNKNOWN, 0);
 	gs_app_set_kind (app, AS_COMPONENT_KIND_GENERIC);
 	gs_app_set_bundle_kind (app, AS_BUNDLE_KIND_PACKAGE);
 	gs_app_set_scope (app, AS_COMPONENT_SCOPE_SYSTEM);
@@ -1036,6 +1039,178 @@ gs_plugin_rpm_ostree_refresh_metadata_async (GsPlugin                     *plugi
 				refresh_metadata_thread_cb, g_steal_pointer (&task));
 }
 
+static gboolean
+gs_plugin_rpm_ostree_refresh_metadata_in_worker (GsPluginRpmOstree *self,
+						 GsPluginRefreshMetadataData *data,
+						 GsRPMOSTreeOS *os_proxy,
+						 GsRPMOSTreeSysroot *sysroot_proxy,
+						 GCancellable *cancellable,
+						 GError **error)
+{
+	GsPlugin *plugin = GS_PLUGIN (self);
+	g_autoptr(GError) local_error = NULL;
+	gboolean done;
+
+	assert_in_worker (self);
+
+	{
+		g_autofree gchar *transaction_address = NULL;
+		g_autoptr(GsApp) progress_app = NULL;
+		g_autoptr(GVariant) options = NULL;
+		g_autoptr(TransactionProgress) tp = NULL;
+
+		if (!gs_rpmostree_wait_for_ongoing_transaction_end (sysroot_proxy, cancellable, error))
+			return FALSE;
+
+		progress_app = gs_app_new (gs_plugin_get_name (plugin));
+		tp = transaction_progress_new ();
+		tp->app = g_object_ref (progress_app);
+		tp->plugin = g_object_ref (plugin);
+
+		options = make_refresh_md_options_variant (FALSE /* force */);
+		done = FALSE;
+		while (!done) {
+			done = TRUE;
+			if (!gs_rpmostree_os_call_refresh_md_sync (os_proxy,
+								   options,
+								   &transaction_address,
+								   cancellable,
+								   &local_error)) {
+				if (g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_BUSY)) {
+					g_clear_error (&local_error);
+					if (!gs_rpmostree_wait_for_ongoing_transaction_end (sysroot_proxy, cancellable, error))
+						return FALSE;
+					done = FALSE;
+					continue;
+				}
+
+				g_propagate_error (error, g_steal_pointer (&local_error));
+				gs_rpmostree_error_convert (error);
+				return FALSE;
+			}
+		}
+
+		if (!gs_rpmostree_transaction_get_response_sync (sysroot_proxy,
+								 transaction_address,
+								 tp,
+								 cancellable,
+								 error)) {
+			gs_rpmostree_error_convert (error);
+			return FALSE;
+		}
+	}
+
+	if (data->cache_age_secs == G_MAXUINT64)
+		return TRUE;
+
+	{
+		g_autofree gchar *transaction_address = NULL;
+		g_autoptr(GsApp) progress_app = gs_app_new (gs_plugin_get_name (plugin));
+		g_autoptr(GVariant) options = NULL;
+		g_autoptr(TransactionProgress) tp = transaction_progress_new ();
+
+		if (!gs_rpmostree_wait_for_ongoing_transaction_end (sysroot_proxy, cancellable, error))
+			return FALSE;
+
+		tp->app = g_object_ref (progress_app);
+		tp->plugin = g_object_ref (plugin);
+
+		options = make_rpmostree_options_variant (FALSE,  /* reboot */
+		                                          FALSE,  /* allow-downgrade */
+		                                          FALSE,  /* cache-only */
+		                                          TRUE,   /* download-only */
+		                                          FALSE,  /* skip-purge */
+		                                          FALSE,  /* no-pull-base */
+		                                          FALSE,  /* dry-run */
+		                                          FALSE); /* no-overrides */
+		done = FALSE;
+		while (!done) {
+			done = TRUE;
+			if (!gs_rpmostree_os_call_upgrade_sync (os_proxy,
+								options,
+								NULL /* fd list */,
+								&transaction_address,
+								NULL /* fd list out */,
+								cancellable,
+								&local_error)) {
+				if (g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_BUSY)) {
+					g_clear_error (&local_error);
+					if (!gs_rpmostree_wait_for_ongoing_transaction_end (sysroot_proxy, cancellable, error))
+						return FALSE;
+					done = FALSE;
+					continue;
+				}
+				g_propagate_error (error, g_steal_pointer (&local_error));
+				gs_rpmostree_error_convert (error);
+				return FALSE;
+			}
+		}
+
+		if (!gs_rpmostree_transaction_get_response_sync (sysroot_proxy,
+		                                                 transaction_address,
+		                                                 tp,
+		                                                 cancellable,
+		                                                 error)) {
+			gs_rpmostree_error_convert (error);
+			return FALSE;
+		}
+	}
+
+	{
+		g_autofree gchar *transaction_address = NULL;
+		g_autoptr(GsApp) progress_app = gs_app_new (gs_plugin_get_name (plugin));
+		g_autoptr(GVariant) options = NULL;
+		GVariantDict dict;
+		g_autoptr(TransactionProgress) tp = transaction_progress_new ();
+
+		if (!gs_rpmostree_wait_for_ongoing_transaction_end (sysroot_proxy, cancellable, error))
+			return FALSE;
+
+		tp->app = g_object_ref (progress_app);
+		tp->plugin = g_object_ref (plugin);
+
+		g_variant_dict_init (&dict, NULL);
+		g_variant_dict_insert (&dict, "mode", "s", "check");
+		options = g_variant_ref_sink (g_variant_dict_end (&dict));
+
+		done = FALSE;
+		while (!done) {
+			done = TRUE;
+			if (!gs_rpmostree_os_call_automatic_update_trigger_sync (os_proxy,
+										 options,
+										 NULL,
+										 &transaction_address,
+										 cancellable,
+										 &local_error)) {
+				if (g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_BUSY)) {
+					g_clear_error (&local_error);
+					if (!gs_rpmostree_wait_for_ongoing_transaction_end (sysroot_proxy, cancellable, error))
+						return FALSE;
+					done = FALSE;
+					continue;
+				}
+				g_propagate_error (error, g_steal_pointer (&local_error));
+				gs_rpmostree_error_convert (error);
+				return FALSE;
+			}
+		}
+
+		if (!gs_rpmostree_transaction_get_response_sync (sysroot_proxy,
+		                                                 transaction_address,
+		                                                 tp,
+		                                                 cancellable,
+		                                                 error)) {
+			gs_rpmostree_error_convert (error);
+			return FALSE;
+		}
+	}
+
+	/* update UI */
+	gs_plugin_updates_changed (plugin);
+
+	return TRUE;
+}
+
 static void
 refresh_metadata_thread_cb (GTask        *task,
                             gpointer      source_object,
@@ -1056,139 +1231,10 @@ refresh_metadata_thread_cb (GTask        *task,
 		return;
 	}
 
-	{
-		g_autofree gchar *transaction_address = NULL;
-		g_autoptr(GsApp) progress_app = NULL;
-		g_autoptr(GVariant) options = NULL;
-		g_autoptr(TransactionProgress) tp = NULL;
-
-		if (!gs_rpmostree_wait_for_ongoing_transaction_end (sysroot_proxy, cancellable, &local_error)) {
-			g_task_return_error (task, g_steal_pointer (&local_error));
-			return;
-		}
-
-		progress_app = gs_app_new (gs_plugin_get_name (plugin));
-		tp = transaction_progress_new ();
-		tp->app = g_object_ref (progress_app);
-		tp->plugin = g_object_ref (plugin);
-
-		options = make_refresh_md_options_variant (FALSE /* force */);
-		if (!gs_rpmostree_os_call_refresh_md_sync (os_proxy,
-							   options,
-							   &transaction_address,
-							   cancellable,
-							   &local_error)) {
-			gs_rpmostree_error_convert (&local_error);
-			g_task_return_error (task, g_steal_pointer (&local_error));
-			return;
-		}
-
-		if (!gs_rpmostree_transaction_get_response_sync (sysroot_proxy,
-								 transaction_address,
-								 tp,
-								 cancellable,
-								 &local_error)) {
-			gs_rpmostree_error_convert (&local_error);
-			g_task_return_error (task, g_steal_pointer (&local_error));
-			return;
-		}
-	}
-
-	if (data->cache_age_secs == G_MAXUINT64) {
+	if (gs_plugin_rpm_ostree_refresh_metadata_in_worker (self, data, os_proxy, sysroot_proxy, cancellable, &local_error))
 		g_task_return_boolean (task, TRUE);
-		return;
-	}
-
-	{
-		g_autofree gchar *transaction_address = NULL;
-		g_autoptr(GsApp) progress_app = gs_app_new (gs_plugin_get_name (plugin));
-		g_autoptr(GVariant) options = NULL;
-		g_autoptr(TransactionProgress) tp = transaction_progress_new ();
-
-		if (!gs_rpmostree_wait_for_ongoing_transaction_end (sysroot_proxy, cancellable, &local_error)) {
-			g_task_return_error (task, g_steal_pointer (&local_error));
-			return;
-		}
-
-		tp->app = g_object_ref (progress_app);
-		tp->plugin = g_object_ref (plugin);
-
-		options = make_rpmostree_options_variant (FALSE,  /* reboot */
-		                                          FALSE,  /* allow-downgrade */
-		                                          FALSE,  /* cache-only */
-		                                          TRUE,   /* download-only */
-		                                          FALSE,  /* skip-purge */
-		                                          FALSE,  /* no-pull-base */
-		                                          FALSE,  /* dry-run */
-		                                          FALSE); /* no-overrides */
-		if (!gs_rpmostree_os_call_upgrade_sync (os_proxy,
-		                                        options,
-		                                        NULL /* fd list */,
-		                                        &transaction_address,
-		                                        NULL /* fd list out */,
-		                                        cancellable,
-		                                        &local_error)) {
-			gs_rpmostree_error_convert (&local_error);
-			g_task_return_error (task, g_steal_pointer (&local_error));
-			return;
-		}
-
-		if (!gs_rpmostree_transaction_get_response_sync (sysroot_proxy,
-		                                                 transaction_address,
-		                                                 tp,
-		                                                 cancellable,
-		                                                 &local_error)) {
-			gs_rpmostree_error_convert (&local_error);
-			g_task_return_error (task, g_steal_pointer (&local_error));
-			return;
-		}
-	}
-
-	{
-		g_autofree gchar *transaction_address = NULL;
-		g_autoptr(GsApp) progress_app = gs_app_new (gs_plugin_get_name (plugin));
-		g_autoptr(GVariant) options = NULL;
-		GVariantDict dict;
-		g_autoptr(TransactionProgress) tp = transaction_progress_new ();
-
-		if (!gs_rpmostree_wait_for_ongoing_transaction_end (sysroot_proxy, cancellable, &local_error)) {
-			g_task_return_error (task, g_steal_pointer (&local_error));
-			return;
-		}
-
-		tp->app = g_object_ref (progress_app);
-		tp->plugin = g_object_ref (plugin);
-
-		g_variant_dict_init (&dict, NULL);
-		g_variant_dict_insert (&dict, "mode", "s", "check");
-		options = g_variant_ref_sink (g_variant_dict_end (&dict));
-
-		if (!gs_rpmostree_os_call_automatic_update_trigger_sync (os_proxy,
-		                                                         options,
-		                                                         NULL,
-		                                                         &transaction_address,
-		                                                         cancellable,
-		                                                         &local_error)) {
-			gs_rpmostree_error_convert (&local_error);
-			g_task_return_error (task, g_steal_pointer (&local_error));
-			return;
-		}
-
-		if (!gs_rpmostree_transaction_get_response_sync (sysroot_proxy,
-		                                                 transaction_address,
-		                                                 tp,
-		                                                 cancellable,
-		                                                 &local_error)) {
-			gs_rpmostree_error_convert (&local_error);
-			g_task_return_error (task, g_steal_pointer (&local_error));
-			return;
-		}
-	}
-
-	/* update UI */
-	gs_plugin_updates_changed (plugin);
-
-	g_task_return_boolean (task, TRUE);
+	else
+		g_task_return_error (task, g_steal_pointer (&local_error));
 }
 
 static gboolean
@@ -1328,6 +1374,8 @@ trigger_rpmostree_update (GsPluginRpmOstree *self,
 	g_autofree gchar *transaction_address = NULL;
 	g_autoptr(GVariant) options = NULL;
 	g_autoptr(TransactionProgress) tp = transaction_progress_new ();
+	g_autoptr(GError) local_error = NULL;
+	gboolean done;
 
 	/* if we can process this online do not require a trigger */
 	if (gs_app_get_state (app) != GS_APP_STATE_UPDATABLE)
@@ -1353,15 +1401,28 @@ trigger_rpmostree_update (GsPluginRpmOstree *self,
 	                                          FALSE,  /* no-pull-base */
 	                                          FALSE,  /* dry-run */
 	                                          FALSE); /* no-overrides */
-	if (!gs_rpmostree_os_call_upgrade_sync (os_proxy,
-	                                        options,
-	                                        NULL /* fd list */,
-	                                        &transaction_address,
-	                                        NULL /* fd list out */,
-	                                        cancellable,
-	                                        error)) {
-		gs_rpmostree_error_convert (error);
-		return FALSE;
+	done = FALSE;
+	while (!done) {
+		done = TRUE;
+		if (!gs_rpmostree_os_call_upgrade_sync (os_proxy,
+							options,
+							NULL /* fd list */,
+							&transaction_address,
+							NULL /* fd list out */,
+							cancellable,
+							&local_error)) {
+			if (g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_BUSY)) {
+				g_clear_error (&local_error);
+				if (!gs_rpmostree_wait_for_ongoing_transaction_end (sysroot_proxy, cancellable, error))
+					return FALSE;
+				done = FALSE;
+				continue;
+			}
+			if (local_error)
+				g_propagate_error (error, g_steal_pointer (&local_error));
+			gs_rpmostree_error_convert (error);
+			return FALSE;
+		}
 	}
 
 	if (!gs_rpmostree_transaction_get_response_sync (sysroot_proxy,
@@ -1422,6 +1483,8 @@ gs_plugin_app_upgrade_trigger (GsPlugin *plugin,
 	g_autoptr(TransactionProgress) tp = transaction_progress_new ();
 	g_autoptr(GsRPMOSTreeOS) os_proxy = NULL;
 	g_autoptr(GsRPMOSTreeSysroot) sysroot_proxy = NULL;
+	g_autoptr(GError) local_error = NULL;
+	gboolean done;
 
 	/* only process this app if was created by this plugin */
 	if (!gs_app_has_management_plugin (app, plugin))
@@ -1451,17 +1514,30 @@ gs_plugin_app_upgrade_trigger (GsPlugin *plugin,
 	                                          FALSE,  /* dry-run */
 	                                          FALSE); /* no-overrides */
 
-	if (!gs_rpmostree_os_call_rebase_sync (os_proxy,
-	                                       options,
-	                                       new_refspec,
-	                                       packages,
-	                                       NULL /* fd list */,
-	                                       &transaction_address,
-	                                       NULL /* fd list out */,
-	                                       cancellable,
-	                                       error)) {
-		gs_rpmostree_error_convert (error);
-		return FALSE;
+	done = FALSE;
+	while (!done) {
+		done = TRUE;
+		if (!gs_rpmostree_os_call_rebase_sync (os_proxy,
+						       options,
+						       new_refspec,
+						       packages,
+						       NULL /* fd list */,
+						       &transaction_address,
+						       NULL /* fd list out */,
+						       cancellable,
+						       &local_error)) {
+			if (g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_BUSY)) {
+				g_clear_error (&local_error);
+				if (!gs_rpmostree_wait_for_ongoing_transaction_end (sysroot_proxy, cancellable, error))
+					return FALSE;
+				done = FALSE;
+				continue;
+			}
+			if (local_error)
+				g_propagate_error (error, g_steal_pointer (&local_error));
+			gs_rpmostree_error_convert (error);
+			return FALSE;
+		}
 	}
 
 	if (!gs_rpmostree_transaction_get_response_sync (sysroot_proxy,
@@ -1496,6 +1572,8 @@ gs_rpmostree_repo_enable (GsPlugin *plugin,
 	g_autofree gchar *transaction_address = NULL;
 	g_autoptr(GVariantBuilder) options_builder = NULL;
 	g_autoptr(TransactionProgress) tp = NULL;
+	g_autoptr(GError) local_error = NULL;
+	gboolean done;
 
 	if (!gs_rpmostree_wait_for_ongoing_transaction_end (sysroot_proxy, cancellable, error))
 		return FALSE;
@@ -1505,18 +1583,35 @@ gs_rpmostree_repo_enable (GsPlugin *plugin,
 	else
 		gs_app_set_state (app, GS_APP_STATE_REMOVING);
 
-	options_builder = g_variant_builder_new (G_VARIANT_TYPE ("a{ss}"));
-	g_variant_builder_add (options_builder, "{ss}", "enabled", enable ? "1" : "0");
-	if (!gs_rpmostree_os_call_modify_yum_repo_sync (os_proxy,
-	                                                gs_app_get_id (app),
-	                                                g_variant_builder_end (options_builder),
-	                                                &transaction_address,
-	                                                cancellable,
-	                                                error)) {
-		gs_rpmostree_error_convert (error);
-		gs_app_set_state_recover (app);
-		gs_utils_error_add_origin_id (error, app);
-		return FALSE;
+	done = FALSE;
+	while (!done) {
+		done = TRUE;
+		g_clear_pointer (&options_builder, g_variant_builder_unref);
+		options_builder = g_variant_builder_new (G_VARIANT_TYPE ("a{ss}"));
+		g_variant_builder_add (options_builder, "{ss}", "enabled", enable ? "1" : "0");
+		if (!gs_rpmostree_os_call_modify_yum_repo_sync (os_proxy,
+								gs_app_get_id (app),
+								g_variant_builder_end (options_builder),
+								&transaction_address,
+								cancellable,
+								&local_error)) {
+			if (g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_BUSY)) {
+				g_clear_error (&local_error);
+				if (!gs_rpmostree_wait_for_ongoing_transaction_end (sysroot_proxy, cancellable, error)) {
+					gs_app_set_state_recover (app);
+					gs_utils_error_add_origin_id (error, app);
+					return FALSE;
+				}
+				done = FALSE;
+				continue;
+			}
+			if (local_error)
+				g_propagate_error (error, g_steal_pointer (&local_error));
+			gs_rpmostree_error_convert (error);
+			gs_app_set_state_recover (app);
+			gs_utils_error_add_origin_id (error, app);
+			return FALSE;
+		}
 	}
 
 	tp = transaction_progress_new ();
@@ -1559,6 +1654,8 @@ gs_plugin_app_install (GsPlugin *plugin,
 	g_autoptr(GMutexLocker) locker = NULL;
 	g_autoptr(GsRPMOSTreeOS) os_proxy = NULL;
 	g_autoptr(GsRPMOSTreeSysroot) sysroot_proxy = NULL;
+	g_autoptr(GError) local_error = NULL;
+	gboolean done;
 
 	/* only process this app if was created by this plugin */
 	if (!gs_app_has_management_plugin (app, plugin))
@@ -1617,17 +1714,32 @@ gs_plugin_app_install (GsPlugin *plugin,
 	                                          FALSE,  /* dry-run */
 	                                          FALSE); /* no-overrides */
 
-	if (!rpmostree_update_deployment (os_proxy,
-	                                  install_package,
-	                                  NULL /* remove package */,
-	                                  local_filename,
-	                                  options,
-	                                  &transaction_address,
-	                                  cancellable,
-	                                  error)) {
-		gs_rpmostree_error_convert (error);
-		gs_app_set_state_recover (app);
-		return FALSE;
+	done = FALSE;
+	while (!done) {
+		done = TRUE;
+		if (!rpmostree_update_deployment (os_proxy,
+						  install_package,
+						  NULL /* remove package */,
+						  local_filename,
+						  options,
+						  &transaction_address,
+						  cancellable,
+						  &local_error)) {
+			if (g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_BUSY)) {
+				g_clear_error (&local_error);
+				if (!gs_rpmostree_wait_for_ongoing_transaction_end (sysroot_proxy, cancellable, error)) {
+					gs_app_set_state_recover (app);
+					return FALSE;
+				}
+				done = FALSE;
+				continue;
+			}
+			if (local_error)
+				g_propagate_error (error, g_steal_pointer (&local_error));
+			gs_rpmostree_error_convert (error);
+			gs_app_set_state_recover (app);
+			return FALSE;
+		}
 	}
 
 	if (!gs_rpmostree_transaction_get_response_sync (sysroot_proxy,
@@ -1665,6 +1777,8 @@ gs_plugin_app_remove (GsPlugin *plugin,
 	g_autoptr(TransactionProgress) tp = transaction_progress_new ();
 	g_autoptr(GsRPMOSTreeOS) os_proxy = NULL;
 	g_autoptr(GsRPMOSTreeSysroot) sysroot_proxy = NULL;
+	g_autoptr(GError) local_error = NULL;
+	gboolean done;
 
 	/* only process this app if was created by this plugin */
 	if (!gs_app_has_management_plugin (app, plugin))
@@ -1691,17 +1805,32 @@ gs_plugin_app_remove (GsPlugin *plugin,
 	                                          FALSE,  /* dry-run */
 	                                          FALSE); /* no-overrides */
 
-	if (!rpmostree_update_deployment (os_proxy,
-	                                  NULL /* install package */,
-	                                  gs_app_get_source_default (app),
-	                                  NULL /* install local package */,
-	                                  options,
-	                                  &transaction_address,
-	                                  cancellable,
-	                                  error)) {
-		gs_rpmostree_error_convert (error);
-		gs_app_set_state_recover (app);
-		return FALSE;
+	done = FALSE;
+	while (!done) {
+		done = TRUE;
+		if (!rpmostree_update_deployment (os_proxy,
+						  NULL /* install package */,
+						  gs_app_get_source_default (app),
+						  NULL /* install local package */,
+						  options,
+						  &transaction_address,
+						  cancellable,
+						  &local_error)) {
+			if (g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_BUSY)) {
+				g_clear_error (&local_error);
+				if (!gs_rpmostree_wait_for_ongoing_transaction_end (sysroot_proxy, cancellable, error)) {
+					gs_app_set_state_recover (app);
+					return FALSE;
+				}
+				done = FALSE;
+				continue;
+			}
+			if (local_error)
+				g_propagate_error (error, g_steal_pointer (&local_error));
+			gs_rpmostree_error_convert (error);
+			gs_app_set_state_recover (app);
+			return FALSE;
+		}
 	}
 
 	if (!gs_rpmostree_transaction_get_response_sync (sysroot_proxy,
@@ -2111,6 +2240,8 @@ gs_plugin_app_upgrade_download (GsPlugin *plugin,
 	g_autoptr(TransactionProgress) tp = transaction_progress_new ();
 	g_autoptr(GsRPMOSTreeOS) os_proxy = NULL;
 	g_autoptr(GsRPMOSTreeSysroot) sysroot_proxy = NULL;
+	g_autoptr(GError) local_error = NULL;
+	gboolean done;
 
 	/* only process this app if was created by this plugin */
 	if (!gs_app_has_management_plugin (app, plugin))
@@ -2142,18 +2273,33 @@ gs_plugin_app_upgrade_download (GsPlugin *plugin,
 	gs_app_set_state (app, GS_APP_STATE_INSTALLING);
 	tp->app = g_object_ref (app);
 
-	if (!gs_rpmostree_os_call_rebase_sync (os_proxy,
-	                                       options,
-	                                       new_refspec,
-	                                       packages,
-	                                       NULL /* fd list */,
-	                                       &transaction_address,
-	                                       NULL /* fd list out */,
-	                                       cancellable,
-	                                       error)) {
-		gs_rpmostree_error_convert (error);
-		gs_app_set_state_recover (app);
-		return FALSE;
+	done = FALSE;
+	while (!done) {
+		done = TRUE;
+		if (!gs_rpmostree_os_call_rebase_sync (os_proxy,
+						       options,
+						       new_refspec,
+						       packages,
+						       NULL /* fd list */,
+						       &transaction_address,
+						       NULL /* fd list out */,
+						       cancellable,
+						       &local_error)) {
+			if (g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_BUSY)) {
+				g_clear_error (&local_error);
+				if (!gs_rpmostree_wait_for_ongoing_transaction_end (sysroot_proxy, cancellable, error)) {
+					gs_app_set_state_recover (app);
+					return FALSE;
+				}
+				done = FALSE;
+				continue;
+			}
+			if (local_error)
+				g_propagate_error (error, g_steal_pointer (&local_error));
+			gs_rpmostree_error_convert (error);
+			gs_app_set_state_recover (app);
+			return FALSE;
+		}
 	}
 
 	if (!gs_rpmostree_transaction_get_response_sync (sysroot_proxy,
@@ -2178,6 +2324,21 @@ gs_plugin_app_upgrade_download (GsPlugin *plugin,
 	return TRUE;
 }
 
+
+static gboolean
+plugin_rpmostree_pick_rpm_desktop_file_cb (GsPlugin *plugin,
+					   GsApp *app,
+					   const gchar *filename,
+					   GKeyFile *key_file)
+{
+	return strstr (filename, "/snapd/") == NULL &&
+	       strstr (filename, "/snap/") == NULL &&
+	       strstr (filename, "/flatpak/") == NULL &&
+	       g_key_file_has_group (key_file, "Desktop Entry") &&
+	       !g_key_file_has_key (key_file, "Desktop Entry", "X-Flatpak", NULL) &&
+	       !g_key_file_has_key (key_file, "Desktop Entry", "X-SnapInstanceName", NULL);
+}
+
 gboolean
 gs_plugin_launch (GsPlugin *plugin,
                   GsApp *app,
@@ -2188,7 +2349,7 @@ gs_plugin_launch (GsPlugin *plugin,
 	if (!gs_app_has_management_plugin (app, plugin))
 		return TRUE;
 
-	return gs_plugin_app_launch (plugin, app, error);
+	return gs_plugin_app_launch_filtered (plugin, app, plugin_rpmostree_pick_rpm_desktop_file_cb, NULL, error);
 }
 
 static void
@@ -2308,7 +2469,7 @@ gs_plugin_file_to_app (GsPlugin *plugin,
 
 	/* set size */
 	size = headerGetNumber (h, RPMTAG_SIZE);
-	gs_app_set_size_installed (app, size);
+	gs_app_set_size_installed (app, GS_SIZE_TYPE_VALID, size);
 
 	/* set license */
 	license = headerGetString (h, RPMTAG_LICENSE);
@@ -2339,52 +2500,118 @@ out:
 }
 
 static gchar **
-what_provides_decompose (gchar **values)
+what_provides_decompose (GsAppQueryProvidesType  provides_type,
+                         const gchar            *provides_tag)
 {
-	GPtrArray *array = g_ptr_array_new ();
+	g_autoptr(GPtrArray) array = g_ptr_array_new ();
 
-	/* iter on each provide string, and wrap it with the Fedora prefix */
-	for (guint i = 0; values[i] != NULL; i++) {
-		g_ptr_array_add (array, g_strdup (values[i]));
-		g_ptr_array_add (array, g_strdup_printf ("gstreamer0.10(%s)", values[i]));
-		g_ptr_array_add (array, g_strdup_printf ("gstreamer1(%s)", values[i]));
-		g_ptr_array_add (array, g_strdup_printf ("font(%s)", values[i]));
-		g_ptr_array_add (array, g_strdup_printf ("mimehandler(%s)", values[i]));
-		g_ptr_array_add (array, g_strdup_printf ("postscriptdriver(%s)", values[i]));
-		g_ptr_array_add (array, g_strdup_printf ("plasma4(%s)", values[i]));
-		g_ptr_array_add (array, g_strdup_printf ("plasma5(%s)", values[i]));
+	/* Wrap the @provides_tag with the appropriate Fedora prefix */
+	switch (provides_type) {
+	case GS_APP_QUERY_PROVIDES_PACKAGE_NAME:
+		g_ptr_array_add (array, g_strdup (provides_tag));
+		break;
+	case GS_APP_QUERY_PROVIDES_GSTREAMER:
+		g_ptr_array_add (array, g_strdup_printf ("gstreamer0.10(%s)", provides_tag));
+		g_ptr_array_add (array, g_strdup_printf ("gstreamer1(%s)", provides_tag));
+		break;
+	case GS_APP_QUERY_PROVIDES_FONT:
+		g_ptr_array_add (array, g_strdup_printf ("font(%s)", provides_tag));
+		break;
+	case GS_APP_QUERY_PROVIDES_MIME_HANDLER:
+		g_ptr_array_add (array, g_strdup_printf ("mimehandler(%s)", provides_tag));
+		break;
+	case GS_APP_QUERY_PROVIDES_PS_DRIVER:
+		g_ptr_array_add (array, g_strdup_printf ("postscriptdriver(%s)", provides_tag));
+		break;
+	case GS_APP_QUERY_PROVIDES_PLASMA:
+		g_ptr_array_add (array, g_strdup_printf ("plasma4(%s)", provides_tag));
+		g_ptr_array_add (array, g_strdup_printf ("plasma5(%s)", provides_tag));
+		break;
+	case GS_APP_QUERY_PROVIDES_UNKNOWN:
+	default:
+		g_assert_not_reached ();
 	}
+
 	g_ptr_array_add (array, NULL);
-	return (gchar **) g_ptr_array_free (array, FALSE);
+
+	return (gchar **) g_ptr_array_free (g_steal_pointer (&array), FALSE);
 }
 
-gboolean
-gs_plugin_add_search_what_provides (GsPlugin *plugin,
-                                    gchar **search,
-                                    GsAppList *list,
-                                    GCancellable *cancellable,
-                                    GError **error)
+static void list_apps_thread_cb (GTask        *task,
+                                 gpointer      source_object,
+                                 gpointer      task_data,
+                                 GCancellable *cancellable);
+
+static void
+gs_plugin_rpm_ostree_list_apps_async (GsPlugin              *plugin,
+                                      GsAppQuery            *query,
+                                      GsPluginListAppsFlags  flags,
+                                      GCancellable          *cancellable,
+                                      GAsyncReadyCallback    callback,
+                                      gpointer               user_data)
 {
 	GsPluginRpmOstree *self = GS_PLUGIN_RPM_OSTREE (plugin);
+	g_autoptr(GTask) task = NULL;
+	gboolean interactive = (flags & GS_PLUGIN_LIST_APPS_FLAGS_INTERACTIVE);
+
+	task = gs_plugin_list_apps_data_new_task (plugin, query, flags,
+						  cancellable, callback, user_data);
+	g_task_set_source_tag (task, gs_plugin_rpm_ostree_list_apps_async);
+
+	/* Queue a job to get the apps. */
+	gs_worker_thread_queue (self->worker, get_priority_for_interactivity (interactive),
+				list_apps_thread_cb, g_steal_pointer (&task));
+}
+
+/* Run in @worker. */
+static void
+list_apps_thread_cb (GTask        *task,
+                     gpointer      source_object,
+                     gpointer      task_data,
+                     GCancellable *cancellable)
+{
+	GsPluginRpmOstree *self = GS_PLUGIN_RPM_OSTREE (source_object);
+	g_autoptr(GsAppList) list = gs_app_list_new ();
+	GsPluginListAppsData *data = task_data;
+	const gchar *provides_tag = NULL;
+	GsAppQueryProvidesType provides_type = GS_APP_QUERY_PROVIDES_UNKNOWN;
+	g_autoptr(GError) local_error = NULL;
 	g_autoptr(GMutexLocker) locker = NULL;
 	g_autoptr(GPtrArray) pkglist = NULL;
 	g_autoptr(DnfContext) dnf_context = NULL;
 	g_auto(GStrv) provides = NULL;
 
+	assert_in_worker (self);
+
+	if (data->query != NULL) {
+		provides_type = gs_app_query_get_provides (data->query, &provides_tag);
+	}
+
+	/* Currently only support a subset of query properties, and only one set at once. */
+	if (provides_tag == NULL ||
+	    gs_app_query_get_n_properties_set (data->query) != 1) {
+		g_task_return_new_error (task, G_IO_ERROR, G_IO_ERROR_NOT_SUPPORTED,
+					 "Unsupported query");
+		return;
+	}
+
+	/* Prepare a dnf context */
 	locker = g_mutex_locker_new (&self->mutex);
 
-	if (!gs_rpmostree_ref_dnf_context_locked (self, NULL, NULL, &dnf_context, cancellable, error))
-		return FALSE;
+	if (!gs_rpmostree_ref_dnf_context_locked (self, NULL, NULL, &dnf_context, cancellable, &local_error)) {
+		g_task_return_error (task, g_steal_pointer (&local_error));
+		return;
+	}
 
 	g_clear_pointer (&locker, g_mutex_locker_free);
 
-	provides = what_provides_decompose (search);
+	provides = what_provides_decompose (provides_type, provides_tag);
 	pkglist = find_packages_by_provides (dnf_context_get_sack (dnf_context), provides);
 	for (guint i = 0; i < pkglist->len; i++) {
 		DnfPackage *pkg = g_ptr_array_index (pkglist, i);
 		g_autoptr(GsApp) app = NULL;
 
-		app = gs_plugin_cache_lookup (plugin, dnf_package_get_nevra (pkg));
+		app = gs_plugin_cache_lookup (GS_PLUGIN (self), dnf_package_get_nevra (pkg));
 		if (app != NULL) {
 			gs_app_list_add (list, app);
 			continue;
@@ -2392,8 +2619,8 @@ gs_plugin_add_search_what_provides (GsPlugin *plugin,
 
 		/* create new app */
 		app = gs_app_new (NULL);
-		gs_app_set_metadata (app, "GnomeSoftware::Creator", gs_plugin_get_name (plugin));
-		gs_app_set_management_plugin (app, plugin);
+		gs_app_set_metadata (app, "GnomeSoftware::Creator", gs_plugin_get_name (GS_PLUGIN (self)));
+		gs_app_set_management_plugin (app, GS_PLUGIN (self));
 		gs_app_add_quirk (app, GS_APP_QUIRK_NEEDS_REBOOT);
 		app_set_rpm_ostree_packaging_format (app);
 		gs_app_set_kind (app, AS_COMPONENT_KIND_GENERIC);
@@ -2401,11 +2628,19 @@ gs_plugin_add_search_what_provides (GsPlugin *plugin,
 		gs_app_set_scope (app, AS_COMPONENT_SCOPE_SYSTEM);
 		gs_app_add_source (app, dnf_package_get_name (pkg));
 
-		gs_plugin_cache_add (plugin, dnf_package_get_nevra (pkg), app);
+		gs_plugin_cache_add (GS_PLUGIN (self), dnf_package_get_nevra (pkg), app);
 		gs_app_list_add (list, app);
 	}
 
-	return TRUE;
+	g_task_return_pointer (task, g_steal_pointer (&list), g_object_unref);
+}
+
+static GsAppList *
+gs_plugin_rpm_ostree_list_apps_finish (GsPlugin      *plugin,
+                                       GAsyncResult  *result,
+                                       GError       **error)
+{
+	return g_task_propagate_pointer (G_TASK (result), error);
 }
 
 gboolean
@@ -2457,92 +2692,149 @@ gs_plugin_add_sources (GsPlugin *plugin,
 	return TRUE;
 }
 
+static void enable_repository_thread_cb (GTask        *task,
+					 gpointer      source_object,
+					 gpointer      task_data,
+					 GCancellable *cancellable);
+
 static void
-async_result_cb (GObject      *source_object,
-                 GAsyncResult *result,
-                 gpointer      user_data)
-{
-	GAsyncResult **result_out = user_data;
-
-	g_assert (*result_out == NULL);
-	*result_out = g_object_ref (result);
-
-	g_main_context_wakeup (g_main_context_get_thread_default ());
-}
-
-gboolean
-gs_plugin_enable_repo (GsPlugin *plugin,
-		       GsApp *repo,
-		       GCancellable *cancellable,
-		       GError **error)
+gs_plugin_rpm_ostree_enable_repository_async (GsPlugin                     *plugin,
+					      GsApp			   *repository,
+                                              GsPluginManageRepositoryFlags flags,
+                                              GCancellable	 	   *cancellable,
+                                              GAsyncReadyCallback	    callback,
+                                              gpointer			    user_data)
 {
 	GsPluginRpmOstree *self = GS_PLUGIN_RPM_OSTREE (plugin);
-	g_autoptr(GsRPMOSTreeOS) os_proxy = NULL;
-	g_autoptr(GsRPMOSTreeSysroot) sysroot_proxy = NULL;
-	g_autoptr(GMainContext) context = NULL;
-	g_autoptr(GAsyncResult) result = NULL;
-	GsPluginRefreshMetadataFlags flags = GS_PLUGIN_REFRESH_METADATA_FLAGS_NONE;
+	g_autoptr(GTask) task = NULL;
+	gboolean interactive = (flags & GS_PLUGIN_MANAGE_REPOSITORY_FLAGS_INTERACTIVE);
+
+	task = gs_plugin_manage_repository_data_new_task (plugin, repository, flags, cancellable, callback, user_data);
+	g_task_set_source_tag (task, gs_plugin_rpm_ostree_enable_repository_async);
 
 	/* only process this app if it was created by this plugin */
-	if (!gs_app_has_management_plugin (repo, plugin))
-		return TRUE;
+	if (!gs_app_has_management_plugin (repository, plugin)) {
+		g_task_return_boolean (task, TRUE);
+		return;
+	}
 
-	/* enable repo */
-	g_return_val_if_fail (gs_app_get_kind (repo) == AS_COMPONENT_KIND_REPOSITORY, FALSE);
+	g_assert (gs_app_get_kind (repository) == AS_COMPONENT_KIND_REPOSITORY);
 
-	if (!gs_rpmostree_ref_proxies (self, &os_proxy, &sysroot_proxy, cancellable, error))
-		return FALSE;
+	gs_worker_thread_queue (self->worker, get_priority_for_interactivity (interactive),
+				enable_repository_thread_cb, g_steal_pointer (&task));
+}
 
-	if (!gs_rpmostree_repo_enable (plugin, repo, TRUE, os_proxy, sysroot_proxy, cancellable, error))
-		return FALSE;
+/* Run in @worker. */
+static void
+enable_repository_thread_cb (GTask        *task,
+			     gpointer      source_object,
+			     gpointer      task_data,
+			     GCancellable *cancellable)
+{
+	GsPluginRpmOstree *self = GS_PLUGIN_RPM_OSTREE (source_object);
+	GsPluginManageRepositoryData *data = task_data;
+	GsPluginRefreshMetadataData refresh_data = { 0 };
+	gboolean interactive = (data->flags & GS_PLUGIN_MANAGE_REPOSITORY_FLAGS_INTERACTIVE);
+	g_autoptr(GsRPMOSTreeOS) os_proxy = NULL;
+	g_autoptr(GsRPMOSTreeSysroot) sysroot_proxy = NULL;
+	g_autoptr(GError) local_error = NULL;
 
-	if (gs_plugin_has_flags (plugin, GS_PLUGIN_FLAGS_INTERACTIVE))
-		flags |= GS_PLUGIN_REFRESH_METADATA_FLAGS_INTERACTIVE;
+	assert_in_worker (self);
+
+	if (!gs_rpmostree_ref_proxies (self, &os_proxy, &sysroot_proxy, cancellable, &local_error)) {
+		g_task_return_error (task, g_steal_pointer (&local_error));
+		return;
+	}
+
+	if (!gs_rpmostree_repo_enable (GS_PLUGIN (self), data->repository, TRUE, os_proxy, sysroot_proxy, cancellable, &local_error)) {
+		g_task_return_error (task, g_steal_pointer (&local_error));
+		return;
+	}
+
+	refresh_data.flags = interactive ? GS_PLUGIN_REFRESH_METADATA_FLAGS_INTERACTIVE : GS_PLUGIN_REFRESH_METADATA_FLAGS_NONE;
+	refresh_data.cache_age_secs = 1;
+
+	if (!gs_plugin_rpm_ostree_refresh_metadata_in_worker (self, &refresh_data, os_proxy, sysroot_proxy, cancellable, &local_error))
+		g_debug ("Failed to refresh after repository enable: %s", local_error->message);
 
 	/* This can fail silently, it's only to update necessary caches, to provide
 	 * up-to-date information after the successful repository enable/install.
-	 *
-	 * FIXME: This has to run synchronously until gs_plugin_enable_repo() is
-	 * ported to be asynchronous. */
-	context = g_main_context_new ();
-	g_main_context_push_thread_default (context);
-	gs_plugin_rpm_ostree_refresh_metadata_async (plugin,
-						     1,  /* cache age */
-						     flags,
-						     cancellable,
-						     async_result_cb,
-						     &result);
-
-	while (result == NULL)
-		g_main_context_iteration (context, TRUE);
-
-	g_main_context_pop_thread_default (context);
-	/* ignore the @result */
-
-	return TRUE;
+	 */
+	g_task_return_boolean (task, TRUE);
 }
 
-gboolean
-gs_plugin_disable_repo (GsPlugin *plugin,
-			GsApp *repo,
-			GCancellable *cancellable,
-			GError **error)
+static gboolean
+gs_plugin_rpm_ostree_enable_repository_finish (GsPlugin      *plugin,
+					       GAsyncResult  *result,
+					       GError       **error)
+{
+	return g_task_propagate_boolean (G_TASK (result), error);
+}
+
+static void disable_repository_thread_cb (GTask        *task,
+					  gpointer      source_object,
+					  gpointer      task_data,
+					  GCancellable *cancellable);
+
+static void
+gs_plugin_rpm_ostree_disable_repository_async (GsPlugin                     *plugin,
+					       GsApp			    *repository,
+                                               GsPluginManageRepositoryFlags flags,
+                                               GCancellable	 	    *cancellable,
+                                               GAsyncReadyCallback	     callback,
+                                               gpointer			     user_data)
 {
 	GsPluginRpmOstree *self = GS_PLUGIN_RPM_OSTREE (plugin);
-	g_autoptr(GsRPMOSTreeOS) os_proxy = NULL;
-	g_autoptr(GsRPMOSTreeSysroot) sysroot_proxy = NULL;
+	g_autoptr(GTask) task = NULL;
+	gboolean interactive = (flags & GS_PLUGIN_MANAGE_REPOSITORY_FLAGS_INTERACTIVE);
+
+	task = gs_plugin_manage_repository_data_new_task (plugin, repository, flags, cancellable, callback, user_data);
+	g_task_set_source_tag (task, gs_plugin_rpm_ostree_disable_repository_async);
 
 	/* only process this app if it was created by this plugin */
-	if (!gs_app_has_management_plugin (repo, plugin))
-		return TRUE;
+	if (!gs_app_has_management_plugin (repository, plugin)) {
+		g_task_return_boolean (task, TRUE);
+		return;
+	}
 
-	/* disable repo */
-	g_return_val_if_fail (gs_app_get_kind (repo) == AS_COMPONENT_KIND_REPOSITORY, FALSE);
+	g_assert (gs_app_get_kind (repository) == AS_COMPONENT_KIND_REPOSITORY);
 
-	if (!gs_rpmostree_ref_proxies (self, &os_proxy, &sysroot_proxy, cancellable, error))
-		return FALSE;
+	gs_worker_thread_queue (self->worker, get_priority_for_interactivity (interactive),
+				disable_repository_thread_cb, g_steal_pointer (&task));
+}
 
-	return gs_rpmostree_repo_enable (plugin, repo, FALSE, os_proxy, sysroot_proxy, cancellable, error);
+/* Run in @worker. */
+static void
+disable_repository_thread_cb (GTask        *task,
+			      gpointer      source_object,
+			      gpointer      task_data,
+			      GCancellable *cancellable)
+{
+	GsPluginRpmOstree *self = GS_PLUGIN_RPM_OSTREE (source_object);
+	GsPluginManageRepositoryData *data = task_data;
+	g_autoptr(GsRPMOSTreeOS) os_proxy = NULL;
+	g_autoptr(GsRPMOSTreeSysroot) sysroot_proxy = NULL;
+	g_autoptr(GError) local_error = NULL;
+
+	assert_in_worker (self);
+
+	if (!gs_rpmostree_ref_proxies (self, &os_proxy, &sysroot_proxy, cancellable, &local_error)) {
+		g_task_return_error (task, g_steal_pointer (&local_error));
+		return;
+	}
+
+	if (gs_rpmostree_repo_enable (GS_PLUGIN (self), data->repository, FALSE, os_proxy, sysroot_proxy, cancellable, &local_error))
+		g_task_return_boolean (task, TRUE);
+	else
+		g_task_return_error (task, g_steal_pointer (&local_error));
+}
+
+static gboolean
+gs_plugin_rpm_ostree_disable_repository_finish (GsPlugin      *plugin,
+					        GAsyncResult  *result,
+					        GError       **error)
+{
+	return g_task_propagate_boolean (G_TASK (result), error);
 }
 
 static void
@@ -2562,6 +2854,12 @@ gs_plugin_rpm_ostree_class_init (GsPluginRpmOstreeClass *klass)
 	plugin_class->refine_finish = gs_plugin_rpm_ostree_refine_finish;
 	plugin_class->refresh_metadata_async = gs_plugin_rpm_ostree_refresh_metadata_async;
 	plugin_class->refresh_metadata_finish = gs_plugin_rpm_ostree_refresh_metadata_finish;
+	plugin_class->enable_repository_async = gs_plugin_rpm_ostree_enable_repository_async;
+	plugin_class->enable_repository_finish = gs_plugin_rpm_ostree_enable_repository_finish;
+	plugin_class->disable_repository_async = gs_plugin_rpm_ostree_disable_repository_async;
+	plugin_class->disable_repository_finish = gs_plugin_rpm_ostree_disable_repository_finish;
+	plugin_class->list_apps_async = gs_plugin_rpm_ostree_list_apps_async;
+	plugin_class->list_apps_finish = gs_plugin_rpm_ostree_list_apps_finish;
 }
 
 GType

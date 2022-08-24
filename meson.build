@@ -1,8 +1,8 @@
 project('gnome-software', 'c',
-  version : '42.4',
+  version : '43.beta',
   license : 'GPL-2.0+',
   default_options : ['warning_level=1', 'c_std=c11'],
-  meson_version : '>=0.55.0'
+  meson_version : '>=0.58.0'
 )
 
 conf = configuration_data()
@@ -23,7 +23,7 @@ conf.set_quoted('APPLICATION_ID', application_id)
 
 # this refers to the gnome-software plugin API version
 # this is not in any way related to a package or soname version
-gs_plugin_api_version = '18'
+gs_plugin_api_version = '19'
 conf.set_quoted('GS_PLUGIN_API_VERSION', gs_plugin_api_version)
 
 # private subdirectory of libdir for the private shared libgnomesoftware to live in
@@ -157,6 +157,11 @@ libadwaita = dependency('libadwaita-1',
   ]
 )
 
+# This should be available in GLib 2.74
+if meson.get_compiler('c').has_header_symbol('glib.h', 'G_FORMAT_SIZE_ONLY_VALUE', dependencies: glib)
+  conf.set('HAVE_G_FORMAT_SIZE_ONLY_VALUE', '1')
+endif
+
 libsysprof_capture_dep = dependency('sysprof-capture-4',
   required: get_option('sysprof'),
   default_options: [
@@ -175,14 +180,6 @@ conf.set('HAVE_SYSPROF', libsysprof_capture_dep.found())
 if get_option('mogwai')
   mogwai_schedule_client = dependency('mogwai-schedule-client-0', version : '>= 0.2.0')
   conf.set('HAVE_MOGWAI', 1)
-endif
-
-if get_option('valgrind')
-  valgrind = dependency('valgrind')
-  conf.set('USE_VALGRIND', 1)
-else
-  message('Valgrind integration disabled')
-  valgrind = []
 endif
 
 gsettings_desktop_schemas = dependency('gsettings-desktop-schemas', version : '>= 3.18.0', required: get_option('gsettings_desktop_schemas'))
@@ -230,7 +227,7 @@ if get_option('flatpak')
   flatpak = dependency('flatpak', version : '>= 1.9.1')
   ostree = dependency('ostree-1')
 
-  flatpak_soupapiversion = flatpak.get_pkgconfig_variable('soupapiversion')
+  flatpak_soupapiversion = flatpak.get_variable('soupapiversion')
   if flatpak_soupapiversion == ''
     flatpak_soupapiversion = '2.4' # Pre libsoup3 support
   endif
@@ -256,6 +253,23 @@ endif
 
 if get_option('snap')
   snap = dependency('snapd-glib', version : '>= 1.50')
+endif
+
+if get_option('hardcoded_foss_webapps') or get_option('hardcoded_proprietary_webapps')
+  assert(get_option('webapps'), 'webapps option must be true when hardcoded_foss_webapps/hardcoded_proprietary_webapps is')
+  pwa_list_proj = subproject('gnome-pwa-list')
+endif
+if get_option('hardcoded_foss_webapps')
+  pwa_list_foss = pwa_list_proj.get_variable('gnome_pwa_list_foss')
+  install_data(pwa_list_foss,
+    install_dir : join_paths(get_option('datadir'), 'swcatalog', 'xml'),
+  )
+endif
+if get_option('hardcoded_proprietary_webapps')
+  pwa_list_proprietary = pwa_list_proj.get_variable('gnome_pwa_list_proprietary')
+  install_data(pwa_list_proprietary,
+    install_dir : join_paths(get_option('datadir'), 'swcatalog', 'xml'),
+  )
 endif
 
 gnome = import('gnome')
@@ -295,7 +309,7 @@ add_project_arguments('-DI_KNOW_THE_GNOME_SOFTWARE_API_IS_SUBJECT_TO_CHANGE',
 test_env = [
   'G_TEST_SRCDIR=@0@'.format(meson.current_source_dir()),
   'G_TEST_BUILDDIR=@0@'.format(meson.current_build_dir()),
-  'GSETTINGS_SCHEMA_DIR=@0@/data/'.format(meson.build_root()),
+  'GSETTINGS_SCHEMA_DIR=@0@/data/'.format(meson.project_build_root()),
   'GSETTINGS_BACKEND=memory',
   'MALLOC_CHECK_=2',
 

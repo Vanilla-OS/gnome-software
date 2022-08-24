@@ -137,8 +137,9 @@ gs_app_list_add_watched_for_app (GsAppList *list, GPtrArray *apps, GsApp *app)
 	if (list->flags & GS_APP_LIST_FLAG_WATCH_APPS)
 		g_ptr_array_add (apps, app);
 	if (list->flags & GS_APP_LIST_FLAG_WATCH_APPS_ADDONS) {
-		GsAppList *list2 = gs_app_get_addons (app);
-		for (guint i = 0; i < gs_app_list_length (list2); i++) {
+		g_autoptr(GsAppList) list2 = gs_app_dup_addons (app);
+
+		for (guint i = 0; list2 != NULL && i < gs_app_list_length (list2); i++) {
 			GsApp *app2 = gs_app_list_index (list2, i);
 			g_ptr_array_add (apps, app2);
 		}
@@ -423,20 +424,10 @@ typedef enum {
 static void
 gs_app_list_add_safe (GsAppList *list, GsApp *app, GsAppListAddFlag flag)
 {
-	const gchar *id;
-
 	/* check for duplicate */
 	if ((flag & GS_APP_LIST_ADD_FLAG_CHECK_FOR_DUPE) > 0 &&
 	    !gs_app_list_check_for_duplicate (list, app))
 		return;
-
-	/* if we're lazy-loading the ID then we can't use the ID hash */
-	id = gs_app_get_unique_id (app);
-	if (id == NULL) {
-		gs_app_list_maybe_watch_app (list, app);
-		g_ptr_array_add (list->array, g_object_ref (app));
-		return;
-	}
 
 	/* just use the ref */
 	gs_app_list_maybe_watch_app (list, app);
@@ -484,23 +475,29 @@ gs_app_list_add (GsAppList *list, GsApp *app)
  * Removes an application from the list. If the application does not exist the
  * request is ignored.
  *
- * Since: 3.22
+ * Returns: %TRUE if the app was removed, %FALSE if it did not exist in the @list
+ * Since: 43
  **/
-void
+gboolean
 gs_app_list_remove (GsAppList *list, GsApp *app)
 {
 	g_autoptr(GMutexLocker) locker = NULL;
+	gboolean removed;
 
-	g_return_if_fail (GS_IS_APP_LIST (list));
-	g_return_if_fail (GS_IS_APP (app));
+	g_return_val_if_fail (GS_IS_APP_LIST (list), FALSE);
+	g_return_val_if_fail (GS_IS_APP (app), FALSE);
 
 	locker = g_mutex_locker_new (&list->mutex);
-	g_ptr_array_remove (list->array, app);
-	gs_app_list_maybe_unwatch_app (list, app);
+	removed = g_ptr_array_remove (list->array, app);
+	if (removed) {
+		gs_app_list_maybe_unwatch_app (list, app);
 
-	/* recalculate global state */
-	gs_app_list_invalidate_state (list);
-	gs_app_list_invalidate_progress (list);
+		/* recalculate global state */
+		gs_app_list_invalidate_state (list);
+		gs_app_list_invalidate_progress (list);
+	}
+
+	return removed;
 }
 
 /**
@@ -701,21 +698,6 @@ gs_app_list_truncate (GsAppList *list, guint length)
 	g_ptr_array_set_size (list->array, length);
 }
 
-static gint
-gs_app_list_randomize_cb (gconstpointer a, gconstpointer b, gpointer user_data)
-{
-	GsApp *app1 = GS_APP (*(GsApp **) a);
-	GsApp *app2 = GS_APP (*(GsApp **) b);
-	const gchar *k1;
-	const gchar *k2;
-	g_autofree gchar *key = NULL;
-
-	key = g_strdup_printf ("Plugin::sort-key[%p]", user_data);
-	k1 = gs_app_get_metadata_item (app1, key);
-	k2 = gs_app_get_metadata_item (app2, key);
-	return g_strcmp0 (k1, k2);
-}
-
 /**
  * gs_app_list_randomize:
  * @list: A #GsAppList
@@ -728,37 +710,32 @@ gs_app_list_randomize_cb (gconstpointer a, gconstpointer b, gpointer user_data)
 void
 gs_app_list_randomize (GsAppList *list)
 {
-	guint i;
 	GRand *rand;
-	GsApp *app;
-	gchar sort_key[] = { '\0', '\0', '\0', '\0' };
 	g_autoptr(GDateTime) date = NULL;
-	g_autofree gchar *key = NULL;
 	g_autoptr(GMutexLocker) locker = NULL;
 
 	g_return_if_fail (GS_IS_APP_LIST (list));
 
 	locker = g_mutex_locker_new (&list->mutex);
 
-	/* mark this list as random */
-	list->flags |= GS_APP_LIST_FLAG_IS_RANDOMIZED;
+	if (!gs_app_list_length (list))
+		return;
 
-	key = g_strdup_printf ("Plugin::sort-key[%p]", list);
 	rand = g_rand_new ();
 	date = g_date_time_new_now_utc ();
 	g_rand_set_seed (rand, (guint32) g_date_time_get_day_of_year (date));
-	for (i = 0; i < gs_app_list_length (list); i++) {
-		app = gs_app_list_index (list, i);
-		sort_key[0] = (gchar) g_rand_int_range (rand, (gint32) 'A', (gint32) 'Z');
-		sort_key[1] = (gchar) g_rand_int_range (rand, (gint32) 'A', (gint32) 'Z');
-		sort_key[2] = (gchar) g_rand_int_range (rand, (gint32) 'A', (gint32) 'Z');
-		gs_app_set_metadata (app, key, sort_key);
+
+	/* Fisher–Yates shuffle of the array.
+	 * See https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle */
+	for (guint i = gs_app_list_length (list) - 1; i >= 1; i--) {
+		gpointer tmp;
+		guint j = g_rand_int_range (rand, 0, i + 1);
+
+		tmp = list->array->pdata[i];
+		list->array->pdata[i] = list->array->pdata[j];
+		list->array->pdata[j] = tmp;
 	}
-	g_ptr_array_sort_with_data (list->array, gs_app_list_randomize_cb, list);
-	for (i = 0; i < gs_app_list_length (list); i++) {
-		app = gs_app_list_index (list, i);
-		gs_app_set_metadata (app, key, NULL);
-	}
+
 	g_rand_free (rand);
 }
 

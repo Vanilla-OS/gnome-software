@@ -15,10 +15,13 @@
 #include <libsoup/soup.h>
 #include <appstream.h>
 
+#include <gs-app-permissions.h>
+
 G_BEGIN_DECLS
 
 /* Dependency loop means we can’t include the header. */
 typedef struct _GsPlugin GsPlugin;
+typedef struct _GsAppList GsAppList;
 
 #define GS_TYPE_APP (gs_app_get_type ())
 
@@ -142,6 +145,7 @@ typedef enum {
  * @GS_APP_QUIRK_HIDE_FROM_SEARCH:	The app should not be shown in search results
  * @GS_APP_QUIRK_HIDE_EVERYWHERE:	The app should not be shown anywhere (it’s blocklisted)
  * @GS_APP_QUIRK_DO_NOT_AUTO_UPDATE:	The app should not be automatically updated
+ * @GS_APP_QUIRK_DEVELOPMENT_SOURCE:	The app is from a development source (Since: 43)
  *
  * The application attributes.
  **/
@@ -165,12 +169,31 @@ typedef enum {
 	GS_APP_QUIRK_HIDE_FROM_SEARCH	= 1 << 15,	/* Since: 3.32 */
 	GS_APP_QUIRK_HIDE_EVERYWHERE	= 1 << 16,	/* Since: 3.36 */
 	GS_APP_QUIRK_DO_NOT_AUTO_UPDATE	= 1 << 17,	/* Since: 3.36 */
+	GS_APP_QUIRK_DEVELOPMENT_SOURCE	= 1 << 18,	/* Since: 43 */
 	GS_APP_QUIRK_LAST  /*< skip >*/
 } GsAppQuirk;
 
 #define	GS_APP_INSTALL_DATE_UNSET		0
 #define	GS_APP_INSTALL_DATE_UNKNOWN		1 /* 1s past the epoch */
-#define	GS_APP_SIZE_UNKNOWABLE			G_MAXUINT64
+
+/**
+ * GsSizeType:
+ * @GS_SIZE_TYPE_UNKNOWN:	Size is unknown
+ * @GS_SIZE_TYPE_UNKNOWABLE:	Size is unknown and is impossible to calculate
+ * @GS_SIZE_TYPE_VALID:		Size is known and valid
+ *
+ * Types of download or file size for applications.
+ *
+ * These are used to represent the validity of properties like
+ * #GsApp:size-download.
+ *
+ * Since: 43
+ */
+typedef enum {
+	GS_SIZE_TYPE_UNKNOWN,
+	GS_SIZE_TYPE_UNKNOWABLE,
+	GS_SIZE_TYPE_VALID,
+} GsSizeType;
 
 /**
  * GsAppQuality:
@@ -188,33 +211,6 @@ typedef enum {
 	GS_APP_QUALITY_HIGHEST,
 	GS_APP_QUALITY_LAST  /*< skip >*/
 } GsAppQuality;
-
-typedef enum {
-	GS_APP_PERMISSIONS_UNKNOWN 		= 0,
-	GS_APP_PERMISSIONS_NONE			= 1 << 0,
-	GS_APP_PERMISSIONS_NETWORK 		= 1 << 1,
-	GS_APP_PERMISSIONS_SYSTEM_BUS   	= 1 << 2,
-	GS_APP_PERMISSIONS_SESSION_BUS		= 1 << 3,
-	GS_APP_PERMISSIONS_DEVICES 		= 1 << 4,
-	GS_APP_PERMISSIONS_HOME_FULL 		= 1 << 5,
-	GS_APP_PERMISSIONS_HOME_READ		= 1 << 6,
-	GS_APP_PERMISSIONS_FILESYSTEM_FULL	= 1 << 7,
-	GS_APP_PERMISSIONS_FILESYSTEM_READ	= 1 << 8,
-	GS_APP_PERMISSIONS_DOWNLOADS_FULL 	= 1 << 9,
-	GS_APP_PERMISSIONS_DOWNLOADS_READ	= 1 << 10,
-	GS_APP_PERMISSIONS_SETTINGS		= 1 << 11,
-	GS_APP_PERMISSIONS_X11			= 1 << 12,
-	GS_APP_PERMISSIONS_ESCAPE_SANDBOX	= 1 << 13,
-	GS_APP_PERMISSIONS_FILESYSTEM_OTHER	= 1 << 14,
-	GS_APP_PERMISSIONS_LAST  /*< skip >*/
-} GsAppPermissions;
-
-#define LIMITED_PERMISSIONS (GS_APP_PERMISSIONS_SETTINGS | \
-			GS_APP_PERMISSIONS_NETWORK | \
-			GS_APP_PERMISSIONS_DOWNLOADS_READ | \
-			GS_APP_PERMISSIONS_DOWNLOADS_FULL)
-#define MEDIUM_PERMISSIONS (LIMITED_PERMISSIONS | \
-			GS_APP_PERMISSIONS_X11)
 
 /**
  * GS_APP_PROGRESS_UNKNOWN:
@@ -411,26 +407,36 @@ AsProvided	*gs_app_get_provided_for_kind	(GsApp		*app,
 void		 gs_app_add_provided_item	(GsApp		*app,
 						 AsProvidedKind kind,
 						 const gchar	*item);
-guint64		 gs_app_get_size_installed	(GsApp		*app);
+GsSizeType	 gs_app_get_size_installed	(GsApp		*app,
+						 guint64	*size_bytes_out);
 void		 gs_app_set_size_installed	(GsApp		*app,
-						 guint64	 size_installed);
-guint64		 gs_app_get_size_installed_dependencies
-						(GsApp		*app);
-guint64		 gs_app_get_size_user_data	(GsApp		*app);
+						 GsSizeType	 size_type,
+						 guint64	 size_bytes);
+GsSizeType	 gs_app_get_size_installed_dependencies
+						(GsApp		*app,
+						 guint64	*size_bytes_out);
+GsSizeType	 gs_app_get_size_user_data	(GsApp		*app,
+						 guint64	*size_bytes_out);
 void		 gs_app_set_size_user_data	(GsApp		*app,
-						 guint64	 size_user_data);
-guint64		 gs_app_get_size_cache_data	(GsApp		*app);
+						 GsSizeType	 size_type,
+						 guint64	 size_bytes);
+GsSizeType	 gs_app_get_size_cache_data	(GsApp		*app,
+						 guint64	*size_bytes_out);
 void		 gs_app_set_size_cache_data	(GsApp		*app,
-						 guint64	 size_cache_data);
-guint64		 gs_app_get_size_download	(GsApp		*app);
+						 GsSizeType	 size_type,
+						 guint64	 size_bytes);
+GsSizeType	 gs_app_get_size_download	(GsApp		*app,
+						 guint64	*size_bytes_out);
 void		 gs_app_set_size_download	(GsApp		*app,
-						 guint64	 size_download);
-guint64		 gs_app_get_size_download_dependencies
-						(GsApp		*app);
+						 GsSizeType	 size_type,
+						 guint64	 size_bytes);
+GsSizeType	 gs_app_get_size_download_dependencies
+						(GsApp		*app,
+						 guint64	*size_bytes_out);
 void		 gs_app_add_related		(GsApp		*app,
 						 GsApp		*app2);
-void		 gs_app_add_addon		(GsApp		*app,
-						 GsApp		*addon);
+void		 gs_app_add_addons		(GsApp		*app,
+						 GsAppList	*addons);
 void		 gs_app_add_history		(GsApp		*app,
 						 GsApp		*app2);
 guint64		 gs_app_get_install_date	(GsApp		*app);
@@ -480,19 +486,22 @@ void		 gs_app_remove_quirk		(GsApp		*app,
 						 GsAppQuirk	 quirk);
 gboolean	 gs_app_is_installed		(GsApp		*app);
 gboolean	 gs_app_is_updatable		(GsApp		*app);
-gchar		*gs_app_get_origin_ui		(GsApp		*app);
+gchar		*gs_app_dup_origin_ui		(GsApp		*app,
+						 gboolean	 with_packaging_format);
 void		 gs_app_set_origin_ui		(GsApp		*app,
 						 const gchar	*origin_ui);
 gchar		*gs_app_get_packaging_format	(GsApp		*app);
 const gchar	*gs_app_get_packaging_format_raw(GsApp *app);
 void		 gs_app_subsume_metadata	(GsApp		*app,
 						 GsApp		*donor);
-GsAppPermissions gs_app_get_permissions		(GsApp		*app);
+GsAppPermissions *
+		 gs_app_dup_permissions		(GsApp		*app);
 void		 gs_app_set_permissions		(GsApp		*app,
-						 GsAppPermissions permissions);
-GsAppPermissions gs_app_get_update_permissions	(GsApp		*app);
+						 GsAppPermissions *permissions);
+GsAppPermissions *
+		 gs_app_dup_update_permissions	(GsApp		*app);
 void		 gs_app_set_update_permissions	(GsApp		*app,
-						 GsAppPermissions update_permissions);
+						 GsAppPermissions *update_permissions);
 GPtrArray	*gs_app_get_version_history	(GsApp		*app);
 void		 gs_app_set_version_history	(GsApp		*app,
 						 GPtrArray	*version_history);
@@ -510,5 +519,6 @@ void		 gs_app_set_relations		(GsApp		*app,
 gboolean	 gs_app_get_has_translations	(GsApp		*app);
 void		 gs_app_set_has_translations	(GsApp		*app,
 						 gboolean	 has_translations);
+gboolean	 gs_app_is_downloaded		(GsApp		*app);
 
 G_END_DECLS

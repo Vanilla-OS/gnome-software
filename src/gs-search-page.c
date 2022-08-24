@@ -120,7 +120,7 @@ gs_search_page_get_search_cb (GObject *source_object,
 			return;
 		}
 		g_warning ("failed to get search apps: %s", error->message);
-		gs_stop_spinner (GTK_SPINNER (self->spinner_search));
+		gtk_spinner_stop (GTK_SPINNER (self->spinner_search));
 		if (self->value && self->value[0])
 			gtk_stack_set_visible_child_name (GTK_STACK (self->stack_search), "no-results");
 		else
@@ -141,7 +141,7 @@ gs_search_page_get_search_cb (GObject *source_object,
 	/* remove old entries */
 	gs_widget_remove_all (self->list_box_search, (GsRemoveFunc) gtk_list_box_remove);
 
-	gs_stop_spinner (GTK_SPINNER (self->spinner_search));
+	gtk_spinner_stop (GTK_SPINNER (self->spinner_search));
 	gtk_stack_set_visible_child_name (GTK_STACK (self->stack_search), "results");
 	for (i = 0; i < gs_app_list_length (list); i++) {
 		app = gs_app_list_index (list, i);
@@ -207,7 +207,7 @@ gs_search_page_waiting_show_cb (gpointer user_data)
 
 	/* show spinner */
 	gtk_stack_set_visible_child_name (GTK_STACK (self->stack_search), "spinner");
-	gs_start_spinner (GTK_SPINNER (self->spinner_search));
+	gtk_spinner_start (GTK_SPINNER (self->spinner_search));
 	gs_search_page_waiting_cancel (self);
 	return FALSE;
 }
@@ -263,6 +263,8 @@ static void
 gs_search_page_load (GsSearchPage *self)
 {
 	g_autoptr(GsPluginJob) plugin_job = NULL;
+	g_autoptr(GsAppQuery) query = NULL;
+	const gchar *keywords[2] = { NULL, };
 
 	self->changed = FALSE;
 
@@ -274,23 +276,25 @@ gs_search_page_load (GsSearchPage *self)
 	/* search for apps */
 	gs_search_page_waiting_cancel (self);
 	self->waiting_id = g_timeout_add (250, gs_search_page_waiting_show_cb, self);
-	plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_SEARCH,
-					 "search", self->value,
-					 "max-results", self->max_results,
-					 "timeout", 0, /* This is a user action, let it take as long as it needs to */
-					 "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON |
-							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_VERSION |
-							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_HISTORY |
-							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_SETUP_ACTION |
-							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_REVIEW_RATINGS |
-							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_DESCRIPTION |
-							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_LICENSE |
-							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_PERMISSIONS |
-							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_RATING,
-					 "dedupe-flags", GS_APP_LIST_FILTER_FLAG_PREFER_INSTALLED |
-							 GS_APP_LIST_FILTER_FLAG_KEY_ID_PROVIDES,
-					 NULL);
-	gs_plugin_job_set_sort_func (plugin_job, gs_search_page_sort_cb, self);
+
+	keywords[0] = self->value;
+	query = gs_app_query_new ("keywords", keywords,
+				  "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON |
+						  GS_PLUGIN_REFINE_FLAGS_REQUIRE_VERSION |
+						  GS_PLUGIN_REFINE_FLAGS_REQUIRE_HISTORY |
+						  GS_PLUGIN_REFINE_FLAGS_REQUIRE_SETUP_ACTION |
+						  GS_PLUGIN_REFINE_FLAGS_REQUIRE_REVIEW_RATINGS |
+						  GS_PLUGIN_REFINE_FLAGS_REQUIRE_DESCRIPTION |
+						  GS_PLUGIN_REFINE_FLAGS_REQUIRE_LICENSE |
+						  GS_PLUGIN_REFINE_FLAGS_REQUIRE_PERMISSIONS |
+						  GS_PLUGIN_REFINE_FLAGS_REQUIRE_RATING,
+				  "dedupe-flags", GS_APP_LIST_FILTER_FLAG_PREFER_INSTALLED |
+						  GS_APP_LIST_FILTER_FLAG_KEY_ID_PROVIDES,
+				  "max-results", self->max_results,
+				  "sort-func", gs_search_page_sort_cb,
+				  "sort-user-data", self,
+				  NULL);
+	plugin_job = gs_plugin_job_list_apps_new (query, GS_PLUGIN_LIST_APPS_FLAGS_NONE);
 	gs_plugin_loader_job_process_async (self->plugin_loader, plugin_job,
 					    self->search_cancellable,
 					    gs_search_page_get_search_cb,
