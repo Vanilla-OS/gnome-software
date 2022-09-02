@@ -1,8 +1,11 @@
-gnome-software (43~rc-1) UNRELEASED; urgency=medium
+gnome-software (43~rc-1) unstable; urgency=medium
 
   * New upstream release
+  * debian/control.in: Bump minimum glib to 2.70.0
+  * Drop libsoup3 patches: applied in new release
+  * Build for libsoup3 on Ubuntu because it has the new snapd-glib
 
- -- Jeremy Bicha <jbicha@ubuntu.com>  Fri, 02 Sep 2022 09:25:31 -0400
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Fri, 02 Sep 2022 09:46:45 -0400
 
 gnome-software (43~beta-1) unstable; urgency=medium
 
