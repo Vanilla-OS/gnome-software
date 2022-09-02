@@ -425,6 +425,7 @@ snap_to_app (GsPluginSnap *self, SnapdSnap *snap, const gchar *branch)
 		gs_app_set_bundle_kind (app, AS_BUNDLE_KIND_SNAP);
 		gs_app_set_branch (app, branch);
 		gs_app_set_metadata (app, "snap::name", snapd_snap_get_name (snap));
+		gs_app_set_metadata (app, "GnomeSoftware::PackagingIcon", "snap-symbolic");
 		gs_plugin_cache_add (GS_PLUGIN (self), cache_id, app);
 	}
 
@@ -664,13 +665,18 @@ gs_plugin_snap_list_apps_async (GsPlugin              *plugin,
 
 			data->n_pending_ops++;
 			get_store_snap_async (self, client, snap_name, TRUE, cancellable, list_alternate_apps_snap_cb, g_steal_pointer (&task));
-		} else {
+		/* The id can be NULL for example for local package files */
+		} else if (gs_app_get_id (alternate_of) != NULL) {
 			data->n_pending_ops++;
 			snapd_client_find_section_async (client,
 							 SNAPD_FIND_FLAGS_SCOPE_WIDE | SNAPD_FIND_FLAGS_MATCH_COMMON_ID,
 							 NULL, gs_app_get_id (alternate_of),
 							 cancellable,
 							 list_alternate_apps_nonsnap_cb, g_steal_pointer (&task));
+		} else {
+			g_clear_object (&data->results_list);
+			g_task_return_new_error (task, G_IO_ERROR, G_IO_ERROR_NOT_SUPPORTED,
+						 "Unsupported app without id");
 		}
 
 		return;
@@ -1828,9 +1834,11 @@ gs_plugin_add_updates (GsPlugin *plugin,
 	gboolean interactive = gs_plugin_has_flags (plugin, GS_PLUGIN_FLAGS_INTERACTIVE);
 	g_autoptr(GError) error_local = NULL;
 
-	client = get_client (self, interactive, error);
-	if (client == NULL)
-		return FALSE;
+	client = get_client (self, interactive, &error_local);
+	if (client == NULL) {
+		g_debug ("Failed to get client to get updates: %s", error_local->message);
+		return TRUE;
+	}
 
 	/* Get the list of refreshable snaps */
 	apps = snapd_client_find_refreshable_sync (client, cancellable, &error_local);

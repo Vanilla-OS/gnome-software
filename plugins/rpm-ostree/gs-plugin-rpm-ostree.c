@@ -452,8 +452,7 @@ static void
 app_set_rpm_ostree_packaging_format (GsApp *app)
 {
 	gs_app_set_metadata (app, "GnomeSoftware::PackagingFormat", "RPM");
-	gs_app_set_metadata (app, "GnomeSoftware::PackagingBaseCssColor", "error_bg_color");
-	gs_app_set_metadata (app, "GnomeSoftware::PackagingIcon", "package-x-generic-symbolic");
+	gs_app_set_metadata (app, "GnomeSoftware::PackagingBaseCssColor", "error_color");
 }
 
 void
@@ -1256,17 +1255,20 @@ gs_plugin_add_updates (GsPlugin *plugin,
 	g_autoptr(GVariant) rpm_diff = NULL;
 	g_autoptr(GsRPMOSTreeOS) os_proxy = NULL;
 	g_autoptr(GsRPMOSTreeSysroot) sysroot_proxy = NULL;
+	g_autoptr(GError) local_error = NULL;
 	const gchar *checksum = NULL;
 	const gchar *version = NULL;
 	g_auto(GVariantDict) cached_update_dict;
 
-	if (!gs_rpmostree_ref_proxies (self, &os_proxy, &sysroot_proxy, cancellable, error))
-		return FALSE;
+	if (!gs_rpmostree_ref_proxies (self, &os_proxy, &sysroot_proxy, cancellable, &local_error)) {
+		g_debug ("Failed to ref proxies to get updates: %s", local_error->message);
+		return TRUE;
+	}
 
 	/* ensure D-Bus properties are updated before reading them */
-	if (!gs_rpmostree_sysroot_call_reload_sync (sysroot_proxy, cancellable, error)) {
-		gs_rpmostree_error_convert (error);
-		return FALSE;
+	if (!gs_rpmostree_sysroot_call_reload_sync (sysroot_proxy, cancellable, &local_error)) {
+		g_debug ("Failed to call reload to get updates: %s", local_error->message);
+		return TRUE;
 	}
 
 	cached_update = gs_rpmostree_os_dup_cached_update (os_proxy);
@@ -1669,6 +1671,7 @@ gs_plugin_app_install (GsPlugin *plugin,
 
 	switch (gs_app_get_state (app)) {
 	case GS_APP_STATE_AVAILABLE:
+	case GS_APP_STATE_QUEUED_FOR_INSTALL:
 		if (gs_app_get_source_default (app) == NULL) {
 			g_set_error_literal (error,
 			                     GS_PLUGIN_ERROR,

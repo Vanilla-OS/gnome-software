@@ -1,5 +1,5 @@
 project('gnome-software', 'c',
-  version : '43.beta',
+  version : '43.rc',
   license : 'GPL-2.0+',
   default_options : ['warning_level=1', 'c_std=c11'],
   meson_version : '>=0.58.0'
@@ -135,7 +135,7 @@ gtk = dependency('gtk4',
       'demos=false',
     ]
   )
-glib = dependency('glib-2.0', version : '>= 2.66.0')
+glib = dependency('glib-2.0', version : '>= 2.70.0')
 json_glib = dependency('json-glib-1.0', version : '>= 1.6.0')
 libm = cc.find_library('m', required: false)
 if get_option('soup2')
@@ -226,14 +226,6 @@ endif
 if get_option('flatpak')
   flatpak = dependency('flatpak', version : '>= 1.9.1')
   ostree = dependency('ostree-1')
-
-  flatpak_soupapiversion = flatpak.get_variable('soupapiversion')
-  if flatpak_soupapiversion == ''
-    flatpak_soupapiversion = '2.4' # Pre libsoup3 support
-  endif
-  if flatpak_soupapiversion != libsoupapiversion
-    error('flatpak was built against a different API of libsoup. @0@ instead of @1@.'.format(flatpak_soupapiversion, libsoupapiversion))
-  endif
 endif
 
 if get_option('malcontent')
@@ -252,7 +244,11 @@ if get_option('gudev')
 endif
 
 if get_option('snap')
-  snap = dependency('snapd-glib', version : '>= 1.50')
+  if get_option('soup2')
+    snap = dependency('snapd-glib', version : '>= 1.50')
+  else
+    snap = dependency('snapd-glib-2', version : '>= 1.62')
+  endif
 endif
 
 if get_option('hardcoded_foss_webapps') or get_option('hardcoded_proprietary_webapps')

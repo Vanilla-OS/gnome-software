@@ -519,6 +519,7 @@ gs_plugin_app_install (GsPlugin *plugin,
 	switch (gs_app_get_state (app)) {
 	case GS_APP_STATE_AVAILABLE:
 	case GS_APP_STATE_UPDATABLE:
+	case GS_APP_STATE_QUEUED_FOR_INSTALL:
 		source_ids = gs_app_get_source_ids (app);
 		if (source_ids->len == 0) {
 			g_set_error_literal (error,
@@ -813,7 +814,10 @@ gs_plugin_add_updates (GsPlugin *plugin,
 		       GCancellable *cancellable,
 		       GError **error)
 {
-	return gs_plugin_packagekit_add_updates (plugin, list, cancellable, error);
+	g_autoptr(GError) local_error = NULL;
+	if (!gs_plugin_packagekit_add_updates (plugin, list, cancellable, &local_error))
+		g_debug ("Failed to get updates: %s", local_error->message);
+	return TRUE;
 }
 
 static void list_apps_cb (GObject      *source_object,
@@ -2653,11 +2657,18 @@ gs_plugin_packagekit_local_check_installed (GsPluginPackagekit  *self,
 	}
 	packages = pk_results_get_package_array (results);
 	if (packages->len > 0) {
-		gs_app_set_state (app, GS_APP_STATE_UNKNOWN);
-		gs_app_set_state (app, GS_APP_STATE_INSTALLED);
+		gboolean is_higher_version = FALSE;
+		const gchar *app_version = gs_app_get_version (app);
 		for (guint i = 0; i < packages->len; i++){
 			PkPackage *pkg = g_ptr_array_index (packages, i);
 			gs_app_add_source_id (app, pk_package_get_id (pkg));
+			if (!is_higher_version &&
+			    as_vercmp_simple (pk_package_get_version (pkg), app_version) < 0)
+				is_higher_version = TRUE;
+		}
+		if (!is_higher_version) {
+			gs_app_set_state (app, GS_APP_STATE_UNKNOWN);
+			gs_app_set_state (app, GS_APP_STATE_INSTALLED);
 		}
 	}
 	return TRUE;
