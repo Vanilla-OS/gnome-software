@@ -49,7 +49,8 @@ refresh_ui (GsOriginPopoverRow *row)
 	if (origin_ui != NULL)
 		gtk_label_set_text (GTK_LABEL (priv->name_label), origin_ui);
 
-	if (gs_app_get_state (priv->app) == GS_APP_STATE_AVAILABLE_LOCAL) {
+	if (gs_app_get_state (priv->app) == GS_APP_STATE_AVAILABLE_LOCAL ||
+	    gs_app_get_local_file (priv->app) != NULL) {
 		GFile *local_file = gs_app_get_local_file (priv->app);
 		url = g_file_get_basename (local_file);
 	} else {
@@ -122,17 +123,9 @@ refresh_ui (GsOriginPopoverRow *row)
 
 	if (packaging_icon != NULL)
 		gtk_image_set_from_icon_name (GTK_IMAGE (priv->packaging_image), packaging_icon);
-	else
-		gtk_widget_hide (priv->packaging_image);
 
-	if (packaging_base_css_color == NULL)
-		packaging_base_css_color = "window_fg_color";
-
-	css = g_strdup_printf (
-		"   color: @%s;\n"
-		"   background-color: alpha(@%s, .15);\n",
-		packaging_base_css_color,
-		packaging_base_css_color);
+	if (packaging_base_css_color != NULL)
+		css = g_strdup_printf ("   color: @%s;\n", packaging_base_css_color);
 
 	gs_utils_widget_set_css (priv->packaging_box, &priv->css_provider, "packaging-color", css);
 }

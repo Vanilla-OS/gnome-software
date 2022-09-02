@@ -140,10 +140,12 @@ struct _GsDetailsPage
 	GtkWidget		*box_reviews;
 	GtkWidget		*box_reviews_internal;
 	GtkWidget		*histogram;
+	GtkWidget		*histogram_row;
 	GtkWidget		*button_review;
 	GtkWidget		*scrolledwindow_details;
 	GtkWidget		*spinner_details;
 	GtkWidget		*stack_details;
+	GtkWidget		*box_with_source;
 	GtkWidget		*origin_popover;
 	GtkWidget		*origin_popover_list_box;
 	GtkWidget		*origin_box;
@@ -260,6 +262,8 @@ gs_details_page_update_origin_button (GsDetailsPage *self,
 				      gboolean sensitive)
 {
 	const gchar *packaging_icon;
+	const gchar *packaging_base_css_color;
+	g_autofree gchar *css = NULL;
 	g_autofree gchar *origin_ui = NULL;
 
 	if (self->app == NULL ||
@@ -275,25 +279,17 @@ gs_details_page_update_origin_button (GsDetailsPage *self,
 	gtk_widget_show (self->origin_box);
 
 	packaging_icon = gs_app_get_metadata_item (self->app, "GnomeSoftware::PackagingIcon");
+	if (packaging_icon == NULL)
+		packaging_icon = "package-x-generic-symbolic";
 
-	if (packaging_icon != NULL) {
-		const gchar *packaging_base_css_color;
-		g_autofree gchar *css = NULL;
+	packaging_base_css_color = gs_app_get_metadata_item (self->app, "GnomeSoftware::PackagingBaseCssColor");
 
-		packaging_base_css_color = gs_app_get_metadata_item (self->app, "GnomeSoftware::PackagingBaseCssColor");
+	gtk_image_set_from_icon_name (GTK_IMAGE (self->origin_packaging_image), packaging_icon);
 
-		gtk_image_set_from_icon_name (GTK_IMAGE (self->origin_packaging_image), packaging_icon);
-
-		if (packaging_base_css_color == NULL)
-			packaging_base_css_color = "window_fg_color";
-
+	if (packaging_base_css_color != NULL)
 		css = g_strdup_printf ("color: @%s;\n", packaging_base_css_color);
 
-		gs_utils_widget_set_css (self->origin_packaging_image, &self->origin_css_provider, "packaging-color", css);
-		gtk_widget_show (self->origin_packaging_image);
-	} else {
-		gtk_widget_hide (self->origin_packaging_image);
-	}
+	gs_utils_widget_set_css (self->origin_packaging_image, &self->origin_css_provider, "packaging-color", css);
 }
 
 static void
@@ -769,10 +765,16 @@ gs_details_page_get_alternates_cb (GObject *source_object,
 		}
 	}
 
-	if (select_row)
+	/* Do not show the "selected" check when there's only one app in the list */
+	if (select_row && gs_app_list_length (list) > 1)
 		gs_origin_popover_row_set_selected (GS_ORIGIN_POPOVER_ROW (select_row), TRUE);
+	else if (select_row)
+		gtk_list_box_row_set_activatable (GTK_LIST_BOX_ROW (select_row), FALSE);
 
-	gs_details_page_update_origin_button (self, TRUE);
+	if (select_row != NULL)
+		gs_details_page_update_origin_button (self, TRUE);
+	else
+		gtk_widget_hide (self->origin_box);
 
 	if (instance_changed) {
 		g_autoptr(GsPluginJob) plugin_job = NULL;
@@ -1155,10 +1157,7 @@ gs_details_page_refresh_all (GsDetailsPage *self)
 
 	gtk_stack_set_visible_child_name (self->links_stack, link_rows_visible ? "links" : "empty");
 
-	/* set the developer name, falling back to the project group */
 	tmp = gs_app_get_developer_name (self->app);
-	if (tmp == NULL)
-		tmp = gs_app_get_project_group (self->app);
 	if (tmp != NULL) {
 		gtk_label_set_label (GTK_LABEL (self->developer_name_label), tmp);
 
@@ -1506,7 +1505,7 @@ gs_details_page_refresh_reviews (GsDetailsPage *self)
 
 	/* enable appropriate widgets */
 	gtk_widget_set_visible (self->star, show_reviews);
-	gtk_widget_set_visible (self->histogram, review_ratings != NULL && review_ratings->len > 0);
+	gtk_widget_set_visible (self->histogram_row, review_ratings != NULL && review_ratings->len > 0);
 	gtk_widget_set_visible (self->label_review_count, n_reviews > 0);
 
 	/* update the review label next to the star widget */
@@ -1566,7 +1565,7 @@ gs_details_page_refresh_reviews (GsDetailsPage *self)
 	/* Update the overall container. */
 	gtk_widget_set_visible (self->box_reviews,
 				show_reviews &&
-				(gtk_widget_get_visible (self->histogram) ||
+				(gtk_widget_get_visible (self->histogram_row) ||
 				 gtk_widget_get_visible (self->button_review) ||
 				 reviews->len > 0));
 }
@@ -2192,6 +2191,25 @@ gs_details_page_star_pressed_cb (GtkGestureClick *click,
 	gs_details_page_write_review (self);
 }
 
+static void
+gs_details_page_shell_allocation_width_cb (GObject *shell,
+					   GParamSpec *pspec,
+					   GsDetailsPage *self)
+{
+	gint allocation_width = 0;
+	GtkOrientation orientation;
+
+	g_object_get (shell, "allocation-width", &allocation_width, NULL);
+
+	if (allocation_width > 0 && allocation_width < 500)
+		orientation = GTK_ORIENTATION_VERTICAL;
+	else
+		orientation = GTK_ORIENTATION_HORIZONTAL;
+
+	if (orientation != gtk_orientable_get_orientation (GTK_ORIENTABLE (self->box_details_header_not_icon)))
+		gtk_orientable_set_orientation (GTK_ORIENTABLE (self->box_details_header_not_icon), orientation);
+}
+
 static gboolean
 gs_details_page_setup (GsPage *page,
                        GsShell *shell,
@@ -2208,6 +2226,10 @@ gs_details_page_setup (GsPage *page,
 	self->plugin_loader = g_object_ref (plugin_loader);
 	self->cancellable = g_cancellable_new ();
 	g_cancellable_connect (cancellable, G_CALLBACK (gs_details_page_cancel_cb), self, NULL);
+
+	g_signal_connect_object (self->shell, "notify::allocation-width",
+				 G_CALLBACK (gs_details_page_shell_allocation_width_cb),
+				 self, 0);
 
 	/* hide some UI when offline */
 	g_signal_connect_object (self->plugin_loader, "notify::network-available",
@@ -2460,10 +2482,12 @@ gs_details_page_class_init (GsDetailsPageClass *klass)
 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, box_reviews);
 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, box_reviews_internal);
 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, histogram);
+	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, histogram_row);
 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, button_review);
 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, scrolledwindow_details);
 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, spinner_details);
 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, stack_details);
+	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, box_with_source);
 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, origin_popover);
 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, origin_popover_list_box);
 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, origin_box);
@@ -2510,6 +2534,17 @@ narrow_to_spacing (GBinding *binding, const GValue *from_value, GValue *to_value
 	return TRUE;
 }
 
+static gboolean
+narrow_to_halign (GBinding *binding, const GValue *from_value, GValue *to_value, gpointer user_data)
+{
+	if (g_value_get_boolean (from_value))
+		g_value_set_enum (to_value, GTK_ALIGN_START);
+	else
+		g_value_set_enum (to_value, GTK_ALIGN_FILL);
+
+	return TRUE;
+}
+
 static void
 gs_details_page_init (GsDetailsPage *self)
 {
@@ -2546,8 +2581,8 @@ gs_details_page_init (GsDetailsPage *self)
 
 	g_object_bind_property_full (self, "is-narrow", self->box_details_header, "spacing", G_BINDING_SYNC_CREATE,
 				     narrow_to_spacing, NULL, NULL, NULL);
-	g_object_bind_property_full (self, "is-narrow", self->box_details_header_not_icon, "orientation", G_BINDING_SYNC_CREATE,
-				     narrow_to_orientation, NULL, NULL, NULL);
+	g_object_bind_property_full (self, "is-narrow", self->box_with_source, "halign", G_BINDING_SYNC_CREATE,
+				     narrow_to_halign, NULL, NULL, NULL);
 	g_object_bind_property_full (self, "is-narrow", self->box_license, "orientation", G_BINDING_SYNC_CREATE,
 				     narrow_to_orientation, NULL, NULL, NULL);
 	g_object_bind_property_full (self, "is-narrow", self->context_bar, "orientation", G_BINDING_SYNC_CREATE,
@@ -2758,6 +2793,18 @@ gs_details_page_metainfo_thread (GTask *task,
 		g_autoptr(GIcon) icon = g_file_icon_new (icon_file);
 		gs_icon_set_width (icon, (guint) -1);
 		gs_app_add_icon (app, G_ICON (icon));
+	} else {
+		g_autoptr(SoupSession) soup_session = NULL;
+		guint maximum_icon_size;
+
+		/* Currently a 160px icon is needed for #GsFeatureTile, at most.
+		 * The '2' is to pretend the hiDPI/GDK's scale factor is 2, to
+		 * allow larger icons. The 'icons' plugin uses proper scale factor.
+		 */
+		maximum_icon_size = 160 * 2;
+
+		soup_session = gs_build_soup_session ();
+		gs_app_ensure_icons_downloaded (app, soup_session, maximum_icon_size, cancellable);
 	}
 
 	gs_app_set_state (app, GS_APP_STATE_UNKNOWN);
