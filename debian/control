@@ -17,7 +17,7 @@ Build-Depends: debhelper-compat (= 13),
                libappstream-dev (>= 0.14.0),
                libflatpak-dev (>= 1.14.0) [amd64 arm64 armel armhf i386 mipsel mips64el ppc64el s390x hppa powerpc ppc64 riscv64 x32],
                libfwupd-dev (>= 1.5.6) [linux-any],
-               libglib2.0-dev (>= 2.56.0),
+               libglib2.0-dev (>= 2.70.0),
                libglib-testing-0-dev,
                libgtk-4-dev (>= 4.6),
                libgudev-1.0-dev [linux-any],
@@ -128,7 +128,7 @@ Section: libdevel
 Architecture: any
 Multi-Arch: same
 Depends: libappstream-dev (>= 0.14.0),
-         libglib2.0-dev (>= 2.56.0),
+         libglib2.0-dev (>= 2.70.0),
          libgtk-4-dev (>= 4.6),
          libjson-glib-dev (>= 1.6.0),
          libpolkit-gobject-1-dev,
