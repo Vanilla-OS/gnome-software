@@ -1,3 +1,9 @@
+gnome-software (43~rc-2) unstable; urgency=medium
+
+  * debian/control.in: Explicitly Build-Depend on libsoup
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Fri, 02 Sep 2022 21:51:20 -0400
+
 gnome-software (43~rc-1) unstable; urgency=medium
 
   * New upstream release
