@@ -1,3 +1,9 @@
+gnome-software (43.0-1) UNRELEASED; urgency=medium
+
+  * New upstream release
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Fri, 16 Sep 2022 07:52:24 -0400
+
 gnome-software (43~rc-2) unstable; urgency=medium
 
   * debian/control.in: Explicitly Build-Depend on libsoup
