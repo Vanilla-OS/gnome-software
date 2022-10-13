@@ -29,7 +29,7 @@ Build-Depends: debhelper-compat (= 13),
                libxmlb-dev (>= 0.1.7),
                meson (>= 0.55.0),
                pkg-config,
-               policykit-1,
+               polkitd,
                xsltproc
 Build-Depends-Indep: libgdk-pixbuf2.0-doc <!nodoc>,
                      libglib2.0-doc <!nodoc>,
