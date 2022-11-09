@@ -1,0 +1,27 @@
+From: Muqtadir <muqtadir5555@gmail.com>
+Date: Wed, 09 Nov 2022 14:13:43 +0530
+Subject: [PATCH] Replace Software Repositories row with Additional Drivers
+
+---
+--- a/src/gs-shell.c
++++ b/src/gs-shell.c
+@@ -2334,7 +2334,7 @@
+ 	GtkWidget *dialog;
+ 
+ 	/* use if available */
+-	if (g_spawn_command_line_async ("software-properties-gtk", NULL))
++	if (g_spawn_command_line_async ("vanilla-control-center", NULL))
+ 		return;
+ 
+ 	dialog = gs_repos_dialog_new (GTK_WINDOW (shell), shell->plugin_loader);
+--- a/src/gs-shell.ui
++++ b/src/gs-shell.ui
+@@ -4,7 +4,7 @@
+   <requires lib="handy" version="1.0"/>
+   <menu id="primary_menu">
+     <item>
+-      <attribute name="label" translatable="yes">_Software Repositories</attribute>
++      <attribute name="label" translatable="yes">_Additional Drivers</attribute>
+       <attribute name="action">app.sources</attribute>
+       <attribute name="hidden-when">action-disabled</attribute>
+     </item>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk+" version="3.10"/>
+  <template class="GsMeteredDataDialog" parent="GsInfoWindow">
+    <property name="title" translatable="yes">Automatic Updates Paused</property>
+    <child>
+      <object class="AdwStatusPage">
+        <property name="title" bind-source="GsMeteredDataDialog" bind-property="title" bind-flags="sync-create"/>
+        <property name="description" translatable="yes">The current network is metered. Metered connections have data limits or charges associated with them. To save data, automatic updates have therefore been paused.
+
+Automatic updates will be resumed when an un­metered network becomes available. Until then, it is still possible to manually install updates.
+
+Alternatively, if the current network has been in­correctly identified as being metered, this setting can be changed.</property>
+        <property name="icon-name">network-cellular-signal-excellent-symbolic</property>
+        <child>
+          <object class="GtkButton" id="button_network_settings">
+            <property name="label" translatable="yes">Open Network _Settings</property>
+            <property name="halign">center</property>
+            <property name="receives-default">True</property>
+            <property name="use-underline">True</property>
+            <signal name="clicked" handler="button_network_settings_clicked_cb"/>
+            <style>
+              <class name="pill"/>
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>
