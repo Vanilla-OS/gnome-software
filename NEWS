@@ -1,3 +1,34 @@
+Version 43.1
+~~~~~~~~~~~~
+Released: 2022-10-21
+
+This is a stable release with the following changes:
+ * Fix searches not completing if installing or uninstalling an app at the same time
+ * Notify of errors when running a flatpak app whose runtime is missing
+ * Fix installing local RPM packages
+ * Fix distribution upgrades when package conflicts are present
+ * Fix opening web apps from their details page
+ * Improve appearance of app ratings if ratings data cannot be downloaded
+ * Fix crash when showing offline update errors on startup
+ * Highlight priority of firmware updates, making security fixes more obvious
+ * Fix installation of pending apps in some situations
+ * Fix downloading of rpm-ostree app updates from the Updates page
+
+This release also updates translations:
+ * Abkhazian (Nart Tlisha)
+ * Catalan (Jordi Mas)
+ * Chinese (Taiwan) (Cheng-Chia Tseng)
+ * Croatian (Goran Vidović)
+ * French (Claude Paroz)
+ * Friulian (Fabio Tomat)
+ * Georgian (Zurab Kargareteli)
+ * German (Philipp Kiemle, Jürgen Benvenuti)
+ * Icelandic (Sveinn í Felli)
+ * Italian (Gianvito Cavasoli)
+ * Kazakh (Baurzhan Muftakhidinov)
+ * Panjabi (A S Alam)
+ * Slovenian (Matej Urbančič)
+
 Version 43.0
 ~~~~~~~~~~~~
 Released: 2022-09-16
@@ -22,7 +53,7 @@ This is a stable release with translation updates:
  * Spanish
  * Swedish
 
-Version 43.rc
+Version 43~rc
 ~~~~~~~~~~~~~
 Released: 2022-09-02
 
@@ -58,7 +89,7 @@ This release also updates translations:
  * Turkish
  * Ukrainian
 
-Version 43.beta
+Version 43~beta
 ~~~~~~~~~~~~~~~
 Released: 2022-08-05
 
@@ -87,7 +118,7 @@ This release also updates translations:
  * Ukrainian
  * Vietnamese
 
-Version 43.alpha
+Version 43~alpha
 ~~~~~~~~~~~~~~~~
 Released: 2022-06-30
 
@@ -181,7 +212,7 @@ This release also updates translations:
  * Slovenian
  * Swedish
 
-Version 42.rc
+Version 42~rc
 ~~~~~~~~~~~~~
 Released: 2022-03-04
 
@@ -217,7 +248,7 @@ This release also updates translations:
  * Turkish
  * Ukrainian
 
-Version 42.beta
+Version 42~beta
 ~~~~~~~~~~~~~~~
 Released: 2022-02-10
 
@@ -253,7 +284,7 @@ This release also updates translations:
  * Spanish
  * Ukrainian
 
-Version 42.alpha
+Version 42~alpha
 ~~~~~~~~~~~~~~~~
 Released: 2022-01-07
 
@@ -353,7 +384,7 @@ This release also updates translations:
  * Swedish
  * Ukrainian
 
-Version 41.rc
+Version 41~rc
 ~~~~~~~~~~~~~
 Released: 2021-09-07
 
@@ -385,7 +416,7 @@ This release also updates translations:
  * Swedish
  * Ukrainian
 
-Version 41.beta
+Version 41~beta
 ~~~~~~~~~~~~~~~
 Released: 2021-08-13
 
@@ -411,7 +442,7 @@ This release also updates translations:
  * Slovenian
  * Ukrainian
 
-Version 41.alpha
+Version 41~alpha
 ~~~~~~~~~~~~~~~~
 Released: 2021-07-20
 
@@ -481,7 +512,7 @@ Translation updates:
  * Punjabi
  * Serbian
 
-Version 40.rc
+Version 40~rc
 ~~~~~~~~~~~~~
 Released: 2021-03-12
 
@@ -522,7 +553,7 @@ Translation updates:
  * Turkish
  * Ukrainian
 
-Version 40.beta
+Version 40~beta
 ~~~~~~~~~~~~~~~
 Released: 2021-02-16
 
@@ -549,7 +580,7 @@ Translation updates:
  * Spanish
  * Swedish
 
-Version 40.alpha
+Version 40~alpha
 ~~~~~~~~~~~~~~~~
 Released: 2021-01-27
 
