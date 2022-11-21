@@ -1,8 +1,8 @@
-gnome-software (43.1-1) UNRELEASED; urgency=medium
+gnome-software (43.1-1) unstable; urgency=medium
 
   * New upstream release
 
- -- Jeremy Bicha <jbicha@ubuntu.com>  Mon, 21 Nov 2022 07:43:34 -0500
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Mon, 21 Nov 2022 08:48:46 -0500
 
 gnome-software (43.0-1) unstable; urgency=medium
 
