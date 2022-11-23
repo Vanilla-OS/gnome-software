@@ -1,3 +1,9 @@
+gnome-software (43.1-2) unstable; urgency=medium
+
+  * Restore accidentally dropped 43.0-2 changes
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Wed, 23 Nov 2022 10:48:34 -0500
+
 gnome-software (43.1-1) unstable; urgency=medium
 
   * New upstream release
