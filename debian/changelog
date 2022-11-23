@@ -4,6 +4,17 @@ gnome-software (43.1-1) unstable; urgency=medium
 
  -- Jeremy Bicha <jbicha@ubuntu.com>  Mon, 21 Nov 2022 08:48:46 -0500
 
+gnome-software (43.0-2) unstable; urgency=medium
+
+  * Team upload
+  * d/control.in: Replace transitional policykit-1 with polkitd.
+    pkexec is used in a couple of places, but neither is relevant to Debian:
+    we don't enable support for external AppStream metadata, and we don't
+    install a Fedora-specific plugin.
+  * Standards-Version: 4.6.1 (no changes required)
+
+ -- Simon McVittie <smcv@debian.org>  Fri, 14 Oct 2022 10:27:33 +0100
+
 gnome-software (43.0-1) unstable; urgency=medium
 
   * New upstream release

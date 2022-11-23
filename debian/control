@@ -6,7 +6,7 @@ Source: gnome-software
 Section: gnome
 Priority: optional
 Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
-Uploaders: Gunnar Hjalmarsson <gunnarhj@debian.org>, Jeremy Bicha <jbicha@ubuntu.com>, Laurent Bigonville <bigon@debian.org>
+Uploaders: Jeremy Bicha <jbicha@ubuntu.com>
 Build-Depends: debhelper-compat (= 13),
                appstream <!nocheck>,
                dh-sequence-gnome,
@@ -33,7 +33,7 @@ Build-Depends: debhelper-compat (= 13),
                libxmlb-dev (>= 0.1.7),
                meson (>= 0.55.0),
                pkg-config,
-               policykit-1,
+               polkitd,
                xsltproc
 Build-Depends-Indep: libgdk-pixbuf2.0-doc <!nodoc>,
                      libglib2.0-doc <!nodoc>,
@@ -42,7 +42,7 @@ Build-Depends-Indep: libgdk-pixbuf2.0-doc <!nodoc>,
                      libsoup2.4-doc <!nodoc>,
                      libsoup-3.0-doc <!nodoc>
 Rules-Requires-Root: no
-Standards-Version: 4.6.0
+Standards-Version: 4.6.1
 Vcs-Browser: https://salsa.debian.org/gnome-team/gnome-software
 Vcs-Git: https://salsa.debian.org/gnome-team/gnome-software.git
 Homepage: https://wiki.gnome.org/Apps/Software
