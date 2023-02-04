@@ -4,10 +4,10 @@
 
 #include <glib.h>
 #include <gnome-software.h>
-#include <gnome-software/gs-appstream.h>
 #include <stdlib.h>
 #include <xmlb.h>
 
+#include "gs-appstream.h"
 #include "gs-plugin-vanilla-meta.h"
 #include "gs-vanilla-meta-util.h"
 
