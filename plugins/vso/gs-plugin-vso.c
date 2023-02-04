@@ -265,8 +265,7 @@ gs_plugin_update(GsPlugin *plugin, GsAppList *list, GCancellable *cancellable, G
 gboolean
 gs_plugin_add_updates(GsPlugin *plugin, GsAppList *list, GCancellable *cancellable, GError **error)
 {
-    /* const gchar *cmd = "pkexec vso update-check"; */
-    const gchar *cmd = "pkexec /home/matbme/Documents/vanilla-system-operator/vso update-check";
+    const gchar *cmd = "pkexec vso update-check";
     g_autoptr(GError) local_error = NULL;
 
     g_autoptr(GSubprocess) subprocess = NULL;
