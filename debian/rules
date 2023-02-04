@@ -8,10 +8,10 @@ export DEB_LDFLAGS_MAINT_STRIP := -Wl,-Bsymbolic-functions
 
 GS_CONFIGURE_FLAGS = \
 	-Dgsettings_desktop_schemas=enabled \
-	-Dpackagekit=true \
-	-Dpackagekit_autoremove=true \
+	-Dpackagekit=false \
+	-Dpackagekit_autoremove=false \
 	-Drpm_ostree=false \
-	-Dapt=true
+	-Dapt=false
 
 # Temporarily keep building with libsoup2 until we get the new snapd-glib
 ifneq (yes,$(shell dpkg-vendor --derives-from Ubuntu && echo yes))
@@ -94,8 +94,10 @@ override_dh_auto_test:
 override_dh_gencontrol:
 ifeq ($(shell dpkg-vendor --query vendor),Ubuntu)
 	dh_gencontrol -- -Vplugin:Recommends='gnome-software-plugin-snap [linux-any]'
+	dh_gencontrol -- -Vplugin:Recommends='gnome-software-plugin-flatpak [linux-any]'
 else
 	dh_gencontrol -- -Vplugin:Suggests='gnome-software-plugin-snap [linux-any]'
+	dh_gencontrol -- -Vplugin:Suggests='gnome-software-plugin-flatpak [linux-any]'
 endif
 
 override_dh_clean:
