@@ -478,7 +478,7 @@ gs_plugin_app_install(GsPlugin *plugin, GsApp *app, GCancellable *cancellable, G
     g_debug("Installing app %s, using container flag `%s` and package name `%s`",
             gs_app_get_name(app), container_flag, package_name);
 
-    const gchar *install_cmd = g_strdup_printf("apx %s install %s", container_flag, package_name);
+    const gchar *install_cmd = g_strdup_printf("apx %s install -y %s", container_flag, package_name);
 
     output = gs_vanilla_meta_run_subprocess(install_cmd, G_SUBPROCESS_FLAGS_STDOUT_SILENCE,
                                             cancellable, error);
