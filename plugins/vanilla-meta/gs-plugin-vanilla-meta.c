@@ -643,7 +643,7 @@ list_apps_thread_cb(GTask *task,
     if (category != NULL) {
         g_autoptr(GsAppList) list_tmp = gs_app_list_new();
 
-        if (!gs_appstream_add_category_apps(self->silo, category, list_tmp,
+        if (!gs_appstream_add_category_apps(GS_PLUGIN(self), self->silo, category, list_tmp,
                                             cancellable, &local_error)) {
             g_task_return_error(task, local_error);
             return;
