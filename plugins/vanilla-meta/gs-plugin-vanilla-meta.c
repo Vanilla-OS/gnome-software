@@ -92,7 +92,7 @@ gs_plugin_vanilla_meta_setup_async(GsPlugin *plugin,
     task = g_task_new(plugin, cancellable, callback, user_data);
     g_task_set_source_tag(task, gs_plugin_vanilla_meta_setup_async);
 
-    // Start up a worker thread to process all the plugin’s function calls.
+    // Start up a worker thread to process all the plugin's function calls.
     self->worker = gs_worker_thread_new("gs-plugin-vanilla-meta");
 
     gs_worker_thread_queue(self->worker, G_PRIORITY_DEFAULT, setup_thread_cb,
@@ -172,7 +172,7 @@ refresh_plugin_cache(GsPluginVanillaMeta *self, GCancellable *cancellable, GErro
         return FALSE;
     }
 
-    for (int i = 0; i < components->len; i++) {
+    for (guint i = 0; i < components->len; i++) {
         XbNode *node = components->pdata[i];
         g_debug("Ensure: %s", xb_node_get_text(node));
 
@@ -267,7 +267,7 @@ gs_plugin_add_sources(GsPlugin *plugin, GsAppList *list, GCancellable *cancellab
             return FALSE;
         }
 
-        for (int i = 0; i < components->len; i++) {
+        for (guint i = 0; i < components->len; i++) {
             g_autoptr(GsApp) related =
                 gs_appstream_create_app(plugin, self->silo, components->pdata[i], &local_error);
 
@@ -399,13 +399,13 @@ gs_plugin_app_install(GsPlugin *plugin, GsApp *app, GCancellable *cancellable, G
     const gchar *package_name       = NULL;
     const gchar *container_flag     = NULL;
     const gchar *app_container_name = gs_app_get_metadata_item(app, "Vanilla::container");
+    SubprocessOutput *output        = NULL;
 
     // Only process this app if was created by this plugin
     if (!gs_app_has_management_plugin(app, plugin))
         return TRUE;
 
     // Check container exists, otherwise run init for it
-    SubprocessOutput *output;
     output = gs_vanilla_meta_run_subprocess(
         "podman container ls --noheading -a | rev | cut -d\' \' -f 1 | rev",
         G_SUBPROCESS_FLAGS_STDOUT_PIPE, cancellable, error);
@@ -549,8 +549,12 @@ check_app_is_installed(GsApp *app, GCancellable *cancellable, GError *error, gbo
 {
     const gchar *package_name       = NULL;
     const gchar *container_flag     = NULL;
-    const gchar *app_container_name = gs_app_get_metadata_item(app, "Vanilla::container");
+    const gchar *check_cmd          = NULL;
+    const gchar *app_container_name = NULL;
+    SubprocessOutput *output        = NULL;
+    gboolean query_result           = FALSE;
 
+    app_container_name = gs_app_get_metadata_item(app, "Vanilla::container");
     container_flag = apx_container_flag_from_name(app_container_name);
     package_name   = gs_app_get_source_default(app);
     if (package_name == NULL) {
@@ -559,25 +563,27 @@ check_app_is_installed(GsApp *app, GCancellable *cancellable, GError *error, gbo
         return FALSE;
     }
 
-    const gchar *check_cmd = g_strdup_printf("apx %s show -i %s", container_flag, package_name);
+    check_cmd = g_strdup_printf("apx %s show -i %s", container_flag, package_name);
 
-    SubprocessOutput *output = gs_vanilla_meta_run_subprocess(
+    output = gs_vanilla_meta_run_subprocess(
         check_cmd, G_SUBPROCESS_FLAGS_STDOUT_SILENCE, cancellable, &error);
 
-    if (output->exit_code == EXIT_SUCCESS) {
-        g_debug("Package %s is installed", gs_app_get_name(app));
-        if (update_status)
-            gs_app_set_state(app, GS_APP_STATE_INSTALLED);
-        return TRUE;
-    } else {
-        g_debug("Package %s is not installed", gs_app_get_name(app));
-        if (update_status)
-            gs_app_set_state(app, GS_APP_STATE_AVAILABLE);
-        return FALSE;
+    if (output != NULL) {
+        if (output->exit_code == EXIT_SUCCESS) {
+            g_debug("Package %s is installed", gs_app_get_name(app));
+            if (update_status)
+                gs_app_set_state(app, GS_APP_STATE_INSTALLED);
+            query_result =  TRUE;
+        } else {
+            g_debug("Package %s is not installed", gs_app_get_name(app));
+            if (update_status)
+                gs_app_set_state(app, GS_APP_STATE_AVAILABLE);
+            query_result = FALSE;
+        }
     }
 
     free(output);
-    return FALSE;
+    return query_result;
 }
 
 static void
@@ -649,7 +655,7 @@ list_apps_thread_cb(GTask *task,
             return;
         }
 
-        for (int i = 0; i < gs_app_list_length(list_tmp); i++) {
+        for (guint i = 0; i < gs_app_list_length(list_tmp); i++) {
             GsApp *app        = gs_app_list_index(list_tmp, i);
             GsApp *cached_app = gs_plugin_cache_lookup(GS_PLUGIN(self), gs_app_get_id(app));
 
