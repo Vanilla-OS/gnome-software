@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-software/issues\n"
-"POT-Creation-Date: 2022-08-23 11:29+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-05 17:21-0300\n"
 "PO-Revision-Date: 2022-09-05 14:39+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -17,22 +17,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 21.12.3\n"
 
-#: data/appdata/org.gnome.Software.appdata.xml.in:7 src/gs-shell.ui:21
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
 msgid "Software"
 msgstr "Hugbúnaður"
 
-#: data/appdata/org.gnome.Software.appdata.xml.in:8
-msgid "Application manager for GNOME"
-msgstr "Forritaumsýsla fyrir GNOME"
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:8
+#, fuzzy
+msgid "Install and update apps"
+msgstr "Uppsettar uppfærslur"
 
-#: data/appdata/org.gnome.Software.appdata.xml.in:10
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:10
 msgid ""
 "Software allows you to find and install new applications and system "
 "extensions and remove existing installed applications."
 msgstr ""
 
-#: data/appdata/org.gnome.Software.appdata.xml.in:14
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:14
 msgid ""
 "Software showcases featured and popular applications with useful "
 "descriptions and multiple screenshots per application. Applications can be "
@@ -40,29 +41,1215 @@ msgid ""
 "also allows you to update your system using an offline update."
 msgstr ""
 
-#: data/appdata/org.gnome.Software.appdata.xml.in:25
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:25
 msgid "Overview panel"
 msgstr "Yfirlitsspjald"
 
-#: data/appdata/org.gnome.Software.appdata.xml.in:29
-#: data/appdata/org.gnome.Software.appdata.xml.in:33
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:29
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:33
 msgid "Details panel"
 msgstr "Spjald með nánari upplýsingum"
 
-#: data/appdata/org.gnome.Software.appdata.xml.in:37
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:37
 msgid "Installed panel"
 msgstr "Spjald með uppsettu"
 
-#: data/appdata/org.gnome.Software.appdata.xml.in:41
-#: data/appdata/org.gnome.Software.appdata.xml.in:45
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:41
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:45
 msgid "Updates panel"
 msgstr "Spjald með uppfærslum"
 
-#: data/appdata/org.gnome.Software.appdata.xml.in:49
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:49
 msgid "The update details"
 msgstr "Nánari upplýsingar um uppfærslu"
 
-#: data/appdata/org.gnome.Software.appdata.xml.in:1992
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:71
+msgid "This is a stable release with translation updates:"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:73
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:197
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:244
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:373
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:492
+msgid "Bulgarian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:74
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:107
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:144
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:198
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:245
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:282
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:374
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:418
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:457
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:493
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:531
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:596
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:638
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:686
+msgid "Catalan"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:75
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:200
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:459
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:533
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:687
+msgid "Chinese (Taiwan)"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:76
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:202
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:285
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:421
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:534
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:598
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:639
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:688
+msgid "Czech"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:77
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:205
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:378
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:461
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:536
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:600
+msgid "English (United Kingdom)"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:78
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:113
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:209
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:288
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:330
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:380
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:426
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:463
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:495
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:604
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:640
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:690
+msgid "Galician"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:79
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:114
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:147
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:210
+msgid "Georgian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:80
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:211
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:250
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:381
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:427
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:496
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:539
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:605
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:691
+msgid "German"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:81
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:115
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:148
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:212
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:251
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:289
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:331
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:382
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:541
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:693
+msgid "Hebrew"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:82
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:213
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:252
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:428
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:606
+msgid "Hungarian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:83
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:116
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:332
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:383
+msgid "Icelandic"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:84
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:385
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:698
+msgid "Latvian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:85
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:119
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:151
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:215
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:255
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:292
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:386
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:431
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:467
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:543
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:610
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:699
+msgid "Lithuanian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:86
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:216
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:544
+msgid "Nepali"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:87
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:125
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:155
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:223
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:260
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:392
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:552
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:577
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:615
+msgid "Serbian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:88
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:224
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:261
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:297
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:339
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:394
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:438
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:472
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:502
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:616
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:644
+msgid "Slovenian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:89
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:126
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:156
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:225
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:298
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:340
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:395
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:439
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:473
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:553
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:617
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:645
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:705
+msgid "Spanish"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:90
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:226
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:262
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:396
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:440
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:474
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:554
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:618
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:646
+msgid "Swedish"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:96
+msgid "This is the third unstable release for GNOME 43."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:98
+#, fuzzy
+msgid "Supports video as a screenshot"
+msgstr "Fyrri skjámynd"
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:99
+msgid "Improvements of source picker in the details page"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:100
+msgid "Fixes a bug when viewing details of a package file"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:101
+msgid "Fixes a bug when reading certain .flatpakref file"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:103
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:141
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:194
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:240
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:279
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:327
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:369
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:415
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:454
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:489
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:526
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:682
+msgid "This release also updates translations:"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:105
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:143
+msgid "Abkhazian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:106
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:196
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:242
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:281
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:371
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:417
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:456
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:528
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:595
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:684
+msgid "Basque"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:108
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:145
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:199
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:246
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:283
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:329
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:375
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:419
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:458
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:532
+msgid "Chinese (China)"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:109
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:201
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:284
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:376
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:420
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:460
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:597
+msgid "Croatian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:110
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:203
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:247
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:286
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:422
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:571
+msgid "Danish"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:111
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:146
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:204
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:377
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:423
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:535
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:599
+msgid "Dutch"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:112
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:206
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:248
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:424
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:462
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:537
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:601
+msgid "Finnish"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:117
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:149
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:214
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:290
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:333
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:384
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:429
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:464
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:607
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:641
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:694
+msgid "Indonesian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:118
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:291
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:430
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:466
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:609
+msgid "Korean"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:120
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:152
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:218
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:257
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:293
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:388
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:469
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:499
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:546
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:611
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:700
+#, fuzzy
+msgid "Persian"
+msgstr "Útgáfa"
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:121
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:219
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:258
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:433
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:547
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:575
+#, fuzzy
+msgid "Polish"
+msgstr "Pólitík"
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:122
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:153
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:220
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:294
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:336
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:389
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:434
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:470
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:500
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:548
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:612
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:643
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:701
+msgid "Portuguese"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:123
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:221
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:295
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:337
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:390
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:435
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:471
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:501
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:549
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:613
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:702
+msgid "Portuguese (Brazil)"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:124
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:154
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:222
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:259
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:296
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:338
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:391
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:437
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:551
+msgid "Russian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:127
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:157
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:227
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:299
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:397
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:619
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:706
+msgid "Turkish"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:128
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:158
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:228
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:300
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:341
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:398
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:441
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:475
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:503
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:555
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:620
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:707
+msgid "Ukrainian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:134
+msgid "This is the second unstable release for GNOME 43."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:136
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:237
+msgid "Various fixes related to changed threading model"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:137
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:349
+msgid "Various UI parts updated"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:138
+msgid "Sources dropdown had been reworked"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:139
+msgid "Fixes a rare crash when showing app details"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:150
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:542
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:573
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:695
+msgid "Italian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:159
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:229
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:399
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:708
+msgid "Vietnamese"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:165
+msgid "This is the first unstable release for GNOME 43."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:167
+msgid "Various improvements to notifications"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:168
+msgid "Fix several crashes when handling flatpak apps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:169
+msgid "Add ‘Other Apps by Author’ section in the app details page"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:170
+msgid "Improve styling of app context lozenges"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:171
+msgid ""
+"Add ‘Available for Distro’ section to the overview page (if configured by "
+"your distribution)"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:172
+msgid ""
+"Show more details about file system permissions requested by flatpak apps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:173
+msgid "Show more types of URI from app metainfo"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:174
+msgid "Fix a few issues when using a dark mode theme"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:175
+msgid "Fix some issues with arrows in right-to-left locales"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:176
+msgid "Fix language pack installation for certain locales"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:177
+msgid "Improve debug output to make user bug reports more useful"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:178
+msgid "Add `--uninstall=ID` command line option"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:179
+msgid ""
+"Allow scrolling screenshots by clicking on next and previous screenshots"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:180
+msgid "Add support for webapps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:181
+msgid "Allow swiping back in the shell using touch gestures"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:182
+msgid "Improved caching of downloaded metadata"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:183
+msgid "Many internal architectural changes to make the code more maintainable"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:184
+msgid ""
+"The <code>popular-overrides</code> GSettings key has been removed; "
+"distribution vendors wishing to mark their apps as popular should see `doc/"
+"vendor-customisation.md` for examples of how to do this now"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:189
+msgid ""
+"The <code>hardcoded_popular</code> Meson option has been renamed to "
+"<code>hardcoded_curated</code>."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:207
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:249
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:425
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:602
+msgid "French"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:208
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:287
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:379
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:494
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:538
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:603
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:689
+msgid "Friulian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:217
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:256
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:335
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:387
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:432
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:468
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:498
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:545
+msgid "Occitan (post 1500)"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:235
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:405
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:561
+msgid "This is a stable release with the following changes:"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:238
+msgid "Added several appstream-related fixes"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:243
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:530
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:685
+msgid "Bokmål, Norwegian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:253
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:334
+msgid "Japanese"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:254
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:465
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:608
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:697
+msgid "Kazakh"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:268
+msgid "This is the third unstable release for GNOME 42."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:270
+msgid "Cancel ongoing update downloads when system power is low"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:271
+msgid "Numerous small user interface fixes and tweaks"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:272
+msgid "Prioritize full matches in search results"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:273
+msgid "Improvements in dark mode"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:274
+msgid "Fix disabling flatpak remotes from the ‘Software Repositories’ dialog"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:275
+msgid ""
+"Threading and performance improvements which should reduce the number of "
+"user interface freezes"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:276
+#, fuzzy
+msgid "Update some icons"
+msgstr "Spjald með uppfærslum"
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:277
+msgid ""
+"Check for updates when moving from a metered to a non-metered network "
+"connection"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:306
+msgid "This is the second unstable release for GNOME 42."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:308
+msgid "Allow <code>--verbose</code> to be enabled at runtime"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:309
+msgid "Condense the rows in the age rating context dialog"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:310
+msgid "Update the UI for ratings and reviews of apps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:311
+msgid "Improve the appearance of the category page loading screen"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:312
+msgid "Drop the first run dialog"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:313
+msgid "Improvements to dark theming"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:314
+msgid ""
+"Support viewing a specific metainfo file using <code>--show-metainfo</code>"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:315
+msgid "Several more threading improvements"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:316
+#, fuzzy
+msgid "Icon updates"
+msgstr "Leita að uppfærslum"
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:317
+msgid "Drop the hardcoded-popular plugin in favour of an appstream file"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:318
+msgid ""
+"The background image for upgrades is now looked for using several well-known "
+"(and distribution-specific) names in <code>${DATADIR}/gnome-software/"
+"backgrounds</code>, and the previous Fedora-specific default background "
+"image is no longer distributed. Similarly, the <code>upgrade-background-uri</"
+"code> GSettings key has been removed. Distributions may need to update how "
+"they ship background images. See <em>doc/vendor-customisation.md</em>."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:347
+msgid "This is the first unstable release for GNOME 42."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:350
+msgid "Support more markup in the application description"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:351
+msgid "Ask about package signature with PackageKit on signing issue"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:352
+msgid "Show better System Update progress"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:353
+msgid "Remove various cultural sensitivity badges"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:354
+msgid "Fix a crash when processing age ratings"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:355
+msgid ""
+"Reload application details only when not installing/removing the application"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:356
+msgid "Do not follow symlinks when calculating disk size usage"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:357
+msgid "Fix addons section, which could show addons for different application"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:358
+msgid ""
+"Fix showing a ‘transaction in progress’ error when using the rpm-ostree "
+"plugin"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:359
+msgid "Don’t recommend a reboot if firmware updates fail"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:360
+msgid ""
+"Fix flathub repo being considered present on Fedora 35 with filtered flathub"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:361
+msgid "Allow searching for extensions"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:362
+msgid "Fix translation of main button on updates page"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:363
+msgid "Fix codec installation process"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:364
+msgid "Add new GNOME Circle apps to the featured carousel"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:365
+msgid "Improve metadata support for snaps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:366
+msgid "Fix update checks being missed across suspend/hibernation"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:367
+msgid ""
+"Ensure application lists are updated when repositories are enabled/installed "
+"or disabled/removed"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:372
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:491
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:529
+msgid "Belarusian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:393
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:704
+msgid "Slovak"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:407
+msgid ""
+"Instead of showing all package-based apps as \"potentially unsafe\", only "
+"use that language for 3rd party ones"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:408
+msgid ""
+"Fix a bug where the \"Show more\" button on an app details page would "
+"flicker when the window is resized"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:409
+msgid ""
+"Fix a bug where Software sometimes shows an Uninstall button after "
+"uninstalling something"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:410
+msgid "Add GNOME Circle apps to the featured carousel"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:411
+msgid ""
+"Fix a bug where Software would sometimes fail to execute an install/remove "
+"operation for PackageKit software rather than showing a PolicyKit password "
+"prompt"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:412
+msgid ""
+"Fix a bug where Software would fail to upgrade the distribution via "
+"PackageKit"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:413
+msgid "Fix the hiding of rows on the Updates tab after they have been updated"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:436
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:550
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:614
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:703
+msgid "Romanian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:447
+msgid "This is the third unstable release for GNOME 41."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:449
+msgid "Tweaks to the context tiles and dialogs"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:450
+msgid "Fixes to the details page for non-desktop apps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:451
+msgid "Re-add support for the add-ons categories"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:452
+msgid "Sort new and updated apps by release date on the category page"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:481
+msgid "This is the second unstable release for GNOME 41."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:483
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:511
+msgid "Many parts of the user interface reworked"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:484
+msgid "Fix when the 'Launch' button is shown after an application install"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:485
+msgid "Fix appstream:// URL handling"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:486
+msgid "Fix application freeze on Flatpak application install/remove/update"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:487
+msgid "Disable automatic update downloads when in power saver mode"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:497
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:540
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:692
+msgid "Greek, Modern (1453-)"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:509
+msgid "This is the first unstable release for GNOME 41."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:512
+msgid "Improve error reporting from flatpak when low on disk space"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:513
+msgid "Fix issues with updating the UI when uninstalling apps with add-ons"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:514
+msgid "Don’t keep rpm-ostreed alive forever"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:515
+msgid "Prevent polkit checks showing up for background operations"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:516
+msgid "Disallow submitting reviews for an app you haven’t installed"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:517
+msgid "Show download size in the Updates page"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:518
+msgid "Notify when restart is needed when uninstalling an app"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:519
+msgid "Fix some issues with searches not running"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:520
+msgid "Allow non-integer average star ratings for apps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:521
+msgid "Reduce number of categories in the UI"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:522
+msgid "Improve ‘pending updates’ notifications"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:523
+msgid "Refine presentation of download and installed size on details page"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:524
+msgid "Remove left over gnome-online-account dependencies"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:563
+msgid "Fix handling of invalid or incomplete application icons"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:564
+msgid "Fix the plugin documentation to reflect reality"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:565
+msgid "Fix the Snap plugin to actually load icons"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:566
+msgid "Set download size to 0 after the package is downloaded"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:568
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:593
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:636
+#, fuzzy
+msgid "Translation updates:"
+msgstr "Þýðingar"
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:570
+msgid "British English"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:572
+msgid "Greek"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:574
+msgid "Norwegian Bokmål"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:576
+msgid "Punjabi"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:583
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:626
+msgid "This is an unstable release with the following changes:"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:585
+msgid "Implement new featured apps carousel."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:586
+msgid ""
+"List of Flatpak repositories is updated when changed using the Flatpak "
+"command line tool."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:587
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:630
+msgid ""
+"The loading page now shows the full color icon instead of the symbolic one."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:588
+msgid ""
+"Show release date in version history for releases that use the 'date' "
+"attribute."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:589
+msgid "Improved icon handling, including with hiDPI screens."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:590
+msgid "Fixed a bug in remembering when update notifications were shown."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:591
+msgid ""
+"Build as a dynamic rather than a static library, and rearrange installation "
+"paths."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:628
+msgid ""
+"GNOME Software now uses libappstream instead of libappstream-glib to work "
+"with appstream data which provides information about apps and other "
+"components."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:629
+msgid "App details pages show version history information when it's available."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:631
+msgid ""
+"UI elements for displaying app add-ons have been tweaked to more closely "
+"match the designs."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:632
+msgid ""
+"Installed icons and the badge showing the number of updates available were "
+"changed back to blue from green."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:633
+msgid ""
+"The dropdown showing the available sources of an application includes the "
+"packaging format (e.g. Flatpak vs RPM)."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:634
+msgid "A bug was fixed that prevented installation of .flatpakref files"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:642
+msgid "Panjabi"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:652
+msgid "This is the first unstable release for GNOME 40."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:654
+msgid ""
+"Small updates to how app descriptions and addons are presented on the "
+"details page"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:655
+msgid "Fix handling of pending app installations when going online"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:656
+msgid "Better support for dark themes (particularly Adwaita-Dark)"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:657
+msgid "Improvements to how app screenshots are loaded and presented"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:658
+msgid ""
+"Hide ‘Launch’ button if an application (for example, Wine) cannot be launched"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:659
+msgid "Make the UI clearer when loading information from flatpakref files"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:660
+msgid "Don’t update app metadata on start when download-updates is disabled"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:661
+msgid "Fix opening the updates list when clicking on an updates notification"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:662
+msgid ""
+"Fix state updates when installing flatpak apps or repos which are already "
+"installed"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:663
+msgid "Add Ctrl+Q as a keyboard shortcut for closing the window"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:664
+msgid "Rework timing and content of software update notifications"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:665
+msgid ""
+"Prevent uninstalled local apps from appearing in the installed apps list"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:666
+msgid "Support installation/uninstallation of addons for flatpak apps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:667
+msgid "Improve presentation of age ratings for apps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:668
+msgid "Fix a crash in the updates page"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:669
+msgid "Fix presentation of app permissions for fully sandboxed flatpak apps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:670
+msgid "Fix deadlock on rpm-ostree systems"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:671
+msgid "Fix presentation of version number changes in right-to-left locales"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:672
+msgid "Error handling improvements for fwupd"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:673
+msgid "Performance improvements for ODRS on startup"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:674
+msgid "Improve presentation of firmware warning messages"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:675
+msgid "XML parsing performance improvements"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:676
+msgid "Automatically remove end-of-life flatpak runtimes"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:677
+msgid "Support updating flatpaks to their new name when they are renamed"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:678
+#, fuzzy
+msgid "Update the GNOME Software icon"
+msgstr "GNOME hugbúnaður"
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:679
+msgid "Support more search results in the snap store"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:680
+msgid ""
+"Drop libgnome-desktop-3 dependency in favour of gsettings-desktop-schemas"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:696
+msgid "Kabyle"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:2043
+#: src/gs-application.c:256
 msgid "The GNOME Project"
 msgstr "GNOME verkefnið"
 
@@ -148,120 +1335,112 @@ msgid ""
 msgstr ""
 
 #: data/org.gnome.software.gschema.xml:47
-msgid "A list of popular applications"
-msgstr "Listi yfir vinsæl forrit"
-
-#: data/org.gnome.software.gschema.xml:48
-msgid "A list of applications to use, overriding the system defined ones."
-msgstr ""
-
-#: data/org.gnome.software.gschema.xml:52
 msgid "The last update check timestamp"
 msgstr "Tímamerki á síðustu athugun með uppfærslu"
 
-#: data/org.gnome.software.gschema.xml:56
+#: data/org.gnome.software.gschema.xml:51
 msgid "The last upgrade notification timestamp"
 msgstr "Tímamerki síðustu tilkynningar um kerfisuppfærslu"
 
-#: data/org.gnome.software.gschema.xml:60
+#: data/org.gnome.software.gschema.xml:55
 msgid "The last update notification timestamp"
 msgstr "Tímamerki síðustu tilkynningar um uppfærslu"
 
-#: data/org.gnome.software.gschema.xml:64
+#: data/org.gnome.software.gschema.xml:59
 msgid "The timestamp of the first security update, cleared after update"
 msgstr ""
 
-#: data/org.gnome.software.gschema.xml:68
+#: data/org.gnome.software.gschema.xml:63
 msgid "The last update timestamp"
 msgstr "Tímamerki síðustu uppfærslu"
 
-#: data/org.gnome.software.gschema.xml:72
+#: data/org.gnome.software.gschema.xml:67
 msgid "The last timestamp when the system was online and got any updates"
 msgstr ""
 
-#: data/org.gnome.software.gschema.xml:76
+#: data/org.gnome.software.gschema.xml:71
 msgid "The age in seconds to verify the upstream screenshot is still valid"
 msgstr ""
 
-#: data/org.gnome.software.gschema.xml:77
+#: data/org.gnome.software.gschema.xml:72
 msgid ""
 "Choosing a larger value will mean less round-trips to the remote server but "
 "updates to the screenshots may take longer to show to the user. A value of 0 "
 "means to never check the server if the image already exists in the cache."
 msgstr ""
 
-#: data/org.gnome.software.gschema.xml:86
+#: data/org.gnome.software.gschema.xml:81
 msgid "The server to use for application reviews"
 msgstr ""
 
-#: data/org.gnome.software.gschema.xml:90
+#: data/org.gnome.software.gschema.xml:85
 msgid "The minimum karma score for reviews"
 msgstr ""
 
-#: data/org.gnome.software.gschema.xml:91
+#: data/org.gnome.software.gschema.xml:86
 msgid "Reviews with karma less than this number will not be shown."
 msgstr ""
 
-#: data/org.gnome.software.gschema.xml:95
+#: data/org.gnome.software.gschema.xml:90
 msgid "A list of official repositories that should not be considered 3rd party"
 msgstr ""
 
-#: data/org.gnome.software.gschema.xml:99
+#: data/org.gnome.software.gschema.xml:94
 msgid "A list of required repositories that cannot be disabled or removed"
 msgstr ""
 
-#: data/org.gnome.software.gschema.xml:103
+#: data/org.gnome.software.gschema.xml:98
 msgid "A list of official repositories that should be considered free software"
 msgstr ""
 
-#: data/org.gnome.software.gschema.xml:107
+#: data/org.gnome.software.gschema.xml:102
 msgid ""
 "The licence URL to use when an application should be considered free software"
 msgstr ""
 
-#: data/org.gnome.software.gschema.xml:111
+#: data/org.gnome.software.gschema.xml:106
 msgid "Install bundled applications for all users on the system where possible"
 msgstr ""
 
-#: data/org.gnome.software.gschema.xml:115
+#: data/org.gnome.software.gschema.xml:110
 msgid "Allow access to the Software Repositories dialog"
 msgstr ""
 
-#: data/org.gnome.software.gschema.xml:119
+#: data/org.gnome.software.gschema.xml:114
 msgid "Offer upgrades for pre-releases"
 msgstr ""
 
-#: data/org.gnome.software.gschema.xml:123
+#: data/org.gnome.software.gschema.xml:118
 msgid "Show some UI elements informing the user that an app is non-free"
 msgstr ""
 
-#: data/org.gnome.software.gschema.xml:127
+#: data/org.gnome.software.gschema.xml:122
 msgid "Show the installed size for apps in the list of installed applications"
 msgstr ""
 
 #. Translators: Replace the link with a version in your language, e.g. 'https://de.wikipedia.org/wiki/Proprietäre_Software'. Remember to include ''.
-#: data/org.gnome.software.gschema.xml:131
+#: data/org.gnome.software.gschema.xml:126
 msgid "'https://en.wikipedia.org/wiki/Proprietary_software'"
 msgstr "'https://is.wikipedia.org/wiki/Séreignarhugbúnaður'"
 
-#: data/org.gnome.software.gschema.xml:132
+#: data/org.gnome.software.gschema.xml:127
 msgid "The URI that explains nonfree and proprietary software"
 msgstr "Slóð sem útskýrir ófrjálsan- og séreignarhugbúnað"
 
-#: data/org.gnome.software.gschema.xml:136
+#: data/org.gnome.software.gschema.xml:131
 msgid ""
 "A list of URLs pointing to appstream files that will be downloaded into an "
 "swcatalog folder"
 msgstr ""
 
-#: data/org.gnome.software.gschema.xml:140
+#: data/org.gnome.software.gschema.xml:135
 msgid ""
 "Install the AppStream files to a system-wide location for all users. If "
 "false, files are installed in non-standard $XDG_DATA_HOME/swcatalog/xml "
 "directory"
 msgstr ""
 
-#: data/org.gnome.software.gschema.xml:144
+#: data/org.gnome.software.gschema.xml:139
 msgid ""
 "Priority order of packaging formats to prefer, with more important formats "
 "listed first. An empty array means the default order. Omitted formats are "
@@ -269,7 +1448,7 @@ msgid ""
 "snap."
 msgstr ""
 
-#: data/org.gnome.software.gschema.xml:151
+#: data/org.gnome.software.gschema.xml:146
 msgid "A string storing the gnome-online-account id used to login"
 msgstr ""
 
@@ -304,355 +1483,361 @@ msgstr "Mistókst að votta gerð efnis: %s"
 msgid "Failed to move: %s"
 msgstr "Mistókst að færa: %s"
 
-#: src/gnome-software-local-file.desktop.in:3
+#: src/gnome-software-local-file-flatpak.desktop.in:3
+#: src/gnome-software-local-file-fwupd.desktop.in:3
+#: src/gnome-software-local-file-packagekit.desktop.in:3
+#: src/gnome-software-local-file-snap.desktop.in:3
 msgid "Software Install"
 msgstr "Uppsetning hugbúnaðar"
 
-#: src/gnome-software-local-file.desktop.in:4
+#: src/gnome-software-local-file-flatpak.desktop.in:4
+#: src/gnome-software-local-file-fwupd.desktop.in:4
+#: src/gnome-software-local-file-packagekit.desktop.in:4
+#: src/gnome-software-local-file-snap.desktop.in:4
 msgid "Install selected software on the system"
 msgstr "Setja valinn hugbúnað upp á kerfinu"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:135
+#: src/gs-age-rating-context-dialog.c:134
 msgid "Cartoon Violence"
 msgstr "Teiknimyndaofbeldi"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:137
+#: src/gs-age-rating-context-dialog.c:136
 msgid "No information regarding cartoon violence"
 msgstr "Engar upplýsingar varðandi teiknimyndaofbeldi"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:145
+#: src/gs-age-rating-context-dialog.c:144
 msgid "Fantasy Violence"
 msgstr "Fantasíuofbeldi"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:147
+#: src/gs-age-rating-context-dialog.c:146
 msgid "No information regarding fantasy violence"
 msgstr "Engar upplýsingar varðandi fantasíuofbeldi"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:155
+#: src/gs-age-rating-context-dialog.c:154
 msgid "Realistic Violence"
 msgstr "Raunsæislegt ofbeldi"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:157
+#: src/gs-age-rating-context-dialog.c:156
 msgid "No information regarding realistic violence"
 msgstr "Engar upplýsingar varðandi raunsæislegt ofbeldi"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:165
+#: src/gs-age-rating-context-dialog.c:164
 msgid "Violence Depicting Bloodshed"
 msgstr "Ofbeldi sem sýnir blóðsúthellingar"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:167
+#: src/gs-age-rating-context-dialog.c:166
 msgid "No information regarding bloodshed"
 msgstr "Engar upplýsingar varðandi blóðsúthellingar"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:175
+#: src/gs-age-rating-context-dialog.c:174
 msgid "Sexual Violence"
 msgstr "Kynferðislegt ofbeldi"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:177
+#: src/gs-age-rating-context-dialog.c:176
 msgid "No information regarding sexual violence"
 msgstr "Engar upplýsingar varðandi kynferðislegt ofbeldi"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:185
+#: src/gs-age-rating-context-dialog.c:184
 msgid "Alcohol"
 msgstr "Áfengi"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:187
+#: src/gs-age-rating-context-dialog.c:186
 msgid "No information regarding references to alcohol"
 msgstr "Engar upplýsingar varðandi tilvísanir í áfengi"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:195
+#: src/gs-age-rating-context-dialog.c:194
 msgid "Narcotics"
 msgstr "Fíkniefni"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:197
+#: src/gs-age-rating-context-dialog.c:196
 msgid "No information regarding references to illicit drugs"
 msgstr "Engar upplýsingar varðandi tilvísanir í ólögleg lyf"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:205
+#: src/gs-age-rating-context-dialog.c:204
 msgid "Tobacco"
 msgstr "Tóbak"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:207
+#: src/gs-age-rating-context-dialog.c:206
 msgid "No information regarding references to tobacco products"
 msgstr "Engar upplýsingar varðandi tilvísanir í tóbaksvörur"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:215
-#: src/gs-age-rating-context-dialog.c:544
+#: src/gs-age-rating-context-dialog.c:214
+#: src/gs-age-rating-context-dialog.c:543
 msgid "Nudity"
 msgstr "Nekt"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:217
+#: src/gs-age-rating-context-dialog.c:216
 msgid "No information regarding nudity of any sort"
 msgstr "Engar upplýsingar varðandi nekt af einhverju tagi"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:225
+#: src/gs-age-rating-context-dialog.c:224
 msgid "Sexual Themes"
 msgstr "Kynlífstengt"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:227
+#: src/gs-age-rating-context-dialog.c:226
 msgid "No information regarding references to or depictions of sexual nature"
 msgstr "Engar upplýsingar varðandi kynferðislegar tilvísanir eða myndefni"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:235
+#: src/gs-age-rating-context-dialog.c:234
 msgid "Profanity"
 msgstr "Blótsyrði"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:237
+#: src/gs-age-rating-context-dialog.c:236
 msgid "No information regarding profanity of any kind"
 msgstr ""
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:245
+#: src/gs-age-rating-context-dialog.c:244
 msgid "Inappropriate Humor"
 msgstr "Óviðeigandi húmor"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:247
+#: src/gs-age-rating-context-dialog.c:246
 msgid "No information regarding inappropriate humor"
 msgstr "Engar upplýsingar varðandi óviðeigandi húmor"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:255
+#: src/gs-age-rating-context-dialog.c:254
 msgid "Discrimination"
 msgstr "Mismunun"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:257
+#: src/gs-age-rating-context-dialog.c:256
 msgid "No information regarding discriminatory language of any kind"
 msgstr "Engar upplýsingar varðandi mismunandi orðfæri af einhverju tagi"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:265
+#: src/gs-age-rating-context-dialog.c:264
 msgid "Advertising"
 msgstr "Auglýsingar"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:267
+#: src/gs-age-rating-context-dialog.c:266
 msgid "No information regarding advertising of any kind"
 msgstr "Engar upplýsingar varðandi auglýsingar af einhverju tagi"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:275
+#: src/gs-age-rating-context-dialog.c:274
 msgid "Gambling"
 msgstr "Fjárhættuspil"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:277
+#: src/gs-age-rating-context-dialog.c:276
 msgid "No information regarding gambling of any kind"
 msgstr "Engar upplýsingar varðandi fjárhættuspil af einhverju tagi"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:285
+#: src/gs-age-rating-context-dialog.c:284
 msgid "Purchasing"
 msgstr "Verslun"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:287
+#: src/gs-age-rating-context-dialog.c:286
 msgid "No information regarding the ability to spend money"
 msgstr ""
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:295
+#: src/gs-age-rating-context-dialog.c:294
 msgid "Chat Between Users"
 msgstr "Spjall milli notenda"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:297
+#: src/gs-age-rating-context-dialog.c:296
 msgid "No information regarding ways to chat with other users"
 msgstr ""
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:305
+#: src/gs-age-rating-context-dialog.c:304
 msgid "Audio Chat Between Users"
 msgstr "Hljóðspjall milli notenda"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:307
+#: src/gs-age-rating-context-dialog.c:306
 msgid "No information regarding ways to talk with other users"
 msgstr ""
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:315
+#: src/gs-age-rating-context-dialog.c:314
 msgid "Contact Details"
 msgstr "Nánar um tengilið"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:317
+#: src/gs-age-rating-context-dialog.c:316
 msgid ""
 "No information regarding sharing of social network usernames or email "
 "addresses"
 msgstr ""
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:325
+#: src/gs-age-rating-context-dialog.c:324
 msgid "Identifying Information"
 msgstr "Auðkennandi upplýsingar"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:327
+#: src/gs-age-rating-context-dialog.c:326
 msgid "No information regarding sharing of user information with third parties"
 msgstr ""
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:335
+#: src/gs-age-rating-context-dialog.c:334
 msgid "Location Sharing"
 msgstr "Deiling staðsetninga"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:337
+#: src/gs-age-rating-context-dialog.c:336
 msgid "No information regarding sharing of physical location with other users"
 msgstr ""
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:361
+#: src/gs-age-rating-context-dialog.c:360
 msgid "Homosexuality"
 msgstr "Hinsegin"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:363
+#: src/gs-age-rating-context-dialog.c:362
 msgid "No information regarding references to homosexuality"
 msgstr ""
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:371
+#: src/gs-age-rating-context-dialog.c:370
 msgid "Prostitution"
 msgstr "Vændi"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:373
+#: src/gs-age-rating-context-dialog.c:372
 msgid "No information regarding references to prostitution"
 msgstr ""
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:381
+#: src/gs-age-rating-context-dialog.c:380
 msgid "Adultery"
 msgstr "Fullorðinsefni"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:383
+#: src/gs-age-rating-context-dialog.c:382
 msgid "No information regarding references to adultery"
 msgstr ""
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:391
+#: src/gs-age-rating-context-dialog.c:390
 msgid "Sexualized Characters"
 msgstr "Kyngerfðar persónur"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:393
+#: src/gs-age-rating-context-dialog.c:392
 msgid "No information regarding sexualized characters"
 msgstr ""
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:401
+#: src/gs-age-rating-context-dialog.c:400
 msgid "Desecration"
 msgstr ""
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:403
+#: src/gs-age-rating-context-dialog.c:402
 msgid "No information regarding references to desecration"
 msgstr ""
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:411
+#: src/gs-age-rating-context-dialog.c:410
 msgid "Human Remains"
 msgstr "Líkamsleifar"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:413
+#: src/gs-age-rating-context-dialog.c:412
 msgid "No information regarding visible dead human remains"
 msgstr ""
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:421
+#: src/gs-age-rating-context-dialog.c:420
 msgid "Slavery"
 msgstr "Þrælahald"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
-#: src/gs-age-rating-context-dialog.c:423
+#: src/gs-age-rating-context-dialog.c:422
 msgid "No information regarding references to slavery"
 msgstr ""
 
-#: src/gs-age-rating-context-dialog.c:495
+#: src/gs-age-rating-context-dialog.c:494
 msgid "Does not include references to drugs"
 msgstr ""
 
-#: src/gs-age-rating-context-dialog.c:497
+#: src/gs-age-rating-context-dialog.c:496
 msgid ""
 "Does not include swearing, profanity, and other kinds of strong language"
 msgstr ""
 
-#: src/gs-age-rating-context-dialog.c:499
+#: src/gs-age-rating-context-dialog.c:498
 msgid "Does not include ads or monetary transactions"
 msgstr ""
 
-#: src/gs-age-rating-context-dialog.c:501
+#: src/gs-age-rating-context-dialog.c:500
 msgid "Does not include sex or nudity"
 msgstr "Inniheldur ekki nekt eða kynlíf"
 
-#: src/gs-age-rating-context-dialog.c:503
+#: src/gs-age-rating-context-dialog.c:502
 msgid "Does not include uncontrolled chat functionality"
 msgstr ""
 
-#: src/gs-age-rating-context-dialog.c:505
+#: src/gs-age-rating-context-dialog.c:504
 msgid "Does not include violence"
 msgstr "Inniheldur ekki ofbeldi"
 
-#: src/gs-age-rating-context-dialog.c:538
+#: src/gs-age-rating-context-dialog.c:537
 msgid "Drugs"
 msgstr "Eiturlyf"
 
-#: src/gs-age-rating-context-dialog.c:540
+#: src/gs-age-rating-context-dialog.c:539
 msgid "Strong Language"
 msgstr "Sterklega tekið til orða"
 
-#: src/gs-age-rating-context-dialog.c:542
+#: src/gs-age-rating-context-dialog.c:541
 msgid "Money"
 msgstr "Peningar"
 
-#: src/gs-age-rating-context-dialog.c:546
+#: src/gs-age-rating-context-dialog.c:545
 msgid "Social"
 msgstr "Félagslegt"
 
-#: src/gs-age-rating-context-dialog.c:548
+#: src/gs-age-rating-context-dialog.c:547
 msgid "Violence"
 msgstr "Ofbeldi"
 
 #. Translators: This is used to join two list items together in
 #. * a compressed way of displaying a list of descriptions of age
 #. * ratings for apps. The order of the items does not matter.
-#: src/gs-age-rating-context-dialog.c:659
+#: src/gs-age-rating-context-dialog.c:658
 #, c-format
 msgid "%s • %s"
 msgstr "%s • %s"
 
 #. Translators: The app is considered suitable to be run by all ages of people.
 #. * This is displayed in a context tile, so the string should be short.
-#. TRANSLATORS: this is a subcategory matching all the
-#. * different apps in the parent category, e.g. "Games"
-#: src/gs-age-rating-context-dialog.c:941 lib/gs-category.c:214
+#: src/gs-age-rating-context-dialog.c:936
+#, fuzzy
+msgctxt "Age rating"
 msgid "All"
 msgstr "Allt"
 
@@ -662,42 +1847,42 @@ msgstr "Allt"
 #. Translators: This is shown in a bubble if the storage
 #. * size of an application is not known. The bubble is small,
 #. * so the string should be as short as possible.
-#: src/gs-age-rating-context-dialog.c:954 src/gs-app-context-bar.c:194
-#: src/gs-storage-context-dialog.c:87
+#: src/gs-age-rating-context-dialog.c:949 src/gs-app-context-bar.c:206
+#: src/gs-storage-context-dialog.c:89
 msgid "?"
 msgstr "?"
 
 #. Translators: This is a dialogue title which indicates that an app is suitable
 #. * for all ages. The placeholder is the app name.
-#: src/gs-age-rating-context-dialog.c:1029
+#: src/gs-age-rating-context-dialog.c:1023
 #, c-format
 msgid "%s is suitable for everyone"
 msgstr "%s hentar fyrir alla aldurshópa"
 
 #. Translators: This is a dialogue title which indicates that an app is suitable
 #. * for children up to around age 3. The placeholder is the app name.
-#: src/gs-age-rating-context-dialog.c:1033
+#: src/gs-age-rating-context-dialog.c:1027
 #, c-format
 msgid "%s is suitable for toddlers"
 msgstr "%s hentar fyrir smábörn"
 
 #. Translators: This is a dialogue title which indicates that an app is suitable
 #. * for children up to around age 5. The placeholder is the app name.
-#: src/gs-age-rating-context-dialog.c:1037
+#: src/gs-age-rating-context-dialog.c:1031
 #, c-format
 msgid "%s is suitable for young children"
 msgstr "%s hentar fyrir ung börn"
 
 #. Translators: This is a dialogue title which indicates that an app is suitable
 #. * for people up to around age 18. The placeholder is the app name.
-#: src/gs-age-rating-context-dialog.c:1045
+#: src/gs-age-rating-context-dialog.c:1039
 #, c-format
 msgid "%s is suitable for teenagers"
 msgstr "%s hentar fyrir unglinga"
 
 #. Translators: This is a dialogue title which indicates that an app is suitable
 #. * for people aged up to and over 18. The placeholder is the app name.
-#: src/gs-age-rating-context-dialog.c:1049
+#: src/gs-age-rating-context-dialog.c:1043
 #, c-format
 msgid "%s is suitable for adults"
 msgstr "%s hentar fyrir fullorðna"
@@ -705,24 +1890,25 @@ msgstr "%s hentar fyrir fullorðna"
 #. Translators: This is a dialogue title which indicates that an app is suitable
 #. * for a specified age group. The first placeholder is the app name, the second
 #. * is the age group.
-#: src/gs-age-rating-context-dialog.c:1054
+#: src/gs-age-rating-context-dialog.c:1048
 #, c-format
 msgid "%s is suitable for %s"
 msgstr "%s hentar fyrir %s"
 
 #. Translators: This is the title of the dialog which contains information about the suitability of an app for different ages.
 #. this one’s not a placeholder
-#: src/gs-age-rating-context-dialog.ui:5 src/gs-app-context-bar.ui:245
+#: src/gs-age-rating-context-dialog.ui:5 src/gs-app-context-bar.ui:211
 msgid "Age Rating"
 msgstr "Aldursbil"
 
-#: src/gs-age-rating-context-dialog.ui:78
-#: src/gs-hardware-support-context-dialog.ui:78
-#: src/gs-safety-context-dialog.ui:228
-msgid "How to add missing information"
+#: src/gs-age-rating-context-dialog.ui:68
+#: src/gs-hardware-support-context-dialog.ui:71
+#: src/gs-safety-context-dialog.ui:221
+#, fuzzy
+msgid "How to contribute missing information"
 msgstr "Hvernig á að bæta við upplýsingum sem vantar"
 
-#: lib/gs-app.c:5741
+#: lib/gs-app.c:6175
 msgid "Local file"
 msgstr "Staðbundin skrá"
 
@@ -731,37 +1917,37 @@ msgstr "Staðbundin skrá"
 #. Example string: "Local file (RPM)"
 #. Translators: The first placeholder is an app runtime
 #. * name, the second is its version number.
-#: lib/gs-app.c:5757 src/gs-safety-context-dialog.c:419
+#: lib/gs-app.c:6194 src/gs-safety-context-dialog.c:439
 #, c-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: lib/gs-app.c:5833
+#: lib/gs-app.c:6271
 msgid "Package"
 msgstr "Pakki"
 
-#: src/gs-app-addon-row.c:97 src/gs-app-row.c:455
+#: src/gs-app-addon-row.c:97 src/gs-app-row.c:457
 msgid "Pending"
 msgstr "Í bið"
 
-#: src/gs-app-addon-row.c:101 src/gs-app-row.c:459 src/gs-details-page.c:346
+#: src/gs-app-addon-row.c:101 src/gs-app-row.c:461 src/gs-details-page.c:369
 msgid "Pending install"
 msgstr "Uppsetning í bið"
 
-#: src/gs-app-addon-row.c:105 src/gs-app-row.c:463 src/gs-details-page.c:353
+#: src/gs-app-addon-row.c:105 src/gs-app-row.c:465 src/gs-details-page.c:376
 msgid "Pending remove"
 msgstr "Fjarlæging í bið"
 
-#. Translators: This is in the context of a list of apps which are installed on the system.
-#. Translators: A label for a button to show only software which is already installed.
 #: src/gs-app-addon-row.c:111 src/gs-app-row.ui:197 src/gs-app-tile.ui:50
-#: src/gs-feature-tile.c:547 src/gs-installed-page.c:709 src/gs-shell.ui:305
+#: src/gs-feature-tile.c:535
+#, fuzzy
+msgctxt "Single app"
 msgid "Installed"
 msgstr "Uppsett"
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * shows the status of an application being installed
-#: src/gs-app-addon-row.c:115 src/gs-app-row.c:204 src/gs-details-page.c:339
+#: src/gs-app-addon-row.c:115 src/gs-app-row.c:205 src/gs-details-page.c:362
 msgid "Installing"
 msgstr "Set upp"
 
@@ -810,26 +1996,20 @@ msgid "Home folder"
 msgstr "Heimamappa"
 
 #: src/gs-app-details-page.c:72 src/gs-app-details-page.c:74
-#: src/gs-app-details-page.c:77
+#: src/gs-app-details-page.c:77 src/gs-app-details-page.c:150
 msgid "Can view, edit and create files"
 msgstr "Getur skoðað, breytt og búið til skrár"
 
 #: src/gs-app-details-page.c:73 src/gs-app-details-page.c:75
-#: src/gs-app-details-page.c:78
+#: src/gs-app-details-page.c:78 src/gs-app-details-page.c:145
 msgid "Can view files"
 msgstr "Getur skoðað skrár"
 
 #: src/gs-app-details-page.c:74 src/gs-app-details-page.c:75
-#: src/gs-app-details-page.c:76
 msgid "File system"
 msgstr "Skráakerfi"
 
-#. Translators: This indicates an app can access data in the system unknown to the Software.
-#. * It’s used in a context tile, so should be short.
-#: src/gs-app-details-page.c:76 src/gs-app-context-bar.c:341
-msgid "Can access arbitrary files"
-msgstr "Hefur aðgang að allskyns skrám"
-
+#. The GS_APP_PERMISSIONS_FLAGS_FILESYSTEM_OTHER is used only as a flag, with actual files being part of the read/full lists
 #: src/gs-app-details-page.c:77 src/gs-app-details-page.c:78
 msgid "Downloads folder"
 msgstr "Niðurhalsmappa"
@@ -851,7 +2031,6 @@ msgid "Uses an old, insecure display system"
 msgstr ""
 
 #: src/gs-app-details-page.c:81
-#| msgid "Sandboxed"
 msgid "Sandbox escape"
 msgstr "Flótti úr einangrun"
 
@@ -859,48 +2038,42 @@ msgstr "Flótti úr einangrun"
 msgid "Can escape the sandbox and circumvent any other restrictions"
 msgstr ""
 
-#. Translators: This is the source and upgrade version of an
-#. * application, shown to the user when they view more detailed
-#. * information about pending updates. The source is of the form
-#. * ‘deja-dup’ (a package name) or
-#. * ‘app/org.gnome.Builder/x86_64/main’ (a flatpak ID), and the
-#. * version is of the form ‘40.4-1.fc34’ (a version number).
-#: src/gs-app-details-page.c:138
-#, c-format
-msgid "%s %s"
-msgstr "%s %s"
+#. FIXME support app == NULL
+#. set window title
+#: src/gs-app-details-page.c:166
+#, fuzzy
+msgid "Update Details"
+msgstr "Nánari upplýsingar um uppfærslu"
 
 #. TRANSLATORS: this is where the packager did not write
 #. * a description for the update
-#: src/gs-app-details-page.c:157
+#: src/gs-app-details-page.c:174
 msgid "No update description available."
 msgstr "Engin lýsing til á uppfærslu."
 
 #: src/gs-app-details-page.ui:25 src/gs-os-update-page.ui:25
-#: src/gs-shell.ui:365 src/gs-shell.ui:456
+#: src/gs-shell.ui:367 src/gs-shell.ui:458
 msgid "Go back"
 msgstr "Fara til baka"
 
-#: src/gs-app-details-page.ui:47 src/gs-app-row.c:514
+#: src/gs-app-details-page.ui:48 src/gs-app-row.c:516
 msgid "Requires additional permissions"
 msgstr "Krefst viðbótarheimilda"
 
 #. Translators: Header of the section with other users' opinions about the app.
-#: src/gs-app-reviews-dialog.ui:6 src/gs-details-page.ui:797
+#: src/gs-app-reviews-dialog.ui:6 src/gs-details-page.ui:855
 msgid "Reviews"
 msgstr "Umsagnir"
 
 #: src/gs-app-reviews-dialog.ui:25
-#| msgid "Please restart the application."
 msgid "No reviews were found for this application."
 msgstr "Engar umsagnir fundust fyrir þetta forrit."
 
 #: src/gs-app-reviews-dialog.ui:27
-#| msgid "Reviews"
 msgid "No Reviews"
 msgstr "Engar umsagnir"
 
-#: src/gs-app-version-history-dialog.ui:6 src/gs-details-page.ui:475
+#: src/gs-app-version-history-dialog.ui:6 src/gs-details-page.ui:533
 msgid "Version History"
 msgstr "Útgáfuferill"
 
@@ -925,150 +2098,154 @@ msgid "%e %B %Y"
 msgstr "%e. %B %Y"
 
 #. TRANSLATORS: this is a command line option
-#: src/gs-application.c:121
+#: src/gs-application.c:124
 msgid "Start up mode: either ‘updates’, ‘updated’, ‘installed’ or ‘overview’"
 msgstr ""
 
-#: src/gs-application.c:121
+#: src/gs-application.c:124
 msgid "MODE"
 msgstr "HAMUR"
 
-#: src/gs-application.c:123
+#: src/gs-application.c:126
 msgid "Search for applications"
 msgstr "Leita að forritum"
 
-#: src/gs-application.c:123
+#: src/gs-application.c:126
 msgid "SEARCH"
 msgstr "LEITA"
 
-#: src/gs-application.c:125
+#: src/gs-application.c:128
 msgid "Show application details (using application ID)"
 msgstr ""
 
-#: src/gs-application.c:125 src/gs-application.c:129
+#: src/gs-application.c:128 src/gs-application.c:132 src/gs-application.c:134
 msgid "ID"
 msgstr "ID"
 
-#: src/gs-application.c:127
+#: src/gs-application.c:130
 msgid "Show application details (using package name)"
 msgstr ""
 
-#: src/gs-application.c:127
+#: src/gs-application.c:130
 msgid "PKGNAME"
 msgstr "PAKKAHEITI"
 
-#: src/gs-application.c:129
+#: src/gs-application.c:132
 msgid "Install the application (using application ID)"
 msgstr ""
 
-#: src/gs-application.c:131
+#: src/gs-application.c:134
+msgid "Uninstall the application (using application ID)"
+msgstr ""
+
+#: src/gs-application.c:136
 msgid "Open a local package file"
 msgstr ""
 
-#: src/gs-application.c:131 src/gs-application.c:136
+#: src/gs-application.c:136 src/gs-application.c:141
 msgid "FILENAME"
 msgstr "SKRÁARHEITI"
 
-#: src/gs-application.c:133
+#: src/gs-application.c:138
 msgid ""
 "The kind of interaction expected for this action: either ‘none’, ‘notify’, "
 "or ‘full’"
 msgstr ""
 
-#: src/gs-application.c:136
+#: src/gs-application.c:141
 msgid "Show a local metainfo or appdata file"
 msgstr ""
 
-#: src/gs-application.c:138
+#: src/gs-application.c:143
 msgid "Show verbose debugging information"
 msgstr ""
 
-#: src/gs-application.c:140
+#: src/gs-application.c:145
 msgid "Installs any pending updates in the background"
 msgstr ""
 
-#: src/gs-application.c:142
+#: src/gs-application.c:147
 msgid "Show update preferences"
 msgstr ""
 
-#: src/gs-application.c:144
+#: src/gs-application.c:149
 msgid "Quit the running instance"
 msgstr ""
 
-#: src/gs-application.c:146
+#: src/gs-application.c:151
 msgid "Prefer local file sources to AppStream"
 msgstr ""
 
-#: src/gs-application.c:148
+#: src/gs-application.c:153
 msgid "Show version number"
 msgstr "Birta útgáfunúmer"
 
-#: src/gs-application.c:241
+#: src/gs-application.c:261 src/gs-application.c:269
 msgid "Copyright © 2016–2022 GNOME Software contributors"
 msgstr "Höfundarréttur © 2016–2022 höfundar hugbúnaðar í GNOME"
 
-#: src/gs-application.c:244
+#: src/gs-application.c:263 src/gs-application.c:272
 msgid "translator-credits"
 msgstr "Sveinn í Felli, sv1@fellsnet.is"
 
 #. TRANSLATORS: this is the title of the about window
 #. TRANSLATORS: this is the menu item that opens the about window
-#: src/gs-application.c:257 src/gs-shell.c:2149
+#: src/gs-application.c:277 src/gs-shell.c:2149
 msgid "About Software"
 msgstr "Um hugbúnaðinn"
 
 #. TRANSLATORS: well, we seem to think so, anyway
-#: src/gs-application.c:260
+#: src/gs-application.c:280
 msgid "A nice way to manage the software on your system."
 msgstr ""
 
 #. TRANSLATORS: we tried to show an app that did not exist
-#: src/gs-application.c:449
+#: src/gs-application.c:468
 msgid "Sorry! There are no details for that application."
 msgstr "Því miður! Engar nánari upplýsingar finnast fyrir forritið."
 
 #. Translators: The disk usage of an application when installed.
 #. * This is displayed in a context tile, so the string should be short.
-#: src/gs-app-context-bar.c:155 src/gs-storage-context-dialog.c:128
+#: src/gs-app-context-bar.c:162 src/gs-storage-context-dialog.c:133
 msgid "Installed Size"
 msgstr "Uppsett stærð"
 
-#: src/gs-app-context-bar.c:158
+#: src/gs-app-context-bar.c:165
 #, c-format
 msgid "Includes %s of data and %s of cache"
 msgstr ""
 
-#: src/gs-app-context-bar.c:161
+#: src/gs-app-context-bar.c:168
 #, c-format
 msgid "Includes %s of data"
 msgstr ""
 
-#: src/gs-app-context-bar.c:164
+#: src/gs-app-context-bar.c:171
 #, c-format
 msgid "Includes %s of cache"
 msgstr ""
 
-#: src/gs-app-context-bar.c:167
+#: src/gs-app-context-bar.c:174
 msgid "Cache and data usage unknown"
 msgstr ""
 
 #. Translators: The download size of an application.
 #. * This is displayed in a context tile, so the string should be short.
-#: src/gs-app-context-bar.c:176 src/gs-storage-context-dialog.c:156
+#: src/gs-app-context-bar.c:187 src/gs-storage-context-dialog.c:165
 msgid "Download Size"
 msgstr "Niðurhalsstærð"
 
-#: src/gs-app-context-bar.c:179
+#: src/gs-app-context-bar.c:191
 msgid "Needs no additional system downloads"
 msgstr ""
 
-#: src/gs-app-context-bar.c:181
+#: src/gs-app-context-bar.c:193
 msgid "Needs an unknown size of additional system downloads"
 msgstr ""
 
 #. Translators: The placeholder is for a size string,
 #. * such as ‘150 MB’ or ‘1.5 GB’.
-#: src/gs-app-context-bar.c:186
+#: src/gs-app-context-bar.c:198
 #, c-format
 msgid "Needs %s of additional system downloads"
 msgstr ""
@@ -1076,117 +2253,123 @@ msgstr ""
 #. Translators: Displayed if the download or installed size of
 #. * an app could not be determined.
 #. * This is displayed in a context tile, so the string should be short.
-#: src/gs-app-context-bar.c:200
+#: src/gs-app-context-bar.c:212
 msgid "Size is unknown"
 msgstr "Stærð er óþekkt"
 
 #. Translators: This indicates an app requires no permissions to run.
 #. * It’s used in a context tile, so should be short.
-#: src/gs-app-context-bar.c:264
+#: src/gs-app-context-bar.c:282
 msgid "No permissions"
 msgstr "Engar heimildir"
 
 #. Translators: This indicates an app uses the network.
 #. * It’s used in a context tile, so should be short.
-#: src/gs-app-context-bar.c:275
+#: src/gs-app-context-bar.c:293
 msgid "Has network access"
 msgstr "Er með aðgang að netkerfi"
 
 #. Translators: This indicates an app uses D-Bus system services.
 #. * It’s used in a context tile, so should be short.
-#: src/gs-app-context-bar.c:282
+#: src/gs-app-context-bar.c:300
 msgid "Uses system services"
 msgstr "Notar kerfisþjónustur"
 
 #. Translators: This indicates an app uses D-Bus session services.
 #. * It’s used in a context tile, so should be short.
-#: src/gs-app-context-bar.c:289
+#: src/gs-app-context-bar.c:307
 msgid "Uses session services"
 msgstr "Notar setuþjónustur"
 
 #. Translators: This indicates an app can access arbitrary hardware devices.
 #. * It’s used in a context tile, so should be short.
-#: src/gs-app-context-bar.c:296
+#: src/gs-app-context-bar.c:314
 msgid "Can access hardware devices"
 msgstr "Hefur aðgang að vélbúnaði"
 
 #. Translators: This indicates an app can read/write to the user’s home or the entire filesystem.
 #. * It’s used in a context tile, so should be short.
-#: src/gs-app-context-bar.c:308
+#: src/gs-app-context-bar.c:326
 msgid "Can read/write all your data"
 msgstr "Getur lesið/skrifað öll gögnin þín"
 
 #. Translators: This indicates an app can read (but not write) from the user’s home or the entire filesystem.
 #. * It’s used in a context tile, so should be short.
-#: src/gs-app-context-bar.c:320
+#: src/gs-app-context-bar.c:338
 msgid "Can read all your data"
 msgstr "Getur lesið öll gögnin þín"
 
 #. Translators: This indicates an app can read/write to the user’s Downloads directory.
 #. * It’s used in a context tile, so should be short.
-#: src/gs-app-context-bar.c:327
+#: src/gs-app-context-bar.c:345
 msgid "Can read/write your downloads"
 msgstr "Getur lesið/skrifað niðurhalið þitt"
 
 #. Translators: This indicates an app can read (but not write) from the user’s Downloads directory.
 #. * It’s used in a context tile, so should be short.
-#: src/gs-app-context-bar.c:334
+#: src/gs-app-context-bar.c:352
 msgid "Can read your downloads"
 msgstr "Getur lesið niðurhalið þitt"
 
+#. Translators: This indicates an app can access data in the system unknown to the Software.
+#. * It’s used in a context tile, so should be short.
+#: src/gs-app-context-bar.c:359
+msgid "Can access arbitrary files"
+msgstr "Hefur aðgang að allskyns skrám"
+
 #. Translators: This indicates an app can access or change user settings.
 #. * It’s used in a context tile, so should be short.
-#: src/gs-app-context-bar.c:348 src/gs-safety-context-dialog.c:218
+#: src/gs-app-context-bar.c:366 src/gs-safety-context-dialog.c:227
 msgid "Can access and change user settings"
 msgstr "Getur skoðað og breytt stillingum notenda"
 
 #. Translators: This indicates an app uses the X11 windowing system.
 #. * It’s used in a context tile, so should be short.
-#: src/gs-app-context-bar.c:355 src/gs-safety-context-dialog.c:202
+#: src/gs-app-context-bar.c:373 src/gs-safety-context-dialog.c:211
 msgid "Uses a legacy windowing system"
 msgstr "Notar gamaldags gluggakerfi"
 
 #. Translators: This indicates an app can escape its sandbox.
 #. * It’s used in a context tile, so should be short.
-#: src/gs-app-context-bar.c:362 src/gs-safety-context-dialog.c:210
+#: src/gs-app-context-bar.c:380 src/gs-safety-context-dialog.c:219
 msgid "Can acquire arbitrary permissions"
 msgstr ""
 
 #. Translators: This indicates that an application has been packaged
 #. * by the user’s distribution and is safe.
 #. * It’s used in a context tile, so should be short.
-#: src/gs-app-context-bar.c:388 src/gs-safety-context-dialog.c:143
+#: src/gs-app-context-bar.c:406 src/gs-safety-context-dialog.c:146
 msgid "Reviewed by your distribution"
 msgstr "Yfirfarið af dreifingunni þinni"
 
 #. Translators: This indicates that an application has been packaged
 #. * by someone other than the user’s distribution, so might not be safe.
 #. * It’s used in a context tile, so should be short.
-#: src/gs-app-context-bar.c:395 src/gs-safety-context-dialog.c:140
+#: src/gs-app-context-bar.c:413 src/gs-safety-context-dialog.c:143
 msgid "Provided by a third party"
 msgstr "Í boði frá utanaðkomandi aðila"
 
 #. Translators: This indicates an app is not licensed under a free software license.
 #. * It’s used in a context tile, so should be short.
-#: src/gs-app-context-bar.c:407
+#: src/gs-app-context-bar.c:425
 msgid "Proprietary code"
 msgstr "Séreignarkóði"
 
 #. Translators: This indicates an app’s source code is freely available, so can be audited for security.
 #. * It’s used in a context tile, so should be short.
-#: src/gs-app-context-bar.c:413
+#: src/gs-app-context-bar.c:431
 msgid "Auditable code"
 msgstr "Yfirfaranlegur kóði"
 
 #. Translators: This indicates an app was written and released by a developer who has been verified.
 #. * It’s used in a context tile, so should be short.
-#: src/gs-app-context-bar.c:420
+#: src/gs-app-context-bar.c:438
 msgid "Software developer is verified"
 msgstr ""
 
 #. Translators: This indicates an app or its runtime reached its end of life.
 #. * It’s used in a context tile, so should be short.
-#: src/gs-app-context-bar.c:429
+#: src/gs-app-context-bar.c:447
 msgid "Software no longer supported"
 msgstr "Hugbúnaður er ekki lengur studdur"
 
@@ -1204,123 +2387,123 @@ msgstr "Hugbúnaður er ekki lengur studdur"
 #. * If concatenating strings as a list using a separator like this is not
 #. * possible in your language, please file an issue against gnome-software:
 #. * https://gitlab.gnome.org/GNOME/gnome-software/-/issues/new
-#: src/gs-app-context-bar.c:441 src/gs-app-context-bar.c:702
+#: src/gs-app-context-bar.c:459 src/gs-app-context-bar.c:730
 msgid "; "
 msgstr "; "
 
 #. Translators: The app is considered safe to install and run.
 #. * This is displayed in a context tile, so the string should be short.
-#: src/gs-app-context-bar.c:449
+#: src/gs-app-context-bar.c:467
 msgid "Safe"
 msgstr "Öruggt"
 
 #. Translators: The app is considered potentially unsafe to install and run.
 #. * This is displayed in a context tile, so the string should be short.
-#: src/gs-app-context-bar.c:456
+#: src/gs-app-context-bar.c:474
 msgid "Potentially Unsafe"
 msgstr "Mögulega óöruggt"
 
 #. Translators: The app is considered unsafe to install and run.
 #. * This is displayed in a context tile, so the string should be short.
-#: src/gs-app-context-bar.c:463
+#: src/gs-app-context-bar.c:481
 msgid "Unsafe"
 msgstr "Óöruggt"
 
-#: src/gs-app-context-bar.c:542 src/gs-app-context-bar.c:574
-#: src/gs-hardware-support-context-dialog.c:588
+#: src/gs-app-context-bar.c:560 src/gs-app-context-bar.c:592
+#: src/gs-hardware-support-context-dialog.c:603
 msgid "Mobile Only"
 msgstr ""
 
-#: src/gs-app-context-bar.c:543
+#: src/gs-app-context-bar.c:561
 msgid "Only works on a small screen"
 msgstr ""
 
-#: src/gs-app-context-bar.c:548 src/gs-app-context-bar.c:581
-#: src/gs-app-context-bar.c:588 src/gs-app-context-bar.c:628
-#: src/gs-app-context-bar.c:633 src/gs-hardware-support-context-dialog.c:568
+#: src/gs-app-context-bar.c:566 src/gs-app-context-bar.c:599
+#: src/gs-app-context-bar.c:606 src/gs-app-context-bar.c:656
+#: src/gs-app-context-bar.c:661 src/gs-hardware-support-context-dialog.c:583
 msgid "Desktop Only"
 msgstr ""
 
-#: src/gs-app-context-bar.c:549
+#: src/gs-app-context-bar.c:567
 msgid "Only works on a large screen"
 msgstr ""
 
-#: src/gs-app-context-bar.c:553 src/gs-hardware-support-context-dialog.c:606
+#: src/gs-app-context-bar.c:571 src/gs-hardware-support-context-dialog.c:621
 msgid "Screen Size Mismatch"
 msgstr ""
 
-#: src/gs-app-context-bar.c:554 src/gs-hardware-support-context-dialog.c:607
+#: src/gs-app-context-bar.c:572 src/gs-hardware-support-context-dialog.c:622
 msgid "Doesn’t support your current screen size"
 msgstr ""
 
-#: src/gs-app-context-bar.c:575 src/gs-hardware-support-context-dialog.c:659
-#: src/gs-hardware-support-context-dialog.c:665
+#: src/gs-app-context-bar.c:593 src/gs-hardware-support-context-dialog.c:674
+#: src/gs-hardware-support-context-dialog.c:680
 msgid "Requires a touchscreen"
 msgstr "Krefst snertiskjás"
 
-#: src/gs-app-context-bar.c:582 src/gs-hardware-support-context-dialog.c:619
-#: src/gs-hardware-support-context-dialog.c:625
+#: src/gs-app-context-bar.c:600 src/gs-hardware-support-context-dialog.c:634
+#: src/gs-hardware-support-context-dialog.c:640
 msgid "Requires a keyboard"
 msgstr "Krefst lyklaborðs"
 
-#: src/gs-app-context-bar.c:589
+#: src/gs-app-context-bar.c:607
 msgid "Requires a mouse"
 msgstr "Krefst músar"
 
-#: src/gs-app-context-bar.c:600
+#: src/gs-app-context-bar.c:618
 msgid "Gamepad Needed"
 msgstr ""
 
-#: src/gs-app-context-bar.c:601
+#: src/gs-app-context-bar.c:619
 msgid "Requires a gamepad to play"
 msgstr ""
 
 #. Translators: This is used in a context tile to indicate that
 #. * an app works on phones, tablets *and* desktops. It should be
 #. * short and in title case.
-#: src/gs-app-context-bar.c:615
+#: src/gs-app-context-bar.c:643
 msgid "Adaptive"
 msgstr "Aðlaganlegt"
 
-#: src/gs-app-context-bar.c:616
+#: src/gs-app-context-bar.c:644
 msgid "Works on phones, tablets and desktops"
 msgstr ""
 
-#: src/gs-app-context-bar.c:629
+#: src/gs-app-context-bar.c:657
 msgid "Probably requires a keyboard or mouse"
 msgstr ""
 
-#: src/gs-app-context-bar.c:634
+#: src/gs-app-context-bar.c:662
 msgid "Works on desktops and laptops"
 msgstr ""
 
 #. Translators: This indicates that the content rating for an
 #. * app says it can be used by all ages of people, as it contains
 #. * no objectionable content.
-#: src/gs-app-context-bar.c:677
+#: src/gs-app-context-bar.c:705
 msgid "Contains no age-inappropriate content"
 msgstr ""
 
-#: src/gs-app-context-bar.c:726
+#: src/gs-app-context-bar.c:753
 msgid "No age rating information available"
 msgstr ""
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * allows the application to be easily installed
-#: src/gs-app-row.c:152
+#: src/gs-app-row.c:153
 msgid "Visit Website"
 msgstr "Fara á heimasíðu"
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * allows the application to be easily installed.
 #. * The ellipsis indicates that further steps are required
-#: src/gs-app-row.c:158
+#: src/gs-app-row.c:159
 msgid "Install…"
 msgstr "Setja inn…"
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * allows to cancel a queued install of the application
-#: src/gs-app-row.c:166 src/gs-updates-section.ui:62
+#: src/gs-app-row.c:167 src/gs-updates-section.ui:62
 msgid "Cancel"
 msgstr "Hætta við"
 
@@ -1328,13 +2511,13 @@ msgstr "Hætta við"
 #. * allows the application to be easily installed
 #. TRANSLATORS: button text
 #. TRANSLATORS: update the fw
-#: src/gs-app-row.c:174 src/gs-common.c:344 src/gs-page.c:367
+#: src/gs-app-row.c:175 src/gs-common.c:286 src/gs-page.c:374
 msgid "Install"
 msgstr "Setja inn"
 
 #. TRANSLATORS: this is a button in the updates panel
 #. * that allows the app to be easily updated live
-#: src/gs-app-row.c:182
+#: src/gs-app-row.c:183
 msgid "Update"
 msgstr "Uppfæra"
 
@@ -1342,31 +2525,31 @@ msgstr "Uppfæra"
 #. * allows the application to be easily removed
 #. TRANSLATORS: button text in the header when an application can be erased
 #. TRANSLATORS: this is button text to remove the application
-#: src/gs-app-row.c:187 src/gs-app-row.c:197 src/gs-details-page.ui:273
-#: src/gs-page.c:528
+#: src/gs-app-row.c:188 src/gs-app-row.c:198 src/gs-details-page.ui:281
+#: src/gs-page.c:549
 msgid "Uninstall"
 msgstr "Taka út"
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * shows the status of an application being erased
-#: src/gs-app-row.c:211
+#: src/gs-app-row.c:212
 msgid "Uninstalling"
 msgstr "Tek út uppsetningu"
 
 #. TRANSLATORS: during the update the device
 #. * will restart into a special update-only mode
-#: src/gs-app-row.c:325
+#: src/gs-app-row.c:327
 msgid "Device cannot be used during update."
 msgstr ""
 
 #. TRANSLATORS: this refers to where the app came from
-#: src/gs-app-row.c:335 src/gs-shell-search-provider.c:264
+#: src/gs-app-row.c:337 src/gs-shell-search-provider.c:264
 #, c-format
 msgid "Source: %s"
 msgstr "Uppruni: %s"
 
 #. Translators: A message to indicate that an app has been renamed. The placeholder is the old human-readable name.
-#: src/gs-app-row.c:521
+#: src/gs-app-row.c:523
 #, c-format
 msgid "Renamed from %s"
 msgstr "Endurnefnt úr %s"
@@ -1392,7 +2575,7 @@ msgstr ""
 msgid "Translations"
 msgstr "Þýðingar"
 
-#: src/gs-app-translation-dialog.ui:99
+#: src/gs-app-translation-dialog.ui:92
 msgid "_Translation Website"
 msgstr "Vefsvæði þýðinga"
 
@@ -1406,8 +2589,8 @@ msgstr ""
 msgid "Login Required"
 msgstr "Krafist er innskráningar"
 
-#: src/gs-basic-auth-dialog.ui:21 src/gs-common.c:670
-#: src/gs-details-page.ui:286 src/gs-removal-dialog.ui:17
+#: src/gs-basic-auth-dialog.ui:21 src/gs-common.c:612
+#: src/gs-details-page.ui:294 src/gs-removal-dialog.ui:17
 #: src/gs-review-dialog.ui:18
 msgid "_Cancel"
 msgstr "_Hætta við"
@@ -1430,6 +2613,14 @@ msgstr "_Lykilorð"
 msgid "Other"
 msgstr "Annað"
 
+#. TRANSLATORS: this is a subcategory matching all the
+#. * different apps in the parent category, e.g. "Games"
+#: lib/gs-category.c:214
+#, fuzzy
+msgctxt "Category"
+msgid "All"
+msgstr "Allt"
+
 #. TRANSLATORS: this is a subcategory of featured apps
 #: lib/gs-category.c:218
 msgid "Featured"
@@ -1437,18 +2628,23 @@ msgstr "Í deiglunni"
 
 #. Heading for featured apps on a category page
 #. Translators: This is a heading for software which has been featured ('picked') by the distribution.
-#: src/gs-category-page.ui:41 src/gs-overview-page.ui:110
+#: src/gs-category-page.ui:41 src/gs-overview-page.ui:106
 msgid "Editor’s Choice"
 msgstr "Valið af ritstjórn"
 
 #. Heading for recently updated apps on a category page
 #. Translators: This is a heading for software which has been recently released upstream.
-#: src/gs-category-page.ui:69 src/gs-overview-page.ui:133
+#: src/gs-category-page.ui:69 src/gs-overview-page.ui:129
 msgid "New & Updated"
 msgstr "Nýtt og uppfært"
 
-#. Heading for the rest of the apps on a category page
+#. Heading for web apps on a category page
 #: src/gs-category-page.ui:97
+msgid "Picks from the Web"
+msgstr ""
+
+#. Heading for the rest of the apps on a category page
+#: src/gs-category-page.ui:125
 msgid "Other Software"
 msgstr "Annar hugbúnaður"
 
@@ -1459,7 +2655,7 @@ msgid "Please enter a number from 1 to %u: "
 msgstr "Settu inn tölu frá 1 og upp í %u: "
 
 #. TRANSLATORS: asking the user to choose an app from a list
-#: lib/gs-cmd.c:258
+#: lib/gs-cmd.c:266
 msgid "Choose an application:"
 msgstr "Veldu forrit:"
 
@@ -1837,51 +3033,51 @@ msgstr "Staðfærsla"
 #. * has been successfully installed
 #. TRANSLATORS: this is the summary of a notification that a component
 #. * has been successfully installed
-#: src/gs-common.c:130 src/gs-common.c:153
+#: src/gs-common.c:68 src/gs-common.c:91
 #, c-format
 msgid "%s is now installed"
 msgstr "%s er núna uppsett"
 
 #. TRANSLATORS: an application has been installed, but
 #. * needs a reboot to complete the installation
-#: src/gs-common.c:134 src/gs-common.c:157
+#: src/gs-common.c:72 src/gs-common.c:95
 msgid "A restart is required for the changes to take effect."
 msgstr "Endurræsing er nauðsynleg til að breytingarnar taki gildi."
 
 #. TRANSLATORS: this is the body of a notification that an application
 #. * has been successfully installed
-#: src/gs-common.c:138
+#: src/gs-common.c:76
 msgid "Application is ready to be used."
 msgstr ""
 
 #. TRANSLATORS: this is the summary of a notification that OS updates
 #. * have been successfully installed
-#: src/gs-common.c:146
+#: src/gs-common.c:84
 msgid "System updates are now installed"
 msgstr "Uppfærslur á kerfinu eru núna uppsettar"
 
 #. TRANSLATORS: this is the body of a notification that OS updates
 #. * have been successfully installed
-#: src/gs-common.c:149
+#: src/gs-common.c:87
 msgid "Recently installed updates are available to review"
 msgstr ""
 
 #. TRANSLATORS: button text
-#: src/gs-common.c:168 src/gs-common.c:833
+#: src/gs-common.c:106 src/gs-common.c:775
 msgid "Restart"
 msgstr "Endurræsa"
 
-#: src/gs-common.c:174
+#: src/gs-common.c:112
 msgid "Launch"
 msgstr "Ræsa"
 
 #. TRANSLATORS: window title
-#: src/gs-common.c:276
+#: src/gs-common.c:218
 msgid "Install Third-Party Software?"
 msgstr "Setja inn hugbúnað frá utanaðkomandi aðilum?"
 
 #. TRANSLATORS: window title
-#: src/gs-common.c:280 src/gs-repos-dialog.c:165
+#: src/gs-common.c:222 src/gs-repos-dialog.c:168
 msgid "Enable Third-Party Software Repository?"
 msgstr "Virkja hugbúnaðarsöfn utanaðkomandi aðila?"
 
@@ -1889,7 +3085,7 @@ msgstr "Virkja hugbúnaðarsöfn utanaðkomandi aðila?"
 #. * 1. Application name, e.g. "Firefox"
 #. * 2. Software repository name, e.g. fedora-optional
 #.
-#: src/gs-common.c:298
+#: src/gs-common.c:240
 #, c-format
 msgid ""
 "%s is not <a href=\"https://en.wikipedia.org/wiki/Free_and_open-"
@@ -1899,187 +3095,197 @@ msgstr ""
 #. TRANSLATORS: the replacements are as follows:
 #. * 1. Application name, e.g. "Firefox"
 #. * 2. Software repository name, e.g. fedora-optional
-#: src/gs-common.c:308
+#: src/gs-common.c:250
 #, c-format
 msgid "%s is provided by “%s”."
 msgstr "%s er gefið út af “%s”."
 
-#: src/gs-common.c:317
+#: src/gs-common.c:259
 msgid "This software repository must be enabled to continue installation."
 msgstr ""
 
 #. TRANSLATORS: Laws are geographical, urgh...
-#: src/gs-common.c:327
+#: src/gs-common.c:269
 #, c-format
 msgid "It may be illegal to install or use %s in some countries."
 msgstr ""
 
 #. TRANSLATORS: Laws are geographical, urgh...
-#: src/gs-common.c:333
+#: src/gs-common.c:275
 msgid "It may be illegal to install or use this codec in some countries."
 msgstr ""
 
 #. TRANSLATORS: this is button text to not ask about non-free content again
-#: src/gs-common.c:340
+#: src/gs-common.c:282
 msgid "Don’t Warn Again"
 msgstr "Ekki vara mig við aftur"
 
 #. TRANSLATORS: button text
-#: src/gs-common.c:349
+#: src/gs-common.c:291
 msgid "Enable and Install"
 msgstr "Virkja og setja upp"
 
 #. TRANSLATORS: these are show_detailed_error messages from the
 #. * package manager no mortal is supposed to understand,
 #. * but google might know what they mean
-#: src/gs-common.c:551
+#: src/gs-common.c:493
 msgid "Detailed errors from the package manager follow:"
 msgstr ""
 
-#: src/gs-common.c:567 src/gs-safety-context-dialog.ui:79
+#: src/gs-common.c:509 src/gs-safety-context-dialog.ui:72
 msgid "Details"
 msgstr "Nánar"
 
 #. Translators: an accept button label, in a Cancel/Accept dialog
-#: src/gs-common.c:658
+#: src/gs-common.c:600
 msgid "_Accept"
 msgstr "S_amþykkja"
 
 #. TRANSLATORS: we've just live-updated some apps
-#: src/gs-common.c:808
+#: src/gs-common.c:750
 msgid "An update has been installed"
 msgid_plural "Updates have been installed"
 msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: we've just removed some apps
-#: src/gs-common.c:818
+#: src/gs-common.c:760
 msgid "An application has been removed"
 msgid_plural "Applications have been removed"
 msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: the new apps will not be run until we restart
-#: src/gs-common.c:824
+#: src/gs-common.c:766
 msgid "A restart is required for it to take effect."
 msgid_plural "A restart is required for them to take effect."
 msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: button text
-#: src/gs-common.c:831
+#: src/gs-common.c:773
 msgid "Not Now"
 msgstr "Ekki núna"
 
 #. TRANSLATORS: something happened less than 5 minutes ago
-#: src/gs-common.c:923
+#: src/gs-common.c:869
 msgid "Just now"
 msgstr "Í þessum töluðu orðum"
 
-#: src/gs-common.c:925
+#: src/gs-common.c:871
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
 msgstr[0] "fyrir %d mínútu"
 msgstr[1] "fyrir %d mínútum"
 
-#: src/gs-common.c:929
+#: src/gs-common.c:875
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
 msgstr[0] "fyrir %d klukkustund"
 msgstr[1] "fyrir %d klukkustundum"
 
-#: src/gs-common.c:933
+#: src/gs-common.c:879
 #, c-format
 msgid "%d day ago"
 msgid_plural "%d days ago"
 msgstr[0] "fyrir %d degi"
 msgstr[1] "fyrir %d dögum"
 
-#: src/gs-common.c:937
+#: src/gs-common.c:883
 #, c-format
 msgid "%d week ago"
 msgid_plural "%d weeks ago"
 msgstr[0] "fyrir %d viku"
 msgstr[1] "fyrir %d vikum"
 
-#: src/gs-common.c:941
+#: src/gs-common.c:887
 #, c-format
 msgid "%d month ago"
 msgid_plural "%d months ago"
 msgstr[0] "fyrir %d mánuði"
 msgstr[1] "fyrir %d mánuðum"
 
-#: src/gs-common.c:945
+#: src/gs-common.c:891
 #, c-format
 msgid "%d year ago"
 msgid_plural "%d years ago"
 msgstr[0] "fyrir %d ári"
 msgstr[1] "fyrir %d árum"
 
+#. Translators: This is to construct a disk size string consisting of the value and its unit, while
+#. * the unit is drawn with a smaller font. If you need to flip the order, then you can use "%2$s %1$s".
+#. * Make sure you'll preserve the no break space between the values.
+#. * Example result: "13.0 MB"
+#: src/gs-common.c:1255
+#, c-format
+msgctxt "format-size"
+msgid "%s %s"
+msgstr ""
+
 #. TRANSLATORS: this is a what we use in notifications if the app's name is unknown
-#: src/gs-dbus-helper.c:283
+#: src/gs-dbus-helper.c:291
 msgid "An application"
 msgstr "Forrit"
 
 #. TRANSLATORS: this is a notification displayed when an app needs additional MIME types.
-#: src/gs-dbus-helper.c:289
+#: src/gs-dbus-helper.c:297
 #, c-format
 msgid "%s is requesting additional file format support."
 msgstr ""
 
 #. TRANSLATORS: notification title
-#: src/gs-dbus-helper.c:291
+#: src/gs-dbus-helper.c:299
 msgid "Additional MIME Types Required"
 msgstr ""
 
 #. TRANSLATORS: this is a notification displayed when an app needs additional fonts.
-#: src/gs-dbus-helper.c:295
+#: src/gs-dbus-helper.c:303
 #, c-format
 msgid "%s is requesting additional fonts."
 msgstr ""
 
 #. TRANSLATORS: notification title
-#: src/gs-dbus-helper.c:297
+#: src/gs-dbus-helper.c:305
 msgid "Additional Fonts Required"
 msgstr ""
 
 #. TRANSLATORS: this is a notification displayed when an app needs additional codecs.
-#: src/gs-dbus-helper.c:301
+#: src/gs-dbus-helper.c:309
 #, c-format
 msgid "%s is requesting additional multimedia codecs."
 msgstr ""
 
 #. TRANSLATORS: notification title
-#: src/gs-dbus-helper.c:303
+#: src/gs-dbus-helper.c:311
 msgid "Additional Multimedia Codecs Required"
 msgstr ""
 
 #. TRANSLATORS: this is a notification displayed when an app needs additional printer drivers.
-#: src/gs-dbus-helper.c:307
+#: src/gs-dbus-helper.c:315
 #, c-format
 msgid "%s is requesting additional printer drivers."
 msgstr ""
 
 #. TRANSLATORS: notification title
-#: src/gs-dbus-helper.c:309
+#: src/gs-dbus-helper.c:317
 msgid "Additional Printer Drivers Required"
 msgstr ""
 
 #. TRANSLATORS: this is a notification displayed when an app wants to install additional packages.
-#: src/gs-dbus-helper.c:313
+#: src/gs-dbus-helper.c:321
 #, c-format
 msgid "%s is requesting additional packages."
 msgstr ""
 
 #. TRANSLATORS: notification title
-#: src/gs-dbus-helper.c:315
+#: src/gs-dbus-helper.c:323
 msgid "Additional Packages Required"
 msgstr ""
 
 #. TRANSLATORS: this is a button that launches gnome-software
-#: src/gs-dbus-helper.c:324
+#: src/gs-dbus-helper.c:332
 msgid "Find in Software"
 msgstr "Finna í hugbúnaði"
 
@@ -2091,37 +3297,37 @@ msgstr "_Birta meira"
 msgid "_Show Less"
 msgstr "_Birta minna"
 
-#: src/gs-details-page.c:334
+#: src/gs-details-page.c:357
 msgid "Removing…"
 msgstr "Fjarlægi…"
 
-#: src/gs-details-page.c:344
+#: src/gs-details-page.c:367
 msgid "Requires restart to finish install"
 msgstr "Krefst endurræsingar til að ljúka uppsetningu"
 
-#: src/gs-details-page.c:351
+#: src/gs-details-page.c:374
 msgid "Requires restart to finish remove"
 msgstr "Krefst endurræsingar til að ljúka fjarlægingu"
 
 #. TRANSLATORS: This is a label on top of the app's progress
 #. * bar to inform the user that the app should be installed soon
-#: src/gs-details-page.c:368
+#: src/gs-details-page.c:391
 msgid "Pending installation…"
 msgstr "Bíður uppsetningar…"
 
 #. TRANSLATORS: This is a label on top of the app's progress
 #. * bar to inform the user that the app should be updated soon
-#: src/gs-details-page.c:375
+#: src/gs-details-page.c:398
 msgid "Pending update…"
 msgstr "Bíður uppfærslu…"
 
 #. Translators: This string is shown when preparing to download and install an app.
-#: src/gs-details-page.c:391
+#: src/gs-details-page.c:414
 msgid "Preparing…"
 msgstr "Undirbý…"
 
 #. Translators: This string is shown when uninstalling an app.
-#: src/gs-details-page.c:394
+#: src/gs-details-page.c:417
 msgid "Uninstalling…"
 msgstr "Tek út uppsetningu…"
 
@@ -2129,12 +3335,12 @@ msgstr "Tek út uppsetningu…"
 #. * can be installed
 #. TRANSLATORS: button text in the header when firmware
 #. * can be live-installed
-#: src/gs-details-page.c:813 src/gs-details-page.c:839
-#: src/gs-details-page.ui:220 plugins/packagekit/gs-packagekit-task.c:148
+#: src/gs-details-page.c:860 src/gs-details-page.c:886
+#: src/gs-details-page.ui:228 plugins/packagekit/gs-packagekit-task.c:150
 msgid "_Install"
 msgstr "Setja _inn"
 
-#: src/gs-details-page.c:829
+#: src/gs-details-page.c:876
 msgid "_Restart"
 msgstr "Endu_rræsa"
 
@@ -2142,16 +3348,22 @@ msgstr "Endu_rræsa"
 #. * be installed.
 #. * The ellipsis indicates that further steps are required,
 #. * e.g. enabling software repositories or the like
-#: src/gs-details-page.c:853
+#: src/gs-details-page.c:900
 msgid "_Install…"
 msgstr "Setja _inn…"
 
+#. Translators: the '%s' is replaced with a developer name or a project group
+#: src/gs-details-page.c:1177
+#, c-format
+msgid "Other Apps by %s"
+msgstr ""
+
 #. TRANSLATORS: we need a remote server to process
-#: src/gs-details-page.c:1390
+#: src/gs-details-page.c:1560
 msgid "You need internet access to write a review"
 msgstr ""
 
-#: src/gs-details-page.c:1538 src/gs-details-page.c:1554
+#: src/gs-details-page.c:1711 src/gs-details-page.c:1727
 #, c-format
 msgid "Unable to find “%s”"
 msgstr "Gat ekki fundið \"%s\""
@@ -2175,110 +3387,110 @@ msgid "Help _Translate"
 msgstr "Hjálpa _til við þýðingu"
 
 #. TRANSLATORS: A label for a button to execute the selected application.
-#: src/gs-details-page.ui:236
+#: src/gs-details-page.ui:244
 msgid "_Open"
 msgstr "_Opna"
 
-#: src/gs-details-page.ui:249 plugins/packagekit/gs-packagekit-task.c:158
+#: src/gs-details-page.ui:257 plugins/packagekit/gs-packagekit-task.c:160
 msgid "_Update"
 msgstr "_Uppfæra"
 
-#: src/gs-details-page.ui:311
+#: src/gs-details-page.ui:319
 msgid "Downloading"
 msgstr "Sæki gögn"
 
-#: src/gs-details-page.ui:398 src/gs-installed-page.ui:112
+#: src/gs-details-page.ui:456 src/gs-installed-page.ui:135
 msgid "Add-ons"
 msgstr "Viðbætur"
 
-#: src/gs-details-page.ui:409
+#: src/gs-details-page.ui:467
 msgid "Selected add-ons will be installed with the application."
 msgstr ""
 
-#: src/gs-details-page.ui:509
+#: src/gs-details-page.ui:567
 msgid ""
 "This application can only be used when there is an active internet "
 "connection."
 msgstr ""
 
-#: src/gs-details-page.ui:529
+#: src/gs-details-page.ui:587
 msgid "Software Repository Included"
 msgstr ""
 
-#: src/gs-details-page.ui:530
+#: src/gs-details-page.ui:588
 msgid ""
 "This application includes a software repository which provides updates, as "
 "well as access to other software."
 msgstr ""
 
-#: src/gs-details-page.ui:547
+#: src/gs-details-page.ui:605
 msgid "No Software Repository Included"
 msgstr ""
 
-#: src/gs-details-page.ui:548
+#: src/gs-details-page.ui:606
 msgid ""
 "This application does not include a software repository. It will not be "
 "updated with new versions."
 msgstr ""
 
-#: src/gs-details-page.ui:566
+#: src/gs-details-page.ui:624
 msgid ""
 "This software is already provided by your distribution and should not be "
 "replaced."
 msgstr ""
 
 #. Translators: a repository file used for installing software has been discovered.
-#: src/gs-details-page.ui:583
+#: src/gs-details-page.ui:641
 msgid "Software Repository Identified"
 msgstr ""
 
-#: src/gs-details-page.ui:584
+#: src/gs-details-page.ui:642
 msgid ""
 "Adding this software repository will give you access to additional software "
 "and upgrades."
 msgstr ""
 
-#: src/gs-details-page.ui:585
+#: src/gs-details-page.ui:643
 msgid "Only use software repositories that you trust."
 msgstr ""
 
-#: src/gs-details-page.ui:650
+#: src/gs-details-page.ui:708
 msgid "No Metadata"
 msgstr "Engin lýsigögn"
 
-#: src/gs-details-page.ui:659
+#: src/gs-details-page.ui:717
 msgid ""
 "This software doesn’t provide any links to a website, code repository or "
 "issue tracker."
 msgstr ""
 
-#: src/gs-details-page.ui:687
+#: src/gs-details-page.ui:745
 msgid "Project _Website"
 msgstr "_Vefsvæði verkefnisins"
 
-#: src/gs-details-page.ui:704
+#: src/gs-details-page.ui:762
 msgid "_Donate"
 msgstr "St_yrkja"
 
-#: src/gs-details-page.ui:721
+#: src/gs-details-page.ui:779
 msgid "Contribute _Translations"
 msgstr "_Taka þátt í þýðingum"
 
-#: src/gs-details-page.ui:738
+#: src/gs-details-page.ui:796
 msgid "_Report an Issue"
 msgstr "Til_kynna um vandamál"
 
-#: src/gs-details-page.ui:755
+#: src/gs-details-page.ui:813
 msgid "_Help"
 msgstr "_Hjálp"
 
 #. Translators: Button opening a dialog where the users can write and publish their opinions about the apps.
-#: src/gs-details-page.ui:844
+#: src/gs-details-page.ui:908
 msgid "_Write Review"
 msgstr "Skrifa _umsögn"
 
 #. Translators: Button opening a dialog showing all reviews for an app.
-#: src/gs-details-page.ui:881
+#: src/gs-details-page.ui:945
 msgid "All Reviews"
 msgstr "Allar umsagnir"
 
@@ -2288,18 +3500,18 @@ msgid "Downloading extra metadata files…"
 msgstr ""
 
 #. TRANSLATORS: separator for a list of items
-#: src/gs-extras-page.c:141
+#: src/gs-extras-page.c:142
 msgid " and "
 msgstr " og "
 
 #. TRANSLATORS: separator for a list of items
-#: src/gs-extras-page.c:144
+#: src/gs-extras-page.c:145
 msgid ", "
 msgstr ", "
 
 #. TRANSLATORS: Application window title for fonts installation.
 #. %s will be replaced by name of the script we're searching for.
-#: src/gs-extras-page.c:170
+#: src/gs-extras-page.c:171
 #, c-format
 msgid "Available fonts for the %s script"
 msgid_plural "Available fonts for the %s scripts"
@@ -2308,42 +3520,42 @@ msgstr[1] "Tiltækt letur fyrir %s skrifturnar"
 
 #. TRANSLATORS: Application window title for codec installation.
 #. %s will be replaced by actual codec name(s)
-#: src/gs-extras-page.c:178
+#: src/gs-extras-page.c:179
 #, c-format
 msgid "Available software for %s"
 msgid_plural "Available software for %s"
 msgstr[0] "Tiltækur hugbúnaður fyrir %s"
 msgstr[1] "Tiltækur hugbúnaður fyrir %s"
 
-#: src/gs-extras-page.c:241
+#: src/gs-extras-page.c:242
 msgid "Requested software not found"
 msgstr "Umbeðinn hugbúnaður fannst ekki"
 
-#: src/gs-extras-page.c:243
+#: src/gs-extras-page.c:244
 msgid "Failed to find requested software"
 msgstr "Mistókst að finna umbeðinn hugbúnað"
 
 #. TRANSLATORS: This string is used for codecs that weren't found
-#: src/gs-extras-page.c:342
+#: src/gs-extras-page.c:343
 #, c-format
 msgid "%s not found"
 msgstr "%s fannst ekki"
 
 #. TRANSLATORS: hyperlink title
-#: src/gs-extras-page.c:346
+#: src/gs-extras-page.c:347
 msgid "on the website"
 msgstr "á vefsvæðinu"
 
 #. TRANSLATORS: this is when we know about an application or
 #. * addon, but it can't be listed for some reason
-#: src/gs-extras-page.c:353
+#: src/gs-extras-page.c:354
 #, c-format
 msgid "No applications are available that provide the file %s."
 msgstr ""
 
 #. TRANSLATORS: first %s is the codec name, and second %s is a
 #. * hyperlink with the "on the website" text
-#: src/gs-extras-page.c:357 src/gs-extras-page.c:368 src/gs-extras-page.c:379
+#: src/gs-extras-page.c:358 src/gs-extras-page.c:369 src/gs-extras-page.c:380
 #, c-format
 msgid ""
 "Information about %s, as well as options for how to get missing applications "
@@ -2352,21 +3564,21 @@ msgstr ""
 
 #. TRANSLATORS: this is when we know about an application or
 #. * addon, but it can't be listed for some reason
-#: src/gs-extras-page.c:364 src/gs-extras-page.c:386
+#: src/gs-extras-page.c:365 src/gs-extras-page.c:387
 #, c-format
 msgid "No applications are available for %s support."
 msgstr ""
 
 #. TRANSLATORS: this is when we know about an application or
 #. * addon, but it can't be listed for some reason
-#: src/gs-extras-page.c:375
+#: src/gs-extras-page.c:376
 #, c-format
 msgid "%s is not available."
 msgstr "%s er ekki tiltækt."
 
 #. TRANSLATORS: first %s is the codec name, and second %s is a
 #. * hyperlink with the "on the website" text
-#: src/gs-extras-page.c:390
+#: src/gs-extras-page.c:391
 #, c-format
 msgid ""
 "Information about %s, as well as options for how to get an application that "
@@ -2375,14 +3587,14 @@ msgstr ""
 
 #. TRANSLATORS: this is when we know about an application or
 #. * addon, but it can't be listed for some reason
-#: src/gs-extras-page.c:397
+#: src/gs-extras-page.c:398
 #, c-format
 msgid "No fonts are available for the %s script support."
 msgstr ""
 
 #. TRANSLATORS: first %s is the codec name, and second %s is a
 #. * hyperlink with the "on the website" text
-#: src/gs-extras-page.c:401
+#: src/gs-extras-page.c:402
 #, c-format
 msgid ""
 "Information about %s, as well as options for how to get additional fonts "
@@ -2391,14 +3603,14 @@ msgstr ""
 
 #. TRANSLATORS: this is when we know about an application or
 #. * addon, but it can't be listed for some reason
-#: src/gs-extras-page.c:408
+#: src/gs-extras-page.c:409
 #, c-format
 msgid "No addon codecs are available for the %s format."
 msgstr ""
 
 #. TRANSLATORS: first %s is the codec name, and second %s is a
 #. * hyperlink with the "on the website" text
-#: src/gs-extras-page.c:412
+#: src/gs-extras-page.c:413
 #, c-format
 msgid ""
 "Information about %s, as well as options for how to get a codec that can "
@@ -2407,14 +3619,14 @@ msgstr ""
 
 #. TRANSLATORS: this is when we know about an application or
 #. * addon, but it can't be listed for some reason
-#: src/gs-extras-page.c:419
+#: src/gs-extras-page.c:420
 #, c-format
 msgid "No Plasma resources are available for %s support."
 msgstr ""
 
 #. TRANSLATORS: first %s is the codec name, and second %s is a
 #. * hyperlink with the "on the website" text
-#: src/gs-extras-page.c:423
+#: src/gs-extras-page.c:424
 #, c-format
 msgid ""
 "Information about %s, as well as options for how to get additional Plasma "
@@ -2423,14 +3635,14 @@ msgstr ""
 
 #. TRANSLATORS: this is when we know about an application or
 #. * addon, but it can't be listed for some reason
-#: src/gs-extras-page.c:430
+#: src/gs-extras-page.c:431
 #, c-format
 msgid "No printer drivers are available for %s."
 msgstr ""
 
 #. TRANSLATORS: first %s is the codec name, and second %s is a
 #. * hyperlink with the "on the website" text
-#: src/gs-extras-page.c:434
+#: src/gs-extras-page.c:435
 #, c-format
 msgid ""
 "Information about %s, as well as options for how to get a driver that "
@@ -2438,13 +3650,13 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: hyperlink title
-#: src/gs-extras-page.c:480
+#: src/gs-extras-page.c:481
 msgid "the documentation"
 msgstr "handbækurnar"
 
 #. TRANSLATORS: no codecs were found. The first %s will be replaced by actual codec name(s),
 #. the second %s is the application name, which requested the codecs, the third %s is a link titled "the documentation"
-#: src/gs-extras-page.c:486
+#: src/gs-extras-page.c:487
 #, c-format
 msgid ""
 "Unable to find the %s requested by %s. Please see %s for more information."
@@ -2454,7 +3666,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: no codecs were found. First %s will be replaced by actual codec name(s), second %s is a link titled "the documentation"
-#: src/gs-extras-page.c:495
+#: src/gs-extras-page.c:496
 #, c-format
 msgid ""
 "Unable to find the %s you were searching for. Please see %s for more "
@@ -2465,17 +3677,17 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/gs-extras-page.c:573 src/gs-extras-page.c:630 src/gs-extras-page.c:670
+#: src/gs-extras-page.c:574 src/gs-extras-page.c:631 src/gs-extras-page.c:671
 #, c-format
 msgid "Failed to find any search results: %s"
 msgstr ""
 
-#: src/gs-extras-page.c:861
+#: src/gs-extras-page.c:874
 #, c-format
 msgid "%s file format"
 msgstr "%s skráasnið"
 
-#: src/gs-extras-page.c:1236
+#: src/gs-extras-page.c:1254
 msgid "Unable to Find Requested Software"
 msgstr ""
 
@@ -2495,199 +3707,199 @@ msgstr "Næsta"
 msgid "Featured Apps List"
 msgstr "Listi yfir forrit í deiglunni"
 
-#: src/gs-hardware-support-context-dialog.c:562
-#: src/gs-hardware-support-context-dialog.c:571
+#: src/gs-hardware-support-context-dialog.c:577
+#: src/gs-hardware-support-context-dialog.c:586
 msgid "Desktop Support"
 msgstr "Stuðningur við skjáborðsumhverfi"
 
-#: src/gs-hardware-support-context-dialog.c:563
-#: src/gs-hardware-support-context-dialog.c:572
+#: src/gs-hardware-support-context-dialog.c:578
+#: src/gs-hardware-support-context-dialog.c:587
 msgid "Supports being used on a large screen"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:565
+#: src/gs-hardware-support-context-dialog.c:580
 msgid "Desktop Support Unknown"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:566
+#: src/gs-hardware-support-context-dialog.c:581
 msgid "Not enough information to know if large screens are supported"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:569
+#: src/gs-hardware-support-context-dialog.c:584
 msgid "Requires a large screen"
 msgstr "Krefst stórs skjás"
 
-#: src/gs-hardware-support-context-dialog.c:574
+#: src/gs-hardware-support-context-dialog.c:589
 msgid "Desktop Not Supported"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:575
+#: src/gs-hardware-support-context-dialog.c:590
 msgid "Cannot be used on a large screen"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:582
-#: src/gs-hardware-support-context-dialog.c:591
+#: src/gs-hardware-support-context-dialog.c:597
+#: src/gs-hardware-support-context-dialog.c:606
 msgid "Mobile Support"
 msgstr "Stuðningur við farsíma"
 
-#: src/gs-hardware-support-context-dialog.c:583
-#: src/gs-hardware-support-context-dialog.c:592
+#: src/gs-hardware-support-context-dialog.c:598
+#: src/gs-hardware-support-context-dialog.c:607
 msgid "Supports being used on a small screen"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:585
+#: src/gs-hardware-support-context-dialog.c:600
 msgid "Mobile Support Unknown"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:586
+#: src/gs-hardware-support-context-dialog.c:601
 msgid "Not enough information to know if small screens are supported"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:589
+#: src/gs-hardware-support-context-dialog.c:604
 msgid "Requires a small screen"
 msgstr "Krefst lítils skjás"
 
-#: src/gs-hardware-support-context-dialog.c:594
+#: src/gs-hardware-support-context-dialog.c:609
 msgid "Mobile Not Supported"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:595
+#: src/gs-hardware-support-context-dialog.c:610
 msgid "Cannot be used on a small screen"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:618
-#: src/gs-hardware-support-context-dialog.c:627
+#: src/gs-hardware-support-context-dialog.c:633
+#: src/gs-hardware-support-context-dialog.c:642
 msgid "Keyboard Support"
 msgstr "Stuðningur við lyklaborð"
 
-#: src/gs-hardware-support-context-dialog.c:621
+#: src/gs-hardware-support-context-dialog.c:636
 msgid "Keyboard Support Unknown"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:622
+#: src/gs-hardware-support-context-dialog.c:637
 msgid "Not enough information to know if keyboards are supported"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:624
+#: src/gs-hardware-support-context-dialog.c:639
 msgid "Keyboard Required"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:628
+#: src/gs-hardware-support-context-dialog.c:643
 msgid "Supports keyboards"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:630
+#: src/gs-hardware-support-context-dialog.c:645
 msgid "Keyboard Not Supported"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:631
+#: src/gs-hardware-support-context-dialog.c:646
 msgid "Cannot be used with a keyboard"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:638
-#: src/gs-hardware-support-context-dialog.c:647
+#: src/gs-hardware-support-context-dialog.c:653
+#: src/gs-hardware-support-context-dialog.c:662
 msgid "Mouse Support"
 msgstr "Stuðningur við mús"
 
-#: src/gs-hardware-support-context-dialog.c:639
-#: src/gs-hardware-support-context-dialog.c:645
+#: src/gs-hardware-support-context-dialog.c:654
+#: src/gs-hardware-support-context-dialog.c:660
 msgid "Requires a mouse or pointing device"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:641
+#: src/gs-hardware-support-context-dialog.c:656
 msgid "Mouse Support Unknown"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:642
+#: src/gs-hardware-support-context-dialog.c:657
 msgid ""
 "Not enough information to know if mice or pointing devices are supported"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:644
+#: src/gs-hardware-support-context-dialog.c:659
 msgid "Mouse Required"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:648
+#: src/gs-hardware-support-context-dialog.c:663
 msgid "Supports mice and pointing devices"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:650
+#: src/gs-hardware-support-context-dialog.c:665
 msgid "Mouse Not Supported"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:651
+#: src/gs-hardware-support-context-dialog.c:666
 msgid "Cannot be used with a mouse or pointing device"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:658
-#: src/gs-hardware-support-context-dialog.c:667
+#: src/gs-hardware-support-context-dialog.c:673
+#: src/gs-hardware-support-context-dialog.c:682
 msgid "Touchscreen Support"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:661
+#: src/gs-hardware-support-context-dialog.c:676
 msgid "Touchscreen Support Unknown"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:662
+#: src/gs-hardware-support-context-dialog.c:677
 msgid "Not enough information to know if touchscreens are supported"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:664
+#: src/gs-hardware-support-context-dialog.c:679
 msgid "Touchscreen Required"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:668
+#: src/gs-hardware-support-context-dialog.c:683
 msgid "Supports touchscreens"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:670
+#: src/gs-hardware-support-context-dialog.c:685
 msgid "Touchscreen Not Supported"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:671
+#: src/gs-hardware-support-context-dialog.c:686
 msgid "Cannot be used with a touchscreen"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:684
+#: src/gs-hardware-support-context-dialog.c:699
 msgid "Gamepad Required"
 msgstr ""
 
-#: src/gs-hardware-support-context-dialog.c:685
+#: src/gs-hardware-support-context-dialog.c:700
 msgid "Requires a gamepad"
 msgstr "Krefst leikjastýringar"
 
-#: src/gs-hardware-support-context-dialog.c:687
+#: src/gs-hardware-support-context-dialog.c:702
 msgid "Gamepad Support"
 msgstr "Stuðningur við leikjafjarstýringar"
 
-#: src/gs-hardware-support-context-dialog.c:688
+#: src/gs-hardware-support-context-dialog.c:703
 msgid "Supports gamepads"
 msgstr ""
 
 #. Translators: It’s unknown whether this app is supported on
 #. * the current hardware. The placeholder is the app name.
-#: src/gs-hardware-support-context-dialog.c:697
+#: src/gs-hardware-support-context-dialog.c:712
 #, c-format
 msgid "%s probably works on this device"
 msgstr ""
 
 #. Translators: The app will work on the current hardware.
 #. * The placeholder is the app name.
-#: src/gs-hardware-support-context-dialog.c:704
+#: src/gs-hardware-support-context-dialog.c:719
 #, c-format
 msgid "%s works on this device"
 msgstr ""
 
 #. Translators: The app may not work fully on the current hardware.
 #. * The placeholder is the app name.
-#: src/gs-hardware-support-context-dialog.c:711
+#: src/gs-hardware-support-context-dialog.c:726
 #, c-format
 msgid "%s will not work properly on this device"
 msgstr ""
 
 #. Translators: The app will not work properly on the current hardware.
 #. * The placeholder is the app name.
-#: src/gs-hardware-support-context-dialog.c:718
+#: src/gs-hardware-support-context-dialog.c:733
 #, c-format
 msgid "%s will not work on this device"
 msgstr ""
@@ -2697,30 +3909,57 @@ msgstr ""
 msgid "Hardware Support"
 msgstr "Vélbúnaðarstuðningur"
 
+#. Translators: This is in the context of a list of apps which are installed on the system.
+#. Translators: A label for a button to show only software which is already installed.
+#: src/gs-installed-page.c:812 src/gs-shell.ui:307
+#, fuzzy
+msgctxt "List of installed apps"
+msgid "Installed"
+msgstr "Uppsett"
+
 #: src/gs-installed-page.ui:6
 msgid "Installed page"
 msgstr ""
 
-#: src/gs-installed-page.ui:52
+#: src/gs-installed-page.ui:55
 msgid "In Progress"
 msgstr "Í vinnslu"
 
 #. origin_ui on a remote is the repo dialogue section name,
 #. * not the remote title
-#: src/gs-installed-page.ui:72 plugins/flatpak/gs-flatpak-utils.c:107
+#: src/gs-installed-page.ui:75 plugins/flatpak/gs-flatpak-utils.c:107
 msgid "Applications"
 msgstr "Forrit"
 
-#: src/gs-installed-page.ui:92
+#: src/gs-installed-page.ui:95
+#, fuzzy
+msgid "Web Applications"
+msgstr "Forrit"
+
+#: src/gs-installed-page.ui:115
 msgid "System Applications"
 msgstr "Kerfisforrit"
 
-#: src/gs-license-tile.c:93
+#: src/gs-license-tile.c:96
 msgid "Community Built"
 msgstr ""
 
+#: src/gs-license-tile.c:107 src/gs-license-tile.ui:98
+msgid "_Get Involved"
+msgstr "_Taktu þátt"
+
+#. Translators: The first placeholder here is a link to information about the license, and the second placeholder here is the name of a software license.
+#: src/gs-license-tile.c:114
+#, c-format
+msgid ""
+"This software is developed in the open by a community of volunteers, and "
+"released under the <a href=\"%s\">%s license</a>.\n"
+"\n"
+"You can contribute and help make it even better."
+msgstr ""
+
 #. Translators: The placeholder here is the name of a software license.
-#: src/gs-license-tile.c:101
+#: src/gs-license-tile.c:121
 #, c-format
 msgid ""
 "This software is developed in the open by a community of volunteers, and "
@@ -2729,28 +3968,29 @@ msgid ""
 "You can contribute and help make it even better."
 msgstr ""
 
-#: src/gs-license-tile.c:106
+#: src/gs-license-tile.c:127
 msgid "Proprietary"
 msgstr "Séreignarhugbúnaður"
 
-#: src/gs-license-tile.c:113
+#: src/gs-license-tile.c:133
+#, fuzzy
+msgid "_Learn More"
+msgstr "Lærdómur"
+
+#: src/gs-license-tile.c:135
 msgid ""
 "This software is not developed in the open, so only its developers know how "
-"it works. There may be restrictions on its use, and it may be harder to tell "
-"if the software is insecure.\n"
+"it works. It may be insecure in ways that are hard to detect, and it may "
+"change without oversight.\n"
 "\n"
-"You may not be able to contribute to this software or influence its "
-"development."
+"You may not be able to contribute to this software."
 msgstr ""
-
-#: src/gs-license-tile.ui:117
-msgid "_Get Involved"
-msgstr "_Taktu þátt"
 
 #. TRANSLATORS: initial start
 #: src/gs-loading-page.c:56
-msgid "Software catalog is being downloaded"
-msgstr ""
+#, fuzzy
+msgid "Downloading software catalog"
+msgstr "Sækja óundirritaðan hugbúnað?"
 
 #: src/gs-loading-page.ui:6
 msgid "Loading page"
@@ -2760,7 +4000,7 @@ msgstr "Hleð inn síðu"
 msgid "Starting up…"
 msgstr "Keyri upp…"
 
-#: src/gs-metered-data-dialog.ui:5 src/gs-shell.ui:254
+#: src/gs-metered-data-dialog.ui:5 src/gs-shell.ui:256
 msgid "Automatic Updates Paused"
 msgstr "Sjálfvirkar uppfærslur í bið"
 
@@ -2785,49 +4025,25 @@ msgstr "Opna net_stillingar"
 msgid "Moderate page"
 msgstr ""
 
-#: src/gs-moderate-page.ui:68
+#: src/gs-moderate-page.ui:71
 msgid "There are no reviews to moderate"
 msgstr ""
 
-#. TRANSLATORS: This is followed by a file name, e.g. "Name: gedit.rpm"
-#: src/gs-origin-popover-row.c:55
-msgid "Name"
-msgstr "Heiti"
+#: src/gs-origin-popover-row.c:105
+#, fuzzy
+msgid "Unknown source"
+msgstr "Óþekkt"
 
-#. TRANSLATORS: the installation location for flatpaks
-#: src/gs-origin-popover-row.c:72
-msgid "system"
-msgstr "kerfis"
-
-#. TRANSLATORS: the installation location for flatpaks
-#: src/gs-origin-popover-row.c:75
-msgid "user"
-msgstr "notanda"
-
-#. TRANSLATORS: the title for Snap channels
-#: src/gs-origin-popover-row.c:91
-msgid "Channel"
-msgstr "Rás"
-
-#. TRANSLATORS: the title for Flatpak branches
-#. Translators: The branch, e.g. 'stable' or '3.32'
-#: src/gs-origin-popover-row.c:96 src/gs-origin-popover-row.ui:82
-msgid "Branch"
-msgstr "Grein"
-
-#: src/gs-origin-popover-row.ui:30
-msgid "URL"
-msgstr "Slóð (URL)"
-
-#. Translators: The installation location for flatpaks, e.g. 'user' or 'system'
-#: src/gs-origin-popover-row.ui:56
-msgid "Installation"
-msgstr "Uppsetning"
-
-#. Translators: The available version of an app
+#. Translators: It's like a beta version of the software, a test version
 #: src/gs-origin-popover-row.ui:108
-msgid "Version"
-msgstr "Útgáfa"
+msgid "Beta"
+msgstr ""
+
+#. Translators: It's an origin scope, 'User' or 'System' installation
+#: src/gs-origin-popover-row.ui:138
+#, fuzzy
+msgid "User"
+msgstr "N_otandi"
 
 #. TRANSLATORS: This is the header for package additions during
 #. * a system update
@@ -2843,8 +4059,9 @@ msgstr "Fjarlægingar"
 
 #. TRANSLATORS: This is the header for package updates during
 #. * a system update
-#. Translators: A label for a button to show only updates which are available to install.
-#: src/gs-os-update-page.c:258 src/gs-shell.ui:326 src/gs-updates-page.c:1330
+#: src/gs-os-update-page.c:258
+#, fuzzy
+msgctxt "Packages to be updated during a system upgrade"
 msgid "Updates"
 msgstr "Uppfærslur"
 
@@ -2857,30 +4074,29 @@ msgstr "Niðurfærslur"
 #. Translators: This is a clickable link on the third party repositories info bar. It's
 #. part of a constructed sentence: "Provides access to additional software from [selected external sources].
 #. Some proprietary software is included."
-#: src/gs-overview-page.c:658
+#: src/gs-overview-page.c:876
 msgid "selected external sources"
 msgstr ""
 
 #. Translators: This is the third party repositories info bar. The %s is replaced with "selected external sources" link.
-#: src/gs-overview-page.c:660
+#: src/gs-overview-page.c:878
 #, c-format
-#| msgid "Access additional software from selected third party sources."
 msgid ""
 "Provides access to additional software from %s. Some proprietary software is "
 "included."
 msgstr ""
-"Gefur aðgang að viðbótarhugbúnaði frá %s. Einhver séreignarhugbúnaður er þar"
-" á meðal."
+"Gefur aðgang að viðbótarhugbúnaði frá %s. Einhver séreignarhugbúnaður er þar "
+"á meðal."
 
 #. TRANSLATORS: button to turn on third party software repositories
 #. TRANSLATORS: button to accept the agreement
-#: src/gs-overview-page.c:669 src/gs-repos-dialog.c:170
+#: src/gs-overview-page.c:887 src/gs-repos-dialog.c:173
 msgid "Enable"
 msgstr "Virkja"
 
 #. Translators: This is the title of the main page of the UI.
 #. Translators: A label for a button to show all available software.
-#: src/gs-overview-page.c:723 src/gs-shell.ui:292
+#: src/gs-overview-page.c:946 src/gs-shell.ui:294
 msgid "Explore"
 msgstr "Kanna"
 
@@ -2888,20 +4104,20 @@ msgstr "Kanna"
 msgid "Overview page"
 msgstr "Yfirlitssíða"
 
-#: src/gs-overview-page.ui:39
+#: src/gs-overview-page.ui:35
 msgid "Enable Third Party Software Repositories?"
 msgstr "Virkja hugbúnaðarsöfn annarra aðila?"
 
 #. Translators: This is a heading for a list of categories.
-#: src/gs-overview-page.ui:157
+#: src/gs-overview-page.ui:180
 msgid "Other Categories"
 msgstr "Aðrir flokkar"
 
-#: src/gs-overview-page.ui:198
+#: src/gs-overview-page.ui:221
 msgid "No Application Data Found"
 msgstr "Engin forritsgögn fundust"
 
-#: lib/gs-plugin-loader.c:2878
+#: lib/gs-plugin-loader.c:2825
 msgctxt "Distribution name"
 msgid "Unknown"
 msgstr "Óþekkt"
@@ -2912,20 +4128,20 @@ msgstr ""
 
 #. TRANSLATORS: this is a prompt message, and
 #. * '%s' is an application summary, e.g. 'GNOME Clocks'
-#: src/gs-page.c:358
+#: src/gs-page.c:365
 #, c-format
 msgid "Prepare %s"
 msgstr "Undirbúa %s"
 
 #. TRANSLATORS: this is a prompt message, and '%s' is an
 #. * repository name, e.g. 'GNOME Nightly'
-#: src/gs-page.c:497
+#: src/gs-page.c:518
 #, c-format
 msgid "Are you sure you want to remove the %s repository?"
 msgstr "Ertu viss um að þú viljir fjarlægja %s hugbúnaðarsafnið?"
 
 #. TRANSLATORS: longer dialog text
-#: src/gs-page.c:501
+#: src/gs-page.c:522
 #, c-format
 msgid ""
 "All applications from %s will be uninstalled, and you will have to re-"
@@ -2934,13 +4150,13 @@ msgstr ""
 
 #. TRANSLATORS: this is a prompt message, and '%s' is an
 #. * application summary, e.g. 'GNOME Clocks'
-#: src/gs-page.c:509
+#: src/gs-page.c:530
 #, c-format
 msgid "Are you sure you want to uninstall %s?"
 msgstr "Ertu viss um að þú viljir fjarlægja %s?"
 
 #. TRANSLATORS: longer dialog text
-#: src/gs-page.c:512
+#: src/gs-page.c:533
 #, c-format
 msgid ""
 "%s will be uninstalled, and you will have to install it to use it again."
@@ -2991,66 +4207,65 @@ msgid "_Continue"
 msgstr "_Halda áfram"
 
 #. TRANSLATORS: The '%s' is replaced with a repository name, like "Fedora Modular - x86_64"
-#: src/gs-repos-dialog.c:237
+#: src/gs-repos-dialog.c:239
 #, c-format
 msgid ""
 "Software that has been installed from “%s” will cease to receive updates."
 msgstr ""
 
-#: src/gs-repos-dialog.c:246
+#: src/gs-repos-dialog.c:248
 msgid "Disable Repository?"
 msgstr "Gera hugbúnaðarsafn óvirkt?"
 
-#: src/gs-repos-dialog.c:246
+#: src/gs-repos-dialog.c:248
 msgid "Remove Repository?"
 msgstr "Fjarlægja hugbúnaðarsafnið?"
 
 #. TRANSLATORS: this is button text to disable a repo
-#: src/gs-repos-dialog.c:252
+#: src/gs-repos-dialog.c:254
 msgid "_Disable"
 msgstr "_Gera óvirkt"
 
 #. TRANSLATORS: this is button text to remove a repo
-#: src/gs-repos-dialog.c:255
+#: src/gs-repos-dialog.c:257
 msgid "_Remove"
 msgstr "Fja_rlægja"
 
-#: src/gs-repos-dialog.c:503
+#: src/gs-repos-dialog.c:508
 msgid "Enable New Repositories"
 msgstr "Virkja ný hugbúnaðarsöfn"
 
-#: src/gs-repos-dialog.c:504
+#: src/gs-repos-dialog.c:509
 msgid "Turn on new repositories when they are added."
 msgstr ""
 
 #. TRANSLATORS: this is the clickable
 #. * link on the third party repositories info bar
-#: src/gs-repos-dialog.c:513
+#: src/gs-repos-dialog.c:518
 msgid "more information"
 msgstr "nánari upplýsingar"
 
 #. TRANSLATORS: this is the third party repositories info bar. The '%s' is replaced
 #. with a link consisting a text "more information", which constructs a sentence:
 #. "Additional repositories from selected third parties - more information."
-#: src/gs-repos-dialog.c:518
+#: src/gs-repos-dialog.c:523
 #, c-format
-#| msgid "Access additional software from selected third party sources."
 msgid "Additional repositories from selected third parties — %s."
 msgstr "Viðbótar-hugbúnaðarsöfn frá völdum utanaðkomandi aðilum - %s."
 
-#: src/gs-repos-dialog.c:523
+#: src/gs-repos-dialog.c:528
 msgid "Fedora Third Party Repositories"
 msgstr "Fedora -hugbúnaðarsöfn utanaðkomandi aðila"
 
 #. TRANSLATORS: this is the fallback text we use if we can't
 #. figure out the name of the operating system
-#: src/gs-repos-dialog.c:665
+#: src/gs-repos-dialog.c:670
 msgid "the operating system"
 msgstr "stýrikerfið"
 
 #. TRANSLATORS: This is the description text displayed in the Software Repositories dialog.
 #. %s gets replaced by the name of the actual distro, e.g. Fedora.
-#: src/gs-repos-dialog.c:723
+#: src/gs-repos-dialog.c:728
 #, c-format
 msgid "These repositories supplement the default software provided by %s."
 msgstr ""
@@ -3115,7 +4330,7 @@ msgstr[1] "%s og %s uppsett"
 
 #. Translators: The first '%s' is replaced with a text like '10 applications installed',
 #. the second '%s' is replaced with installation kind, like in case of Flatpak 'User Installation'.
-#: src/gs-repo-row.c:237
+#: src/gs-repo-row.c:243
 #, c-format
 msgctxt "repo-row"
 msgid "%s • %s"
@@ -3217,9 +4432,9 @@ msgstr ""
 
 #: src/gs-review-dialog.ui:156
 msgid ""
-"Find what data is sent in our <a href=\"https://odrs.gnome.org/privacy"
-"\">privacy policy</a>. The full name attached to your account will be shown "
-"publicly."
+"Find what data is sent in our <a href=\"https://odrs.gnome.org/"
+"privacy\">privacy policy</a>. The full name attached to your account will be "
+"shown publicly."
 msgstr ""
 
 #: src/gs-review-histogram.c:72
@@ -3229,7 +4444,7 @@ msgid_plural "%u reviews total"
 msgstr[0] "%u umsögn alls"
 msgstr[1] "%u umsagnir alls"
 
-#: src/gs-review-histogram.ui:92
+#: src/gs-review-histogram.ui:93
 msgid "out of 5 stars"
 msgstr "af 5 stjörnum"
 
@@ -3293,189 +4508,184 @@ msgstr "Kæra…"
 msgid "Remove…"
 msgstr "Fjarlægja…"
 
-#: src/gs-safety-context-dialog.c:141
+#: src/gs-safety-context-dialog.c:144
 msgid "Check that you trust the vendor, as the application isn’t sandboxed"
 msgstr ""
 
-#: src/gs-safety-context-dialog.c:144
+#: src/gs-safety-context-dialog.c:147
 msgid ""
 "Application isn’t sandboxed but the distribution has checked that it is not "
 "malicious"
 msgstr ""
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
-#: src/gs-safety-context-dialog.c:151
+#: src/gs-safety-context-dialog.c:160
 msgid "No Permissions"
 msgstr "Engar heimildir"
 
-#: src/gs-safety-context-dialog.c:152
+#: src/gs-safety-context-dialog.c:161
 msgid "App is fully sandboxed"
 msgstr ""
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
-#: src/gs-safety-context-dialog.c:163
+#: src/gs-safety-context-dialog.c:172
 msgid "Network Access"
 msgstr "Netaðgangur"
 
-#: src/gs-safety-context-dialog.c:164
+#: src/gs-safety-context-dialog.c:173
 msgid "Can access the internet"
 msgstr ""
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
-#: src/gs-safety-context-dialog.c:167
+#: src/gs-safety-context-dialog.c:176
 msgid "No Network Access"
 msgstr "Engin netaðgangur"
 
-#: src/gs-safety-context-dialog.c:168
+#: src/gs-safety-context-dialog.c:177
 msgid "Cannot access the internet"
 msgstr "Getur ekki tengst við internetið"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
-#: src/gs-safety-context-dialog.c:174
+#: src/gs-safety-context-dialog.c:183
 msgid "Uses System Services"
 msgstr "Notar kerfisþjónustur"
 
-#: src/gs-safety-context-dialog.c:175
+#: src/gs-safety-context-dialog.c:184
 msgid "Can request data from system services"
 msgstr ""
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
-#: src/gs-safety-context-dialog.c:182
+#: src/gs-safety-context-dialog.c:191
 msgid "Uses Session Services"
 msgstr ""
 
-#: src/gs-safety-context-dialog.c:183
+#: src/gs-safety-context-dialog.c:192
 msgid "Can request data from session services"
 msgstr ""
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
-#: src/gs-safety-context-dialog.c:190
-#| msgid "Devices"
+#: src/gs-safety-context-dialog.c:199
 msgid "Device Access"
 msgstr "Aðgangur tækis"
 
-#: src/gs-safety-context-dialog.c:191
+#: src/gs-safety-context-dialog.c:200
 msgid "Can access devices such as webcams or gaming controllers"
 msgstr ""
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
-#: src/gs-safety-context-dialog.c:194
-#| msgid "Devices"
+#: src/gs-safety-context-dialog.c:203
 msgid "No Device Access"
 msgstr "Enginn aðgangur tækis"
 
-#: src/gs-safety-context-dialog.c:195
+#: src/gs-safety-context-dialog.c:204
 msgid "Cannot access devices such as webcams or gaming controllers"
 msgstr ""
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
-#: src/gs-safety-context-dialog.c:201
+#: src/gs-safety-context-dialog.c:210
 msgid "Legacy Windowing System"
 msgstr ""
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
-#: src/gs-safety-context-dialog.c:209
-#| msgid "Permissions"
+#: src/gs-safety-context-dialog.c:218
 msgid "Arbitrary Permissions"
 msgstr "Ýmsar heimildir"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
-#: src/gs-safety-context-dialog.c:217
+#: src/gs-safety-context-dialog.c:226
 msgid "User Settings"
 msgstr "Stillingar notanda"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
-#: src/gs-safety-context-dialog.c:229
+#: src/gs-safety-context-dialog.c:238
 msgid "Full File System Read/Write Access"
 msgstr ""
 
-#: src/gs-safety-context-dialog.c:230
+#: src/gs-safety-context-dialog.c:239
 msgid "Can read and write all data on the file system"
 msgstr ""
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
-#: src/gs-safety-context-dialog.c:238
+#: src/gs-safety-context-dialog.c:247
 msgid "Home Folder Read/Write Access"
 msgstr ""
 
-#: src/gs-safety-context-dialog.c:239
+#: src/gs-safety-context-dialog.c:248
 msgid "Can read and write all data in your home directory"
 msgstr ""
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
-#: src/gs-safety-context-dialog.c:247
+#: src/gs-safety-context-dialog.c:256
 msgid "Full File System Read Access"
 msgstr ""
 
-#: src/gs-safety-context-dialog.c:248
+#: src/gs-safety-context-dialog.c:257
 msgid "Can read all data on the file system"
 msgstr ""
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
-#: src/gs-safety-context-dialog.c:257
+#: src/gs-safety-context-dialog.c:266
 msgid "Home Folder Read Access"
 msgstr ""
 
-#: src/gs-safety-context-dialog.c:258
+#: src/gs-safety-context-dialog.c:267
 msgid "Can read all data in your home directory"
 msgstr ""
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
-#: src/gs-safety-context-dialog.c:267
+#: src/gs-safety-context-dialog.c:276
 msgid "Download Folder Read/Write Access"
 msgstr ""
 
-#: src/gs-safety-context-dialog.c:268
+#: src/gs-safety-context-dialog.c:277
 msgid "Can read and write all data in your downloads directory"
 msgstr ""
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
-#: src/gs-safety-context-dialog.c:279
-#| msgid "Downloads folder"
+#: src/gs-safety-context-dialog.c:288
 msgid "Download Folder Read Access"
 msgstr "Lesaðgangur niðurhalsmöppu"
 
-#: src/gs-safety-context-dialog.c:280
+#: src/gs-safety-context-dialog.c:289
 msgid "Can read all data in your downloads directory"
 msgstr ""
 
-#. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
-#: src/gs-safety-context-dialog.c:291
-msgid "Access arbitrary files"
-msgstr ""
+#: src/gs-safety-context-dialog.c:299
+#, fuzzy
+msgid "Can read and write all data in the directory"
+msgstr "Getur lesið/skrifað öll gögnin þín"
 
-#: src/gs-safety-context-dialog.c:292
-#| msgid "Can access D-Bus services on the system bus"
-msgid "Can access arbitrary files on the file system"
-msgstr "Hefur aðgang að allskyns skrám á skráarkerfinu"
+#: src/gs-safety-context-dialog.c:310
+#, fuzzy
+msgid "Can read all data in the directory"
+msgstr "Getur lesið öll gögnin þín"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
-#: src/gs-safety-context-dialog.c:306
-#| msgid "File system"
+#: src/gs-safety-context-dialog.c:326
 msgid "No File System Access"
 msgstr "Enginn aðgangur að skráakerfi"
 
-#: src/gs-safety-context-dialog.c:307
+#: src/gs-safety-context-dialog.c:327
 msgid "Cannot access the file system at all"
 msgstr ""
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
-#: src/gs-safety-context-dialog.c:321
+#: src/gs-safety-context-dialog.c:341
 msgid "Proprietary Code"
 msgstr "Séreignarkóði"
 
-#: src/gs-safety-context-dialog.c:322
+#: src/gs-safety-context-dialog.c:342
 msgid ""
 "The source code is not public, so it cannot be independently audited and "
 "might be unsafe"
 msgstr ""
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
-#: src/gs-safety-context-dialog.c:325
+#: src/gs-safety-context-dialog.c:345
 msgid "Auditable Code"
 msgstr "Yfirfaranlegur kóði"
 
-#: src/gs-safety-context-dialog.c:326
+#: src/gs-safety-context-dialog.c:346
 msgid ""
 "The source code is public and can be independently audited, which makes the "
 "app more likely to be safe"
@@ -3483,43 +4693,42 @@ msgstr ""
 
 #. Translators: This indicates an app was written and released by a developer who has been verified.
 #. * It’s used in a context tile, so should be short.
-#: src/gs-safety-context-dialog.c:334
+#: src/gs-safety-context-dialog.c:354
 msgid "App developer is verified"
 msgstr ""
 
-#: src/gs-safety-context-dialog.c:335
+#: src/gs-safety-context-dialog.c:355
 msgid "The developer of this app has been verified to be who they say they are"
 msgstr ""
 
 #. Translators: This indicates an app uses an outdated SDK.
 #. * It’s used in a context tile, so should be short.
-#: src/gs-safety-context-dialog.c:346
-#| msgid "Required Dependencies"
+#: src/gs-safety-context-dialog.c:366
 msgid "Insecure Dependencies"
 msgstr "Óörugg kerfisákvæði"
 
-#: src/gs-safety-context-dialog.c:347
+#: src/gs-safety-context-dialog.c:367
 msgid ""
 "Software or its dependencies are no longer supported and may be insecure"
 msgstr ""
 
 #. Translators: The app is considered safe to install and run.
 #. * The placeholder is the app name.
-#: src/gs-safety-context-dialog.c:356
+#: src/gs-safety-context-dialog.c:376
 #, c-format
 msgid "%s is safe"
 msgstr "%s er öruggt"
 
 #. Translators: The app is considered potentially unsafe to install and run.
 #. * The placeholder is the app name.
-#: src/gs-safety-context-dialog.c:363
+#: src/gs-safety-context-dialog.c:383
 #, c-format
 msgid "%s is potentially unsafe"
 msgstr "%s er mögulega óöruggt"
 
 #. Translators: The app is considered unsafe to install and run.
 #. * The placeholder is the app name.
-#: src/gs-safety-context-dialog.c:370
+#: src/gs-safety-context-dialog.c:390
 #, c-format
 msgid "%s is unsafe"
 msgstr "%s er ekki öruggt"
@@ -3529,20 +4738,20 @@ msgstr "%s er ekki öruggt"
 msgid "Safety"
 msgstr "Öryggi"
 
-#: src/gs-safety-context-dialog.ui:108
+#: src/gs-safety-context-dialog.ui:101
 msgid "License"
 msgstr "Notkunarleyfi"
 
 #. Translators: This is a heading for a row showing the origin/source of an app (such as ‘flathub’).
-#: src/gs-safety-context-dialog.ui:148
+#: src/gs-safety-context-dialog.ui:141
 msgid "Source"
 msgstr "Upptök"
 
-#: src/gs-safety-context-dialog.ui:188
+#: src/gs-safety-context-dialog.ui:181
 msgid "SDK"
 msgstr "SDK"
 
-#: src/gs-safety-context-dialog.ui:212
+#: src/gs-safety-context-dialog.ui:205
 msgid "Outdated SDK version"
 msgstr ""
 
@@ -3562,35 +4771,36 @@ msgstr "Engin skjámynd uppgefin"
 
 #. TRANSLATORS: this is when we try to download a screenshot and
 #. * we get back 404
-#: src/gs-screenshot-image.c:336 src/gs-screenshot-image.c:393
+#: src/gs-screenshot-image.c:362 src/gs-screenshot-image.c:419
+#: src/gs-screenshot-image.c:622
 msgid "Screenshot not found"
 msgstr "Skjámynd fannst ekki"
 
 #. TRANSLATORS: possibly image file corrupt or not an image
-#: src/gs-screenshot-image.c:412
+#: src/gs-screenshot-image.c:438
 msgid "Failed to load image"
 msgstr "Get ekki opnað myndina"
 
 #. TRANSLATORS: this is when we request a screenshot size that
 #. * the generator did not create or the parser did not add
-#: src/gs-screenshot-image.c:563
+#: src/gs-screenshot-image.c:650
 msgid "Screenshot size not found"
 msgstr ""
 
 #. TRANSLATORS: this is when we try create the cache directory
 #. * but we were out of space or permission was denied
-#: src/gs-screenshot-image.c:644
+#: src/gs-screenshot-image.c:732
 msgid "Could not create cache"
 msgstr ""
 
 #. TRANSLATORS: this is when we try to download a screenshot
 #. * that was not a valid URL
-#: src/gs-screenshot-image.c:658
+#: src/gs-screenshot-image.c:746
 msgid "Screenshot not valid"
 msgstr "Skjámynd ekki gild"
 
 #. TRANSLATORS: this is when networking is not available
-#: src/gs-screenshot-image.c:690
+#: src/gs-screenshot-image.c:796
 msgid "Screenshot not available"
 msgstr "Skjámynd ekki tiltæk"
 
@@ -3600,7 +4810,7 @@ msgstr "Skjámynd"
 
 #. TRANSLATORS: this is when there are too many search results
 #. * to show in in the search page
-#: src/gs-search-page.c:169
+#: src/gs-search-page.c:180
 #, c-format
 msgid "%u more match"
 msgid_plural "%u more matches"
@@ -3615,7 +4825,7 @@ msgstr "Leitarsíða"
 msgid "Search for Apps"
 msgstr "Leita að forritum"
 
-#: src/gs-search-page.ui:43
+#: src/gs-search-page.ui:46
 msgid "No Application Found"
 msgstr "Ekkert forrit fannst"
 
@@ -4110,7 +5320,7 @@ msgstr "Athuga disk"
 #. button in the info bar
 #. TRANSLATORS: this is a link to the
 #. * control-center network panel
-#: src/gs-shell.ui:108 src/gs-updates-page.c:895
+#: src/gs-shell.ui:108 src/gs-updates-page.c:881
 msgid "Network Settings"
 msgstr "Netstillingar"
 
@@ -4124,63 +5334,74 @@ msgstr "Endurræsa núna"
 msgid "More Information"
 msgstr "Nánari upplýsingar"
 
-#: src/gs-shell.ui:187
+#: src/gs-shell.ui:189
 msgid "Search"
 msgstr "Leita"
 
-#: src/gs-shell.ui:202
+#: src/gs-shell.ui:204
 msgid "Primary Menu"
 msgstr "Aðalvalmynd"
 
-#: src/gs-shell.ui:272
-#| msgid "Find out more…"
+#: src/gs-shell.ui:274
 msgid "Find Out _More"
 msgstr "_Frekari upplýsingar"
+
+#. Translators: A label for a button to show only updates which are available to install.
+#: src/gs-shell.ui:328
+#, fuzzy
+msgctxt "Header bar button for list of apps to be updated"
+msgid "Updates"
+msgstr "Uppfærslur"
 
 #. Translators: This is shown in a bubble to represent a 0 byte
 #. * storage size, so its context is “storage size: none”. The
 #. * bubble is small, so the string should be as short as
 #. * possible.
-#: src/gs-storage-context-dialog.c:93
+#: src/gs-storage-context-dialog.c:95
 msgid "None"
 msgstr "Ekkert"
 
-#: src/gs-storage-context-dialog.c:132
+#: src/gs-storage-context-dialog.c:139
 msgid "Application Data"
 msgstr "Forritsgögn"
 
-#: src/gs-storage-context-dialog.c:133
+#: src/gs-storage-context-dialog.c:140
 msgid "Data needed for the application to run"
 msgstr ""
 
-#: src/gs-storage-context-dialog.c:137
+#: src/gs-storage-context-dialog.c:145
 msgid "User Data"
 msgstr "Notandagögn"
 
-#: src/gs-storage-context-dialog.c:138
-#| msgid "Please restart the application."
+#: src/gs-storage-context-dialog.c:146
 msgid "Data created by you in the application"
 msgstr "Gögn sem þú hefur búið til í forritinu"
 
-#: src/gs-storage-context-dialog.c:144
+#: src/gs-storage-context-dialog.c:153
 msgid "Cache Data"
 msgstr "Gögn í skyndiminni"
 
-#: src/gs-storage-context-dialog.c:145
+#: src/gs-storage-context-dialog.c:154
 msgid "Temporary cached data"
 msgstr "Bráðabirgðagögn tímabundið í skyndiminni"
 
-#: src/gs-storage-context-dialog.c:161
+#: src/gs-storage-context-dialog.c:172
 msgid "The application itself"
 msgstr "Forritið sjálft"
 
-#: src/gs-storage-context-dialog.c:165
+#: src/gs-storage-context-dialog.c:177
 msgid "Required Dependencies"
 msgstr "Nauðsynleg kerfisákvæði"
 
-#: src/gs-storage-context-dialog.c:166
+#: src/gs-storage-context-dialog.c:178
 msgid "Shared system components required by this application"
 msgstr ""
+
+#: src/gs-storage-context-dialog.c:188
+#, fuzzy
+msgctxt "Download size"
+msgid "Unknown"
+msgstr "Óþekkt"
 
 #. Translators: This is the title of the dialog which contains information about the storage or download size needed for an app
 #: src/gs-storage-context-dialog.ui:5
@@ -4188,23 +5409,23 @@ msgid "Storage"
 msgstr "Geymslurými"
 
 #. Translators: Please do not translate the markup or link href
-#: src/gs-storage-context-dialog.ui:79
+#: src/gs-storage-context-dialog.ui:69
 msgid ""
 "Cached data can be cleared from the <a href=\"dummy\">_application settings</"
 "a>."
 msgstr ""
 
-#: src/gs-summary-tile.c:72
+#: src/gs-summary-tile.c:118
 #, c-format
 msgid "%s (Installed)"
 msgstr "%s (uppsett)"
 
-#: src/gs-summary-tile.c:77
+#: src/gs-summary-tile.c:123
 #, c-format
 msgid "%s (Installing)"
 msgstr "%s (set inn)"
 
-#: src/gs-summary-tile.c:82
+#: src/gs-summary-tile.c:128
 #, c-format
 msgid "%s (Removing)"
 msgstr "%s (fjarlægi)"
@@ -4223,52 +5444,53 @@ msgstr "Uppsettar uppfærslur"
 msgid "Installed on %s"
 msgstr "Uppsett þann %s"
 
-#: src/gs-update-dialog.ui:74
-msgid "No updates have been installed on this system."
-msgstr ""
+#: src/gs-update-dialog.ui:77
+#, fuzzy
+msgid "No Updates Installed"
+msgstr "Hugbúnaðaruppfærslur mistókust"
 
-#: src/gs-update-monitor.c:219
+#: src/gs-update-monitor.c:213
 msgid "Software Updates Are Out of Date"
 msgstr ""
 
-#: src/gs-update-monitor.c:220
+#: src/gs-update-monitor.c:214
 msgid "Please check for software updates."
 msgstr "Athugaðu með hugbúnaðaruppfærslur."
 
-#: src/gs-update-monitor.c:226
+#: src/gs-update-monitor.c:220
 msgid "Critical Software Update Ready to Install"
 msgstr ""
 
-#: src/gs-update-monitor.c:227
+#: src/gs-update-monitor.c:221
 msgid "An important software update is ready to be installed."
 msgstr ""
 
-#: src/gs-update-monitor.c:230
+#: src/gs-update-monitor.c:224
 msgid "Critical Software Updates Available to Download"
 msgstr ""
 
-#: src/gs-update-monitor.c:231
+#: src/gs-update-monitor.c:225
 msgid "Important: critical software updates are waiting."
 msgstr ""
 
-#: src/gs-update-monitor.c:239
+#: src/gs-update-monitor.c:231
 msgid "Software Updates Ready to Install"
 msgstr "Hugbúnaðaruppfærslur tilbúnar til uppsetningar"
 
-#: src/gs-update-monitor.c:240
+#: src/gs-update-monitor.c:232
 msgid "Software updates are waiting and ready to be installed."
 msgstr ""
 
-#: src/gs-update-monitor.c:245
+#: src/gs-update-monitor.c:238
 msgid "Software Updates Available to Download"
 msgstr ""
 
-#: src/gs-update-monitor.c:246
+#: src/gs-update-monitor.c:239
 msgid "Please download waiting software updates."
 msgstr ""
 
 #. TRANSLATORS: apps were auto-updated and restart is required
-#: src/gs-update-monitor.c:358
+#: src/gs-update-monitor.c:355
 #, c-format
 msgid "%u Application Updated — Restart Required"
 msgid_plural "%u Applications Updated — Restart Required"
@@ -4276,7 +5498,7 @@ msgstr[0] "%u forrit uppfært - Endurræsing nauðsynleg"
 msgstr[1] "%u forrit uppfærð - Endurræsing nauðsynleg"
 
 #. TRANSLATORS: apps were auto-updated
-#: src/gs-update-monitor.c:364
+#: src/gs-update-monitor.c:361
 #, c-format
 msgid "%u Application Updated"
 msgid_plural "%u Applications Updated"
@@ -4284,24 +5506,24 @@ msgstr[0] "%u forrit uppfært"
 msgstr[1] "%u forrit uppfærð"
 
 #. TRANSLATORS: %1 is an application name, e.g. Firefox
-#: src/gs-update-monitor.c:375
+#: src/gs-update-monitor.c:372
 #, c-format
 msgid "%s has been updated."
 msgstr "%s hefur verið uppfært."
 
 #. TRANSLATORS: the app needs restarting
-#: src/gs-update-monitor.c:378
+#: src/gs-update-monitor.c:375
 msgid "Please restart the application."
 msgstr "Endurræstu forritið."
 
 #. TRANSLATORS: %1 and %2 are both application names, e.g. Firefox
-#: src/gs-update-monitor.c:386
+#: src/gs-update-monitor.c:383
 #, c-format
 msgid "%s and %s have been updated."
 msgstr "%s og %s hafa verið uppfærð."
 
 #. TRANSLATORS: at least one application needs restarting
-#: src/gs-update-monitor.c:392 src/gs-update-monitor.c:411
+#: src/gs-update-monitor.c:389 src/gs-update-monitor.c:408
 #, c-format
 msgid "%u application requires a restart."
 msgid_plural "%u applications require a restart."
@@ -4309,69 +5531,69 @@ msgstr[0] "%u forrit krefst endurræsingar."
 msgstr[1] "%u forrit krefjast endurræsingar."
 
 #. TRANSLATORS: %1, %2 and %3 are all application names, e.g. Firefox
-#: src/gs-update-monitor.c:404
+#: src/gs-update-monitor.c:401
 #, c-format
 msgid "Includes %s, %s and %s."
 msgstr "Innifelur %s, %s og %s."
 
 #. TRANSLATORS: this is when the current operating system version goes end-of-life
-#: src/gs-update-monitor.c:674 src/gs-updates-page.ui:20
+#: src/gs-update-monitor.c:671 src/gs-updates-page.ui:20
 msgid "Operating System Updates Unavailable"
 msgstr "Uppfærslur stýrikerfis ekki tiltækar"
 
 #. TRANSLATORS: this is the message dialog for the distro EOL notice
-#: src/gs-update-monitor.c:676
+#: src/gs-update-monitor.c:673
 msgid "Upgrade to continue receiving security updates."
 msgstr ""
 
 #. TRANSLATORS: this is a distro upgrade, the replacement would be the
 #. * distro name, e.g. 'Fedora'
-#: src/gs-update-monitor.c:732
+#: src/gs-update-monitor.c:728
 #, c-format
 msgid "A new version of %s is available to install"
 msgstr ""
 
 #. TRANSLATORS: this is a distro upgrade
-#: src/gs-update-monitor.c:736
+#: src/gs-update-monitor.c:732
 msgid "Software Upgrade Available"
 msgstr "Hugbúnaðaruppfærsla tiltæk"
 
 #. TRANSLATORS: title when we offline updates have failed
-#: src/gs-update-monitor.c:1141
+#: src/gs-update-monitor.c:1137
 msgid "Software Updates Failed"
 msgstr "Hugbúnaðaruppfærslur mistókust"
 
 #. TRANSLATORS: message when we offline updates have failed
-#: src/gs-update-monitor.c:1143
+#: src/gs-update-monitor.c:1139
 msgid "An important operating system update failed to be installed."
 msgstr ""
 
-#: src/gs-update-monitor.c:1144
+#: src/gs-update-monitor.c:1140
 msgid "Show Details"
 msgstr "Sýna nánar"
 
 #. TRANSLATORS: Notification title when we've done a distro upgrade
-#: src/gs-update-monitor.c:1167
+#: src/gs-update-monitor.c:1162
 msgid "System Upgrade Complete"
 msgstr "Stýrikerfisuppfærslu er lokið"
 
 #. TRANSLATORS: This is the notification body when we've done a
 #. * distro upgrade. First %s is the distro name and the 2nd %s
 #. * is the version, e.g. "Welcome to Fedora 28!"
-#: src/gs-update-monitor.c:1172
+#: src/gs-update-monitor.c:1167
 #, c-format
 msgid "Welcome to %s %s!"
 msgstr "Velkomin í %s %s!"
 
 #. TRANSLATORS: title when we've done offline updates
-#: src/gs-update-monitor.c:1178
+#: src/gs-update-monitor.c:1173
 msgid "Software Update Installed"
 msgid_plural "Software Updates Installed"
 msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: message when we've done offline updates
-#: src/gs-update-monitor.c:1182
+#: src/gs-update-monitor.c:1177
 msgid "An important operating system update has been installed."
 msgid_plural "Important operating system updates have been installed."
 msgstr[0] ""
@@ -4382,91 +5604,90 @@ msgstr[1] ""
 #. * users can't express their opinions here. In some languages
 #. * "Review (evaluate) something" is a different translation than
 #. * "Review (browse) something."
-#: src/gs-update-monitor.c:1193
+#: src/gs-update-monitor.c:1188
 msgctxt "updates"
 msgid "Review"
 msgstr "Yfirfara"
 
 #. TRANSLATORS: this is when the offline update failed
-#: src/gs-update-monitor.c:1243
+#: src/gs-update-monitor.c:1237
 msgid "Failed To Update"
 msgstr "Mistókst að uppfæra"
 
 #. TRANSLATORS: the user must have updated manually after
 #. * the updates were prepared
-#: src/gs-update-monitor.c:1248
+#: src/gs-update-monitor.c:1242
 msgid "The system was already up to date."
 msgstr "Kerfið var þegar með öllum nýjasta hugbúnaðinum."
 
 #. TRANSLATORS: the user aborted the update manually
-#: src/gs-update-monitor.c:1253
+#: src/gs-update-monitor.c:1247
 msgid "The update was cancelled."
 msgstr "Hætt var við uppfærsluna."
 
 #. TRANSLATORS: the package manager needed to download
 #. * something with no network available
-#: src/gs-update-monitor.c:1258
+#: src/gs-update-monitor.c:1252
 msgid ""
 "Internet access was required but wasn’t available. Please make sure that you "
 "have internet access and try again."
 msgstr ""
 
 #. TRANSLATORS: if the package is not signed correctly
-#: src/gs-update-monitor.c:1263
+#: src/gs-update-monitor.c:1257
 msgid ""
 "There were security issues with the update. Please consult your software "
 "provider for more details."
 msgstr ""
 
 #. TRANSLATORS: we ran out of disk space
-#: src/gs-update-monitor.c:1268
+#: src/gs-update-monitor.c:1262
 msgid ""
 "There wasn’t enough disk space. Please free up some space and try again."
 msgstr ""
 
 #. TRANSLATORS: We didn't handle the error type
-#: src/gs-update-monitor.c:1272
+#: src/gs-update-monitor.c:1266
 msgid ""
 "We’re sorry: the update failed to install. Please wait for another update "
 "and try again. If the problem persists, contact your software provider."
 msgstr ""
 
 #. TRANSLATORS: This is the time when we last checked for updates
-#: src/gs-updates-page.c:248
+#: src/gs-updates-page.c:247
 #, c-format
 msgid "Last checked: %s"
 msgstr "Síðast athugað: %s"
 
 #. TRANSLATORS:  the first %s is the distro name, e.g. 'Fedora'
 #. * and the second %s is the distro version, e.g. '25'
-#: src/gs-updates-page.c:573
+#: src/gs-updates-page.c:559
 #, c-format
 msgid "%s %s is no longer supported."
 msgstr "%s %s er ekki lengur stutt."
 
-#: src/gs-updates-page.c:577
-#| msgid "Your OS is no longer supported."
+#: src/gs-updates-page.c:563
 msgid "Your operating system is no longer supported."
 msgstr "Stýrikerfið þitt er ekki lengur stutt."
 
 #. TRANSLATORS: EOL distros do not get important updates
-#: src/gs-updates-page.c:582
+#: src/gs-updates-page.c:568
 msgid "This means that it does not receive security updates."
 msgstr ""
 
 #. TRANSLATORS: upgrade refers to a major update, e.g. Fedora 25 to 26
-#: src/gs-updates-page.c:586
+#: src/gs-updates-page.c:572
 msgid "It is recommended that you upgrade to a more recent version."
 msgstr ""
 
 #. TRANSLATORS: this is to explain that downloading updates may cost money
-#: src/gs-updates-page.c:863
+#: src/gs-updates-page.c:849
 msgid "Charges May Apply"
 msgstr "Gæti leitt til kostnaðar"
 
 #. TRANSLATORS: we need network
 #. * to do the updates check
-#: src/gs-updates-page.c:867
+#: src/gs-updates-page.c:853
 msgid ""
 "Checking for updates while using mobile broadband could cause you to incur "
 "charges."
@@ -4474,28 +5695,30 @@ msgstr ""
 
 #. TRANSLATORS: this is a link to the
 #. * control-center network panel
-#: src/gs-updates-page.c:871
+#: src/gs-updates-page.c:857
 msgid "Check _Anyway"
 msgstr "_Athuga samt"
 
 #. TRANSLATORS: can't do updates check
-#: src/gs-updates-page.c:887
+#: src/gs-updates-page.c:873
 msgid "No Network"
 msgstr "Engin nettenging"
 
 #. TRANSLATORS: we need network
 #. * to do the updates check
-#: src/gs-updates-page.c:891
+#: src/gs-updates-page.c:877
 msgid "Internet access is required to check for updates."
 msgstr ""
 
-#: src/gs-updates-page.c:1276
-msgid "Checking…"
-msgstr "Athuga..."
-
-#: src/gs-updates-page.c:1294
+#: src/gs-updates-page.c:1250
 msgid "Check for updates"
 msgstr "Leita að uppfærslum"
+
+#: src/gs-updates-page.c:1286
+#, fuzzy
+msgctxt "Apps to be updated"
+msgid "Updates"
+msgstr "Uppfærslur"
 
 #: src/gs-updates-page.ui:6
 msgid "Updates page"
@@ -4552,49 +5775,49 @@ msgstr ""
 
 #. TRANSLATORS: This is the button for installing all
 #. * offline updates
-#: src/gs-updates-section.c:324
+#: src/gs-updates-section.c:312
 msgid "Restart & Update"
 msgstr "Endurræsa & uppfæra"
 
 #. TRANSLATORS: This is the button for upgrading all
 #. * online-updatable applications
-#: src/gs-updates-section.c:330
+#: src/gs-updates-section.c:318
 msgid "Update All"
 msgstr "Uppfæra allt"
 
 #. TRANSLATORS: This is the header for system firmware that
 #. * requires a reboot to apply
-#: src/gs-updates-section.c:472
+#: src/gs-updates-section.c:450
 msgid "Integrated Firmware"
 msgstr "Innbyggður grunnhugbúnaður/firmware"
 
 #. TRANSLATORS: This is the header for offline OS and offline
 #. * app updates that require a reboot to apply
-#: src/gs-updates-section.c:477
+#: src/gs-updates-section.c:455
 msgid "Requires Restart"
 msgstr "Krefst endurræsingar"
 
 #. TRANSLATORS: This is the header for online runtime and
 #. * app updates, typically flatpaks or snaps
-#: src/gs-updates-section.c:482
+#: src/gs-updates-section.c:460
 msgid "Application Updates"
 msgstr "Uppfærslur forrita"
 
 #. TRANSLATORS: This is the header for device firmware that can
 #. * be installed online
-#: src/gs-updates-section.c:487
+#: src/gs-updates-section.c:465
 msgid "Device Firmware"
 msgstr "Grunnhugbúnaður/firmware tækja"
 
 #: src/gs-updates-section.ui:33 src/gs-upgrade-banner.ui:72
-#: plugins/packagekit/gs-packagekit-task.c:153
+#: plugins/packagekit/gs-packagekit-task.c:155
 msgid "_Download"
 msgstr "Sæ_kja"
 
 #. TRANSLATORS: This is the text displayed when a distro
 #. * upgrade is available. The first %s is the distro name
 #. * and the 2nd %s is the version, e.g. "Fedora 35 Available"
-#: src/gs-upgrade-banner.c:88
+#: src/gs-upgrade-banner.c:90
 #, c-format
 msgid "%s %s Available"
 msgstr "%s %s tiltækt"
@@ -4602,29 +5825,29 @@ msgstr "%s %s tiltækt"
 #. TRANSLATORS: This is the text displayed when a distro
 #. * upgrade is available. The %s is the distro name,
 #. * e.g. "GNOME OS Available"
-#: src/gs-upgrade-banner.c:93
+#: src/gs-upgrade-banner.c:95
 #, c-format
 msgid "%s Available"
 msgstr "%s tiltækt"
 
-#: src/gs-upgrade-banner.c:139
+#: src/gs-upgrade-banner.c:143
 msgid "Learn about the new version"
 msgstr "Kynntu þér nýju útgáfuna"
 
-#: src/gs-upgrade-banner.c:163
+#: src/gs-upgrade-banner.c:167
 msgid "Downloading…"
 msgstr "Sæki gögn…"
 
 #. Translators: the first '%s' is replaced with the downloaded size, the second '%s'
 #. with the total download size, forming text like "135 MB of 2 GB downloaded"
-#: src/gs-upgrade-banner.c:181
+#: src/gs-upgrade-banner.c:185
 #, c-format
 msgid "%s of %s downloaded"
 msgstr "%s af %s sótt"
 
 #. Translators: the '%u' is replaced with the actual percentage being already
 #. downloaded, forming text like "13% downloaded"
-#: src/gs-upgrade-banner.c:185
+#: src/gs-upgrade-banner.c:189
 #, c-format
 msgid "%u%% downloaded"
 msgstr "%u%% sótt"
@@ -4671,18 +5894,28 @@ msgstr ""
 msgid "Downloading featured images…"
 msgstr ""
 
-#. TRANSLATORS: ‘Endless OS’ is a brand name; https://endlessos.com/
-#: plugins/eos-updater/gs-plugin-eos-updater.c:605
-msgid "Endless OS"
-msgstr "Endless OS"
-
-#. TRANSLATORS: ‘Endless OS’ is a brand name; https://endlessos.com/
-#: plugins/eos-updater/gs-plugin-eos-updater.c:608
-msgid "An Endless OS update with new features and fixes."
+#. Translators: The '%s' is replaced with the OS name, like "Endless OS"
+#: plugins/eos-updater/gs-plugin-eos-updater.c:637
+#, c-format
+msgid "%s update with new features and fixes."
 msgstr ""
 
-#: plugins/eos-updater/gs-plugin-eos-updater.c:934
+#: plugins/eos-updater/gs-plugin-eos-updater.c:970
 msgid "EOS update service could not fetch and apply the update."
+msgstr ""
+
+#: plugins/epiphany/gs-plugin-epiphany.c:498
+#, fuzzy
+msgid "GNOME Web"
+msgstr "GNOME hugbúnaður"
+
+#: plugins/epiphany/org.gnome.Software.Plugin.Epiphany.metainfo.xml.in:6
+#, fuzzy
+msgid "Web Apps Support"
+msgstr "Stuðningur við skjáborðsumhverfi"
+
+#: plugins/epiphany/org.gnome.Software.Plugin.Epiphany.metainfo.xml.in:7
+msgid "Run popular web applications in a browser"
 msgstr ""
 
 #. TRANSLATORS: status text when downloading
@@ -4704,15 +5937,147 @@ msgstr "Flatpak-stuðningur"
 msgid "Flatpak is a framework for desktop applications on Linux"
 msgstr ""
 
+#. Reference: https://docs.flatpak.org/en/latest/flatpak-command-reference.html#idm45858571325264
+#: plugins/flatpak/gs-flatpak.c:313
+#, fuzzy, c-format
+msgid "System folder %s"
+msgstr "Kerfisuppfærslur"
+
+#: plugins/flatpak/gs-flatpak.c:314 plugins/flatpak/gs-flatpak.c:315
+#, fuzzy, c-format
+msgid "Home subfolder %s"
+msgstr "Heimamappa"
+
+#: plugins/flatpak/gs-flatpak.c:316
+#, fuzzy
+msgid "Host system folders"
+msgstr "Heimamappa"
+
+#: plugins/flatpak/gs-flatpak.c:317
+msgid "Host system configuration from /etc"
+msgstr ""
+
+#: plugins/flatpak/gs-flatpak.c:318
+#, fuzzy
+msgid "Desktop folder"
+msgstr "Stuðningur við skjáborðsumhverfi"
+
+#: plugins/flatpak/gs-flatpak.c:318
+#, fuzzy, c-format
+msgid "Desktop subfolder %s"
+msgstr "Stuðningur við skjáborðsumhverfi"
+
+#: plugins/flatpak/gs-flatpak.c:319
+#, fuzzy
+msgid "Documents folder"
+msgstr "Heimamappa"
+
+#: plugins/flatpak/gs-flatpak.c:319
+#, fuzzy, c-format
+msgid "Documents subfolder %s"
+msgstr "Heimamappa"
+
+#: plugins/flatpak/gs-flatpak.c:320
+#, fuzzy
+msgid "Music folder"
+msgstr "Tónlistarspilarar"
+
+#: plugins/flatpak/gs-flatpak.c:320
+#, fuzzy, c-format
+msgid "Music subfolder %s"
+msgstr "Tónlistarspilarar"
+
+#: plugins/flatpak/gs-flatpak.c:321
+#, fuzzy
+msgid "Pictures folder"
+msgstr "Mynd"
+
+#: plugins/flatpak/gs-flatpak.c:321
+#, c-format
+msgid "Pictures subfolder %s"
+msgstr ""
+
+#: plugins/flatpak/gs-flatpak.c:322
+msgid "Public Share folder"
+msgstr ""
+
+#: plugins/flatpak/gs-flatpak.c:322
+#, c-format
+msgid "Public Share subfolder %s"
+msgstr ""
+
+#: plugins/flatpak/gs-flatpak.c:323
+#, fuzzy
+msgid "Videos folder"
+msgstr "Heimamappa"
+
+#: plugins/flatpak/gs-flatpak.c:323
+#, fuzzy, c-format
+msgid "Videos subfolder %s"
+msgstr "%s hentar fyrir %s"
+
+#: plugins/flatpak/gs-flatpak.c:324
+#, fuzzy
+msgid "Templates folder"
+msgstr "Heimamappa"
+
+#: plugins/flatpak/gs-flatpak.c:324
+#, c-format
+msgid "Templates subfolder %s"
+msgstr ""
+
+#: plugins/flatpak/gs-flatpak.c:325
+msgid "User cache folder"
+msgstr ""
+
+#: plugins/flatpak/gs-flatpak.c:325
+#, c-format
+msgid "User cache subfolder %s"
+msgstr ""
+
+#: plugins/flatpak/gs-flatpak.c:326
+#, fuzzy
+msgid "User configuration folder"
+msgstr "%s uppsetningaruppfærsla"
+
+#: plugins/flatpak/gs-flatpak.c:326
+#, fuzzy, c-format
+msgid "User configuration subfolder %s"
+msgstr "%s uppsetningaruppfærsla"
+
+#: plugins/flatpak/gs-flatpak.c:327
+#, fuzzy
+msgid "User data folder"
+msgstr "Notandagögn"
+
+#: plugins/flatpak/gs-flatpak.c:327
+#, c-format
+msgid "User data subfolder %s"
+msgstr ""
+
+#: plugins/flatpak/gs-flatpak.c:328
+#, fuzzy
+msgid "User runtime folder"
+msgstr "Heimamappa"
+
+#: plugins/flatpak/gs-flatpak.c:328
+#, c-format
+msgid "User runtime subfolder %s"
+msgstr ""
+
+#: plugins/flatpak/gs-flatpak.c:386
+#, fuzzy, c-format
+msgid "Filesystem access to %s"
+msgstr "Enginn aðgangur að skráakerfi"
+
 #. TRANSLATORS: status text when downloading new metadata
-#: plugins/flatpak/gs-flatpak.c:1259
+#: plugins/flatpak/gs-flatpak.c:1403
 #, c-format
 msgid "Getting flatpak metadata for %s…"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:3391
+#: plugins/flatpak/gs-flatpak.c:3579
 #, c-format
-#| msgid "Unable to find “%s”"
 msgid "Failed to refine addon ‘%s’: %s"
 msgstr "Mistókst að fínstilla viðbótina ‘%s’: %s"
 
@@ -4724,14 +6089,21 @@ msgstr "Uppsetning notanda"
 msgid "System Installation"
 msgstr "Uppsetning kerfis"
 
-#: plugins/flatpak/gs-plugin-flatpak.c:1098
+#: plugins/flatpak/gs-plugin-flatpak.c:1037
 #, c-format
 msgid "Failed to add to install for addon ‘%s’: %s"
 msgstr ""
 
-#: plugins/flatpak/gs-plugin-flatpak.c:1112
+#: plugins/flatpak/gs-plugin-flatpak.c:1051
 #, c-format
 msgid "Failed to add to uninstall for addon ‘%s’: %s"
+msgstr ""
+
+#: plugins/flatpak/gs-plugin-flatpak.c:1317
+#, c-format
+msgid ""
+"Remote “%s” doesn't allow install of “%s”, possibly due to its filter. "
+"Remove the filter and repeat the install. Detailed error: %s"
 msgstr ""
 
 #. TRANSLATORS: a specific part of hardware,
@@ -4745,7 +6117,6 @@ msgstr "%s uppfærsla tækis"
 #. * the first %s is the device name, e.g. 'ThinkPad P50`
 #: plugins/fwupd/gs-fwupd-app.c:139
 #, c-format
-#| msgid "Other Updates"
 msgid "%s System Update"
 msgstr "%s kerfisuppfærsla"
 
@@ -4760,7 +6131,6 @@ msgstr "%s uppfærsla ívafinna stýringa"
 #. * the first %s is the device name, e.g. 'ThinkPad P50`
 #: plugins/fwupd/gs-fwupd-app.c:149
 #, c-format
-#| msgid "Update"
 msgid "%s ME Update"
 msgstr "%s ME uppfærsla"
 
@@ -4783,7 +6153,6 @@ msgstr "%s ME notendauppfærsla"
 #. * the first %s is the device name, e.g. 'Intel ThunderBolt`
 #: plugins/fwupd/gs-fwupd-app.c:165
 #, c-format
-#| msgid "Other Updates"
 msgid "%s Controller Update"
 msgstr "%s stýringaruppfærsla"
 
@@ -4806,15 +6175,12 @@ msgstr "%s uppfærsla CPU-Microcode"
 #. * e.g. a security database or a default power value
 #: plugins/fwupd/gs-fwupd-app.c:181
 #, c-format
-#| msgid "%u Application Updated"
-#| msgid_plural "%u Applications Updated"
 msgid "%s Configuration Update"
 msgstr "%s uppsetningaruppfærsla"
 
 #. TRANSLATORS: battery refers to the system power source
 #: plugins/fwupd/gs-fwupd-app.c:185
 #, c-format
-#| msgid "Other Updates"
 msgid "%s Battery Update"
 msgstr "%s rafhlöðuuppfærsla"
 
@@ -4822,14 +6188,12 @@ msgstr "%s rafhlöðuuppfærsla"
 #. * camera in the bezel or external USB webcam
 #: plugins/fwupd/gs-fwupd-app.c:190
 #, c-format
-#| msgid "Restart & Update"
 msgid "%s Camera Update"
 msgstr "%s myndavélaruppfærsla"
 
 #. TRANSLATORS: TPM refers to a Trusted Platform Module
 #: plugins/fwupd/gs-fwupd-app.c:194
 #, c-format
-#| msgid "Update"
 msgid "%s TPM Update"
 msgstr "%s TPM uppfærsla"
 
@@ -4854,7 +6218,6 @@ msgstr "Lyklaborðsuppfærsla %s"
 #. TRANSLATORS: Storage Controller is typically a RAID or SAS adapter
 #: plugins/fwupd/gs-fwupd-app.c:210
 #, c-format
-#| msgid "Other Updates"
 msgid "%s Storage Controller Update"
 msgstr "%s geymslustýringaruppfærsla"
 
@@ -4862,7 +6225,6 @@ msgstr "%s geymslustýringaruppfærsla"
 #. * PCI card, not the logical wired connection
 #: plugins/fwupd/gs-fwupd-app.c:215
 #, c-format
-#| msgid "Other Updates"
 msgid "%s Network Interface Update"
 msgstr "%s netkortsuppfærsla"
 
@@ -4870,7 +6232,6 @@ msgstr "%s netkortsuppfærsla"
 #. * external monitor
 #: plugins/fwupd/gs-fwupd-app.c:220
 #, c-format
-#| msgid "Other Updates"
 msgid "%s Display Update"
 msgstr "%s skjákortsuppfærsla"
 
@@ -4878,11 +6239,17 @@ msgstr "%s skjákortsuppfærsla"
 #. * is the device that updates all the other firmware on the system
 #: plugins/fwupd/gs-fwupd-app.c:225
 #, c-format
-#| msgid "Update"
 msgid "%s BMC Update"
 msgstr "%s BMC uppfærsla"
 
-#: plugins/fwupd/gs-plugin-fwupd.c:1199
+#. TRANSLATORS: Receiver refers to a radio device, e.g. a tiny Bluetooth
+#. * device that stays in the USB port so the wireless peripheral works
+#: plugins/fwupd/gs-fwupd-app.c:230
+#, fuzzy, c-format
+msgid "%s USB Receiver Update"
+msgstr "%s uppfærsla tækis"
+
+#: plugins/fwupd/gs-plugin-fwupd.c:1240
 msgid "Firmware"
 msgstr "Grunnhugbúnaður"
 
@@ -4894,32 +6261,32 @@ msgstr "Stuðningur við uppfærslu grunnhugbúnaður (firmware)"
 msgid "Provides support for firmware upgrades"
 msgstr "Veitir stuðning við uppfærslu grunnhugbúnaðar"
 
-#: plugins/packagekit/gs-packagekit-task.c:146
+#: plugins/packagekit/gs-packagekit-task.c:148
 msgid "Install Unsigned Software?"
 msgstr "Setja inn óundirritaðan hugbúnað?"
 
-#: plugins/packagekit/gs-packagekit-task.c:147
+#: plugins/packagekit/gs-packagekit-task.c:149
 msgid ""
 "Software that is to be installed is not signed. It will not be possible to "
 "verify the origin of updates to this software, or whether updates have been "
 "tampered with."
 msgstr ""
 
-#: plugins/packagekit/gs-packagekit-task.c:151
+#: plugins/packagekit/gs-packagekit-task.c:153
 msgid "Download Unsigned Software?"
 msgstr "Sækja óundirritaðan hugbúnað?"
 
-#: plugins/packagekit/gs-packagekit-task.c:152
+#: plugins/packagekit/gs-packagekit-task.c:154
 msgid ""
 "Unsigned updates are available. Without a signature, it is not possible to "
 "verify the origin of the update, or whether it has been tampered with."
 msgstr ""
 
-#: plugins/packagekit/gs-packagekit-task.c:156
+#: plugins/packagekit/gs-packagekit-task.c:158
 msgid "Update Unsigned Software?"
 msgstr "Uppfæra óundirritaðan hugbúnað?"
 
-#: plugins/packagekit/gs-packagekit-task.c:157
+#: plugins/packagekit/gs-packagekit-task.c:159
 msgid ""
 "Unsigned updates are available. Without a signature, it is not possible to "
 "verify the origin of the update, or whether it has been tampered with. "
@@ -4927,16 +6294,16 @@ msgid ""
 "or updated."
 msgstr ""
 
-#: plugins/packagekit/gs-plugin-packagekit.c:459
+#: plugins/packagekit/gs-plugin-packagekit.c:367
 msgid "Packages"
 msgstr "Pakkar"
 
-#: plugins/rpm-ostree/gs-plugin-rpm-ostree.c:2452
+#: plugins/rpm-ostree/gs-plugin-rpm-ostree.c:2690
 msgid "Operating System (OSTree)"
 msgstr "Stýrikerfi (OSTree)"
 
 #. TRANSLATORS: default snap store name
-#: plugins/snap/gs-plugin-snap.c:286
+#: plugins/snap/gs-plugin-snap.c:300
 msgid "Snap Store"
 msgstr "Snap-miðstöð"
 
@@ -4948,11 +6315,81 @@ msgstr "Stuðningur við Snap"
 msgid "A snap is a universal Linux package"
 msgstr "Snap-pakkar eru algildir Linux-pakkar"
 
-#~ msgid "GNOME Software"
-#~ msgstr "GNOME hugbúnaður"
+#. TRANSLATORS: this is to inform that the package is part of
+#. * the BASE system
+#: plugins/vso/gs-plugin-vso.c:114
+#, fuzzy
+msgid "base"
+msgstr "Gagnagrunnar"
 
-#~ msgid "Unknown"
-#~ msgstr "Óþekkt"
+#: plugins/vso/gs-plugin-vso.c:240
+msgid ""
+"Another transaction has already been executed, you must reboot your system "
+"before starting a new transaction."
+msgstr ""
+
+#: plugins/vso/gs-plugin-vso.c:260
+msgid "VSO failed to update the system, please try again later."
+msgstr ""
+
+#: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:245
+msgid ""
+"Applications installable via Apx with pre-defined container configuration"
+msgstr ""
+
+#. origin_ui on a remote is the repo dialogue section name,
+#. * not the remote title
+#: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:249
+msgid "Apps"
+msgstr ""
+
+#: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:251
+msgid ""
+"This repository contains a set of popular applications installable via Apx "
+"and pre-configured by the Vanilla OS team to guarantee that they are using "
+"the most compatible container and configurations."
+msgstr ""
+
+#~ msgid "Application manager for GNOME"
+#~ msgstr "Forritaumsýsla fyrir GNOME"
+
+#~ msgid "A list of popular applications"
+#~ msgstr "Listi yfir vinsæl forrit"
+
+#, c-format
+#~ msgid "%s %s"
+#~ msgstr "%s %s"
+
+#~ msgid "Name"
+#~ msgstr "Heiti"
+
+#~ msgid "system"
+#~ msgstr "kerfis"
+
+#~ msgid "user"
+#~ msgstr "notanda"
+
+#~ msgid "Channel"
+#~ msgstr "Rás"
+
+#~ msgid "Branch"
+#~ msgstr "Grein"
+
+#~ msgid "URL"
+#~ msgstr "Slóð (URL)"
+
+#~ msgid "Installation"
+#~ msgstr "Uppsetning"
+
+#~| msgid "Can access D-Bus services on the system bus"
+#~ msgid "Can access arbitrary files on the file system"
+#~ msgstr "Hefur aðgang að allskyns skrám á skráarkerfinu"
+
+#~ msgid "Checking…"
+#~ msgstr "Athuga..."
+
+#~ msgid "Endless OS"
+#~ msgstr "Endless OS"
 
 #~| msgid "Removing…"
 #~ msgid "Loading…"
@@ -4973,9 +6410,6 @@ msgstr "Snap-pakkar eru algildir Linux-pakkar"
 #~| msgid "Free Software"
 #~ msgid "_Browse Software"
 #~ msgstr "Skoða hug_búnað"
-
-#~ msgid "Picture"
-#~ msgstr "Mynd"
 
 #~ msgid "OS Updates"
 #~ msgstr "Uppfærslur stýrikerfis"

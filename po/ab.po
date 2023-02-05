@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-software/issues\n"
-"POT-Creation-Date: 2022-07-20 12:56+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-05 17:21-0300\n"
 "Last-Translator: Нанба Наала <naala-nanba@rambler.ru>\n"
 "Language-Team: Abkhazian <daniel.abzakh@gmail.com>\n"
 "Language: ab\n"
@@ -16,7 +16,7 @@ msgid "Software"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:8
-msgid "Application manager for GNOME"
+msgid "Install and update apps"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:10
@@ -55,8 +55,1187 @@ msgstr ""
 msgid "The update details"
 msgstr ""
 
-#: data/metainfo/org.gnome.Software.metainfo.xml.in:1949
-#: src/gs-application.c:245
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:71
+msgid "This is a stable release with translation updates:"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:73
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:197
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:244
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:373
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:492
+msgid "Bulgarian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:74
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:107
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:144
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:198
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:245
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:282
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:374
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:418
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:457
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:493
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:531
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:596
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:638
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:686
+msgid "Catalan"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:75
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:200
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:459
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:533
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:687
+msgid "Chinese (Taiwan)"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:76
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:202
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:285
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:421
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:534
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:598
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:639
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:688
+msgid "Czech"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:77
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:205
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:378
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:461
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:536
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:600
+msgid "English (United Kingdom)"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:78
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:113
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:209
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:288
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:330
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:380
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:426
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:463
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:495
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:604
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:640
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:690
+msgid "Galician"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:79
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:114
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:147
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:210
+msgid "Georgian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:80
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:211
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:250
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:381
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:427
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:496
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:539
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:605
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:691
+msgid "German"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:81
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:115
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:148
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:212
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:251
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:289
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:331
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:382
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:541
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:693
+msgid "Hebrew"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:82
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:213
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:252
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:428
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:606
+msgid "Hungarian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:83
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:116
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:332
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:383
+msgid "Icelandic"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:84
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:385
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:698
+msgid "Latvian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:85
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:119
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:151
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:215
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:255
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:292
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:386
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:431
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:467
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:543
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:610
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:699
+msgid "Lithuanian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:86
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:216
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:544
+msgid "Nepali"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:87
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:125
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:155
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:223
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:260
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:392
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:552
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:577
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:615
+msgid "Serbian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:88
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:224
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:261
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:297
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:339
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:394
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:438
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:472
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:502
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:616
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:644
+msgid "Slovenian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:89
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:126
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:156
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:225
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:298
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:340
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:395
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:439
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:473
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:553
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:617
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:645
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:705
+msgid "Spanish"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:90
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:226
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:262
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:396
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:440
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:474
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:554
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:618
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:646
+msgid "Swedish"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:96
+msgid "This is the third unstable release for GNOME 43."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:98
+msgid "Supports video as a screenshot"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:99
+msgid "Improvements of source picker in the details page"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:100
+msgid "Fixes a bug when viewing details of a package file"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:101
+msgid "Fixes a bug when reading certain .flatpakref file"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:103
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:141
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:194
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:240
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:279
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:327
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:369
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:415
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:454
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:489
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:526
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:682
+msgid "This release also updates translations:"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:105
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:143
+msgid "Abkhazian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:106
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:196
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:242
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:281
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:371
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:417
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:456
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:528
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:595
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:684
+msgid "Basque"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:108
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:145
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:199
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:246
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:283
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:329
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:375
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:419
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:458
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:532
+msgid "Chinese (China)"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:109
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:201
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:284
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:376
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:420
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:460
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:597
+msgid "Croatian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:110
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:203
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:247
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:286
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:422
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:571
+msgid "Danish"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:111
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:146
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:204
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:377
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:423
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:535
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:599
+msgid "Dutch"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:112
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:206
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:248
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:424
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:462
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:537
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:601
+msgid "Finnish"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:117
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:149
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:214
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:290
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:333
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:384
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:429
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:464
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:607
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:641
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:694
+msgid "Indonesian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:118
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:291
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:430
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:466
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:609
+msgid "Korean"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:120
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:152
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:218
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:257
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:293
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:388
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:469
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:499
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:546
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:611
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:700
+#, fuzzy
+msgid "Persian"
+msgstr "Аверсиа"
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:121
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:219
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:258
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:433
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:547
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:575
+msgid "Polish"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:122
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:153
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:220
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:294
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:336
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:389
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:434
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:470
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:500
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:548
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:612
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:643
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:701
+msgid "Portuguese"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:123
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:221
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:295
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:337
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:390
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:435
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:471
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:501
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:549
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:613
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:702
+msgid "Portuguese (Brazil)"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:124
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:154
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:222
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:259
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:296
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:338
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:391
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:437
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:551
+msgid "Russian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:127
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:157
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:227
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:299
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:397
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:619
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:706
+msgid "Turkish"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:128
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:158
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:228
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:300
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:341
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:398
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:441
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:475
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:503
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:555
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:620
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:707
+msgid "Ukrainian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:134
+msgid "This is the second unstable release for GNOME 43."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:136
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:237
+msgid "Various fixes related to changed threading model"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:137
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:349
+msgid "Various UI parts updated"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:138
+msgid "Sources dropdown had been reworked"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:139
+msgid "Fixes a rare crash when showing app details"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:150
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:542
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:573
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:695
+msgid "Italian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:159
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:229
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:399
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:708
+msgid "Vietnamese"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:165
+msgid "This is the first unstable release for GNOME 43."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:167
+msgid "Various improvements to notifications"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:168
+msgid "Fix several crashes when handling flatpak apps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:169
+msgid "Add ‘Other Apps by Author’ section in the app details page"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:170
+msgid "Improve styling of app context lozenges"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:171
+msgid ""
+"Add ‘Available for Distro’ section to the overview page (if configured by "
+"your distribution)"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:172
+msgid ""
+"Show more details about file system permissions requested by flatpak apps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:173
+msgid "Show more types of URI from app metainfo"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:174
+msgid "Fix a few issues when using a dark mode theme"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:175
+msgid "Fix some issues with arrows in right-to-left locales"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:176
+msgid "Fix language pack installation for certain locales"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:177
+msgid "Improve debug output to make user bug reports more useful"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:178
+msgid "Add `--uninstall=ID` command line option"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:179
+msgid ""
+"Allow scrolling screenshots by clicking on next and previous screenshots"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:180
+msgid "Add support for webapps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:181
+msgid "Allow swiping back in the shell using touch gestures"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:182
+msgid "Improved caching of downloaded metadata"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:183
+msgid "Many internal architectural changes to make the code more maintainable"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:184
+msgid ""
+"The <code>popular-overrides</code> GSettings key has been removed; "
+"distribution vendors wishing to mark their apps as popular should see `doc/"
+"vendor-customisation.md` for examples of how to do this now"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:189
+msgid ""
+"The <code>hardcoded_popular</code> Meson option has been renamed to "
+"<code>hardcoded_curated</code>."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:207
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:249
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:425
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:602
+msgid "French"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:208
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:287
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:379
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:494
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:538
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:603
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:689
+msgid "Friulian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:217
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:256
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:335
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:387
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:432
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:468
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:498
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:545
+msgid "Occitan (post 1500)"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:235
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:405
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:561
+msgid "This is a stable release with the following changes:"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:238
+msgid "Added several appstream-related fixes"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:243
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:530
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:685
+msgid "Bokmål, Norwegian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:253
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:334
+msgid "Japanese"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:254
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:465
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:608
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:697
+msgid "Kazakh"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:268
+msgid "This is the third unstable release for GNOME 42."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:270
+msgid "Cancel ongoing update downloads when system power is low"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:271
+msgid "Numerous small user interface fixes and tweaks"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:272
+msgid "Prioritize full matches in search results"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:273
+msgid "Improvements in dark mode"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:274
+msgid "Fix disabling flatpak remotes from the ‘Software Repositories’ dialog"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:275
+msgid ""
+"Threading and performance improvements which should reduce the number of "
+"user interface freezes"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:276
+msgid "Update some icons"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:277
+msgid ""
+"Check for updates when moving from a metered to a non-metered network "
+"connection"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:306
+msgid "This is the second unstable release for GNOME 42."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:308
+msgid "Allow <code>--verbose</code> to be enabled at runtime"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:309
+msgid "Condense the rows in the age rating context dialog"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:310
+msgid "Update the UI for ratings and reviews of apps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:311
+msgid "Improve the appearance of the category page loading screen"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:312
+msgid "Drop the first run dialog"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:313
+msgid "Improvements to dark theming"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:314
+msgid ""
+"Support viewing a specific metainfo file using <code>--show-metainfo</code>"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:315
+msgid "Several more threading improvements"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:316
+msgid "Icon updates"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:317
+msgid "Drop the hardcoded-popular plugin in favour of an appstream file"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:318
+msgid ""
+"The background image for upgrades is now looked for using several well-known "
+"(and distribution-specific) names in <code>${DATADIR}/gnome-software/"
+"backgrounds</code>, and the previous Fedora-specific default background "
+"image is no longer distributed. Similarly, the <code>upgrade-background-uri</"
+"code> GSettings key has been removed. Distributions may need to update how "
+"they ship background images. See <em>doc/vendor-customisation.md</em>."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:347
+msgid "This is the first unstable release for GNOME 42."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:350
+msgid "Support more markup in the application description"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:351
+msgid "Ask about package signature with PackageKit on signing issue"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:352
+msgid "Show better System Update progress"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:353
+msgid "Remove various cultural sensitivity badges"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:354
+msgid "Fix a crash when processing age ratings"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:355
+msgid ""
+"Reload application details only when not installing/removing the application"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:356
+msgid "Do not follow symlinks when calculating disk size usage"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:357
+msgid "Fix addons section, which could show addons for different application"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:358
+msgid ""
+"Fix showing a ‘transaction in progress’ error when using the rpm-ostree "
+"plugin"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:359
+msgid "Don’t recommend a reboot if firmware updates fail"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:360
+msgid ""
+"Fix flathub repo being considered present on Fedora 35 with filtered flathub"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:361
+msgid "Allow searching for extensions"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:362
+msgid "Fix translation of main button on updates page"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:363
+msgid "Fix codec installation process"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:364
+msgid "Add new GNOME Circle apps to the featured carousel"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:365
+msgid "Improve metadata support for snaps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:366
+msgid "Fix update checks being missed across suspend/hibernation"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:367
+msgid ""
+"Ensure application lists are updated when repositories are enabled/installed "
+"or disabled/removed"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:372
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:491
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:529
+msgid "Belarusian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:393
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:704
+msgid "Slovak"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:407
+msgid ""
+"Instead of showing all package-based apps as \"potentially unsafe\", only "
+"use that language for 3rd party ones"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:408
+msgid ""
+"Fix a bug where the \"Show more\" button on an app details page would "
+"flicker when the window is resized"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:409
+msgid ""
+"Fix a bug where Software sometimes shows an Uninstall button after "
+"uninstalling something"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:410
+msgid "Add GNOME Circle apps to the featured carousel"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:411
+msgid ""
+"Fix a bug where Software would sometimes fail to execute an install/remove "
+"operation for PackageKit software rather than showing a PolicyKit password "
+"prompt"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:412
+msgid ""
+"Fix a bug where Software would fail to upgrade the distribution via "
+"PackageKit"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:413
+msgid "Fix the hiding of rows on the Updates tab after they have been updated"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:436
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:550
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:614
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:703
+msgid "Romanian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:447
+msgid "This is the third unstable release for GNOME 41."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:449
+msgid "Tweaks to the context tiles and dialogs"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:450
+msgid "Fixes to the details page for non-desktop apps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:451
+msgid "Re-add support for the add-ons categories"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:452
+msgid "Sort new and updated apps by release date on the category page"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:481
+msgid "This is the second unstable release for GNOME 41."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:483
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:511
+msgid "Many parts of the user interface reworked"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:484
+msgid "Fix when the 'Launch' button is shown after an application install"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:485
+msgid "Fix appstream:// URL handling"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:486
+msgid "Fix application freeze on Flatpak application install/remove/update"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:487
+msgid "Disable automatic update downloads when in power saver mode"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:497
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:540
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:692
+msgid "Greek, Modern (1453-)"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:509
+msgid "This is the first unstable release for GNOME 41."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:512
+msgid "Improve error reporting from flatpak when low on disk space"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:513
+msgid "Fix issues with updating the UI when uninstalling apps with add-ons"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:514
+msgid "Don’t keep rpm-ostreed alive forever"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:515
+msgid "Prevent polkit checks showing up for background operations"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:516
+msgid "Disallow submitting reviews for an app you haven’t installed"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:517
+msgid "Show download size in the Updates page"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:518
+msgid "Notify when restart is needed when uninstalling an app"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:519
+msgid "Fix some issues with searches not running"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:520
+msgid "Allow non-integer average star ratings for apps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:521
+msgid "Reduce number of categories in the UI"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:522
+msgid "Improve ‘pending updates’ notifications"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:523
+msgid "Refine presentation of download and installed size on details page"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:524
+msgid "Remove left over gnome-online-account dependencies"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:563
+msgid "Fix handling of invalid or incomplete application icons"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:564
+msgid "Fix the plugin documentation to reflect reality"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:565
+msgid "Fix the Snap plugin to actually load icons"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:566
+msgid "Set download size to 0 after the package is downloaded"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:568
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:593
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:636
+msgid "Translation updates:"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:570
+msgid "British English"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:572
+msgid "Greek"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:574
+msgid "Norwegian Bokmål"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:576
+msgid "Punjabi"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:583
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:626
+msgid "This is an unstable release with the following changes:"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:585
+msgid "Implement new featured apps carousel."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:586
+msgid ""
+"List of Flatpak repositories is updated when changed using the Flatpak "
+"command line tool."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:587
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:630
+msgid ""
+"The loading page now shows the full color icon instead of the symbolic one."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:588
+msgid ""
+"Show release date in version history for releases that use the 'date' "
+"attribute."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:589
+msgid "Improved icon handling, including with hiDPI screens."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:590
+msgid "Fixed a bug in remembering when update notifications were shown."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:591
+msgid ""
+"Build as a dynamic rather than a static library, and rearrange installation "
+"paths."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:628
+msgid ""
+"GNOME Software now uses libappstream instead of libappstream-glib to work "
+"with appstream data which provides information about apps and other "
+"components."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:629
+msgid "App details pages show version history information when it's available."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:631
+msgid ""
+"UI elements for displaying app add-ons have been tweaked to more closely "
+"match the designs."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:632
+msgid ""
+"Installed icons and the badge showing the number of updates available were "
+"changed back to blue from green."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:633
+msgid ""
+"The dropdown showing the available sources of an application includes the "
+"packaging format (e.g. Flatpak vs RPM)."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:634
+msgid "A bug was fixed that prevented installation of .flatpakref files"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:642
+msgid "Panjabi"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:652
+msgid "This is the first unstable release for GNOME 40."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:654
+msgid ""
+"Small updates to how app descriptions and addons are presented on the "
+"details page"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:655
+msgid "Fix handling of pending app installations when going online"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:656
+msgid "Better support for dark themes (particularly Adwaita-Dark)"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:657
+msgid "Improvements to how app screenshots are loaded and presented"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:658
+msgid ""
+"Hide ‘Launch’ button if an application (for example, Wine) cannot be launched"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:659
+msgid "Make the UI clearer when loading information from flatpakref files"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:660
+msgid "Don’t update app metadata on start when download-updates is disabled"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:661
+msgid "Fix opening the updates list when clicking on an updates notification"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:662
+msgid ""
+"Fix state updates when installing flatpak apps or repos which are already "
+"installed"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:663
+msgid "Add Ctrl+Q as a keyboard shortcut for closing the window"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:664
+msgid "Rework timing and content of software update notifications"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:665
+msgid ""
+"Prevent uninstalled local apps from appearing in the installed apps list"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:666
+msgid "Support installation/uninstallation of addons for flatpak apps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:667
+msgid "Improve presentation of age ratings for apps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:668
+msgid "Fix a crash in the updates page"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:669
+msgid "Fix presentation of app permissions for fully sandboxed flatpak apps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:670
+msgid "Fix deadlock on rpm-ostree systems"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:671
+msgid "Fix presentation of version number changes in right-to-left locales"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:672
+msgid "Error handling improvements for fwupd"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:673
+msgid "Performance improvements for ODRS on startup"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:674
+msgid "Improve presentation of firmware warning messages"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:675
+msgid "XML parsing performance improvements"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:676
+msgid "Automatically remove end-of-life flatpak runtimes"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:677
+msgid "Support updating flatpaks to their new name when they are renamed"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:678
+msgid "Update the GNOME Software icon"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:679
+msgid "Support more search results in the snap store"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:680
+msgid ""
+"Drop libgnome-desktop-3 dependency in favour of gsettings-desktop-schemas"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:696
+msgid "Kabyle"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:2043
+#: src/gs-application.c:256
 msgid "The GNOME Project"
 msgstr "The GNOME Project"
 
@@ -290,11 +1469,17 @@ msgstr ""
 msgid "Failed to move: %s"
 msgstr ""
 
-#: src/gnome-software-local-file.desktop.in:3
+#: src/gnome-software-local-file-flatpak.desktop.in:3
+#: src/gnome-software-local-file-fwupd.desktop.in:3
+#: src/gnome-software-local-file-packagekit.desktop.in:3
+#: src/gnome-software-local-file-snap.desktop.in:3
 msgid "Software Install"
 msgstr ""
 
-#: src/gnome-software-local-file.desktop.in:4
+#: src/gnome-software-local-file-flatpak.desktop.in:4
+#: src/gnome-software-local-file-fwupd.desktop.in:4
+#: src/gnome-software-local-file-packagekit.desktop.in:4
+#: src/gnome-software-local-file-snap.desktop.in:4
 msgid "Install selected software on the system"
 msgstr ""
 
@@ -704,10 +1889,10 @@ msgstr ""
 #: src/gs-age-rating-context-dialog.ui:68
 #: src/gs-hardware-support-context-dialog.ui:71
 #: src/gs-safety-context-dialog.ui:221
-msgid "How to add missing information"
+msgid "How to contribute missing information"
 msgstr ""
 
-#: lib/gs-app.c:6164
+#: lib/gs-app.c:6175
 msgid "Local file"
 msgstr ""
 
@@ -716,24 +1901,24 @@ msgstr ""
 #. Example string: "Local file (RPM)"
 #. Translators: The first placeholder is an app runtime
 #. * name, the second is its version number.
-#: lib/gs-app.c:6180 src/gs-safety-context-dialog.c:439
+#: lib/gs-app.c:6194 src/gs-safety-context-dialog.c:439
 #, c-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: lib/gs-app.c:6256
+#: lib/gs-app.c:6271
 msgid "Package"
 msgstr ""
 
-#: src/gs-app-addon-row.c:97 src/gs-app-row.c:456
+#: src/gs-app-addon-row.c:97 src/gs-app-row.c:457
 msgid "Pending"
 msgstr ""
 
-#: src/gs-app-addon-row.c:101 src/gs-app-row.c:460 src/gs-details-page.c:353
+#: src/gs-app-addon-row.c:101 src/gs-app-row.c:461 src/gs-details-page.c:369
 msgid "Pending install"
 msgstr ""
 
-#: src/gs-app-addon-row.c:105 src/gs-app-row.c:464 src/gs-details-page.c:360
+#: src/gs-app-addon-row.c:105 src/gs-app-row.c:465 src/gs-details-page.c:376
 msgid "Pending remove"
 msgstr ""
 
@@ -745,7 +1930,7 @@ msgstr ""
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * shows the status of an application being installed
-#: src/gs-app-addon-row.c:115 src/gs-app-row.c:204 src/gs-details-page.c:346
+#: src/gs-app-addon-row.c:115 src/gs-app-row.c:205 src/gs-details-page.c:362
 msgid "Installing"
 msgstr ""
 
@@ -836,20 +2021,15 @@ msgstr "аԥслымӡҭра"
 msgid "Can escape the sandbox and circumvent any other restrictions"
 msgstr ""
 
-#. Translators: This is the source and upgrade version of an
-#. * application, shown to the user when they view more detailed
-#. * information about pending updates. The source is of the form
-#. * ‘deja-dup’ (a package name) or
-#. * ‘app/org.gnome.Builder/x86_64/main’ (a flatpak ID), and the
-#. * version is of the form ‘40.4-1.fc34’ (a version number).
-#: src/gs-app-details-page.c:180
-#, c-format
-msgid "%s %s"
-msgstr "%s %s"
+#. FIXME support app == NULL
+#. set window title
+#: src/gs-app-details-page.c:166
+msgid "Update Details"
+msgstr ""
 
 #. TRANSLATORS: this is where the packager did not write
 #. * a description for the update
-#: src/gs-app-details-page.c:199
+#: src/gs-app-details-page.c:174
 msgid "No update description available."
 msgstr ""
 
@@ -858,12 +2038,12 @@ msgstr ""
 msgid "Go back"
 msgstr ""
 
-#: src/gs-app-details-page.ui:48 src/gs-app-row.c:515
+#: src/gs-app-details-page.ui:48 src/gs-app-row.c:516
 msgid "Requires additional permissions"
 msgstr ""
 
 #. Translators: Header of the section with other users' opinions about the app.
-#: src/gs-app-reviews-dialog.ui:6 src/gs-details-page.ui:800
+#: src/gs-app-reviews-dialog.ui:6 src/gs-details-page.ui:855
 msgid "Reviews"
 msgstr ""
 
@@ -875,7 +2055,7 @@ msgstr ""
 msgid "No Reviews"
 msgstr ""
 
-#: src/gs-app-version-history-dialog.ui:6 src/gs-details-page.ui:478
+#: src/gs-app-version-history-dialog.ui:6 src/gs-details-page.ui:533
 msgid "Version History"
 msgstr ""
 
@@ -982,27 +2162,27 @@ msgstr ""
 msgid "Show version number"
 msgstr ""
 
-#: src/gs-application.c:250 src/gs-application.c:258
+#: src/gs-application.c:261 src/gs-application.c:269
 msgid "Copyright © 2016–2022 GNOME Software contributors"
 msgstr "Аԥҵаҩы изин © 2016-2022 Апрограмматә еиқәыршәара  GNOME аҟаҵаҩцәа"
 
-#: src/gs-application.c:252 src/gs-application.c:261
+#: src/gs-application.c:263 src/gs-application.c:272
 msgid "translator-credits"
 msgstr "Нанба Наала <naala-nanba@rambler.ru>, 2022"
 
 #. TRANSLATORS: this is the title of the about window
 #. TRANSLATORS: this is the menu item that opens the about window
-#: src/gs-application.c:266 src/gs-shell.c:2167
+#: src/gs-application.c:277 src/gs-shell.c:2149
 msgid "About Software"
 msgstr ""
 
 #. TRANSLATORS: well, we seem to think so, anyway
-#: src/gs-application.c:269
+#: src/gs-application.c:280
 msgid "A nice way to manage the software on your system."
 msgstr ""
 
 #. TRANSLATORS: we tried to show an app that did not exist
-#: src/gs-application.c:457
+#: src/gs-application.c:468
 msgid "Sorry! There are no details for that application."
 msgstr ""
 
@@ -1292,20 +2472,20 @@ msgstr ""
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * allows the application to be easily installed
-#: src/gs-app-row.c:152
+#: src/gs-app-row.c:153
 msgid "Visit Website"
 msgstr ""
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * allows the application to be easily installed.
 #. * The ellipsis indicates that further steps are required
-#: src/gs-app-row.c:158
+#: src/gs-app-row.c:159
 msgid "Install…"
 msgstr ""
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * allows to cancel a queued install of the application
-#: src/gs-app-row.c:166 src/gs-updates-section.ui:62
+#: src/gs-app-row.c:167 src/gs-updates-section.ui:62
 msgid "Cancel"
 msgstr ""
 
@@ -1313,13 +2493,13 @@ msgstr ""
 #. * allows the application to be easily installed
 #. TRANSLATORS: button text
 #. TRANSLATORS: update the fw
-#: src/gs-app-row.c:174 src/gs-common.c:286 src/gs-page.c:374
+#: src/gs-app-row.c:175 src/gs-common.c:286 src/gs-page.c:374
 msgid "Install"
 msgstr ""
 
 #. TRANSLATORS: this is a button in the updates panel
 #. * that allows the app to be easily updated live
-#: src/gs-app-row.c:182
+#: src/gs-app-row.c:183
 msgid "Update"
 msgstr ""
 
@@ -1327,31 +2507,31 @@ msgstr ""
 #. * allows the application to be easily removed
 #. TRANSLATORS: button text in the header when an application can be erased
 #. TRANSLATORS: this is button text to remove the application
-#: src/gs-app-row.c:187 src/gs-app-row.c:197 src/gs-details-page.ui:276
+#: src/gs-app-row.c:188 src/gs-app-row.c:198 src/gs-details-page.ui:281
 #: src/gs-page.c:549
 msgid "Uninstall"
 msgstr ""
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * shows the status of an application being erased
-#: src/gs-app-row.c:211
+#: src/gs-app-row.c:212
 msgid "Uninstalling"
 msgstr ""
 
 #. TRANSLATORS: during the update the device
 #. * will restart into a special update-only mode
-#: src/gs-app-row.c:326
+#: src/gs-app-row.c:327
 msgid "Device cannot be used during update."
 msgstr ""
 
 #. TRANSLATORS: this refers to where the app came from
-#: src/gs-app-row.c:336 src/gs-shell-search-provider.c:264
+#: src/gs-app-row.c:337 src/gs-shell-search-provider.c:264
 #, c-format
 msgid "Source: %s"
 msgstr ""
 
 #. Translators: A message to indicate that an app has been renamed. The placeholder is the old human-readable name.
-#: src/gs-app-row.c:522
+#: src/gs-app-row.c:523
 #, c-format
 msgid "Renamed from %s"
 msgstr ""
@@ -1392,7 +2572,7 @@ msgid "Login Required"
 msgstr ""
 
 #: src/gs-basic-auth-dialog.ui:21 src/gs-common.c:612
-#: src/gs-details-page.ui:289 src/gs-removal-dialog.ui:17
+#: src/gs-details-page.ui:294 src/gs-removal-dialog.ui:17
 #: src/gs-review-dialog.ui:18
 msgid "_Cancel"
 msgstr ""
@@ -1429,13 +2609,13 @@ msgstr ""
 
 #. Heading for featured apps on a category page
 #. Translators: This is a heading for software which has been featured ('picked') by the distribution.
-#: src/gs-category-page.ui:41 src/gs-overview-page.ui:110
+#: src/gs-category-page.ui:41 src/gs-overview-page.ui:106
 msgid "Editor’s Choice"
 msgstr ""
 
 #. Heading for recently updated apps on a category page
 #. Translators: This is a heading for software which has been recently released upstream.
-#: src/gs-category-page.ui:69 src/gs-overview-page.ui:133
+#: src/gs-category-page.ui:69 src/gs-overview-page.ui:129
 msgid "New & Updated"
 msgstr ""
 
@@ -2019,7 +3199,7 @@ msgstr[1] ""
 #. * the unit is drawn with a smaller font. If you need to flip the order, then you can use "%2$s %1$s".
 #. * Make sure you'll preserve the no break space between the values.
 #. * Example result: "13.0 MB"
-#: src/gs-common.c:1246
+#: src/gs-common.c:1255
 #, c-format
 msgctxt "format-size"
 msgid "%s %s"
@@ -2098,37 +3278,37 @@ msgstr ""
 msgid "_Show Less"
 msgstr ""
 
-#: src/gs-details-page.c:341
+#: src/gs-details-page.c:357
 msgid "Removing…"
 msgstr ""
 
-#: src/gs-details-page.c:351
+#: src/gs-details-page.c:367
 msgid "Requires restart to finish install"
 msgstr ""
 
-#: src/gs-details-page.c:358
+#: src/gs-details-page.c:374
 msgid "Requires restart to finish remove"
 msgstr ""
 
 #. TRANSLATORS: This is a label on top of the app's progress
 #. * bar to inform the user that the app should be installed soon
-#: src/gs-details-page.c:375
+#: src/gs-details-page.c:391
 msgid "Pending installation…"
 msgstr ""
 
 #. TRANSLATORS: This is a label on top of the app's progress
 #. * bar to inform the user that the app should be updated soon
-#: src/gs-details-page.c:382
+#: src/gs-details-page.c:398
 msgid "Pending update…"
 msgstr ""
 
 #. Translators: This string is shown when preparing to download and install an app.
-#: src/gs-details-page.c:398
+#: src/gs-details-page.c:414
 msgid "Preparing…"
 msgstr ""
 
 #. Translators: This string is shown when uninstalling an app.
-#: src/gs-details-page.c:401
+#: src/gs-details-page.c:417
 msgid "Uninstalling…"
 msgstr ""
 
@@ -2136,12 +3316,12 @@ msgstr ""
 #. * can be installed
 #. TRANSLATORS: button text in the header when firmware
 #. * can be live-installed
-#: src/gs-details-page.c:828 src/gs-details-page.c:854
-#: src/gs-details-page.ui:223 plugins/packagekit/gs-packagekit-task.c:150
+#: src/gs-details-page.c:860 src/gs-details-page.c:886
+#: src/gs-details-page.ui:228 plugins/packagekit/gs-packagekit-task.c:150
 msgid "_Install"
 msgstr ""
 
-#: src/gs-details-page.c:844
+#: src/gs-details-page.c:876
 msgid "_Restart"
 msgstr ""
 
@@ -2149,22 +3329,22 @@ msgstr ""
 #. * be installed.
 #. * The ellipsis indicates that further steps are required,
 #. * e.g. enabling software repositories or the like
-#: src/gs-details-page.c:868
+#: src/gs-details-page.c:900
 msgid "_Install…"
 msgstr ""
 
 #. Translators: the '%s' is replaced with a developer name or a project group
-#: src/gs-details-page.c:1148
+#: src/gs-details-page.c:1177
 #, c-format
 msgid "Other Apps by %s"
 msgstr ""
 
 #. TRANSLATORS: we need a remote server to process
-#: src/gs-details-page.c:1531
+#: src/gs-details-page.c:1560
 msgid "You need internet access to write a review"
 msgstr ""
 
-#: src/gs-details-page.c:1682 src/gs-details-page.c:1698
+#: src/gs-details-page.c:1711 src/gs-details-page.c:1727
 #, c-format
 msgid "Unable to find “%s”"
 msgstr ""
@@ -2173,125 +3353,125 @@ msgstr ""
 msgid "Details page"
 msgstr ""
 
-#: src/gs-details-page.ui:42
+#: src/gs-details-page.ui:39
 msgid "Loading application details…"
 msgstr ""
 
-#: src/gs-details-page.ui:80
+#: src/gs-details-page.ui:77
 msgid ""
 "This software is not available in your language and will appear in US "
 "English."
 msgstr ""
 
-#: src/gs-details-page.ui:86
+#: src/gs-details-page.ui:83
 msgid "Help _Translate"
 msgstr ""
 
 #. TRANSLATORS: A label for a button to execute the selected application.
-#: src/gs-details-page.ui:239
+#: src/gs-details-page.ui:244
 msgid "_Open"
 msgstr ""
 
-#: src/gs-details-page.ui:252 plugins/packagekit/gs-packagekit-task.c:160
+#: src/gs-details-page.ui:257 plugins/packagekit/gs-packagekit-task.c:160
 msgid "_Update"
 msgstr ""
 
-#: src/gs-details-page.ui:314
+#: src/gs-details-page.ui:319
 msgid "Downloading"
 msgstr ""
 
-#: src/gs-details-page.ui:401 src/gs-installed-page.ui:135
+#: src/gs-details-page.ui:456 src/gs-installed-page.ui:135
 msgid "Add-ons"
 msgstr ""
 
-#: src/gs-details-page.ui:412
+#: src/gs-details-page.ui:467
 msgid "Selected add-ons will be installed with the application."
 msgstr ""
 
-#: src/gs-details-page.ui:512
+#: src/gs-details-page.ui:567
 msgid ""
 "This application can only be used when there is an active internet "
 "connection."
 msgstr ""
 
-#: src/gs-details-page.ui:532
+#: src/gs-details-page.ui:587
 msgid "Software Repository Included"
 msgstr ""
 
-#: src/gs-details-page.ui:533
+#: src/gs-details-page.ui:588
 msgid ""
 "This application includes a software repository which provides updates, as "
 "well as access to other software."
 msgstr ""
 
-#: src/gs-details-page.ui:550
+#: src/gs-details-page.ui:605
 msgid "No Software Repository Included"
 msgstr ""
 
-#: src/gs-details-page.ui:551
+#: src/gs-details-page.ui:606
 msgid ""
 "This application does not include a software repository. It will not be "
 "updated with new versions."
 msgstr ""
 
-#: src/gs-details-page.ui:569
+#: src/gs-details-page.ui:624
 msgid ""
 "This software is already provided by your distribution and should not be "
 "replaced."
 msgstr ""
 
 #. Translators: a repository file used for installing software has been discovered.
-#: src/gs-details-page.ui:586
+#: src/gs-details-page.ui:641
 msgid "Software Repository Identified"
 msgstr ""
 
-#: src/gs-details-page.ui:587
+#: src/gs-details-page.ui:642
 msgid ""
 "Adding this software repository will give you access to additional software "
 "and upgrades."
 msgstr ""
 
-#: src/gs-details-page.ui:588
+#: src/gs-details-page.ui:643
 msgid "Only use software repositories that you trust."
 msgstr ""
 
-#: src/gs-details-page.ui:653
+#: src/gs-details-page.ui:708
 msgid "No Metadata"
 msgstr ""
 
-#: src/gs-details-page.ui:662
+#: src/gs-details-page.ui:717
 msgid ""
 "This software doesn’t provide any links to a website, code repository or "
 "issue tracker."
 msgstr ""
 
-#: src/gs-details-page.ui:690
+#: src/gs-details-page.ui:745
 msgid "Project _Website"
 msgstr "Веб-асаит _апроекта"
 
-#: src/gs-details-page.ui:707
+#: src/gs-details-page.ui:762
 msgid "_Donate"
 msgstr ""
 
-#: src/gs-details-page.ui:724
+#: src/gs-details-page.ui:779
 msgid "Contribute _Translations"
 msgstr ""
 
-#: src/gs-details-page.ui:741
+#: src/gs-details-page.ui:796
 msgid "_Report an Issue"
 msgstr ""
 
-#: src/gs-details-page.ui:758
+#: src/gs-details-page.ui:813
 msgid "_Help"
 msgstr ""
 
 #. Translators: Button opening a dialog where the users can write and publish their opinions about the apps.
-#: src/gs-details-page.ui:847
+#: src/gs-details-page.ui:908
 msgid "_Write Review"
 msgstr ""
 
 #. Translators: Button opening a dialog showing all reviews for an app.
-#: src/gs-details-page.ui:884
+#: src/gs-details-page.ui:945
 msgid "All Reviews"
 msgstr ""
 
@@ -2712,7 +3892,7 @@ msgstr ""
 
 #. Translators: This is in the context of a list of apps which are installed on the system.
 #. Translators: A label for a button to show only software which is already installed.
-#: src/gs-installed-page.c:820 src/gs-shell.ui:307
+#: src/gs-installed-page.c:812 src/gs-shell.ui:307
 msgctxt "List of installed apps"
 msgid "Installed"
 msgstr ""
@@ -2739,12 +3919,26 @@ msgstr ""
 msgid "System Applications"
 msgstr ""
 
-#: src/gs-license-tile.c:93
+#: src/gs-license-tile.c:96
 msgid "Community Built"
 msgstr ""
 
+#: src/gs-license-tile.c:107 src/gs-license-tile.ui:98
+msgid "_Get Involved"
+msgstr ""
+
+#. Translators: The first placeholder here is a link to information about the license, and the second placeholder here is the name of a software license.
+#: src/gs-license-tile.c:114
+#, c-format
+msgid ""
+"This software is developed in the open by a community of volunteers, and "
+"released under the <a href=\"%s\">%s license</a>.\n"
+"\n"
+"You can contribute and help make it even better."
+msgstr ""
+
 #. Translators: The placeholder here is the name of a software license.
-#: src/gs-license-tile.c:106
+#: src/gs-license-tile.c:121
 #, c-format
 msgid ""
 "This software is developed in the open by a community of volunteers, and "
@@ -2753,27 +3947,26 @@ msgid ""
 "You can contribute and help make it even better."
 msgstr ""
 
-#: src/gs-license-tile.c:111
+#: src/gs-license-tile.c:127
 msgid "Proprietary"
 msgstr ""
 
-#: src/gs-license-tile.c:118
-msgid ""
-"This software is not developed in the open, so only its developers know how "
-"it works. There may be restrictions on its use, and it may be harder to tell "
-"if the software is insecure.\n"
-"\n"
-"You may not be able to contribute to this software or influence its "
-"development."
+#: src/gs-license-tile.c:133
+msgid "_Learn More"
 msgstr ""
 
-#: src/gs-license-tile.ui:96
-msgid "_Get Involved"
+#: src/gs-license-tile.c:135
+msgid ""
+"This software is not developed in the open, so only its developers know how "
+"it works. It may be insecure in ways that are hard to detect, and it may "
+"change without oversight.\n"
+"\n"
+"You may not be able to contribute to this software."
 msgstr ""
 
 #. TRANSLATORS: initial start
 #: src/gs-loading-page.c:56
-msgid "Software catalog is being downloaded"
+msgid "Downloading software catalog"
 msgstr ""
 
 #: src/gs-loading-page.ui:6
@@ -2813,45 +4006,19 @@ msgstr ""
 msgid "There are no reviews to moderate"
 msgstr ""
 
-#. TRANSLATORS: This is followed by a file name, e.g. "Name: gedit.rpm"
-#: src/gs-origin-popover-row.c:55
-msgid "Name"
+#: src/gs-origin-popover-row.c:105
+msgid "Unknown source"
 msgstr ""
 
-#. TRANSLATORS: the installation location for flatpaks
-#: src/gs-origin-popover-row.c:72
-msgid "system"
-msgstr ""
-
-#. TRANSLATORS: the installation location for flatpaks
-#: src/gs-origin-popover-row.c:75
-msgid "user"
-msgstr ""
-
-#. TRANSLATORS: the title for Snap channels
-#: src/gs-origin-popover-row.c:91
-msgid "Channel"
-msgstr ""
-
-#. TRANSLATORS: the title for Flatpak branches
-#. Translators: The branch, e.g. 'stable' or '3.32'
-#: src/gs-origin-popover-row.c:96 src/gs-origin-popover-row.ui:82
-msgid "Branch"
-msgstr "Амахә"
-
-#: src/gs-origin-popover-row.ui:30
-msgid "URL"
-msgstr "URL"
-
-#. Translators: The installation location for flatpaks, e.g. 'user' or 'system'
-#: src/gs-origin-popover-row.ui:56
-msgid "Installation"
-msgstr ""
-
-#. Translators: The available version of an app
+#. Translators: It's like a beta version of the software, a test version
 #: src/gs-origin-popover-row.ui:108
-msgid "Version"
-msgstr "Аверсиа"
+msgid "Beta"
+msgstr ""
+
+#. Translators: It's an origin scope, 'User' or 'System' installation
+#: src/gs-origin-popover-row.ui:138
+msgid "User"
+msgstr ""
 
 #. TRANSLATORS: This is the header for package additions during
 #. * a system update
@@ -2881,12 +4048,12 @@ msgstr ""
 #. Translators: This is a clickable link on the third party repositories info bar. It's
 #. part of a constructed sentence: "Provides access to additional software from [selected external sources].
 #. Some proprietary software is included."
-#: src/gs-overview-page.c:877
+#: src/gs-overview-page.c:876
 msgid "selected external sources"
 msgstr ""
 
 #. Translators: This is the third party repositories info bar. The %s is replaced with "selected external sources" link.
-#: src/gs-overview-page.c:879
+#: src/gs-overview-page.c:878
 #, c-format
 msgid ""
 "Provides access to additional software from %s. Some proprietary software is "
@@ -2895,13 +4062,13 @@ msgstr ""
 
 #. TRANSLATORS: button to turn on third party software repositories
 #. TRANSLATORS: button to accept the agreement
-#: src/gs-overview-page.c:888 src/gs-repos-dialog.c:173
+#: src/gs-overview-page.c:887 src/gs-repos-dialog.c:173
 msgid "Enable"
 msgstr ""
 
 #. Translators: This is the title of the main page of the UI.
 #. Translators: A label for a button to show all available software.
-#: src/gs-overview-page.c:947 src/gs-shell.ui:294
+#: src/gs-overview-page.c:946 src/gs-shell.ui:294
 msgid "Explore"
 msgstr ""
 
@@ -2909,20 +4076,20 @@ msgstr ""
 msgid "Overview page"
 msgstr ""
 
-#: src/gs-overview-page.ui:39
+#: src/gs-overview-page.ui:35
 msgid "Enable Third Party Software Repositories?"
 msgstr ""
 
 #. Translators: This is a heading for a list of categories.
-#: src/gs-overview-page.ui:184
+#: src/gs-overview-page.ui:180
 msgid "Other Categories"
 msgstr ""
 
-#: src/gs-overview-page.ui:225
+#: src/gs-overview-page.ui:221
 msgid "No Application Data Found"
 msgstr ""
 
-#: lib/gs-plugin-loader.c:2821
+#: lib/gs-plugin-loader.c:2825
 msgctxt "Distribution name"
 msgid "Unknown"
 msgstr ""
@@ -3080,7 +4247,7 @@ msgstr ""
 msgid "Software Repositories"
 msgstr ""
 
-#: src/gs-repos-dialog.ui:56
+#: src/gs-repos-dialog.ui:53
 msgid "No Repositories"
 msgstr ""
 
@@ -3249,7 +4416,7 @@ msgid_plural "%u reviews total"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/gs-review-histogram.ui:92
+#: src/gs-review-histogram.ui:93
 msgid "out of 5 stars"
 msgstr ""
 
@@ -3571,35 +4738,36 @@ msgstr ""
 
 #. TRANSLATORS: this is when we try to download a screenshot and
 #. * we get back 404
-#: src/gs-screenshot-image.c:355 src/gs-screenshot-image.c:412
+#: src/gs-screenshot-image.c:362 src/gs-screenshot-image.c:419
+#: src/gs-screenshot-image.c:622
 msgid "Screenshot not found"
 msgstr ""
 
 #. TRANSLATORS: possibly image file corrupt or not an image
-#: src/gs-screenshot-image.c:431
+#: src/gs-screenshot-image.c:438
 msgid "Failed to load image"
 msgstr ""
 
 #. TRANSLATORS: this is when we request a screenshot size that
 #. * the generator did not create or the parser did not add
-#: src/gs-screenshot-image.c:582
+#: src/gs-screenshot-image.c:650
 msgid "Screenshot size not found"
 msgstr ""
 
 #. TRANSLATORS: this is when we try create the cache directory
 #. * but we were out of space or permission was denied
-#: src/gs-screenshot-image.c:663
+#: src/gs-screenshot-image.c:732
 msgid "Could not create cache"
 msgstr ""
 
 #. TRANSLATORS: this is when we try to download a screenshot
 #. * that was not a valid URL
-#: src/gs-screenshot-image.c:677
+#: src/gs-screenshot-image.c:746
 msgid "Screenshot not valid"
 msgstr ""
 
 #. TRANSLATORS: this is when networking is not available
-#: src/gs-screenshot-image.c:709
+#: src/gs-screenshot-image.c:796
 msgid "Screenshot not available"
 msgstr ""
 
@@ -3609,7 +4777,7 @@ msgstr ""
 
 #. TRANSLATORS: this is when there are too many search results
 #. * to show in in the search page
-#: src/gs-search-page.c:169
+#: src/gs-search-page.c:180
 #, c-format
 msgid "%u more match"
 msgid_plural "%u more matches"
@@ -3636,88 +4804,88 @@ msgstr ""
 #. TRANSLATORS: this is part of the in-app notification,
 #. * where the %s is a multi-word localised app name
 #. * e.g. 'Getting things GNOME!"
-#: src/gs-shell.c:1217 src/gs-shell.c:1222 src/gs-shell.c:1237
-#: src/gs-shell.c:1241
+#: src/gs-shell.c:1199 src/gs-shell.c:1204 src/gs-shell.c:1219
+#: src/gs-shell.c:1223
 #, c-format
 msgid "“%s”"
 msgstr "«%s»"
 
 #. Translators: The '%s' is replaced with an error message, which had been shortened.
 #. The dots at the end are there to highlight that to the user.
-#: src/gs-shell.c:1258
+#: src/gs-shell.c:1240
 #, c-format
 msgid "%s…"
 msgstr "%s…"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the source (e.g. "alt.fedoraproject.org")
-#: src/gs-shell.c:1293
+#: src/gs-shell.c:1275
 #, c-format
 msgid "Unable to download firmware updates from %s"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the source (e.g. "alt.fedoraproject.org")
-#: src/gs-shell.c:1299
+#: src/gs-shell.c:1281
 #, c-format
 msgid "Unable to download updates from %s"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1306 src/gs-shell.c:1346
+#: src/gs-shell.c:1288 src/gs-shell.c:1328
 msgid "Unable to download updates"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1311
+#: src/gs-shell.c:1293
 msgid ""
 "Unable to download updates: internet access was required but wasn’t available"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the source (e.g. "alt.fedoraproject.org")
-#: src/gs-shell.c:1319
+#: src/gs-shell.c:1301
 #, c-format
 msgid "Unable to download updates from %s: not enough disk space"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1324
+#: src/gs-shell.c:1306
 msgid "Unable to download updates: not enough disk space"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1330
+#: src/gs-shell.c:1312
 msgid "Unable to download updates: authentication was required"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1334
+#: src/gs-shell.c:1316
 msgid "Unable to download updates: authentication was invalid"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1338
+#: src/gs-shell.c:1320
 msgid ""
 "Unable to download updates: you do not have permission to install software"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1349
+#: src/gs-shell.c:1331
 msgid "Unable to get list of updates"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the first %s is the application name (e.g. "GIMP") and
 #. * the second %s is the origin, e.g. "Fedora Project [fedoraproject.org]"
-#: src/gs-shell.c:1391
+#: src/gs-shell.c:1373
 #, c-format
 msgid "Unable to install %s as download failed from %s"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1397
+#: src/gs-shell.c:1379
 #, c-format
 msgid "Unable to install %s as download failed"
 msgstr ""
@@ -3726,72 +4894,72 @@ msgstr ""
 #. * where the first %s is the application name (e.g. "GIMP")
 #. * and the second %s is the name of the runtime, e.g.
 #. * "GNOME SDK [flatpak.gnome.org]"
-#: src/gs-shell.c:1409
+#: src/gs-shell.c:1391
 #, c-format
 msgid "Unable to install %s as runtime %s not available"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1415
+#: src/gs-shell.c:1397
 #, c-format
 msgid "Unable to install %s as not supported"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1421
+#: src/gs-shell.c:1403
 msgid "Unable to install: internet access was required but wasn’t available"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1426
+#: src/gs-shell.c:1408
 msgid "Unable to install: the application has an invalid format"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1430
+#: src/gs-shell.c:1412
 #, c-format
 msgid "Unable to install %s: not enough disk space"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1436
+#: src/gs-shell.c:1418
 #, c-format
 msgid "Unable to install %s: authentication was required"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1442
+#: src/gs-shell.c:1424
 #, c-format
 msgid "Unable to install %s: authentication was invalid"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1448
+#: src/gs-shell.c:1430
 #, c-format
 msgid "Unable to install %s: you do not have permission to install software"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "Dell XPS 13")
-#: src/gs-shell.c:1455
+#: src/gs-shell.c:1437
 #, c-format
 msgid "Unable to install %s: AC power is required"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "Dell XPS 13")
-#: src/gs-shell.c:1461
+#: src/gs-shell.c:1443
 #, c-format
 msgid "Unable to install %s: The battery level is too low"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1470
+#: src/gs-shell.c:1452
 #, c-format
 msgid "Unable to install %s"
 msgstr ""
@@ -3800,14 +4968,14 @@ msgstr ""
 #. * where the first %s is the app name (e.g. "GIMP") and
 #. * the second %s is the origin, e.g. "Fedora" or
 #. * "Fedora Project [fedoraproject.org]"
-#: src/gs-shell.c:1515
+#: src/gs-shell.c:1497
 #, c-format
 msgid "Unable to update %s from %s as download failed"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1522
+#: src/gs-shell.c:1504
 #, c-format
 msgid "Unable to update %s as download failed"
 msgstr ""
@@ -3815,70 +4983,70 @@ msgstr ""
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the origin, e.g. "Fedora" or
 #. * "Fedora Project [fedoraproject.org]"
-#: src/gs-shell.c:1529
+#: src/gs-shell.c:1511
 #, c-format
 msgid "Unable to install updates from %s as download failed"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1533
+#: src/gs-shell.c:1515
 #, c-format
 msgid "Unable to install updates as download failed"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1538
+#: src/gs-shell.c:1520
 msgid "Unable to update: internet access was required but wasn’t available"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1547
+#: src/gs-shell.c:1529
 #, c-format
 msgid "Unable to update %s: not enough disk space"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1552
+#: src/gs-shell.c:1534
 #, c-format
 msgid "Unable to install updates: not enough disk space"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1561
+#: src/gs-shell.c:1543
 #, c-format
 msgid "Unable to update %s: authentication was required"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1566
+#: src/gs-shell.c:1548
 #, c-format
 msgid "Unable to install updates: authentication was required"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1574
+#: src/gs-shell.c:1556
 #, c-format
 msgid "Unable to update %s: authentication was invalid"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1579
+#: src/gs-shell.c:1561
 #, c-format
 msgid "Unable to install updates: authentication was invalid"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1587
+#: src/gs-shell.c:1569
 #, c-format
 msgid "Unable to update %s: you do not have permission to update software"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1593
+#: src/gs-shell.c:1575
 #, c-format
 msgid ""
 "Unable to install updates: you do not have permission to update software"
@@ -3886,41 +5054,41 @@ msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "Dell XPS 13")
-#: src/gs-shell.c:1602
+#: src/gs-shell.c:1584
 #, c-format
 msgid "Unable to update %s: AC power is required"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "Dell XPS 13")
-#: src/gs-shell.c:1608
+#: src/gs-shell.c:1590
 #, c-format
 msgid "Unable to install updates: AC power is required"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "Dell XPS 13")
-#: src/gs-shell.c:1616
+#: src/gs-shell.c:1598
 #, c-format
 msgid "Unable to update %s: The battery level is too low"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "Dell XPS 13")
-#: src/gs-shell.c:1622
+#: src/gs-shell.c:1604
 #, c-format
 msgid "Unable to install updates: The battery level is too low"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1633
+#: src/gs-shell.c:1615
 #, c-format
 msgid "Unable to update %s"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1636
+#: src/gs-shell.c:1618
 #, c-format
 msgid "Unable to install updates"
 msgstr ""
@@ -3928,21 +5096,21 @@ msgstr ""
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the first %s is the distro name (e.g. "Fedora 25") and
 #. * the second %s is the origin, e.g. "Fedora Project [fedoraproject.org]"
-#: src/gs-shell.c:1678
+#: src/gs-shell.c:1660
 #, c-format
 msgid "Unable to upgrade to %s from %s"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the app name (e.g. "GIMP")
-#: src/gs-shell.c:1683
+#: src/gs-shell.c:1665
 #, c-format
 msgid "Unable to upgrade to %s as download failed"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the distro name (e.g. "Fedora 25")
-#: src/gs-shell.c:1691
+#: src/gs-shell.c:1673
 #, c-format
 msgid ""
 "Unable to upgrade to %s: internet access was required but wasn’t available"
@@ -3950,91 +5118,91 @@ msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the distro name (e.g. "Fedora 25")
-#: src/gs-shell.c:1699
+#: src/gs-shell.c:1681
 #, c-format
 msgid "Unable to upgrade to %s: not enough disk space"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the distro name (e.g. "Fedora 25")
-#: src/gs-shell.c:1706
+#: src/gs-shell.c:1688
 #, c-format
 msgid "Unable to upgrade to %s: authentication was required"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the distro name (e.g. "Fedora 25")
-#: src/gs-shell.c:1712
+#: src/gs-shell.c:1694
 #, c-format
 msgid "Unable to upgrade to %s: authentication was invalid"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the distro name (e.g. "Fedora 25")
-#: src/gs-shell.c:1718
+#: src/gs-shell.c:1700
 #, c-format
 msgid "Unable to upgrade to %s: you do not have permission to upgrade"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the distro name (e.g. "Fedora 25")
-#: src/gs-shell.c:1724
+#: src/gs-shell.c:1706
 #, c-format
 msgid "Unable to upgrade to %s: AC power is required"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the distro name (e.g. "Fedora 25")
-#: src/gs-shell.c:1730
+#: src/gs-shell.c:1712
 #, c-format
 msgid "Unable to upgrade to %s: The battery level is too low"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the distro name (e.g. "Fedora 25")
-#: src/gs-shell.c:1739
+#: src/gs-shell.c:1721
 #, c-format
 msgid "Unable to upgrade to %s"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1776
+#: src/gs-shell.c:1758
 #, c-format
 msgid "Unable to remove %s: authentication was required"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1781
+#: src/gs-shell.c:1763
 #, c-format
 msgid "Unable to remove %s: authentication was invalid"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1786
+#: src/gs-shell.c:1768
 #, c-format
 msgid "Unable to remove %s: you do not have permission to remove software"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1792
+#: src/gs-shell.c:1774
 #, c-format
 msgid "Unable to remove %s: AC power is required"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1798
+#: src/gs-shell.c:1780
 #, c-format
 msgid "Unable to remove %s: The battery level is too low"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1810
+#: src/gs-shell.c:1792
 #, c-format
 msgid "Unable to remove %s"
 msgstr ""
@@ -4043,63 +5211,63 @@ msgstr ""
 #. * where the first %s is the application name (e.g. "GIMP")
 #. * and the second %s is the name of the runtime, e.g.
 #. * "GNOME SDK [flatpak.gnome.org]"
-#: src/gs-shell.c:1851
+#: src/gs-shell.c:1833
 #, c-format
 msgid "Unable to launch %s: %s is not installed"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1857 src/gs-shell.c:1905 src/gs-shell.c:1943
-#: src/gs-shell.c:1986
+#: src/gs-shell.c:1839 src/gs-shell.c:1887 src/gs-shell.c:1925
+#: src/gs-shell.c:1968
 msgid "Not enough disk space — free up some space and try again"
 msgstr ""
 
 #. TRANSLATORS: we failed to get a proper error code
-#: src/gs-shell.c:1868 src/gs-shell.c:1916 src/gs-shell.c:1954
-#: src/gs-shell.c:2007
+#: src/gs-shell.c:1850 src/gs-shell.c:1898 src/gs-shell.c:1936
+#: src/gs-shell.c:1989
 msgid "Sorry, something went wrong"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1899
+#: src/gs-shell.c:1881
 msgid "Failed to install file: not supported"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1902
+#: src/gs-shell.c:1884
 msgid "Failed to install file: authentication failed"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1937
+#: src/gs-shell.c:1919
 msgid "Failed to install: not supported"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1940
+#: src/gs-shell.c:1922
 msgid "Failed to install: authentication failed"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * the %s is the origin, e.g. "Fedora" or
 #. * "Fedora Project [fedoraproject.org]"
-#: src/gs-shell.c:1981
+#: src/gs-shell.c:1963
 #, c-format
 msgid "Unable to contact %s"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification, where the 'Software' means this application, aka 'GNOME Software'.
-#: src/gs-shell.c:1991
+#: src/gs-shell.c:1973
 msgid "Software needs to be restarted to use new plugins."
 msgstr ""
 
 #. TRANSLATORS: need to be connected to the AC power
-#: src/gs-shell.c:1995
+#: src/gs-shell.c:1977
 msgid "AC power is required"
 msgstr ""
 
 #. TRANSLATORS: not enough juice to do this safely
-#: src/gs-shell.c:1998
+#: src/gs-shell.c:1980
 msgid "The battery level is too low"
 msgstr ""
 
@@ -4242,7 +5410,7 @@ msgid "Installed on %s"
 msgstr ""
 
 #: src/gs-update-dialog.ui:77
-msgid "No updates have been installed on this system."
+msgid "No Updates Installed"
 msgstr ""
 
 #: src/gs-update-monitor.c:213
@@ -4520,87 +5688,87 @@ msgid "Updates page"
 msgstr ""
 
 #. TRANSLATORS: the updates panel is starting up.
-#: src/gs-updates-page.ui:83
+#: src/gs-updates-page.ui:82
 msgid "Loading Updates…"
 msgstr ""
 
 #. TRANSLATORS: the updates panel is starting up.
-#: src/gs-updates-page.ui:96
+#: src/gs-updates-page.ui:95
 msgid "This could take a while."
 msgstr ""
 
 #. TRANSLATORS: This means all software (plural) installed on this system is up to date.
-#: src/gs-updates-page.ui:204
+#: src/gs-updates-page.ui:203
 msgid "Up to Date"
 msgstr "Иактуалу"
 
-#: src/gs-updates-page.ui:243
+#: src/gs-updates-page.ui:242
 msgid "Use Mobile Data?"
 msgstr ""
 
-#: src/gs-updates-page.ui:244
+#: src/gs-updates-page.ui:243
 msgid ""
 "Checking for updates when using mobile broadband could cause you to incur "
 "charges."
 msgstr ""
 
-#: src/gs-updates-page.ui:247
+#: src/gs-updates-page.ui:246
 msgid "_Check Anyway"
 msgstr ""
 
-#: src/gs-updates-page.ui:263
+#: src/gs-updates-page.ui:262
 msgid "No Connection"
 msgstr ""
 
-#: src/gs-updates-page.ui:264
+#: src/gs-updates-page.ui:263
 msgid "Go online to check for updates."
 msgstr ""
 
-#: src/gs-updates-page.ui:267
+#: src/gs-updates-page.ui:266
 msgid "_Network Settings"
 msgstr ""
 
-#: src/gs-updates-page.ui:296
+#: src/gs-updates-page.ui:295
 msgid "Error"
 msgstr ""
 
-#: src/gs-updates-page.ui:297
+#: src/gs-updates-page.ui:296
 msgid "Updates are automatically managed."
 msgstr ""
 
 #. TRANSLATORS: This is the button for installing all
 #. * offline updates
-#: src/gs-updates-section.c:318
+#: src/gs-updates-section.c:312
 msgid "Restart & Update"
 msgstr ""
 
 #. TRANSLATORS: This is the button for upgrading all
 #. * online-updatable applications
-#: src/gs-updates-section.c:324
+#: src/gs-updates-section.c:318
 msgid "Update All"
 msgstr ""
 
 #. TRANSLATORS: This is the header for system firmware that
 #. * requires a reboot to apply
-#: src/gs-updates-section.c:456
+#: src/gs-updates-section.c:450
 msgid "Integrated Firmware"
 msgstr ""
 
 #. TRANSLATORS: This is the header for offline OS and offline
 #. * app updates that require a reboot to apply
-#: src/gs-updates-section.c:461
+#: src/gs-updates-section.c:455
 msgid "Requires Restart"
 msgstr ""
 
 #. TRANSLATORS: This is the header for online runtime and
 #. * app updates, typically flatpaks or snaps
-#: src/gs-updates-section.c:466
+#: src/gs-updates-section.c:460
 msgid "Application Updates"
 msgstr ""
 
 #. TRANSLATORS: This is the header for device firmware that can
 #. * be installed online
-#: src/gs-updates-section.c:471
+#: src/gs-updates-section.c:465
 msgid "Device Firmware"
 msgstr ""
 
@@ -4699,7 +5867,7 @@ msgstr ""
 msgid "EOS update service could not fetch and apply the update."
 msgstr ""
 
-#: plugins/epiphany/gs-plugin-epiphany.c:474
+#: plugins/epiphany/gs-plugin-epiphany.c:498
 msgid "GNOME Web"
 msgstr ""
 
@@ -4731,135 +5899,135 @@ msgid "Flatpak is a framework for desktop applications on Linux"
 msgstr ""
 
 #. Reference: https://docs.flatpak.org/en/latest/flatpak-command-reference.html#idm45858571325264
-#: plugins/flatpak/gs-flatpak.c:307
+#: plugins/flatpak/gs-flatpak.c:313
 #, c-format
 msgid "System folder %s"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:308 plugins/flatpak/gs-flatpak.c:309
+#: plugins/flatpak/gs-flatpak.c:314 plugins/flatpak/gs-flatpak.c:315
 #, c-format
 msgid "Home subfolder %s"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:310
+#: plugins/flatpak/gs-flatpak.c:316
 msgid "Host system folders"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:311
+#: plugins/flatpak/gs-flatpak.c:317
 msgid "Host system configuration from /etc"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:312
+#: plugins/flatpak/gs-flatpak.c:318
 msgid "Desktop folder"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:312
+#: plugins/flatpak/gs-flatpak.c:318
 #, c-format
 msgid "Desktop subfolder %s"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:313
+#: plugins/flatpak/gs-flatpak.c:319
 msgid "Documents folder"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:313
+#: plugins/flatpak/gs-flatpak.c:319
 #, c-format
 msgid "Documents subfolder %s"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:314
+#: plugins/flatpak/gs-flatpak.c:320
 msgid "Music folder"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:314
+#: plugins/flatpak/gs-flatpak.c:320
 #, c-format
 msgid "Music subfolder %s"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:315
+#: plugins/flatpak/gs-flatpak.c:321
 msgid "Pictures folder"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:315
+#: plugins/flatpak/gs-flatpak.c:321
 #, c-format
 msgid "Pictures subfolder %s"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:316
+#: plugins/flatpak/gs-flatpak.c:322
 msgid "Public Share folder"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:316
+#: plugins/flatpak/gs-flatpak.c:322
 #, c-format
 msgid "Public Share subfolder %s"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:317
+#: plugins/flatpak/gs-flatpak.c:323
 msgid "Videos folder"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:317
+#: plugins/flatpak/gs-flatpak.c:323
 #, c-format
 msgid "Videos subfolder %s"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:318
+#: plugins/flatpak/gs-flatpak.c:324
 msgid "Templates folder"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:318
+#: plugins/flatpak/gs-flatpak.c:324
 #, c-format
 msgid "Templates subfolder %s"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:319
+#: plugins/flatpak/gs-flatpak.c:325
 msgid "User cache folder"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:319
+#: plugins/flatpak/gs-flatpak.c:325
 #, c-format
 msgid "User cache subfolder %s"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:320
+#: plugins/flatpak/gs-flatpak.c:326
 msgid "User configuration folder"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:320
+#: plugins/flatpak/gs-flatpak.c:326
 #, c-format
 msgid "User configuration subfolder %s"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:321
+#: plugins/flatpak/gs-flatpak.c:327
 msgid "User data folder"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:321
+#: plugins/flatpak/gs-flatpak.c:327
 #, c-format
 msgid "User data subfolder %s"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:322
+#: plugins/flatpak/gs-flatpak.c:328
 msgid "User runtime folder"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:322
+#: plugins/flatpak/gs-flatpak.c:328
 #, c-format
 msgid "User runtime subfolder %s"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:380
+#: plugins/flatpak/gs-flatpak.c:386
 #, c-format
 msgid "Filesystem access to %s"
 msgstr ""
 
 #. TRANSLATORS: status text when downloading new metadata
-#: plugins/flatpak/gs-flatpak.c:1397
+#: plugins/flatpak/gs-flatpak.c:1403
 #, c-format
 msgid "Getting flatpak metadata for %s…"
 msgstr ""
 
-#: plugins/flatpak/gs-flatpak.c:3534
+#: plugins/flatpak/gs-flatpak.c:3579
 #, c-format
 msgid "Failed to refine addon ‘%s’: %s"
 msgstr ""
@@ -4872,17 +6040,17 @@ msgstr ""
 msgid "System Installation"
 msgstr ""
 
-#: plugins/flatpak/gs-plugin-flatpak.c:1038
+#: plugins/flatpak/gs-plugin-flatpak.c:1037
 #, c-format
 msgid "Failed to add to install for addon ‘%s’: %s"
 msgstr ""
 
-#: plugins/flatpak/gs-plugin-flatpak.c:1052
+#: plugins/flatpak/gs-plugin-flatpak.c:1051
 #, c-format
 msgid "Failed to add to uninstall for addon ‘%s’: %s"
 msgstr ""
 
-#: plugins/flatpak/gs-plugin-flatpak.c:1318
+#: plugins/flatpak/gs-plugin-flatpak.c:1317
 #, c-format
 msgid ""
 "Remote “%s” doesn't allow install of “%s”, possibly due to its filter. "
@@ -5032,7 +6200,7 @@ msgstr ""
 msgid "%s USB Receiver Update"
 msgstr ""
 
-#: plugins/fwupd/gs-plugin-fwupd.c:1241
+#: plugins/fwupd/gs-plugin-fwupd.c:1240
 msgid "Firmware"
 msgstr ""
 
@@ -5081,7 +6249,7 @@ msgstr ""
 msgid "Packages"
 msgstr ""
 
-#: plugins/rpm-ostree/gs-plugin-rpm-ostree.c:2685
+#: plugins/rpm-ostree/gs-plugin-rpm-ostree.c:2690
 msgid "Operating System (OSTree)"
 msgstr ""
 
@@ -5097,3 +6265,47 @@ msgstr ""
 #: plugins/snap/org.gnome.Software.Plugin.Snap.metainfo.xml.in:7
 msgid "A snap is a universal Linux package"
 msgstr ""
+
+#. TRANSLATORS: this is to inform that the package is part of
+#. * the BASE system
+#: plugins/vso/gs-plugin-vso.c:114
+msgid "base"
+msgstr ""
+
+#: plugins/vso/gs-plugin-vso.c:240
+msgid ""
+"Another transaction has already been executed, you must reboot your system "
+"before starting a new transaction."
+msgstr ""
+
+#: plugins/vso/gs-plugin-vso.c:260
+msgid "VSO failed to update the system, please try again later."
+msgstr ""
+
+#: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:245
+msgid ""
+"Applications installable via Apx with pre-defined container configuration"
+msgstr ""
+
+#. origin_ui on a remote is the repo dialogue section name,
+#. * not the remote title
+#: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:249
+msgid "Apps"
+msgstr ""
+
+#: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:251
+msgid ""
+"This repository contains a set of popular applications installable via Apx "
+"and pre-configured by the Vanilla OS team to guarantee that they are using "
+"the most compatible container and configurations."
+msgstr ""
+
+#, c-format
+#~ msgid "%s %s"
+#~ msgstr "%s %s"
+
+#~ msgid "Branch"
+#~ msgstr "Амахә"
+
+#~ msgid "URL"
+#~ msgstr "URL"

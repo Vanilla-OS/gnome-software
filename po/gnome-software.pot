@@ -1,27 +1,27 @@
-# Irish translations for gnome-software package.
-# Copyright (C) 2015 Free Software Foundation, Inc.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-software package.
-# Seán de Búrca <leftmostcat@gmail.com>, 2015.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-software.master\n"
+"Project-Id-Version: gnome-software\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2015-09-25 16:08-0600\n"
-"Last-Translator: Seán de Búrca <leftmostcat@gmail.com>\n"
-"Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
-"Language: ga\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : "
-"4;\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
 msgid "Software"
-msgstr "Bogearraí"
+msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:8
 msgid "Install and update apps"
@@ -47,20 +47,17 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:29
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:33
-#, fuzzy
 msgid "Details panel"
-msgstr "Leathanach mionsonraí"
+msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:37
-#, fuzzy
 msgid "Installed panel"
-msgstr "_Suiteáilte"
+msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:41
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:45
-#, fuzzy
 msgid "Updates panel"
-msgstr "_Nuashonruithe"
+msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:49
 msgid "The update details"
@@ -404,9 +401,8 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:546
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:611
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:700
-#, fuzzy
 msgid "Persian"
-msgstr "Leagan"
+msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:121
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:219
@@ -743,9 +739,8 @@ msgid "Several more threading improvements"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:316
-#, fuzzy
 msgid "Icon updates"
-msgstr "_Nuashonruithe"
+msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:317
 msgid "Drop the hardcoded-popular plugin in favour of an appstream file"
@@ -1026,9 +1021,8 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:568
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:593
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:636
-#, fuzzy
 msgid "Translation updates:"
-msgstr "Aistriú"
+msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:570
 msgid "British English"
@@ -1231,9 +1225,8 @@ msgid "Support updating flatpaks to their new name when they are renamed"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:678
-#, fuzzy
 msgid "Update the GNOME Software icon"
-msgstr "Bogearraí GNOME"
+msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:679
 msgid "Support more search results in the snap store"
@@ -1680,9 +1673,8 @@ msgstr ""
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:314
-#, fuzzy
 msgid "Contact Details"
-msgstr "Taispeáin Mionsonraí"
+msgstr ""
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:316
@@ -1753,9 +1745,8 @@ msgstr ""
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:400
-#, fuzzy
 msgid "Desecration"
-msgstr "Oideachas"
+msgstr ""
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:402
@@ -1812,9 +1803,8 @@ msgid "Drugs"
 msgstr ""
 
 #: src/gs-age-rating-context-dialog.c:539
-#, fuzzy
 msgid "Strong Language"
-msgstr "Teangacha"
+msgstr ""
 
 #: src/gs-age-rating-context-dialog.c:541
 msgid "Money"
@@ -1825,9 +1815,8 @@ msgid "Social"
 msgstr ""
 
 #: src/gs-age-rating-context-dialog.c:547
-#, fuzzy
 msgid "Violence"
-msgstr "Eolaíocht"
+msgstr ""
 
 #. Translators: This is used to join two list items together in
 #. * a compressed way of displaying a list of descriptions of age
@@ -1840,10 +1829,9 @@ msgstr ""
 #. Translators: The app is considered suitable to be run by all ages of people.
 #. * This is displayed in a context tile, so the string should be short.
 #: src/gs-age-rating-context-dialog.c:936
-#, fuzzy
 msgctxt "Age rating"
 msgid "All"
-msgstr "_Gach Rud"
+msgstr ""
 
 #. Translators: This is displayed for the download size in an
 #. * app’s context tile if the size is unknown. It should be short
@@ -1943,10 +1931,9 @@ msgstr ""
 
 #: src/gs-app-addon-row.c:111 src/gs-app-row.ui:197 src/gs-app-tile.ui:50
 #: src/gs-feature-tile.c:535
-#, fuzzy
 msgctxt "Single app"
 msgid "Installed"
-msgstr "_Suiteáilte"
+msgstr ""
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * shows the status of an application being installed
@@ -1959,14 +1946,12 @@ msgid "Removing"
 msgstr ""
 
 #: src/gs-app-addon-row.ui:64
-#, fuzzy
 msgid "_Uninstall"
-msgstr "_Suiteáil"
+msgstr ""
 
 #: src/gs-app-details-page.c:68
-#, fuzzy
 msgid "Network"
-msgstr "Gan Líonra"
+msgstr ""
 
 #: src/gs-app-details-page.c:68
 msgid "Can communicate over the network"
@@ -1997,9 +1982,8 @@ msgid "Can access system device files"
 msgstr ""
 
 #: src/gs-app-details-page.c:72 src/gs-app-details-page.c:73
-#, fuzzy
 msgid "Home folder"
-msgstr "_Bain ón bhFillteán"
+msgstr ""
 
 #: src/gs-app-details-page.c:72 src/gs-app-details-page.c:74
 #: src/gs-app-details-page.c:77 src/gs-app-details-page.c:150
@@ -2047,9 +2031,8 @@ msgstr ""
 #. FIXME support app == NULL
 #. set window title
 #: src/gs-app-details-page.c:166
-#, fuzzy
 msgid "Update Details"
-msgstr "Mionsonraí"
+msgstr ""
 
 #. TRANSLATORS: this is where the packager did not write
 #. * a description for the update
@@ -2080,9 +2063,8 @@ msgid "No Reviews"
 msgstr ""
 
 #: src/gs-app-version-history-dialog.ui:6 src/gs-details-page.ui:533
-#, fuzzy
 msgid "Version History"
-msgstr "Stair"
+msgstr ""
 
 #: src/gs-app-version-history-row.c:71
 #, c-format
@@ -2090,9 +2072,9 @@ msgid "New in Version %s"
 msgstr ""
 
 #: src/gs-app-version-history-row.c:78
-#, fuzzy, c-format
+#, c-format
 msgid "Version %s"
-msgstr "Leagan"
+msgstr ""
 
 #: src/gs-app-version-history-row.c:80
 msgid "No details for this release"
@@ -2127,7 +2109,7 @@ msgstr ""
 
 #: src/gs-application.c:128 src/gs-application.c:132 src/gs-application.c:134
 msgid "ID"
-msgstr "CA"
+msgstr ""
 
 #: src/gs-application.c:130
 msgid "Show application details (using package name)"
@@ -2193,13 +2175,13 @@ msgstr ""
 
 #: src/gs-application.c:263 src/gs-application.c:272
 msgid "translator-credits"
-msgstr "Seán de Búrca <leftmostcat@gmail.com>"
+msgstr ""
 
 #. TRANSLATORS: this is the title of the about window
 #. TRANSLATORS: this is the menu item that opens the about window
 #: src/gs-application.c:277 src/gs-shell.c:2149
 msgid "About Software"
-msgstr "Maidir le Bogearraí"
+msgstr ""
 
 #. TRANSLATORS: well, we seem to think so, anyway
 #: src/gs-application.c:280
@@ -2214,9 +2196,8 @@ msgstr ""
 #. Translators: The disk usage of an application when installed.
 #. * This is displayed in a context tile, so the string should be short.
 #: src/gs-app-context-bar.c:162 src/gs-storage-context-dialog.c:133
-#, fuzzy
 msgid "Installed Size"
-msgstr "_Suiteáilte"
+msgstr ""
 
 #: src/gs-app-context-bar.c:165
 #, c-format
@@ -2499,22 +2480,21 @@ msgstr ""
 #. TRANSLATORS: this is a button next to the search results that
 #. * allows the application to be easily installed
 #: src/gs-app-row.c:153
-#, fuzzy
 msgid "Visit Website"
-msgstr "Suíomh Gréasáin"
+msgstr ""
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * allows the application to be easily installed.
 #. * The ellipsis indicates that further steps are required
 #: src/gs-app-row.c:159
 msgid "Install…"
-msgstr "Suiteáil…"
+msgstr ""
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * allows to cancel a queued install of the application
 #: src/gs-app-row.c:167 src/gs-updates-section.ui:62
 msgid "Cancel"
-msgstr "Cealaigh"
+msgstr ""
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * allows the application to be easily installed
@@ -2522,14 +2502,13 @@ msgstr "Cealaigh"
 #. TRANSLATORS: update the fw
 #: src/gs-app-row.c:175 src/gs-common.c:286 src/gs-page.c:374
 msgid "Install"
-msgstr "Suiteáil"
+msgstr ""
 
 #. TRANSLATORS: this is a button in the updates panel
 #. * that allows the app to be easily updated live
 #: src/gs-app-row.c:183
-#, fuzzy
 msgid "Update"
-msgstr "_Nuashonruithe"
+msgstr ""
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * allows the application to be easily removed
@@ -2537,16 +2516,14 @@ msgstr "_Nuashonruithe"
 #. TRANSLATORS: this is button text to remove the application
 #: src/gs-app-row.c:188 src/gs-app-row.c:198 src/gs-details-page.ui:281
 #: src/gs-page.c:549
-#, fuzzy
 msgid "Uninstall"
-msgstr "Suiteáil"
+msgstr ""
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * shows the status of an application being erased
 #: src/gs-app-row.c:212
-#, fuzzy
 msgid "Uninstalling"
-msgstr "Á _Shuiteáil"
+msgstr ""
 
 #. TRANSLATORS: during the update the device
 #. * will restart into a special update-only mode
@@ -2556,9 +2533,9 @@ msgstr ""
 
 #. TRANSLATORS: this refers to where the app came from
 #: src/gs-app-row.c:337 src/gs-shell-search-provider.c:264
-#, fuzzy, c-format
+#, c-format
 msgid "Source: %s"
-msgstr "Foinse"
+msgstr ""
 
 #. Translators: A message to indicate that an app has been renamed. The placeholder is the old human-readable name.
 #: src/gs-app-row.c:523
@@ -2584,14 +2561,12 @@ msgid ""
 msgstr ""
 
 #: src/gs-app-translation-dialog.ui:5
-#, fuzzy
 msgid "Translations"
-msgstr "Aistriú"
+msgstr ""
 
 #: src/gs-app-translation-dialog.ui:92
-#, fuzzy
 msgid "_Translation Website"
-msgstr "Aistriú"
+msgstr ""
 
 #. TRANSLATORS: This is a description for entering user/password
 #: src/gs-basic-auth-dialog.c:82
@@ -2607,7 +2582,7 @@ msgstr ""
 #: src/gs-details-page.ui:294 src/gs-removal-dialog.ui:17
 #: src/gs-review-dialog.ui:18
 msgid "_Cancel"
-msgstr "_Cealaigh"
+msgstr ""
 
 #: src/gs-basic-auth-dialog.ui:35
 msgid "_Login"
@@ -2625,15 +2600,14 @@ msgstr ""
 #. * fit in other groups are put
 #: lib/gs-category.c:209
 msgid "Other"
-msgstr "Eile"
+msgstr ""
 
 #. TRANSLATORS: this is a subcategory matching all the
 #. * different apps in the parent category, e.g. "Games"
 #: lib/gs-category.c:214
-#, fuzzy
 msgctxt "Category"
 msgid "All"
-msgstr "_Gach Rud"
+msgstr ""
 
 #. TRANSLATORS: this is a subcategory of featured apps
 #: lib/gs-category.c:218
@@ -2643,9 +2617,8 @@ msgstr ""
 #. Heading for featured apps on a category page
 #. Translators: This is a heading for software which has been featured ('picked') by the distribution.
 #: src/gs-category-page.ui:41 src/gs-overview-page.ui:106
-#, fuzzy
 msgid "Editor’s Choice"
-msgstr "Roghanna an Eagarthóra"
+msgstr ""
 
 #. Heading for recently updated apps on a category page
 #. Translators: This is a heading for software which has been recently released upstream.
@@ -2660,9 +2633,8 @@ msgstr ""
 
 #. Heading for the rest of the apps on a category page
 #: src/gs-category-page.ui:125
-#, fuzzy
 msgid "Other Software"
-msgstr "Bogearraí"
+msgstr ""
 
 #. TRANSLATORS: the user isn't reading the question
 #: lib/gs-cmd.c:194
@@ -2672,21 +2644,18 @@ msgstr ""
 
 #. TRANSLATORS: asking the user to choose an app from a list
 #: lib/gs-cmd.c:266
-#, fuzzy
 msgid "Choose an application:"
-msgstr "Feidhmchlár"
+msgstr ""
 
 #: lib/gs-desktop-data.c:16
-#, fuzzy
 msgctxt "Menu of Graphics & Photography"
 msgid "All"
-msgstr "_Gach Rud"
+msgstr ""
 
 #: lib/gs-desktop-data.c:20
-#, fuzzy
 msgctxt "Menu of Graphics & Photography"
 msgid "Featured"
-msgstr "Litríocht"
+msgstr ""
 
 #: lib/gs-desktop-data.c:24
 msgctxt "Menu of Graphics & Photography"
@@ -2709,10 +2678,9 @@ msgid "Vector Graphics"
 msgstr ""
 
 #: lib/gs-desktop-data.c:36
-#, fuzzy
 msgctxt "Menu of Graphics & Photography"
 msgid "Viewers"
-msgstr "Amharcán"
+msgstr ""
 
 #: lib/gs-desktop-data.c:39
 msgctxt "Menu of Audio & Video"
@@ -2725,34 +2693,29 @@ msgid "Music Players"
 msgstr ""
 
 #: lib/gs-desktop-data.c:53
-#, fuzzy
 msgctxt "Menu of Productivity"
 msgid "All"
-msgstr "_Gach Rud"
+msgstr ""
 
 #: lib/gs-desktop-data.c:58
-#, fuzzy
 msgctxt "Menu of Productivity"
 msgid "Featured"
-msgstr "Litríocht"
+msgstr ""
 
 #: lib/gs-desktop-data.c:62
-#, fuzzy
 msgctxt "Menu of Productivity"
 msgid "Calendar"
-msgstr "Féilire"
+msgstr ""
 
 #: lib/gs-desktop-data.c:66
-#, fuzzy
 msgctxt "Menu of Productivity"
 msgid "Database"
-msgstr "Bunachar Sonraí"
+msgstr ""
 
 #: lib/gs-desktop-data.c:69
-#, fuzzy
 msgctxt "Menu of Productivity"
 msgid "Finance"
-msgstr "Cealaigh"
+msgstr ""
 
 #: lib/gs-desktop-data.c:73
 msgctxt "Menu of Productivity"
@@ -2760,10 +2723,9 @@ msgid "Word Processor"
 msgstr ""
 
 #: lib/gs-desktop-data.c:77
-#, fuzzy
 msgctxt "Menu of Utilities"
 msgid "Text Editors"
-msgstr "Eagarthóir Téacs"
+msgstr ""
 
 #: lib/gs-desktop-data.c:80
 msgctxt "Menu of Communication & News"
@@ -2771,22 +2733,19 @@ msgid "Web Browsers"
 msgstr ""
 
 #: lib/gs-desktop-data.c:87
-#, fuzzy
 msgctxt "Menu of Audio & Video"
 msgid "All"
-msgstr "_Gach Rud"
+msgstr ""
 
 #: lib/gs-desktop-data.c:90
-#, fuzzy
 msgctxt "Menu of Audio & Video"
 msgid "Featured"
-msgstr "Litríocht"
+msgstr ""
 
 #: lib/gs-desktop-data.c:93
-#, fuzzy
 msgctxt "Menu of Games"
 msgid "Action"
-msgstr "Oideachas"
+msgstr ""
 
 #: lib/gs-desktop-data.c:96
 msgctxt "Menu of Games"
@@ -2799,10 +2758,9 @@ msgid "Arcade"
 msgstr ""
 
 #: lib/gs-desktop-data.c:102
-#, fuzzy
 msgctxt "Menu of Games"
 msgid "Blocks"
-msgstr "Clog"
+msgstr ""
 
 #: lib/gs-desktop-data.c:105
 msgctxt "Menu of Games"
@@ -2835,46 +2793,39 @@ msgid "Role Playing"
 msgstr ""
 
 #: lib/gs-desktop-data.c:124
-#, fuzzy
 msgctxt "Menu of Games"
 msgid "Sports"
-msgstr "Spórt"
+msgstr ""
 
 #: lib/gs-desktop-data.c:127
-#, fuzzy
 msgctxt "Menu of Games"
 msgid "Strategy"
-msgstr "Catagóir"
+msgstr ""
 
 #: lib/gs-desktop-data.c:134
-#, fuzzy
 msgctxt "Menu of Communication & News"
 msgid "All"
-msgstr "_Gach Rud"
+msgstr ""
 
 #: lib/gs-desktop-data.c:137
-#, fuzzy
 msgctxt "Menu of Communication & News"
 msgid "Featured"
-msgstr "Litríocht"
+msgstr ""
 
 #: lib/gs-desktop-data.c:140
-#, fuzzy
 msgctxt "Menu of Communication & News"
 msgid "Chat"
-msgstr "Comhrá"
+msgstr ""
 
 #: lib/gs-desktop-data.c:151
-#, fuzzy
 msgctxt "Menu of Education & Science"
 msgid "All"
-msgstr "_Gach Rud"
+msgstr ""
 
 #: lib/gs-desktop-data.c:158
-#, fuzzy
 msgctxt "Menu of Education & Science"
 msgid "Featured"
-msgstr "Litríocht"
+msgstr ""
 
 #: lib/gs-desktop-data.c:163
 msgctxt "Menu of Education & Science"
@@ -2887,28 +2838,24 @@ msgid "Astronomy"
 msgstr ""
 
 #: lib/gs-desktop-data.c:170
-#, fuzzy
 msgctxt "Menu of Education & Science"
 msgid "Chemistry"
-msgstr "Ceimic"
+msgstr ""
 
 #: lib/gs-desktop-data.c:174
-#, fuzzy
 msgctxt "Menu of Education & Science"
 msgid "Languages"
-msgstr "Teangacha"
+msgstr ""
 
 #: lib/gs-desktop-data.c:178
-#, fuzzy
 msgctxt "Menu of Education & Science"
 msgid "Math"
-msgstr "Mata"
+msgstr ""
 
 #: lib/gs-desktop-data.c:185
-#, fuzzy
 msgctxt "Menu of Communication & News"
 msgid "News"
-msgstr "Nuacht"
+msgstr ""
 
 #: lib/gs-desktop-data.c:189
 msgctxt "Menu of Education & Science"
@@ -2916,10 +2863,9 @@ msgid "Robotics"
 msgstr ""
 
 #: lib/gs-desktop-data.c:192
-#, fuzzy
 msgctxt "Menu of Art"
 msgid "Art"
-msgstr "Ealaín"
+msgstr ""
 
 #: lib/gs-desktop-data.c:195
 msgctxt "Menu of Reference"
@@ -2932,10 +2878,9 @@ msgid "Comics"
 msgstr ""
 
 #: lib/gs-desktop-data.c:201
-#, fuzzy
 msgctxt "Menu of Reference"
 msgid "Fiction"
-msgstr "Foclóir"
+msgstr ""
 
 #: lib/gs-desktop-data.c:204
 msgctxt "Menu of Reference"
@@ -2943,10 +2888,9 @@ msgid "Health"
 msgstr ""
 
 #: lib/gs-desktop-data.c:207
-#, fuzzy
 msgctxt "Menu of Reference"
 msgid "History"
-msgstr "Stair"
+msgstr ""
 
 #: lib/gs-desktop-data.c:210
 msgctxt "Menu of Reference"
@@ -2959,22 +2903,19 @@ msgid "Politics"
 msgstr ""
 
 #: lib/gs-desktop-data.c:216
-#, fuzzy
 msgctxt "Menu of Reference"
 msgid "Sports"
-msgstr "Spórt"
+msgstr ""
 
 #: lib/gs-desktop-data.c:223
-#, fuzzy
 msgctxt "Menu of Developer Tools"
 msgid "All"
-msgstr "_Gach Rud"
+msgstr ""
 
 #: lib/gs-desktop-data.c:226
-#, fuzzy
 msgctxt "Menu of Developer Tools"
 msgid "Featured"
-msgstr "Litríocht"
+msgstr ""
 
 #: lib/gs-desktop-data.c:229
 msgctxt "Menu of Developer Tools"
@@ -2997,28 +2938,24 @@ msgid "Hardware Drivers"
 msgstr ""
 
 #: lib/gs-desktop-data.c:254
-#, fuzzy
 msgctxt "Menu of Add-ons"
 msgid "Fonts"
-msgstr "Clónna"
+msgstr ""
 
 #: lib/gs-desktop-data.c:261
-#, fuzzy
 msgctxt "Menu of Add-ons"
 msgid "Input Sources"
-msgstr "Foinse"
+msgstr ""
 
 #: lib/gs-desktop-data.c:268
-#, fuzzy
 msgctxt "Menu of Add-ons"
 msgid "Language Packs"
-msgstr "Teangacha"
+msgstr ""
 
 #: lib/gs-desktop-data.c:275
-#, fuzzy
 msgctxt "Menu of Add-ons"
 msgid "Localization"
-msgstr "Feidhmchlár"
+msgstr ""
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:285
@@ -3047,9 +2984,8 @@ msgstr ""
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:295
-#, fuzzy
 msgid "Develop"
-msgstr "Forbróir"
+msgstr ""
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:298
@@ -3063,27 +2999,23 @@ msgstr ""
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:302
-#, fuzzy
 msgid "Fonts"
-msgstr "Clónna"
+msgstr ""
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:304
-#, fuzzy
 msgid "Input Sources"
-msgstr "Foinse"
+msgstr ""
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:306
-#, fuzzy
 msgid "Language Packs"
-msgstr "Teangacha"
+msgstr ""
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:308
-#, fuzzy
 msgid "Localization"
-msgstr "Feidhmchlár"
+msgstr ""
 
 #. TRANSLATORS: this is the summary of a notification that an application
 #. * has been successfully installed
@@ -3125,7 +3057,7 @@ msgstr ""
 
 #: src/gs-common.c:112
 msgid "Launch"
-msgstr "Luchtaigh"
+msgstr ""
 
 #. TRANSLATORS: window title
 #: src/gs-common.c:218
@@ -3190,7 +3122,7 @@ msgstr ""
 
 #: src/gs-common.c:509 src/gs-safety-context-dialog.ui:72
 msgid "Details"
-msgstr "Mionsonraí"
+msgstr ""
 
 #. Translators: an accept button label, in a Cancel/Accept dialog
 #: src/gs-common.c:600
@@ -3203,20 +3135,13 @@ msgid "An update has been installed"
 msgid_plural "Updates have been installed"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #. TRANSLATORS: we've just removed some apps
 #: src/gs-common.c:760
-#, fuzzy
 msgid "An application has been removed"
 msgid_plural "Applications have been removed"
-msgstr[0] "Feidhmchlár"
-msgstr[1] "Feidhmchlár"
-msgstr[2] "Feidhmchlár"
-msgstr[3] "Feidhmchlár"
-msgstr[4] "Feidhmchlár"
+msgstr[0] ""
+msgstr[1] ""
 
 #. TRANSLATORS: the new apps will not be run until we restart
 #: src/gs-common.c:766
@@ -3224,9 +3149,6 @@ msgid "A restart is required for it to take effect."
 msgid_plural "A restart is required for them to take effect."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #. TRANSLATORS: button text
 #: src/gs-common.c:773
@@ -3244,9 +3166,6 @@ msgid "%d minute ago"
 msgid_plural "%d minutes ago"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #: src/gs-common.c:875
 #, c-format
@@ -3254,9 +3173,6 @@ msgid "%d hour ago"
 msgid_plural "%d hours ago"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #: src/gs-common.c:879
 #, c-format
@@ -3264,9 +3180,6 @@ msgid "%d day ago"
 msgid_plural "%d days ago"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #: src/gs-common.c:883
 #, c-format
@@ -3274,9 +3187,6 @@ msgid "%d week ago"
 msgid_plural "%d weeks ago"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #: src/gs-common.c:887
 #, c-format
@@ -3284,9 +3194,6 @@ msgid "%d month ago"
 msgid_plural "%d months ago"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #: src/gs-common.c:891
 #, c-format
@@ -3294,9 +3201,6 @@ msgid "%d year ago"
 msgid_plural "%d years ago"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #. Translators: This is to construct a disk size string consisting of the value and its unit, while
 #. * the unit is drawn with a smaller font. If you need to flip the order, then you can use "%2$s %1$s".
@@ -3311,7 +3215,7 @@ msgstr ""
 #. TRANSLATORS: this is a what we use in notifications if the app's name is unknown
 #: src/gs-dbus-helper.c:291
 msgid "An application"
-msgstr "Feidhmchlár"
+msgstr ""
 
 #. TRANSLATORS: this is a notification displayed when an app needs additional MIME types.
 #: src/gs-dbus-helper.c:297
@@ -3378,9 +3282,8 @@ msgid "_Show More"
 msgstr ""
 
 #: src/gs-description-box.c:67
-#, fuzzy
 msgid "_Show Less"
-msgstr "Taispeáin Mionsonraí"
+msgstr ""
 
 #: src/gs-details-page.c:357
 msgid "Removing…"
@@ -3413,9 +3316,8 @@ msgstr ""
 
 #. Translators: This string is shown when uninstalling an app.
 #: src/gs-details-page.c:417
-#, fuzzy
 msgid "Uninstalling…"
-msgstr "Suiteáil…"
+msgstr ""
 
 #. TRANSLATORS: button text in the header when an application
 #. * can be installed
@@ -3424,7 +3326,7 @@ msgstr "Suiteáil…"
 #: src/gs-details-page.c:860 src/gs-details-page.c:886
 #: src/gs-details-page.ui:228 plugins/packagekit/gs-packagekit-task.c:150
 msgid "_Install"
-msgstr "_Suiteáil"
+msgstr ""
 
 #: src/gs-details-page.c:876
 msgid "_Restart"
@@ -3436,7 +3338,7 @@ msgstr ""
 #. * e.g. enabling software repositories or the like
 #: src/gs-details-page.c:900
 msgid "_Install…"
-msgstr "_Suiteáil…"
+msgstr ""
 
 #. Translators: the '%s' is replaced with a developer name or a project group
 #: src/gs-details-page.c:1177
@@ -3456,7 +3358,7 @@ msgstr ""
 
 #: src/gs-details-page.ui:7
 msgid "Details page"
-msgstr "Leathanach mionsonraí"
+msgstr ""
 
 #: src/gs-details-page.ui:39
 msgid "Loading application details…"
@@ -3469,9 +3371,8 @@ msgid ""
 msgstr ""
 
 #: src/gs-details-page.ui:83
-#, fuzzy
 msgid "Help _Translate"
-msgstr "Aistriú"
+msgstr ""
 
 #. TRANSLATORS: A label for a button to execute the selected application.
 #: src/gs-details-page.ui:244
@@ -3479,9 +3380,8 @@ msgid "_Open"
 msgstr ""
 
 #: src/gs-details-page.ui:257 plugins/packagekit/gs-packagekit-task.c:160
-#, fuzzy
 msgid "_Update"
-msgstr "_Nuashonruithe"
+msgstr ""
 
 #: src/gs-details-page.ui:319
 msgid "Downloading"
@@ -3553,18 +3453,16 @@ msgid ""
 msgstr ""
 
 #: src/gs-details-page.ui:745
-#, fuzzy
 msgid "Project _Website"
-msgstr "Suíomh _Gréasáin"
+msgstr ""
 
 #: src/gs-details-page.ui:762
 msgid "_Donate"
 msgstr ""
 
 #: src/gs-details-page.ui:779
-#, fuzzy
 msgid "Contribute _Translations"
-msgstr "Aistriú"
+msgstr ""
 
 #: src/gs-details-page.ui:796
 msgid "_Report an Issue"
@@ -3592,12 +3490,12 @@ msgstr ""
 #. TRANSLATORS: separator for a list of items
 #: src/gs-extras-page.c:142
 msgid " and "
-msgstr " agus "
+msgstr ""
 
 #. TRANSLATORS: separator for a list of items
 #: src/gs-extras-page.c:145
 msgid ", "
-msgstr ", "
+msgstr ""
 
 #. TRANSLATORS: Application window title for fonts installation.
 #. %s will be replaced by name of the script we're searching for.
@@ -3607,7 +3505,6 @@ msgid "Available fonts for the %s script"
 msgid_plural "Available fonts for the %s scripts"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #. TRANSLATORS: Application window title for codec installation.
 #. %s will be replaced by actual codec name(s)
@@ -3617,7 +3514,6 @@ msgid "Available software for %s"
 msgid_plural "Available software for %s"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #: src/gs-extras-page.c:242
 msgid "Requested software not found"
@@ -3756,9 +3652,6 @@ msgid_plural ""
 "Unable to find the %s requested by %s. Please see %s for more information."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #. TRANSLATORS: no codecs were found. First %s will be replaced by actual codec name(s), second %s is a link titled "the documentation"
 #: src/gs-extras-page.c:496
@@ -3771,9 +3664,6 @@ msgid_plural ""
 "information."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #: src/gs-extras-page.c:574 src/gs-extras-page.c:631 src/gs-extras-page.c:671
 #, c-format
@@ -3802,9 +3692,8 @@ msgid "Next"
 msgstr ""
 
 #: src/gs-featured-carousel.ui:83
-#, fuzzy
 msgid "Featured Apps List"
-msgstr "Feidhmchlár Faoi Thrácht"
+msgstr ""
 
 #: src/gs-hardware-support-context-dialog.c:577
 #: src/gs-hardware-support-context-dialog.c:586
@@ -4011,10 +3900,9 @@ msgstr ""
 #. Translators: This is in the context of a list of apps which are installed on the system.
 #. Translators: A label for a button to show only software which is already installed.
 #: src/gs-installed-page.c:812 src/gs-shell.ui:307
-#, fuzzy
 msgctxt "List of installed apps"
 msgid "Installed"
-msgstr "_Suiteáilte"
+msgstr ""
 
 #: src/gs-installed-page.ui:6
 msgid "Installed page"
@@ -4027,18 +3915,16 @@ msgstr ""
 #. origin_ui on a remote is the repo dialogue section name,
 #. * not the remote title
 #: src/gs-installed-page.ui:75 plugins/flatpak/gs-flatpak-utils.c:107
-#, fuzzy
 msgid "Applications"
-msgstr "Feidhmchlár"
+msgstr ""
 
 #: src/gs-installed-page.ui:95
-#, fuzzy
 msgid "Web Applications"
-msgstr "Feidhmchláir Córais"
+msgstr ""
 
 #: src/gs-installed-page.ui:115
 msgid "System Applications"
-msgstr "Feidhmchláir Córais"
+msgstr ""
 
 #: src/gs-license-tile.c:96
 msgid "Community Built"
@@ -4128,9 +4014,8 @@ msgid "There are no reviews to moderate"
 msgstr ""
 
 #: src/gs-origin-popover-row.c:105
-#, fuzzy
 msgid "Unknown source"
-msgstr "Anaithnid"
+msgstr ""
 
 #. Translators: It's like a beta version of the software, a test version
 #: src/gs-origin-popover-row.ui:108
@@ -4145,24 +4030,21 @@ msgstr ""
 #. TRANSLATORS: This is the header for package additions during
 #. * a system update
 #: src/gs-os-update-page.c:250
-#, fuzzy
 msgid "Additions"
-msgstr "Eagarthóireacht"
+msgstr ""
 
 #. TRANSLATORS: This is the header for package removals during
 #. * a system update
 #: src/gs-os-update-page.c:254
-#, fuzzy
 msgid "Removals"
-msgstr "Bain"
+msgstr ""
 
 #. TRANSLATORS: This is the header for package updates during
 #. * a system update
 #: src/gs-os-update-page.c:258
-#, fuzzy
 msgctxt "Packages to be updated during a system upgrade"
 msgid "Updates"
-msgstr "_Nuashonruithe"
+msgstr ""
 
 #. TRANSLATORS: This is the header for package downgrades during
 #. * a system update
@@ -4207,19 +4089,17 @@ msgstr ""
 
 #. Translators: This is a heading for a list of categories.
 #: src/gs-overview-page.ui:180
-#, fuzzy
 msgid "Other Categories"
-msgstr "Catagóirí"
+msgstr ""
 
 #: src/gs-overview-page.ui:221
 msgid "No Application Data Found"
 msgstr ""
 
 #: lib/gs-plugin-loader.c:2825
-#, fuzzy
 msgctxt "Distribution name"
 msgid "Unknown"
-msgstr "Anaithnid"
+msgstr ""
 
 #: src/gs-page.c:274
 msgid "User declined installation"
@@ -4298,9 +4178,8 @@ msgid ""
 msgstr ""
 
 #: src/gs-removal-dialog.ui:4
-#, fuzzy
 msgid "Incompatible Software"
-msgstr "Fáilte go Bogearraí"
+msgstr ""
 
 #: src/gs-removal-dialog.ui:23
 msgid "_Continue"
@@ -4329,7 +4208,7 @@ msgstr ""
 #. TRANSLATORS: this is button text to remove a repo
 #: src/gs-repos-dialog.c:257
 msgid "_Remove"
-msgstr "_Bain"
+msgstr ""
 
 #: src/gs-repos-dialog.c:508
 msgid "Enable New Repositories"
@@ -4372,9 +4251,8 @@ msgstr ""
 
 #. button in the info bar
 #: src/gs-repos-dialog.ui:8 src/gs-shell.ui:88
-#, fuzzy
 msgid "Software Repositories"
-msgstr "Foinsí _Bogearraí"
+msgstr ""
 
 #: src/gs-repos-dialog.ui:53
 msgid "No Repositories"
@@ -4383,14 +4261,11 @@ msgstr ""
 #. TRANSLATORS: This string is used to construct the 'X applications
 #. installed' sentence, describing a software repository.
 #: src/gs-repo-row.c:160
-#, fuzzy, c-format
+#, c-format
 msgid "%u application installed"
 msgid_plural "%u applications installed"
-msgstr[0] "Feidhmchlár Gan Aimsiú"
-msgstr[1] "Feidhmchlár Gan Aimsiú"
-msgstr[2] "Feidhmchlár Gan Aimsiú"
-msgstr[3] "Feidhmchlár Gan Aimsiú"
-msgstr[4] "Feidhmchlár Gan Aimsiú"
+msgstr[0] ""
+msgstr[1] ""
 
 #. TRANSLATORS: This string is used to construct the 'X add-ons
 #. installed' sentence, describing a software repository.
@@ -4400,22 +4275,16 @@ msgid "%u add-on installed"
 msgid_plural "%u add-ons installed"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #. TRANSLATORS: This string is used to construct the 'X applications
 #. and y add-ons installed' sentence, describing a software repository.
 #. The correct form here depends on the number of applications.
 #: src/gs-repo-row.c:175
-#, fuzzy, c-format
+#, c-format
 msgid "%u application"
 msgid_plural "%u applications"
-msgstr[0] "Feidhmchlár"
-msgstr[1] "Feidhmchlár"
-msgstr[2] "Feidhmchlár"
-msgstr[3] "Feidhmchlár"
-msgstr[4] "Feidhmchlár"
+msgstr[0] ""
+msgstr[1] ""
 
 #. TRANSLATORS: This string is used to construct the 'X applications
 #. and y add-ons installed' sentence, describing a software repository.
@@ -4426,9 +4295,6 @@ msgid "%u add-on"
 msgid_plural "%u add-ons"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #. TRANSLATORS: This string is used to construct the 'X applications
 #. and y add-ons installed' sentence, describing a software repository.
@@ -4440,7 +4306,6 @@ msgid "%s and %s installed"
 msgid_plural "%s and %s installed"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #. Translators: The first '%s' is replaced with a text like '10 applications installed',
 #. the second '%s' is replaced with installation kind, like in case of Flatpak 'User Installation'.
@@ -4521,9 +4386,8 @@ msgid "_Post"
 msgstr ""
 
 #: src/gs-review-dialog.ui:56
-#, fuzzy
 msgid "Rating"
-msgstr "Eagarthóireacht"
+msgstr ""
 
 #: src/gs-review-dialog.ui:88
 msgid "Summary"
@@ -4558,21 +4422,16 @@ msgid "%u review total"
 msgid_plural "%u reviews total"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #: src/gs-review-histogram.ui:93
-#, fuzzy
 msgid "out of 5 stars"
-msgstr "Maidir le Bogearraí"
+msgstr ""
 
 #. TRANSLATORS: this is when a user doesn't specify a name
 #: src/gs-review-row.c:56
-#, fuzzy
 msgctxt "Reviewer name"
 msgid "Unknown"
-msgstr "Anaithnid"
+msgstr ""
 
 #. TRANSLATORS: we explain what the action is going to do
 #: src/gs-review-row.c:220
@@ -4596,9 +4455,8 @@ msgstr ""
 #. TRANSLATORS: button text when
 #. * sending a review for moderation
 #: src/gs-review-row.c:243
-#, fuzzy
 msgid "Report"
-msgstr "Spórt"
+msgstr ""
 
 #. Translators: Users can express their opinions about other users' opinions about the apps.
 #: src/gs-review-row.ui:84
@@ -4610,9 +4468,8 @@ msgid "Yes"
 msgstr ""
 
 #: src/gs-review-row.ui:108
-#, fuzzy
 msgid "No"
-msgstr "Neamhní"
+msgstr ""
 
 #. Translators: Button text for indifference, only used when moderating
 #: src/gs-review-row.ui:116
@@ -4624,9 +4481,8 @@ msgid "Report…"
 msgstr ""
 
 #: src/gs-review-row.ui:137
-#, fuzzy
 msgid "Remove…"
-msgstr "Bain"
+msgstr ""
 
 #: src/gs-safety-context-dialog.c:144
 msgid "Check that you trust the vendor, as the application isn’t sandboxed"
@@ -4658,9 +4514,8 @@ msgstr ""
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:176
-#, fuzzy
 msgid "No Network Access"
-msgstr "Gan Líonra"
+msgstr ""
 
 #: src/gs-safety-context-dialog.c:177
 msgid "Cannot access the internet"
@@ -4859,12 +4714,12 @@ msgstr ""
 
 #: src/gs-safety-context-dialog.ui:101
 msgid "License"
-msgstr "Ceadúnas"
+msgstr ""
 
 #. Translators: This is a heading for a row showing the origin/source of an app (such as ‘flathub’).
 #: src/gs-safety-context-dialog.ui:141
 msgid "Source"
-msgstr "Foinse"
+msgstr ""
 
 #: src/gs-safety-context-dialog.ui:181
 msgid "SDK"
@@ -4935,9 +4790,6 @@ msgid "%u more match"
 msgid_plural "%u more matches"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #: src/gs-search-page.ui:6
 msgid "Search page"
@@ -4949,7 +4801,7 @@ msgstr ""
 
 #: src/gs-search-page.ui:46
 msgid "No Application Found"
-msgstr "Feidhmchlár Gan Aimsiú"
+msgstr ""
 
 #. TRANSLATORS: this is part of the in-app notification,
 #. * where the %s is the truncated hostname, e.g.
@@ -5427,9 +5279,8 @@ msgid "The battery level is too low"
 msgstr ""
 
 #: src/gs-shell.ui:7
-#, fuzzy
 msgid "_Software Repositories"
-msgstr "Foinsí _Bogearraí"
+msgstr ""
 
 #: src/gs-shell.ui:12
 msgid "_Update Preferences"
@@ -5471,24 +5322,21 @@ msgstr ""
 
 #. Translators: A label for a button to show only updates which are available to install.
 #: src/gs-shell.ui:328
-#, fuzzy
 msgctxt "Header bar button for list of apps to be updated"
 msgid "Updates"
-msgstr "_Nuashonruithe"
+msgstr ""
 
 #. Translators: This is shown in a bubble to represent a 0 byte
 #. * storage size, so its context is “storage size: none”. The
 #. * bubble is small, so the string should be as short as
 #. * possible.
 #: src/gs-storage-context-dialog.c:95
-#, fuzzy
 msgid "None"
-msgstr "Neamhní"
+msgstr ""
 
 #: src/gs-storage-context-dialog.c:139
-#, fuzzy
 msgid "Application Data"
-msgstr "Feidhmchlár"
+msgstr ""
 
 #: src/gs-storage-context-dialog.c:140
 msgid "Data needed for the application to run"
@@ -5511,9 +5359,8 @@ msgid "Temporary cached data"
 msgstr ""
 
 #: src/gs-storage-context-dialog.c:172
-#, fuzzy
 msgid "The application itself"
-msgstr "Feidhmchlár"
+msgstr ""
 
 #: src/gs-storage-context-dialog.c:177
 msgid "Required Dependencies"
@@ -5524,10 +5371,9 @@ msgid "Shared system components required by this application"
 msgstr ""
 
 #: src/gs-storage-context-dialog.c:188
-#, fuzzy
 msgctxt "Download size"
 msgid "Unknown"
-msgstr "Anaithnid"
+msgstr ""
 
 #. Translators: This is the title of the dialog which contains information about the storage or download size needed for an app
 #: src/gs-storage-context-dialog.ui:5
@@ -5542,19 +5388,19 @@ msgid ""
 msgstr ""
 
 #: src/gs-summary-tile.c:118
-#, fuzzy, c-format
+#, c-format
 msgid "%s (Installed)"
-msgstr "_Suiteáilte"
+msgstr ""
 
 #: src/gs-summary-tile.c:123
-#, fuzzy, c-format
+#, c-format
 msgid "%s (Installing)"
-msgstr "Á _Shuiteáil"
+msgstr ""
 
 #: src/gs-summary-tile.c:128
-#, fuzzy, c-format
+#, c-format
 msgid "%s (Removing)"
-msgstr "Á _Bhaint"
+msgstr ""
 
 #. TRANSLATORS: this is the title of the installed updates dialog window
 #: src/gs-update-dialog.c:65 src/gs-update-dialog.c:152
@@ -5571,9 +5417,8 @@ msgid "Installed on %s"
 msgstr ""
 
 #: src/gs-update-dialog.ui:77
-#, fuzzy
 msgid "No Updates Installed"
-msgstr "_Suiteáilte"
+msgstr ""
 
 #: src/gs-update-monitor.c:213
 msgid "Software Updates Are Out of Date"
@@ -5622,20 +5467,14 @@ msgid "%u Application Updated — Restart Required"
 msgid_plural "%u Applications Updated — Restart Required"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #. TRANSLATORS: apps were auto-updated
 #: src/gs-update-monitor.c:361
-#, fuzzy, c-format
+#, c-format
 msgid "%u Application Updated"
 msgid_plural "%u Applications Updated"
-msgstr[0] "Feidhmchlár Gan Aimsiú"
-msgstr[1] "Feidhmchlár Gan Aimsiú"
-msgstr[2] "Feidhmchlár Gan Aimsiú"
-msgstr[3] "Feidhmchlár Gan Aimsiú"
-msgstr[4] "Feidhmchlár Gan Aimsiú"
+msgstr[0] ""
+msgstr[1] ""
 
 #. TRANSLATORS: %1 is an application name, e.g. Firefox
 #: src/gs-update-monitor.c:372
@@ -5645,9 +5484,8 @@ msgstr ""
 
 #. TRANSLATORS: the app needs restarting
 #: src/gs-update-monitor.c:375
-#, fuzzy
 msgid "Please restart the application."
-msgstr "Feidhmchlár Faoi Thrácht"
+msgstr ""
 
 #. TRANSLATORS: %1 and %2 are both application names, e.g. Firefox
 #: src/gs-update-monitor.c:383
@@ -5662,9 +5500,6 @@ msgid "%u application requires a restart."
 msgid_plural "%u applications require a restart."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #. TRANSLATORS: %1, %2 and %3 are all application names, e.g. Firefox
 #: src/gs-update-monitor.c:401
@@ -5706,7 +5541,7 @@ msgstr ""
 
 #: src/gs-update-monitor.c:1140
 msgid "Show Details"
-msgstr "Taispeáin Mionsonraí"
+msgstr ""
 
 #. TRANSLATORS: Notification title when we've done a distro upgrade
 #: src/gs-update-monitor.c:1162
@@ -5717,9 +5552,9 @@ msgstr ""
 #. * distro upgrade. First %s is the distro name and the 2nd %s
 #. * is the version, e.g. "Welcome to Fedora 28!"
 #: src/gs-update-monitor.c:1167
-#, fuzzy, c-format
+#, c-format
 msgid "Welcome to %s %s!"
-msgstr "Fáilte go Bogearraí"
+msgstr ""
 
 #. TRANSLATORS: title when we've done offline updates
 #: src/gs-update-monitor.c:1173
@@ -5727,7 +5562,6 @@ msgid "Software Update Installed"
 msgid_plural "Software Updates Installed"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
 
 #. TRANSLATORS: message when we've done offline updates
 #: src/gs-update-monitor.c:1177
@@ -5735,9 +5569,6 @@ msgid "An important operating system update has been installed."
 msgid_plural "Important operating system updates have been installed."
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
 
 #. TRANSLATORS: Button to look at the updates that were installed.
 #. * Note that it has nothing to do with the application reviews, the
@@ -5842,7 +5673,7 @@ msgstr ""
 #. TRANSLATORS: can't do updates check
 #: src/gs-updates-page.c:873
 msgid "No Network"
-msgstr "Gan Líonra"
+msgstr ""
 
 #. TRANSLATORS: we need network
 #. * to do the updates check
@@ -5855,10 +5686,9 @@ msgid "Check for updates"
 msgstr ""
 
 #: src/gs-updates-page.c:1286
-#, fuzzy
 msgctxt "Apps to be updated"
 msgid "Updates"
-msgstr "_Nuashonruithe"
+msgstr ""
 
 #: src/gs-updates-page.ui:6
 msgid "Updates page"
@@ -5916,16 +5746,14 @@ msgstr ""
 #. TRANSLATORS: This is the button for installing all
 #. * offline updates
 #: src/gs-updates-section.c:312
-#, fuzzy
 msgid "Restart & Update"
-msgstr "Atosaigh & _Suiteáil"
+msgstr ""
 
 #. TRANSLATORS: This is the button for upgrading all
 #. * online-updatable applications
 #: src/gs-updates-section.c:318
-#, fuzzy
 msgid "Update All"
-msgstr "_Nuashonruithe"
+msgstr ""
 
 #. TRANSLATORS: This is the header for system firmware that
 #. * requires a reboot to apply
@@ -5942,9 +5770,8 @@ msgstr ""
 #. TRANSLATORS: This is the header for online runtime and
 #. * app updates, typically flatpaks or snaps
 #: src/gs-updates-section.c:460
-#, fuzzy
 msgid "Application Updates"
-msgstr "Feidhmchlár Gan Aimsiú"
+msgstr ""
 
 #. TRANSLATORS: This is the header for device firmware that can
 #. * be installed online
@@ -6000,9 +5827,8 @@ msgid "A major upgrade, with new features and added polish."
 msgstr ""
 
 #: src/gs-upgrade-banner.ui:187
-#, fuzzy
 msgid "_Restart & Upgrade"
-msgstr "Atosaigh & _Suiteáil"
+msgstr ""
 
 #: src/gs-upgrade-banner.ui:201
 msgid "Remember to back up data and files before upgrading."
@@ -6022,9 +5848,8 @@ msgstr ""
 #. TRANSLATORS: this is a group of updates that are not
 #. * packages and are not shown in the main list
 #: plugins/core/gs-plugin-generic-updates.c:67
-#, fuzzy
 msgid "System Updates"
-msgstr "Feidhmchláir Córais"
+msgstr ""
 
 #. TRANSLATORS: this is a longer description of the
 #. * "System Updates" string
@@ -6050,9 +5875,8 @@ msgid "EOS update service could not fetch and apply the update."
 msgstr ""
 
 #: plugins/epiphany/gs-plugin-epiphany.c:498
-#, fuzzy
 msgid "GNOME Web"
-msgstr "Bogearraí GNOME"
+msgstr ""
 
 #: plugins/epiphany/org.gnome.Software.Plugin.Epiphany.metainfo.xml.in:6
 msgid "Web Apps Support"
@@ -6216,14 +6040,12 @@ msgid "Failed to refine addon ‘%s’: %s"
 msgstr ""
 
 #: plugins/flatpak/gs-flatpak-utils.c:94
-#, fuzzy
 msgid "User Installation"
-msgstr "Á _Shuiteáil"
+msgstr ""
 
 #: plugins/flatpak/gs-flatpak-utils.c:94
-#, fuzzy
 msgid "System Installation"
-msgstr "Feidhmchláir Córais"
+msgstr ""
 
 #: plugins/flatpak/gs-plugin-flatpak.c:1037
 #, c-format
@@ -6266,9 +6088,9 @@ msgstr ""
 #. TRANSLATORS: ME stands for Management Engine, the Intel AMT thing,
 #. * the first %s is the device name, e.g. 'ThinkPad P50`
 #: plugins/fwupd/gs-fwupd-app.c:149
-#, fuzzy, c-format
+#, c-format
 msgid "%s ME Update"
-msgstr "_Nuashonruithe"
+msgstr ""
 
 #. TRANSLATORS: ME stands for Management Engine (with Intel AMT),
 #. * where the first %s is the device name, e.g. 'ThinkPad P50`
@@ -6454,9 +6276,8 @@ msgstr ""
 #. TRANSLATORS: this is to inform that the package is part of
 #. * the BASE system
 #: plugins/vso/gs-plugin-vso.c:114
-#, fuzzy
 msgid "base"
-msgstr "Bunachar Sonraí"
+msgstr ""
 
 #: plugins/vso/gs-plugin-vso.c:240
 msgid ""
@@ -6485,216 +6306,3 @@ msgid ""
 "and pre-configured by the Vanilla OS team to guarantee that they are using "
 "the most compatible container and configurations."
 msgstr ""
-
-#~ msgid "_Add"
-#~ msgstr "Cuir _Leis"
-
-#~ msgid "Select"
-#~ msgstr "Roghnaigh"
-
-#~ msgid "Folder Name"
-#~ msgstr "Ainm Fillteáin"
-
-#~ msgid " or "
-#~ msgstr " nó "
-
-#~ msgid "Welcome"
-#~ msgstr "Fáilte"
-
-#~ msgctxt "license"
-#~ msgid "Unknown"
-#~ msgstr "Anaithnid"
-
-#~ msgctxt "version"
-#~ msgid "Unknown"
-#~ msgstr "Anaithnid"
-
-#~ msgctxt "size"
-#~ msgid "Unknown"
-#~ msgstr "Anaithnid"
-
-#~ msgctxt "updated"
-#~ msgid "Never"
-#~ msgstr "Riamh"
-
-#~ msgctxt "origin"
-#~ msgid "Unknown"
-#~ msgstr "Anaithnid"
-
-#~ msgid "_History"
-#~ msgstr "_Stair"
-
-#~ msgid "_Launch"
-#~ msgstr "_Luchtaigh"
-
-#~ msgid "Size"
-#~ msgstr "Méid"
-
-#~ msgid "Recommended Audio Applications"
-#~ msgstr "Feidhmchláir Molta Fuaime"
-
-#~ msgid "Recommended Games"
-#~ msgstr "Cluichí Molta"
-
-#~ msgid "Remove Source"
-#~ msgstr "Bain Foinse"
-
-#~ msgid "One Star"
-#~ msgstr "Réalta Amháin"
-
-#~ msgid "Two Stars"
-#~ msgstr "Dhá Réalta"
-
-#~ msgid "Three Stars"
-#~ msgstr "Trí Réalta"
-
-#~ msgid "Four Stars"
-#~ msgstr "Ceithre Réalta"
-
-#~ msgid "Five Stars"
-#~ msgstr "Cúig Réalta"
-
-#~ msgid "Audio"
-#~ msgstr "Fuaim"
-
-#~ msgctxt "Menu subcategory of Audio"
-#~ msgid "Databases"
-#~ msgstr "Bunachair Sonraí"
-
-#~ msgctxt "Menu subcategory of Audio"
-#~ msgid "MIDI"
-#~ msgstr "MIDI"
-
-#~ msgctxt "Menu subcategory of Audio"
-#~ msgid "Music"
-#~ msgstr "Ceol"
-
-#~ msgctxt "Menu subcategory of Development Tools"
-#~ msgid "Databases"
-#~ msgstr "Bunachair Sonraí"
-
-#~ msgctxt "Menu subcategory of Development Tools"
-#~ msgid "IDE"
-#~ msgstr "IDE"
-
-#~ msgctxt "Menu subcategory of Education"
-#~ msgid "Biology"
-#~ msgstr "Bitheolaíocht"
-
-#~ msgctxt "Menu subcategory of Education"
-#~ msgid "History"
-#~ msgstr "Stair"
-
-#~ msgctxt "Menu subcategory of Education"
-#~ msgid "Maps"
-#~ msgstr "Léarscáileanna"
-
-#~ msgctxt "Menu subcategory of Education"
-#~ msgid "Music"
-#~ msgstr "Ceol"
-
-#~ msgctxt "Menu subcategory of Education"
-#~ msgid "Physics"
-#~ msgstr "Fisic"
-
-#~ msgctxt "Menu subcategory of Games"
-#~ msgid "Sports"
-#~ msgstr "Spórt"
-
-#~ msgctxt "Menu subcategory of Graphics"
-#~ msgid "OCR"
-#~ msgstr "OCR"
-
-#~ msgid "Internet"
-#~ msgstr "Idirlíon"
-
-#~ msgctxt "Menu subcategory of Internet"
-#~ msgid "Email"
-#~ msgstr "Ríomhphost"
-
-#~ msgctxt "Menu subcategory of Internet"
-#~ msgid "P2P"
-#~ msgstr "P2P"
-
-#~ msgid "Office"
-#~ msgstr "Oifig"
-
-#~ msgctxt "Menu subcategory of Office"
-#~ msgid "Email"
-#~ msgstr "Ríomhphost"
-
-#~ msgctxt "Menu subcategory of Office"
-#~ msgid "Viewer"
-#~ msgstr "Amharcán"
-
-#~ msgctxt "Menu subcategory of Science"
-#~ msgid "Art"
-#~ msgstr "Ealaín"
-
-#~ msgctxt "Menu subcategory of Science"
-#~ msgid "Biology"
-#~ msgstr "Bitheolaíocht"
-
-#~ msgctxt "Menu subcategory of Science"
-#~ msgid "Chemistry"
-#~ msgstr "Ceimic"
-
-#~ msgctxt "Menu subcategory of Science"
-#~ msgid "History"
-#~ msgstr "Stair"
-
-#~ msgctxt "Menu subcategory of Science"
-#~ msgid "Languages"
-#~ msgstr "Teangacha"
-
-#~ msgctxt "Menu subcategory of Science"
-#~ msgid "Literature"
-#~ msgstr "Litríocht"
-
-#~ msgctxt "Menu subcategory of Science"
-#~ msgid "Maps"
-#~ msgstr "Léarscáileanna"
-
-#~ msgctxt "Menu subcategory of Science"
-#~ msgid "Math"
-#~ msgstr "Mata"
-
-#~ msgctxt "Menu subcategory of Science"
-#~ msgid "Physics"
-#~ msgstr "Fisic"
-
-#~ msgctxt "Menu subcategory of Science"
-#~ msgid "Sports"
-#~ msgstr "Spórt"
-
-#~ msgid "System"
-#~ msgstr "Córas"
-
-#~ msgctxt "Menu subcategory of System"
-#~ msgid "Security"
-#~ msgstr "Slándáil"
-
-#~ msgctxt "Menu subcategory of Utilities"
-#~ msgid "Accessibility"
-#~ msgstr "Inrochtaineacht"
-
-#~ msgctxt "Menu subcategory of Utilities"
-#~ msgid "Maps"
-#~ msgstr "Léarscáileanna"
-
-#~ msgid "Video"
-#~ msgstr "Fís"
-
-#~ msgctxt "Menu subcategory of Video"
-#~ msgid "Editing"
-#~ msgstr "Eagarthóireacht"
-
-#~ msgctxt "Menu subcategory of Video"
-#~ msgid "Database"
-#~ msgstr "Bunachar Sonraí"
-
-#~ msgid "_About"
-#~ msgstr "_Maidir Leis Seo"
-
-#~ msgid "_Quit"
-#~ msgstr "_Scoir"
