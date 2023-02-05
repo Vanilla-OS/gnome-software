@@ -38,6 +38,12 @@ endif
 if get_option('snap')
   subdir('snap')
 endif
+if get_option('vanilla_meta')
+  subdir('vanilla-meta')
+endif
+if get_option('vso')
+  subdir('vso')
+endif
 if get_option('webapps')
   subdir('epiphany')
 endif

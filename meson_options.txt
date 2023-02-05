@@ -15,6 +15,8 @@ option('hardcoded_proprietary_webapps', type : 'boolean', value : true, descript
 option('gudev', type : 'boolean', value : true, description : 'enable GUdev support')
 option('apt', type : 'boolean', value : false, description : 'enable apt: URL handler in the .desktop file')
 option('snap', type : 'boolean', value : false, description : 'enable Snap support')
+option('vanilla_meta', type : 'boolean', value : false, description : 'enable Apx support')
+option('vso', type : 'boolean', value : false, description : 'enable VanillaOS system updates support')
 option('external_appstream', type : 'boolean', value : false, description : 'enable external AppStream support')
 option('gtk_doc', type : 'boolean', value : true, description : 'enable API reference')
 option('hardcoded_curated', type : 'boolean', value : true, description : 'enable installation of default curated apps list')
