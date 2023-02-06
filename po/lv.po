@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-software/issues\n"
-"POT-Creation-Date: 2022-08-26 11:43+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-05 17:21-0300\n"
 "PO-Revision-Date: 2022-09-03 11:32+0300\n"
 "Last-Translator: Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>\n"
 "Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 :"
-" 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
 "X-Generator: Lokalize 21.12.3\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
@@ -23,7 +23,6 @@ msgid "Software"
 msgstr "Programmatūra"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:8
-#| msgid "Installed Updates"
 msgid "Install and update apps"
 msgstr "Instalēt un atjaunināt lietotnes"
 
@@ -36,11 +35,6 @@ msgstr ""
 "paplašinājumus, kā arī izņemt jau instalētās lietotnes."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:14
-#| msgid ""
-#| "GNOME Software showcases featured and popular applications with useful "
-#| "descriptions and multiple screenshots per application. Applications can "
-#| "be found either through browsing the list of categories or by searching. "
-#| "It also allows you to update your system using an offline update."
 msgid ""
 "Software showcases featured and popular applications with useful "
 "descriptions and multiple screenshots per application. Applications can be "
@@ -74,7 +68,1196 @@ msgstr "Atjauninājumu rūts"
 msgid "The update details"
 msgstr "Atjauninājumu informācija"
 
-#: data/metainfo/org.gnome.Software.metainfo.xml.in:1980
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:71
+msgid "This is a stable release with translation updates:"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:73
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:197
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:244
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:373
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:492
+msgid "Bulgarian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:74
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:107
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:144
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:198
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:245
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:282
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:374
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:418
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:457
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:493
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:531
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:596
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:638
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:686
+msgid "Catalan"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:75
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:200
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:459
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:533
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:687
+msgid "Chinese (Taiwan)"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:76
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:202
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:285
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:421
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:534
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:598
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:639
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:688
+msgid "Czech"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:77
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:205
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:378
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:461
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:536
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:600
+msgid "English (United Kingdom)"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:78
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:113
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:209
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:288
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:330
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:380
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:426
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:463
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:495
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:604
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:640
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:690
+msgid "Galician"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:79
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:114
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:147
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:210
+msgid "Georgian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:80
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:211
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:250
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:381
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:427
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:496
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:539
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:605
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:691
+msgid "German"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:81
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:115
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:148
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:212
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:251
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:289
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:331
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:382
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:541
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:693
+msgid "Hebrew"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:82
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:213
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:252
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:428
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:606
+msgid "Hungarian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:83
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:116
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:332
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:383
+msgid "Icelandic"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:84
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:385
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:698
+msgid "Latvian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:85
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:119
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:151
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:215
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:255
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:292
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:386
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:431
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:467
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:543
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:610
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:699
+msgid "Lithuanian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:86
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:216
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:544
+msgid "Nepali"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:87
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:125
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:155
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:223
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:260
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:392
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:552
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:577
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:615
+msgid "Serbian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:88
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:224
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:261
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:297
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:339
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:394
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:438
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:472
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:502
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:616
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:644
+msgid "Slovenian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:89
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:126
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:156
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:225
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:298
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:340
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:395
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:439
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:473
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:553
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:617
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:645
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:705
+msgid "Spanish"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:90
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:226
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:262
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:396
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:440
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:474
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:554
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:618
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:646
+msgid "Swedish"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:96
+msgid "This is the third unstable release for GNOME 43."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:98
+#, fuzzy
+msgid "Supports video as a screenshot"
+msgstr "Atbalsta izmantošanu uz maza ekrāna"
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:99
+msgid "Improvements of source picker in the details page"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:100
+msgid "Fixes a bug when viewing details of a package file"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:101
+msgid "Fixes a bug when reading certain .flatpakref file"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:103
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:141
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:194
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:240
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:279
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:327
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:369
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:415
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:454
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:489
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:526
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:682
+msgid "This release also updates translations:"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:105
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:143
+msgid "Abkhazian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:106
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:196
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:242
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:281
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:371
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:417
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:456
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:528
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:595
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:684
+msgid "Basque"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:108
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:145
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:199
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:246
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:283
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:329
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:375
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:419
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:458
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:532
+msgid "Chinese (China)"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:109
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:201
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:284
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:376
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:420
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:460
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:597
+msgid "Croatian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:110
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:203
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:247
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:286
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:422
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:571
+msgid "Danish"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:111
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:146
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:204
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:377
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:423
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:535
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:599
+msgid "Dutch"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:112
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:206
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:248
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:424
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:462
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:537
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:601
+msgid "Finnish"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:117
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:149
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:214
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:290
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:333
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:384
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:429
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:464
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:607
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:641
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:694
+msgid "Indonesian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:118
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:291
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:430
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:466
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:609
+msgid "Korean"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:120
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:152
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:218
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:257
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:293
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:388
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:469
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:499
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:546
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:611
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:700
+#, fuzzy
+msgid "Persian"
+msgstr "Versija"
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:121
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:219
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:258
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:433
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:547
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:575
+#, fuzzy
+msgid "Polish"
+msgstr "Politika"
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:122
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:153
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:220
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:294
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:336
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:389
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:434
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:470
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:500
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:548
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:612
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:643
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:701
+msgid "Portuguese"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:123
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:221
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:295
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:337
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:390
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:435
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:471
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:501
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:549
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:613
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:702
+msgid "Portuguese (Brazil)"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:124
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:154
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:222
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:259
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:296
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:338
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:391
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:437
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:551
+msgid "Russian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:127
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:157
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:227
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:299
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:397
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:619
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:706
+msgid "Turkish"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:128
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:158
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:228
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:300
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:341
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:398
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:441
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:475
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:503
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:555
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:620
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:707
+msgid "Ukrainian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:134
+msgid "This is the second unstable release for GNOME 43."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:136
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:237
+msgid "Various fixes related to changed threading model"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:137
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:349
+msgid "Various UI parts updated"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:138
+msgid "Sources dropdown had been reworked"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:139
+msgid "Fixes a rare crash when showing app details"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:150
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:542
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:573
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:695
+msgid "Italian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:159
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:229
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:399
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:708
+msgid "Vietnamese"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:165
+msgid "This is the first unstable release for GNOME 43."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:167
+msgid "Various improvements to notifications"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:168
+msgid "Fix several crashes when handling flatpak apps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:169
+msgid "Add ‘Other Apps by Author’ section in the app details page"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:170
+msgid "Improve styling of app context lozenges"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:171
+msgid ""
+"Add ‘Available for Distro’ section to the overview page (if configured by "
+"your distribution)"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:172
+msgid ""
+"Show more details about file system permissions requested by flatpak apps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:173
+msgid "Show more types of URI from app metainfo"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:174
+msgid "Fix a few issues when using a dark mode theme"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:175
+msgid "Fix some issues with arrows in right-to-left locales"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:176
+msgid "Fix language pack installation for certain locales"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:177
+msgid "Improve debug output to make user bug reports more useful"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:178
+msgid "Add `--uninstall=ID` command line option"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:179
+msgid ""
+"Allow scrolling screenshots by clicking on next and previous screenshots"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:180
+msgid "Add support for webapps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:181
+msgid "Allow swiping back in the shell using touch gestures"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:182
+msgid "Improved caching of downloaded metadata"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:183
+msgid "Many internal architectural changes to make the code more maintainable"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:184
+msgid ""
+"The <code>popular-overrides</code> GSettings key has been removed; "
+"distribution vendors wishing to mark their apps as popular should see `doc/"
+"vendor-customisation.md` for examples of how to do this now"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:189
+msgid ""
+"The <code>hardcoded_popular</code> Meson option has been renamed to "
+"<code>hardcoded_curated</code>."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:207
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:249
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:425
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:602
+msgid "French"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:208
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:287
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:379
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:494
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:538
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:603
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:689
+msgid "Friulian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:217
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:256
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:335
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:387
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:432
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:468
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:498
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:545
+msgid "Occitan (post 1500)"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:235
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:405
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:561
+msgid "This is a stable release with the following changes:"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:238
+msgid "Added several appstream-related fixes"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:243
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:530
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:685
+msgid "Bokmål, Norwegian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:253
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:334
+msgid "Japanese"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:254
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:465
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:608
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:697
+msgid "Kazakh"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:268
+msgid "This is the third unstable release for GNOME 42."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:270
+msgid "Cancel ongoing update downloads when system power is low"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:271
+msgid "Numerous small user interface fixes and tweaks"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:272
+msgid "Prioritize full matches in search results"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:273
+msgid "Improvements in dark mode"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:274
+#, fuzzy
+msgid "Fix disabling flatpak remotes from the ‘Software Repositories’ dialog"
+msgstr "Ļaut piekļūt programmatūras krātuvju dialoglodziņam"
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:275
+msgid ""
+"Threading and performance improvements which should reduce the number of "
+"user interface freezes"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:276
+#, fuzzy
+msgid "Update some icons"
+msgstr "Atjauninājumu informācija"
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:277
+msgid ""
+"Check for updates when moving from a metered to a non-metered network "
+"connection"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:306
+msgid "This is the second unstable release for GNOME 42."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:308
+msgid "Allow <code>--verbose</code> to be enabled at runtime"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:309
+msgid "Condense the rows in the age rating context dialog"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:310
+msgid "Update the UI for ratings and reviews of apps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:311
+msgid "Improve the appearance of the category page loading screen"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:312
+msgid "Drop the first run dialog"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:313
+msgid "Improvements to dark theming"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:314
+msgid ""
+"Support viewing a specific metainfo file using <code>--show-metainfo</code>"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:315
+msgid "Several more threading improvements"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:316
+#, fuzzy
+msgid "Icon updates"
+msgstr "Pārbaudīt atjauninājumus"
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:317
+msgid "Drop the hardcoded-popular plugin in favour of an appstream file"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:318
+msgid ""
+"The background image for upgrades is now looked for using several well-known "
+"(and distribution-specific) names in <code>${DATADIR}/gnome-software/"
+"backgrounds</code>, and the previous Fedora-specific default background "
+"image is no longer distributed. Similarly, the <code>upgrade-background-uri</"
+"code> GSettings key has been removed. Distributions may need to update how "
+"they ship background images. See <em>doc/vendor-customisation.md</em>."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:347
+msgid "This is the first unstable release for GNOME 42."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:350
+msgid "Support more markup in the application description"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:351
+msgid "Ask about package signature with PackageKit on signing issue"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:352
+msgid "Show better System Update progress"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:353
+msgid "Remove various cultural sensitivity badges"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:354
+msgid "Fix a crash when processing age ratings"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:355
+#, fuzzy
+msgid ""
+"Reload application details only when not installing/removing the application"
+msgstr "Rādīt informāciju par lietotni (izmantojot lietotnes ID)"
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:356
+msgid "Do not follow symlinks when calculating disk size usage"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:357
+msgid "Fix addons section, which could show addons for different application"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:358
+msgid ""
+"Fix showing a ‘transaction in progress’ error when using the rpm-ostree "
+"plugin"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:359
+msgid "Don’t recommend a reboot if firmware updates fail"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:360
+msgid ""
+"Fix flathub repo being considered present on Fedora 35 with filtered flathub"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:361
+msgid "Allow searching for extensions"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:362
+msgid "Fix translation of main button on updates page"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:363
+#, fuzzy
+msgid "Fix codec installation process"
+msgstr "Lietotāja liegta instalācija"
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:364
+msgid "Add new GNOME Circle apps to the featured carousel"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:365
+msgid "Improve metadata support for snaps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:366
+msgid "Fix update checks being missed across suspend/hibernation"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:367
+msgid ""
+"Ensure application lists are updated when repositories are enabled/installed "
+"or disabled/removed"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:372
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:491
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:529
+msgid "Belarusian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:393
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:704
+msgid "Slovak"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:407
+msgid ""
+"Instead of showing all package-based apps as \"potentially unsafe\", only "
+"use that language for 3rd party ones"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:408
+msgid ""
+"Fix a bug where the \"Show more\" button on an app details page would "
+"flicker when the window is resized"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:409
+msgid ""
+"Fix a bug where Software sometimes shows an Uninstall button after "
+"uninstalling something"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:410
+msgid "Add GNOME Circle apps to the featured carousel"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:411
+msgid ""
+"Fix a bug where Software would sometimes fail to execute an install/remove "
+"operation for PackageKit software rather than showing a PolicyKit password "
+"prompt"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:412
+msgid ""
+"Fix a bug where Software would fail to upgrade the distribution via "
+"PackageKit"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:413
+msgid "Fix the hiding of rows on the Updates tab after they have been updated"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:436
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:550
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:614
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:703
+msgid "Romanian"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:447
+msgid "This is the third unstable release for GNOME 41."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:449
+msgid "Tweaks to the context tiles and dialogs"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:450
+msgid "Fixes to the details page for non-desktop apps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:451
+msgid "Re-add support for the add-ons categories"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:452
+msgid "Sort new and updated apps by release date on the category page"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:481
+msgid "This is the second unstable release for GNOME 41."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:483
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:511
+msgid "Many parts of the user interface reworked"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:484
+msgid "Fix when the 'Launch' button is shown after an application install"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:485
+msgid "Fix appstream:// URL handling"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:486
+msgid "Fix application freeze on Flatpak application install/remove/update"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:487
+msgid "Disable automatic update downloads when in power saver mode"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:497
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:540
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:692
+msgid "Greek, Modern (1453-)"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:509
+msgid "This is the first unstable release for GNOME 41."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:512
+msgid "Improve error reporting from flatpak when low on disk space"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:513
+msgid "Fix issues with updating the UI when uninstalling apps with add-ons"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:514
+msgid "Don’t keep rpm-ostreed alive forever"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:515
+msgid "Prevent polkit checks showing up for background operations"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:516
+msgid "Disallow submitting reviews for an app you haven’t installed"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:517
+msgid "Show download size in the Updates page"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:518
+msgid "Notify when restart is needed when uninstalling an app"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:519
+msgid "Fix some issues with searches not running"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:520
+msgid "Allow non-integer average star ratings for apps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:521
+msgid "Reduce number of categories in the UI"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:522
+msgid "Improve ‘pending updates’ notifications"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:523
+msgid "Refine presentation of download and installed size on details page"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:524
+msgid "Remove left over gnome-online-account dependencies"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:563
+msgid "Fix handling of invalid or incomplete application icons"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:564
+msgid "Fix the plugin documentation to reflect reality"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:565
+msgid "Fix the Snap plugin to actually load icons"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:566
+msgid "Set download size to 0 after the package is downloaded"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:568
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:593
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:636
+#, fuzzy
+msgid "Translation updates:"
+msgstr "Tulkojumi"
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:570
+msgid "British English"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:572
+msgid "Greek"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:574
+msgid "Norwegian Bokmål"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:576
+msgid "Punjabi"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:583
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:626
+msgid "This is an unstable release with the following changes:"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:585
+msgid "Implement new featured apps carousel."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:586
+msgid ""
+"List of Flatpak repositories is updated when changed using the Flatpak "
+"command line tool."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:587
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:630
+msgid ""
+"The loading page now shows the full color icon instead of the symbolic one."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:588
+msgid ""
+"Show release date in version history for releases that use the 'date' "
+"attribute."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:589
+msgid "Improved icon handling, including with hiDPI screens."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:590
+msgid "Fixed a bug in remembering when update notifications were shown."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:591
+msgid ""
+"Build as a dynamic rather than a static library, and rearrange installation "
+"paths."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:628
+msgid ""
+"GNOME Software now uses libappstream instead of libappstream-glib to work "
+"with appstream data which provides information about apps and other "
+"components."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:629
+msgid "App details pages show version history information when it's available."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:631
+msgid ""
+"UI elements for displaying app add-ons have been tweaked to more closely "
+"match the designs."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:632
+msgid ""
+"Installed icons and the badge showing the number of updates available were "
+"changed back to blue from green."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:633
+msgid ""
+"The dropdown showing the available sources of an application includes the "
+"packaging format (e.g. Flatpak vs RPM)."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:634
+msgid "A bug was fixed that prevented installation of .flatpakref files"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:642
+msgid "Panjabi"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:652
+msgid "This is the first unstable release for GNOME 40."
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:654
+msgid ""
+"Small updates to how app descriptions and addons are presented on the "
+"details page"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:655
+msgid "Fix handling of pending app installations when going online"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:656
+msgid "Better support for dark themes (particularly Adwaita-Dark)"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:657
+msgid "Improvements to how app screenshots are loaded and presented"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:658
+msgid ""
+"Hide ‘Launch’ button if an application (for example, Wine) cannot be launched"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:659
+msgid "Make the UI clearer when loading information from flatpakref files"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:660
+msgid "Don’t update app metadata on start when download-updates is disabled"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:661
+msgid "Fix opening the updates list when clicking on an updates notification"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:662
+msgid ""
+"Fix state updates when installing flatpak apps or repos which are already "
+"installed"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:663
+msgid "Add Ctrl+Q as a keyboard shortcut for closing the window"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:664
+msgid "Rework timing and content of software update notifications"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:665
+#, fuzzy
+msgid ""
+"Prevent uninstalled local apps from appearing in the installed apps list"
+msgstr "Instalēto lietotņu sarakstā rādīt lietotņu aizņemto vietu uz diska"
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:666
+msgid "Support installation/uninstallation of addons for flatpak apps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:667
+msgid "Improve presentation of age ratings for apps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:668
+msgid "Fix a crash in the updates page"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:669
+msgid "Fix presentation of app permissions for fully sandboxed flatpak apps"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:670
+msgid "Fix deadlock on rpm-ostree systems"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:671
+msgid "Fix presentation of version number changes in right-to-left locales"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:672
+msgid "Error handling improvements for fwupd"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:673
+msgid "Performance improvements for ODRS on startup"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:674
+msgid "Improve presentation of firmware warning messages"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:675
+msgid "XML parsing performance improvements"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:676
+msgid "Automatically remove end-of-life flatpak runtimes"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:677
+msgid "Support updating flatpaks to their new name when they are renamed"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:678
+#, fuzzy
+msgid "Update the GNOME Software icon"
+msgstr "Atjaunināt neparakstītu programmatūru?"
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:679
+msgid "Support more search results in the snap store"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:680
+msgid ""
+"Drop libgnome-desktop-3 dependency in favour of gsettings-desktop-schemas"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:696
+msgid "Kabyle"
+msgstr ""
+
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:2043
 #: src/gs-application.c:256
 msgid "The GNOME Project"
 msgstr "GNOME projekts"
@@ -236,8 +1419,6 @@ msgstr ""
 "puses krātuvēm"
 
 #: data/org.gnome.software.gschema.xml:94
-#| msgid ""
-#| "A list of official repositories that should not be considered 3rd party"
 msgid "A list of required repositories that cannot be disabled or removed"
 msgstr "Saraksts ar nepieciešamajām krātuvēm, kuras nevar izslēgt vai izņemt"
 
@@ -283,9 +1464,6 @@ msgid "The URI that explains nonfree and proprietary software"
 msgstr "URI, kur izskaidro nebrīvu un īpašnieku programmatūru"
 
 #: data/org.gnome.software.gschema.xml:131
-#| msgid ""
-#| "A list of URLs pointing to appstream files that will be downloaded into "
-#| "an app-info folder"
 msgid ""
 "A list of URLs pointing to appstream files that will be downloaded into an "
 "swcatalog folder"
@@ -294,21 +1472,16 @@ msgstr ""
 "swcatalog mapē"
 
 #: data/org.gnome.software.gschema.xml:135
-#| msgid "Install the AppStream files to a system-wide location for all users"
 msgid ""
 "Install the AppStream files to a system-wide location for all users. If "
 "false, files are installed in non-standard $XDG_DATA_HOME/swcatalog/xml "
 "directory"
 msgstr ""
-"Instalēt AppStream datnes sistēmas atrašanās vietā visiem lietotājiem. Ja"
-" aplams, datnes tiek instalētas nestandarta direktorijā"
-" $XDG_DATA_HOME/swcatalog/xml"
+"Instalēt AppStream datnes sistēmas atrašanās vietā visiem lietotājiem. Ja "
+"aplams, datnes tiek instalētas nestandarta direktorijā $XDG_DATA_HOME/"
+"swcatalog/xml"
 
 #: data/org.gnome.software.gschema.xml:139
-#| msgid ""
-#| "Priority order of packaging formats to prefer, with more important "
-#| "formats listed first. An empty array means the default order. Omitted "
-#| "formats are assumed to be listed last."
 msgid ""
 "Priority order of packaging formats to prefer, with more important formats "
 "listed first. An empty array means the default order. Omitted formats are "
@@ -317,9 +1490,8 @@ msgid ""
 msgstr ""
 "Vēlamo pakošanas formātu prioritāšu secība, kur svarīgākie formāti ir "
 "uzskaitīti pirmie. Tukšs masīvs nozīmē noklusējuma secību. Tiek pieņemts, ka "
-"izlaistie formāti ir saraksta beigās. Piemēra pakotņu formāti: deb, flatpak,"
-" rpm, "
-"snap."
+"izlaistie formāti ir saraksta beigās. Piemēra pakotņu formāti: deb, flatpak, "
+"rpm, snap."
 
 #: data/org.gnome.software.gschema.xml:146
 msgid "A string storing the gnome-online-account id used to login"
@@ -353,7 +1525,6 @@ msgstr "Neizdevās validēt satura tipu: %s"
 #. TRANSLATORS: error details
 #: gs-install-appstream/gs-install-appstream.c:178
 #, c-format
-#| msgid "Failed to copy: %s"
 msgid "Failed to move: %s"
 msgstr "Neizdevās pārvietot: %s"
 
@@ -428,7 +1599,6 @@ msgstr "Alkohols"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:186
-#| msgid "No references to alcohol"
 msgid "No information regarding references to alcohol"
 msgstr "Nav informācijas par norādēm uz alkoholiskiem dzērieniem"
 
@@ -439,7 +1609,6 @@ msgstr "Narkotikas"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:196
-#| msgid "No references to illicit drugs"
 msgid "No information regarding references to illicit drugs"
 msgstr "Nav informācijas par norādēm uz nelegālām narkotikām"
 
@@ -450,7 +1619,6 @@ msgstr "Tabaka"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:206
-#| msgid "No references to tobacco products"
 msgid "No information regarding references to tobacco products"
 msgstr "Nav informācijas par norādēm uz tabakas produktiem"
 
@@ -462,7 +1630,6 @@ msgstr "Kailums"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:216
-#| msgid "No nudity of any sort"
 msgid "No information regarding nudity of any sort"
 msgstr "Nav informācijas par jebkāda veida kailumu"
 
@@ -473,7 +1640,6 @@ msgstr "Seksuāli motīvi"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:226
-#| msgid "No references to or depictions of sexual nature"
 msgid "No information regarding references to or depictions of sexual nature"
 msgstr "Nav informācijas par seksuālas dabas norādēm vai atainojumiem"
 
@@ -484,7 +1650,6 @@ msgstr "Rupjības"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:236
-#| msgid "No profanity of any kind"
 msgid "No information regarding profanity of any kind"
 msgstr "Nav informācijas par jebkāda veida rupjībām"
 
@@ -505,7 +1670,6 @@ msgstr "Diskriminācija"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:256
-#| msgid "No discriminatory language of any kind"
 msgid "No information regarding discriminatory language of any kind"
 msgstr "Nav informācijas par jebkāda veida diskriminējošu valodu"
 
@@ -516,7 +1680,6 @@ msgstr "Reklamēšana"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:266
-#| msgid "No advertising of any kind"
 msgid "No information regarding advertising of any kind"
 msgstr "Nav informācijas par jebkāda veida reklāmām"
 
@@ -527,7 +1690,6 @@ msgstr "Azartspēles"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:276
-#| msgid "No gambling of any kind"
 msgid "No information regarding gambling of any kind"
 msgstr "Nav informācijas par jebkāda veida azartspēlēm"
 
@@ -538,7 +1700,6 @@ msgstr "Pirkšana"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:286
-#| msgid "No ability to spend money"
 msgid "No information regarding the ability to spend money"
 msgstr "Nav informācijas par iespējām tērēt naudu"
 
@@ -549,7 +1710,6 @@ msgstr "Tērzēšana starp lietotājiem"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:296
-#| msgid "No way to chat with other users"
 msgid "No information regarding ways to chat with other users"
 msgstr "Nav informācijas par tērzēšanas iespējām ar citiem lietotājiem"
 
@@ -560,7 +1720,6 @@ msgstr "Audio tērzēšana starp lietotājiem"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:306
-#| msgid "No way to talk with other users"
 msgid "No information regarding ways to talk with other users"
 msgstr "Nav informācijas par sarunāšanās iespējām ar citiem lietotājiem"
 
@@ -571,13 +1730,12 @@ msgstr "Kontakta informācija"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:316
-#| msgid "No sharing of social network usernames or email addresses"
 msgid ""
 "No information regarding sharing of social network usernames or email "
 "addresses"
 msgstr ""
-"Nav informācijas par dalīšanos ar sociālo tīklu lietotājvārdiem vai e-pasta"
-" adresēm"
+"Nav informācijas par dalīšanos ar sociālo tīklu lietotājvārdiem vai e-pasta "
+"adresēm"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:324
@@ -586,7 +1744,6 @@ msgstr "Identitātes informācija"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:326
-#| msgid "No sharing of user information with third parties"
 msgid "No information regarding sharing of user information with third parties"
 msgstr ""
 "Nav informācijas par dalīšanos ar lietotāju informāciju ar trešajām pusēm"
@@ -598,11 +1755,10 @@ msgstr "Dalīšanās ar atrašanās vietu"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:336
-#| msgid "No sharing of physical location with other users"
 msgid "No information regarding sharing of physical location with other users"
 msgstr ""
-"Nav informācijas par dalīšanos ar fizisko atrašanās vietu ar citiem"
-" lietotājiem"
+"Nav informācijas par dalīšanos ar fizisko atrašanās vietu ar citiem "
+"lietotājiem"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:360
@@ -611,7 +1767,6 @@ msgstr "Homoseksualitāte"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:362
-#| msgid "No references to homosexuality"
 msgid "No information regarding references to homosexuality"
 msgstr "Nav informācijas par norādēm uz homoseksualitāti"
 
@@ -622,7 +1777,6 @@ msgstr "Prostitūcija"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:372
-#| msgid "No references to prostitution"
 msgid "No information regarding references to prostitution"
 msgstr "Nav informācijas par norādēm uz prostitūciju"
 
@@ -633,7 +1787,6 @@ msgstr "Laulības pārkāpšana"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:382
-#| msgid "No references to adultery"
 msgid "No information regarding references to adultery"
 msgstr "Nav informācijas par norādēm uz laulības pārkāpšanu"
 
@@ -654,7 +1807,6 @@ msgstr "Apraksts"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:402
-#| msgid "No references to desecration"
 msgid "No information regarding references to desecration"
 msgstr "Nav informācijas par norādēm uz apgānīšanu"
 
@@ -665,7 +1817,6 @@ msgstr "Cilvēku mirstīgās atliekas"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:412
-#| msgid "No visible dead human remains"
 msgid "No information regarding visible dead human remains"
 msgstr "Nav informācijas par redzamām cilvēku mirstīgajām atliekām"
 
@@ -676,12 +1827,10 @@ msgstr "Verdzība"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:422
-#| msgid "No references to slavery"
 msgid "No information regarding references to slavery"
 msgstr "Nav informācijas par norādēm uz verdzību"
 
 #: src/gs-age-rating-context-dialog.c:494
-#| msgid "No references to illicit drugs"
 msgid "Does not include references to drugs"
 msgstr "Nav norāžu uz nelegālām narkotikām"
 
@@ -699,12 +1848,10 @@ msgid "Does not include sex or nudity"
 msgstr "Nesatur seksu vai kailumu"
 
 #: src/gs-age-rating-context-dialog.c:502
-#| msgid "Uncontrolled chat functionality between users"
 msgid "Does not include uncontrolled chat functionality"
 msgstr "Nesatur nekontrolētu tērzēšanas funkcionalitāti"
 
 #: src/gs-age-rating-context-dialog.c:504
-#| msgid "Realistic Violence"
 msgid "Does not include violence"
 msgstr "Nesatur vardarbību"
 
@@ -713,8 +1860,6 @@ msgid "Drugs"
 msgstr "Narkotikas"
 
 #: src/gs-age-rating-context-dialog.c:539
-#| msgctxt "Menu of Education & Science"
-#| msgid "Languages"
 msgid "Strong Language"
 msgstr "Rupjības"
 
@@ -723,12 +1868,10 @@ msgid "Money"
 msgstr "Nauda"
 
 #: src/gs-age-rating-context-dialog.c:545
-#| msgid "Socialize"
 msgid "Social"
 msgstr "Sociāls"
 
 #: src/gs-age-rating-context-dialog.c:547
-#| msgid "Sexual Violence"
 msgid "Violence"
 msgstr "Vardarbība"
 
@@ -737,15 +1880,12 @@ msgstr "Vardarbība"
 #. * ratings for apps. The order of the items does not matter.
 #: src/gs-age-rating-context-dialog.c:658
 #, c-format
-#| msgctxt "repo-row"
-#| msgid "%s • %s"
 msgid "%s • %s"
 msgstr "%s • %s"
 
 #. Translators: The app is considered suitable to be run by all ages of people.
 #. * This is displayed in a context tile, so the string should be short.
 #: src/gs-age-rating-context-dialog.c:936
-#| msgid "All"
 msgctxt "Age rating"
 msgid "All"
 msgstr "Visiem"
@@ -813,11 +1953,10 @@ msgstr "Vecuma vērtējums"
 #: src/gs-age-rating-context-dialog.ui:68
 #: src/gs-hardware-support-context-dialog.ui:71
 #: src/gs-safety-context-dialog.ui:221
-#| msgid "How to add missing information"
 msgid "How to contribute missing information"
 msgstr "Kā papildināt trūkstošo informāciju"
 
-#: lib/gs-app.c:6167
+#: lib/gs-app.c:6175
 msgid "Local file"
 msgstr "Lokālā datne"
 
@@ -826,12 +1965,12 @@ msgstr "Lokālā datne"
 #. Example string: "Local file (RPM)"
 #. Translators: The first placeholder is an app runtime
 #. * name, the second is its version number.
-#: lib/gs-app.c:6186 src/gs-safety-context-dialog.c:439
+#: lib/gs-app.c:6194 src/gs-safety-context-dialog.c:439
 #, c-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: lib/gs-app.c:6263
+#: lib/gs-app.c:6271
 msgid "Package"
 msgstr "Pakotne"
 
@@ -849,7 +1988,6 @@ msgstr "Izņemšana gaida"
 
 #: src/gs-app-addon-row.c:111 src/gs-app-row.ui:197 src/gs-app-tile.ui:50
 #: src/gs-feature-tile.c:535
-#| msgid "Installed"
 msgctxt "Single app"
 msgid "Installed"
 msgstr "Instalēts"
@@ -950,7 +2088,6 @@ msgstr "Var izkļūt no smilškastes un apiet citus ierobežojumus"
 #. FIXME support app == NULL
 #. set window title
 #: src/gs-app-details-page.c:166
-#| msgid "The update details"
 msgid "Update Details"
 msgstr "Atjauninājumu informācija"
 
@@ -975,12 +2112,10 @@ msgid "Reviews"
 msgstr "Atsauksmes"
 
 #: src/gs-app-reviews-dialog.ui:25
-#| msgid "Sorry! There are no details for that application."
 msgid "No reviews were found for this application."
 msgstr "Nav atrastas atsauksmes par šo lietotni."
 
 #: src/gs-app-reviews-dialog.ui:27
-#| msgid "Reviews"
 msgid "No Reviews"
 msgstr "Nav atsauksmju"
 
@@ -1047,7 +2182,6 @@ msgid "Install the application (using application ID)"
 msgstr "Instalēt lietotni (izmantojot lietotnes ID)"
 
 #: src/gs-application.c:134
-#| msgid "Install the application (using application ID)"
 msgid "Uninstall the application (using application ID)"
 msgstr "Atinstalēt lietotni (izmantojot lietotnes ID)"
 
@@ -1096,7 +2230,6 @@ msgid "Show version number"
 msgstr "Rādīt versijas numuru"
 
 #: src/gs-application.c:261 src/gs-application.c:269
-#| msgid "Copyright © 2016–2021 GNOME Software contributors"
 msgid "Copyright © 2016–2022 GNOME Software contributors"
 msgstr "Autortiesības © 2016–2022 GNOME “Programmatūras” veidotāji"
 
@@ -1106,7 +2239,7 @@ msgstr "Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>"
 
 #. TRANSLATORS: this is the title of the about window
 #. TRANSLATORS: this is the menu item that opens the about window
-#: src/gs-application.c:277 src/gs-shell.c:2147
+#: src/gs-application.c:277 src/gs-shell.c:2149
 msgid "About Software"
 msgstr "Par “Programmatūru”"
 
@@ -1230,7 +2363,6 @@ msgstr "Var lasīt visas jūsu lejupielādes"
 #. Translators: This indicates an app can access data in the system unknown to the Software.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:359
-#| msgid "Can access hardware devices"
 msgid "Can access arbitrary files"
 msgstr "Var piekļūt patvaļīgām datnēm"
 
@@ -1287,7 +2419,6 @@ msgstr "Programmatūras izstrādātājs ir pārbaudīts"
 #. Translators: This indicates an app or its runtime reached its end of life.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:447
-#| msgid "Your OS is no longer supported."
 msgid "Software no longer supported"
 msgstr "Programmatūra vairs netiek atbalstīta"
 
@@ -1538,7 +2669,6 @@ msgstr "Citas"
 #. TRANSLATORS: this is a subcategory matching all the
 #. * different apps in the parent category, e.g. "Games"
 #: lib/gs-category.c:214
-#| msgid "All"
 msgctxt "Category"
 msgid "All"
 msgstr "Visas"
@@ -1975,7 +3105,6 @@ msgstr "Lietotne ir gatava lietošanai."
 #. TRANSLATORS: this is the summary of a notification that OS updates
 #. * have been successfully installed
 #: src/gs-common.c:84
-#| msgid "OS updates are now installed"
 msgid "System updates are now installed"
 msgstr "Sistēmas atjauninājumi tagad ir uzinstalēti"
 
@@ -2014,8 +3143,8 @@ msgid ""
 "%s is not <a href=\"https://en.wikipedia.org/wiki/Free_and_open-"
 "source_software\">free and open source software</a>, and is provided by “%s”."
 msgstr ""
-"%s nav <a href=\"https://en.wikipedia.org/wiki/Free_and_open-source_software"
-"\">brīva un atvērta programmatūra</a>, un to nodrošina “%s”."
+"%s nav <a href=\"https://en.wikipedia.org/wiki/Free_and_open-"
+"source_software\">brīva un atvērta programmatūra</a>, un to nodrošina “%s”."
 
 #. TRANSLATORS: the replacements are as follows:
 #. * 1. Application name, e.g. "Firefox"
@@ -2154,7 +3283,7 @@ msgstr[2] "Pirms %d gadiem"
 #. * the unit is drawn with a smaller font. If you need to flip the order, then you can use "%2$s %1$s".
 #. * Make sure you'll preserve the no break space between the values.
 #. * Example result: "13.0 MB"
-#: src/gs-common.c:1246
+#: src/gs-common.c:1255
 #, c-format
 msgctxt "format-size"
 msgid "%s %s"
@@ -2271,12 +3400,12 @@ msgstr "Atinstalē…"
 #. * can be installed
 #. TRANSLATORS: button text in the header when firmware
 #. * can be live-installed
-#: src/gs-details-page.c:857 src/gs-details-page.c:883
+#: src/gs-details-page.c:860 src/gs-details-page.c:886
 #: src/gs-details-page.ui:228 plugins/packagekit/gs-packagekit-task.c:150
 msgid "_Install"
 msgstr "_Instalēt"
 
-#: src/gs-details-page.c:873
+#: src/gs-details-page.c:876
 msgid "_Restart"
 msgstr "Pā_rstartēt"
 
@@ -2284,22 +3413,22 @@ msgstr "Pā_rstartēt"
 #. * be installed.
 #. * The ellipsis indicates that further steps are required,
 #. * e.g. enabling software repositories or the like
-#: src/gs-details-page.c:897
+#: src/gs-details-page.c:900
 msgid "_Install…"
 msgstr "_Instalēt…"
 
 #. Translators: the '%s' is replaced with a developer name or a project group
-#: src/gs-details-page.c:1174
+#: src/gs-details-page.c:1177
 #, c-format
 msgid "Other Apps by %s"
 msgstr "Citas lietotnes no %s"
 
 #. TRANSLATORS: we need a remote server to process
-#: src/gs-details-page.c:1557
+#: src/gs-details-page.c:1560
 msgid "You need internet access to write a review"
 msgstr "Jums vajadzīga interneta piekļuve, lai rakstītu apskatu"
 
-#: src/gs-details-page.c:1708 src/gs-details-page.c:1724
+#: src/gs-details-page.c:1711 src/gs-details-page.c:1727
 #, c-format
 msgid "Unable to find “%s”"
 msgstr "Nevar atrast “%s”"
@@ -2432,13 +3561,11 @@ msgstr "_Palīdzība"
 
 #. Translators: Button opening a dialog where the users can write and publish their opinions about the apps.
 #: src/gs-details-page.ui:908
-#| msgid "_Write a Review"
 msgid "_Write Review"
 msgstr "_Rakstīt atsauksmi"
 
 #. Translators: Button opening a dialog showing all reviews for an app.
 #: src/gs-details-page.ui:945
-#| msgid "Reviews"
 msgid "All Reviews"
 msgstr "Visas atsauksmes"
 
@@ -2884,7 +4011,6 @@ msgstr "Aparatūras atbalsts"
 #. Translators: This is in the context of a list of apps which are installed on the system.
 #. Translators: A label for a button to show only software which is already installed.
 #: src/gs-installed-page.c:812 src/gs-shell.ui:307
-#| msgid "Installed"
 msgctxt "List of installed apps"
 msgid "Installed"
 msgstr "Instalētās"
@@ -2904,7 +4030,6 @@ msgid "Applications"
 msgstr "Lietotnes"
 
 #: src/gs-installed-page.ui:95
-#| msgid "Applications"
 msgid "Web Applications"
 msgstr "Tīmekļa lietotnes"
 
@@ -2923,11 +4048,6 @@ msgstr "_Piedalīties"
 #. Translators: The first placeholder here is a link to information about the license, and the second placeholder here is the name of a software license.
 #: src/gs-license-tile.c:114
 #, c-format
-#| msgid ""
-#| "This software is developed in the open by a community of volunteers, and "
-#| "released under the %s license.\n"
-#| "\n"
-#| "You can contribute and help make it even better."
 msgid ""
 "This software is developed in the open by a community of volunteers, and "
 "released under the <a href=\"%s\">%s license</a>.\n"
@@ -2958,18 +4078,10 @@ msgid "Proprietary"
 msgstr "Īpašnieka"
 
 #: src/gs-license-tile.c:133
-#| msgid "Learn"
 msgid "_Learn More"
 msgstr "_Uzzināt vairāk"
 
 #: src/gs-license-tile.c:135
-#| msgid ""
-#| "This software is not developed in the open, so only its developers know "
-#| "how it works. There may be restrictions on its use, and it may be harder "
-#| "to tell if the software is insecure.\n"
-#| "\n"
-#| "You may not be able to contribute to this software or influence its "
-#| "development."
 msgid ""
 "This software is not developed in the open, so only its developers know how "
 "it works. It may be insecure in ways that are hard to detect, and it may "
@@ -2978,14 +4090,13 @@ msgid ""
 "You may not be able to contribute to this software."
 msgstr ""
 "Šī programmatūra nav izstrādāta atvērtā formā un tikai tās izstrādātāji "
-"zina, kā tā darbojas. Tajā varētu būt grūti atklāt drošības problēmas un tā"
-" varētu tikt mainīta bez pārraudzības.\n"
+"zina, kā tā darbojas. Tajā varētu būt grūti atklāt drošības problēmas un tā "
+"varētu tikt mainīta bez pārraudzības.\n"
 "\n"
 "Jūs nevarēsiet dot savu ieguldījumu šīs programmatūras attīstībā."
 
 #. TRANSLATORS: initial start
 #: src/gs-loading-page.c:56
-#| msgid "Downloading featured images…"
 msgid "Downloading software catalog"
 msgstr "Lejupielādē programmatūras katalogu"
 
@@ -3035,8 +4146,7 @@ msgstr "Moderācijas lapa"
 msgid "There are no reviews to moderate"
 msgstr "Nav atsauksmju, ko pārbaudīt"
 
-#: src/gs-origin-popover-row.c:104
-#| msgid "Unknown"
+#: src/gs-origin-popover-row.c:105
 msgid "Unknown source"
 msgstr "Nezināms avots"
 
@@ -3047,7 +4157,6 @@ msgstr "Beta"
 
 #. Translators: It's an origin scope, 'User' or 'System' installation
 #: src/gs-origin-popover-row.ui:138
-#| msgid "_User"
 msgid "User"
 msgstr "Lietotājs"
 
@@ -3066,7 +4175,6 @@ msgstr "Izņemtās"
 #. TRANSLATORS: This is the header for package updates during
 #. * a system update
 #: src/gs-os-update-page.c:258
-#| msgid "Updates"
 msgctxt "Packages to be updated during a system upgrade"
 msgid "Updates"
 msgstr "Atjauninājumi"
@@ -3123,7 +4231,7 @@ msgstr "Citas kategorijas"
 msgid "No Application Data Found"
 msgstr "Nav atrastu lietotņu datu"
 
-#: lib/gs-plugin-loader.c:2824
+#: lib/gs-plugin-loader.c:2825
 msgctxt "Distribution name"
 msgid "Unknown"
 msgstr "Nezināma"
@@ -3224,8 +4332,6 @@ msgstr "_Turpināt"
 #. TRANSLATORS: The '%s' is replaced with a repository name, like "Fedora Modular - x86_64"
 #: src/gs-repos-dialog.c:239
 #, c-format
-#| msgid ""
-#| "Software that has been installed from “%s” will cease receive updates."
 msgid ""
 "Software that has been installed from “%s” will cease to receive updates."
 msgstr ""
@@ -3455,17 +4561,14 @@ msgid "What do you think of the app? Try to give reasons for your views."
 msgstr "Ko jūs domājat par šo lietotni? Mēģiniet pamatot savu viedokli."
 
 #: src/gs-review-dialog.ui:156
-#| msgid ""
-#| "Find what data is sent in our <a href=\"https://odrs.gnome.org/privacy"
-#| "\">privacy policy</a>."
 msgid ""
-"Find what data is sent in our <a href=\"https://odrs.gnome.org/privacy"
-"\">privacy policy</a>. The full name attached to your account will be shown "
-"publicly."
+"Find what data is sent in our <a href=\"https://odrs.gnome.org/"
+"privacy\">privacy policy</a>. The full name attached to your account will be "
+"shown publicly."
 msgstr ""
 "Mūsu <a href=\"https://odrs.gnome.org/privacy\">privātuma politikā</a> varat "
-"uzzināt, kādi dati tiek nosūtīti. Jūsu vārds, kas ir saistīts ar jūsu kontu,"
-" būs publiski redzams."
+"uzzināt, kādi dati tiek nosūtīti. Jūsu vārds, kas ir saistīts ar jūsu kontu, "
+"būs publiski redzams."
 
 #: src/gs-review-histogram.c:72
 #, c-format
@@ -3686,12 +4789,10 @@ msgid "Can read all data in your downloads directory"
 msgstr "Var lasīt visus datus jūsu lejupielāžu direktorijā"
 
 #: src/gs-safety-context-dialog.c:299
-#| msgid "Can read and write all data in your home directory"
 msgid "Can read and write all data in the directory"
 msgstr "Var lasīt un rakstīt visus datus direktorijā"
 
 #: src/gs-safety-context-dialog.c:310
-#| msgid "Can read all data in your home directory"
 msgid "Can read all data in the directory"
 msgstr "Var lasīt visus datus direktorijā"
 
@@ -3743,7 +4844,6 @@ msgstr "Ir pārbaudīts, ka šīs lietotnes izstrādātājs ir tas, par ko uzdod
 #. Translators: This indicates an app uses an outdated SDK.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-safety-context-dialog.c:366
-#| msgid "Required Dependencies"
 msgid "Insecure Dependencies"
 msgstr "Nedrošas atkarības"
 
@@ -3851,7 +4951,7 @@ msgstr "Ekrānattēls"
 
 #. TRANSLATORS: this is when there are too many search results
 #. * to show in in the search page
-#: src/gs-search-page.c:169
+#: src/gs-search-page.c:180
 #, c-format
 msgid "%u more match"
 msgid_plural "%u more matches"
@@ -3879,41 +4979,40 @@ msgstr "Nav atrastu lietotņu"
 #. TRANSLATORS: this is part of the in-app notification,
 #. * where the %s is a multi-word localised app name
 #. * e.g. 'Getting things GNOME!"
-#: src/gs-shell.c:1197 src/gs-shell.c:1202 src/gs-shell.c:1217
-#: src/gs-shell.c:1221
+#: src/gs-shell.c:1199 src/gs-shell.c:1204 src/gs-shell.c:1219
+#: src/gs-shell.c:1223
 #, c-format
 msgid "“%s”"
 msgstr "“%s”"
 
 #. Translators: The '%s' is replaced with an error message, which had been shortened.
 #. The dots at the end are there to highlight that to the user.
-#: src/gs-shell.c:1238
+#: src/gs-shell.c:1240
 #, c-format
-#| msgid "“%s”"
 msgid "%s…"
 msgstr "%s…"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the source (e.g. "alt.fedoraproject.org")
-#: src/gs-shell.c:1273
+#: src/gs-shell.c:1275
 #, c-format
 msgid "Unable to download firmware updates from %s"
 msgstr "Nevar lejupielādēt aparātprogrammatūras atjauninājumus no %s"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the source (e.g. "alt.fedoraproject.org")
-#: src/gs-shell.c:1279
+#: src/gs-shell.c:1281
 #, c-format
 msgid "Unable to download updates from %s"
 msgstr "Nevar lejupielādēt atjauninājumus no %s"
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1286 src/gs-shell.c:1326
+#: src/gs-shell.c:1288 src/gs-shell.c:1328
 msgid "Unable to download updates"
 msgstr "Nevar lejupielādēt atjauninājumus"
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1291
+#: src/gs-shell.c:1293
 msgid ""
 "Unable to download updates: internet access was required but wasn’t available"
 msgstr ""
@@ -3922,49 +5021,49 @@ msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the source (e.g. "alt.fedoraproject.org")
-#: src/gs-shell.c:1299
+#: src/gs-shell.c:1301
 #, c-format
 msgid "Unable to download updates from %s: not enough disk space"
 msgstr "Nevar lejupielādēt atjauninājumus no %s: nepietiek diska vietas"
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1304
+#: src/gs-shell.c:1306
 msgid "Unable to download updates: not enough disk space"
 msgstr "Nevar lejupielādēt atjauninājumus: nepietiek diska vietas"
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1310
+#: src/gs-shell.c:1312
 msgid "Unable to download updates: authentication was required"
 msgstr "Nevar lejupielādēt atjauninājumus: bija vajadzīga autentifikācija"
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1314
+#: src/gs-shell.c:1316
 msgid "Unable to download updates: authentication was invalid"
 msgstr "Nevar lejupielādēt atjauninājumus: autentifikācija bija nederīga"
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1318
+#: src/gs-shell.c:1320
 msgid ""
 "Unable to download updates: you do not have permission to install software"
 msgstr ""
 "Nevar lejupielādēt atjauninājumus: jums nav atļaujas instalēt programmatūru"
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1329
+#: src/gs-shell.c:1331
 msgid "Unable to get list of updates"
 msgstr "Nevar iegūt atjauninājumu sarakstu"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the first %s is the application name (e.g. "GIMP") and
 #. * the second %s is the origin, e.g. "Fedora Project [fedoraproject.org]"
-#: src/gs-shell.c:1371
+#: src/gs-shell.c:1373
 #, c-format
 msgid "Unable to install %s as download failed from %s"
 msgstr "Nevar instalēt %s, jo neizdevās lejupielādēt no %s"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1377
+#: src/gs-shell.c:1379
 #, c-format
 msgid "Unable to install %s as download failed"
 msgstr "Nevar instalēt %s, jo neizdevās lejupielādēt"
@@ -3973,73 +5072,73 @@ msgstr "Nevar instalēt %s, jo neizdevās lejupielādēt"
 #. * where the first %s is the application name (e.g. "GIMP")
 #. * and the second %s is the name of the runtime, e.g.
 #. * "GNOME SDK [flatpak.gnome.org]"
-#: src/gs-shell.c:1389
+#: src/gs-shell.c:1391
 #, c-format
 msgid "Unable to install %s as runtime %s not available"
 msgstr "Nevar instalēt %s, jo izpildlaiks %s nav pieejams"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1395
+#: src/gs-shell.c:1397
 #, c-format
 msgid "Unable to install %s as not supported"
 msgstr "Nevar instalēt %s, jo nav atbalstīta"
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1401
+#: src/gs-shell.c:1403
 msgid "Unable to install: internet access was required but wasn’t available"
 msgstr ""
 "Nevar instalēt: bija nepieciešama pieeja internetam, bet tā nebija pieejama"
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1406
+#: src/gs-shell.c:1408
 msgid "Unable to install: the application has an invalid format"
 msgstr "Nevar instalēt: lietotnei ir nederīgs formāts"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1410
+#: src/gs-shell.c:1412
 #, c-format
 msgid "Unable to install %s: not enough disk space"
 msgstr "Nevar instalēt %s: nepietiek diska vietas"
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1416
+#: src/gs-shell.c:1418
 #, c-format
 msgid "Unable to install %s: authentication was required"
 msgstr "Nevar instalēt %s: bija vajadzīga autentifikācija"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1422
+#: src/gs-shell.c:1424
 #, c-format
 msgid "Unable to install %s: authentication was invalid"
 msgstr "Nevar instalēt %s: autentifikācija bija nederīga"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1428
+#: src/gs-shell.c:1430
 #, c-format
 msgid "Unable to install %s: you do not have permission to install software"
 msgstr "Nevar instalēt %s: jums nav atļaujas instalēt programmatūru"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "Dell XPS 13")
-#: src/gs-shell.c:1435
+#: src/gs-shell.c:1437
 #, c-format
 msgid "Unable to install %s: AC power is required"
 msgstr "Nevar instalēt %s: ir vajadzīgs maiņstrāvas pieslēgums"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "Dell XPS 13")
-#: src/gs-shell.c:1441
+#: src/gs-shell.c:1443
 #, c-format
 msgid "Unable to install %s: The battery level is too low"
 msgstr "Nevar instalēt %s: baterijā ir pārāk maz enerģijas"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1450
+#: src/gs-shell.c:1452
 #, c-format
 msgid "Unable to install %s"
 msgstr "Nevar instalēt %s"
@@ -4048,14 +5147,14 @@ msgstr "Nevar instalēt %s"
 #. * where the first %s is the app name (e.g. "GIMP") and
 #. * the second %s is the origin, e.g. "Fedora" or
 #. * "Fedora Project [fedoraproject.org]"
-#: src/gs-shell.c:1495
+#: src/gs-shell.c:1497
 #, c-format
 msgid "Unable to update %s from %s as download failed"
 msgstr "Nevar atjaunināt %s no %s, jo neizdevās lejupielādēt"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1502
+#: src/gs-shell.c:1504
 #, c-format
 msgid "Unable to update %s as download failed"
 msgstr "Nevar atjaunināt %s, jo neizdevās lejupielādēt"
@@ -4063,71 +5162,71 @@ msgstr "Nevar atjaunināt %s, jo neizdevās lejupielādēt"
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the origin, e.g. "Fedora" or
 #. * "Fedora Project [fedoraproject.org]"
-#: src/gs-shell.c:1509
+#: src/gs-shell.c:1511
 #, c-format
 msgid "Unable to install updates from %s as download failed"
 msgstr "Nevar instalēt atjauninājumus no %s, jo neizdevās lejupielādēt"
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1513
+#: src/gs-shell.c:1515
 #, c-format
 msgid "Unable to install updates as download failed"
 msgstr "Nevar instalēt atjauninājumus, jo neizdevās lejupielādēt"
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1518
+#: src/gs-shell.c:1520
 msgid "Unable to update: internet access was required but wasn’t available"
 msgstr ""
 "Nevar atjaunināt: bija nepieciešama pieeja internetam, bet tā nebija pieejama"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1527
+#: src/gs-shell.c:1529
 #, c-format
 msgid "Unable to update %s: not enough disk space"
 msgstr "Nevar atjaunināt %s: nepietiek diska vietas"
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1532
+#: src/gs-shell.c:1534
 #, c-format
 msgid "Unable to install updates: not enough disk space"
 msgstr "Nevar instalēt atjauninājumus: nepietiek vietas uz diska"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1541
+#: src/gs-shell.c:1543
 #, c-format
 msgid "Unable to update %s: authentication was required"
 msgstr "Nevar atjaunināt %s: bija vajadzīga autentifikācija"
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1546
+#: src/gs-shell.c:1548
 #, c-format
 msgid "Unable to install updates: authentication was required"
 msgstr "Nevar instalēt atjauninājumus: bija vajadzīga autentifikācija"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1554
+#: src/gs-shell.c:1556
 #, c-format
 msgid "Unable to update %s: authentication was invalid"
 msgstr "Nevar atjaunināt %s: autentifikācija bija nederīga"
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1559
+#: src/gs-shell.c:1561
 #, c-format
 msgid "Unable to install updates: authentication was invalid"
 msgstr "Nevar instalēt atjauninājumus: autentifikācija bija nederīga"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1567
+#: src/gs-shell.c:1569
 #, c-format
 msgid "Unable to update %s: you do not have permission to update software"
 msgstr "Nevar atjaunināt %s: jums nav atļaujas atjaunināt programmatūru"
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1573
+#: src/gs-shell.c:1575
 #, c-format
 msgid ""
 "Unable to install updates: you do not have permission to update software"
@@ -4136,41 +5235,41 @@ msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "Dell XPS 13")
-#: src/gs-shell.c:1582
+#: src/gs-shell.c:1584
 #, c-format
 msgid "Unable to update %s: AC power is required"
 msgstr "Nevar atjaunināt %s: ir vajadzīgs maiņstrāvas pieslēgums"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "Dell XPS 13")
-#: src/gs-shell.c:1588
+#: src/gs-shell.c:1590
 #, c-format
 msgid "Unable to install updates: AC power is required"
 msgstr "Nevar instalēt atjauninājumus: ir vajadzīgs maiņstrāvas pieslēgums"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "Dell XPS 13")
-#: src/gs-shell.c:1596
+#: src/gs-shell.c:1598
 #, c-format
 msgid "Unable to update %s: The battery level is too low"
 msgstr "Nevar atjaunināt %s: baterijā ir pārāk maz enerģijas"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "Dell XPS 13")
-#: src/gs-shell.c:1602
+#: src/gs-shell.c:1604
 #, c-format
 msgid "Unable to install updates: The battery level is too low"
 msgstr "Nevar instalēt atjauninājumus: baterijā ir pārāk maz enerģijas"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1613
+#: src/gs-shell.c:1615
 #, c-format
 msgid "Unable to update %s"
 msgstr "Nevar atjaunināt %s"
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1616
+#: src/gs-shell.c:1618
 #, c-format
 msgid "Unable to install updates"
 msgstr "Nevar instalēt atjauninājumus"
@@ -4178,21 +5277,21 @@ msgstr "Nevar instalēt atjauninājumus"
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the first %s is the distro name (e.g. "Fedora 25") and
 #. * the second %s is the origin, e.g. "Fedora Project [fedoraproject.org]"
-#: src/gs-shell.c:1658
+#: src/gs-shell.c:1660
 #, c-format
 msgid "Unable to upgrade to %s from %s"
 msgstr "Nevar uzlabot uz %s no %s"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the app name (e.g. "GIMP")
-#: src/gs-shell.c:1663
+#: src/gs-shell.c:1665
 #, c-format
 msgid "Unable to upgrade to %s as download failed"
 msgstr "Nevar uzlabot uz %s, jo neizdevās lejupielādēt"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the distro name (e.g. "Fedora 25")
-#: src/gs-shell.c:1671
+#: src/gs-shell.c:1673
 #, c-format
 msgid ""
 "Unable to upgrade to %s: internet access was required but wasn’t available"
@@ -4202,91 +5301,91 @@ msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the distro name (e.g. "Fedora 25")
-#: src/gs-shell.c:1679
+#: src/gs-shell.c:1681
 #, c-format
 msgid "Unable to upgrade to %s: not enough disk space"
 msgstr "Nevar uzlabot uz %s: nepietiek diska vietas"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the distro name (e.g. "Fedora 25")
-#: src/gs-shell.c:1686
+#: src/gs-shell.c:1688
 #, c-format
 msgid "Unable to upgrade to %s: authentication was required"
 msgstr "Nevar uzlabot uz %s: bija vajadzīga autentifikācija"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the distro name (e.g. "Fedora 25")
-#: src/gs-shell.c:1692
+#: src/gs-shell.c:1694
 #, c-format
 msgid "Unable to upgrade to %s: authentication was invalid"
 msgstr "Nevar uzlabot uz %s: autentifikācija bija nederīga"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the distro name (e.g. "Fedora 25")
-#: src/gs-shell.c:1698
+#: src/gs-shell.c:1700
 #, c-format
 msgid "Unable to upgrade to %s: you do not have permission to upgrade"
 msgstr "Nevar uzlabot uz %s: jums nav atļaujas uzlabot"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the distro name (e.g. "Fedora 25")
-#: src/gs-shell.c:1704
+#: src/gs-shell.c:1706
 #, c-format
 msgid "Unable to upgrade to %s: AC power is required"
 msgstr "Nevar uzlabot uz %s: ir vajadzīgs maiņstrāvas pieslēgums"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the distro name (e.g. "Fedora 25")
-#: src/gs-shell.c:1710
+#: src/gs-shell.c:1712
 #, c-format
 msgid "Unable to upgrade to %s: The battery level is too low"
 msgstr "Nevar uzlabot %s: baterijā ir pārāk maz enerģijas"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the distro name (e.g. "Fedora 25")
-#: src/gs-shell.c:1719
+#: src/gs-shell.c:1721
 #, c-format
 msgid "Unable to upgrade to %s"
 msgstr "Nevar uzlabot uz %s"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1756
+#: src/gs-shell.c:1758
 #, c-format
 msgid "Unable to remove %s: authentication was required"
 msgstr "Nevar noņemt %s: bija vajadzīga autentifikācija"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1761
+#: src/gs-shell.c:1763
 #, c-format
 msgid "Unable to remove %s: authentication was invalid"
 msgstr "Nevar noņemt %s: autentifikācija bija nederīga"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1766
+#: src/gs-shell.c:1768
 #, c-format
 msgid "Unable to remove %s: you do not have permission to remove software"
 msgstr "Nevar noņemt %s: jums nav atļaujas noņemt programmatūru"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1772
+#: src/gs-shell.c:1774
 #, c-format
 msgid "Unable to remove %s: AC power is required"
 msgstr "Nevar noņemt %s: ir vajadzīgs maiņstrāvas pieslēgums"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1778
+#: src/gs-shell.c:1780
 #, c-format
 msgid "Unable to remove %s: The battery level is too low"
 msgstr "Nevar noņemt %s: baterijā ir pārāk maz enerģijas"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
-#: src/gs-shell.c:1790
+#: src/gs-shell.c:1792
 #, c-format
 msgid "Unable to remove %s"
 msgstr "Nevar noņemt %s"
@@ -4295,63 +5394,63 @@ msgstr "Nevar noņemt %s"
 #. * where the first %s is the application name (e.g. "GIMP")
 #. * and the second %s is the name of the runtime, e.g.
 #. * "GNOME SDK [flatpak.gnome.org]"
-#: src/gs-shell.c:1831
+#: src/gs-shell.c:1833
 #, c-format
 msgid "Unable to launch %s: %s is not installed"
 msgstr "Nevar palaist %s: %s nav instalēts"
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1837 src/gs-shell.c:1885 src/gs-shell.c:1923
-#: src/gs-shell.c:1966
+#: src/gs-shell.c:1839 src/gs-shell.c:1887 src/gs-shell.c:1925
+#: src/gs-shell.c:1968
 msgid "Not enough disk space — free up some space and try again"
 msgstr "Nepietika diska vietas — atbrīvojiet kādu vietu un mēģiniet vēlreiz"
 
 #. TRANSLATORS: we failed to get a proper error code
-#: src/gs-shell.c:1848 src/gs-shell.c:1896 src/gs-shell.c:1934
-#: src/gs-shell.c:1987
+#: src/gs-shell.c:1850 src/gs-shell.c:1898 src/gs-shell.c:1936
+#: src/gs-shell.c:1989
 msgid "Sorry, something went wrong"
 msgstr "Diemžēl kaut kas nogāja greizi"
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1879
+#: src/gs-shell.c:1881
 msgid "Failed to install file: not supported"
 msgstr "Neizdevās instalēt datni: nav atbalstīta"
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1882
+#: src/gs-shell.c:1884
 msgid "Failed to install file: authentication failed"
 msgstr "Neizdevās instalēt datni: autentifikācija neizdevās"
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1917
+#: src/gs-shell.c:1919
 msgid "Failed to install: not supported"
 msgstr "Neizdevās instalēt: nav atbalstīts"
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1920
+#: src/gs-shell.c:1922
 msgid "Failed to install: authentication failed"
 msgstr "Neizdevās instalēt: autentifikācija neizdevās"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * the %s is the origin, e.g. "Fedora" or
 #. * "Fedora Project [fedoraproject.org]"
-#: src/gs-shell.c:1961
+#: src/gs-shell.c:1963
 #, c-format
 msgid "Unable to contact %s"
 msgstr "Nevar sazināties ar %s"
 
 #. TRANSLATORS: failure text for the in-app notification, where the 'Software' means this application, aka 'GNOME Software'.
-#: src/gs-shell.c:1971
+#: src/gs-shell.c:1973
 msgid "Software needs to be restarted to use new plugins."
 msgstr "“Programmatūru” vajag pārstartēt, lai lietotu jaunos spraudņus."
 
 #. TRANSLATORS: need to be connected to the AC power
-#: src/gs-shell.c:1975
+#: src/gs-shell.c:1977
 msgid "AC power is required"
 msgstr "Ir vajadzīgs maiņstrāvas pieslēgums"
 
 #. TRANSLATORS: not enough juice to do this safely
-#: src/gs-shell.c:1978
+#: src/gs-shell.c:1980
 msgid "The battery level is too low"
 msgstr "Baterijā ir pārāk maz enerģijas"
 
@@ -4399,7 +5498,6 @@ msgstr "Uzzināt _vairāk"
 
 #. Translators: A label for a button to show only updates which are available to install.
 #: src/gs-shell.ui:328
-#| msgid "Updates"
 msgctxt "Header bar button for list of apps to be updated"
 msgid "Updates"
 msgstr "Atjauninājumi"
@@ -4449,7 +5547,6 @@ msgid "Shared system components required by this application"
 msgstr "Koplietotās sistēmas komponentes, kas ir nepieciešamas šai lietotnei"
 
 #: src/gs-storage-context-dialog.c:188
-#| msgid "Unknown"
 msgctxt "Download size"
 msgid "Unknown"
 msgstr "Nezināms"
@@ -4497,8 +5594,6 @@ msgid "Installed on %s"
 msgstr "Instalēts %s"
 
 #: src/gs-update-dialog.ui:77
-#| msgid "Software Update Installed"
-#| msgid_plural "Software Updates Installed"
 msgid "No Updates Installed"
 msgstr "Nav instalētu atjauninājumu"
 
@@ -4622,7 +5717,6 @@ msgstr "Neizdevās atjaunināt programmatūru"
 
 #. TRANSLATORS: message when we offline updates have failed
 #: src/gs-update-monitor.c:1139
-#| msgid "An important OS update failed to be installed."
 msgid "An important operating system update failed to be installed."
 msgstr "Neizdevās uzinstalēt svarīgu operētājsistēmas atjauninājumu."
 
@@ -4653,8 +5747,6 @@ msgstr[2] "Programmatūras atjauninājumi uzinstalēti"
 
 #. TRANSLATORS: message when we've done offline updates
 #: src/gs-update-monitor.c:1177
-#| msgid "An important OS update has been installed."
-#| msgid_plural "Important OS updates have been installed."
 msgid "An important operating system update has been installed."
 msgid_plural "Important operating system updates have been installed."
 msgstr[0] "Tika uzinstalēts svarīgs operētājsistēmas atjauninājums."
@@ -4736,7 +5828,6 @@ msgid "%s %s is no longer supported."
 msgstr "%s %s vairs netiek atbalstīta."
 
 #: src/gs-updates-page.c:563
-#| msgid "Your OS is no longer supported."
 msgid "Your operating system is no longer supported."
 msgstr "Jūsu operētājsistēma vairs netiek atbalstīta."
 
@@ -4787,7 +5878,6 @@ msgid "Check for updates"
 msgstr "Pārbaudīt atjauninājumus"
 
 #: src/gs-updates-page.c:1286
-#| msgid "Updates"
 msgctxt "Apps to be updated"
 msgid "Updates"
 msgstr "Atjauninājumi"
@@ -4901,7 +5991,6 @@ msgstr "Pieejami %s %s"
 #. * e.g. "GNOME OS Available"
 #: src/gs-upgrade-banner.c:95
 #, c-format
-#| msgid "%s %s Available"
 msgid "%s Available"
 msgstr "%s ir pieejams"
 
@@ -4955,7 +6044,6 @@ msgstr ""
 #. TRANSLATORS: this is a group of updates that are not
 #. * packages and are not shown in the main list
 #: plugins/core/gs-plugin-generic-updates.c:67
-#| msgid "%s System Update"
 msgid "System Updates"
 msgstr "Sistēmas atjauninājumi"
 
@@ -4966,8 +6054,8 @@ msgid ""
 "General system updates, such as security or bug fixes, and performance "
 "improvements."
 msgstr ""
-"Vispārīgie sistēmas atjauninājumi, piemēram, drošības un kļūdu labojumi kā"
-" arī veiktspējas uzlabojumi."
+"Vispārīgie sistēmas atjauninājumi, piemēram, drošības un kļūdu labojumi kā "
+"arī veiktspējas uzlabojumi."
 
 #. TRANSLATORS: status text when downloading
 #: plugins/core/gs-plugin-rewrite-resource.c:155
@@ -4977,7 +6065,6 @@ msgstr "Lejupielādē piedāvātos attēlus…"
 #. Translators: The '%s' is replaced with the OS name, like "Endless OS"
 #: plugins/eos-updater/gs-plugin-eos-updater.c:637
 #, c-format
-#| msgid "An Endless OS update with new features and fixes."
 msgid "%s update with new features and fixes."
 msgstr "%s atjauninājumus ar jaunām iespējām un labojumiem."
 
@@ -4986,7 +6073,6 @@ msgid "EOS update service could not fetch and apply the update."
 msgstr "EOS atjauninājumu pakalpojums nevarēja saņemt un uzlikt atjauninājumu."
 
 #: plugins/epiphany/gs-plugin-epiphany.c:498
-#| msgid "GNOME Software"
 msgid "GNOME Web"
 msgstr "GNOME tīmeklis"
 
@@ -5021,18 +6107,15 @@ msgstr "Flatpak ir ietvars darbvirsmas lietotnēm uz Linux"
 #. Reference: https://docs.flatpak.org/en/latest/flatpak-command-reference.html#idm45858571325264
 #: plugins/flatpak/gs-flatpak.c:313
 #, c-format
-#| msgid "System Services"
 msgid "System folder %s"
 msgstr "Sistēmas mape %s"
 
 #: plugins/flatpak/gs-flatpak.c:314 plugins/flatpak/gs-flatpak.c:315
 #, c-format
-#| msgid "Home folder"
 msgid "Home subfolder %s"
 msgstr "Mājas apakšmape %s"
 
 #: plugins/flatpak/gs-flatpak.c:316
-#| msgid "Home folder"
 msgid "Host system folders"
 msgstr "Saimniekdatora sistēmas mapes"
 
@@ -5041,42 +6124,33 @@ msgid "Host system configuration from /etc"
 msgstr "Saimniekdatora sistēmas konfigurācija no /etc"
 
 #: plugins/flatpak/gs-flatpak.c:318
-#| msgid "Desktop Only"
 msgid "Desktop folder"
 msgstr "Darbvirsmas mape"
 
 #: plugins/flatpak/gs-flatpak.c:318
 #, c-format
-#| msgid "Desktop Support"
 msgid "Desktop subfolder %s"
 msgstr "Darbvirsmas apakšmape %s"
 
 #: plugins/flatpak/gs-flatpak.c:319
-#| msgid "Home folder"
 msgid "Documents folder"
 msgstr "Dokumentu mape"
 
 #: plugins/flatpak/gs-flatpak.c:319
 #, c-format
-#| msgid "Home folder"
 msgid "Documents subfolder %s"
 msgstr "Dokumentu apakšmape %s"
 
 #: plugins/flatpak/gs-flatpak.c:320
-#| msgctxt "Menu of Audio & Video"
-#| msgid "Music Players"
 msgid "Music folder"
 msgstr "Mūzikas mape"
 
 #: plugins/flatpak/gs-flatpak.c:320
 #, c-format
-#| msgctxt "Menu of Audio & Video"
-#| msgid "Music Players"
 msgid "Music subfolder %s"
 msgstr "Mūzikas apakšmape %s"
 
 #: plugins/flatpak/gs-flatpak.c:321
-#| msgid "Picture"
 msgid "Pictures folder"
 msgstr "Bilžu mape"
 
@@ -5095,18 +6169,15 @@ msgid "Public Share subfolder %s"
 msgstr "Publiska koplietošanas apakšmape %s"
 
 #: plugins/flatpak/gs-flatpak.c:323
-#| msgid "Home folder"
 msgid "Videos folder"
 msgstr "Video mape"
 
 #: plugins/flatpak/gs-flatpak.c:323
 #, c-format
-#| msgid "%s is suitable for %s"
 msgid "Videos subfolder %s"
 msgstr "Video apakšmape %s"
 
 #: plugins/flatpak/gs-flatpak.c:324
-#| msgid "Home folder"
 msgid "Templates folder"
 msgstr "Veidņu mape"
 
@@ -5125,18 +6196,15 @@ msgid "User cache subfolder %s"
 msgstr "Lietotāja kešatmiņas apakšmape %s"
 
 #: plugins/flatpak/gs-flatpak.c:326
-#| msgid "%s Configuration Update"
 msgid "User configuration folder"
 msgstr "Lietotāja konfigurācijas mape"
 
 #: plugins/flatpak/gs-flatpak.c:326
 #, c-format
-#| msgid "%s Configuration Update"
 msgid "User configuration subfolder %s"
 msgstr "Lietotāja konfigurācijas apakšmape %s"
 
 #: plugins/flatpak/gs-flatpak.c:327
-#| msgid "User Data"
 msgid "User data folder"
 msgstr "Lietotāja datu mape"
 
@@ -5146,7 +6214,6 @@ msgid "User data subfolder %s"
 msgstr "Lietotāja datu apakšmape %s"
 
 #: plugins/flatpak/gs-flatpak.c:328
-#| msgid "Home folder"
 msgid "User runtime folder"
 msgstr "Lietotāja izpildlaika mape"
 
@@ -5157,7 +6224,6 @@ msgstr "Lietotāja izpildlaika apakšmape %s"
 
 #: plugins/flatpak/gs-flatpak.c:386
 #, c-format
-#| msgid "No File System Access"
 msgid "Filesystem access to %s"
 msgstr "Datņu sistēmas piekļuve %s"
 
@@ -5167,7 +6233,7 @@ msgstr "Datņu sistēmas piekļuve %s"
 msgid "Getting flatpak metadata for %s…"
 msgstr "Saņem %s flatpak metadatus…"
 
-#: plugins/flatpak/gs-flatpak.c:3540
+#: plugins/flatpak/gs-flatpak.c:3579
 #, c-format
 msgid "Failed to refine addon ‘%s’: %s"
 msgstr "Neizdevās rafinēt papildinājumu “%s”: %s"
@@ -5180,24 +6246,24 @@ msgstr "Lietotāja instalācija"
 msgid "System Installation"
 msgstr "Sistēmas instalācija"
 
-#: plugins/flatpak/gs-plugin-flatpak.c:1038
+#: plugins/flatpak/gs-plugin-flatpak.c:1037
 #, c-format
 msgid "Failed to add to install for addon ‘%s’: %s"
 msgstr "Papildinājumam “%s” neizdevās pievienot instalāciju: %s"
 
-#: plugins/flatpak/gs-plugin-flatpak.c:1052
+#: plugins/flatpak/gs-plugin-flatpak.c:1051
 #, c-format
 msgid "Failed to add to uninstall for addon ‘%s’: %s"
 msgstr "Papildinājumam “%s” neizdevās atinstalēt instalāciju: %s"
 
-#: plugins/flatpak/gs-plugin-flatpak.c:1318
+#: plugins/flatpak/gs-plugin-flatpak.c:1317
 #, c-format
 msgid ""
 "Remote “%s” doesn't allow install of “%s”, possibly due to its filter. "
 "Remove the filter and repeat the install. Detailed error: %s"
 msgstr ""
-"Attālinātais “%s” neatļauj instalēt “%s”, iespējams, dēļ tā filtra. Noņemiet"
-" filtru un mēģiniet instalēt atkal. Informācija par kļūdu: %s"
+"Attālinātais “%s” neatļauj instalēt “%s”, iespējams, dēļ tā filtra. Noņemiet "
+"filtru un mēģiniet instalēt atkal. Informācija par kļūdu: %s"
 
 #. TRANSLATORS: a specific part of hardware,
 #. * the first %s is the device name, e.g. 'Unifying Receiver`
@@ -5311,7 +6377,6 @@ msgstr "%s tastatūras atjauninājumus"
 #. TRANSLATORS: Storage Controller is typically a RAID or SAS adapter
 #: plugins/fwupd/gs-fwupd-app.c:210
 #, c-format
-#| msgid "%s Controller Update"
 msgid "%s Storage Controller Update"
 msgstr "%s krātuves kontroliera atjauninājumus"
 
@@ -5319,7 +6384,6 @@ msgstr "%s krātuves kontroliera atjauninājumus"
 #. * PCI card, not the logical wired connection
 #: plugins/fwupd/gs-fwupd-app.c:215
 #, c-format
-#| msgid "%s Controller Update"
 msgid "%s Network Interface Update"
 msgstr "%s tīkla saskarnes atjauninājumus"
 
@@ -5327,7 +6391,6 @@ msgstr "%s tīkla saskarnes atjauninājumus"
 #. * external monitor
 #: plugins/fwupd/gs-fwupd-app.c:220
 #, c-format
-#| msgid "%s Device Update"
 msgid "%s Display Update"
 msgstr "%s displeja atjauninājums"
 
@@ -5335,7 +6398,6 @@ msgstr "%s displeja atjauninājums"
 #. * is the device that updates all the other firmware on the system
 #: plugins/fwupd/gs-fwupd-app.c:225
 #, c-format
-#| msgid "%s ME Update"
 msgid "%s BMC Update"
 msgstr "%s BMC atjauninājumus"
 
@@ -5343,11 +6405,10 @@ msgstr "%s BMC atjauninājumus"
 #. * device that stays in the USB port so the wireless peripheral works
 #: plugins/fwupd/gs-fwupd-app.c:230
 #, c-format
-#| msgid "%s Device Update"
 msgid "%s USB Receiver Update"
 msgstr "%s USB uztvērēja atjauninājums"
 
-#: plugins/fwupd/gs-plugin-fwupd.c:1241
+#: plugins/fwupd/gs-plugin-fwupd.c:1240
 msgid "Firmware"
 msgstr "Aparātprogrammatūra"
 
@@ -5360,7 +6421,6 @@ msgid "Provides support for firmware upgrades"
 msgstr "Nodrošina atbalstu aparātprogrammatūras uzlabojumiem"
 
 #: plugins/packagekit/gs-packagekit-task.c:148
-#| msgid "Install Third-Party Software?"
 msgid "Install Unsigned Software?"
 msgstr "Instalēt neparakstītu programmatūru?"
 
@@ -5370,12 +6430,11 @@ msgid ""
 "verify the origin of updates to this software, or whether updates have been "
 "tampered with."
 msgstr ""
-"Programmatūra, kura ir rindā uz uzinstalēšanu, nav parakstīta. Nebūs"
-" iespējams pārbaudīt šīs programmatūras atjauninājumu izcelsmi un vai kāds"
-" nav tos mainījis."
+"Programmatūra, kura ir rindā uz uzinstalēšanu, nav parakstīta. Nebūs "
+"iespējams pārbaudīt šīs programmatūras atjauninājumu izcelsmi un vai kāds "
+"nav tos mainījis."
 
 #: plugins/packagekit/gs-packagekit-task.c:153
-#| msgid "Find in Software"
 msgid "Download Unsigned Software?"
 msgstr "Lejupielādēt neparakstītu programmatūru?"
 
@@ -5384,11 +6443,10 @@ msgid ""
 "Unsigned updates are available. Without a signature, it is not possible to "
 "verify the origin of the update, or whether it has been tampered with."
 msgstr ""
-"Ir pieejami neparakstīti atjauninājumi. Bez paraksta nevar pārbaudīt šīs"
-" programmatūras atjauninājumu izcelsmi un vai kāds nav tos mainījis."
+"Ir pieejami neparakstīti atjauninājumi. Bez paraksta nevar pārbaudīt šīs "
+"programmatūras atjauninājumu izcelsmi un vai kāds nav tos mainījis."
 
 #: plugins/packagekit/gs-packagekit-task.c:158
-#| msgid "Find in Software"
 msgid "Update Unsigned Software?"
 msgstr "Atjaunināt neparakstītu programmatūru?"
 
@@ -5399,16 +6457,16 @@ msgid ""
 "Software updates will be disabled until unsigned updates are either removed "
 "or updated."
 msgstr ""
-"Ir pieejami neparakstīti atjauninājumi. Bez paraksta nevar pārbaudīt šīs"
-" programmatūras atjauninājumu izcelsmi un vai kāds nav tos mainījis."
-" Programmatūras atjaunināšana tiks izslēgta līdz neparakstītie atjauninājumi"
-" tiks izņemti vai atjaunināti."
+"Ir pieejami neparakstīti atjauninājumi. Bez paraksta nevar pārbaudīt šīs "
+"programmatūras atjauninājumu izcelsmi un vai kāds nav tos mainījis. "
+"Programmatūras atjaunināšana tiks izslēgta līdz neparakstītie atjauninājumi "
+"tiks izņemti vai atjaunināti."
 
 #: plugins/packagekit/gs-plugin-packagekit.c:367
 msgid "Packages"
 msgstr "Pakotnes"
 
-#: plugins/rpm-ostree/gs-plugin-rpm-ostree.c:2687
+#: plugins/rpm-ostree/gs-plugin-rpm-ostree.c:2690
 msgid "Operating System (OSTree)"
 msgstr "Operētājsistēma (OSTree)"
 
@@ -5424,6 +6482,41 @@ msgstr "Snap atbalsts"
 #: plugins/snap/org.gnome.Software.Plugin.Snap.metainfo.xml.in:7
 msgid "A snap is a universal Linux package"
 msgstr "snap ir universāla Linux pakotne"
+
+#. TRANSLATORS: this is to inform that the package is part of
+#. * the BASE system
+#: plugins/vso/gs-plugin-vso.c:114
+#, fuzzy
+msgid "base"
+msgstr "Datubāzes"
+
+#: plugins/vso/gs-plugin-vso.c:240
+msgid ""
+"Another transaction has already been executed, you must reboot your system "
+"before starting a new transaction."
+msgstr ""
+
+#: plugins/vso/gs-plugin-vso.c:260
+msgid "VSO failed to update the system, please try again later."
+msgstr ""
+
+#: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:245
+msgid ""
+"Applications installable via Apx with pre-defined container configuration"
+msgstr ""
+
+#. origin_ui on a remote is the repo dialogue section name,
+#. * not the remote title
+#: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:249
+msgid "Apps"
+msgstr ""
+
+#: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:251
+msgid ""
+"This repository contains a set of popular applications installable via Apx "
+"and pre-configured by the Vanilla OS team to guarantee that they are using "
+"the most compatible container and configurations."
+msgstr ""
 
 #~ msgid "Application manager for GNOME"
 #~ msgstr "GNOME lietotņu pārvaldnieks"
@@ -5502,9 +6595,6 @@ msgstr "snap ir universāla Linux pakotne"
 
 #~ msgid "Installation"
 #~ msgstr "Instalācija"
-
-#~ msgid "Version"
-#~ msgstr "Versija"
 
 #~ msgid "No updates have been installed on this system."
 #~ msgstr "Uz šīs sistēmas netika instalēti nekādi atjauninājumi."

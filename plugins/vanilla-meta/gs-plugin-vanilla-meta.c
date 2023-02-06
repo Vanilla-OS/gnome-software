@@ -2,7 +2,10 @@
  * Copyright (C) 2023 Mateus Melchiades
  */
 
+#include <config.h>
+
 #include <glib.h>
+#include <glib/gi18n.h>
 #include <gnome-software.h>
 #include <stdlib.h>
 #include <xmlb.h>
@@ -239,15 +242,13 @@ gs_plugin_add_sources(GsPlugin *plugin, GsAppList *list, GCancellable *cancellab
 
     gs_app_set_name(app, GS_APP_QUALITY_NORMAL, "VanillaOS Meta");
     gs_app_set_summary(app, GS_APP_QUALITY_NORMAL,
-                       "Applications installable via Apx with pre-defined container configuration");
+                       _("Applications installable via Apx with pre-defined container configuration"));
 
     /* origin_ui on a remote is the repo dialogue section name,
      * not the remote title */
-    gs_app_set_origin_ui(app, "Apps");
+    gs_app_set_origin_ui(app, _("Apps"));
     gs_app_set_description(app, GS_APP_QUALITY_NORMAL,
-                           "This repository contains a set of popular applications installable via "
-                           "Apx and pre-configured by the Vanilla OS team to guarantee that they "
-                           "are using the most compatible container and configurations.");
+                           _("This repository contains a set of popular applications installable via Apx and pre-configured by the Vanilla OS team to guarantee that they are using the most compatible container and configurations."));
     gs_app_set_url(app, AS_URL_KIND_HOMEPAGE, "https://vanillaos.org");
 
     gs_app_list_add(list, app);

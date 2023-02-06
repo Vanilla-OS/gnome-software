@@ -121,3 +121,5 @@ plugins/packagekit/gs-plugin-packagekit.c
 plugins/rpm-ostree/gs-plugin-rpm-ostree.c
 plugins/snap/gs-plugin-snap.c
 plugins/snap/org.gnome.Software.Plugin.Snap.metainfo.xml.in
+plugins/vso/gs-plugin-vso.c
+plugins/vanilla-meta/gs-plugin-vanilla-meta.c

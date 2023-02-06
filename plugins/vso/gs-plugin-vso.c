@@ -2,7 +2,10 @@
  * Copyright (C) 2023 Mateus Melchiades
  */
 
+#include <config.h>
+
 #include <glib.h>
+#include <glib/gi18n.h>
 #include <gnome-software.h>
 #include <stdlib.h>
 
@@ -106,7 +109,9 @@ gs_plugin_adopt_app(GsPlugin *plugin, GsApp *app)
         gs_app_set_metadata(app, "GnomeSoftware::PackagingIcon",
                             "org.vanillaos.FirstSetup-symbolic");
 
-        gs_app_set_metadata(app, "GnomeSoftware::PackagingFormat", "base");
+        /* TRANSLATORS: this is to inform that the package is part of
+         * the BASE system */
+        gs_app_set_metadata(app, "GnomeSoftware::PackagingFormat", _("base"));
 
         gs_app_set_origin(app, "vso");
         gs_app_set_origin_ui(app, "Vanilla OS Base");
@@ -232,8 +237,7 @@ gs_plugin_update(GsPlugin *plugin, GsAppList *list, GCancellable *cancellable, G
     if (g_file_query_exists(lock_file, cancellable)) {
 
         g_set_error_literal(&local_error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_FAILED,
-                            "Another transaction has already been executed, you must reboot your "
-                            "system before starting a new transaction.");
+                            _("Another transaction has already been executed, you must reboot your system before starting a new transaction."));
         *error = g_steal_pointer(&local_error);
 
         return FALSE;
@@ -253,7 +257,7 @@ gs_plugin_update(GsPlugin *plugin, GsAppList *list, GCancellable *cancellable, G
 
     if (exit_status != EXIT_SUCCESS) {
         g_set_error_literal(&local_error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_FAILED,
-                            "VSO failed to update the system, please try again later.");
+                            _("VSO failed to update the system, please try again later."));
         *error = g_steal_pointer(&local_error);
 
         return FALSE;
@@ -318,6 +322,7 @@ gs_plugin_add_updates(GsPlugin *plugin, GsAppList *list, GCancellable *cancellab
 
                     g_autoptr(GsApp) app = gs_app_new(NULL);
                     gs_app_set_management_plugin(app, plugin);
+                    gs_app_set_name(app, GS_APP_QUALITY_LOWEST, g_strdup(pkg_splits[0]));
                     gs_app_add_quirk(app, GS_APP_QUIRK_NEEDS_REBOOT);
                     gs_app_set_scope(app, AS_COMPONENT_SCOPE_SYSTEM);
                     gs_app_set_bundle_kind(app, AS_BUNDLE_KIND_PACKAGE);
