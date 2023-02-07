@@ -108,7 +108,7 @@ Depends: apx,
          gnome-software (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
-Description: Vanills (Apx and VSO) support for GNOME Software
+Description: Vanilla (Apx and VSO) support for GNOME Software
  Software lets you install and update applications and system extensions.
  .
  Software uses a plugin architecture to separate the frontend from the
