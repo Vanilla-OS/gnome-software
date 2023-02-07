@@ -1,3 +1,9 @@
+gnome-software (43.0-vanilla7) kinetic; urgency=medium
+
+  * Add swcatalog file previously missed
+
+ -- Muqtadir <muqtadir5555@gmail.com>  Tue, 08 Feb 2023 01:59:22 +0530
+
 gnome-software (43.0-vanilla6) kinetic; urgency=medium
 
   * Add plugins support for vanilla and disable enable-repos row

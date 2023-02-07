@@ -4,7 +4,7 @@ Description: Add Vanilla OS custom plugins
  package manager of Vanilla OS.
  gs-plugin-vso handles system updates by interfacing with vanilla-system-operator.
  .
- gnome-software (43.0-vanilla4) kinetic; urgency=medium
+ gnome-software (43.0-vanilla7) kinetic; urgency=medium
  .
    * Add plugins support for vanilla
 Author: Mateus Melchiades <matbme@duck.com>
