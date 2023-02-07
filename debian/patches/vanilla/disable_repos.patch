@@ -1,0 +1,11 @@
+--- a/data/org.gnome.software.gschema.xml
++++ b/data/org.gnome.software.gschema.xml
+@@ -106,7 +106,7 @@
+       <summary>Install bundled applications for all users on the system where possible</summary>
+     </key>
+     <key name="enable-repos-dialog" type="b">
+-      <default>true</default>
++      <default>false</default>
+       <summary>Allow access to the Software Repositories dialog</summary>
+     </key>
+     <key name="show-upgrade-prerelease" type="b">

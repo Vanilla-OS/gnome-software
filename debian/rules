@@ -11,7 +11,9 @@ GS_CONFIGURE_FLAGS = \
 	-Dpackagekit=false \
 	-Dpackagekit_autoremove=false \
 	-Drpm_ostree=false \
-	-Dapt=false
+	-Dapt=false \
+	-Dvanilla_meta=true \
+	-Dvso=true
 
 # Temporarily keep building with libsoup2 until we get the new snapd-glib
 ifneq (yes,$(shell dpkg-vendor --derives-from Ubuntu && echo yes))
@@ -79,6 +81,8 @@ override_dh_missing:
 	# These files are split out to separate packages
 	rm -f debian/gnome-software/usr/lib/*/gnome-software/plugins-*/libgs_plugin_flatpak*
 	rm -f debian/gnome-software/usr/lib/*/gnome-software/plugins-*/libgs_plugin_snap*
+	rm -f debian/gnome-software/usr/lib/*/gnome-software/plugins-*/libgs_plugin_vanilla_meta*
+	rm -f debian/gnome-software/usr/lib/*/gnome-software/plugins-*/libgs_plugin_vso*
 	rm -f debian/gnome-software/usr/share/metainfo/org.gnome.Software.Plugin.Flatpak.metainfo.xml
 	rm -f debian/gnome-software/usr/share/metainfo/org.gnome.Software.Plugin.Snap.metainfo.xml
 
@@ -95,9 +99,11 @@ override_dh_gencontrol:
 ifeq ($(shell dpkg-vendor --query vendor),Ubuntu)
 	dh_gencontrol -- -Vplugin:Recommends='gnome-software-plugin-snap [linux-any]'
 	dh_gencontrol -- -Vplugin:Recommends='gnome-software-plugin-flatpak [linux-any]'
+	dh_gencontrol -- -Vplugin:Recommends='gnome-software-plugin-vanilla [linux-any]'
 else
 	dh_gencontrol -- -Vplugin:Suggests='gnome-software-plugin-snap [linux-any]'
-	dh_gencontrol -- -Vplugin:Suggests='gnome-software-plugin-flatpak [linux-any]'
+	dh_gencontrol -- -Vplugin:Recommends='gnome-software-plugin-flatpak [linux-any]'
+	dh_gencontrol -- -Vplugin:Recommends='gnome-software-plugin-vanilla [linux-any]'
 endif
 
 override_dh_clean:

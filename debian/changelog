@@ -1,3 +1,9 @@
+gnome-software (43.0-vanilla6) kinetic; urgency=medium
+
+  * Add plugins support for vanilla and disable enable-repos row
+
+ -- Muqtadir <muqtadir5555@gmail.com>  Tue, 07 Feb 2023 23:02:41 +0530
+
 gnome-software (43.0-1ubuntu1) kinetic; urgency=medium
 
   [ Nathan Pratta Teodosio ]
