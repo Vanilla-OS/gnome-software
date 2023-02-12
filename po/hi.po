@@ -3220,9 +3220,8 @@ msgid ""
 "%s is not <a href=\"https://en.wikipedia.org/wiki/Free_and_open-"
 "source_software\">free and open source software</a>, and is provided by “%s”."
 msgstr ""
-"%s, <a href=\"https://en.wikipedia.org/wiki/Free_and_open-"
-"source_software\">मुफ़्त और खुले स्रोत सॉफ़्टवेयर नहीं है</a>, और “%s” द्वारा प्रदान किए "
-"जाते हैं."
+"%s, <a href=\"https://en.wikipedia.org/wiki/Free_and_open-source_software"
+"\">मुफ़्त और खुले स्रोत सॉफ़्टवेयर नहीं है</a>, और “%s” द्वारा प्रदान किए जाते हैं."
 
 #. TRANSLATORS: the replacements are as follows:
 #. * 1. Application name, e.g. "Firefox"
@@ -4638,9 +4637,9 @@ msgstr "आप ऐप के बारे में क्या सोचते
 
 #: src/gs-review-dialog.ui:156
 msgid ""
-"Find what data is sent in our <a href=\"https://odrs.gnome.org/"
-"privacy\">privacy policy</a>. The full name attached to your account will be "
-"shown publicly."
+"Find what data is sent in our <a href=\"https://odrs.gnome.org/privacy"
+"\">privacy policy</a>. The full name attached to your account will be shown "
+"publicly."
 msgstr ""
 
 #: src/gs-review-histogram.c:72

@@ -3137,8 +3137,8 @@ msgid ""
 "%s is not <a href=\"https://en.wikipedia.org/wiki/Free_and_open-"
 "source_software\">free and open source software</a>, and is provided by “%s”."
 msgstr ""
-"%s אינו <a href=\"https://en.wikipedia.org/wiki/Free_and_open-"
-"source_software\">תכנה חופשית וקוד פתוח</a>, ומסופק על ידי „%s”."
+"%s אינו <a href=\"https://en.wikipedia.org/wiki/Free_and_open-source_software"
+"\">תכנה חופשית וקוד פתוח</a>, ומסופק על ידי „%s”."
 
 #. TRANSLATORS: the replacements are as follows:
 #. * 1. Application name, e.g. "Firefox"
@@ -4532,13 +4532,12 @@ msgstr "מה דעתך על היישום? עדיף לנסות לנמק את הש�
 
 #: src/gs-review-dialog.ui:156
 msgid ""
-"Find what data is sent in our <a href=\"https://odrs.gnome.org/"
-"privacy\">privacy policy</a>. The full name attached to your account will be "
-"shown publicly."
+"Find what data is sent in our <a href=\"https://odrs.gnome.org/privacy"
+"\">privacy policy</a>. The full name attached to your account will be shown "
+"publicly."
 msgstr ""
-"ניתן לראות איזה מידע נשלח ב<a href=\"https://odrs.gnome.org/"
-"privacy\">מדיניות הפרטיות</a> שלנו. השם המלא מהחשבון שלך יוצג באופן גלוי "
-"לציבור."
+"ניתן לראות איזה מידע נשלח ב<a href=\"https://odrs.gnome.org/privacy"
+"\">מדיניות הפרטיות</a> שלנו. השם המלא מהחשבון שלך יוצג באופן גלוי לציבור."
 
 #: src/gs-review-histogram.c:72
 #, c-format

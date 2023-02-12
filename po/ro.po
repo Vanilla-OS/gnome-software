@@ -3205,9 +3205,8 @@ msgid ""
 "%s is not <a href=\"https://en.wikipedia.org/wiki/Free_and_open-"
 "source_software\">free and open source software</a>, and is provided by “%s”."
 msgstr ""
-"%s nu este <a href=\"https://ro.wikipedia.org/wiki/"
-"Software_liber\">aplicație liberă cu sursa deschisă</a>, și este furnizat de "
-"către  „%s”."
+"%s nu este <a href=\"https://ro.wikipedia.org/wiki/Software_liber"
+"\">aplicație liberă cu sursa deschisă</a>, și este furnizat de către  „%s”."
 
 #. TRANSLATORS: the replacements are as follows:
 #. * 1. Application name, e.g. "Firefox"
@@ -4652,12 +4651,12 @@ msgstr ""
 #: src/gs-review-dialog.ui:156
 #, fuzzy
 msgid ""
-"Find what data is sent in our <a href=\"https://odrs.gnome.org/"
-"privacy\">privacy policy</a>. The full name attached to your account will be "
-"shown publicly."
+"Find what data is sent in our <a href=\"https://odrs.gnome.org/privacy"
+"\">privacy policy</a>. The full name attached to your account will be shown "
+"publicly."
 msgstr ""
-"Aflați care sunt datele trimise în <a href=\"https://odrs.gnome.org/"
-"privacy\">politica de confidențialitate</a>."
+"Aflați care sunt datele trimise în <a href=\"https://odrs.gnome.org/privacy"
+"\">politica de confidențialitate</a>."
 
 #: src/gs-review-histogram.c:72
 #, c-format

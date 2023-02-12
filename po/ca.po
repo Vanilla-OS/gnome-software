@@ -4596,9 +4596,9 @@ msgstr ""
 
 #: src/gs-review-dialog.ui:156
 msgid ""
-"Find what data is sent in our <a href=\"https://odrs.gnome.org/"
-"privacy\">privacy policy</a>. The full name attached to your account will be "
-"shown publicly."
+"Find what data is sent in our <a href=\"https://odrs.gnome.org/privacy"
+"\">privacy policy</a>. The full name attached to your account will be shown "
+"publicly."
 msgstr ""
 "Conegueu quines dades s'envien en la nostra <a href=\"https://odrs.gnome.org/"
 "privacy\">política de privadesa</a>. El vostre nom complet relacionat amb el "
@@ -5614,8 +5614,8 @@ msgid ""
 "Cached data can be cleared from the <a href=\"dummy\">_application settings</"
 "a>."
 msgstr ""
-"Les dades emmagatzemades en memòria cau es poden netejar des dels <a "
-"href=\"dummy\">_paràmetres de l'aplicació</a>."
+"Les dades emmagatzemades en memòria cau es poden netejar des dels <a href="
+"\"dummy\">_paràmetres de l'aplicació</a>."
 
 #: src/gs-summary-tile.c:118
 #, c-format

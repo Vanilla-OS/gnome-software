@@ -2182,9 +2182,9 @@ msgstr "%e %B %Y"
 #: src/gs-application.c:124
 msgid "Start up mode: either ‘updates’, ‘updated’, ‘installed’ or ‘overview’"
 msgstr ""
-"Modo de inicialização: pode ser \"updates\" (para atualizações), "
-"\"updated\" (para atualizados), \"installed\" (para instalados) ou "
-"\"overview\" (para visão geral)"
+"Modo de inicialização: pode ser \"updates\" (para atualizações), \"updated"
+"\" (para atualizados), \"installed\" (para instalados) ou \"overview\" (para "
+"visão geral)"
 
 #: src/gs-application.c:124
 msgid "MODE"
@@ -4603,9 +4603,9 @@ msgstr ""
 
 #: src/gs-review-dialog.ui:156
 msgid ""
-"Find what data is sent in our <a href=\"https://odrs.gnome.org/"
-"privacy\">privacy policy</a>. The full name attached to your account will be "
-"shown publicly."
+"Find what data is sent in our <a href=\"https://odrs.gnome.org/privacy"
+"\">privacy policy</a>. The full name attached to your account will be shown "
+"publicly."
 msgstr ""
 "Saiba que dados são enviados na nossa <a href=\"https://odrs.gnome.org/"
 "privacy\">política de privacidade</a>. O nome completo anexado à sua conta "

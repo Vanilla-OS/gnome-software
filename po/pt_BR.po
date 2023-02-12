@@ -4600,9 +4600,9 @@ msgstr "O que você acha deste aplicativo? Tente justificar seu ponto de vista."
 
 #: src/gs-review-dialog.ui:156
 msgid ""
-"Find what data is sent in our <a href=\"https://odrs.gnome.org/"
-"privacy\">privacy policy</a>. The full name attached to your account will be "
-"shown publicly."
+"Find what data is sent in our <a href=\"https://odrs.gnome.org/privacy"
+"\">privacy policy</a>. The full name attached to your account will be shown "
+"publicly."
 msgstr ""
 "Encontre quais dados são enviados em nossa <a href=\"https://odrs.gnome.org/"
 "privacy\">política de privacidade</a>. O nome completo anexado à sua conta "
@@ -5619,8 +5619,8 @@ msgid ""
 "Cached data can be cleared from the <a href=\"dummy\">_application settings</"
 "a>."
 msgstr ""
-"Os dados em cache podem ser apagados a partir das <a "
-"href=\"dummy\">configurações do _aplicativo</a>."
+"Os dados em cache podem ser apagados a partir das <a href=\"dummy"
+"\">configurações do _aplicativo</a>."
 
 #: src/gs-summary-tile.c:118
 #, c-format

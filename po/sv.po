@@ -4574,13 +4574,13 @@ msgstr "Vad tycker du om programmet? Försök att ge skäl till dina åsikter."
 
 #: src/gs-review-dialog.ui:156
 msgid ""
-"Find what data is sent in our <a href=\"https://odrs.gnome.org/"
-"privacy\">privacy policy</a>. The full name attached to your account will be "
-"shown publicly."
+"Find what data is sent in our <a href=\"https://odrs.gnome.org/privacy"
+"\">privacy policy</a>. The full name attached to your account will be shown "
+"publicly."
 msgstr ""
-"Se vilka data som skickas i vår <a href=\"https://odrs.gnome.org/"
-"privacy\">sekretesspolicy</a>. Det fullständiga namnet som är kopplat till "
-"ditt konto kommer att visas offentligt."
+"Se vilka data som skickas i vår <a href=\"https://odrs.gnome.org/privacy"
+"\">sekretesspolicy</a>. Det fullständiga namnet som är kopplat till ditt "
+"konto kommer att visas offentligt."
 
 #: src/gs-review-histogram.c:72
 #, c-format
