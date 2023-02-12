@@ -9,20 +9,22 @@
 # Hannie Dumoleyn <hannie@ubuntu-nl.org>, 2016, 2018, 2019, 2020, 2021.
 # Reinout van Schouwen <reinouts@gnome.org>, 2016 (review).
 # Philip Goto, 2022.
+# Philip Goto <philip.goto@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software gnome-3-16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2022-09-01 18:01+0200\n"
-"Last-Translator: Nathan Follens <nfollens@gnome.org>\n"
-"Language-Team: Dutch <gnome-nl-list@gnome.org>\n"
+"PO-Revision-Date: 2023-02-16 17:29+0000\n"
+"Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/vanilla-os/"
+"gnome-software/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -38,8 +40,8 @@ msgid ""
 "Software allows you to find and install new applications and system "
 "extensions and remove existing installed applications."
 msgstr ""
-"Met Gnome Software kunt u nieuwe toepassingen en systeemuitbreidingen vinden "
-"en installeren, en bestaande geïnstalleerde toepassingen verwijderen."
+"Met Gnome Software kunt u nieuwe apps en systeemuitbreidingen vinden en "
+"installeren, en bestaande geïnstalleerde apps verwijderen."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:14
 msgid ""
@@ -48,10 +50,10 @@ msgid ""
 "found either through browsing the list of categories or by searching. It "
 "also allows you to update your system using an offline update."
 msgstr ""
-"Software geeft aanbevolen en populaire toepassingen weer met nuttige "
-"beschrijvingen en meerdere schermafdrukken per toepassing. U vindt "
-"toepassingen door ofwel de lijst van categorieën te bekijken of door te "
-"zoeken. U kunt ook uw systeem bijwerken met behulp van een offline-update."
+"Software geeft aanbevolen en populaire apps weer met nuttige beschrijvingen "
+"en meerdere schermafdrukken per app. U vindt apps door ofwel de lijst van "
+"categorieën te bekijken of door te zoeken. U kunt ook uw systeem bijwerken "
+"met behulp van een offline-update."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:25
 msgid "Overview panel"
@@ -64,7 +66,7 @@ msgstr "Tabblad met details"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:37
 msgid "Installed panel"
-msgstr "Tabblad met geïnstalleerde toepassingen"
+msgstr "Tabblad met geïnstalleerde apps"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:41
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:45
@@ -77,7 +79,7 @@ msgstr "Details van de update"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:71
 msgid "This is a stable release with translation updates:"
-msgstr ""
+msgstr "Dit is een stabiele uitgave met vertalings-updates:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:73
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:197
@@ -85,7 +87,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:373
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:492
 msgid "Bulgarian"
-msgstr ""
+msgstr "Bulgaars"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:74
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:107
@@ -102,7 +104,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:638
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:686
 msgid "Catalan"
-msgstr ""
+msgstr "Catalaans"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:75
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:200
@@ -110,7 +112,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:533
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:687
 msgid "Chinese (Taiwan)"
-msgstr ""
+msgstr "Chinees (Taiwan)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:76
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:202
@@ -121,7 +123,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:639
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:688
 msgid "Czech"
-msgstr ""
+msgstr "Tsjechisch"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:77
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:205
@@ -130,7 +132,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:536
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:600
 msgid "English (United Kingdom)"
-msgstr ""
+msgstr "Engels (Verenigd Koninkrijk)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:78
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:113
@@ -145,14 +147,14 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:640
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:690
 msgid "Galician"
-msgstr ""
+msgstr "Gallisch"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:79
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:114
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:147
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:210
 msgid "Georgian"
-msgstr ""
+msgstr "Georgisch"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:80
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:211
@@ -164,7 +166,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:605
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:691
 msgid "German"
-msgstr ""
+msgstr "Duits"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:81
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:115
@@ -177,7 +179,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:541
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:693
 msgid "Hebrew"
-msgstr ""
+msgstr "Hebreeuws"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:82
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:213
@@ -185,20 +187,20 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:428
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:606
 msgid "Hungarian"
-msgstr ""
+msgstr "Hongaars"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:83
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:116
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:332
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:383
 msgid "Icelandic"
-msgstr ""
+msgstr "IJslands"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:84
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:385
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:698
 msgid "Latvian"
-msgstr ""
+msgstr "Lets"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:85
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:119
@@ -213,13 +215,13 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:610
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:699
 msgid "Lithuanian"
-msgstr ""
+msgstr "Litouws"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:86
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:216
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:544
 msgid "Nepali"
-msgstr ""
+msgstr "Nepalees"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:87
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:125
@@ -231,7 +233,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:577
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:615
 msgid "Serbian"
-msgstr ""
+msgstr "Servisch"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:88
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:224
@@ -245,7 +247,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:616
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:644
 msgid "Slovenian"
-msgstr ""
+msgstr "Sloveens"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:89
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:126
@@ -261,7 +263,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:645
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:705
 msgid "Spanish"
-msgstr ""
+msgstr "Spaans"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:90
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:226
@@ -273,16 +275,15 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:618
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:646
 msgid "Swedish"
-msgstr ""
+msgstr "Zweeds"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:96
 msgid "This is the third unstable release for GNOME 43."
-msgstr ""
+msgstr "Dit is de derde onstabiele uitgave voor GNOME 43."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:98
-#, fuzzy
 msgid "Supports video as a screenshot"
-msgstr "Kan gebruikt worden op een klein scherm"
+msgstr "Ondersteunt video als een schermafdruk"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:99
 msgid "Improvements of source picker in the details page"
@@ -314,7 +315,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:105
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:143
 msgid "Abkhazian"
-msgstr ""
+msgstr "Abchazisch"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:106
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:196
@@ -327,7 +328,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:595
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:684
 msgid "Basque"
-msgstr ""
+msgstr "Baskisch"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:108
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:145
@@ -340,7 +341,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:458
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:532
 msgid "Chinese (China)"
-msgstr ""
+msgstr "Chinees (China)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:109
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:201
@@ -350,7 +351,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:460
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:597
 msgid "Croatian"
-msgstr ""
+msgstr "Kroatisch"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:110
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:203
@@ -359,7 +360,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:422
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:571
 msgid "Danish"
-msgstr ""
+msgstr "Deens"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:111
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:146
@@ -369,7 +370,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:535
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:599
 msgid "Dutch"
-msgstr ""
+msgstr "Nederlands"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:112
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:206
@@ -379,7 +380,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:537
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:601
 msgid "Finnish"
-msgstr ""
+msgstr "Fins"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:117
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:149
@@ -393,7 +394,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:641
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:694
 msgid "Indonesian"
-msgstr ""
+msgstr "Indonesisch"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:118
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:291
@@ -401,7 +402,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:466
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:609
 msgid "Korean"
-msgstr ""
+msgstr "Koreaans"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:120
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:152
@@ -414,9 +415,8 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:546
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:611
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:700
-#, fuzzy
 msgid "Persian"
-msgstr "Versie"
+msgstr "Perzisch"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:121
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:219
@@ -424,9 +424,8 @@ msgstr "Versie"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:433
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:547
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:575
-#, fuzzy
 msgid "Polish"
-msgstr "Politiek"
+msgstr "Pools"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:122
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:153
@@ -442,7 +441,7 @@ msgstr "Politiek"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:643
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:701
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugees"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:123
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:221
@@ -456,7 +455,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:613
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:702
 msgid "Portuguese (Brazil)"
-msgstr ""
+msgstr "Portugees (Brazilië)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:124
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:154
@@ -468,7 +467,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:437
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:551
 msgid "Russian"
-msgstr ""
+msgstr "Russisch"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:127
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:157
@@ -478,7 +477,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:619
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:706
 msgid "Turkish"
-msgstr ""
+msgstr "Turks"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:128
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:158
@@ -493,7 +492,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:620
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:707
 msgid "Ukrainian"
-msgstr ""
+msgstr "Oekraïens"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:134
 msgid "This is the second unstable release for GNOME 43."
@@ -522,14 +521,14 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:573
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:695
 msgid "Italian"
-msgstr ""
+msgstr "Italiaans"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:159
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:229
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:399
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:708
 msgid "Vietnamese"
-msgstr ""
+msgstr "Vietnamees"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:165
 msgid "This is the first unstable release for GNOME 43."
@@ -625,7 +624,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:425
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:602
 msgid "French"
-msgstr ""
+msgstr "Frans"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:208
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:287
@@ -635,7 +634,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:603
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:689
 msgid "Friulian"
-msgstr ""
+msgstr "Friuliaans"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:217
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:256
@@ -662,19 +661,19 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:530
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:685
 msgid "Bokmål, Norwegian"
-msgstr ""
+msgstr "Bokmål, Noors"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:253
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:334
 msgid "Japanese"
-msgstr ""
+msgstr "Japans"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:254
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:465
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:608
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:697
 msgid "Kazakh"
-msgstr ""
+msgstr "Kazachs"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:268
 msgid "This is the third unstable release for GNOME 42."
@@ -757,9 +756,8 @@ msgid "Several more threading improvements"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:316
-#, fuzzy
 msgid "Icon updates"
-msgstr "Controleren op updates"
+msgstr "Icoon-updates"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:317
 msgid "Drop the hardcoded-popular plugin in favour of an appstream file"
@@ -800,10 +798,10 @@ msgid "Fix a crash when processing age ratings"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:355
-#, fuzzy
 msgid ""
 "Reload application details only when not installing/removing the application"
-msgstr "Toepassingsgegevens tonen (met gebruikmaking van toepassings-ID)"
+msgstr ""
+"App-details worden nu alleen herladen als de app niet wordt ge(de)installeerd"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:356
 msgid "Do not follow symlinks when calculating disk size usage"
@@ -863,12 +861,12 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:491
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:529
 msgid "Belarusian"
-msgstr ""
+msgstr "Wit-Russisch"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:393
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:704
 msgid "Slovak"
-msgstr ""
+msgstr "Slowaaks"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:407
 msgid ""
@@ -914,7 +912,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:614
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:703
 msgid "Romanian"
-msgstr ""
+msgstr "Roemeens"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:447
 msgid "This is the third unstable release for GNOME 41."
@@ -1042,17 +1040,16 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:568
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:593
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:636
-#, fuzzy
 msgid "Translation updates:"
-msgstr "Vertalingen"
+msgstr "Vertalings-updates:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:570
 msgid "British English"
-msgstr ""
+msgstr "Brits Engels"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:572
 msgid "Greek"
-msgstr ""
+msgstr "Grieks"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:574
 msgid "Norwegian Bokmål"
@@ -1060,7 +1057,7 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:576
 msgid "Punjabi"
-msgstr ""
+msgstr "Punjabi"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:583
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:626
@@ -1138,7 +1135,7 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:642
 msgid "Panjabi"
-msgstr ""
+msgstr "Panjabi"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:652
 msgid "This is the first unstable release for GNOME 40."
@@ -1194,12 +1191,11 @@ msgid "Rework timing and content of software update notifications"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:665
-#, fuzzy
 msgid ""
 "Prevent uninstalled local apps from appearing in the installed apps list"
 msgstr ""
-"De grootte van geïnstalleerde toepassingen tonen in de lijst met "
-"geïnstalleerde toepassingen"
+"Gedeïnstalleerde lokale apps worden niet meer in de lijst met geïnstalleerde "
+"apps weergegeven"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:666
 msgid "Support installation/uninstallation of addons for flatpak apps"
@@ -1265,7 +1261,7 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:696
 msgid "Kabyle"
-msgstr ""
+msgstr "Kabyle"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:2043
 #: src/gs-application.c:256
@@ -1351,27 +1347,24 @@ msgstr "Of het de eerste keer opstarten van Gnome Software is of niet"
 
 #: data/org.gnome.software.gschema.xml:34
 msgid "Show star ratings next to applications"
-msgstr "Beoordelingen met sterren naast toepassingen tonen"
+msgstr "Beoordelingen met sterren naast apps tonen"
 
 # Betere suggesties zijn welkom - Justin
 #: data/org.gnome.software.gschema.xml:38
 msgid "Filter applications based on the default branch set for the remote"
-msgstr ""
-"Toepassingen filteren gebaseerd op de standaard-branchset van de server op "
-"afstand"
+msgstr "Apps filteren gebaseerd op de standaard-branch van de server op afstand"
 
 #: data/org.gnome.software.gschema.xml:42
 msgid "Non-free applications show a warning dialog before install"
-msgstr "Waarschuwen voor het installeren van niet-vrije toepassingen"
+msgstr "Waarschuwen voor het installeren van niet-vrije apps"
 
 #: data/org.gnome.software.gschema.xml:43
 msgid ""
 "When non-free applications are installed a warning dialog can be shown. This "
 "controls if that dialog is suppressed."
 msgstr ""
-"Voordat niet-vrije toepassingen worden geïnstalleerd kan een "
-"waarschuwingsvenster worden weergegeven. Dit bepaalt of dat venster wel of "
-"niet wordt weergegeven."
+"Voordat niet-vrije apps worden geïnstalleerd kan een waarschuwingsvenster "
+"worden weergegeven. Dit bepaalt of dat venster wel of niet wordt weergegeven."
 
 #: data/org.gnome.software.gschema.xml:47
 msgid "The last update check timestamp"
@@ -1416,7 +1409,7 @@ msgstr ""
 
 #: data/org.gnome.software.gschema.xml:81
 msgid "The server to use for application reviews"
-msgstr "De server die moet worden gebruikt voor toepassingsbeoordelingen"
+msgstr "De server die moet worden gebruikt voor app-beoordelingen"
 
 #: data/org.gnome.software.gschema.xml:85
 msgid "The minimum karma score for reviews"
@@ -1448,14 +1441,13 @@ msgstr ""
 msgid ""
 "The licence URL to use when an application should be considered free software"
 msgstr ""
-"De URL van de te gebruiken licentie wanneer een toepassing als vrije "
-"software moet worden beschouwd"
+"De URL van de te gebruiken licentie wanneer een app als vrije software moet "
+"worden beschouwd"
 
 #: data/org.gnome.software.gschema.xml:106
 msgid "Install bundled applications for all users on the system where possible"
 msgstr ""
-"Gebundelde toepassingen installeren voor alle gebruikers op het systeem waar "
-"mogelijk"
+"Gebundelde apps installeren voor alle gebruikers op het systeem waar mogelijk"
 
 #: data/org.gnome.software.gschema.xml:110
 msgid "Allow access to the Software Repositories dialog"
@@ -1474,8 +1466,7 @@ msgstr ""
 #: data/org.gnome.software.gschema.xml:122
 msgid "Show the installed size for apps in the list of installed applications"
 msgstr ""
-"De grootte van geïnstalleerde toepassingen tonen in de lijst met "
-"geïnstalleerde toepassingen"
+"De grootte van geïnstalleerde apps tonen in de lijst met geïnstalleerde apps"
 
 #. Translators: Replace the link with a version in your language, e.g. 'https://de.wikipedia.org/wiki/Proprietäre_Software'. Remember to include ''.
 #: data/org.gnome.software.gschema.xml:126
@@ -2136,7 +2127,7 @@ msgstr "Beoordelingen"
 
 #: src/gs-app-reviews-dialog.ui:25
 msgid "No reviews were found for this application."
-msgstr "Er zijn geen beoordelingen voor deze toepassing."
+msgstr "Er zijn geen beoordelingen voor deze app."
 
 #: src/gs-app-reviews-dialog.ui:27
 msgid "No Reviews"
@@ -2179,7 +2170,7 @@ msgstr "Modus"
 
 #: src/gs-application.c:126
 msgid "Search for applications"
-msgstr "Naar toepassingen zoeken"
+msgstr "Naar apps zoeken"
 
 #: src/gs-application.c:126
 msgid "SEARCH"
@@ -2187,7 +2178,7 @@ msgstr "Zoeken"
 
 #: src/gs-application.c:128
 msgid "Show application details (using application ID)"
-msgstr "Toepassingsgegevens tonen (met gebruikmaking van toepassings-ID)"
+msgstr "App-gegevens tonen (met gebruikmaking van app-ID)"
 
 #: src/gs-application.c:128 src/gs-application.c:132 src/gs-application.c:134
 msgid "ID"
@@ -2195,7 +2186,7 @@ msgstr "ID"
 
 #: src/gs-application.c:130
 msgid "Show application details (using package name)"
-msgstr "Toepassingsgegevens tonen (met gebruikmaking van pakketnaam)"
+msgstr "App-gegevens tonen (met gebruikmaking van pakketnaam)"
 
 #: src/gs-application.c:130
 msgid "PKGNAME"
@@ -2203,11 +2194,11 @@ msgstr "Pakketnaam"
 
 #: src/gs-application.c:132
 msgid "Install the application (using application ID)"
-msgstr "De toepassing installeren (met behulp van toepassings-ID)"
+msgstr "De app installeren (met behulp van app-ID)"
 
 #: src/gs-application.c:134
 msgid "Uninstall the application (using application ID)"
-msgstr "De toepassing verwijderen (met behulp van toepassings-ID)"
+msgstr "De app verwijderen (met behulp van app-ID)"
 
 #: src/gs-application.c:136
 msgid "Open a local package file"
@@ -2282,7 +2273,7 @@ msgstr "Een prettige manier om de software op uw systeem te beheren."
 #. TRANSLATORS: we tried to show an app that did not exist
 #: src/gs-application.c:468
 msgid "Sorry! There are no details for that application."
-msgstr "Er zijn helaas geen details voor die toepassing."
+msgstr "Er zijn helaas geen details voor die app."
 
 #. Translators: The disk usage of an application when installed.
 #. * This is displayed in a context tile, so the string should be short.
@@ -2743,7 +2734,7 @@ msgstr "Voer een getal in van 1 tot %u: "
 #. TRANSLATORS: asking the user to choose an app from a list
 #: lib/gs-cmd.c:266
 msgid "Choose an application:"
-msgstr "Kies een toepassing:"
+msgstr "Kies een app:"
 
 #: lib/gs-desktop-data.c:16
 msgctxt "Menu of Graphics & Photography"
@@ -3134,7 +3125,7 @@ msgstr "Pas na een herstart zullen de wijzigingen van kracht zijn."
 #. * has been successfully installed
 #: src/gs-common.c:76
 msgid "Application is ready to be used."
-msgstr "De toepassing is klaar voor gebruik."
+msgstr "De app is klaar voor gebruik."
 
 #. TRANSLATORS: this is the summary of a notification that OS updates
 #. * have been successfully installed
@@ -3228,7 +3219,7 @@ msgstr "Gedetailleerde fouten van de pakketbeheerder volgen:"
 
 #: src/gs-common.c:509 src/gs-safety-context-dialog.ui:72
 msgid "Details"
-msgstr "Gegevens"
+msgstr "Details"
 
 #. Translators: an accept button label, in a Cancel/Accept dialog
 #: src/gs-common.c:600
@@ -3246,8 +3237,8 @@ msgstr[1] "Er zijn updates geïnstalleerd"
 #: src/gs-common.c:760
 msgid "An application has been removed"
 msgid_plural "Applications have been removed"
-msgstr[0] "Een toepassing is verwijderd"
-msgstr[1] "Toepassingen zijn verwijderd"
+msgstr[0] "Een app is verwijderd"
+msgstr[1] "Apps zijn verwijderd"
 
 #. TRANSLATORS: the new apps will not be run until we restart
 #: src/gs-common.c:766
@@ -3321,7 +3312,7 @@ msgstr "%s %s"
 #. TRANSLATORS: this is a what we use in notifications if the app's name is unknown
 #: src/gs-dbus-helper.c:291
 msgid "An application"
-msgstr "Een toepassing"
+msgstr "Een app"
 
 #. TRANSLATORS: this is a notification displayed when an app needs additional MIME types.
 #: src/gs-dbus-helper.c:297
@@ -3450,7 +3441,7 @@ msgstr "_Installeren…"
 #: src/gs-details-page.c:1177
 #, c-format
 msgid "Other Apps by %s"
-msgstr "Andere toepassingen van %s"
+msgstr "Andere apps van %s"
 
 #. TRANSLATORS: we need a remote server to process
 #: src/gs-details-page.c:1560
@@ -3468,7 +3459,7 @@ msgstr "Pagina met informatie"
 
 #: src/gs-details-page.ui:39
 msgid "Loading application details…"
-msgstr "Toepassingsdetails worden geladen…"
+msgstr "App-details worden geladen…"
 
 #: src/gs-details-page.ui:77
 msgid ""
@@ -3501,15 +3492,13 @@ msgstr "Add-ons"
 
 #: src/gs-details-page.ui:467
 msgid "Selected add-ons will be installed with the application."
-msgstr "Geselecteerde add-ons zullen met de toepassing worden geïnstalleerd."
+msgstr "Geselecteerde add-ons zullen met de app worden geïnstalleerd."
 
 #: src/gs-details-page.ui:567
 msgid ""
 "This application can only be used when there is an active internet "
 "connection."
-msgstr ""
-"Deze toepassing kan alleen gebruikt worden met een actieve "
-"internetverbinding."
+msgstr "Deze app kan alleen gebruikt worden met een actieve internetverbinding."
 
 #: src/gs-details-page.ui:587
 msgid "Software Repository Included"
@@ -3520,8 +3509,8 @@ msgid ""
 "This application includes a software repository which provides updates, as "
 "well as access to other software."
 msgstr ""
-"Deze toepassing bevat een softwarebron die naast updates ook toegang biedt "
-"tot andere software."
+"Deze app bevat een softwarebron die naast updates ook toegang biedt tot "
+"andere software."
 
 #: src/gs-details-page.ui:605
 msgid "No Software Repository Included"
@@ -3532,8 +3521,8 @@ msgid ""
 "This application does not include a software repository. It will not be "
 "updated with new versions."
 msgstr ""
-"Deze toepassing bevat geen softwarebron en zal niet worden bijgewerkt met "
-"nieuwe versies."
+"Deze app bevat geen softwarebron en zal niet worden bijgewerkt met nieuwe "
+"versies."
 
 #: src/gs-details-page.ui:624
 msgid ""
@@ -3659,7 +3648,7 @@ msgstr "op de website"
 #: src/gs-extras-page.c:354
 #, c-format
 msgid "No applications are available that provide the file %s."
-msgstr "Geen toepassingen beschikbaar die het bestand %s aanbieden."
+msgstr "Geen apps beschikbaar die het bestand %s aanbieden."
 
 # Ik vraag mij af waar het woord "op" vandaan moet komen (op %s).
 # Van de entry die hier 2 boven staat - Justin
@@ -3671,15 +3660,15 @@ msgid ""
 "Information about %s, as well as options for how to get missing applications "
 "might be found %s."
 msgstr ""
-"Informatie over %s en opties voor het verkrijgen van ontbrekende "
-"toepassingen kunnen mogelijk gevonden worden %s."
+"Informatie over %s en opties voor het verkrijgen van ontbrekende apps kunnen "
+"mogelijk gevonden worden %s."
 
 #. TRANSLATORS: this is when we know about an application or
 #. * addon, but it can't be listed for some reason
 #: src/gs-extras-page.c:365 src/gs-extras-page.c:387
 #, c-format
 msgid "No applications are available for %s support."
-msgstr "Geen toepassingen beschikbaar die %s ondersteunen."
+msgstr "Geen apps beschikbaar die %s ondersteunen."
 
 #. TRANSLATORS: this is when we know about an application or
 #. * addon, but it can't be listed for some reason
@@ -3696,8 +3685,8 @@ msgid ""
 "Information about %s, as well as options for how to get an application that "
 "can support this format might be found %s."
 msgstr ""
-"Informatie over %s en opties voor het verkrijgen van een toepassing die dit "
-"formaat ondersteunt kunnen mogelijk gevonden worden %s."
+"Informatie over %s en opties voor het verkrijgen van een app die dit formaat "
+"ondersteunt kunnen mogelijk gevonden worden %s."
 
 #. TRANSLATORS: this is when we know about an application or
 #. * addon, but it can't be listed for some reason
@@ -3833,7 +3822,7 @@ msgstr "Volgende"
 
 #: src/gs-featured-carousel.ui:83
 msgid "Featured Apps List"
-msgstr "Lijst met aanbevolen toepassingen"
+msgstr "Lijst met aanbevolen apps"
 
 #: src/gs-hardware-support-context-dialog.c:577
 #: src/gs-hardware-support-context-dialog.c:586
@@ -4061,15 +4050,15 @@ msgstr "In behandeling"
 #. * not the remote title
 #: src/gs-installed-page.ui:75 plugins/flatpak/gs-flatpak-utils.c:107
 msgid "Applications"
-msgstr "Toepassingen"
+msgstr "Apps"
 
 #: src/gs-installed-page.ui:95
 msgid "Web Applications"
-msgstr "Webtoepassingen"
+msgstr "Web-apps"
 
 #: src/gs-installed-page.ui:115
 msgid "System Applications"
-msgstr "Systeemtoepassingen"
+msgstr "Systeem-apps"
 
 #: src/gs-license-tile.c:96
 msgid "Community Built"
@@ -4111,7 +4100,7 @@ msgstr ""
 # ‘Proprietary’ is het tegenovergestelde van ‘free’ en is dus een synoniem van ‘nonfree’; in dit geval is het het meest logisch om in het Nederlands te kiezen voor ‘niet-vrij’. Niet-vrije software hoeft niet door een bedrijf ontwikkeld te zijn. - Justin
 #: src/gs-license-tile.c:127
 msgid "Proprietary"
-msgstr "Niet-vrij"
+msgstr "Propriëtair"
 
 #: src/gs-license-tile.c:133
 msgid "_Learn More"
@@ -4266,7 +4255,7 @@ msgstr "Overige categorieën"
 
 #: src/gs-overview-page.ui:221
 msgid "No Application Data Found"
-msgstr "Geen toepassingsgegevens gevonden"
+msgstr "Geen app-gegevens gevonden"
 
 #: lib/gs-plugin-loader.c:2825
 msgctxt "Distribution name"
@@ -4298,8 +4287,8 @@ msgid ""
 "All applications from %s will be uninstalled, and you will have to re-"
 "install the repository to use them again."
 msgstr ""
-"Alle toepassingen van %s zullen verwijderd worden en u zult de softwarebron "
-"opnieuw moeten installeren om ze weer te kunnen gebruiken."
+"Alle apps van %s zullen verwijderd worden en u zult de softwarebron opnieuw "
+"moeten installeren om ze weer te kunnen gebruiken."
 
 #. TRANSLATORS: this is a prompt message, and '%s' is an
 #. * application summary, e.g. 'GNOME Clocks'
@@ -4448,8 +4437,8 @@ msgstr "Geen softwarebronnen"
 #, c-format
 msgid "%u application installed"
 msgid_plural "%u applications installed"
-msgstr[0] "%u toepassing geïnstalleerd"
-msgstr[1] "%u toepassingen geïnstalleerd"
+msgstr[0] "%u app geïnstalleerd"
+msgstr[1] "%u apps geïnstalleerd"
 
 #. TRANSLATORS: This string is used to construct the 'X add-ons
 #. installed' sentence, describing a software repository.
@@ -4467,8 +4456,8 @@ msgstr[1] "%u add-ons geïnstalleerd"
 #, c-format
 msgid "%u application"
 msgid_plural "%u applications"
-msgstr[0] "%u toepassing"
-msgstr[1] "%u toepassingen"
+msgstr[0] "%u app"
+msgstr[1] "%u apps"
 
 #. TRANSLATORS: This string is used to construct the 'X applications
 #. and y add-ons installed' sentence, describing a software repository.
@@ -4680,16 +4669,16 @@ msgstr "Verwijderen…"
 #: src/gs-safety-context-dialog.c:144
 msgid "Check that you trust the vendor, as the application isn’t sandboxed"
 msgstr ""
-"Kijk na of u de leverancier vertrouwt, want de toepassing bevindt zich niet "
-"in een zandbak"
+"Kijk na of u de leverancier vertrouwt, want de app bevindt zich niet in een "
+"zandbak"
 
 #: src/gs-safety-context-dialog.c:147
 msgid ""
 "Application isn’t sandboxed but the distribution has checked that it is not "
 "malicious"
 msgstr ""
-"Toepassing bevindt zich niet in een zandbak, maar de distributie heeft "
-"nagekeken dat deze niet kwaadwillend is"
+"App bevindt zich niet in een zandbak, maar de distributie heeft nagekeken "
+"dat deze niet kwaadwillend is"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:160
@@ -4698,7 +4687,7 @@ msgstr "Geen toegangsrechten"
 
 #: src/gs-safety-context-dialog.c:161
 msgid "App is fully sandboxed"
-msgstr "Toepassing bevindt zich volledig in een zandbak"
+msgstr "App bevindt zich volledig in een zandbak"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:172
@@ -4868,18 +4857,17 @@ msgid ""
 "app more likely to be safe"
 msgstr ""
 "De broncode is openbaar en kan onafhankelijk gecontroleerd worden, waardoor "
-"het waarschijnlijker is dat de toepassing veilig is"
+"het waarschijnlijker is dat de app veilig is"
 
 #. Translators: This indicates an app was written and released by a developer who has been verified.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-safety-context-dialog.c:354
 msgid "App developer is verified"
-msgstr "Toepassingsontwikkelaar is geverifieerd"
+msgstr "App-ontwikkelaar is geverifieerd"
 
 #: src/gs-safety-context-dialog.c:355
 msgid "The developer of this app has been verified to be who they say they are"
-msgstr ""
-"De ontwikkelaar van deze toepassing is geverifieerd en is geen imitator"
+msgstr "De ontwikkelaar van deze app is geverifieerd en is geen imitator"
 
 #. Translators: This indicates an app uses an outdated SDK.
 #. * It’s used in a context tile, so should be short.
@@ -5009,7 +4997,7 @@ msgstr "Zoeken naar apps"
 
 #: src/gs-search-page.ui:46
 msgid "No Application Found"
-msgstr "Geen toepassing gevonden"
+msgstr "Geen app gevonden"
 
 #. TRANSLATORS: this is part of the in-app notification,
 #. * where the %s is the truncated hostname, e.g.
@@ -5134,7 +5122,7 @@ msgstr "Installeren mislukt: internettoegang vereist, maar niet beschikbaar"
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1408
 msgid "Unable to install: the application has an invalid format"
-msgstr "Installeren mislukt: de toepassing heeft een ongeldig formaat"
+msgstr "Installeren mislukt: de app heeft een ongeldig formaat"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
@@ -5527,7 +5515,7 @@ msgstr "Netwerkinstellingen"
 #. button in the info bar
 #: src/gs-shell.ui:118
 msgid "Restart Now"
-msgstr "Nu herstarten"
+msgstr "Nu opnieuw opstarten"
 
 #. button in the info bar
 #: src/gs-shell.ui:128
@@ -5562,11 +5550,11 @@ msgstr "Geen"
 
 #: src/gs-storage-context-dialog.c:139
 msgid "Application Data"
-msgstr "Toepassingsgegevens"
+msgstr "App-gegevens"
 
 #: src/gs-storage-context-dialog.c:140
 msgid "Data needed for the application to run"
-msgstr "Gegevens vereist voor het uitvoeren van de toepassing"
+msgstr "Gegevens vereist voor het uitvoeren van de app"
 
 #: src/gs-storage-context-dialog.c:145
 msgid "User Data"
@@ -5574,7 +5562,7 @@ msgstr "Gebruikersgegevens"
 
 #: src/gs-storage-context-dialog.c:146
 msgid "Data created by you in the application"
-msgstr "Gegevens die door u in de toepassing aangemaakt zijn"
+msgstr "Gegevens die door u in de app aangemaakt zijn"
 
 #: src/gs-storage-context-dialog.c:153
 msgid "Cache Data"
@@ -5586,7 +5574,7 @@ msgstr "Tijdelijk gecachete gegevens"
 
 #: src/gs-storage-context-dialog.c:172
 msgid "The application itself"
-msgstr "De toepassing zelf"
+msgstr "De app zelf"
 
 #: src/gs-storage-context-dialog.c:177
 msgid "Required Dependencies"
@@ -5594,7 +5582,7 @@ msgstr "Vereiste afhankelijkheden"
 
 #: src/gs-storage-context-dialog.c:178
 msgid "Shared system components required by this application"
-msgstr "Gedeelde systeemonderdelen die door deze toepassing vereist worden"
+msgstr "Gedeelde systeemonderdelen die door deze app vereist worden"
 
 #: src/gs-storage-context-dialog.c:188
 msgctxt "Download size"
@@ -5694,16 +5682,16 @@ msgstr "Gelieve klaarstaande software-updates te downloaden."
 #, c-format
 msgid "%u Application Updated — Restart Required"
 msgid_plural "%u Applications Updated — Restart Required"
-msgstr[0] "%u toepassing bijgewerkt — Herstarten vereist"
-msgstr[1] "%u toepassingen bijgewerkt  — Herstarten vereist"
+msgstr[0] "%u app bijgewerkt — Herstarten vereist"
+msgstr[1] "%u apps bijgewerkt — Herstarten vereist"
 
 #. TRANSLATORS: apps were auto-updated
 #: src/gs-update-monitor.c:361
 #, c-format
 msgid "%u Application Updated"
 msgid_plural "%u Applications Updated"
-msgstr[0] "%u toepassing bijgewerkt"
-msgstr[1] "%u toepassingen bijgewerkt"
+msgstr[0] "%u app bijgewerkt"
+msgstr[1] "%u apps bijgewerkt"
 
 #. TRANSLATORS: %1 is an application name, e.g. Firefox
 #: src/gs-update-monitor.c:372
@@ -5714,7 +5702,7 @@ msgstr "%s is bijgewerkt."
 #. TRANSLATORS: the app needs restarting
 #: src/gs-update-monitor.c:375
 msgid "Please restart the application."
-msgstr "Herstart de toepassing."
+msgstr "Herstart de app."
 
 #. TRANSLATORS: %1 and %2 are both application names, e.g. Firefox
 #: src/gs-update-monitor.c:383
@@ -5727,8 +5715,8 @@ msgstr "%s en %s zijn bijgewerkt."
 #, c-format
 msgid "%u application requires a restart."
 msgid_plural "%u applications require a restart."
-msgstr[0] "%u toepassing vereist een herstart."
-msgstr[1] "%u toepassingen vereisen een herstart."
+msgstr[0] "%u app vereist een herstart."
+msgstr[1] "%u apps vereisen een herstart."
 
 #. TRANSLATORS: %1, %2 and %3 are all application names, e.g. Firefox
 #: src/gs-update-monitor.c:401
@@ -6016,7 +6004,7 @@ msgstr "Herstart vereist"
 #. * app updates, typically flatpaks or snaps
 #: src/gs-updates-section.c:460
 msgid "Application Updates"
-msgstr "Toepassingsupdates"
+msgstr "App-updates"
 
 #. TRANSLATORS: This is the header for device firmware that can
 #. * be installed online
@@ -6136,7 +6124,7 @@ msgstr "Ondersteuning voor webapps"
 
 #: plugins/epiphany/org.gnome.Software.Plugin.Epiphany.metainfo.xml.in:7
 msgid "Run popular web applications in a browser"
-msgstr "Voer populaire webtoepassingen uit in een browser"
+msgstr "Voer populaire web-apps uit in een browser"
 
 #. TRANSLATORS: status text when downloading
 #: plugins/fedora-pkgdb-collections/gs-plugin-fedora-pkgdb-collections.c:257
@@ -6157,7 +6145,7 @@ msgstr "Flatpak-ondersteuning"
 
 #: plugins/flatpak/org.gnome.Software.Plugin.Flatpak.metainfo.xml.in:7
 msgid "Flatpak is a framework for desktop applications on Linux"
-msgstr "Flatpak is een raamwerk voor bureaubladtoepassingen op Linux"
+msgstr "Flatpak is een framework voor apps op Linux"
 
 #. Reference: https://docs.flatpak.org/en/latest/flatpak-command-reference.html#idm45858571325264
 #: plugins/flatpak/gs-flatpak.c:313
@@ -6543,9 +6531,8 @@ msgstr "Een snap is een universeel Linux-pakket"
 #. TRANSLATORS: this is to inform that the package is part of
 #. * the BASE system
 #: plugins/vso/gs-plugin-vso.c:114
-#, fuzzy
 msgid "base"
-msgstr "Database"
+msgstr "basis"
 
 #: plugins/vso/gs-plugin-vso.c:240
 msgid ""
@@ -6566,7 +6553,7 @@ msgstr ""
 #. * not the remote title
 #: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:249
 msgid "Apps"
-msgstr ""
+msgstr "Apps"
 
 #: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:251
 msgid ""
