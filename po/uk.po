@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : "
-"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Lokalize 20.12.0\n"
 "X-Project-Style: gnome\n"
 
@@ -1456,8 +1456,10 @@ msgstr "Показувати розмір встановлених програ�
 #: data/org.gnome.software.gschema.xml:126
 msgid "'https://en.wikipedia.org/wiki/Proprietary_software'"
 msgstr ""
-"'https://uk.wikipedia.org/wiki/"
-"%D0%9F%D1%80%D0%BE%D0%BF%D1%80%D1%96%D1%94%D1%82%D0%B0%D1%80%D0%BD%D0%B5_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BD%D0%B5_%D0%B7%D0%B0%D0%B1%D0%B5%D0%B7%D0%BF%D0%B5%D1%87%D0%B5%D0%BD%D0%BD%D1%8F'"
+"'https://uk.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D0%BF"
+"%D1%80%D1%96%D1%94%D1%82%D0%B0%D1%80%D0%BD%D0%B5_%D0%BF%D1%80%D0%BE"
+"%D0%B3%D1%80%D0%B0%D0%BC%D0%BD%D0%B5_%D0%B7%D0%B0%D0%B1%D0%B5%D0%B7%D0%BF"
+"%D0%B5%D1%87%D0%B5%D0%BD%D0%BD%D1%8F'"
 
 #: data/org.gnome.software.gschema.xml:127
 msgid "The URI that explains nonfree and proprietary software"
@@ -3145,9 +3147,8 @@ msgid ""
 "%s is not <a href=\"https://en.wikipedia.org/wiki/Free_and_open-"
 "source_software\">free and open source software</a>, and is provided by “%s”."
 msgstr ""
-"%s — не <a href=\"https://en.wikipedia.org/wiki/Free_and_open-"
-"source_software\">вільний та відкритий програмний засіб</a>, і його постачає "
-"«%s»."
+"%s — не <a href=\"https://en.wikipedia.org/wiki/Free_and_open-source_software"
+"\">вільний та відкритий програмний засіб</a>, і його постачає «%s»."
 
 #. TRANSLATORS: the replacements are as follows:
 #. * 1. Application name, e.g. "Firefox"
@@ -4602,14 +4603,13 @@ msgstr "Що думаєте про програму? Надайте більше
 
 #: src/gs-review-dialog.ui:156
 msgid ""
-"Find what data is sent in our <a href=\"https://odrs.gnome.org/"
-"privacy\">privacy policy</a>. The full name attached to your account will be "
-"shown publicly."
+"Find what data is sent in our <a href=\"https://odrs.gnome.org/privacy"
+"\">privacy policy</a>. The full name attached to your account will be shown "
+"publicly."
 msgstr ""
-"Ознайомтеся із переліком даних, які буде надіслано, на нашій <a "
-"href=\"https://odrs.gnome.org/privacy\">сторінці правил конфіденційності</"
-"a>. Кожен зможе бачити ім'я повністю, яке пов'язане з вашим обліковим "
-"записом."
+"Ознайомтеся із переліком даних, які буде надіслано, на нашій <a href="
+"\"https://odrs.gnome.org/privacy\">сторінці правил конфіденційності</a>. "
+"Кожен зможе бачити ім'я повністю, яке пов'язане з вашим обліковим записом."
 
 #: src/gs-review-histogram.c:72
 #, c-format
@@ -6945,8 +6945,8 @@ msgstr ""
 
 #~ msgid "https://en.wikipedia.org/wiki/Public_domain"
 #~ msgstr ""
-#~ "https://uk.wikipedia.org/wiki/"
-#~ "%D0%A1%D1%83%D1%81%D0%BF%D1%96%D0%BB%D1%8C%D0%BD%D0%B5_%D0%BD%D0%B0%D0%B4%D0%B1%D0%B0%D0%BD%D0%BD%D1%8F"
+#~ "https://uk.wikipedia.org/wiki/%D0%A1%D1%83%D1%81%D0%BF%D1%96%D0%BB%D1%8C"
+#~ "%D0%BD%D0%B5_%D0%BD%D0%B0%D0%B4%D0%B1%D0%B0%D0%BD%D0%BD%D1%8F"
 
 #~ msgid "https://www.gnu.org/philosophy/free-sw"
 #~ msgstr "https://www.gnu.org/philosophy/free-sw"

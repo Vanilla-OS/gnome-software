@@ -4028,8 +4028,8 @@ msgid ""
 "\n"
 "You can contribute and help make it even better."
 msgstr ""
-"Bu yazılım, gönüllü topluluğunca açık olarak geliştirilmiş ve <a "
-"href=\"%s\">%s lisansıyla</a> dağıtılmıştır.\n"
+"Bu yazılım, gönüllü topluluğunca açık olarak geliştirilmiş ve <a href=\"%s\">"
+"%s lisansıyla</a> dağıtılmıştır.\n"
 "\n"
 "Katkıda bulunarak daha iyi olmasını sağlayabilirsiniz."
 
@@ -4522,13 +4522,13 @@ msgstr ""
 
 #: src/gs-review-dialog.ui:156
 msgid ""
-"Find what data is sent in our <a href=\"https://odrs.gnome.org/"
-"privacy\">privacy policy</a>. The full name attached to your account will be "
-"shown publicly."
+"Find what data is sent in our <a href=\"https://odrs.gnome.org/privacy"
+"\">privacy policy</a>. The full name attached to your account will be shown "
+"publicly."
 msgstr ""
-"Ne verisinin gönderildiğini <a href=\"https://odrs.gnome.org/"
-"privacy\">gizlilik ilkemizde</a> bulabilirsiniz. Hesabınıza ilişik tam "
-"adınız açıkça gösterilecektir."
+"Ne verisinin gönderildiğini <a href=\"https://odrs.gnome.org/privacy"
+"\">gizlilik ilkemizde</a> bulabilirsiniz. Hesabınıza ilişik tam adınız "
+"açıkça gösterilecektir."
 
 #: src/gs-review-histogram.c:72
 #, c-format

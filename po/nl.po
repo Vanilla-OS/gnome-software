@@ -4597,9 +4597,9 @@ msgstr "Wat vindt u van de app? Probeer uw mening nader te verklaren."
 
 #: src/gs-review-dialog.ui:156
 msgid ""
-"Find what data is sent in our <a href=\"https://odrs.gnome.org/"
-"privacy\">privacy policy</a>. The full name attached to your account will be "
-"shown publicly."
+"Find what data is sent in our <a href=\"https://odrs.gnome.org/privacy"
+"\">privacy policy</a>. The full name attached to your account will be shown "
+"publicly."
 msgstr ""
 "Bekijk welke gegevens er worden verzonden in ons <a href=\"https://odrs."
 "gnome.org/privacy\">privacybeleid</a>. De volledige naam die aan uw account "
@@ -5612,8 +5612,8 @@ msgid ""
 "Cached data can be cleared from the <a href=\"dummy\">_application settings</"
 "a>."
 msgstr ""
-"Gecachete gegevens kunnen gewist worden vanuit de <a "
-"href=\"dummy\">toep_assingsinstellingen</a>."
+"Gecachete gegevens kunnen gewist worden vanuit de <a href=\"dummy"
+"\">toep_assingsinstellingen</a>."
 
 #: src/gs-summary-tile.c:118
 #, c-format

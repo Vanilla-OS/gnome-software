@@ -1469,8 +1469,8 @@ msgstr ""
 #: data/org.gnome.software.gschema.xml:126
 msgid "'https://en.wikipedia.org/wiki/Proprietary_software'"
 msgstr ""
-"'https://vi.wikipedia.org/wiki/"
-"Ph%E1%BA%A7n_m%E1%BB%81m_s%E1%BB%9F_h%E1%BB%AFu_%C4%91%E1%BB%99c_quy%E1%BB%81n'"
+"'https://vi.wikipedia.org/wiki/Ph%E1%BA%A7n_m%E1%BB%81m_s%E1%BB%9F_h%E1%BB"
+"%AFu_%C4%91%E1%BB%99c_quy%E1%BB%81n'"
 
 #: data/org.gnome.software.gschema.xml:127
 msgid "The URI that explains nonfree and proprietary software"
@@ -4545,13 +4545,13 @@ msgstr ""
 
 #: src/gs-review-dialog.ui:156
 msgid ""
-"Find what data is sent in our <a href=\"https://odrs.gnome.org/"
-"privacy\">privacy policy</a>. The full name attached to your account will be "
-"shown publicly."
+"Find what data is sent in our <a href=\"https://odrs.gnome.org/privacy"
+"\">privacy policy</a>. The full name attached to your account will be shown "
+"publicly."
 msgstr ""
-"Tìm dữ liệu nào được gửi trong <a href=\"https://odrs.gnome.org/"
-"privacy\">chính sách bảo mật</a> của chúng tôi. Tên đầy đủ đính kèm với tài "
-"khoản của bạn sẽ được hiển thị công khai."
+"Tìm dữ liệu nào được gửi trong <a href=\"https://odrs.gnome.org/privacy"
+"\">chính sách bảo mật</a> của chúng tôi. Tên đầy đủ đính kèm với tài khoản "
+"của bạn sẽ được hiển thị công khai."
 
 #: src/gs-review-histogram.c:72
 #, c-format

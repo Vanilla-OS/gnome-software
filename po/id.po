@@ -4533,8 +4533,8 @@ msgid ""
 "Give a short summary of your review, for example: “Great app, would "
 "recommend”."
 msgstr ""
-"Berikan ringkasan ulasan Anda, sebagai contoh: \"App bagus,  akan "
-"menyarankan\"."
+"Berikan ringkasan ulasan Anda, sebagai contoh: \"App bagus,  akan menyarankan"
+"\"."
 
 #. Translators: This is where the users enter their opinions about the apps.
 #: src/gs-review-dialog.ui:119
@@ -4549,13 +4549,13 @@ msgstr ""
 
 #: src/gs-review-dialog.ui:156
 msgid ""
-"Find what data is sent in our <a href=\"https://odrs.gnome.org/"
-"privacy\">privacy policy</a>. The full name attached to your account will be "
-"shown publicly."
+"Find what data is sent in our <a href=\"https://odrs.gnome.org/privacy"
+"\">privacy policy</a>. The full name attached to your account will be shown "
+"publicly."
 msgstr ""
-"Temukan data apa yang dikirim di <a href=\"https://odrs.gnome.org/"
-"privacy\">kebijakan privasi</a> kami. Nama lengkap yang dilampirkan ke akun "
-"Anda akan ditampilkan secara publik."
+"Temukan data apa yang dikirim di <a href=\"https://odrs.gnome.org/privacy"
+"\">kebijakan privasi</a> kami. Nama lengkap yang dilampirkan ke akun Anda "
+"akan ditampilkan secara publik."
 
 #: src/gs-review-histogram.c:72
 #, c-format

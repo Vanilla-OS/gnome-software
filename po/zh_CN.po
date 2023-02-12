@@ -3135,8 +3135,8 @@ msgid ""
 "%s is not <a href=\"https://en.wikipedia.org/wiki/Free_and_open-"
 "source_software\">free and open source software</a>, and is provided by “%s”."
 msgstr ""
-"%s 不是 <a href=\"https://en.wikipedia.org/wiki/Free_and_open-"
-"source_software\">自由开源软件</a>，它由 “%s” 提供。"
+"%s 不是 <a href=\"https://en.wikipedia.org/wiki/Free_and_open-source_software"
+"\">自由开源软件</a>，它由 “%s” 提供。"
 
 #. TRANSLATORS: the replacements are as follows:
 #. * 1. Application name, e.g. "Firefox"
@@ -4468,9 +4468,9 @@ msgstr "您认为该应用怎么样？尝试为您的意见列出理由。"
 
 #: src/gs-review-dialog.ui:156
 msgid ""
-"Find what data is sent in our <a href=\"https://odrs.gnome.org/"
-"privacy\">privacy policy</a>. The full name attached to your account will be "
-"shown publicly."
+"Find what data is sent in our <a href=\"https://odrs.gnome.org/privacy"
+"\">privacy policy</a>. The full name attached to your account will be shown "
+"publicly."
 msgstr ""
 "在我们的 <a href=\"https://odrs.gnome.org/privacy\">隐私政策</a> 中查看发送了"
 "什么数据。您账号附加的全名将会公开显示。"

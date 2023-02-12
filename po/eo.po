@@ -3227,8 +3227,8 @@ msgid ""
 "%s is not <a href=\"https://en.wikipedia.org/wiki/Free_and_open-"
 "source_software\">free and open source software</a>, and is provided by “%s”."
 msgstr ""
-"%s ne estas <a href=\"https://eo.wikipedia.org/wiki/"
-"Libera_programaro\">libera programaro</a>, kaj “%s” ĝin provizas."
+"%s ne estas <a href=\"https://eo.wikipedia.org/wiki/Libera_programaro"
+"\">libera programaro</a>, kaj “%s” ĝin provizas."
 
 #. TRANSLATORS: the replacements are as follows:
 #. * 1. Application name, e.g. "Firefox"
@@ -4650,9 +4650,9 @@ msgstr "Kion vi trovas pri la aplikaĵo? Klopodu doni kialojn por viaj opinioj."
 #: src/gs-review-dialog.ui:156
 #, fuzzy
 msgid ""
-"Find what data is sent in our <a href=\"https://odrs.gnome.org/"
-"privacy\">privacy policy</a>. The full name attached to your account will be "
-"shown publicly."
+"Find what data is sent in our <a href=\"https://odrs.gnome.org/privacy"
+"\">privacy policy</a>. The full name attached to your account will be shown "
+"publicly."
 msgstr ""
 "Eltrovu, kiuj datumoj sendiĝas en nia <a href=\"https://odrs.gnome.org/"
 "privacy\">privateco politiki</a>."

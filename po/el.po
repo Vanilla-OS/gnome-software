@@ -4681,9 +4681,9 @@ msgstr ""
 #: src/gs-review-dialog.ui:156
 #, fuzzy
 msgid ""
-"Find what data is sent in our <a href=\"https://odrs.gnome.org/"
-"privacy\">privacy policy</a>. The full name attached to your account will be "
-"shown publicly."
+"Find what data is sent in our <a href=\"https://odrs.gnome.org/privacy"
+"\">privacy policy</a>. The full name attached to your account will be shown "
+"publicly."
 msgstr ""
 "Βρείτε τα δεδομένα που αποστέλλονται στην <a href=\"https://odrs.gnome.org/"
 "privacy\">πολιτική απορρήτου</a>."

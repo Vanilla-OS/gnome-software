@@ -1448,8 +1448,8 @@ msgstr ""
 #: data/org.gnome.software.gschema.xml:126
 msgid "'https://en.wikipedia.org/wiki/Proprietary_software'"
 msgstr ""
-"'https://ar.wikipedia.org/wiki/"
-"%D8%A8%D8%B1%D9%85%D8%AC%D9%8A%D8%A7%D8%AA_%D8%A7%D8%AD%D8%AA%D9%83%D8%A7%D8%B1%D9%8A%D8%A9'"
+"'https://ar.wikipedia.org/wiki/%D8%A8%D8%B1%D9%85%D8%AC%D9%8A%D8%A7%D8%AA_"
+"%D8%A7%D8%AD%D8%AA%D9%83%D8%A7%D8%B1%D9%8A%D8%A9'"
 
 #: data/org.gnome.software.gschema.xml:127
 msgid "The URI that explains nonfree and proprietary software"
@@ -3218,8 +3218,8 @@ msgid ""
 "%s is not <a href=\"https://en.wikipedia.org/wiki/Free_and_open-"
 "source_software\">free and open source software</a>, and is provided by “%s”."
 msgstr ""
-"%s ليست <a href=\"https://en.wikipedia.org/wiki/Free_and_open-"
-"source_software\">برمجية حرّة و مفتوحة المصدر</a>، و موفّرها هو \"%s\"."
+"%s ليست <a href=\"https://en.wikipedia.org/wiki/Free_and_open-source_software"
+"\">برمجية حرّة و مفتوحة المصدر</a>، و موفّرها هو \"%s\"."
 
 #. TRANSLATORS: the replacements are as follows:
 #. * 1. Application name, e.g. "Firefox"
@@ -4695,9 +4695,9 @@ msgstr "كيف ترى التطبيق؟ حاول إعطاء أسباب لرأيك
 
 #: src/gs-review-dialog.ui:156
 msgid ""
-"Find what data is sent in our <a href=\"https://odrs.gnome.org/"
-"privacy\">privacy policy</a>. The full name attached to your account will be "
-"shown publicly."
+"Find what data is sent in our <a href=\"https://odrs.gnome.org/privacy"
+"\">privacy policy</a>. The full name attached to your account will be shown "
+"publicly."
 msgstr ""
 
 #: src/gs-review-histogram.c:72
@@ -7048,8 +7048,8 @@ msgstr ""
 
 #~ msgid "https://en.wikipedia.org/wiki/Public_domain"
 #~ msgstr ""
-#~ "https://ar.wikipedia.org/wiki/"
-#~ "%D9%85%D9%84%D9%83%D9%8A%D8%A9_%D8%B9%D8%A7%D9%85%D8%A9"
+#~ "https://ar.wikipedia.org/wiki/%D9%85%D9%84%D9%83%D9%8A%D8%A9_"
+#~ "%D8%B9%D8%A7%D9%85%D8%A9"
 
 #~ msgid "https://www.gnu.org/philosophy/free-sw"
 #~ msgstr "https://www.gnu.org/philosophy/free-sw.ar.html"

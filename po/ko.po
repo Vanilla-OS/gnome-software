@@ -1446,8 +1446,8 @@ msgstr "설치 프로그램 목록에 앱 설치 크기 표시"
 #: data/org.gnome.software.gschema.xml:126
 msgid "'https://en.wikipedia.org/wiki/Proprietary_software'"
 msgstr ""
-"'https://ko.wikipedia.org/wiki/"
-"%EC%82%AC%EC%9C%A0_%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4'"
+"'https://ko.wikipedia.org/wiki/%EC%82%AC%EC%9C%A0_%EC%86%8C%ED%94%84%ED%8A"
+"%B8%EC%9B%A8%EC%96%B4'"
 
 #: data/org.gnome.software.gschema.xml:127
 msgid "The URI that explains nonfree and proprietary software"
@@ -4490,9 +4490,9 @@ msgstr "이 앱은 어떤가요? 평가해보시고 이유를 이야기해보세
 
 #: src/gs-review-dialog.ui:156
 msgid ""
-"Find what data is sent in our <a href=\"https://odrs.gnome.org/"
-"privacy\">privacy policy</a>. The full name attached to your account will be "
-"shown publicly."
+"Find what data is sent in our <a href=\"https://odrs.gnome.org/privacy"
+"\">privacy policy</a>. The full name attached to your account will be shown "
+"publicly."
 msgstr ""
 "<a href=\"https://odrs.gnome.org/privacy\">개인 정보 보호 정책</a>에서 어떤 "
 "데이터를 보내는지 확인해보십시오. 계정에 붙는 성명 정보는 공개됩니다."
