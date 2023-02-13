@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2016 Richard Hughes <richard@hughsie.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #pragma once
@@ -23,6 +23,7 @@
 #include <gs-download-utils.h>
 #include <gs-enums.h>
 #include <gs-icon.h>
+#include <gs-icon-downloader.h>
 #include <gs-metered.h>
 #include <gs-odrs-provider.h>
 #include <gs-os-release.h>
@@ -35,7 +36,9 @@
 #include <gs-plugin-job-manage-repository.h>
 #include <gs-plugin-job-refine.h>
 #include <gs-plugin-job-refresh-metadata.h>
+#include <gs-plugin-job-update-apps.h>
 #include <gs-plugin-vfuncs.h>
+#include <gs-profiler.h>
 #include <gs-remote-icon.h>
 #include <gs-utils.h>
 #include <gs-worker-thread.h>

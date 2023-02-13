@@ -6,22 +6,17 @@
 	box-shadow: inset 0 0 0 1px alpha(@card_fg_color, .5);
 }
 
-.application-details-infobar.info {
-	background-color: #d3d7cf;
-	border-color: darker(#d3d7cf);
-}
-
-.application-details-infobar.warning {
-	color: @theme_fg_color;
-}
-
 review-bar,
 .review-histogram star-image {
 	color: alpha(@theme_fg_color, .8);
 }
 
-star-image {
+star-image > image.starred {
 	color: inherit;
+}
+
+star-image > image.non-starred {
+	opacity: 0.4;
 }
 
 .origin-rounded-box {
@@ -29,7 +24,7 @@ star-image {
 }
 
 .context-tile-lozenge {
-	box-shadow: inset 0 0 0 2px currentColor;
+	box-shadow: inset 0 0 0 1px currentColor;
 }
 
 app-context-bar .context-tile {

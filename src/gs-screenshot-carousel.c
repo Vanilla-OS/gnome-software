@@ -7,7 +7,7 @@
  * Copyright (C) 2019 Joaquim Rocha <jrocha@endlessm.com>
  * Copyright (C) 2021 Adrien Plazas <adrien.plazas@puri.sm>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 /**
@@ -143,8 +143,7 @@ gs_screenshot_carousel_load_screenshots (GsScreenshotCarousel *self, GsApp *app,
 		gs_screenshot_image_set_size (GS_SCREENSHOT_IMAGE (ssimg),
 					      AS_IMAGE_NORMAL_WIDTH,
 					      AS_IMAGE_NORMAL_HEIGHT);
-		gtk_style_context_add_class (gtk_widget_get_style_context (ssimg),
-					     "screenshot-image-main");
+		gtk_widget_add_css_class (ssimg, "screenshot-image-main");
 		gs_screenshot_image_load_async (GS_SCREENSHOT_IMAGE (ssimg), cancellable);
 
 		/* when we're offline, the load will be immediate, so we
@@ -161,7 +160,7 @@ gs_screenshot_carousel_load_screenshots (GsScreenshotCarousel *self, GsApp *app,
 			G_CALLBACK (gs_screenshot_carousel_img_clicked_cb), self, 0);
 
 		adw_carousel_append (ADW_CAROUSEL (self->carousel), ssimg);
-		gtk_widget_show (ssimg);
+		gtk_widget_set_visible (ssimg, TRUE);
 		gs_screenshot_image_set_description (GS_SCREENSHOT_IMAGE (ssimg),
 						     as_screenshot_get_caption (ss));
 		++num_screenshots_loaded;
@@ -342,7 +341,7 @@ gs_screenshot_carousel_init (GsScreenshotCarousel *self)
 	gtk_widget_init_template (GTK_WIDGET (self));
 
 	/* Disable scrolling through the carousel, as it’s typically used
-	 * in application pages which are themselves scrollable. */
+	 * in app pages which are themselves scrollable. */
 	adw_carousel_set_allow_scroll_wheel (ADW_CAROUSEL (self->carousel), FALSE);
 
 	/* setup networking */

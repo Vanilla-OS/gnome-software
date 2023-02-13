@@ -5,7 +5,7 @@
  *
  * Author: Philip Withnall <pwithnall@endlessos.org>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 /**
@@ -46,6 +46,7 @@
 #include "gs-plugin-job-refine.h"
 #include "gs-plugin-private.h"
 #include "gs-plugin-types.h"
+#include "gs-profiler.h"
 #include "gs-utils.h"
 
 struct _GsPluginJobListApps
@@ -63,6 +64,10 @@ struct _GsPluginJobListApps
 
 	/* Results. */
 	GsAppList *result_list;  /* (owned) (nullable) */
+
+#ifdef HAVE_SYSPROF
+	gint64 begin_time_nsec;
+#endif
 };
 
 G_DEFINE_TYPE (GsPluginJobListApps, gs_plugin_job_list_apps, GS_TYPE_PLUGIN_JOB)
@@ -84,6 +89,7 @@ gs_plugin_job_list_apps_dispose (GObject *object)
 	g_assert (self->n_pending_ops == 0);
 
 	g_clear_object (&self->result_list);
+	g_clear_object (&self->query);
 
 	G_OBJECT_CLASS (gs_plugin_job_list_apps_parent_class)->dispose (object);
 }
@@ -150,6 +156,20 @@ filter_valid_apps (GsApp    *app,
 }
 
 static gboolean
+filter_freely_licensed_apps (GsApp    *app,
+			     gpointer  user_data)
+{
+	return (gs_app_get_kind (app) != AS_COMPONENT_KIND_GENERIC &&
+		gs_app_get_kind (app) != AS_COMPONENT_KIND_DESKTOP_APP &&
+		gs_app_get_kind (app) != AS_COMPONENT_KIND_CONSOLE_APP &&
+		gs_app_get_kind (app) != AS_COMPONENT_KIND_WEB_APP) ||
+	       gs_app_get_state (app) == GS_APP_STATE_INSTALLED ||
+	       gs_app_get_state (app) == GS_APP_STATE_UPDATABLE ||
+	       gs_app_get_state (app) == GS_APP_STATE_UPDATABLE_LIVE ||
+	       gs_app_get_license_is_free (app);
+}
+
+static gboolean
 app_filter_qt_for_gtk_and_compatible (GsApp    *app,
                                       gpointer  user_data)
 {
@@ -207,6 +227,7 @@ gs_plugin_job_list_apps_run_async (GsPluginJob         *job,
 	g_autoptr(GTask) task = NULL;
 	GPtrArray *plugins;  /* (element-type GsPlugin) */
 	gboolean anything_ran = FALSE;
+	g_autoptr(GError) local_error = NULL;
 
 	task = g_task_new (job, cancellable, callback, user_data);
 	g_task_set_source_tag (task, gs_plugin_job_list_apps_run_async);
@@ -217,6 +238,10 @@ gs_plugin_job_list_apps_run_async (GsPluginJob         *job,
 	self->n_pending_ops = 1;
 	self->merged_list = gs_app_list_new ();
 	plugins = gs_plugin_loader_get_plugins (plugin_loader);
+
+#ifdef HAVE_SYSPROF
+	self->begin_time_nsec = SYSPROF_CAPTURE_CURRENT_TIME;
+#endif
 
 	for (guint i = 0; i < plugins->len; i++) {
 		GsPlugin *plugin = g_ptr_array_index (plugins, i);
@@ -230,6 +255,10 @@ gs_plugin_job_list_apps_run_async (GsPluginJob         *job,
 		/* at least one plugin supports this vfunc */
 		anything_ran = TRUE;
 
+		/* Handle cancellation */
+		if (g_cancellable_set_error_if_cancelled (cancellable, &local_error))
+			break;
+
 		/* run the plugin */
 		self->n_pending_ops++;
 		plugin_class->list_apps_async (plugin, self->query, self->flags, cancellable, plugin_list_apps_cb, g_object_ref (task));
@@ -238,7 +267,7 @@ gs_plugin_job_list_apps_run_async (GsPluginJob         *job,
 	if (!anything_ran)
 		g_debug ("no plugin could handle listing apps");
 
-	finish_op (task, NULL);
+	finish_op (task, g_steal_pointer (&local_error));
 }
 
 static void
@@ -265,6 +294,13 @@ plugin_list_apps_cb (GObject      *source_object,
 	if (g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_NOT_SUPPORTED))
 		g_clear_error (&local_error);
 
+	GS_PROFILER_ADD_MARK_TAKE (PluginJobListApps,
+				   self->begin_time_nsec,
+				   g_strdup_printf ("%s:%s",
+						    G_OBJECT_TYPE_NAME (self),
+						    gs_plugin_get_name (plugin)),
+				   NULL);
+
 	finish_op (task, g_steal_pointer (&local_error));
 }
 
@@ -278,6 +314,7 @@ finish_op (GTask  *task,
 	GsPluginLoader *plugin_loader = g_task_get_task_data (task);
 	g_autoptr(GsAppList) merged_list = NULL;
 	GsPluginRefineFlags refine_flags = GS_PLUGIN_REFINE_FLAGS_NONE;
+	GsAppQueryLicenseType license_type = GS_APP_QUERY_LICENSE_ANY;
 	g_autoptr(GError) error_owned = g_steal_pointer (&error);
 
 	if (error_owned != NULL && self->saved_error == NULL)
@@ -296,12 +333,21 @@ finish_op (GTask  *task,
 
 	if (self->saved_error != NULL) {
 		g_task_return_error (task, g_steal_pointer (&self->saved_error));
+		g_signal_emit_by_name (G_OBJECT (self), "completed");
 		return;
 	}
 
 	/* run refine() on each one if required */
-	if (self->query != NULL)
+	if (self->query != NULL) {
 		refine_flags = gs_app_query_get_refine_flags (self->query);
+		license_type = gs_app_query_get_license_type (self->query);
+	}
+
+	if (!(refine_flags & GS_PLUGIN_REFINE_FLAGS_REQUIRE_LICENSE) &&
+	    license_type != GS_APP_QUERY_LICENSE_ANY) {
+		/* Needs the license information when filtering with it */
+		refine_flags |= GS_PLUGIN_REFINE_FLAGS_REQUIRE_LICENSE;
+	}
 
 	if (merged_list != NULL &&
 	    gs_app_list_length (merged_list) > 0 &&
@@ -328,6 +374,7 @@ refine_cb (GObject      *source_object,
 {
 	GsPluginLoader *plugin_loader = GS_PLUGIN_LOADER (source_object);
 	g_autoptr(GTask) task = G_TASK (user_data);
+	GsPluginJobListApps *self = g_task_get_source_object (task);
 	g_autoptr(GsAppList) new_list = NULL;
 	g_autoptr(GError) local_error = NULL;
 
@@ -335,6 +382,7 @@ refine_cb (GObject      *source_object,
 	if (new_list == NULL) {
 		gs_utils_error_convert_gio (&local_error);
 		g_task_return_error (task, g_steal_pointer (&local_error));
+		g_signal_emit_by_name (G_OBJECT (self), "completed");
 		return;
 	}
 
@@ -350,6 +398,7 @@ finish_task (GTask     *task,
 	GsAppListFilterFlags dedupe_flags = GS_APP_LIST_FILTER_FLAG_NONE;
 	GsAppListSortFunc sort_func = NULL;
 	gpointer sort_func_data = NULL;
+	GsAppQueryLicenseType license_type = GS_APP_QUERY_LICENSE_ANY;
 	GsAppListFilterFunc filter_func = NULL;
 	gpointer filter_func_data = NULL;
 	guint max_results = 0;
@@ -360,6 +409,12 @@ finish_task (GTask     *task,
 	 * FIXME: It feels like this filter should be done in a different layer. */
 	gs_app_list_filter (merged_list, filter_valid_apps, self);
 	gs_app_list_filter (merged_list, app_filter_qt_for_gtk_and_compatible, plugin_loader);
+
+	if (self->query != NULL)
+		license_type = gs_app_query_get_license_type (self->query);
+
+	if (license_type == GS_APP_QUERY_LICENSE_FOSS)
+		gs_app_list_filter (merged_list, filter_freely_licensed_apps, self);
 
 	/* Caller-specified filtering. */
 	if (self->query != NULL)
@@ -409,6 +464,15 @@ finish_task (GTask     *task,
 	/* success */
 	g_set_object (&self->result_list, merged_list);
 	g_task_return_boolean (task, TRUE);
+	g_signal_emit_by_name (G_OBJECT (self), "completed");
+
+#ifdef HAVE_SYSPROF
+	sysprof_collector_mark (self->begin_time_nsec,
+				SYSPROF_CAPTURE_CURRENT_TIME - self->begin_time_nsec,
+				"gnome-software",
+				G_OBJECT_TYPE_NAME (self),
+				NULL);
+#endif
 }
 
 static gboolean

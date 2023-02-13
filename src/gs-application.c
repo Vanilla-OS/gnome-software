@@ -5,7 +5,7 @@
  * Copyright (C) 2013-2018 Richard Hughes <richard@hughsie.com>
  * Copyright (C) 2014-2018 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -144,7 +144,7 @@ gs_application_init (GsApplication *application)
 		{ "autoupdate", 0, 0, G_OPTION_ARG_NONE, NULL,
 		  _("Installs any pending updates in the background"), NULL },
 		{ "prefs", 0, 0, G_OPTION_ARG_NONE, NULL,
-		  _("Show update preferences"), NULL },
+		  _("Show preferences"), NULL },
 		{ "quit", 0, 0, G_OPTION_ARG_NONE, NULL,
 		  _("Quit the running instance"), NULL },
 		{ "prefer-local", '\0', 0, G_OPTION_ARG_NONE, NULL,
@@ -249,6 +249,14 @@ about_activated (GSimpleAction *action,
 		NULL
 	};
 
+	const gchar *designers[] = {
+		"Allan Day",
+		"Jakub Steiner",
+		"William Jon McCann",
+		"Tobias Bernard",
+		NULL
+	};
+
 #if ADW_CHECK_VERSION(1,2,0)
 	adw_show_about_window (app->main_window,
 			       "application-name", g_get_application_name (),
@@ -256,8 +264,10 @@ about_activated (GSimpleAction *action,
 			       "developer-name", _("The GNOME Project"),
 			       "version", get_version(),
 			       "website", "https://wiki.gnome.org/Apps/Software",
+			       "support-url", "https://discourse.gnome.org/tag/gnome-software",
 			       "issue-url", "https://gitlab.gnome.org/GNOME/gnome-software/-/issues/new",
 			       "developers", developers,
+			       "designers", designers,
 			       "copyright", _("Copyright \xc2\xa9 2016–2022 GNOME Software contributors"),
 			       "license-type", GTK_LICENSE_GPL_2_0,
 			       "translator-credits", _("translator-credits"),
@@ -336,6 +346,9 @@ shutdown_activated (GSimpleAction *action,
 	g_application_quit (G_APPLICATION (app));
 }
 
+static void offline_update_get_app_cb (GObject      *source_object,
+                                       GAsyncResult *result,
+                                       gpointer      user_data);
 static void offline_update_cb (GsPluginLoader *plugin_loader,
                                GAsyncResult   *res,
                                GsApplication  *app);
@@ -346,9 +359,35 @@ reboot_and_install (GSimpleAction *action,
 		    gpointer       data)
 {
 	GsApplication *app = GS_APPLICATION (data);
-	g_autoptr(GsPluginJob) plugin_job = NULL;
 
-	plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_UPDATE, NULL);
+	gs_plugin_loader_get_system_app_async (app->plugin_loader, app->cancellable,
+					       offline_update_get_app_cb, app);
+}
+
+static void
+offline_update_get_app_cb (GObject      *source_object,
+                           GAsyncResult *result,
+                           gpointer      user_data)
+{
+	GsApplication *app = GS_APPLICATION (user_data);
+	g_autoptr(GsApp) system_app = NULL;
+	g_autoptr(GsAppList) list = NULL;
+	g_autoptr(GsPluginJob) plugin_job = NULL;
+	g_autoptr(GError) local_error = NULL;
+
+	system_app = gs_plugin_loader_get_system_app_finish (app->plugin_loader,
+							     result,
+							     &local_error);
+
+	if (system_app == NULL) {
+		g_warning ("Failed to trigger offline update: %s", local_error->message);
+		return;
+	}
+
+	list = gs_app_list_new ();
+	gs_app_list_add (list, system_app);
+
+	plugin_job = gs_plugin_job_update_apps_new (list, GS_PLUGIN_UPDATE_APPS_FLAGS_NO_DOWNLOAD);
 	gs_plugin_loader_job_process_async (app->plugin_loader, plugin_job,
 					    app->cancellable,
 					    (GAsyncReadyCallback) offline_update_cb,
@@ -384,7 +423,7 @@ quit_activated (GSimpleAction *action,
 		windows = gtk_application_get_windows (GTK_APPLICATION (app));
 		if (windows) {
 			window = windows->data;
-			gtk_widget_hide (window);
+			gtk_widget_set_visible (window, FALSE);
 		}
 
 		return;
@@ -530,6 +569,7 @@ details_activated (GSimpleAction *action,
 					  "dedupe-flags", GS_APP_LIST_FILTER_FLAG_PREFER_INSTALLED |
 							  GS_APP_LIST_FILTER_FLAG_KEY_ID_PROVIDES,
 					  "sort-func", gs_utils_app_sort_match_value,
+					  "license-type", gs_shell_get_query_license_type (app->shell),
 					  NULL);
 		plugin_job = gs_plugin_job_list_apps_new (query, GS_PLUGIN_LIST_APPS_FLAGS_NONE);
 		gs_plugin_loader_job_process_async (app->plugin_loader, plugin_job,
@@ -811,6 +851,7 @@ launch_activated (GSimpleAction *action,
 						  GS_PLUGIN_REFINE_FLAGS_REQUIRE_RUNTIME,
 				  "dedupe-flags", GS_PLUGIN_JOB_DEDUPE_FLAGS_DEFAULT,
 				  "sort-func", gs_utils_app_sort_match_value,
+				  "license-type", gs_shell_get_query_license_type (self->shell),
 				  NULL);
 	search_job = gs_plugin_job_list_apps_new (query, GS_PLUGIN_LIST_APPS_FLAGS_NONE);
 	list = gs_plugin_loader_job_process (self->plugin_loader, search_job, self->cancellable, &error);

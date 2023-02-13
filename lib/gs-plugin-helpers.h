@@ -5,7 +5,7 @@
  *
  * Author: Philip Withnall <pwithnall@endlessos.org>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #pragma once
@@ -92,5 +92,33 @@ GTask *gs_plugin_refine_categories_data_new_task (gpointer                      
                                                   gpointer                       user_data);
 void gs_plugin_refine_categories_data_free (GsPluginRefineCategoriesData *data);
 G_DEFINE_AUTOPTR_CLEANUP_FUNC (GsPluginRefineCategoriesData, gs_plugin_refine_categories_data_free)
+
+typedef struct {
+	GsAppList *apps;  /* (owned) (not nullable) */
+	GsPluginUpdateAppsFlags flags;
+	GsPluginProgressCallback progress_callback;
+	gpointer progress_user_data;
+	GsPluginAppNeedsUserActionCallback app_needs_user_action_callback;
+	gpointer app_needs_user_action_data;
+} GsPluginUpdateAppsData;
+
+GsPluginUpdateAppsData *gs_plugin_update_apps_data_new (GsAppList                          *apps,
+                                                        GsPluginUpdateAppsFlags             flags,
+                                                        GsPluginProgressCallback            progress_callback,
+                                                        gpointer                            progress_user_data,
+                                                        GsPluginAppNeedsUserActionCallback  app_needs_user_action_callback,
+                                                        gpointer                            app_needs_user_action_data);
+GTask *gs_plugin_update_apps_data_new_task (gpointer                            source_object,
+                                            GsAppList                          *apps,
+                                            GsPluginUpdateAppsFlags             flags,
+                                            GsPluginProgressCallback            progress_callback,
+                                            gpointer                            progress_user_data,
+                                            GsPluginAppNeedsUserActionCallback  app_needs_user_action_callback,
+                                            gpointer                            app_needs_user_action_data,
+                                            GCancellable                       *cancellable,
+                                            GAsyncReadyCallback                 callback,
+                                            gpointer                            user_data);
+void gs_plugin_update_apps_data_free (GsPluginUpdateAppsData *data);
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (GsPluginUpdateAppsData, gs_plugin_update_apps_data_free)
 
 G_END_DECLS

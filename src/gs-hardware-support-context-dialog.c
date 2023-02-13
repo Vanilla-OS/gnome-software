@@ -5,7 +5,7 @@
  *
  * Author: Philip Withnall <pwithnall@endlessos.org>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 /**
@@ -455,7 +455,7 @@ gs_hardware_support_context_dialog_get_display_support (GdkMonitor     *monitor,
 	for (guint i = 0; relations != NULL && i < relations->len; i++) {
 		AsRelation *relation = AS_RELATION (g_ptr_array_index (relations, i));
 
-		/* All lengths here are in logical/application pixels,
+		/* All lengths here are in logical/app pixels,
 		 * not device pixels. */
 		if (as_relation_get_item_kind (relation) == AS_RELATION_ITEM_KIND_DISPLAY_LENGTH) {
 			AsRelationCompare comparator = as_relation_get_compare (relation);
@@ -524,7 +524,6 @@ update_relations_list (GsHardwareSupportContextDialog *self)
 	GdkRectangle current_screen_size;
 	gboolean any_control_relations_set;
 	gboolean has_touchscreen = FALSE, has_keyboard = FALSE, has_mouse = FALSE;
-	GtkStyleContext *context;
 	GsContextDialogRowImportance chosen_rating;
 
 	/* Treat everything as unknown to begin with, and downgrade its hardware
@@ -740,14 +739,12 @@ update_relations_list (GsHardwareSupportContextDialog *self)
 	gs_lozenge_set_icon_name (GS_LOZENGE (self->lozenge), icon_name);
 	gtk_label_set_text (self->title, title);
 
-	context = gtk_widget_get_style_context (self->lozenge);
+	gtk_widget_remove_css_class (self->lozenge, "green");
+	gtk_widget_remove_css_class (self->lozenge, "yellow");
+	gtk_widget_remove_css_class (self->lozenge, "red");
+	gtk_widget_remove_css_class (self->lozenge, "grey");
 
-	gtk_style_context_remove_class (context, "green");
-	gtk_style_context_remove_class (context, "yellow");
-	gtk_style_context_remove_class (context, "red");
-	gtk_style_context_remove_class (context, "grey");
-
-	gtk_style_context_add_class (context, css_class);
+	gtk_widget_add_css_class (self->lozenge, css_class);
 }
 
 static void

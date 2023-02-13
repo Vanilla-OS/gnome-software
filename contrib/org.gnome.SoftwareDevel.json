@@ -119,31 +119,16 @@
             ]
         },
         {
-            "name": "polkit",
+            "name": "libfuse",
             "buildsystem": "meson",
             "config-opts": [
-                "-Djs_engine=mozjs"
+                "-Dutils=false",
+                "-Dexamples=false"
             ],
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://gitlab.freedesktop.org/polkit/polkit.git"
-                }
-            ]
-        },
-        {
-            "name": "libfuse",
-            "buildsystem": "simple",
-            "build-commands": [
-                "./makeconf.sh",
-                "./configure --disable-util --disable-example --prefix=/",
-                "make install DESTDIR=/app"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/libfuse/libfuse.git",
-                    "branch": "fuse_2_9_bugfix"
+                    "url": "https://github.com/libfuse/libfuse.git"
                 }
             ]
         },
@@ -177,12 +162,29 @@
         },
         {
             "name": "flatpak",
-            "buildsystem": "autotools",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dsystem_helper=disabled",
+                "-Dgtkdoc=disabled",
+                "-Dinstalled_tests=false",
+                "-Dtests=false"
+            ],
             "sources": [
                 {
                     "type": "git",
                     "url": "https://github.com/flatpak/flatpak.git",
                     "branch": "main"
+                }
+            ]
+        },
+        {
+            "name": "libglib-testing",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/pwithnall/libglib-testing.git",
+                    "tag": "0.1.1"
                 }
             ]
         },
@@ -194,7 +196,7 @@
                 "--libdir=/app/lib",
                 "-Dpackagekit=false",
                 "-Dpackagekit_autoremove=false",
-                "-Dsoup2=true",
+                "-Dpolkit=false",
                 "-Dfwupd=false",
                 "-Dflatpak=true",
                 "-Dmalcontent=false",

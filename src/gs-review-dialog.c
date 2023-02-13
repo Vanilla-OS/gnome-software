@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2016 Canonical Ltd.
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -74,27 +74,28 @@ gs_review_dialog_update_review_comment (GsReviewDialog *dialog)
 	perc = gs_star_widget_get_rating (GS_STAR_WIDGET (dialog->star));
 	if (perc == 20) {
 		/* TRANSLATORS: lighthearted star rating description;
-		 *		A really bad application */
+		 *		A really bad app */
 		msg = _("Hate it");
 	} else if (perc == 40) {
 		/* TRANSLATORS: lighthearted star rating description;
-		 *		Not a great application */
+		 *		Not a great app */
 		msg = _("Don’t like it");
 	} else if (perc == 60) {
 		/* TRANSLATORS: lighthearted star rating description;
-		 *		A fairly-good application */
+		 *		A fairly-good app */
 		msg = _("It’s OK");
 	} else if (perc == 80) {
 		/* TRANSLATORS: lighthearted star rating description;
-		 *		A good application */
+		 *		A good app */
 		msg = _("Like it");
 	} else if (perc == 100) {
 		/* TRANSLATORS: lighthearted star rating description;
-		 *		A really awesome application */
+		 *		A really awesome app */
 		msg = _("Love it");
 	} else {
-		/* just reserve space */
-		msg = "";
+		/* TRANSLATORS: lighthearted star rating description;
+		 *		No star has been clicked yet */
+		msg = _("Select a Star to Leave a Rating");
 	}
 	gtk_label_set_label (GTK_LABEL (dialog->label_rating_desc), msg);
 }
@@ -160,6 +161,8 @@ gs_review_dialog_init (GsReviewDialog *dialog)
 {
 	GtkTextBuffer *buffer;
 	gtk_widget_init_template (GTK_WIDGET (dialog));
+
+	gs_review_dialog_update_review_comment (dialog);
 
 	/* require the user to spend at least 30 seconds on writing a review */
 	dialog->timer_id = g_timeout_add_seconds (WRITING_TIME_MIN,

@@ -1,47 +1,89 @@
-Version 43.4
-~~~~~~~~~~~~
-Released: 2023-02-10
+Version 44~beta
+~~~~~~~~~~~~~~~
+Released: 2023-02-13
 
-This is a stable release with the following changes:
- * Stop cancelled search in appstream data early
- * Lookup for appstream-provided icons in more directories
-
-Version 43.3
-~~~~~~~~~~~~
-Released: 2023-01-06
-
-This is a stable release with the following changes:
- * Periodically expire cached app icons
- * Stop notifying about unprepared critical updates
+This is an unstable release with the following changes:
+ * Add a preference for only showing freely-licensed apps
+ * Improve design of Install/Uninstall buttons for app addons
+ * Fix loading flatpak bundles if a runtime is missing
+ * Improvements to the UI for ratings and reviews
+ * Fix refreshing the details page after searching for an app
+ * Improve choice of icons for apps where a themed icon is available
+ * Improve performance of downloading remote icons significantly
 
 This release also updates translations:
- * Abkhazian (Nart Tlisha)
+ * Basque (Asier Sarasua Garmendia)
+ * Belarusian (Vasil Pupkin)
+ * Galician (Fran Dieguez)
  * Georgian (Ekaterine Papava)
- * Hebrew (Yosef Or Boczko)
- * Interlingue (Olga Smirnova)
+ * German (Jürgen Benvenuti)
+ * Hebrew (Yosef Or Boczko, Yaron Shahrabani)
+ * Indonesian (Andika Triwidada)
+ * Lithuanian (Aurimas Černius)
  * Occitan (post 1500) (Quentin PAGÈS)
- * Persian (Danial Behzadi)
+ * Portuguese (Hugo Carvalho)
+ * Russian (Aleksandr Melman)
+ * Spanish (Philip Withnall, Daniel Mustieles)
+ * Turkish (Sabri Ünal, Emin Tufan Çetin)
+ * Ukrainian (Yuri Chornoivan)
+ * Vietnamese (Ngọc Quân Trần)
 
-Version 43.2
-~~~~~~~~~~~~
-Released: 2022-12-02
+Version 44~alpha
+~~~~~~~~~~~~~~~~
+Released: 2023-01-06
 
-This is a stable release with the following changes:
- * Fix show of updatable app in the details page
- * Fix search for apps providing some feature under rpm-ostree
- * Fix sending of ODRS data when using libsoup3
- * Fix occasional crash when installing apps
+This is an unstable release with the following changes:
+ * Allow automatically removing unneeded runtimes
+ * Show changelogs for rpm-ostree updates
+ * Limit the maximum description length in context tiles
+ * Support a less-prominent UI for regular updates for image-based OSs
+ * Improvements to error notification display
+ * Reduce reloading/refreshing of view when installing apps
+ * Minor usability improvements to review lists and adding a review
+ * Stop using libdnf in rpm-ostree backend
+ * UI polish on app source chooser
+ * Fix distro upgrades
+ * Fix system-wide external AppStream support
+ * UI polish on Incompatible Software dialog
+ * Fix opening web apps
+ * Fix notifying about available firmware updates
+ * Improve scaling of Explore page on phones
+ * Add a placeholder to search entry
+ * Fix repo authentication dialog
+ * Periodically refresh cached app icons
+ * Improve labels and tooltips on Updates page
+ * Annotate firmware updates with their release urgency
+ * Adapt to GTK API deprecations
+ * Use the OS logo for minor update rows for image-based OSs
+ * Change ‘application’ to ‘app’ in translatable strings
+ * Stop notifying about unprepared critical updates
+ * Show the ‘Learn More’ link for larger updates of image-based OSs if provided
+ * Add translations for more firmware device categories
 
 This release also updates translations:
  * Abkhazian (Nart Tlisha)
  * Belarusian (Vasil Pupkin)
+ * Catalan (Jordi Mas)
+ * Chinese (Taiwan) (Cheng-Chia Tseng)
+ * Croatian (Goran Vidović)
  * Czech (Daniel Rusek)
+ * French (Claude Paroz)
+ * Friulian (Fabio Tomat)
  * Georgian (Zurab Kargareteli)
- * Greek (Kosmas Martakidis)
+ * German (Philipp Kiemle, Jürgen Benvenuti)
+ * Greek, Modern (1453-) (Kosmas Martakidis)
  * Hebrew (Yosef Or Boczko)
- * Hungarian (Balázs Meskó)
+ * Hungarian (Balázs Úr)
+ * Icelandic (Sveinn í Felli)
+ * Interlingue (Olga Smirnova)
+ * Italian (Gianvito Cavasoli)
+ * Kazakh (Baurzhan Muftakhidinov)
+ * Panjabi (A S Alam)
+ * Persian (Danial Behzadi)
  * Russian (Aleksandr Melman)
+ * Slovenian (Matej Urbančič)
  * Turkish (Sabri Ünal)
+ * Ukrainian (Yuri Chornoivan)
 
 Version 43.1
 ~~~~~~~~~~~~

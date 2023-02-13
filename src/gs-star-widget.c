@@ -4,7 +4,7 @@
  * Copyright (C) 2013 Richard Hughes <richard@hughsie.com>
  * Copyright (C) 2014-2015 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -130,7 +130,7 @@ gs_star_widget_refresh (GsStarWidget *star)
 
 		/* create image */
 		im = gs_star_image_new ();
-		gtk_widget_set_size_request (im, (gint) priv->icon_size, (gint) priv->icon_size);
+		gs_star_image_set_pixel_size (GS_STAR_IMAGE (im), (gint) priv->icon_size);
 
 		priv->images[i] = im;
 
@@ -148,7 +148,7 @@ gs_star_widget_refresh (GsStarWidget *star)
 			w = im;
 		}
 		gtk_widget_set_sensitive (w, priv->interactive);
-		gtk_style_context_add_class (gtk_widget_get_style_context (w), "star");
+		gtk_widget_add_css_class (w, "star");
 		gtk_widget_set_visible (w, TRUE);
 		gtk_box_append (GTK_BOX (priv->box1), w);
 	}

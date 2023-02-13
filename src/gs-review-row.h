@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2016 Canonical Ltd.
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #pragma once
@@ -52,5 +52,6 @@ void		 gs_review_row_set_actions	(GsReviewRow	*review_row,
 						 guint64	 actions);
 void		 gs_review_row_set_network_available	(GsReviewRow	*review_row,
 							 gboolean	 network_available);
+void		 gs_review_row_refresh		(GsReviewRow	*row);
 
 G_END_DECLS

@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2021 Matthew Leeds <mwleeds@endlessos.org>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -41,7 +41,7 @@ populate_version_history (GsAppVersionHistoryDialog *dialog,
 						     gs_app_get_version (app),
 						     gs_app_get_release_date (app), NULL);
 		gtk_list_box_append (GTK_LIST_BOX (dialog->listbox), row);
-		gtk_widget_show (row);
+		gtk_widget_set_visible (row, TRUE);
 		return;
 	}
 
@@ -57,7 +57,7 @@ populate_version_history (GsAppVersionHistoryDialog *dialog,
 						     as_release_get_description (version));
 
 		gtk_list_box_append (GTK_LIST_BOX (dialog->listbox), row);
-		gtk_widget_show (row);
+		gtk_widget_set_visible (row, TRUE);
 	}
 }
 

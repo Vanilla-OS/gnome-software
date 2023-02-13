@@ -5,7 +5,7 @@
  * Copyright (C) 2013 Matthias Clasen <mclasen@redhat.com>
  * Copyright (C) 2014-2018 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -334,7 +334,7 @@ _build_autoupdated_notification (GsUpdateMonitor *monitor, GsAppList *list)
 			    _filter_by_app_kind,
 			    GUINT_TO_POINTER(AS_COMPONENT_KIND_DESKTOP_APP));
 	gs_app_list_sort (list_apps, _sort_by_rating_cb, NULL);
-	/* FIXME: add the applications that are currently active that use one
+	/* FIXME: add the apps that are currently active that use one
 	 * of the updated runtimes */
 	if (gs_app_list_length (list_apps) == 0) {
 		g_debug ("no desktop apps in updated list, ignoring");
@@ -352,14 +352,14 @@ _build_autoupdated_notification (GsUpdateMonitor *monitor, GsAppList *list)
 	if (gs_app_list_length (list_apps) > 0) {
 		if (need_restart_cnt > 0) {
 			/* TRANSLATORS: apps were auto-updated and restart is required */
-			title = g_strdup_printf (ngettext ("%u Application Updated — Restart Required",
-			                                   "%u Applications Updated — Restart Required",
+			title = g_strdup_printf (ngettext ("%u App Updated — Restart Required",
+			                                   "%u Apps Updated — Restart Required",
 			                                   gs_app_list_length (list_apps)),
 			                         gs_app_list_length (list_apps));
 		} else {
 			/* TRANSLATORS: apps were auto-updated */
-			title = g_strdup_printf (ngettext ("%u Application Updated",
-			                                   "%u Applications Updated",
+			title = g_strdup_printf (ngettext ("%u App Updated",
+			                                   "%u Apps Updated",
 			                                   gs_app_list_length (list_apps)),
 			                         gs_app_list_length (list_apps));
 		}
@@ -368,26 +368,26 @@ _build_autoupdated_notification (GsUpdateMonitor *monitor, GsAppList *list)
 	/* 1 app updated */
 	if (gs_app_list_length (list_apps) == 1) {
 		GsApp *app = gs_app_list_index (list_apps, 0);
-		/* TRANSLATORS: %1 is an application name, e.g. Firefox */
+		/* TRANSLATORS: %1 is an app name, e.g. Firefox */
 		g_string_append_printf (body, _("%s has been updated."), gs_app_get_name (app));
 		if (need_restart_cnt > 0) {
 			/* TRANSLATORS: the app needs restarting */
-			g_string_append_printf (body, " %s", _("Please restart the application."));
+			g_string_append_printf (body, " %s", _("Please restart the app."));
 		}
 
 	/* 2 apps updated */
 	} else if (gs_app_list_length (list_apps) == 2) {
 		GsApp *app1 = gs_app_list_index (list_apps, 0);
 		GsApp *app2 = gs_app_list_index (list_apps, 1);
-		/* TRANSLATORS: %1 and %2 are both application names, e.g. Firefox */
+		/* TRANSLATORS: %1 and %2 are both app names, e.g. Firefox */
 		g_string_append_printf (body, _("%s and %s have been updated."),
 					gs_app_get_name (app1),
 					gs_app_get_name (app2));
 		if (need_restart_cnt > 0) {
 			g_string_append (body, " ");
-			/* TRANSLATORS: at least one application needs restarting */
-			g_string_append_printf (body, ngettext ("%u application requires a restart.",
-								"%u applications require a restart.",
+			/* TRANSLATORS: at least one app needs restarting */
+			g_string_append_printf (body, ngettext ("%u app requires a restart.",
+								"%u apps require a restart.",
 								need_restart_cnt),
 						need_restart_cnt);
 		}
@@ -397,16 +397,16 @@ _build_autoupdated_notification (GsUpdateMonitor *monitor, GsAppList *list)
 		GsApp *app1 = gs_app_list_index (list_apps, 0);
 		GsApp *app2 = gs_app_list_index (list_apps, 1);
 		GsApp *app3 = gs_app_list_index (list_apps, 2);
-		/* TRANSLATORS: %1, %2 and %3 are all application names, e.g. Firefox */
+		/* TRANSLATORS: %1, %2 and %3 are all app names, e.g. Firefox */
 		g_string_append_printf (body, _("Includes %s, %s and %s."),
 					gs_app_get_name (app1),
 					gs_app_get_name (app2),
 					gs_app_get_name (app3));
 		if (need_restart_cnt > 0) {
 			g_string_append (body, " ");
-			/* TRANSLATORS: at least one application needs restarting */
-			g_string_append_printf (body, ngettext ("%u application requires a restart.",
-								"%u applications require a restart.",
+			/* TRANSLATORS: at least one app needs restarting */
+			g_string_append_printf (body, ngettext ("%u app requires a restart.",
+								"%u apps require a restart.",
 								need_restart_cnt),
 						need_restart_cnt);
 		}
@@ -420,10 +420,26 @@ _build_autoupdated_notification (GsUpdateMonitor *monitor, GsAppList *list)
 	return g_steal_pointer (&n);
 }
 
+typedef struct {
+	GsUpdateMonitor *monitor;  /* (owned) */
+	GsPluginJob *job;  /* (owned) */
+} UpdateAppsData;
+
 static void
-update_finished_cb (GObject *object, GAsyncResult *res, gpointer data)
+update_apps_data_free (UpdateAppsData *data)
 {
-	GsUpdateMonitor *monitor = GS_UPDATE_MONITOR (data);
+	g_clear_object (&data->monitor);
+	g_clear_object (&data->job);
+	g_free (data);
+}
+
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (UpdateAppsData, update_apps_data_free)
+
+static void
+update_finished_cb (GObject *object, GAsyncResult *res, gpointer user_data)
+{
+	g_autoptr(UpdateAppsData) data = g_steal_pointer (&user_data);
+	GsUpdateMonitor *monitor = data->monitor;
 	GsPluginLoader *plugin_loader = GS_PLUGIN_LOADER (object);
 	g_autoptr(GError) error = NULL;
 	g_autoptr(GsAppList) list = NULL;
@@ -431,12 +447,10 @@ update_finished_cb (GObject *object, GAsyncResult *res, gpointer data)
 	/* get result */
 	list = gs_plugin_loader_job_process_finish (plugin_loader, res, &error);
 	if (list == NULL) {
-		gs_plugin_loader_claim_error (plugin_loader,
-					      NULL,
-					      GS_PLUGIN_ACTION_UPDATE,
-					      NULL,
-					      TRUE,
-					      error);
+		gs_plugin_loader_claim_job_error (plugin_loader,
+						  NULL,
+						  data->job,
+						  error);
 		return;
 	}
 
@@ -463,9 +477,10 @@ _should_auto_update (GsApp *app)
 }
 
 static void
-download_finished_cb (GObject *object, GAsyncResult *res, gpointer data)
+download_finished_cb (GObject *object, GAsyncResult *res, gpointer user_data)
 {
-	GsUpdateMonitor *monitor = GS_UPDATE_MONITOR (data);
+	g_autoptr(UpdateAppsData) data = g_steal_pointer (&user_data);
+	GsUpdateMonitor *monitor = data->monitor;
 	GsPluginLoader *plugin_loader = GS_PLUGIN_LOADER (object);
 	g_autoptr(GError) error = NULL;
 	g_autoptr(GsAppList) list = NULL;
@@ -475,12 +490,10 @@ download_finished_cb (GObject *object, GAsyncResult *res, gpointer data)
 	/* get result */
 	list = gs_plugin_loader_job_process_finish (plugin_loader, res, &error);
 	if (list == NULL) {
-		gs_plugin_loader_claim_error (plugin_loader,
-					      NULL,
-					      GS_PLUGIN_ACTION_DOWNLOAD,
-					      NULL,
-					      TRUE,
-					      error);
+		gs_plugin_loader_claim_job_error (plugin_loader,
+						  NULL,
+						  data->job,
+						  error);
 		return;
 	}
 
@@ -499,15 +512,15 @@ download_finished_cb (GObject *object, GAsyncResult *res, gpointer data)
 	/* install any apps that can be installed LIVE */
 	if (gs_app_list_length (update_online) > 0) {
 		g_autoptr(GsPluginJob) plugin_job = NULL;
-		plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_UPDATE,
-						 "list", update_online,
-						 "propagate-error", TRUE,
-						 NULL);
+
+		plugin_job = gs_plugin_job_update_apps_new (update_online,
+							    GS_PLUGIN_UPDATE_APPS_FLAGS_NO_DOWNLOAD);
+		gs_plugin_job_set_propagate_error (plugin_job, TRUE);
 		gs_plugin_loader_job_process_async (monitor->plugin_loader,
 						    plugin_job,
 						    monitor->update_cancellable,
 						    update_finished_cb,
-						    monitor);
+						    g_steal_pointer (&data));
 	}
 
 	/* show a notification for offline updates */
@@ -516,9 +529,9 @@ download_finished_cb (GObject *object, GAsyncResult *res, gpointer data)
 }
 
 static void
-get_updates_finished_cb (GObject *object, GAsyncResult *res, gpointer data)
+get_updates_finished_cb (GObject *object, GAsyncResult *res, gpointer user_data)
 {
-	g_autoptr(DownloadUpdatesData) download_updates_data = (DownloadUpdatesData *) data;
+	g_autoptr(DownloadUpdatesData) download_updates_data = (DownloadUpdatesData *) user_data;
 	GsUpdateMonitor *monitor = download_updates_data->monitor;
 	guint64 security_timestamp = 0;
 	guint64 security_timestamp_old = 0;
@@ -570,21 +583,26 @@ get_updates_finished_cb (GObject *object, GAsyncResult *res, gpointer data)
 	    (security_timestamp_old != security_timestamp ||
 	    check_if_timestamp_more_than_days_ago (monitor, "install-timestamp", 14))) {
 		g_autoptr(GsPluginJob) plugin_job = NULL;
+		g_autoptr(UpdateAppsData) data = NULL;
 
 		/* download any updates; individual plugins are responsible for deciding
 		 * whether it’s appropriate to unconditionally download the updates, or
 		 * to schedule the download in accordance with the user’s metered data
 		 * preferences */
-		plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_DOWNLOAD,
-						 "list", apps,
-						 "propagate-error", TRUE,
-						 NULL);
+		plugin_job = gs_plugin_job_update_apps_new (apps,
+							    GS_PLUGIN_UPDATE_APPS_FLAGS_NO_APPLY);
+		gs_plugin_job_set_propagate_error (plugin_job, TRUE);
+
+		data = g_new0 (UpdateAppsData, 1);
+		data->monitor = g_object_ref (monitor);
+		data->job = g_object_ref (plugin_job);
+
 		g_debug ("Getting updates");
 		gs_plugin_loader_job_process_async (monitor->plugin_loader,
 						    plugin_job,
 						    monitor->refresh_cancellable,
 						    download_finished_cb,
-						    monitor);
+						    g_steal_pointer (&data));
 	} else {
 		g_autoptr(GsAppList) update_online = NULL;
 		g_autoptr(GsAppList) update_offline = NULL;
@@ -610,17 +628,22 @@ get_updates_finished_cb (GObject *object, GAsyncResult *res, gpointer data)
 
 		if (should_download && gs_app_list_length (update_online) > 0) {
 			g_autoptr(GsPluginJob) plugin_job = NULL;
+			g_autoptr(UpdateAppsData) data = NULL;
 
-			plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_DOWNLOAD,
-							 "list", update_online,
-							 "propagate-error", TRUE,
-							 NULL);
+			plugin_job = gs_plugin_job_update_apps_new (update_online,
+								    GS_PLUGIN_UPDATE_APPS_FLAGS_NO_APPLY);
+			gs_plugin_job_set_propagate_error (plugin_job, TRUE);
+
+			data = g_new0 (UpdateAppsData, 1);
+			data->monitor = g_object_ref (monitor);
+			data->job = g_object_ref (plugin_job);
+
 			g_debug ("Getting %u online updates", gs_app_list_length (update_online));
 			gs_plugin_loader_job_process_async (monitor->plugin_loader,
 							    plugin_job,
 							    monitor->refresh_cancellable,
 							    download_finished_cb,
-							    monitor);
+							    g_steal_pointer (&data));
 		}
 
 		if (should_download)
@@ -1181,7 +1204,7 @@ get_updates_historical_cb (GObject *object, GAsyncResult *res, gpointer data)
 		notification = g_notification_new (title);
 		g_notification_set_body (notification, message);
 		/* TRANSLATORS: Button to look at the updates that were installed.
-		 * Note that it has nothing to do with the application reviews, the
+		 * Note that it has nothing to do with the app reviews, the
 		 * users can't express their opinions here. In some languages
 		 * "Review (evaluate) something" is a different translation than
 		 * "Review (browse) something." */

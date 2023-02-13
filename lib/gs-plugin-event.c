@@ -4,7 +4,7 @@
  * Copyright (C) 2016 Richard Hughes <richard@hughsie.com>
  * Copyright (C) 2016 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 /**
@@ -58,7 +58,7 @@ static GParamSpec *props[PROP_ERROR + 1] = { NULL, };
  * gs_plugin_event_get_app:
  * @event: A #GsPluginEvent
  *
- * Gets an application that created the event.
+ * Gets an app that created the event.
  *
  * Returns: (transfer none): a #GsApp, or %NULL if unset
  *
@@ -94,7 +94,7 @@ gs_plugin_event_get_origin (GsPluginEvent *event)
  *
  * Gets an action that created the event.
  *
- * Returns: (transfer none): a #GsPluginAction, e.g. %GS_PLUGIN_ACTION_UPDATE
+ * Returns: (transfer none): a #GsPluginAction, e.g. %GS_PLUGIN_ACTION_INSTALL
  *
  * Since: 3.22
  **/

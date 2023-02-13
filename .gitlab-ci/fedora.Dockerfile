@@ -1,4 +1,4 @@
-FROM fedora:35
+FROM fedora:37
 
 RUN dnf -y install \
     appstream \
@@ -30,8 +30,8 @@ RUN dnf -y install \
     lcov \
     lmdb-devel \
     appstream-devel \
+    libadwaita-devel \
     libcurl-devel \
-    libdnf-devel \
     libepoxy-devel \
     libglib-testing-devel \
     libgudev-devel \

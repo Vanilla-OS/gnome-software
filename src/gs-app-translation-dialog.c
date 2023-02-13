@@ -5,7 +5,7 @@
  *
  * Author: Philip Withnall <pwithnall@endlessos.org>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 /**
@@ -63,10 +63,10 @@ update_labels (GsAppTranslationDialog *self)
 	g_autofree gchar *title = NULL;
 	g_autofree gchar *description = NULL;
 
-	/* Translators: The placeholder is an application name */
+	/* Translators: The placeholder is an app name */
 	title = g_strdup_printf (_("Help Translate %s"), gs_app_get_name (self->app));
 
-	/* Translators: The placeholder is an application name */
+	/* Translators: The placeholder is an app name */
 	description = g_strdup_printf (_("%s is designed, developed, and translated by an "
 					 "international community of volunteers."
 					 "\n\n"
@@ -112,7 +112,7 @@ button_clicked_cb (GtkButton *button,
 	GsAppTranslationDialog *self = GS_APP_TRANSLATION_DIALOG (user_data);
 	const gchar *url = get_url_for_app (self->app);
 
-	gtk_show_uri (GTK_WINDOW (self), url, GDK_CURRENT_TIME);
+	gs_show_uri (GTK_WINDOW (self), url);
 }
 
 static void

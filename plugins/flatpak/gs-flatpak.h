@@ -4,7 +4,7 @@
  * Copyright (C) 2016 Joaquim Rocha <jrocha@endlessm.com>
  * Copyright (C) 2016-2018 Richard Hughes <richard@hughsie.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #pragma once
@@ -180,5 +180,8 @@ gboolean	gs_flatpak_url_to_app		(GsFlatpak		*self,
 void		gs_flatpak_set_busy		(GsFlatpak		*self,
 						 gboolean		 busy);
 gboolean	gs_flatpak_get_busy		(GsFlatpak		*self);
+gboolean	gs_flatpak_purge_sync		(GsFlatpak              *self,
+						 GCancellable           *cancellable,
+						 GError                **error);
 
 G_END_DECLS

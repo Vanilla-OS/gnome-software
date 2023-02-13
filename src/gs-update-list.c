@@ -4,7 +4,7 @@
  * Copyright (C) 2013-2017 Richard Hughes <richard@hughsie.com>
  * Copyright (C) 2014-2018 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -68,7 +68,7 @@ gs_update_list_add_app (GsUpdateList *update_list, GsApp *app)
 	g_signal_connect_object (app, "notify::state",
 	                         G_CALLBACK (gs_update_list_app_state_notify_cb),
 	                         app_row, 0);
-	gtk_widget_show (app_row);
+	gtk_widget_set_visible (app_row, TRUE);
 }
 
 static gint
@@ -107,7 +107,7 @@ gs_update_list_init (GsUpdateList *update_list)
 	gtk_list_box_set_selection_mode (priv->listbox, GTK_SELECTION_NONE);
 	gtk_widget_set_parent (GTK_WIDGET (priv->listbox), GTK_WIDGET (update_list));
 	gtk_list_box_set_sort_func (priv->listbox, list_sort_func, update_list, NULL);
-	gtk_style_context_add_class (gtk_widget_get_style_context (GTK_WIDGET (priv->listbox)), "boxed-list");
+	gtk_widget_add_css_class (GTK_WIDGET (priv->listbox), "boxed-list");
 
 	g_signal_connect (priv->listbox, "row-activated",
 			  G_CALLBACK (installed_updates_row_activated_cb), update_list);

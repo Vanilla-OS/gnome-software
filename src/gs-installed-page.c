@@ -5,7 +5,7 @@
  * Copyright (C) 2013 Matthias Clasen <mclasen@redhat.com>
  * Copyright (C) 2014-2018 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -293,7 +293,7 @@ gs_installed_page_notify_state_changed_cb (GsApp *app,
 
 	gtk_list_box_row_changed (GTK_LIST_BOX_ROW (app_row));
 
-	/* Filter which applications can be shown in the installed page */
+	/* Filter which apps can be shown in the installed page */
 	if (state != GS_APP_STATE_INSTALLING &&
 	    state != GS_APP_STATE_INSTALLED &&
 	    state != GS_APP_STATE_REMOVING &&
@@ -334,7 +334,7 @@ gs_installed_page_add_app (GsInstalledPage *self, GsAppList *list, GsApp *app)
 {
 	GtkWidget *app_row;
 
-	/* only show if is an actual application */
+	/* only show if is an actual app */
 	if (!gs_installed_page_is_actual_app (app))
 		return;
 
@@ -557,11 +557,11 @@ gs_installed_page_switch_to (GsPage *page)
  *
  * Get a sort key to achive this:
  *
- * 1. state:installing applications
- * 2. state: applications queued for installing
- * 3. state:removing applications
- * 4. kind:normal applications
- * 5. kind:system applications
+ * 1. state:installing apps
+ * 2. state: apps queued for installing
+ * 3. state:removing apps
+ * 4. kind:normal apps
+ * 5. kind:system apps
  *
  * Within each of these groups, they are sorted by the install date and then
  * by name.
@@ -733,7 +733,8 @@ gs_installed_page_pending_apps_refined_cb (GObject *source,
 									 res,
 									 &error);
 	if (list == NULL) {
-		if (!g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_CANCELLED))
+		if (!g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED) &&
+		    !g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_CANCELLED))
 			g_warning ("failed to refine pending apps: %s", error->message);
 		return;
 	}

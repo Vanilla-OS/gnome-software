@@ -5,7 +5,7 @@
  * Copyright (C) 2013 Matthias Clasen <mclasen@redhat.com>
  * Copyright (C) 2014-2018 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -109,17 +109,14 @@ _enable_repo (InstallRemoveData *install_data)
 }
 
 static void
-enable_repo_response_cb (GtkDialog *confirm_dialog,
-			 gint response,
+enable_repo_response_cb (AdwMessageDialog *confirm_dialog,
+			 const gchar *response,
 			 gpointer user_data)
 {
 	g_autoptr(InstallRemoveData) install_data = (InstallRemoveData *) user_data;
 
-	/* unmap the dialog */
-	gtk_window_destroy (GTK_WINDOW (confirm_dialog));
-
 	/* not agreed */
-	if (response != GTK_RESPONSE_OK) {
+	if (g_strcmp0 (response, "enable") != 0) {
 		g_autoptr(GsRepoRow) row = g_weak_ref_get (&install_data->row_weakref);
 		if (row)
 			gs_repo_row_unmark_busy (row);
@@ -160,18 +157,15 @@ enable_repo (GsReposDialog *dialog,
 		}
 
 		/* ask for confirmation */
-		confirm_dialog = gtk_message_dialog_new (GTK_WINDOW (dialog),
-							 GTK_DIALOG_MODAL,
-							 GTK_MESSAGE_QUESTION,
-							 GTK_BUTTONS_CANCEL,
+		confirm_dialog = adw_message_dialog_new (GTK_WINDOW (dialog),
 							 /* TRANSLATORS: window title */
-							 "%s", _("Enable Third-Party Software Repository?"));
-		gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (confirm_dialog),
-							  "%s", message);
-
-		/* TRANSLATORS: button to accept the agreement */
-		gtk_dialog_add_button (GTK_DIALOG (confirm_dialog), _("Enable"),
-				       GTK_RESPONSE_OK);
+							 _("Enable Third-Party Software Repository?"),
+							 message);
+		adw_message_dialog_add_responses (ADW_MESSAGE_DIALOG (confirm_dialog),
+						  "cancel",  _("_Cancel"),
+						  /* TRANSLATORS: button to accept the agreement */
+						  "enable", _("_Enable"),
+						  NULL);
 
 		/* handle this async */
 		g_signal_connect (confirm_dialog, "response",
@@ -188,19 +182,17 @@ enable_repo (GsReposDialog *dialog,
 }
 
 static void
-remove_repo_response_cb (GtkDialog *confirm_dialog,
-                         gint response,
+remove_repo_response_cb (AdwMessageDialog *confirm_dialog,
+                         const gchar *response,
                          gpointer user_data)
 {
 	g_autoptr(InstallRemoveData) remove_data = (InstallRemoveData *) user_data;
 	GsReposDialog *dialog = remove_data->dialog;
 	g_autoptr(GsPluginJob) plugin_job = NULL;
 
-	/* unmap the dialog */
-	gtk_window_destroy (GTK_WINDOW (confirm_dialog));
-
 	/* not agreed */
-	if (response != GTK_RESPONSE_OK) {
+	if (g_strcmp0 (response, "disable") != 0 &&
+	    g_strcmp0 (response, "remove") != 0) {
 		g_autoptr(GsRepoRow) row = g_weak_ref_get (&remove_data->row_weakref);
 		if (row)
 			gs_repo_row_unmark_busy (row);
@@ -226,8 +218,6 @@ remove_confirm_repo (GsReposDialog *dialog,
 	InstallRemoveData *remove_data;
 	GtkWidget *confirm_dialog;
 	g_autofree gchar *message = NULL;
-	GtkWidget *button;
-	GtkStyleContext *context;
 
 	remove_data = g_slice_new0 (InstallRemoveData);
 	remove_data->operation = operation;
@@ -240,24 +230,21 @@ remove_confirm_repo (GsReposDialog *dialog,
 			gs_app_get_name (repo));
 
 	/* ask for confirmation */
-	confirm_dialog = gtk_message_dialog_new (GTK_WINDOW (dialog),
-	                                         GTK_DIALOG_MODAL,
-	                                         GTK_MESSAGE_QUESTION,
-	                                         GTK_BUTTONS_CANCEL,
-	                                         "%s",
-						 operation == GS_PLUGIN_MANAGE_REPOSITORY_FLAGS_DISABLE ? _("Disable Repository?") : _("Remove Repository?"));
-	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (confirm_dialog),
-						  "%s", message);
+	confirm_dialog = adw_message_dialog_new (GTK_WINDOW (dialog),
+						 operation == GS_PLUGIN_MANAGE_REPOSITORY_FLAGS_DISABLE ? _("Disable Repository?") : _("Remove Repository?"),
+						 message);
+	adw_message_dialog_add_response (ADW_MESSAGE_DIALOG (confirm_dialog),
+					 "cancel",  _("_Cancel"));
 
 	if (operation == GS_PLUGIN_MANAGE_REPOSITORY_FLAGS_DISABLE) {
 		/* TRANSLATORS: this is button text to disable a repo */
-		button = gtk_dialog_add_button (GTK_DIALOG (confirm_dialog), _("_Disable"), GTK_RESPONSE_OK);
+		adw_message_dialog_add_response (ADW_MESSAGE_DIALOG (confirm_dialog), "disable",  _("_Disable"));
+		adw_message_dialog_set_response_appearance (ADW_MESSAGE_DIALOG (confirm_dialog), "disable", ADW_RESPONSE_DESTRUCTIVE);
 	} else {
 		/* TRANSLATORS: this is button text to remove a repo */
-		button = gtk_dialog_add_button (GTK_DIALOG (confirm_dialog), _("_Remove"), GTK_RESPONSE_OK);
+		adw_message_dialog_add_response (ADW_MESSAGE_DIALOG (confirm_dialog), "remove",  _("_Remove"));
+		adw_message_dialog_set_response_appearance (ADW_MESSAGE_DIALOG (confirm_dialog), "remove", ADW_RESPONSE_DESTRUCTIVE);
 	}
-	context = gtk_widget_get_style_context (button);
-	gtk_style_context_add_class (context, "destructive-action");
 
 	/* handle this async */
 	g_signal_connect (confirm_dialog, "response",
@@ -394,7 +381,7 @@ add_repo (GsReposDialog *dialog,
 		g_signal_connect_object (section, "switch-clicked",
 					 G_CALLBACK (repo_section_switch_clicked_cb), dialog, 0);
 		g_hash_table_insert (dialog->sections, g_steal_pointer (&origin_ui), section);
-		gtk_widget_show (section);
+		gtk_widget_set_visible (section, TRUE);
 	}
 
 	gs_repos_section_add_repo (GS_REPOS_SECTION (section), repo);
@@ -499,7 +486,7 @@ get_sources_cb (GsPluginLoader *plugin_loader,
 		gtk_switch_set_active (GTK_SWITCH (widget), dialog->third_party_enabled);
 		g_signal_connect_object (widget, "notify::active",
 					 G_CALLBACK (fedora_third_party_repos_switch_notify_cb), dialog, 0);
-		gtk_widget_show (widget);
+		gtk_widget_set_visible (widget, TRUE);
 
 		row = adw_action_row_new ();
 #if ADW_CHECK_VERSION(1,2,0)
@@ -509,7 +496,7 @@ get_sources_cb (GsPluginLoader *plugin_loader,
 		adw_action_row_set_subtitle (ADW_ACTION_ROW (row), _("Turn on new repositories when they are added."));
 		adw_action_row_set_activatable_widget (ADW_ACTION_ROW (row), widget);
 		adw_action_row_add_suffix (ADW_ACTION_ROW (row), widget);
-		gtk_widget_show (row);
+		gtk_widget_set_visible (row, TRUE);
 
 		anchor = g_strdup_printf ("<a href=\"%s\">%s</a>",
 	                        "https://docs.fedoraproject.org/en-US/workstation-working-group/third-party-repos/",
@@ -529,7 +516,7 @@ get_sources_cb (GsPluginLoader *plugin_loader,
 
 		adw_preferences_group_set_description (ADW_PREFERENCES_GROUP (widget), hint);
 
-		gtk_widget_show (widget);
+		gtk_widget_set_visible (widget, TRUE);
 		adw_preferences_group_add (ADW_PREFERENCES_GROUP (widget), row);
 		adw_preferences_page_add (ADW_PREFERENCES_PAGE (dialog->content_page),
 					  ADW_PREFERENCES_GROUP (widget));
@@ -542,7 +529,7 @@ get_sources_cb (GsPluginLoader *plugin_loader,
 		gs_repos_section_set_sort_key (section, "900");
 		g_signal_connect_object (section, "switch-clicked",
 					 G_CALLBACK (repo_section_switch_clicked_cb), dialog, 0);
-		gtk_widget_show (GTK_WIDGET (section));
+		gtk_widget_set_visible (GTK_WIDGET (section), TRUE);
 
 		for (GSList *link = other_repos; link; link = g_slist_next (link)) {
 			GsApp *repo = link->data;

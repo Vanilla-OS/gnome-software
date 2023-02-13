@@ -36,7 +36,7 @@
                 <child>
                   <object class="GtkLabel" id="loading_label">
                     <property name="justify">center</property>
-                    <property name="label" translatable="yes">Loading application details…</property>
+                    <property name="label" translatable="yes">Loading app details…</property>
                     <property name="wrap">True</property>
                     <attributes>
                       <attribute name="scale" value="1.4"/>
@@ -52,46 +52,23 @@
           <object class="GtkStackPage">
             <property name="name">ready</property>
             <property name="child">
-              <object class="GtkScrolledWindow" id="scrolledwindow_details">
-                <property name="can_focus">True</property>
-                <property name="hscrollbar_policy">automatic</property>
-                <property name="vscrollbar_policy">automatic</property>
+              <object class="GtkBox">
+                <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkViewport" id="viewport1">
-                    <property name="scroll-to-focus">True</property>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="orientation">vertical</property>
-                        <child>
-                          <object class="GtkInfoBar" id="translation_infobar">
-                            <property name="revealed">False</property>
-                            <property name="show-close-button">False</property>
-                            <signal name="response" handler="gs_details_page_translation_infobar_response_cb"/>
-                            <child>
-                              <object class="GtkCenterBox">
-                                <property name="orientation">horizontal</property>
-                                <property name="hexpand">True</property>
-                                <child type="center">
-                                  <object class="GtkLabel" id="translation_infobar_label">
-                                    <property name="hexpand">True</property>
-                                    <property name="label" translatable="yes">This software is not available in your language and will appear in US English.</property>
-                                    <property name="wrap">True</property>
-                                  </object>
-                                </child>
-                                <child type="end">
-                                  <object class="GtkButton" id="translation_infobar_button">
-                                    <property name="label" translatable="yes">Help _Translate</property>
-                                    <property name="use-underline">True</property>
-                                  </object>
-                                </child>
-                              </object>
-                            </child>
-                            <action-widgets>
-                              <action-widget response="GTK_RESPONSE_OK">translation_infobar_button</action-widget>
-                            </action-widgets>
-                          </object>
-                        </child>
+                  <object class="AdwBanner" id="translation_banner">
+                    <property name="button-label" translatable="yes">Help _Translate</property>
+                    <signal name="button-clicked" handler="gs_details_page_translation_banner_clicked_cb" swapped="yes"/>
+                  </object>
+                </child>
 
+                <child>
+                  <object class="GtkScrolledWindow" id="scrolledwindow_details">
+                    <property name="can_focus">True</property>
+                    <property name="hscrollbar_policy">automatic</property>
+                    <property name="vscrollbar_policy">automatic</property>
+                    <child>
+                      <object class="GtkViewport" id="viewport1">
+                        <property name="scroll-to-focus">True</property>
                         <child>
                           <object class="GtkBox" id="box_details">
                             <property name="orientation">vertical</property>
@@ -99,6 +76,7 @@
                             <property name="valign">start</property>
                             <property name="spacing">18</property>
                             <property name="hexpand">False</property>
+                            <property name="vexpand">True</property>
                             <style>
                               <class name="details-page"/>
                             </style>
@@ -130,6 +108,7 @@
                                           <object class="GtkBox" id="box_details_header2">
                                             <property name="orientation">vertical</property>
                                             <property name="halign">fill</property>
+                                            <property name="hexpand">True</property>
                                             <property name="valign">center</property>
                                             <property name="spacing">6</property>
                                             <child>
@@ -213,6 +192,8 @@
                                         <child>
                                           <object class="GtkBox" id="box_with_source">
                                             <property name="orientation">vertical</property>
+                                            <property name="halign">end</property>
+                                            <property name="hexpand">False</property>
                                             <property name="valign">center</property>
                                             <property name="margin-top">6</property>
                                             <property name="spacing">6</property>
@@ -229,7 +210,8 @@
                                                     <property name="width_request">105</property>
                                                     <property name="can_focus">True</property>
                                                     <property name="receives_default">True</property>
-                                                    <property name="halign">start</property>
+                                                    <property name="halign">fill</property>
+                                                    <property name="hexpand">True</property>
                                                     <property name="valign">center</property>
                                                     <signal name="clicked" handler="gs_details_page_app_install_button_cb"/>
                                                     <style>
@@ -240,9 +222,12 @@
                                                 <child>
                                                   <object class="GtkButton" id="button_details_launch">
                                                     <property name="can_focus">True</property>
-                                                    <!-- TRANSLATORS: A label for a button to execute the selected application. -->
+                                                    <!-- TRANSLATORS: A label for a button to execute the selected app. -->
                                                     <property name="label" translatable="yes">_Open</property>
                                                     <property name="use_underline">True</property>
+                                                    <property name="width_request">105</property>
+                                                    <property name="halign">fill</property>
+                                                    <property name="hexpand">True</property>
                                                     <property name="valign">center</property>
                                                     <signal name="clicked" handler="gs_details_page_app_launch_button_cb"/>
                                                     <style>
@@ -258,7 +243,8 @@
                                                     <property name="width_request">105</property>
                                                     <property name="can_focus">True</property>
                                                     <property name="receives_default">True</property>
-                                                    <property name="halign">start</property>
+                                                    <property name="halign">fill</property>
+                                                    <property name="hexpand">True</property>
                                                     <property name="valign">center</property>
                                                     <signal name="clicked" handler="gs_details_page_app_update_button_cb"/>
                                                   </object>
@@ -268,8 +254,11 @@
                                                     <property name="visible">False</property>
                                                     <property name="can_focus">True</property>
                                                     <property name="receives_default">True</property>
-                                                    <property name="halign">start</property>
+                                                    <property name="halign">center</property>
+                                                    <property name="hexpand">True</property>
                                                     <property name="valign">center</property>
+                                                    <property name="tooltip-text" translatable="yes">Uninstall</property>
+                                                    <property name="use_underline">True</property>
                                                     <signal name="clicked" handler="gs_details_page_app_remove_button_cb"/>
                                                     <child>
                                                       <object class="GtkImage">
@@ -277,7 +266,7 @@
                                                       </object>
                                                     </child>
                                                     <accessibility>
-                                                      <!-- TRANSLATORS: button text in the header when an application can be erased -->
+                                                      <!-- TRANSLATORS: button text in the header when an app can be erased -->
                                                       <property name="label" translatable="yes">Uninstall</property>
                                                     </accessibility>
                                                   </object>
@@ -286,6 +275,9 @@
                                                   <object class="GtkCenterBox">
                                                     <property name="visible" bind-source="button_cancel" bind-property="visible" bind-flags="sync-create"/>
                                                     <property name="orientation">vertical</property>
+                                                    <property name="width_request">105</property>
+                                                    <property name="halign">center</property>
+                                                    <property name="hexpand">True</property>
                                                     <property name="valign">center</property>
                                                     <child type="center">
                                                       <object class="GsProgressButton" id="button_cancel">
@@ -464,7 +456,7 @@
                                             <property name="xalign">0</property>
                                             <property name="wrap">True</property>
                                             <property name="max-width-chars">40</property>
-                                            <property name="label" translatable="yes">Selected add-ons will be installed with the application.</property>
+                                            <property name="label" translatable="yes">Selected add-ons will be installed with the app.</property>
                                           </object>
                                         </child>
                                       </object>
@@ -564,7 +556,7 @@
                                     <property name="valign">start</property>
                                     <property name="xalign">0.0</property>
                                     <property name="wrap">True</property>
-                                    <property name="label" translatable="yes">This application can only be used when there is an active internet connection.</property>
+                                    <property name="label" translatable="yes">This app can only be used when there is an active internet connection.</property>
                                     <style>
                                       <class name="heading"/>
                                     </style>
@@ -582,10 +574,30 @@
                                 <property name="margin-start">12</property>
                                 <property name="margin-end">12</property>
                                 <child>
-                                  <object class="GsInfoBar" id="infobar_details_app_repo">
-                                    <property name="margin_top">20</property>
-                                    <property name="title" translatable="yes">Software Repository Included</property>
-                                    <property name="body" translatable="yes">This application includes a software repository which provides updates, as well as access to other software.</property>
+                                  <object class="GtkBox" id="infobar_details_app_repo">
+                                    <property name="orientation">vertical</property>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="justify">center</property>
+                                        <property name="label" translatable="yes">Software Repository Included</property>
+                                        <property name="wrap">True</property>
+                                        <style>
+                                          <class name="heading"/>
+                                        </style>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="justify">center</property>
+                                        <property name="label" translatable="yes">This app includes a software repository which provides updates, as well as access to other software.</property>
+                                        <property name="wrap">True</property>
+                                      </object>
+                                    </child>
+                                    <style>
+                                      <class name="card"/>
+                                      <class name="info"/>
+                                      <class name="infobox"/>
+                                    </style>
                                   </object>
                                 </child>
                               </object>
@@ -600,10 +612,30 @@
                                 <property name="margin-start">12</property>
                                 <property name="margin-end">12</property>
                                 <child>
-                                  <object class="GsInfoBar" id="infobar_details_app_norepo">
-                                    <property name="margin_top">20</property>
-                                    <property name="title" translatable="yes">No Software Repository Included</property>
-                                    <property name="body" translatable="yes">This application does not include a software repository. It will not be updated with new versions.</property>
+                                  <object class="GtkBox" id="infobar_details_app_norepo">
+                                    <property name="orientation">vertical</property>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="justify">center</property>
+                                        <property name="label" translatable="yes">No Software Repository Included</property>
+                                        <property name="wrap">True</property>
+                                        <style>
+                                          <class name="heading"/>
+                                        </style>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="justify">center</property>
+                                        <property name="label" translatable="yes">This app does not include a software repository. It will not be updated with new versions.</property>
+                                        <property name="wrap">True</property>
+                                      </object>
+                                    </child>
+                                    <style>
+                                      <class name="card"/>
+                                      <class name="info"/>
+                                      <class name="infobox"/>
+                                    </style>
                                   </object>
                                 </child>
                               </object>
@@ -618,10 +650,23 @@
                                 <property name="margin-start">12</property>
                                 <property name="margin-end">12</property>
                                 <child>
-                                  <object class="GsInfoBar" id="infobar_details_package_baseos">
-                                    <property name="message_type">warning</property>
-                                    <property name="margin_top">20</property>
-                                    <property name="title" translatable="yes">This software is already provided by your distribution and should not be replaced.</property>
+                                  <object class="GtkBox" id="infobar_details_package_baseos">
+                                    <property name="orientation">vertical</property>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="justify">center</property>
+                                        <property name="label" translatable="yes">This software is already provided by your distribution and should not be replaced.</property>
+                                        <property name="wrap">True</property>
+                                        <style>
+                                          <class name="heading"/>
+                                        </style>
+                                      </object>
+                                    </child>
+                                    <style>
+                                      <class name="card"/>
+                                      <class name="infobox"/>
+                                      <class name="warning"/>
+                                    </style>
                                   </object>
                                 </child>
                               </object>
@@ -636,11 +681,37 @@
                                 <property name="margin-start">12</property>
                                 <property name="margin-end">12</property>
                                 <child>
-                                  <object class="GsInfoBar" id="infobar_details_repo">
-                                    <property name="margin_top">20</property>
-                                    <property name="title" translatable="yes" comments="Translators: a repository file used for installing software has been discovered.">Software Repository Identified</property>
-                                    <property name="body" translatable="yes">Adding this software repository will give you access to additional software and upgrades.</property>
-                                    <property name="warning" translatable="yes">Only use software repositories that you trust.</property>
+                                  <object class="GtkBox" id="infobar_details_repo">
+                                    <property name="orientation">vertical</property>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="justify">center</property>
+                                        <property name="label" translatable="yes" comments="Translators: a repository file used for installing software has been discovered.">Software Repository Identified</property>"
+                                        <property name="wrap">True</property>
+                                        <style>
+                                          <class name="heading"/>
+                                        </style>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="justify">center</property>
+                                        <property name="label" translatable="yes">Adding this software repository will give you access to additional software and upgrades.</property>
+                                        <property name="wrap">True</property>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="justify">center</property>
+                                        <property name="label" translatable="yes">Only use software repositories that you trust.</property>
+                                        <property name="wrap">True</property>
+                                      </object>
+                                    </child>
+                                    <style>
+                                      <class name="card"/>
+                                      <class name="info"/>
+                                      <class name="infobox"/>
+                                    </style>
                                   </object>
                                 </child>
                               </object>
@@ -904,7 +975,7 @@
                                                         <property name="xalign">0</property>
                                                         <property name="yalign">0.5</property>
                                                         <property name="use_underline">True</property>
-                                                        <property name="label" translatable="yes" comments="Translators: Button opening a dialog where the users can write and publish their opinions about the apps.">_Write Review</property>
+                                                        <property name="label" translatable="yes" comments="Translators: Button opening a dialog where the users can write and publish their opinions about the apps.">Write R_eview</property>
                                                       </object>
                                                     </child>
                                                     <child>
@@ -1053,12 +1124,9 @@
       </object>
     </child>
   </template>
-  <object class="GtkSizeGroup" id="sizegroup_install_remove">
+  <object class="GtkSizeGroup" id="sizegroup_origin_button">
     <widgets>
-      <widget name="button_install"/>
-      <widget name="button_cancel"/>
-      <widget name="button_update"/>
-      <widget name="button_details_launch"/>
+      <widget name="box_install_remove"/>
       <widget name="origin_button"/>
     </widgets>
   </object>

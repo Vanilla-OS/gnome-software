@@ -4,7 +4,7 @@
  * Copyright (C) 2016 Kalev Lember <klember@redhat.com>
  * Copyright (C) 2016 Richard Hughes <richard@hughsie.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -105,19 +105,19 @@ gs_upgrade_banner_refresh (GsUpgradeBanner *self)
 	switch (gs_app_get_state (priv->app)) {
 	case GS_APP_STATE_AVAILABLE:
 	case GS_APP_STATE_QUEUED_FOR_INSTALL:
-		gtk_widget_show (priv->box_upgrades_download);
-		gtk_widget_hide (priv->box_upgrades_downloading);
-		gtk_widget_hide (priv->box_upgrades_install);
+		gtk_widget_set_visible (priv->box_upgrades_download, TRUE);
+		gtk_widget_set_visible (priv->box_upgrades_downloading, FALSE);
+		gtk_widget_set_visible (priv->box_upgrades_install, FALSE);
 		break;
 	case GS_APP_STATE_INSTALLING:
-		gtk_widget_hide (priv->box_upgrades_download);
-		gtk_widget_show (priv->box_upgrades_downloading);
-		gtk_widget_hide (priv->box_upgrades_install);
+		gtk_widget_set_visible (priv->box_upgrades_download, FALSE);
+		gtk_widget_set_visible (priv->box_upgrades_downloading, TRUE);
+		gtk_widget_set_visible (priv->box_upgrades_install, FALSE);
 		break;
 	case GS_APP_STATE_UPDATABLE:
-		gtk_widget_hide (priv->box_upgrades_download);
-		gtk_widget_hide (priv->box_upgrades_downloading);
-		gtk_widget_show (priv->box_upgrades_install);
+		gtk_widget_set_visible (priv->box_upgrades_download, FALSE);
+		gtk_widget_set_visible (priv->box_upgrades_downloading, FALSE);
+		gtk_widget_set_visible (priv->box_upgrades_install, TRUE);
 		break;
 	default:
 		g_critical ("Unexpected app state ‘%s’ of app ‘%s’",
@@ -142,7 +142,7 @@ gs_upgrade_banner_refresh (GsUpgradeBanner *self)
 		g_autofree gchar *link = NULL;
 		link = g_markup_printf_escaped ("<a href=\"%s\">%s</a>", uri, _("Learn about the new version"));
 		gtk_label_set_markup (GTK_LABEL (priv->label_download_info), link);
-		gtk_widget_show (priv->label_download_info);
+		gtk_widget_set_visible (priv->label_download_info, TRUE);
 	} else if (size_download_type == GS_SIZE_TYPE_VALID &&
 		   size_download_bytes > 0) {
 		g_autofree gchar *tmp = NULL;
@@ -151,9 +151,9 @@ gs_upgrade_banner_refresh (GsUpgradeBanner *self)
 		/* Translators: the '%s' is replaced with the download size, forming text like "2 GB download" */
 		str = g_strdup_printf ("%s download", tmp);
 		gtk_label_set_text (GTK_LABEL (priv->label_download_info), str);
-		gtk_widget_show (priv->label_download_info);
+		gtk_widget_set_visible (priv->label_download_info, TRUE);
 	} else {
-		gtk_widget_hide (priv->label_download_info);
+		gtk_widget_set_visible (priv->label_download_info, FALSE);
 	}
 
 	/* do a fill bar for the current progress */
@@ -266,7 +266,7 @@ gs_upgrade_banner_set_app (GsUpgradeBanner *self, GsApp *app)
 	/* perhaps set custom css */
 	css = gs_app_get_metadata_item (app, "GnomeSoftware::UpgradeBanner-css");
 	modified_css = gs_utils_set_key_colors_in_css (css, app);
-	gs_utils_widget_set_css (priv->box_upgrades_info, &priv->banner_provider, "upgrade-banner-custom", modified_css);
+	gs_utils_widget_set_css (priv->box_upgrades_info, &priv->banner_provider, modified_css);
 
 	gs_upgrade_banner_refresh (self);
 }

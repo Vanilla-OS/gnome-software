@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2021 Red Hat <www.redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -111,8 +111,6 @@ gs_repos_section_class_init (GsReposSectionClass *klass)
 static void
 gs_repos_section_init (GsReposSection *self)
 {
-	GtkStyleContext *style_context;
-
 	self->list = GTK_LIST_BOX (gtk_list_box_new ());
 	g_object_set (G_OBJECT (self->list),
 		      "visible", TRUE,
@@ -120,8 +118,7 @@ gs_repos_section_init (GsReposSection *self)
 		      NULL);
 	gtk_list_box_set_sort_func (self->list, _list_sort_func, self, NULL);
 
-	style_context = gtk_widget_get_style_context (GTK_WIDGET (self->list));
-	gtk_style_context_add_class (style_context, "boxed-list");
+	gtk_widget_add_css_class (GTK_WIDGET (self->list), "boxed-list");
 
 	adw_preferences_group_add (ADW_PREFERENCES_GROUP (self), GTK_WIDGET (self->list));
 
@@ -177,7 +174,7 @@ gs_repos_section_add_repo (GsReposSection *self,
 	                  G_CALLBACK (repo_switch_clicked_cb), self);
 
 	gtk_list_box_prepend (self->list, row);
-	gtk_widget_show (row);
+	gtk_widget_set_visible (row, TRUE);
 }
 
 const gchar *

@@ -5,7 +5,7 @@
  * Copyright (C) 2013 Matthias Clasen <mclasen@redhat.com>
  * Copyright (C) 2014-2018 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -28,6 +28,7 @@ struct _GsCategoryPage
 	GCancellable	*cancellable;
 	GsCategory	*category;
 	GsCategory	*subcategory;
+	gboolean	 content_valid;
 
 	GtkWidget	*top_carousel;
 	GtkWidget	*category_detail_box;
@@ -100,7 +101,7 @@ gs_category_page_add_placeholders (GsCategoryPage *self,
 		gtk_widget_remove_css_class (tile, "activatable");
 	}
 
-	gtk_widget_show (GTK_WIDGET (flow_box));
+	gtk_widget_set_visible (GTK_WIDGET (flow_box), TRUE);
 }
 
 typedef struct {
@@ -109,6 +110,7 @@ typedef struct {
 	gboolean get_featured_apps_finished;
 	GsAppList *apps;  /* (owned) (nullable) */
 	gboolean get_main_apps_finished;
+	gboolean cancelled;
 } LoadCategoryData;
 
 static void
@@ -140,6 +142,8 @@ gs_category_page_get_featured_apps_cb (GObject *source_object,
 		if (!g_error_matches (local_error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_CANCELLED) &&
 		    !g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
 			g_warning ("failed to get featured apps for category apps: %s", local_error->message);
+		else
+			data->cancelled = TRUE;
 		data->get_featured_apps_finished = TRUE;
 		load_category_finish (data);
 		return;
@@ -175,6 +179,8 @@ gs_category_page_get_apps_cb (GObject *source_object,
 		if (!g_error_matches (local_error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_CANCELLED) &&
 		    !g_error_matches (local_error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
 			g_warning ("failed to get apps for category apps: %s", local_error->message);
+		else
+			data->cancelled = TRUE;
 		data->get_main_apps_finished = TRUE;
 		load_category_finish (data);
 		return;
@@ -221,7 +227,7 @@ choose_top_carousel_apps (LoadCategoryData *data,
 	top_carousel_rand = g_rand_new_with_seed (top_carousel_seed);
 	g_debug ("Top carousel seed: %u", top_carousel_seed);
 
-	for (guint i = 0; i < gs_app_list_length (data->apps); i++) {
+	for (guint i = 0; data->apps != NULL && i < gs_app_list_length (data->apps); i++) {
 		GsApp *app = gs_app_list_index (data->apps, i);
 		gboolean is_featured, is_recently_updated, is_hi_res;
 
@@ -287,6 +293,11 @@ load_category_finish (LoadCategoryData *data)
 	    !data->get_main_apps_finished)
 		return;
 
+	if (data->cancelled) {
+		load_category_data_free (data);
+		return;
+	}
+
 	/* Remove the loading tiles. */
 	gs_widget_remove_all (self->featured_flow_box, (GsRemoveFunc) gtk_flow_box_remove);
 	gs_widget_remove_all (self->recently_updated_flow_box, (GsRemoveFunc) gtk_flow_box_remove);
@@ -299,7 +310,7 @@ load_category_finish (LoadCategoryData *data)
 	/* Apps to go in the top carousel */
 	top_carousel_apps = choose_top_carousel_apps (data, recently_updated_cutoff_secs);
 
-	for (guint i = 0; i < gs_app_list_length (data->apps); i++) {
+	for (guint i = 0; data->apps != NULL && i < gs_app_list_length (data->apps); i++) {
 		GsApp *app = gs_app_list_index (data->apps, i);
 		gboolean is_featured, is_recently_updated;
 		guint64 release_date;
@@ -361,6 +372,8 @@ load_category_finish (LoadCategoryData *data)
 	gtk_widget_set_visible (self->web_apps_flow_box, gtk_flow_box_get_child_at_index (GTK_FLOW_BOX (self->web_apps_flow_box), 0) != NULL);
 	gtk_widget_set_visible (self->category_detail_box, gtk_flow_box_get_child_at_index (GTK_FLOW_BOX (self->category_detail_box), 0) != NULL);
 
+	self->content_valid = data->apps != NULL;
+
 	load_category_data_free (data);
 }
 
@@ -368,13 +381,15 @@ static void
 gs_category_page_load_category (GsCategoryPage *self)
 {
 	GsCategory *featured_subcat = NULL;
-	GtkAdjustment *adj = NULL;
 	g_autoptr(GsPluginJob) featured_plugin_job = NULL;
 	g_autoptr(GsAppQuery) main_query = NULL;
 	g_autoptr(GsPluginJob) main_plugin_job = NULL;
 	LoadCategoryData *load_data = NULL;
 
 	g_assert (self->subcategory != NULL);
+
+	if (!gs_page_is_active (GS_PAGE (self)))
+		return;
 
 	featured_subcat = gs_category_find_child (self->category, "featured");
 
@@ -386,24 +401,29 @@ gs_category_page_load_category (GsCategoryPage *self)
 	         gs_category_get_id (self->category),
 	         gs_category_get_id (self->subcategory));
 
-	gs_featured_carousel_set_apps (GS_FEATURED_CAROUSEL (self->top_carousel), NULL);
-	gtk_widget_show (self->top_carousel);
-	gs_category_page_add_placeholders (self, GTK_FLOW_BOX (self->category_detail_box),
-					   MIN (30, gs_category_get_size (self->subcategory)));
-	gs_category_page_add_placeholders (self, GTK_FLOW_BOX (self->recently_updated_flow_box), MAX_RECENTLY_UPDATED_APPS);
+	/* Add placeholders only when the content is not valid */
+	if (!self->content_valid) {
+		gs_featured_carousel_set_apps (GS_FEATURED_CAROUSEL (self->top_carousel), NULL);
+		gs_category_page_add_placeholders (self, GTK_FLOW_BOX (self->category_detail_box),
+						   MIN (30, gs_category_get_size (self->subcategory)));
+		gs_category_page_add_placeholders (self, GTK_FLOW_BOX (self->recently_updated_flow_box), MAX_RECENTLY_UPDATED_APPS);
+		gtk_widget_set_visible (self->top_carousel, TRUE);
+		gtk_widget_set_visible (self->category_detail_box, TRUE);
+		gtk_widget_set_visible (self->recently_updated_flow_box, TRUE);
 
-	if (gs_plugin_loader_get_enabled (self->plugin_loader, "epiphany"))
-		gs_category_page_add_placeholders (self, GTK_FLOW_BOX (self->web_apps_flow_box), 12);
+		if (gs_plugin_loader_get_enabled (self->plugin_loader, "epiphany"))
+			gs_category_page_add_placeholders (self, GTK_FLOW_BOX (self->web_apps_flow_box), 12);
 
-	if (featured_subcat != NULL) {
-		/* set up the placeholders as having the featured category is a good
-		 * indicator that there will be featured apps */
-		gs_category_page_add_placeholders (self, GTK_FLOW_BOX (self->featured_flow_box), 6);
-		gtk_widget_show (self->top_carousel);
-	} else {
-		gs_widget_remove_all (self->featured_flow_box, (GsRemoveFunc) gtk_flow_box_remove);
-		gtk_widget_hide (self->featured_flow_box);
-		gtk_widget_hide (self->top_carousel);
+		if (featured_subcat != NULL) {
+			/* set up the placeholders as having the featured category is a good
+			 * indicator that there will be featured apps */
+			gs_category_page_add_placeholders (self, GTK_FLOW_BOX (self->featured_flow_box), 6);
+			gtk_widget_set_visible (self->featured_flow_box, TRUE);
+		} else {
+			gs_widget_remove_all (self->featured_flow_box, (GsRemoveFunc) gtk_flow_box_remove);
+			gtk_widget_set_visible (self->featured_flow_box, FALSE);
+			gtk_widget_set_visible (self->top_carousel, FALSE);
+		}
 	}
 
 	/* Load the list of apps in the category, and also the list of all
@@ -436,8 +456,10 @@ gs_category_page_load_category (GsCategoryPage *self)
 		featured_query = gs_app_query_new ("category", featured_subcat,
 						   "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_KUDOS,
 						   "sort-func", gs_utils_app_sort_name,
+						   "license-type", gs_page_get_query_license_type (GS_PAGE (self)),
 						   NULL);
-		featured_plugin_job = gs_plugin_job_list_apps_new (featured_query, GS_PLUGIN_LIST_APPS_FLAGS_INTERACTIVE);
+		featured_plugin_job = gs_plugin_job_list_apps_new (featured_query,
+								   GS_PLUGIN_LIST_APPS_FLAGS_INTERACTIVE);
 		gs_plugin_loader_job_process_async (self->plugin_loader,
 						    featured_plugin_job,
 						    self->cancellable,
@@ -455,18 +477,15 @@ gs_category_page_load_category (GsCategoryPage *self)
 				       "dedupe-flags", GS_APP_LIST_FILTER_FLAG_PREFER_INSTALLED |
 						       GS_APP_LIST_FILTER_FLAG_KEY_ID_PROVIDES,
 				       "sort-func", _max_results_sort_cb,
+				       "license-type", gs_page_get_query_license_type (GS_PAGE (self)),
 				       NULL);
-	main_plugin_job = gs_plugin_job_list_apps_new (main_query, GS_PLUGIN_LIST_APPS_FLAGS_INTERACTIVE);
+	main_plugin_job = gs_plugin_job_list_apps_new (main_query,
+						       GS_PLUGIN_LIST_APPS_FLAGS_INTERACTIVE);
 	gs_plugin_loader_job_process_async (self->plugin_loader,
 					    main_plugin_job,
 					    self->cancellable,
 					    gs_category_page_get_apps_cb,
 					    load_data);
-
-	/* scroll the list of apps to the beginning, otherwise it will show
-	 * with the previous scroll value */
-	adj = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (self->scrolledwindow_category));
-	gtk_adjustment_set_value (adj, gtk_adjustment_get_lower (adj));
 }
 
 static void
@@ -496,8 +515,18 @@ gs_category_page_set_category (GsCategoryPage *self, GsCategory *category)
 	g_set_object (&self->subcategory, all_subcat);
 
 	/* load the apps from it */
-	if (all_subcat != NULL)
+	if (all_subcat != NULL) {
+		GtkAdjustment *adj = NULL;
+
+		/* scroll the list of apps to the beginning, otherwise it will show
+		 * with the previous scroll value, for the previous category */
+		adj = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (self->scrolledwindow_category));
+		gtk_adjustment_set_value (adj, gtk_adjustment_get_lower (adj));
+
+		self->content_valid = FALSE;
+
 		gs_category_page_load_category (self);
+	}
 
 	/* notify of the updates — the category’s title will have changed too */
 	g_object_notify (G_OBJECT (self), "category");

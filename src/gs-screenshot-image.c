@@ -5,7 +5,7 @@
  * Copyright (C) 2013 Matthias Clasen <mclasen@redhat.com>
  * Copyright (C) 2014-2018 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -73,7 +73,7 @@ gs_screenshot_image_get_screenshot (GsScreenshotImage *ssimg)
 static void
 gs_screenshot_image_start_spinner (GsScreenshotImage *ssimg)
 {
-	gtk_widget_show (ssimg->spinner);
+	gtk_widget_set_visible (ssimg->spinner, TRUE);
 	gtk_spinner_start (GTK_SPINNER (ssimg->spinner));
 }
 
@@ -81,7 +81,7 @@ static void
 gs_screenshot_image_stop_spinner (GsScreenshotImage *ssimg)
 {
 	gtk_spinner_stop (GTK_SPINNER (ssimg->spinner));
-	gtk_widget_hide (ssimg->spinner);
+	gtk_widget_set_visible (ssimg->spinner, FALSE);
 }
 
 static void
@@ -92,10 +92,7 @@ gs_screenshot_image_set_error (GsScreenshotImage *ssimg, const gchar *message)
 	gtk_stack_set_visible_child_name (GTK_STACK (ssimg->stack), "error");
 	gtk_label_set_label (GTK_LABEL (ssimg->label_error), message);
 	gtk_widget_get_size_request (ssimg->stack, &width, &height);
-	if (width < 200)
-		gtk_widget_hide (ssimg->label_error);
-	else
-		gtk_widget_show (ssimg->label_error);
+	gtk_widget_set_visible (ssimg->label_error, (width >= 200));
 	ssimg->showing_image = FALSE;
 	gs_screenshot_image_stop_spinner (ssimg);
 }
@@ -134,7 +131,7 @@ as_screenshot_show_image (GsScreenshotImage *ssimg)
 
 	gtk_stack_set_visible_child_name (GTK_STACK (ssimg->stack), ssimg->current_image);
 
-	gtk_widget_show (GTK_WIDGET (ssimg));
+	gtk_widget_set_visible (GTK_WIDGET (ssimg), TRUE);
 	ssimg->showing_image = TRUE;
 
 	gs_screenshot_image_stop_spinner (ssimg);
@@ -889,30 +886,12 @@ gs_screenshot_image_init (GsScreenshotImage *ssimg)
 }
 
 static void
-gs_screenshot_image_snapshot (GtkWidget   *widget,
-                              GtkSnapshot *snapshot)
-{
-	GtkStyleContext *context;
-
-	context = gtk_widget_get_style_context (widget);
-	gtk_snapshot_render_frame (snapshot,
-				   context,
-				   0.0, 0.0,
-				   gtk_widget_get_width (widget),
-				   gtk_widget_get_height (widget));
-
-	GTK_WIDGET_CLASS (gs_screenshot_image_parent_class)->snapshot (widget, snapshot);
-}
-
-static void
 gs_screenshot_image_class_init (GsScreenshotImageClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
 	object_class->dispose = gs_screenshot_image_dispose;
-
-	widget_class->snapshot = gs_screenshot_image_snapshot;
 
 	gtk_widget_class_set_template_from_resource (widget_class,
 						     "/org/gnome/Software/gs-screenshot-image.ui");

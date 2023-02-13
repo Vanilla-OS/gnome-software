@@ -15,43 +15,6 @@
             <property name="child">
               <object class="GtkBox">
                 <property name="orientation">vertical</property>
-
-                <child>
-                  <object class="GtkInfoBar" id="infobar_third_party">
-                    <property name="show_close_button">True</property>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="orientation">vertical</property>
-                        <property name="spacing">3</property>
-                        <property name="margin-top">6</property>
-                        <property name="margin-bottom">6</property>
-                        <property name="margin-start">6</property>
-                        <property name="margin-end">6</property>
-                        <property name="halign">start</property>
-                        <property name="hexpand">True</property>
-                        <child>
-                          <object class="GtkLabel" id="label_third_party_title">
-                            <property name="halign">start</property>
-                            <property name="label" translatable="yes">Enable Third Party Software Repositories?</property>
-                            <attributes>
-                              <attribute name="weight" value="bold"/>
-                            </attributes>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="label_third_party">
-                            <property name="halign">start</property>
-                            <property name="label">Provides access to additional software.</property>
-                            <property name="wrap">True</property>
-                            <property name="wrap_mode">word-char</property>
-                            <property name="xalign">0</property>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-
                 <child>
                   <object class="GtkScrolledWindow" id="scrolledwindow_overview">
                     <property name="can_focus">True</property>
@@ -94,7 +57,7 @@
                                     <property name="row_spacing">14</property>
                                     <property name="column_spacing">14</property>
                                     <property name="homogeneous">True</property>
-                                    <property name="min_children_per_line">2</property>
+                                    <property name="min_children_per_line">1</property>
                                     <property name="max_children_per_line">3</property>
                                     <property name="selection_mode">none</property>
                                   </object>
@@ -190,7 +153,7 @@
                                     <property name="row_spacing">14</property>
                                     <property name="column_spacing">14</property>
                                     <property name="homogeneous">True</property>
-                                    <property name="min_children_per_line">2</property>
+                                    <property name="min_children_per_line">1</property>
                                     <property name="max_children_per_line">3</property>
                                     <property name="selection_mode">none</property>
                                     <accessibility>
@@ -218,7 +181,7 @@
             <property name="child">
               <object class="AdwStatusPage" id="noresults_grid_overview">
                 <property name="icon_name">org.gnome.Software-symbolic</property>
-                <property name="title" translatable="yes">No Application Data Found</property>
+                <property name="title" translatable="yes">No App Data Found</property>
               </object>
             </property>
           </object>

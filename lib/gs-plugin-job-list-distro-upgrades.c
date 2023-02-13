@@ -5,7 +5,7 @@
  *
  * Author: Philip Withnall <pwithnall@endlessos.org>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 /**
@@ -174,6 +174,7 @@ gs_plugin_job_list_distro_upgrades_run_async (GsPluginJob         *job,
 	g_autoptr(GTask) task = NULL;
 	GPtrArray *plugins;  /* (element-type GsPlugin) */
 	gboolean anything_ran = FALSE;
+	g_autoptr(GError) local_error = NULL;
 
 	/* check required args */
 	task = g_task_new (job, cancellable, callback, user_data);
@@ -198,6 +199,10 @@ gs_plugin_job_list_distro_upgrades_run_async (GsPluginJob         *job,
 		/* at least one plugin supports this vfunc */
 		anything_ran = TRUE;
 
+		/* Handle cancellation */
+		if (g_cancellable_set_error_if_cancelled (cancellable, &local_error))
+			break;
+
 		/* run the plugin */
 		self->n_pending_ops++;
 		plugin_class->list_distro_upgrades_async (plugin, self->flags, cancellable, plugin_list_distro_upgrades_cb, g_object_ref (task));
@@ -206,7 +211,7 @@ gs_plugin_job_list_distro_upgrades_run_async (GsPluginJob         *job,
 	if (!anything_ran)
 		g_debug ("no plugin could handle listing distro upgrades");
 
-	finish_op (task, NULL);
+	finish_op (task, g_steal_pointer (&local_error));
 }
 
 static void
@@ -257,6 +262,7 @@ finish_op (GTask  *task,
 
 	if (self->saved_error != NULL) {
 		g_task_return_error (task, g_steal_pointer (&self->saved_error));
+		g_signal_emit_by_name (G_OBJECT (self), "completed");
 		return;
 	}
 
@@ -289,6 +295,7 @@ refine_cb (GObject      *source_object,
 {
 	GsPluginLoader *plugin_loader = GS_PLUGIN_LOADER (source_object);
 	g_autoptr(GTask) task = G_TASK (user_data);
+	GsPluginJobListDistroUpgrades *self = g_task_get_source_object (task);
 	g_autoptr(GsAppList) new_list = NULL;
 	g_autoptr(GError) local_error = NULL;
 
@@ -296,6 +303,7 @@ refine_cb (GObject      *source_object,
 	if (new_list == NULL) {
 		gs_utils_error_convert_gio (&local_error);
 		g_task_return_error (task, g_steal_pointer (&local_error));
+		g_signal_emit_by_name (G_OBJECT (self), "completed");
 		return;
 	}
 
@@ -324,6 +332,7 @@ finish_task (GTask     *task,
 	/* success */
 	g_set_object (&self->result_list, merged_list);
 	g_task_return_boolean (task, TRUE);
+	g_signal_emit_by_name (G_OBJECT (self), "completed");
 }
 
 static gboolean

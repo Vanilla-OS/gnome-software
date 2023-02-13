@@ -19,6 +19,10 @@ screenshot-carousel button,
 	margin: 12px;
 }
 
+.smaller {
+	font-size: smaller;
+}
+
 .screenshot-image-main .image1, .screenshot-image-main .image2 {
 	margin-top: 6px;
 	margin-bottom: 12px;
@@ -30,8 +34,24 @@ screenshot-carousel button,
 	font-size: 105%;
 }
 
-.review-textbox {
-	padding: 6px;
+gs-summary-tile image.loading-icon {
+  background-color: @borders;
+  border-radius: 8px;
+}
+
+.review-row > box {
+	margin: 12px;
+	border-spacing: 3px;
+}
+
+.review-row textview {
+	background: none;
+}
+
+.review-row .edit-icon {
+	min-width: 24px;
+	min-height: 24px;
+	padding: 5px;
 }
 
 .origin-rounded-box {
@@ -168,28 +188,19 @@ clamp.large .category-tile:not(.category-tile-iconless) {
 	font-size: 16pt;  /* 80% of .title-1 */
 }
 
-.application-details-infobar.info {
-	background-color: shade(@theme_bg_color, 0.9);
-	color: @theme_fg_color;
-	border-color: darker(shade(@theme_bg_color, 0.9));
-	border-style: solid;
-	border-width: 1px;
+.card.info {
+	background-color: mix(@accent_bg_color, @window_bg_color, .7);
+	color: @window_fg_color;
 }
 
-.application-details-infobar {
-	background-color: shade(@theme_bg_color, 0.9);
-	color: @theme_fg_color;
-	border-color: darker(shade(@theme_bg_color, 0.9));
-	border-style: solid;
-	border-width: 1px;
+.card.warning {
+	background-color: mix(@warning_bg_color, @window_bg_color, .7);
+	color: @window_fg_color;
 }
 
-.application-details-infobar.warning {
-	background-color: #fcaf3e;
-	color: #2e3436;
-	border-color: darker(#fcaf3e);
-	border-style: solid;
-	border-width: 1px;
+.infobox {
+	border-spacing: 6px;
+	padding: 12px;
 }
 
 @keyframes install-progress-unknown-move {
@@ -289,8 +300,23 @@ flowboxchild {
 	padding: 0px;
 }
 
-star-image {
+star-image > image.starred {
 	color: @yellow_5;
+	transition-duration: 200ms;
+}
+
+star-image > image.starred:hover {
+	color: @yellow_3;
+}
+
+star-image > image.non-starred {
+	opacity: 0.2;
+	transition-duration: 200ms;
+}
+
+star-image > image.non-starred:hover {
+	color: @yellow_5;
+	opacity: 0.7;
 }
 
 .dimmer-label {
@@ -330,10 +356,10 @@ scrolledwindow.list-page > viewport > clamp > box {
 	border-spacing: 24px;
 }
 
-/* Increase the spacing in the Update Preferences window between the label and
+/* Increase the spacing in the Preferences window between the label and
  * the listbox. */
 
-.update-preferences preferencesgroup > box > box {
+.preferences preferencesgroup > box > box {
 	margin-top: 18px;
 }
 

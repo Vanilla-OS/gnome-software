@@ -4,7 +4,7 @@
  * Copyright (C) 2013-2016 Richard Hughes <richard@hughsie.com>
  * Copyright (C) 2014-2018 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -166,12 +166,11 @@ gs_search_page_get_search_cb (GObject *source_object,
 					    self->sizegroup_name,
 					    self->sizegroup_button_label,
 					    self->sizegroup_button_image);
-		gtk_widget_show (app_row);
+		gtk_widget_set_visible (app_row, TRUE);
 	}
 
 	/* too many results */
 	if (gs_app_list_has_flag (list, GS_APP_LIST_FLAG_IS_TRUNCATED)) {
-		GtkStyleContext *context;
 		GtkWidget *w = gtk_label_new (NULL);
 		g_autofree gchar *str = NULL;
 
@@ -186,10 +185,9 @@ gs_search_page_get_search_cb (GObject *source_object,
 		gtk_widget_set_margin_top (w, 20);
 		gtk_widget_set_margin_start (w, 20);
 		gtk_widget_set_margin_end (w, 20);
-		context = gtk_widget_get_style_context (w);
-		gtk_style_context_add_class (context, "dim-label");
+		gtk_widget_add_css_class (w, "dim-label");
 		gtk_list_box_append (GTK_LIST_BOX (self->list_box_search), w);
-		gtk_widget_show (w);
+		gtk_widget_set_visible (w, TRUE);
 	} else {
 		/* reset to default */
 		self->max_results = GS_SEARCH_PAGE_MAX_RESULTS;
@@ -238,7 +236,7 @@ gs_search_page_get_app_sort_key (GsApp *app)
 		break;
 	}
 
-	/* sort missing codecs before applications */
+	/* sort missing codecs before apps */
 	switch (gs_app_get_state (app)) {
 	case GS_APP_STATE_UNAVAILABLE:
 		g_string_append (key, "9:");
@@ -310,6 +308,7 @@ gs_search_page_load (GsSearchPage *self)
 				  "max-results", self->max_results,
 				  "sort-func", gs_search_page_sort_cb,
 				  "sort-user-data", self,
+				  "license-type", gs_page_get_query_license_type (GS_PAGE (self)),
 				  NULL);
 	plugin_job = gs_plugin_job_list_apps_new (query, GS_PLUGIN_LIST_APPS_FLAGS_NONE);
 	gs_plugin_loader_job_process_async (self->plugin_loader, plugin_job,

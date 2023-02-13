@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2017 Richard Hughes <richard@hughsie.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -53,13 +53,68 @@ gs_fwupd_app_set_is_locked (GsApp *app, gboolean is_locked)
 	gs_app_set_metadata_variant (app, "fwupd::IsLocked", tmp);
 }
 
+#if FWUPD_CHECK_VERSION(1, 8, 1)
+static gchar * /* (transfer full) */
+gs_fwupd_problem_to_string (FwupdClient *client,
+			    FwupdDevice *dev,
+			    FwupdDeviceProblem problem)
+{
+	if (problem == FWUPD_DEVICE_PROBLEM_SYSTEM_POWER_TOO_LOW) {
+		if (fwupd_client_get_battery_level (client) == FWUPD_BATTERY_LEVEL_INVALID ||
+		    fwupd_client_get_battery_threshold (client) == FWUPD_BATTERY_LEVEL_INVALID) {
+			/* TRANSLATORS: as in laptop battery power */
+			return g_strdup (_("System power is too low to perform the update"));
+		}
+		return g_strdup_printf (
+		    /* TRANSLATORS: as in laptop battery power */
+		    _("System power is too low to perform the update (%u%%, requires %u%%)"),
+		    fwupd_client_get_battery_level (client),
+		    fwupd_client_get_battery_threshold (client));
+	}
+	if (problem == FWUPD_DEVICE_PROBLEM_UNREACHABLE) {
+		/* TRANSLATORS: for example, a Bluetooth mouse that is in powersave mode */
+		return g_strdup (_("Device is unreachable, or out of wireless range"));
+	}
+	if (problem == FWUPD_DEVICE_PROBLEM_POWER_TOO_LOW) {
+		if (fwupd_device_get_battery_level (dev) == FWUPD_BATTERY_LEVEL_INVALID ||
+		    fwupd_device_get_battery_threshold (dev) == FWUPD_BATTERY_LEVEL_INVALID) {
+			/* TRANSLATORS: for example the batteries *inside* the Bluetooth mouse */
+			return g_strdup_printf (_("Device battery power is too low"));
+		}
+		/* TRANSLATORS: for example the batteries *inside* the Bluetooth mouse */
+		return g_strdup_printf (_("Device battery power is too low (%u%%, requires %u%%)"),
+				        fwupd_device_get_battery_level (dev),
+				        fwupd_device_get_battery_threshold (dev));
+	}
+	if (problem == FWUPD_DEVICE_PROBLEM_UPDATE_PENDING) {
+		/* TRANSLATORS: usually this is when we're waiting for a reboot */
+		return g_strdup (_("Device is waiting for the update to be applied"));
+	}
+	if (problem == FWUPD_DEVICE_PROBLEM_REQUIRE_AC_POWER) {
+		/* TRANSLATORS: as in, wired mains power for a laptop */
+		return g_strdup (_("Device requires AC power to be connected"));
+	}
+	if (problem == FWUPD_DEVICE_PROBLEM_LID_IS_CLOSED) {
+		/* TRANSLATORS: lid means "laptop top cover" */
+		return g_strdup (_("Device cannot be used while the lid is closed"));
+	}
+	return NULL;
+}
+#endif
+
 void
-gs_fwupd_app_set_from_device (GsApp *app, FwupdDevice *dev)
+gs_fwupd_app_set_from_device (GsApp *app,
+			      FwupdClient *client,
+			      FwupdDevice *dev)
 {
 	GPtrArray *guids;
 
 	/* something can be done */
-	if (fwupd_device_has_flag (dev, FWUPD_DEVICE_FLAG_UPDATABLE))
+	if (fwupd_device_has_flag (dev, FWUPD_DEVICE_FLAG_UPDATABLE)
+#if FWUPD_CHECK_VERSION(1, 8, 1)
+	    || fwupd_device_has_flag (dev, FWUPD_DEVICE_FLAG_UPDATABLE_HIDDEN)
+#endif
+	    )
 		gs_app_set_state (app, GS_APP_STATE_UPDATABLE_LIVE);
 
 	/* only can be applied in systemd-offline */
@@ -113,8 +168,37 @@ gs_fwupd_app_set_from_device (GsApp *app, FwupdDevice *dev)
 			gs_app_set_description (app, GS_APP_QUALITY_NORMAL, tmp);
 	}
 
+#if FWUPD_CHECK_VERSION(1, 8, 1)
+	if (fwupd_device_get_problems (dev) != FWUPD_DEVICE_PROBLEM_NONE) {
+		g_autoptr(GString) problems = g_string_new (NULL);
+		for (guint i = 0; i < sizeof (FwupdDeviceProblem) * 8; i++) {
+			FwupdDeviceProblem problem = 1ull << i;
+			g_autofree gchar *tmp = NULL;
+			if (!fwupd_device_has_problem (dev, problem))
+				continue;
+			tmp = gs_fwupd_problem_to_string (client, dev, problem);
+			if (tmp == NULL)
+				continue;
+			if (problems->len)
+				g_string_append_c (problems, '\n');
+			g_string_append (problems, tmp);
+		}
+		if (problems->len)
+			gs_app_set_metadata (app, "GnomeSoftware::problems", problems->str);
+		else
+			gs_app_set_metadata (app, "GnomeSoftware::problems", NULL);
+	} else {
+		gs_app_set_metadata (app, "GnomeSoftware::problems", NULL);
+	}
+#endif
+
 	/* needs action */
-	if (fwupd_device_has_flag (dev, FWUPD_DEVICE_FLAG_NEEDS_BOOTLOADER))
+	if (fwupd_device_has_flag (dev, FWUPD_DEVICE_FLAG_NEEDS_BOOTLOADER)
+#if FWUPD_CHECK_VERSION(1, 8, 1)
+	    || fwupd_device_has_flag (dev, FWUPD_DEVICE_FLAG_UPDATABLE_HIDDEN)
+	    || fwupd_device_get_problems (dev) != FWUPD_DEVICE_PROBLEM_NONE
+#endif
+	   )
 		gs_app_add_quirk (app, GS_APP_QUIRK_NEEDS_USER_ACTION);
 	else
 		gs_app_remove_quirk (app, GS_APP_QUIRK_NEEDS_USER_ACTION);
@@ -228,6 +312,34 @@ gs_fwupd_release_get_name (FwupdRelease *release)
 			/* TRANSLATORS: Receiver refers to a radio device, e.g. a tiny Bluetooth
 			 * device that stays in the USB port so the wireless peripheral works */
 			return g_strdup_printf (_("%s USB Receiver Update"), name);
+		}
+		if (g_strcmp0 (cat, "X-Drive") == 0) {
+			/* TRANSLATORS: drive refers to a storage device, e.g. SATA disk */
+			return g_strdup_printf (_("%s Drive Update"), name);
+		}
+		if (g_strcmp0 (cat, "X-FlashDrive") == 0) {
+			/* TRANSLATORS: flash refers to solid state storage, e.g. UFS or eMMC */
+			return g_strdup_printf (_("%s Flash Drive Update"), name);
+		}
+		if (g_strcmp0 (cat, "X-SolidStateDrive") == 0) {
+			/* TRANSLATORS: SSD refers to a Solid State Drive, e.g. non-rotating
+			 * SATA or NVMe disk */
+			return g_strdup_printf (_("%s SSD Update"), name);
+		}
+		if (g_strcmp0 (cat, "X-Gpu") == 0) {
+			/* TRANSLATORS: GPU refers to a Graphics Processing Unit, e.g.
+			 * the "video card" */
+			return g_strdup_printf (_("%s GPU Update"), name);
+		}
+		if (g_strcmp0 (cat, "X-Dock") == 0) {
+			/* TRANSLATORS: Dock refers to the port replicator hardware laptops are
+			 * cradled in, or lowered onto */
+			return g_strdup_printf (_("%s Dock Update"), name);
+		}
+		if (g_strcmp0 (cat, "X-UsbDock") == 0) {
+			/* TRANSLATORS: Dock refers to the port replicator device connected
+			 * by plugging in a USB cable -- which may or may not also provide power */
+			return g_strdup_printf (_("%s USB Dock Update"), name);
 		}
 	}
 
