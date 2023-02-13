@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-software/issues\n"
-"POT-Creation-Date: 2022-12-09 22:05+0000\n"
+"POT-Creation-Date: 2022-09-22 16:06+0000\n"
 "Last-Translator: Нанба Наала <naala-nanba@rambler.ru>\n"
 "Language-Team: Abkhazian <daniel.abzakh@gmail.com>\n"
 "Language: ab\n"
@@ -9,7 +9,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-DamnedLies-Scope: partial\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -56,7 +55,7 @@ msgstr ""
 msgid "The update details"
 msgstr ""
 
-#: data/metainfo/org.gnome.Software.metainfo.xml.in:2099
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:2043
 #: src/gs-application.c:256
 msgid "The GNOME Project"
 msgstr "The GNOME Project"
@@ -144,7 +143,7 @@ msgstr ""
 
 #: data/org.gnome.software.gschema.xml:47
 msgid "The last update check timestamp"
-msgstr "Ацыхәтәантәи арҿыцра иазку адырраҭара аамҭалатәи адырга"
+msgstr ""
 
 #: data/org.gnome.software.gschema.xml:51
 msgid "The last upgrade notification timestamp"
@@ -152,7 +151,7 @@ msgstr "Ацыхәтәантәи арҿыцра иазку адырраҭара 
 
 #: data/org.gnome.software.gschema.xml:55
 msgid "The last update notification timestamp"
-msgstr "Ацыхәтәантәи арҿыцра иазку адырраҭара аамҭалатәи адырга"
+msgstr ""
 
 #: data/org.gnome.software.gschema.xml:59
 msgid "The timestamp of the first security update, cleared after update"
@@ -160,7 +159,7 @@ msgstr ""
 
 #: data/org.gnome.software.gschema.xml:63
 msgid "The last update timestamp"
-msgstr "Ацыхәтәантәи арҿыцра иазку адырраҭара аамҭалатәи адырга"
+msgstr ""
 
 #: data/org.gnome.software.gschema.xml:67
 msgid "The last timestamp when the system was online and got any updates"
@@ -261,32 +260,32 @@ msgid "A string storing the gnome-online-account id used to login"
 msgstr ""
 
 #. TRANSLATORS: tool that is used when moving profiles system-wide
-#: gs-install-appstream/gs-install-appstream.c:185
+#: gs-install-appstream/gs-install-appstream.c:143
 msgid "GNOME Software AppStream system-wide installer"
 msgstr ""
 
-#: gs-install-appstream/gs-install-appstream.c:187
+#: gs-install-appstream/gs-install-appstream.c:145
 msgid "Failed to parse command line arguments"
 msgstr ""
 
 #. TRANSLATORS: user did not specify a valid filename
-#: gs-install-appstream/gs-install-appstream.c:194
+#: gs-install-appstream/gs-install-appstream.c:152
 msgid "You need to specify exactly one filename"
 msgstr ""
 
 #. TRANSLATORS: only able to install files as root
-#: gs-install-appstream/gs-install-appstream.c:201
+#: gs-install-appstream/gs-install-appstream.c:159
 msgid "This program can only be used by the root user"
 msgstr ""
 
 #. TRANSLATORS: error details
-#: gs-install-appstream/gs-install-appstream.c:209
+#: gs-install-appstream/gs-install-appstream.c:167
 #, c-format
 msgid "Failed to validate content type: %s"
 msgstr ""
 
 #. TRANSLATORS: error details
-#: gs-install-appstream/gs-install-appstream.c:220
+#: gs-install-appstream/gs-install-appstream.c:178
 #, c-format
 msgid "Failed to move: %s"
 msgstr ""
@@ -615,23 +614,23 @@ msgstr ""
 
 #: src/gs-age-rating-context-dialog.c:537
 msgid "Drugs"
-msgstr "Анаркотикқәа"
+msgstr ""
 
 #: src/gs-age-rating-context-dialog.c:539
 msgid "Strong Language"
-msgstr "Иџьбароу аҳәарақәа"
+msgstr ""
 
 #: src/gs-age-rating-context-dialog.c:541
 msgid "Money"
-msgstr "Аԥарақәа"
+msgstr ""
 
 #: src/gs-age-rating-context-dialog.c:545
 msgid "Social"
-msgstr "Асоциалтә"
+msgstr ""
 
 #: src/gs-age-rating-context-dialog.c:547
 msgid "Violence"
-msgstr "Ацәаԥҽра"
+msgstr ""
 
 #. Translators: This is used to join two list items together in
 #. * a compressed way of displaying a list of descriptions of age
@@ -664,35 +663,35 @@ msgstr "?"
 #: src/gs-age-rating-context-dialog.c:1023
 #, c-format
 msgid "%s is suitable for everyone"
-msgstr "«%s» зегьы ирнаалоит"
+msgstr ""
 
 #. Translators: This is a dialogue title which indicates that an app is suitable
 #. * for children up to around age 3. The placeholder is the app name.
 #: src/gs-age-rating-context-dialog.c:1027
 #, c-format
 msgid "%s is suitable for toddlers"
-msgstr "«%s» зынӡа ихәыҷу ирнаалоит"
+msgstr ""
 
 #. Translators: This is a dialogue title which indicates that an app is suitable
 #. * for children up to around age 5. The placeholder is the app name.
 #: src/gs-age-rating-context-dialog.c:1031
 #, c-format
 msgid "%s is suitable for young children"
-msgstr "«%s» ахәычьқәа ирнаалоит"
+msgstr ""
 
 #. Translators: This is a dialogue title which indicates that an app is suitable
 #. * for people up to around age 18. The placeholder is the app name.
 #: src/gs-age-rating-context-dialog.c:1039
 #, c-format
 msgid "%s is suitable for teenagers"
-msgstr "«%s» Ажыцәқәа ирнаалоит"
+msgstr ""
 
 #. Translators: This is a dialogue title which indicates that an app is suitable
 #. * for people aged up to and over 18. The placeholder is the app name.
 #: src/gs-age-rating-context-dialog.c:1043
 #, c-format
 msgid "%s is suitable for adults"
-msgstr "«%s» аиҳабацәа ирнаалоит"
+msgstr ""
 
 #. Translators: This is a dialogue title which indicates that an app is suitable
 #. * for a specified age group. The first placeholder is the app name, the second
@@ -700,35 +699,35 @@ msgstr "«%s» аиҳабацәа ирнаалоит"
 #: src/gs-age-rating-context-dialog.c:1048
 #, c-format
 msgid "%s is suitable for %s"
-msgstr "«%s» ирнаалоит %s"
+msgstr ""
 
 #. Translators: This is the title of the dialog which contains information about the suitability of an app for different ages.
 #. this one’s not a placeholder
 #: src/gs-age-rating-context-dialog.ui:5 src/gs-app-context-bar.ui:211
 msgid "Age Rating"
-msgstr "Ақәратә ҩаӡара"
+msgstr ""
 
 #: src/gs-age-rating-context-dialog.ui:68
 #: src/gs-hardware-support-context-dialog.ui:71
 #: src/gs-safety-context-dialog.ui:221
 msgid "How to contribute missing information"
-msgstr "Ишԥаҭагалатәу иазымхо адыррақәа"
+msgstr ""
 
-#: lib/gs-app.c:6178
+#: lib/gs-app.c:6175
 msgid "Local file"
-msgstr "Иллокалу афаил"
+msgstr ""
 
 #. TRANSLATORS: the first %s is replaced with an origin name;
 #. the second %s is replaced with the packaging format.
 #. Example string: "Local file (RPM)"
 #. Translators: The first placeholder is an app runtime
 #. * name, the second is its version number.
-#: lib/gs-app.c:6197 src/gs-safety-context-dialog.c:439
+#: lib/gs-app.c:6194 src/gs-safety-context-dialog.c:439
 #, c-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: lib/gs-app.c:6274
+#: lib/gs-app.c:6271
 msgid "Package"
 msgstr "Арзақә"
 
@@ -738,11 +737,11 @@ msgstr ""
 
 #: src/gs-app-addon-row.c:101 src/gs-app-row.c:461 src/gs-details-page.c:369
 msgid "Pending install"
-msgstr "Ашьакәыргылара иазыԥшуп"
+msgstr ""
 
 #: src/gs-app-addon-row.c:105 src/gs-app-row.c:465 src/gs-details-page.c:376
 msgid "Pending remove"
-msgstr "Аныхра иазыԥшуп"
+msgstr ""
 
 #: src/gs-app-addon-row.c:111 src/gs-app-row.ui:197 src/gs-app-tile.ui:50
 #: src/gs-feature-tile.c:535
@@ -758,7 +757,7 @@ msgstr ""
 
 #: src/gs-app-addon-row.c:119
 msgid "Removing"
-msgstr "Ианыххоит"
+msgstr ""
 
 #: src/gs-app-addon-row.ui:64
 msgid "_Uninstall"
@@ -770,11 +769,11 @@ msgstr ""
 
 #: src/gs-app-details-page.c:68
 msgid "Can communicate over the network"
-msgstr "Аҳа ала аиҽцәажәара ҟалоит"
+msgstr ""
 
 #: src/gs-app-details-page.c:69
 msgid "System Services"
-msgstr "Асистеематә сервисқәа"
+msgstr ""
 
 #: src/gs-app-details-page.c:69
 msgid "Can access D-Bus services on the system bus"
@@ -782,7 +781,7 @@ msgstr ""
 
 #: src/gs-app-details-page.c:70
 msgid "Session Services"
-msgstr "Асеанс асервисқәа"
+msgstr ""
 
 #: src/gs-app-details-page.c:70
 msgid "Can access D-Bus services on the session bus"
@@ -808,52 +807,52 @@ msgstr ""
 #: src/gs-app-details-page.c:73 src/gs-app-details-page.c:75
 #: src/gs-app-details-page.c:78 src/gs-app-details-page.c:145
 msgid "Can view files"
-msgstr "Афаилқәа ирыхәаԥшыр алшоит"
+msgstr ""
 
 #: src/gs-app-details-page.c:74 src/gs-app-details-page.c:75
 msgid "File system"
-msgstr "Афаилтә система"
+msgstr ""
 
 #. The GS_APP_PERMISSIONS_FLAGS_FILESYSTEM_OTHER is used only as a flag, with actual files being part of the read/full lists
 #: src/gs-app-details-page.c:77 src/gs-app-details-page.c:78
 msgid "Downloads folder"
-msgstr "Аҭаӡ аҭагаларақәа рзы"
+msgstr ""
 
 #: src/gs-app-details-page.c:79
 msgid "Settings"
-msgstr "Архиарақәа"
+msgstr ""
 
 #: src/gs-app-details-page.c:79
 msgid "Can view and change any settings"
-msgstr "Азеиԥшразаалак аиҿкаарақәа рыхәаԥшреи рыԥсахреи ҟалоит"
+msgstr ""
 
 #: src/gs-app-details-page.c:80
 msgid "Legacy display system"
-msgstr "Иажәу анырԥшра асиситема "
+msgstr ""
 
 #: src/gs-app-details-page.c:80
 msgid "Uses an old, insecure display system"
-msgstr "Ишәарҭоу анырԥшра асиситема ахархәара анаҭоит"
+msgstr ""
 
 #: src/gs-app-details-page.c:81
 msgid "Sandbox escape"
-msgstr "\"аԥслымӡҭра\" аҟынтә аҭыҵра"
+msgstr "аԥслымӡҭра"
 
 #: src/gs-app-details-page.c:81
 msgid "Can escape the sandbox and circumvent any other restrictions"
-msgstr "\"аԥслымӡҭра\" аҟынтә иҭыҵны егьырҭ аԥкрақәа ирыкәшар ҟалоит"
+msgstr ""
 
 #. FIXME support app == NULL
 #. set window title
 #: src/gs-app-details-page.c:166
 msgid "Update Details"
-msgstr "Арҿыцра аԥкаарақәа"
+msgstr ""
 
 #. TRANSLATORS: this is where the packager did not write
 #. * a description for the update
 #: src/gs-app-details-page.c:174
 msgid "No update description available."
-msgstr "Арҿыцра ахҳәаа ыҟаӡам"
+msgstr ""
 
 #: src/gs-app-details-page.ui:25 src/gs-os-update-page.ui:25
 #: src/gs-shell.ui:367 src/gs-shell.ui:458
@@ -994,7 +993,7 @@ msgstr "Нанба Наала <naala-nanba@rambler.ru>, 2022"
 
 #. TRANSLATORS: this is the title of the about window
 #. TRANSLATORS: this is the menu item that opens the about window
-#: src/gs-application.c:277 src/gs-shell.c:2156
+#: src/gs-application.c:277 src/gs-shell.c:2149
 msgid "About Software"
 msgstr ""
 
@@ -1071,7 +1070,7 @@ msgstr ""
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:293
 msgid "Has network access"
-msgstr "Аҳа ахь анеира азин амоуп"
+msgstr ""
 
 #. Translators: This indicates an app uses D-Bus system services.
 #. * It’s used in a context tile, so should be short.
@@ -1780,7 +1779,7 @@ msgstr ""
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:287
 msgid "Work"
-msgstr "Аусура"
+msgstr ""
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:289
@@ -1815,7 +1814,7 @@ msgstr ""
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:302
 msgid "Fonts"
-msgstr "Ашрифтқәа"
+msgstr ""
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:304
@@ -1937,12 +1936,12 @@ msgstr ""
 
 #: src/gs-common.c:509 src/gs-safety-context-dialog.ui:72
 msgid "Details"
-msgstr "Аԥкаарақәа"
+msgstr ""
 
 #. Translators: an accept button label, in a Cancel/Accept dialog
 #: src/gs-common.c:600
 msgid "_Accept"
-msgstr "_Адкылара"
+msgstr ""
 
 #. TRANSLATORS: we've just live-updated some apps
 #: src/gs-common.c:750
@@ -2138,12 +2137,12 @@ msgstr ""
 #. * can be installed
 #. TRANSLATORS: button text in the header when firmware
 #. * can be live-installed
-#: src/gs-details-page.c:873 src/gs-details-page.c:899
+#: src/gs-details-page.c:870 src/gs-details-page.c:896
 #: src/gs-details-page.ui:228 plugins/packagekit/gs-packagekit-task.c:150
 msgid "_Install"
 msgstr "_Ашьақәыргылара"
 
-#: src/gs-details-page.c:889
+#: src/gs-details-page.c:886
 msgid "_Restart"
 msgstr "_Ханатә алагара"
 
@@ -2151,22 +2150,22 @@ msgstr "_Ханатә алагара"
 #. * be installed.
 #. * The ellipsis indicates that further steps are required,
 #. * e.g. enabling software repositories or the like
-#: src/gs-details-page.c:913
+#: src/gs-details-page.c:910
 msgid "_Install…"
 msgstr "_Ашьақәыргылара"
 
 #. Translators: the '%s' is replaced with a developer name or a project group
-#: src/gs-details-page.c:1190
+#: src/gs-details-page.c:1187
 #, c-format
 msgid "Other Apps by %s"
 msgstr ""
 
 #. TRANSLATORS: we need a remote server to process
-#: src/gs-details-page.c:1573
+#: src/gs-details-page.c:1570
 msgid "You need internet access to write a review"
 msgstr ""
 
-#: src/gs-details-page.c:1737 src/gs-details-page.c:1753
+#: src/gs-details-page.c:1732 src/gs-details-page.c:1748
 #, c-format
 msgid "Unable to find “%s”"
 msgstr ""
@@ -2288,24 +2287,24 @@ msgid "_Help"
 msgstr "_Аилыркаа"
 
 #. Translators: Button opening a dialog where the users can write and publish their opinions about the apps.
-#: src/gs-details-page.ui:907
+#: src/gs-details-page.ui:908
 msgid "_Write Review"
 msgstr "_Ахцәажәара аҩра"
 
 #. Translators: Button opening a dialog showing all reviews for an app.
-#: src/gs-details-page.ui:944
+#: src/gs-details-page.ui:945
 msgid "All Reviews"
 msgstr ""
 
 #. TRANSLATORS: status text when downloading
-#: lib/gs-external-appstream-utils.c:272
+#: lib/gs-external-appstream-utils.c:244
 msgid "Downloading extra metadata files…"
 msgstr ""
 
 #. TRANSLATORS: separator for a list of items
 #: src/gs-extras-page.c:142
 msgid " and "
-msgstr " насгьы "
+msgstr ""
 
 #. TRANSLATORS: separator for a list of items
 #: src/gs-extras-page.c:145
@@ -2840,7 +2839,7 @@ msgstr ""
 #. Translators: It's an origin scope, 'User' or 'System' installation
 #: src/gs-origin-popover-row.ui:138
 msgid "User"
-msgstr "Ахархәаҩ"
+msgstr ""
 
 #. TRANSLATORS: This is the header for package additions during
 #. * a system update
@@ -2911,7 +2910,7 @@ msgstr ""
 msgid "No Application Data Found"
 msgstr ""
 
-#: lib/gs-plugin-loader.c:2837
+#: lib/gs-plugin-loader.c:2825
 msgctxt "Distribution name"
 msgid "Unknown"
 msgstr ""
@@ -2958,7 +2957,7 @@ msgstr ""
 
 #: src/gs-prefs-dialog.ui:5
 msgid "Update Preferences"
-msgstr "Арҿыцрақәа рхышәарақәа"
+msgstr "Арҿыцрақәа рхышәарақәа "
 
 #: src/gs-prefs-dialog.ui:16
 msgid ""
@@ -3284,7 +3283,7 @@ msgstr "Ааи"
 
 #: src/gs-review-row.ui:108
 msgid "No"
-msgstr "Мап"
+msgstr ""
 
 #. Translators: Button text for indifference, only used when moderating
 #: src/gs-review-row.ui:116
@@ -4038,58 +4037,58 @@ msgstr ""
 msgid "Unable to launch %s: %s is not installed"
 msgstr ""
 
+#. TRANSLATORS: failure text for the in-app notification
+#: src/gs-shell.c:1839 src/gs-shell.c:1887 src/gs-shell.c:1925
+#: src/gs-shell.c:1968
+msgid "Not enough disk space — free up some space and try again"
+msgstr ""
+
 #. TRANSLATORS: we failed to get a proper error code
-#: src/gs-shell.c:1841 src/gs-shell.c:1857 src/gs-shell.c:1905
-#: src/gs-shell.c:1943 src/gs-shell.c:1996
+#: src/gs-shell.c:1850 src/gs-shell.c:1898 src/gs-shell.c:1936
+#: src/gs-shell.c:1989
 msgid "Sorry, something went wrong"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1846 src/gs-shell.c:1894 src/gs-shell.c:1932
-#: src/gs-shell.c:1975
-msgid "Not enough disk space — free up some space and try again"
-msgstr ""
-
-#. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1888
+#: src/gs-shell.c:1881
 msgid "Failed to install file: not supported"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1891
+#: src/gs-shell.c:1884
 msgid "Failed to install file: authentication failed"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1926
+#: src/gs-shell.c:1919
 msgid "Failed to install: not supported"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
-#: src/gs-shell.c:1929
+#: src/gs-shell.c:1922
 msgid "Failed to install: authentication failed"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * the %s is the origin, e.g. "Fedora" or
 #. * "Fedora Project [fedoraproject.org]"
-#: src/gs-shell.c:1970
+#: src/gs-shell.c:1963
 #, c-format
 msgid "Unable to contact %s"
 msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification, where the 'Software' means this application, aka 'GNOME Software'.
-#: src/gs-shell.c:1980
+#: src/gs-shell.c:1973
 msgid "Software needs to be restarted to use new plugins."
 msgstr ""
 
 #. TRANSLATORS: need to be connected to the AC power
-#: src/gs-shell.c:1984
+#: src/gs-shell.c:1977
 msgid "AC power is required"
 msgstr ""
 
 #. TRANSLATORS: not enough juice to do this safely
-#: src/gs-shell.c:1987
+#: src/gs-shell.c:1980
 msgid "The battery level is too low"
 msgstr ""
 
@@ -4129,7 +4128,7 @@ msgstr "Аҧшаара"
 
 #: src/gs-shell.ui:204
 msgid "Primary Menu"
-msgstr "Ихадоу амениу"
+msgstr ""
 
 #: src/gs-shell.ui:274
 msgid "Find Out _More"
@@ -4147,7 +4146,7 @@ msgstr ""
 #. * possible.
 #: src/gs-storage-context-dialog.c:95
 msgid "None"
-msgstr "Мап"
+msgstr ""
 
 #: src/gs-storage-context-dialog.c:139
 msgid "Application Data"
@@ -4193,7 +4192,7 @@ msgstr ""
 #. Translators: This is the title of the dialog which contains information about the storage or download size needed for an app
 #: src/gs-storage-context-dialog.ui:5
 msgid "Storage"
-msgstr "Аҵәахырҭа"
+msgstr ""
 
 #. Translators: Please do not translate the markup or link href
 #: src/gs-storage-context-dialog.ui:69
@@ -4356,7 +4355,7 @@ msgstr ""
 
 #: src/gs-update-monitor.c:1140
 msgid "Show Details"
-msgstr "Аԥкаарақәа рырбара"
+msgstr ""
 
 #. TRANSLATORS: Notification title when we've done a distro upgrade
 #: src/gs-update-monitor.c:1162
@@ -4613,7 +4612,7 @@ msgstr ""
 #: src/gs-upgrade-banner.c:95
 #, c-format
 msgid "%s Available"
-msgstr "%s анеира ахьауа"
+msgstr ""
 
 #: src/gs-upgrade-banner.c:143
 msgid "Learn about the new version"
@@ -4695,7 +4694,7 @@ msgstr ""
 
 #: plugins/epiphany/org.gnome.Software.Plugin.Epiphany.metainfo.xml.in:6
 msgid "Web Apps Support"
-msgstr "Веб-апшьқәа рыдкылара"
+msgstr "Веб-апшьқәа рыдкылара "
 
 #: plugins/epiphany/org.gnome.Software.Plugin.Epiphany.metainfo.xml.in:7
 msgid "Run popular web applications in a browser"
@@ -4862,17 +4861,17 @@ msgstr ""
 msgid "System Installation"
 msgstr ""
 
-#: plugins/flatpak/gs-plugin-flatpak.c:1038
+#: plugins/flatpak/gs-plugin-flatpak.c:1037
 #, c-format
 msgid "Failed to add to install for addon ‘%s’: %s"
 msgstr ""
 
-#: plugins/flatpak/gs-plugin-flatpak.c:1052
+#: plugins/flatpak/gs-plugin-flatpak.c:1051
 #, c-format
 msgid "Failed to add to uninstall for addon ‘%s’: %s"
 msgstr ""
 
-#: plugins/flatpak/gs-plugin-flatpak.c:1318
+#: plugins/flatpak/gs-plugin-flatpak.c:1317
 #, c-format
 msgid ""
 "Remote “%s” doesn't allow install of “%s”, possibly due to its filter. "
@@ -5071,7 +5070,7 @@ msgstr ""
 msgid "Packages"
 msgstr ""
 
-#: plugins/rpm-ostree/gs-plugin-rpm-ostree.c:2696
+#: plugins/rpm-ostree/gs-plugin-rpm-ostree.c:2690
 msgid "Operating System (OSTree)"
 msgstr ""
 
@@ -5087,3 +5086,3853 @@ msgstr "Адкылара Snap"
 #: plugins/snap/org.gnome.Software.Plugin.Snap.metainfo.xml.in:7
 msgid "A snap is a universal Linux package"
 msgstr ""
+
+#, fuzzy, c-format
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#, fuzzy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#, fuzzy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#, fuzzy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#, fuzzy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#, fuzzy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#, fuzzy
+
+
+
+#, fuzzy
+
+#, fuzzy
+
+
+
+
+
+
+#, fuzzy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#, fuzzy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#, fuzzy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#, fuzzy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#, fuzzy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#, fuzzy

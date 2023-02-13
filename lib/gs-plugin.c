@@ -4,7 +4,7 @@
  * Copyright (C) 2013-2016 Richard Hughes <richard@hughsie.com>
  * Copyright (C) 2014-2020 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 /**
@@ -902,33 +902,44 @@ check_directory_for_desktop_file (GsPlugin *plugin,
 {
 	g_autofree gchar *filename = NULL;
 	g_autoptr(GKeyFile) key_file = NULL;
+	gboolean found, any_found = FALSE;
 
 	filename = g_build_filename (data_dir, "applications", desktop_id, NULL);
 	key_file = g_key_file_new ();
 
-	if (g_key_file_load_from_file (key_file, filename, G_KEY_FILE_KEEP_TRANSLATIONS, NULL) &&
-	    cb (plugin, app, filename, key_file)) {
+	found = g_key_file_load_from_file (key_file, filename, G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
+	if (found && cb (plugin, app, filename, key_file)) {
 		g_autoptr(GDesktopAppInfo) appinfo = NULL;
+		g_debug ("Found '%s' for app '%s' and picked it", filename, desktop_id);
 		appinfo = g_desktop_app_info_new_from_keyfile (key_file);
 		if (appinfo != NULL)
 			return g_steal_pointer (&appinfo);
 		g_debug ("Failed to load '%s' as a GDesktopAppInfo", filename);
 		return NULL;
+	} else if (found) {
+		g_debug ("Found '%s' for app '%s', but did not pick it", filename, desktop_id);
+		any_found = TRUE;
 	}
 
 	if (!g_str_has_suffix (desktop_id, ".desktop")) {
 		g_autofree gchar *desktop_filename = g_strconcat (filename, ".desktop", NULL);
-		if (g_key_file_load_from_file (key_file, desktop_filename, G_KEY_FILE_KEEP_TRANSLATIONS, NULL) &&
-		    cb (plugin, app, desktop_filename, key_file)) {
+		found = g_key_file_load_from_file (key_file, desktop_filename, G_KEY_FILE_KEEP_TRANSLATIONS, NULL);
+		if (found && cb (plugin, app, desktop_filename, key_file)) {
 			g_autoptr(GDesktopAppInfo) appinfo = NULL;
+			g_debug ("Found '%s' for app '%s' and picked it", desktop_filename, desktop_id);
 			appinfo = g_desktop_app_info_new_from_keyfile (key_file);
 			if (appinfo != NULL)
 				return g_steal_pointer (&appinfo);
 			g_debug ("Failed to load '%s' as a GDesktopAppInfo", desktop_filename);
 			return NULL;
+		} else if (found) {
+			g_debug ("Found '%s' for app '%s', but did not pick it", desktop_filename, desktop_id);
+			any_found = TRUE;
 		}
 	}
 
+	if (!any_found)
+		g_debug ("Did not find any appropriate .desktop file for '%s' in '%s/applications/'", desktop_id, data_dir);
 	return NULL;
 }
 
@@ -1573,10 +1584,6 @@ gs_plugin_action_to_function_name (GsPluginAction action)
 		return "gs_plugin_launch";
 	if (action == GS_PLUGIN_ACTION_UPDATE_CANCEL)
 		return "gs_plugin_update_cancel";
-	if (action == GS_PLUGIN_ACTION_UPDATE)
-		return "gs_plugin_update";
-	if (action == GS_PLUGIN_ACTION_DOWNLOAD)
-		return "gs_plugin_download";
 	if (action == GS_PLUGIN_ACTION_FILE_TO_APP)
 		return "gs_plugin_file_to_app";
 	if (action == GS_PLUGIN_ACTION_URL_TO_APP)
@@ -1607,12 +1614,8 @@ gs_plugin_action_to_string (GsPluginAction action)
 		return "unknown";
 	if (action == GS_PLUGIN_ACTION_INSTALL)
 		return "install";
-	if (action == GS_PLUGIN_ACTION_DOWNLOAD)
-		return "download";
 	if (action == GS_PLUGIN_ACTION_REMOVE)
 		return "remove";
-	if (action == GS_PLUGIN_ACTION_UPDATE)
-		return "update";
 	if (action == GS_PLUGIN_ACTION_UPGRADE_DOWNLOAD)
 		return "upgrade-download";
 	if (action == GS_PLUGIN_ACTION_UPGRADE_TRIGGER)
@@ -1659,12 +1662,8 @@ gs_plugin_action_from_string (const gchar *action)
 {
 	if (g_strcmp0 (action, "install") == 0)
 		return GS_PLUGIN_ACTION_INSTALL;
-	if (g_strcmp0 (action, "download") == 0)
-		return GS_PLUGIN_ACTION_DOWNLOAD;
 	if (g_strcmp0 (action, "remove") == 0)
 		return GS_PLUGIN_ACTION_REMOVE;
-	if (g_strcmp0 (action, "update") == 0)
-		return GS_PLUGIN_ACTION_UPDATE;
 	if (g_strcmp0 (action, "upgrade-download") == 0)
 		return GS_PLUGIN_ACTION_UPGRADE_DOWNLOAD;
 	if (g_strcmp0 (action, "upgrade-trigger") == 0)

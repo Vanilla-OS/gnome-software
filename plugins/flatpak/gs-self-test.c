@@ -4,7 +4,7 @@
  * Copyright (C) 2013-2018 Richard Hughes <richard@hughsie.com>
  * Copyright (C) 2017 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -161,8 +161,10 @@ gs_plugins_flatpak_repo_func (GsPluginLoader *plugin_loader)
 	g_assert_cmpstr (gs_app_get_description (app), ==,
 			 "Longer multiline comment that does into detail.");
 	g_assert_true (gs_app_get_local_file (app) != NULL);
+	/* The app has an icon, but cannot be found since it is not installed */
+	g_assert_nonnull (gs_app_get_icons (app));
 	icon = gs_app_get_icon_for_size (app, 64, 1, NULL);
-	g_assert_nonnull (icon);
+	g_assert_null (icon);
 
 	/* now install the remote */
 	g_object_unref (plugin_job);
@@ -1401,6 +1403,7 @@ gs_plugins_flatpak_app_update_func (GsPluginLoader *plugin_loader)
 	GsPlugin *plugin;
 	g_autoptr(GsAppQuery) query = NULL;
 	const gchar *keywords[2] = { NULL, };
+	g_autoptr(GsAppList) update_apps_list = NULL;
 
 	/* drop all caches */
 	gs_utils_rmtree (g_getenv ("GS_SELF_TEST_CACHEDIR"), NULL);
@@ -1554,9 +1557,9 @@ gs_plugins_flatpak_app_update_func (GsPluginLoader *plugin_loader)
 
 	/* use a mainloop so we get the events in the default context */
 	g_object_unref (plugin_job);
-	plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_UPDATE,
-					 "app", app,
-					 NULL);
+	update_apps_list = gs_app_list_new ();
+	gs_app_list_add (update_apps_list, app);
+	plugin_job = gs_plugin_job_update_apps_new (update_apps_list, GS_PLUGIN_UPDATE_APPS_FLAGS_NO_DOWNLOAD);
 	gs_plugin_loader_job_process_async (plugin_loader, plugin_job,
 					    NULL,
 					    update_app_action_finish_sync,
@@ -1658,6 +1661,7 @@ gs_plugins_flatpak_runtime_extension_func (GsPluginLoader *plugin_loader)
 	GsPlugin *plugin;
 	g_autoptr(GsAppQuery) query = NULL;
 	const gchar *keywords[2] = { NULL, };
+	g_autoptr(GsAppList) update_apps_list = NULL;
 
 	/* drop all caches */
 	gs_utils_rmtree (g_getenv ("GS_SELF_TEST_CACHEDIR"), NULL);
@@ -1810,9 +1814,9 @@ gs_plugins_flatpak_runtime_extension_func (GsPluginLoader *plugin_loader)
 
 	/* use a mainloop so we get the events in the default context */
 	g_object_unref (plugin_job);
-	plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_UPDATE,
-					 "app", app,
-					 NULL);
+	update_apps_list = gs_app_list_new ();
+	gs_app_list_add (update_apps_list, app);
+	plugin_job = gs_plugin_job_update_apps_new (update_apps_list, GS_PLUGIN_UPDATE_APPS_FLAGS_NO_DOWNLOAD);
 	gs_plugin_loader_job_process_async (plugin_loader, plugin_job,
 					    NULL,
 					    update_app_action_finish_sync,

@@ -29,14 +29,14 @@ For questions about how to use Software, ask on [Discourse](https://discourse.gn
 
 Bug reports and merge requests should be filed on [GNOME GitLab](https://gitlab.gnome.org/GNOME/gnome-software).
 
-For development discussion, join us on `#gnome-software` on [irc.gnome.org](https://wiki.gnome.org/Community/GettingInTouch/IRC).
+For development discussion, join us on `#gnome-software` on [irc.gnome.org](https://wiki.gnome.org/Community/GettingInTouch/IRC) or `#gnome-software:gnome.org` on [Matrix](https://matrix.to/#/#gnome-software:gnome.org).
 
 # Documentation for app developers and vendors
 
-Specific documentation is available for application developers who wish to test
-how their applications appear in GNOME Software; and for distribution vendors
+Specific documentation is available for app developers who wish to test
+how their apps appear in GNOME Software; and for distribution vendors
 who wish to customise how GNOME Software appears in their distribution:
- * [Tools in GNOME Software for application developers](./doc/app-developers.md)
+ * [Tools in GNOME Software for app developers](./doc/app-developers.md)
  * [Vendor customisation of GNOME Software](./doc/vendor-customisation.md)
 
 # Running a nightly build

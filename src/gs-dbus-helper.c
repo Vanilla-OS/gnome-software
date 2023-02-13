@@ -4,7 +4,7 @@
  * Copyright (C) 2013 Richard Hughes <richard@hughsie.com>
  * Copyright (C) 2015-2017 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -288,7 +288,7 @@ notify_search_resources (GsExtrasPageMode   mode,
 
 	if (app_name == NULL) {
 		/* TRANSLATORS: this is a what we use in notifications if the app's name is unknown */
-		app_name = _("An application");
+		app_name = _("An app");
 	}
 
 	switch (mode) {

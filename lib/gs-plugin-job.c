@@ -4,7 +4,7 @@
  * Copyright (C) 2017-2018 Richard Hughes <richard@hughsie.com>
  * Copyright (C) 2018 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -24,8 +24,6 @@ typedef struct
 	guint			 max_results;
 	GsPlugin		*plugin;
 	GsPluginAction		 action;
-	GsAppListSortFunc	 sort_func;
-	gpointer		 sort_func_data;
 	gchar			*search;
 	GsApp			*app;
 	GsAppList		*list;
@@ -47,6 +45,13 @@ enum {
 	PROP_PROPAGATE_ERROR,
 	PROP_LAST
 };
+
+typedef enum {
+	SIGNAL_COMPLETED,
+	SIGNAL_LAST
+} GsPluginJobSignal;
+
+static guint signals[SIGNAL_LAST] = { 0 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GsPluginJob, gs_plugin_job, G_TYPE_OBJECT)
 
@@ -219,25 +224,6 @@ gs_plugin_job_get_action (GsPluginJob *self)
 	GsPluginJobPrivate *priv = gs_plugin_job_get_instance_private (self);
 	g_return_val_if_fail (GS_IS_PLUGIN_JOB (self), GS_PLUGIN_ACTION_UNKNOWN);
 	return priv->action;
-}
-
-void
-gs_plugin_job_set_sort_func (GsPluginJob *self, GsAppListSortFunc sort_func, gpointer user_data)
-{
-	GsPluginJobPrivate *priv = gs_plugin_job_get_instance_private (self);
-	g_return_if_fail (GS_IS_PLUGIN_JOB (self));
-	priv->sort_func = sort_func;
-	priv->sort_func_data = user_data;
-}
-
-GsAppListSortFunc
-gs_plugin_job_get_sort_func (GsPluginJob *self, gpointer *user_data_out)
-{
-	GsPluginJobPrivate *priv = gs_plugin_job_get_instance_private (self);
-	g_return_val_if_fail (GS_IS_PLUGIN_JOB (self), NULL);
-	if (user_data_out != NULL)
-		*user_data_out = priv->sort_func_data;
-	return priv->sort_func;
 }
 
 void
@@ -486,6 +472,19 @@ gs_plugin_job_class_init (GsPluginJobClass *klass)
 				      FALSE,
 				      G_PARAM_READWRITE);
 	g_object_class_install_property (object_class, PROP_PROPAGATE_ERROR, pspec);
+
+	/**
+	 * GsPluginJob::completed:
+	 *
+	 * Emitted when the job is completed, but before it is finalized.
+	 *
+	 * Since: 44
+	 */
+	signals[SIGNAL_COMPLETED] =
+		g_signal_new ("completed",
+			      G_TYPE_FROM_CLASS (object_class), G_SIGNAL_RUN_LAST,
+			      0, NULL, NULL, g_cclosure_marshal_generic,
+			      G_TYPE_NONE, 0);
 }
 
 static void

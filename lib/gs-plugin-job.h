@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2017-2018 Richard Hughes <richard@hughsie.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #pragma once
@@ -45,9 +45,6 @@ void		 gs_plugin_job_set_propagate_error	(GsPluginJob	*self,
 							 gboolean	 propagate_error);
 void		 gs_plugin_job_set_max_results		(GsPluginJob	*self,
 							 guint		 max_results);
-void		 gs_plugin_job_set_sort_func		(GsPluginJob	*self,
-							 GsAppListSortFunc sort_func,
-							 gpointer	 user_data);
 void		 gs_plugin_job_set_search		(GsPluginJob	*self,
 							 const gchar	*search);
 void		 gs_plugin_job_set_app			(GsPluginJob	*self,

@@ -5,7 +5,7 @@
  *
  * Author: Philip Withnall <pwithnall@endlessos.org>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 /**
@@ -87,8 +87,10 @@
 #include "gs-app-private.h"
 #include "gs-app-list-private.h"
 #include "gs-enums.h"
+#include "gs-plugin-private.h"
 #include "gs-plugin-job-private.h"
 #include "gs-plugin-job-refine.h"
+#include "gs-profiler.h"
 #include "gs-utils.h"
 
 struct _GsPluginJobRefine
@@ -101,6 +103,10 @@ struct _GsPluginJobRefine
 
 	/* Output data. */
 	GsAppList *result_list;  /* (owned) (nullable) */
+
+#ifdef HAVE_SYSPROF
+	gint64 begin_time_nsec;
+#endif
 };
 
 G_DEFINE_TYPE (GsPluginJobRefine, gs_plugin_job_refine, GS_TYPE_PLUGIN_JOB)
@@ -239,6 +245,11 @@ typedef struct {
 	guint n_pending_ops;
 	guint n_pending_recursions;
 	guint next_plugin_index;
+	guint next_plugin_order;
+
+#ifdef HAVE_SYSPROF
+	gint64 plugin_begin_time_nsec;
+#endif
 
 	/* Output data. */
 	GError *error;  /* (nullable) (owned) */
@@ -275,6 +286,8 @@ run_refine_internal_async (GsPluginJobRefine   *self,
 	g_autoptr(GTask) task = NULL;
 	RefineInternalData *data;
 	g_autoptr(RefineInternalData) data_owned = NULL;
+	gboolean anything_ran = FALSE;
+	g_autoptr(GError) local_error = NULL;
 
 	task = g_task_new (self, cancellable, callback, user_data);
 	g_task_set_source_tag (task, run_refine_internal_async);
@@ -283,12 +296,16 @@ run_refine_internal_async (GsPluginJobRefine   *self,
 	data->plugin_loader = g_object_ref (plugin_loader);
 	data->list = g_object_ref (list);
 	data->flags = flags;
+#ifdef HAVE_SYSPROF
+	data->plugin_begin_time_nsec = SYSPROF_CAPTURE_CURRENT_TIME;
+#endif
 	g_task_set_task_data (task, g_steal_pointer (&data_owned), (GDestroyNotify) refine_internal_data_free);
 
-	/* try to adopt each application with a plugin */
+	/* try to adopt each app with a plugin */
 	gs_plugin_loader_run_adopt (plugin_loader, list);
 
 	data->n_pending_ops = 0;
+	data->next_plugin_order = 0;
 
 	/* run each plugin
 	 *
@@ -306,10 +323,24 @@ run_refine_internal_async (GsPluginJobRefine   *self,
 		GsPlugin *plugin = g_ptr_array_index (plugins, i);
 		GsPluginClass *plugin_class = GS_PLUGIN_GET_CLASS (plugin);
 
+		if (gs_plugin_get_order (plugin) > data->next_plugin_order) {
+			if (!anything_ran)
+				data->next_plugin_order = gs_plugin_get_order (plugin);
+			else
+				return;
+		}
+
 		if (!gs_plugin_get_enabled (plugin))
 			continue;
 		if (plugin_class->refine_async == NULL)
 			continue;
+
+		/* at least one plugin supports this vfunc */
+		anything_ran = TRUE;
+
+		/* Handle cancellation */
+		if (g_cancellable_set_error_if_cancelled (cancellable, &local_error))
+			break;
 
 		/* FIXME: The next refine_async() call is made in
 		 * finish_refine_internal_op(). */
@@ -319,14 +350,13 @@ run_refine_internal_async (GsPluginJobRefine   *self,
 		data->n_pending_ops++;
 		plugin_class->refine_async (plugin, list, flags,
 					    cancellable, plugin_refine_cb, g_object_ref (task));
-
-		/* FIXME: The next refine_async() call is made in
-		 * finish_refine_internal_op(). */
-		return;
 	}
 
+	if (!anything_ran)
+		g_debug ("no plugin could handle refining apps");
+
 	data->n_pending_ops++;
-	finish_refine_internal_op (task, NULL);
+	finish_refine_internal_op (task, g_steal_pointer (&local_error));
 }
 
 static void
@@ -338,6 +368,17 @@ plugin_refine_cb (GObject      *source_object,
 	g_autoptr(GTask) task = g_steal_pointer (&user_data);
 	GsPluginClass *plugin_class = GS_PLUGIN_GET_CLASS (plugin);
 	g_autoptr(GError) local_error = NULL;
+#ifdef HAVE_SYSPROF
+	GsPluginJobRefine *self = g_task_get_source_object (task);
+	RefineInternalData *data = g_task_get_task_data (task);
+#endif
+
+	GS_PROFILER_ADD_MARK_TAKE (PluginJobRefine,
+				   data->plugin_begin_time_nsec,
+				   g_strdup_printf ("%s:%s",
+						    G_OBJECT_TYPE_NAME (self),
+						    gs_plugin_get_name (plugin)),
+				   NULL);
 
 	if (!plugin_class->refine_finish (plugin, result, &local_error)) {
 		finish_refine_internal_op (task, g_steal_pointer (&local_error));
@@ -377,6 +418,7 @@ finish_refine_internal_op (GTask  *task,
 	GsOdrsProvider *odrs_provider;
 	GsOdrsProviderRefineFlags odrs_refine_flags = 0;
 	GPtrArray *plugins;  /* (element-type GsPlugin) */
+	gboolean anything_ran = FALSE;
 
 	if (data->error == NULL && error_owned != NULL) {
 		data->error = g_steal_pointer (&error_owned);
@@ -387,16 +429,39 @@ finish_refine_internal_op (GTask  *task,
 	g_assert (data->n_pending_ops > 0);
 	data->n_pending_ops--;
 
+#ifdef HAVE_SYSPROF
+	data->plugin_begin_time_nsec = SYSPROF_CAPTURE_CURRENT_TIME;
+#endif
+
+	if (data->n_pending_ops > 0)
+		return;
+
+	/* We reach this line after all plugins of a certain order ran, and now
+	 * we need to run the next set of plugins. */
+	data->next_plugin_order++;
+
 	plugins = gs_plugin_loader_get_plugins (plugin_loader);
 
 	for (guint i = data->next_plugin_index; i < plugins->len; i++) {
 		GsPlugin *plugin = g_ptr_array_index (plugins, i);
 		GsPluginClass *plugin_class = GS_PLUGIN_GET_CLASS (plugin);
 
+		if (gs_plugin_get_order (plugin) > data->next_plugin_order) {
+			if (!anything_ran)
+				data->next_plugin_order = gs_plugin_get_order (plugin);
+			else
+				return;
+		}
+
 		if (!gs_plugin_get_enabled (plugin))
 			continue;
 		if (plugin_class->refine_async == NULL)
 			continue;
+		if (gs_plugin_get_order (plugin) < data->next_plugin_order)
+			continue;
+
+		/* at least one plugin supports this vfunc */
+		anything_ran = TRUE;
 
 		/* FIXME: The next refine_async() call is made in
 		 * finish_refine_internal_op(). */
@@ -406,10 +471,6 @@ finish_refine_internal_op (GTask  *task,
 		data->n_pending_ops++;
 		plugin_class->refine_async (plugin, list, flags,
 					    cancellable, plugin_refine_cb, g_object_ref (task));
-
-		/* FIXME: The next refine_async() call is made in
-		 * finish_refine_internal_op(). */
-		return;
 	}
 
 	if (data->next_plugin_index == plugins->len) {
@@ -645,6 +706,10 @@ gs_plugin_job_refine_run_async (GsPluginJob         *job,
 		g_object_freeze_notify (G_OBJECT (app));
 	}
 
+#ifdef HAVE_SYSPROF
+	self->begin_time_nsec = SYSPROF_CAPTURE_CURRENT_TIME;
+#endif
+
 	/* Start refining the apps. */
 	run_refine_internal_async (self, plugin_loader, result_list,
 				   self->flags, cancellable,
@@ -735,6 +800,7 @@ finish_run (GTask     *task,
 	/* success */
 	g_set_object (&self->result_list, result_list);
 	g_task_return_boolean (task, TRUE);
+	g_signal_emit_by_name (G_OBJECT (self), "completed");
 }
 
 static gboolean
@@ -742,6 +808,11 @@ gs_plugin_job_refine_run_finish (GsPluginJob   *self,
                                  GAsyncResult  *result,
                                  GError       **error)
 {
+	GS_PROFILER_ADD_MARK (PluginJobRefine,
+			      GS_PLUGIN_JOB_REFINE (self)->begin_time_nsec,
+			      G_OBJECT_TYPE_NAME (self),
+			      NULL);
+
 	return g_task_propagate_boolean (G_TASK (result), error);
 }
 

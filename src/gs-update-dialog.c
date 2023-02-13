@@ -4,7 +4,7 @@
  * Copyright (C) 2013-2016 Richard Hughes <richard@hughsie.com>
  * Copyright (C) 2014-2018 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -114,7 +114,7 @@ get_installed_updates_cb (GsPluginLoader *plugin_loader,
 		return;
 	}
 
-	/* set the header title using any one of the applications */
+	/* set the header title using any one of the apps */
 	install_date = gs_app_get_install_date (gs_app_list_index (list, 0));
 	if (install_date > 0) {
 		g_autoptr(GDateTime) date = NULL;
@@ -219,7 +219,7 @@ gs_update_dialog_show_update_details (GsUpdateDialog *dialog, GsApp *app)
 	g_signal_connect (page, "back-clicked",
 			  G_CALLBACK (back_clicked_cb), dialog);
 
-	gtk_widget_show (page);
+	gtk_widget_set_visible (page, TRUE);
 
 	adw_leaflet_append (ADW_LEAFLET (dialog->leaflet), page);
 	adw_leaflet_set_visible_child (ADW_LEAFLET (dialog->leaflet), page);

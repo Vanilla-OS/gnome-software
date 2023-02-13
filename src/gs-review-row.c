@@ -3,11 +3,12 @@
  *
  * Copyright (C) 2016 Canonical Ltd.
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
 
+#include <adwaita.h>
 #include <glib/gi18n.h>
 
 #include "gs-review-row.h"
@@ -39,8 +40,11 @@ enum {
 static guint signals [SIGNAL_LAST] = { 0 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GsReviewRow, gs_review_row, GTK_TYPE_LIST_BOX_ROW)
-
-static void
+/* FIXME: This is currently public to allow #GsAppReviewsDialog to refresh rows.
+ * That should no longer be needed once #AsReview emits #GObject::notify correctly,
+ * as then property bindings can be used internally.
+ * See https://github.com/ximion/appstream/pull/448 */
+void
 gs_review_row_refresh (GsReviewRow *row)
 {
 	GsReviewRowPrivate *priv = gs_review_row_get_instance_private (row);
@@ -197,13 +201,12 @@ gs_review_row_button_clicked_downvote_cb (GtkButton *button, GsReviewRow *row)
 }
 
 static void
-gs_review_row_confirm_cb (GtkDialog *dialog, gint response_id, GsReviewRow *row)
+gs_review_row_confirm_cb (AdwMessageDialog *dialog, const gchar *response, GsReviewRow *row)
 {
-	if (response_id == GTK_RESPONSE_YES) {
+	if (g_strcmp0 (response, "report") == 0) {
 		g_signal_emit (row, signals[SIGNAL_BUTTON_CLICKED], 0,
 			       GS_REVIEW_ACTION_REPORT);
 	}
-	gtk_window_destroy (GTK_WINDOW (dialog));
 }
 
 static void
@@ -211,7 +214,6 @@ gs_review_row_button_clicked_report_cb (GtkButton *button, GsReviewRow *row)
 {
 	GtkWidget *dialog;
 	GtkRoot *root;
-	GtkWidget *widget;
 	g_autoptr(GString) str = NULL;
 
 	str = g_string_new ("");
@@ -226,26 +228,19 @@ gs_review_row_button_clicked_report_cb (GtkButton *button, GsReviewRow *row)
 				"it has been checked by an administrator."));
 
 	root = gtk_widget_get_root (GTK_WIDGET (button));
-	dialog = gtk_message_dialog_new (GTK_WINDOW (root),
-					 GTK_DIALOG_MODAL |
-					 GTK_DIALOG_DESTROY_WITH_PARENT |
-					 GTK_DIALOG_USE_HEADER_BAR,
-					 GTK_MESSAGE_QUESTION,
-					 GTK_BUTTONS_CANCEL,
-					 "%s",
+	dialog = adw_message_dialog_new (GTK_WINDOW (root),
 					 /* TRANSLATORS: window title when
 					  * reporting a user-submitted review
 					  * for moderation */
-					 _("Report Review?"));
-	widget = gtk_dialog_add_button (GTK_DIALOG (dialog),
-					/* TRANSLATORS: button text when
-					 * sending a review for moderation */
-					_("Report"),
-					GTK_RESPONSE_YES);
-	gtk_style_context_add_class (gtk_widget_get_style_context (widget),
-				     "destructive-action");
-	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-						  "%s", str->str);
+					 _("Report Review?"), str->str);
+	adw_message_dialog_add_responses (ADW_MESSAGE_DIALOG (dialog),
+					  "cancel",  _("_Cancel"),
+					  /* TRANSLATORS: button text when
+					   * sending a review for moderation */
+					  "report",  _("_Report"),
+					  NULL);
+	adw_message_dialog_set_response_appearance (ADW_MESSAGE_DIALOG (dialog),
+						    "report", ADW_RESPONSE_DESTRUCTIVE);
 	g_signal_connect (dialog, "response",
 			  G_CALLBACK (gs_review_row_confirm_cb), row);
 	gtk_window_present (GTK_WINDOW (dialog));
@@ -284,7 +279,7 @@ gs_review_row_set_actions (GsReviewRow *review_row, guint64 actions)
  * gs_review_row_new:
  * @review: The review to show
  *
- * Create a widget suitable for showing an application review.
+ * Create a widget suitable for showing an app review.
  *
  * Return value: A new @GsReviewRow.
  **/

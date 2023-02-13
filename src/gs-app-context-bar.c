@@ -5,7 +5,7 @@
  *
  * Author: Philip Withnall <pwithnall@endlessos.org>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 /**
@@ -77,7 +77,7 @@ typedef enum {
 
 static GParamSpec *obj_props[PROP_APP + 1] = { NULL, };
 
-/* Certain tiles only make sense for applications which the user can run, and
+/* Certain tiles only make sense for apps which the user can run, and
  * not for (say) fonts.
  *
  * Update the visibility of the tile’s parent box to hide it if both tiles
@@ -157,7 +157,7 @@ update_storage_tile (GsAppContextBar *self)
 		size_user_data_str = g_format_size (size_user_data);
 		size_cache_data_str = g_format_size (size_cache_data);
 
-		/* Translators: The disk usage of an application when installed.
+		/* Translators: The disk usage of an app when installed.
 		 * This is displayed in a context tile, so the string should be short. */
 		title = _("Installed Size");
 
@@ -182,7 +182,7 @@ update_storage_tile (GsAppContextBar *self)
 		size_bytes = app_download_size_bytes;
 		size_type = app_download_size_type;
 
-		/* Translators: The download size of an application.
+		/* Translators: The download size of an app.
 		 * This is displayed in a context tile, so the string should be short. */
 		title = _("Download Size");
 
@@ -258,7 +258,6 @@ update_safety_tile (GsAppContextBar *self)
 	g_autoptr(GPtrArray) descriptions = g_ptr_array_new_with_free_func (NULL);
 	g_autoptr(GsAppPermissions) permissions = NULL;
 	GsAppPermissionsFlags perm_flags = GS_APP_PERMISSIONS_FLAGS_UNKNOWN;
-	GtkStyleContext *context;
 
 	/* Treat everything as safe to begin with, and downgrade its safety
 	 * based on app properties. */
@@ -400,14 +399,14 @@ update_safety_tile (GsAppContextBar *self)
 	    gs_app_has_quirk (self->app, GS_APP_QUIRK_PROVENANCE))
 		add_to_safety_rating (&chosen_rating, descriptions,
 				      SAFETY_SAFE,
-				      /* Translators: This indicates that an application has been packaged
+				      /* Translators: This indicates that an app has been packaged
 				       * by the user’s distribution and is safe.
 				       * It’s used in a context tile, so should be short. */
 				      _("Reviewed by your distribution"));
 	else if (perm_flags == GS_APP_PERMISSIONS_FLAGS_UNKNOWN)
 		add_to_safety_rating (&chosen_rating, descriptions,
 				      SAFETY_POTENTIALLY_UNSAFE,
-				      /* Translators: This indicates that an application has been packaged
+				      /* Translators: This indicates that an app has been packaged
 				       * by someone other than the user’s distribution, so might not be safe.
 				       * It’s used in a context tile, so should be short. */
 				      _("Provided by a third party"));
@@ -489,13 +488,11 @@ update_safety_tile (GsAppContextBar *self)
 	gtk_label_set_text (self->tiles[SAFETY_TILE].title, title);
 	gtk_label_set_text (self->tiles[SAFETY_TILE].description, description);
 
-	context = gtk_widget_get_style_context (self->tiles[SAFETY_TILE].lozenge);
+	gtk_widget_remove_css_class (self->tiles[SAFETY_TILE].lozenge, "green");
+	gtk_widget_remove_css_class (self->tiles[SAFETY_TILE].lozenge, "yellow");
+	gtk_widget_remove_css_class (self->tiles[SAFETY_TILE].lozenge, "red");
 
-	gtk_style_context_remove_class (context, "green");
-	gtk_style_context_remove_class (context, "yellow");
-	gtk_style_context_remove_class (context, "red");
-
-	gtk_style_context_add_class (context, css_class);
+	gtk_widget_add_css_class (self->tiles[SAFETY_TILE].lozenge, css_class);
 }
 
 typedef struct {
@@ -513,11 +510,10 @@ update_hardware_support_tile (GsAppContextBar *self)
 	gboolean any_control_relations_set;
 	const gchar *icon_name = NULL, *title = NULL, *description = NULL, *css_class = NULL;
 	gboolean has_touchscreen = FALSE, has_keyboard = FALSE, has_mouse = FALSE;
-	GtkStyleContext *context;
 
 	g_assert (self->app != NULL);
 
-	/* Don’t show the hardware support tile for non-desktop applications. */
+	/* Don’t show the hardware support tile for non-desktop apps. */
 	if (!show_tile_for_non_applications (self, HARDWARE_SUPPORT_TILE))
 		return;
 
@@ -673,18 +669,16 @@ update_hardware_support_tile (GsAppContextBar *self)
 	gtk_label_set_text (self->tiles[HARDWARE_SUPPORT_TILE].title, title);
 	gtk_label_set_text (self->tiles[HARDWARE_SUPPORT_TILE].description, description);
 
-	context = gtk_widget_get_style_context (self->tiles[HARDWARE_SUPPORT_TILE].lozenge);
+	gtk_widget_remove_css_class (self->tiles[HARDWARE_SUPPORT_TILE].lozenge, "green");
+	gtk_widget_remove_css_class (self->tiles[HARDWARE_SUPPORT_TILE].lozenge, "yellow");
+	gtk_widget_remove_css_class (self->tiles[HARDWARE_SUPPORT_TILE].lozenge, "red");
 
-	gtk_style_context_remove_class (context, "green");
-	gtk_style_context_remove_class (context, "yellow");
-	gtk_style_context_remove_class (context, "red");
-
-	gtk_style_context_add_class (context, css_class);
+	gtk_widget_add_css_class (self->tiles[HARDWARE_SUPPORT_TILE].lozenge, css_class);
 
 	if (g_str_equal (icon_name, "adaptive-symbolic"))
-		gtk_style_context_add_class (context, "wide-image");
+		gtk_widget_add_css_class (self->tiles[HARDWARE_SUPPORT_TILE].lozenge, "wide-image");
 	else
-		gtk_style_context_remove_class (context, "wide-image");
+		gtk_widget_remove_css_class (self->tiles[HARDWARE_SUPPORT_TILE].lozenge, "wide-image");
 }
 
 static void
@@ -739,7 +733,7 @@ update_age_rating_tile (GsAppContextBar *self)
 
 	g_assert (self->app != NULL);
 
-	/* Don’t show the age rating tile for non-desktop applications. */
+	/* Don’t show the age rating tile for non-desktop apps. */
 	if (!show_tile_for_non_applications (self, AGE_RATING_TILE))
 		return;
 
@@ -805,7 +799,7 @@ tile_clicked_cb (GtkWidget *widget,
 			g_assert_not_reached ();
 
 		gtk_window_set_transient_for (dialog, GTK_WINDOW (root));
-		gtk_widget_show (GTK_WIDGET (dialog));
+		gtk_widget_set_visible (GTK_WIDGET (dialog), TRUE);
 	}
 }
 

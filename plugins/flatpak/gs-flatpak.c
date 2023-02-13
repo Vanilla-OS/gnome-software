@@ -5,7 +5,7 @@
  * Copyright (C) 2016-2018 Richard Hughes <richard@hughsie.com>
  * Copyright (C) 2016-2019 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 /* Notes:
@@ -35,6 +35,7 @@
 #include "gs-appstream.h"
 #include "gs-flatpak-app.h"
 #include "gs-flatpak.h"
+#include "gs-flatpak-transaction.h"
 #include "gs-flatpak-utils.h"
 
 struct _GsFlatpak {
@@ -67,7 +68,8 @@ G_DEFINE_TYPE (GsFlatpak, gs_flatpak, G_TYPE_OBJECT)
 static void
 gs_plugin_refine_item_scope (GsFlatpak *self, GsApp *app)
 {
-	if (gs_app_get_scope (app) == AS_COMPONENT_SCOPE_UNKNOWN) {
+	if (gs_app_get_scope (app) == AS_COMPONENT_SCOPE_UNKNOWN &&
+	    (self->flags & GS_FLATPAK_FLAG_IS_TEMPORARY) == 0) {
 		gboolean is_user = flatpak_installation_get_is_user (self->installation_noninteractive);
 		gs_app_set_scope (app, is_user ? AS_COMPONENT_SCOPE_USER : AS_COMPONENT_SCOPE_SYSTEM);
 	}
@@ -3623,6 +3625,8 @@ gs_flatpak_refine_wildcard (GsFlatpak *self, GsApp *app,
 	g_autoptr(GPtrArray) components = NULL;
 	g_autoptr(GRWLockReaderLocker) locker = NULL;
 
+	GS_PROFILER_BEGIN_SCOPED (FlatpakRefineWildcard, "Flatpak (refine wildcard)", NULL);
+
 	/* not enough info to find */
 	id = gs_app_get_id (app);
 	if (id == NULL)
@@ -3630,6 +3634,8 @@ gs_flatpak_refine_wildcard (GsFlatpak *self, GsApp *app,
 
 	if (!ensure_flatpak_silo_with_locker (self, &locker, interactive, cancellable, error))
 		return FALSE;
+
+	GS_PROFILER_BEGIN_SCOPED (FlatpakRefineWildcardQuerySilo, "Flatpak (query silo)", NULL);
 
 	/* find all apps when matching any prefixes */
 	xpath = g_strdup_printf ("components/component/id[text()='%s']/..", id);
@@ -3641,20 +3647,37 @@ gs_flatpak_refine_wildcard (GsFlatpak *self, GsApp *app,
 		return FALSE;
 	}
 
+	GS_PROFILER_END_SCOPED (FlatpakRefineWildcardQuerySilo);
+
 	gs_flatpak_ensure_remote_title (self, interactive, cancellable);
 
+	GS_PROFILER_BEGIN_SCOPED (FlatpakRefineWildcardGenerateApps, "Flatpak (create app)", NULL);
 	for (guint i = 0; i < components->len; i++) {
 		XbNode *component = g_ptr_array_index (components, i);
 		g_autoptr(GsApp) new = NULL;
+
+		GS_PROFILER_BEGIN_SCOPED (FlatpakRefineWildcardCreateAppstreamApp, "Flatpak (create Appstream app)", NULL);
 		new = gs_appstream_create_app (self->plugin, self->silo, component, error);
+		GS_PROFILER_END_SCOPED (FlatpakRefineWildcardCreateAppstreamApp);
+
 		if (new == NULL)
 			return FALSE;
 		gs_flatpak_claim_app (self, new);
+
+		GS_PROFILER_BEGIN_SCOPED (FlatpakRefineWildcardRefineNewApp, "Flatpak (refine new app)", NULL);
 		if (!gs_flatpak_refine_app_unlocked (self, new, refine_flags, interactive, &locker, cancellable, error))
 			return FALSE;
+		GS_PROFILER_END_SCOPED (FlatpakRefineWildcardRefineNewApp);
+
+		GS_PROFILER_BEGIN_SCOPED (FlatpakRefineWildcardSubsumeMetadata, "Flatpak (subsume metadata)", NULL);
 		gs_app_subsume_metadata (new, app);
+		GS_PROFILER_END_SCOPED (FlatpakRefineWildcardSubsumeMetadata);
+
 		gs_app_list_add (list, new);
 	}
+	GS_PROFILER_END_SCOPED (FlatpakRefineWildcardGenerateApps);
+
+	GS_PROFILER_END_SCOPED (FlatpakRefineWildcard);
 
 	/* success */
 	return TRUE;
@@ -4621,4 +4644,62 @@ gs_flatpak_get_busy (GsFlatpak *self)
 {
 	g_return_val_if_fail (GS_IS_FLATPAK (self), FALSE);
 	return g_atomic_int_get (&self->busy) > 0;
+}
+
+gboolean
+gs_flatpak_purge_sync (GsFlatpak    *self,
+		       GCancellable *cancellable,
+		       GError      **error)
+{
+	FlatpakInstallation *installation;
+	g_autoptr(GPtrArray) unused_refs = NULL;
+
+	installation = gs_flatpak_get_installation (self, FALSE);
+	if (installation == NULL) {
+		g_set_error_literal (error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND,
+				     "Non-interactive installation not found");
+		return FALSE;
+	}
+
+	unused_refs = flatpak_installation_list_unused_refs (installation, NULL, cancellable, error);
+	if (unused_refs == NULL)
+		return FALSE;
+
+	g_debug ("Installation '%s' has %u unused refs", gs_flatpak_get_id (self), unused_refs->len);
+
+	if (unused_refs->len > 0) {
+		g_autoptr(FlatpakTransaction) transaction = NULL;
+		transaction = gs_flatpak_transaction_new (installation, cancellable, error);
+		if (transaction == NULL) {
+			g_prefix_error_literal (error, "failed to build transaction: ");
+			return FALSE;
+		}
+		flatpak_transaction_set_no_interaction (transaction, TRUE);
+		flatpak_transaction_set_no_pull (transaction, TRUE);
+
+		/* use system installations as dependency sources for user installations */
+		flatpak_transaction_add_default_dependency_sources (transaction);
+
+		for (guint i = 0; i < unused_refs->len; i++) {
+			g_autoptr(GsApp) app = NULL;
+			FlatpakRef *ref = g_ptr_array_index (unused_refs, i);
+			const gchar *ref_str = flatpak_ref_format_ref_cached (ref);
+			app = gs_flatpak_ref_to_app (self, ref_str, FALSE, cancellable, error);
+			if (app == NULL) {
+				g_prefix_error (error, "failed to create app from ref '%s': ", ref_str);
+				return FALSE;
+			}
+			gs_flatpak_transaction_add_app (transaction, app);
+			if (!flatpak_transaction_add_uninstall (transaction, ref_str, error)) {
+				g_prefix_error (error, "failed to add ref to transaction: ");
+				return FALSE;
+			}
+			g_debug ("Going to uninstall '%s'", ref_str);
+		}
+
+		return gs_flatpak_transaction_run (transaction, cancellable, error);
+	} else {
+		/* Nothing to uninstall. */
+		return TRUE;
+	}
 }

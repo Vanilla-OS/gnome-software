@@ -4,7 +4,7 @@
  * Copyright (C) 2013-2015 Richard Hughes <richard@hughsie.com>
  * Copyright (C) 2016-2019 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -12,6 +12,7 @@
 #include <glib/gi18n.h>
 #include <gio/gdesktopappinfo.h>
 
+#include <adwaita.h>
 #ifndef TESTDATADIR
 #include "gs-application.h"
 #endif
@@ -63,17 +64,17 @@ gs_app_notify_installed (GsApp *app)
 
 	switch (gs_app_get_kind (app)) {
 	case AS_COMPONENT_KIND_DESKTOP_APP:
-		/* TRANSLATORS: this is the summary of a notification that an application
+		/* TRANSLATORS: this is the summary of a notification that an app
 		 * has been successfully installed */
 		summary = g_strdup_printf (_("%s is now installed"), gs_app_get_name (app));
 		if (gs_app_has_quirk (app, GS_APP_QUIRK_NEEDS_REBOOT)) {
-			/* TRANSLATORS: an application has been installed, but
+			/* TRANSLATORS: an app has been installed, but
 			 * needs a reboot to complete the installation */
 			body = _("A restart is required for the changes to take effect.");
 		} else {
-			/* TRANSLATORS: this is the body of a notification that an application
+			/* TRANSLATORS: this is the body of a notification that an app
 			 * has been successfully installed */
-			body = _("Application is ready to be used.");
+			body = _("App is ready to be used.");
 		}
 		break;
 	default:
@@ -90,7 +91,7 @@ gs_app_notify_installed (GsApp *app)
 			* has been successfully installed */
 			summary = g_strdup_printf (_("%s is now installed"), gs_app_get_name (app));
 			if (gs_app_has_quirk (app, GS_APP_QUIRK_NEEDS_REBOOT)) {
-				/* TRANSLATORS: an application has been installed, but
+				/* TRANSLATORS: an app has been installed, but
 				* needs a reboot to complete the installation */
 				body = _("A restart is required for the changes to take effect.");
 			}
@@ -106,7 +107,7 @@ gs_app_notify_installed (GsApp *app)
 		g_notification_add_button_with_target (n, _("Restart"),
 						       "app.reboot", NULL);
 	} else if (gs_app_get_kind (app) == AS_COMPONENT_KIND_DESKTOP_APP) {
-		/* TRANSLATORS: this is button that opens the newly installed application */
+		/* TRANSLATORS: this is button that opens the newly installed app */
 		g_autoptr(GsPlugin) plugin = gs_app_dup_management_plugin (app);
 		const gchar *plugin_name = (plugin != NULL) ? gs_plugin_get_name (plugin) : "";
 		g_notification_add_button_with_target (n, _("Launch"),
@@ -150,21 +151,33 @@ unmap_cb (GtkDialog *dialog,
 }
 
 static void
-response_cb (GtkDialog *dialog,
-             gint       response_id,
-             RunInfo   *run_info)
+response_cb (AdwMessageDialog *self,
+             const gchar      *response,
+             RunInfo          *run_info)
 {
-	run_info->response_id = response_id;
-	gtk_window_destroy (GTK_WINDOW (dialog));
+	if (g_strcmp0 (response, "accept") == 0)
+		run_info->response_id = GTK_RESPONSE_OK;
+	else if (g_strcmp0 (response, "install") == 0)
+		run_info->response_id = GTK_RESPONSE_OK;
+	else if (g_strcmp0 (response, "dont-warn-again") == 0)
+		run_info->response_id = GTK_RESPONSE_YES;
+	else
+		run_info->response_id = GTK_RESPONSE_CANCEL;
 	shutdown_loop (run_info);
 }
 
 static gboolean
-close_requested_cb (GtkDialog *dialog,
-                    RunInfo   *run_info)
+gs_common_app_is_from_official_repository (GsApp *app,
+					   GSettings *settings)
 {
-	shutdown_loop (run_info);
-	return GDK_EVENT_PROPAGATE;
+	g_auto(GStrv) official_repos = NULL;
+	const gchar *origin = gs_app_get_origin (app);
+
+	if (origin == NULL)
+		return FALSE;
+	official_repos = g_settings_get_strv (settings, "official-repos");
+	return official_repos &&
+	       gs_utils_strv_fnmatch ((gchar **) official_repos, origin);
 }
 
 GtkResponseType
@@ -187,7 +200,7 @@ gs_app_notify_unavailable (GsApp *app, GtkWindow *parent)
 	};
 	g_autoptr(GSettings) settings = NULL;
 	g_autoptr(GString) body = NULL;
-	g_autoptr(GString) title = NULL;
+	const gchar *title;
 
 	RunInfo run_info = {
 		GTK_RESPONSE_NONE,
@@ -211,22 +224,19 @@ gs_app_notify_unavailable (GsApp *app, GtkWindow *parent)
 	if (!g_settings_get_boolean (settings, "prompt-for-nonfree"))
 		return GTK_RESPONSE_OK;
 
-	title = g_string_new ("");
 	if (already_enabled) {
-		g_string_append_printf (title, "<b>%s</b>",
-					/* TRANSLATORS: window title */
-					_("Install Third-Party Software?"));
+		title = gs_common_app_is_from_official_repository (app, settings) ?
+			/* TRANSLATORS: window title */
+			_("Install Software?") :
+			/* TRANSLATORS: window title */
+			_("Install Third-Party Software?");
 	} else {
-		g_string_append_printf (title, "<b>%s</b>",
-					/* TRANSLATORS: window title */
-					_("Enable Third-Party Software Repository?"));
+		title = gs_common_app_is_from_official_repository (app, settings) ?
+			/* TRANSLATORS: window title */
+			_("Enable Software Repository?") :
+			/* TRANSLATORS: window title */
+			_("Enable Third-Party Software Repository?");
 	}
-	dialog = gtk_message_dialog_new (parent,
-					 GTK_DIALOG_MODAL,
-					 GTK_MESSAGE_QUESTION,
-					 GTK_BUTTONS_CANCEL,
-					 NULL);
-	gtk_message_dialog_set_markup (GTK_MESSAGE_DIALOG (dialog), title->str);
 
 	body = g_string_new ("");
 	origin_ui = gs_app_dup_origin_ui (app, TRUE);
@@ -234,7 +244,7 @@ gs_app_notify_unavailable (GsApp *app, GtkWindow *parent)
 	if (hint & GS_APP_LICENSE_NONFREE) {
 		g_string_append_printf (body,
 					/* TRANSLATORS: the replacements are as follows:
-					 * 1. Application name, e.g. "Firefox"
+					 * 1. App name, e.g. "Firefox"
 					 * 2. Software repository name, e.g. fedora-optional
 					 */
 					_("%s is not <a href=\"https://en.wikipedia.org/wiki/Free_and_open-source_software\">"
@@ -245,7 +255,7 @@ gs_app_notify_unavailable (GsApp *app, GtkWindow *parent)
 	} else {
 		g_string_append_printf (body,
 					/* TRANSLATORS: the replacements are as follows:
-					 * 1. Application name, e.g. "Firefox"
+					 * 1. App name, e.g. "Firefox"
 					 * 2. Software repository name, e.g. fedora-optional */
 					_("%s is provided by “%s”."),
 					gs_app_get_name (app),
@@ -277,27 +287,30 @@ gs_app_notify_unavailable (GsApp *app, GtkWindow *parent)
 		}
 	}
 
-	gtk_message_dialog_format_secondary_markup (GTK_MESSAGE_DIALOG (dialog), "%s", body->str);
+	dialog = adw_message_dialog_new (parent,
+					 title,
+					 body->str);
+	adw_message_dialog_set_body_use_markup (ADW_MESSAGE_DIALOG (dialog), TRUE);
+
+	adw_message_dialog_add_response (ADW_MESSAGE_DIALOG (dialog),
+					 "cancel",  _("_Cancel"));
+
 	/* TRANSLATORS: this is button text to not ask about non-free content again */
-	if (0) gtk_dialog_add_button (GTK_DIALOG (dialog), _("Don’t Warn Again"), GTK_RESPONSE_YES);
+	if (0) adw_message_dialog_add_response (ADW_MESSAGE_DIALOG (dialog), "dont-warn-again",  _("Don’t _Warn Again"));
 	if (already_enabled) {
-		gtk_dialog_add_button (GTK_DIALOG (dialog),
-				       /* TRANSLATORS: button text */
-				       _("Install"),
-				       GTK_RESPONSE_OK);
+		adw_message_dialog_add_response (ADW_MESSAGE_DIALOG (dialog),
+						 /* TRANSLATORS: button text */
+						 "install", _("_Install"));
+
 	} else {
-		gtk_dialog_add_button (GTK_DIALOG (dialog),
-				       /* TRANSLATORS: button text */
-				       _("Enable and Install"),
-				       GTK_RESPONSE_OK);
+		adw_message_dialog_add_response (ADW_MESSAGE_DIALOG (dialog),
+						 /* TRANSLATORS: button text */
+						 "install", _("Enable and _Install"));
 	}
 
-
 	/* Run */
-	if (!gtk_widget_get_visible (dialog))
-		gtk_window_present (GTK_WINDOW (dialog));
+	gtk_window_present (GTK_WINDOW (dialog));
 
-	g_signal_connect (dialog, "close-request", G_CALLBACK (close_requested_cb), &run_info);
 	g_signal_connect (dialog, "response", G_CALLBACK (response_cb), &run_info);
 	g_signal_connect (dialog, "unmap", G_CALLBACK (unmap_cb), &run_info);
 
@@ -396,14 +409,11 @@ gs_utils_set_key_colors_in_css (const gchar *css,
  * @widget: a widget
  * @provider: (inout) (transfer full) (not optional) (nullable): pointer to a
  *    #GtkCssProvider to use
- * @class_name: class name to use, without the leading `.`
  * @css: (nullable): CSS to set on the widget, or %NULL to clear custom CSS
  *
- * Set custom CSS on the given @widget instance. This doesn’t affect any other
- * instances of the same widget. The @class_name must be a static string to be
- * used as a name for the @css. It doesn’t need to vary with @widget, but
- * multiple values of @class_name can be used with the same @widget to control
- * several independent snippets of custom CSS.
+ * Set custom CSS on the given @widget instance. This uses the widget's name
+ * property to identify it. If the widget is unnamed, which means its name is
+ * %NULL, the empty string, or its type name, it will receive a unique name.
  *
  * @provider must be a pointer to a #GtkCssProvider pointer, typically within
  * your widget’s private data struct. This function will return a
@@ -412,29 +422,41 @@ gs_utils_set_key_colors_in_css (const gchar *css,
  * @provider. If @css is %NULL, this function will destroy the @provider.
  */
 void
-gs_utils_widget_set_css (GtkWidget *widget, GtkCssProvider **provider, const gchar *class_name, const gchar *css)
+gs_utils_widget_set_css (GtkWidget *widget, GtkCssProvider **provider, const gchar *css)
 {
-	GtkStyleContext *context;
+	GdkDisplay *display;
+	const gchar *widget_name;
 	g_autoptr(GString) str = NULL;
 
 	g_return_if_fail (GTK_IS_WIDGET (widget));
 	g_return_if_fail (provider != NULL);
 	g_return_if_fail (provider == NULL || *provider == NULL || GTK_IS_STYLE_PROVIDER (*provider));
-	g_return_if_fail (class_name != NULL);
 
-	context = gtk_widget_get_style_context (widget);
+	display = gtk_widget_get_display (widget);
 
-	/* remove custom class if NULL */
+	/* remove custom CSS if NULL */
 	if (css == NULL) {
 		if (*provider != NULL)
-			gtk_style_context_remove_provider (context, GTK_STYLE_PROVIDER (*provider));
+			gtk_style_context_remove_provider_for_display (display, GTK_STYLE_PROVIDER (*provider));
 		g_clear_object (provider);
-		gtk_style_context_remove_class (context, class_name);
 		return;
 	}
 
+	widget_name = gtk_widget_get_name (widget);
+
+	/* give the widget a unique name if NULL */
+	if (widget_name == NULL ||
+	    *widget_name == '\0' ||
+	    g_strcmp0 (widget_name, G_OBJECT_TYPE_NAME (widget)) == 0) {
+		gchar tmp[26];  /* "widget-0x", up to 16 hex digits, and '\0'. */
+		g_assert ((gsize) g_snprintf (tmp, sizeof (tmp), "widget-%p", widget) < sizeof (tmp));
+		gtk_widget_set_name (widget, (const gchar *) tmp);
+		widget_name = gtk_widget_get_name (widget);
+	}
+
+	/* prepare the CSS code */
 	str = g_string_sized_new (1024);
-	g_string_append_printf (str, ".%s {\n", class_name);
+	g_string_append_printf (str, "#%s {\n", widget_name);
 	g_string_append_printf (str, "%s\n", css);
 	g_string_append (str, "}");
 
@@ -445,13 +467,10 @@ gs_utils_widget_set_css (GtkWidget *widget, GtkCssProvider **provider, const gch
 				  G_CALLBACK (gs_utils_widget_css_parsing_error_cb), NULL);
 	}
 
-	/* set the custom CSS class */
-	gtk_style_context_add_class (context, class_name);
-
 	/* set up custom provider and store on the widget */
 	gtk_css_provider_load_from_data (*provider, str->str, -1);
-	gtk_style_context_add_provider (context, GTK_STYLE_PROVIDER (*provider),
-					GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+	gtk_style_context_add_provider_for_display (display, GTK_STYLE_PROVIDER (*provider),
+						    GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
 
 static void
@@ -469,17 +488,16 @@ unset_focus (GtkWidget *widget, gpointer data)
  * Inserts a widget displaying the detailed message into the message dialog.
  */
 static void
-insert_details_widget (GtkMessageDialog *dialog,
+insert_details_widget (AdwMessageDialog *dialog,
 		       const gchar *details,
 		       gboolean add_prefix)
 {
-	GtkWidget *message_area, *sw, *label;
+	GtkWidget *box, *sw, *label;
 	GtkWidget *tv;
-	GtkWidget *child;
 	GtkTextBuffer *buffer;
 	g_autoptr(GString) msg = NULL;
 
-	g_assert (GTK_IS_MESSAGE_DIALOG (dialog));
+	g_assert (ADW_IS_MESSAGE_DIALOG (dialog));
 	g_assert (details != NULL);
 
 	gtk_window_set_resizable (GTK_WINDOW (dialog), TRUE);
@@ -494,22 +512,13 @@ insert_details_widget (GtkMessageDialog *dialog,
 					details);
 	}
 
-	message_area = gtk_message_dialog_get_message_area (dialog);
-	g_assert (GTK_IS_BOX (message_area));
-
-	/* Find the secondary label and set its width_chars.   */
-	/* Otherwise the label will tend to expand vertically. */
-	child = gtk_widget_get_first_child (message_area);
-	if (child) {
-		GtkWidget *next = gtk_widget_get_next_sibling (child);
-		if (next && GTK_IS_LABEL (next))
-			gtk_label_set_width_chars (GTK_LABEL (next), 40);
-	}
+	box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+	adw_message_dialog_set_extra_child (ADW_MESSAGE_DIALOG (dialog), box);
 
 	label = gtk_label_new (_("Details"));
 	gtk_widget_set_halign (label, GTK_ALIGN_START);
 	gtk_widget_set_visible (label, TRUE);
-	gtk_box_append (GTK_BOX (message_area), label);
+	gtk_box_append (GTK_BOX (box), label);
 
 	sw = gtk_scrolled_window_new ();
 	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
@@ -522,14 +531,13 @@ insert_details_widget (GtkMessageDialog *dialog,
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (tv));
 	gtk_text_view_set_editable (GTK_TEXT_VIEW (tv), FALSE);
 	gtk_text_view_set_wrap_mode (GTK_TEXT_VIEW (tv), GTK_WRAP_WORD);
-	gtk_style_context_add_class (gtk_widget_get_style_context (tv),
-	                             "update-failed-details");
+	gtk_widget_add_css_class (tv, "update-failed-details");
 	gtk_text_buffer_set_text (buffer, msg ? msg->str : details, -1);
 	gtk_widget_set_visible (tv, TRUE);
 
 	gtk_scrolled_window_set_child (GTK_SCROLLED_WINDOW (sw), tv);
 	gtk_widget_set_vexpand (sw, TRUE);
-	gtk_box_append (GTK_BOX (message_area), sw);
+	gtk_box_append (GTK_BOX (box), sw);
 
 	g_signal_connect (dialog, "map", G_CALLBACK (unset_focus), NULL);
 }
@@ -551,20 +559,101 @@ gs_utils_show_error_dialog (GtkWindow *parent,
 {
 	GtkWidget *dialog;
 
-	dialog = gtk_message_dialog_new_with_markup (parent,
-	                                             0,
-	                                             GTK_MESSAGE_INFO,
-	                                             GTK_BUTTONS_CLOSE,
-	                                             "<big><b>%s</b></big>", title);
-	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-	                                          "%s", msg);
+	dialog = adw_message_dialog_new (parent, title, msg);
 	if (details != NULL)
-		insert_details_widget (GTK_MESSAGE_DIALOG (dialog), details, TRUE);
+		insert_details_widget (ADW_MESSAGE_DIALOG (dialog), details, TRUE);
+	adw_message_dialog_add_response (ADW_MESSAGE_DIALOG (dialog),
+					 /* TRANSLATORS: button text */
+					 "close", _("_Close"));
+	gtk_window_present (GTK_WINDOW (dialog));
+}
 
-	g_signal_connect_swapped (dialog, "response",
-	                          G_CALLBACK (gtk_window_destroy),
-	                          dialog);
-	gtk_widget_show (dialog);
+#ifndef TESTDATADIR
+static void
+copy_error_text_clicked_cb (GtkButton *button,
+			    GtkTextView *text_view)
+{
+	GdkClipboard *clipboard = gtk_widget_get_clipboard (GTK_WIDGET (text_view));
+	GtkTextBuffer *buffer = gtk_text_view_get_buffer (text_view);
+	GtkTextIter start, end;
+	g_autofree gchar *text = NULL;
+
+	gtk_text_buffer_get_bounds (buffer, &start, &end);
+	text = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
+	gdk_clipboard_set_text (clipboard, text);
+}
+#endif
+
+/**
+ * gs_utils_show_error_dialog_simple:
+ * @parent: transient parent, or %NULL for none
+ * @title: the title the dialog
+ * @text: the detailed error text
+ *
+ * Shows a dialog with title @title to display an error
+ * message @text.
+ *
+ * Since: 44
+ */
+void
+gs_utils_show_error_dialog_simple (GtkWindow *parent,
+				   const gchar *title,
+				   const gchar *text)
+{
+#ifndef TESTDATADIR
+	GtkWidget *window, *button, *container, *text_view, *vbox;
+
+	g_return_if_fail (text != NULL);
+
+	window = adw_window_new ();
+	g_object_set (window,
+		      "modal", TRUE,
+		      "title", title,
+		      "destroy-with-parent", TRUE,
+		      "default-width", 500,
+		      "default-height", 350,
+		      "resizable", TRUE,
+		      "transient-for", parent,
+		      NULL);
+	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+	adw_window_set_content (ADW_WINDOW (window), vbox);
+
+	container = gtk_header_bar_new ();
+	gtk_box_append (GTK_BOX (vbox), container);
+
+	button = gtk_button_new_from_icon_name ("edit-copy-symbolic");
+	g_object_set (button,
+		      "focus-on-click", FALSE,
+		      NULL);
+	gtk_header_bar_pack_start (GTK_HEADER_BAR (container), button);
+
+	container = gtk_scrolled_window_new ();
+	g_object_set (container,
+		      "hscrollbar-policy", GTK_POLICY_AUTOMATIC,
+		      "vscrollbar-policy", GTK_POLICY_AUTOMATIC,
+		      NULL);
+	gtk_box_append (GTK_BOX (vbox), container);
+
+	text_view = gtk_text_view_new ();
+	g_object_set (text_view,
+		      "can-focus", FALSE,
+		      "editable", FALSE,
+		      "hexpand", TRUE,
+		      "vexpand", TRUE,
+		      "wrap-mode", GTK_WRAP_WORD_CHAR,
+		      "right-margin", 12,
+		      "left-margin", 12,
+		      "top-margin", 12,
+		      "bottom-margin", 12,
+		      NULL);
+	gtk_text_buffer_set_text (gtk_text_view_get_buffer (GTK_TEXT_VIEW (text_view)), text, -1);
+	gtk_scrolled_window_set_child (GTK_SCROLLED_WINDOW (container), text_view);
+
+	g_signal_connect (button, "clicked",
+			  G_CALLBACK (copy_error_text_clicked_cb), text_view);
+
+	gtk_widget_set_visible (window, TRUE);
+#endif /* TESTDATADIR */
 }
 
 /**
@@ -600,26 +689,22 @@ gs_utils_ask_user_accepts (GtkWindow *parent,
 		accept_label = _("_Accept");
 	}
 
-	dialog = gtk_message_dialog_new_with_markup (parent,
-	                                             GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-	                                             GTK_MESSAGE_QUESTION,
-	                                             GTK_BUTTONS_NONE,
-	                                             "<big><b>%s</b></big>", title);
-	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-	                                          "%s", msg);
+	dialog = adw_message_dialog_new (parent, title, msg);
 	if (details != NULL)
-		insert_details_widget (GTK_MESSAGE_DIALOG (dialog), details, FALSE);
-	gtk_dialog_add_button (GTK_DIALOG (dialog), _("_Cancel"), GTK_RESPONSE_CANCEL);
-	gtk_dialog_add_button (GTK_DIALOG (dialog), accept_label, GTK_RESPONSE_OK);
+		insert_details_widget (ADW_MESSAGE_DIALOG (dialog), details, FALSE);
+	adw_message_dialog_add_responses (ADW_MESSAGE_DIALOG (dialog),
+					  /* TRANSLATORS: button text */
+					  "cancel", _("_Cancel"),
+					  /* TRANSLATORS: button text */
+					  "accept", accept_label,
+					  NULL);
 
 	run_info.response_id = GTK_RESPONSE_NONE;
 	run_info.loop = g_main_loop_new (NULL, FALSE);
 
 	/* Run */
-	if (!gtk_widget_get_visible (dialog))
-		gtk_window_present (GTK_WINDOW (dialog));
+	gtk_window_present (GTK_WINDOW (dialog));
 
-	g_signal_connect (dialog, "close-request", G_CALLBACK (close_requested_cb), &run_info);
 	g_signal_connect (dialog, "response", G_CALLBACK (response_cb), &run_info);
 	g_signal_connect (dialog, "unmap", G_CALLBACK (unmap_cb), &run_info);
 
@@ -678,7 +763,7 @@ gs_utils_build_unique_id_kind (AsComponentKind kind, const gchar *id)
  * @list: A #GsAppList
  * @app: A #GsApp
  *
- * Finds out if any application in the list would match a given application,
+ * Finds out if any app in the list would match a given app,
  * where the match is valid for a matching D-Bus bus name,
  * the label in the UI or the same icon.
  *
@@ -742,8 +827,8 @@ gs_utils_reboot_notify (GsAppList *list,
 
 	if (is_install) {
 		if (app_name) {
-			/* TRANSLATORS: The '%s' is replaced with the application name */
-			tmp = g_strdup_printf ("An application “%s” has been installed", app_name);
+			/* TRANSLATORS: The '%s' is replaced with the app name */
+			tmp = g_strdup_printf ("An app “%s” has been installed", app_name);
 			title = tmp;
 		} else {
 			/* TRANSLATORS: we've just live-updated some apps */
@@ -752,13 +837,13 @@ gs_utils_reboot_notify (GsAppList *list,
 					  gs_app_list_length (list));
 		}
 	} else if (app_name) {
-		/* TRANSLATORS: The '%s' is replaced with the application name */
-		tmp = g_strdup_printf ("An application “%s” has been removed", app_name);
+		/* TRANSLATORS: The '%s' is replaced with the app name */
+		tmp = g_strdup_printf ("An app “%s” has been removed", app_name);
 		title = tmp;
 	} else {
 		/* TRANSLATORS: we've just removed some apps */
-		title = ngettext ("An application has been removed",
-				  "Applications have been removed",
+		title = ngettext ("An app has been removed",
+				  "Apps have been removed",
 				  gs_app_list_length (list));
 	}
 
@@ -1258,4 +1343,30 @@ gs_utils_format_size (guint64 size_bytes,
 	*out_is_markup = FALSE;
 	return g_format_size (size_bytes);
 #endif /* HAVE_G_FORMAT_SIZE_ONLY_VALUE */
+}
+
+/**
+ * gs_show_uri:
+ * @parent: (nullable): parent window
+ * @uri: the uri to show
+ *
+ * This function launches the default application for showing
+ * a given uri, or shows an error dialog if that fails.
+ *
+ * Since: 44
+ **/
+void
+gs_show_uri (GtkWindow *parent,
+	     const char *uri)
+{
+#if GTK_CHECK_VERSION(4, 9, 3)
+	g_autoptr (GFile) file = NULL;
+	g_autoptr (GtkFileLauncher) launcher = NULL;
+
+	file = g_file_new_for_uri (uri);
+	launcher = gtk_file_launcher_new (file);
+	gtk_file_launcher_launch (launcher, parent, NULL, NULL, NULL);
+#else
+	gtk_show_uri (parent, uri, GDK_CURRENT_TIME);
+#endif
 }

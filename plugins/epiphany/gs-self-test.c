@@ -4,7 +4,7 @@
  * Copyright (C) 2013-2017 Richard Hughes <richard@hughsie.com>
  * Copyright (C) 2021 Matthew Leeds <mwleeds@protonmail.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -182,7 +182,7 @@ gs_plugins_epiphany_installed_func (GsPluginLoader *plugin_loader)
 	g_assert_cmpstr (gs_app_get_summary (app), ==, "pinafore.social");
 	g_assert_cmpstr (gs_app_get_origin (app), ==, "gnome-web");
 	origin_ui = gs_app_dup_origin_ui (app, TRUE);
-	g_assert_cmpstr (origin_ui, ==, "GNOME Web");
+	g_assert_cmpstr (origin_ui, ==, "Pinafore (Web App)");
 	icon = gs_app_get_icon_for_size (app, 4096, 1, NULL);
 	g_assert_nonnull (icon);
 	g_clear_object (&icon);

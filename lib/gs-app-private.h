@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2016 Richard Hughes <richard@hughsie.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #pragma once
@@ -26,5 +26,7 @@ void		 gs_app_set_pending_action	(GsApp		*app,
 						 GsPluginAction	 action);
 gint		 gs_app_compare_priority	(GsApp		*app1,
 						 GsApp		*app2);
+void		 gs_app_set_icons_state		(GsApp		*app,
+						 GsAppIconsState icons_state);
 
 G_END_DECLS

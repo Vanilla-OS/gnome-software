@@ -4,7 +4,7 @@
  * Copyright (C) 2007-2017 Richard Hughes <richard@hughsie.com>
  * Copyright (C) 2015-2020 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #pragma once
@@ -23,6 +23,7 @@ G_BEGIN_DECLS
 #define GS_TYPE_PLUGIN_LOADER		(gs_plugin_loader_get_type ())
 G_DECLARE_FINAL_TYPE (GsPluginLoader, gs_plugin_loader, GS, PLUGIN_LOADER, GObject)
 
+#include "gs-job-manager.h"
 #include "gs-plugin-job.h"
 
 GsPluginLoader	*gs_plugin_loader_new			(GDBusConnection *session_bus_connection,
@@ -97,6 +98,8 @@ GsPlugin	*gs_plugin_loader_find_plugin		(GsPluginLoader	*plugin_loader,
 							 const gchar	*plugin_name);
 void            gs_plugin_loader_set_max_parallel_ops  (GsPluginLoader *plugin_loader,
                                                         guint           max_ops);
+
+GsJobManager	*gs_plugin_loader_get_job_manager	(GsPluginLoader	*plugin_loader);
 
 GsCategoryManager *gs_plugin_loader_get_category_manager (GsPluginLoader *plugin_loader);
 void		 gs_plugin_loader_claim_error		(GsPluginLoader *plugin_loader,

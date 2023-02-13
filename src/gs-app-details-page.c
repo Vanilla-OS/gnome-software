@@ -5,7 +5,7 @@
  * Copyright (C) 2014-2018 Kalev Lember <klember@redhat.com>
  * Copyright (C) 2021 Purism SPC
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 /**
@@ -13,7 +13,7 @@
  * @title: GsAppDetailsPage
  * @include: gnome-software.h
  * @stability: Stable
- * @short_description: A small page showing an application's details
+ * @short_description: A small page showing an app's details
  *
  * This is a page from #GsUpdateDialog.
  */
@@ -91,7 +91,7 @@ add_permissions_row (GsAppDetailsPage *page,
 
 	row = adw_action_row_new ();
 	if (is_warning_row)
-		gtk_style_context_add_class (gtk_widget_get_style_context (row), "permission-row-warning");
+		gtk_widget_add_css_class (row, "permission-row-warning");
 
 	image = gtk_image_new_from_icon_name ("dialog-warning-symbolic");
 	if (!is_warning_row)
@@ -210,10 +210,10 @@ set_updates_description_ui (GsAppDetailsPage *page, GsApp *app)
 
 	if (gs_app_has_quirk (app, GS_APP_QUIRK_NEW_PERMISSIONS)) {
 		g_autoptr(GsAppPermissions) permissions = gs_app_dup_update_permissions (app);
-		gtk_widget_show (page->permissions_section);
+		gtk_widget_set_visible (page->permissions_section, TRUE);
 		populate_permissions_section (page, permissions);
 	} else {
-		gtk_widget_hide (page->permissions_section);
+		gtk_widget_set_visible (page->permissions_section, FALSE);
 	}
 }
 

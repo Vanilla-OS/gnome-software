@@ -3,18 +3,18 @@
 <component type="desktop-application">
   <id>org.gnome.Software.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
-  <project_license>GPL-2.0+</project_license>
+  <project_license>GPL-2.0-or-later</project_license>
   <name>Software</name>
   <summary>Install and update apps</summary>
   <description>
     <p>
-      Software allows you to find and install new applications and system
-      extensions and remove existing installed applications.
+      Software allows you to find and install new apps and system
+      extensions and remove existing installed apps.
     </p>
     <p>
-      Software showcases featured and popular applications with useful
-      descriptions and multiple screenshots per application.
-      Applications can be found either through browsing the list of categories
+      Software showcases featured and popular apps with useful
+      descriptions and multiple screenshots per app.
+      Apps can be found either through browsing the list of categories
       or by searching.
       It also allows you to update your system using an offline update.
     </p>
@@ -66,53 +66,94 @@
    Validate with `appstreamcli validate *.metainfo.xml`
   -->
   <releases>
-    <release date="2023-02-10" version="43.4" type="stable">
+    <release date="2023-02-13" version="44~beta" type="development">
       <description>
-        <p>This is a stable release with the following changes:</p>
+        <p>This is an unstable release with the following changes:</p>
         <ul>
-          <li>Stop cancelled search in appstream data early</li>
-          <li>Lookup for appstream-provided icons in more directories</li>
-        </ul>
-      </description>
-    </release>
-    <release date="2023-01-06" version="43.3" type="stable">
-      <description>
-        <p>This is a stable release with the following changes:</p>
-        <ul>
-          <li>Periodically expire cached app icons</li>
-          <li>Stop notifying about unprepared critical updates</li>
+          <li>Add a preference for only showing freely-licensed apps</li>
+          <li>Improve design of Install/Uninstall buttons for app addons</li>
+          <li>Fix loading flatpak bundles if a runtime is missing</li>
+          <li>Improvements to the UI for ratings and reviews</li>
+          <li>Fix refreshing the details page after searching for an app</li>
+          <li>Improve choice of icons for apps where a themed icon is available</li>
+          <li>Improve performance of downloading remote icons significantly</li>
         </ul>
         <p>This release also updates translations:</p>
         <ul>
-          <li>Abkhazian (Nart Tlisha)</li>
+          <li>Basque (Asier Sarasua Garmendia)</li>
+          <li>Belarusian (Vasil Pupkin)</li>
+          <li>Galician (Fran Dieguez)</li>
           <li>Georgian (Ekaterine Papava)</li>
-          <li>Hebrew (Yosef Or Boczko)</li>
-          <li>Interlingue (Olga Smirnova)</li>
+          <li>German (Jürgen Benvenuti)</li>
+          <li>Hebrew (Yosef Or Boczko, Yaron Shahrabani)</li>
+          <li>Indonesian (Andika Triwidada)</li>
+          <li>Lithuanian (Aurimas Černius)</li>
           <li>Occitan (post 1500) (Quentin PAGÈS)</li>
-          <li>Persian (Danial Behzadi)</li>
+          <li>Portuguese (Hugo Carvalho)</li>
+          <li>Russian (Aleksandr Melman)</li>
+          <li>Spanish (Philip Withnall, Daniel Mustieles)</li>
+          <li>Turkish (Sabri Ünal, Emin Tufan Çetin)</li>
+          <li>Ukrainian (Yuri Chornoivan)</li>
+          <li>Vietnamese (Ngọc Quân Trần)</li>
         </ul>
       </description>
     </release>
-    <release date="2022-12-02" version="43.2" type="stable">
+    <release date="2023-01-06" version="44~alpha" type="development">
       <description>
-        <p>This is a stable release with the following changes:</p>
+        <p>This is an unstable release with the following changes:</p>
         <ul>
-          <li>Fix show of updatable app in the details page</li>
-          <li>Fix search for apps providing some feature under rpm-ostree</li>
-          <li>Fix sending of ODRS data when using libsoup3</li>
-          <li>Fix occasional crash when installing apps</li>
+          <li>Allow automatically removing unneeded runtimes</li>
+          <li>Show changelogs for rpm-ostree updates</li>
+          <li>Limit the maximum description length in context tiles</li>
+          <li>Support a less-prominent UI for regular updates for image-based OSs</li>
+          <li>Improvements to error notification display</li>
+          <li>Reduce reloading/refreshing of view when installing apps</li>
+          <li>Minor usability improvements to review lists and adding a review</li>
+          <li>Stop using libdnf in rpm-ostree backend</li>
+          <li>UI polish on app source chooser</li>
+          <li>Fix distro upgrades</li>
+          <li>Fix system-wide external AppStream support</li>
+          <li>UI polish on Incompatible Software dialog</li>
+          <li>Fix opening web apps</li>
+          <li>Fix notifying about available firmware updates</li>
+          <li>Improve scaling of Explore page on phones</li>
+          <li>Add a placeholder to search entry</li>
+          <li>Fix repo authentication dialog</li>
+          <li>Periodically refresh cached app icons</li>
+          <li>Improve labels and tooltips on Updates page</li>
+          <li>Annotate firmware updates with their release urgency</li>
+          <li>Adapt to GTK API deprecations</li>
+          <li>Use the OS logo for minor update rows for image-based OSs</li>
+          <li>Change ‘application’ to ‘app’ in translatable strings</li>
+          <li>Stop notifying about unprepared critical updates</li>
+          <li>Show the ‘Learn More’ link for larger updates of image-based OSs if provided</li>
+          <li>Add translations for more firmware device categories</li>
         </ul>
         <p>This release also updates translations:</p>
         <ul>
           <li>Abkhazian (Nart Tlisha)</li>
           <li>Belarusian (Vasil Pupkin)</li>
+          <li>Catalan (Jordi Mas)</li>
+          <li>Chinese (Taiwan) (Cheng-Chia Tseng)</li>
+          <li>Croatian (Goran Vidović)</li>
           <li>Czech (Daniel Rusek)</li>
+          <li>French (Claude Paroz)</li>
+          <li>Friulian (Fabio Tomat)</li>
           <li>Georgian (Zurab Kargareteli)</li>
-          <li>Greek (Kosmas Martakidis)</li>
+          <li>German (Philipp Kiemle, Jürgen Benvenuti)</li>
+          <li>Greek, Modern (1453-) (Kosmas Martakidis)</li>
           <li>Hebrew (Yosef Or Boczko)</li>
-          <li>Hungarian (Balázs Meskó)</li>
+          <li>Hungarian (Balázs Úr)</li>
+          <li>Icelandic (Sveinn í Felli)</li>
+          <li>Interlingue (Olga Smirnova)</li>
+          <li>Italian (Gianvito Cavasoli)</li>
+          <li>Kazakh (Baurzhan Muftakhidinov)</li>
+          <li>Panjabi (A S Alam)</li>
+          <li>Persian (Danial Behzadi)</li>
           <li>Russian (Aleksandr Melman)</li>
+          <li>Slovenian (Matej Urbančič)</li>
           <li>Turkish (Sabri Ünal)</li>
+          <li>Ukrainian (Yuri Chornoivan)</li>
         </ul>
       </description>
     </release>

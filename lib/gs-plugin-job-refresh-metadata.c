@@ -5,7 +5,7 @@
  *
  * Author: Philip Withnall <pwithnall@endlessos.org>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 /**
@@ -13,10 +13,10 @@
  * @short_description: A plugin job to refresh metadata
  *
  * #GsPluginJobRefreshMetadata is a #GsPluginJob representing an operation to
- * refresh metadata inside plugins and about applications.
+ * refresh metadata inside plugins and about apps.
  *
- * For example, the metadata could be the list of applications available, or
- * the list of updates, or a new set of popular applications to highlight.
+ * For example, the metadata could be the list of apps available, or
+ * the list of updates, or a new set of popular apps to highlight.
  *
  * The maximum cache age should be set using
  * #GsPluginJobRefreshMetadata:cache-age-secs. If this is not a low value, this
@@ -40,6 +40,10 @@
 #include <glib.h>
 #include <glib-object.h>
 #include <glib/gi18n.h>
+
+#ifdef HAVE_SYSPROF
+#include <sysprof-capture.h>
+#endif
 
 #include "gs-enums.h"
 #include "gs-external-appstream-utils.h"
@@ -76,6 +80,10 @@ struct _GsPluginJobRefreshMetadata
 		guint n_plugins_complete;
 	} plugins_progress;
 	GSource *progress_source;  /* (owned) (nullable) */
+
+#ifdef HAVE_SYSPROF
+	gint64 begin_time_nsec;
+#endif
 };
 
 G_DEFINE_TYPE (GsPluginJobRefreshMetadata, gs_plugin_job_refresh_metadata, GS_TYPE_PLUGIN_JOB)
@@ -188,6 +196,7 @@ gs_plugin_job_refresh_metadata_run_async (GsPluginJob         *job,
 	GPtrArray *plugins;  /* (element-type GsPlugin) */
 	gboolean any_plugins_ran = FALSE;
 	GsOdrsProvider *odrs_provider;
+	g_autoptr(GError) local_error = NULL;
 
 	/* Chosen to allow a few UI updates per second without updating the
 	 * progress label so often it’s unreadable. */
@@ -214,13 +223,19 @@ gs_plugin_job_refresh_metadata_run_async (GsPluginJob         *job,
 
 	/* Start downloading updated external appstream before anything else */
 #ifdef ENABLE_EXTERNAL_APPSTREAM
-	self->n_pending_ops++;
-	gs_external_appstream_refresh_async (self->cache_age_secs,
-					     refresh_progress_tuple_cb,
-					     &self->external_appstream_progress,
-					     cancellable,
-					     external_appstream_refresh_cb,
-					     g_object_ref (task));
+	if (!g_cancellable_is_cancelled (cancellable)) {
+		self->n_pending_ops++;
+		gs_external_appstream_refresh_async (self->cache_age_secs,
+						     refresh_progress_tuple_cb,
+						     &self->external_appstream_progress,
+						     cancellable,
+						     external_appstream_refresh_cb,
+						     g_object_ref (task));
+	}
+#endif
+
+#ifdef HAVE_SYSPROF
+	self->begin_time_nsec = SYSPROF_CAPTURE_CURRENT_TIME;
 #endif
 
 	for (guint i = 0; i < plugins->len; i++) {
@@ -235,6 +250,10 @@ gs_plugin_job_refresh_metadata_run_async (GsPluginJob         *job,
 		/* at least one plugin supports this vfunc */
 		any_plugins_ran = TRUE;
 
+		/* Handle cancellation */
+		if (g_cancellable_set_error_if_cancelled (cancellable, &local_error))
+			break;
+
 		/* Set up progress reporting for this plugin. */
 		self->plugins_progress.n_plugins++;
 
@@ -248,7 +267,8 @@ gs_plugin_job_refresh_metadata_run_async (GsPluginJob         *job,
 						      g_object_ref (task));
 	}
 
-	if (odrs_provider != NULL) {
+	if (odrs_provider != NULL &&
+	    !g_cancellable_is_cancelled (cancellable)) {
 		self->n_pending_ops++;
 		gs_odrs_provider_refresh_ratings_async (odrs_provider,
 							self->cache_age_secs,
@@ -261,15 +281,13 @@ gs_plugin_job_refresh_metadata_run_async (GsPluginJob         *job,
 
 	/* some functions are really required for proper operation */
 	if (!any_plugins_ran) {
-		g_autoptr(GError) local_error = NULL;
 		g_set_error_literal (&local_error,
 				     GS_PLUGIN_ERROR,
 				     GS_PLUGIN_ERROR_NOT_SUPPORTED,
 				     "no plugin could handle refreshing");
-		finish_op (task, g_steal_pointer (&local_error));
-	} else {
-		finish_op (task, NULL);
 	}
+
+	finish_op (task, g_steal_pointer (&local_error));
 }
 
 static void
@@ -358,9 +376,18 @@ odrs_provider_refresh_ratings_cb (GObject      *source_object,
 	GsOdrsProvider *odrs_provider = GS_ODRS_PROVIDER (source_object);
 	g_autoptr(GTask) task = G_TASK (user_data);
 	g_autoptr(GError) local_error = NULL;
+#ifdef HAVE_SYSPROF
+	GsPluginJobRefreshMetadata *self = g_task_get_source_object (task);
+#endif
 
 	if (!gs_odrs_provider_refresh_ratings_finish (odrs_provider, result, &local_error))
 		g_debug ("Failed to refresh ratings: %s", local_error->message);
+
+	GS_PROFILER_ADD_MARK_TAKE (PluginJobRefreshMetadata,
+				   self->begin_time_nsec,
+				   g_strdup_printf ("%s:odrs", G_OBJECT_TYPE_NAME (self)),
+				   NULL);
+
 	/* Intentionally ignore errors, to not block other plugins */
 	finish_op (task, NULL);
 }
@@ -382,6 +409,13 @@ plugin_refresh_metadata_cb (GObject      *source_object,
 
 	/* Update progress reporting. */
 	self->plugins_progress.n_plugins_complete++;
+
+	GS_PROFILER_ADD_MARK_TAKE (PluginJobRefreshMetadata,
+				   self->begin_time_nsec,
+				   g_strdup_printf ("%s:%s",
+						    G_OBJECT_TYPE_NAME (self),
+						    gs_plugin_get_name (plugin)),
+				   NULL);
 
 	/* Intentionally ignore errors, to not block other plugins */
 	finish_op (task, NULL);
@@ -416,6 +450,7 @@ finish_op (GTask  *task,
 	/* Get the results of the parallel ops. */
 	if (self->saved_error != NULL) {
 		g_task_return_error (task, g_steal_pointer (&self->saved_error));
+		g_signal_emit_by_name (G_OBJECT (self), "completed");
 		return;
 	}
 
@@ -429,6 +464,12 @@ finish_op (GTask  *task,
 
 	/* success */
 	g_task_return_boolean (task, TRUE);
+	g_signal_emit_by_name (G_OBJECT (self), "completed");
+
+	GS_PROFILER_ADD_MARK (PluginJobRefreshMetadata,
+			      self->begin_time_nsec,
+			      G_OBJECT_TYPE_NAME (self),
+			      NULL);
 }
 
 static gboolean
@@ -513,7 +554,7 @@ gs_plugin_job_refresh_metadata_init (GsPluginJobRefreshMetadata *self)
  * @flags: flags to affect the refresh
  *
  * Create a new #GsPluginJobRefreshMetadata for refreshing metadata about
- * available applications.
+ * available apps.
  *
  * Caches will be refreshed if they are older than @cache_age_secs.
  *

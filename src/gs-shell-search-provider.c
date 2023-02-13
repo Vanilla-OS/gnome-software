@@ -6,7 +6,7 @@
  *
  * Copyright (C) 2013 Matthias Clasen
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include <config.h>
@@ -150,6 +150,7 @@ execute_search (GsShellSearchProvider  *self,
 	PendingSearch *pending_search;
 	g_autoptr(GsPluginJob) plugin_job = NULL;
 	g_autoptr(GsAppQuery) query = NULL;
+	g_autoptr(GSettings) settings = NULL;
 
 	g_cancellable_cancel (self->cancellable);
 	g_clear_object (&self->cancellable);
@@ -168,6 +169,8 @@ execute_search (GsShellSearchProvider  *self,
 	g_application_hold (g_application_get_default ());
 	self->cancellable = g_cancellable_new ();
 
+	settings = g_settings_new ("org.gnome.software");
+
 	query = gs_app_query_new ("keywords", terms,
 				  "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON |
 						  GS_PLUGIN_REFINE_FLAGS_REQUIRE_ORIGIN_HOSTNAME,
@@ -176,6 +179,7 @@ execute_search (GsShellSearchProvider  *self,
 				  "max-results", GS_SHELL_SEARCH_PROVIDER_MAX_RESULTS,
 				  "sort-func", gs_shell_search_provider_sort_cb,
 				  "sort-user-data", self,
+				  "license-type", g_settings_get_boolean (settings, "show-only-free-apps") ? GS_APP_QUERY_LICENSE_FOSS : GS_APP_QUERY_LICENSE_ANY,
 				  NULL);
 	plugin_job = gs_plugin_job_list_apps_new (query, GS_PLUGIN_LIST_APPS_FLAGS_NONE);
 

@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2018 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -112,7 +112,7 @@ refresh_ui (GsOriginPopoverRow *row)
 		AsComponentScope scope = gs_app_get_scope (priv->app);
 		gtk_widget_set_visible (priv->user_scope_box, scope == AS_COMPONENT_SCOPE_USER);
 	} else {
-		gtk_widget_hide (priv->user_scope_box);
+		gtk_widget_set_visible (priv->user_scope_box, FALSE);
 	}
 
 	packaging_base_css_color = gs_app_get_metadata_item (priv->app, "GnomeSoftware::PackagingBaseCssColor");
@@ -127,7 +127,7 @@ refresh_ui (GsOriginPopoverRow *row)
 	if (packaging_base_css_color != NULL)
 		css = g_strdup_printf ("   color: @%s;\n", packaging_base_css_color);
 
-	gs_utils_widget_set_css (priv->packaging_box, &priv->css_provider, "packaging-color", css);
+	gs_utils_widget_set_css (priv->packaging_box, &priv->css_provider, css);
 }
 
 static void

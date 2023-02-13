@@ -5,7 +5,7 @@
  * Copyright (C) 2013 Matthias Clasen <mclasen@redhat.com>
  * Copyright (C) 2014-2018 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 /**
@@ -140,6 +140,7 @@ typedef struct
 	GPtrArray		*version_history; /* (element-type AsRelease) (nullable) (owned) */
 	GPtrArray		*relations;  /* (nullable) (element-type AsRelation) (owned) */
 	gboolean		 has_translations;
+	GsAppIconsState		 icons_state;
 } GsAppPrivate;
 
 typedef enum {
@@ -180,9 +181,10 @@ typedef enum {
 	PROP_RELATIONS,
 	PROP_ORIGIN_UI,
 	PROP_HAS_TRANSLATIONS,
+	PROP_ICONS_STATE,
 } GsAppProperty;
 
-static GParamSpec *obj_props[PROP_HAS_TRANSLATIONS + 1] = { NULL, };
+static GParamSpec *obj_props[PROP_ICONS_STATE + 1] = { NULL, };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GsApp, gs_app, G_TYPE_OBJECT)
 
@@ -1878,6 +1880,33 @@ gs_app_set_developer_name (GsApp *app, const gchar *developer_name)
 	_g_set_str (&priv->developer_name, developer_name);
 }
 
+static GtkIconTheme *
+get_icon_theme (void)
+{
+	GtkIconTheme *theme;
+	GdkDisplay *display = gdk_display_get_default ();
+
+	if (display != NULL) {
+		theme = g_object_ref (gtk_icon_theme_get_for_display (display));
+	} else {
+		const gchar *test_search_path;
+
+		/* This fallback path is needed for the unit tests,
+		 * which run without a screen, and in an environment
+		 * where the XDG dir variables don’t point to the system
+		 * datadir which contains the system icon theme. */
+		theme = gtk_icon_theme_new ();
+
+		test_search_path = g_getenv ("GS_SELF_TEST_ICON_THEME_PATH");
+		if (test_search_path != NULL) {
+			g_auto(GStrv) dirs = g_strsplit (test_search_path, ":", -1);
+			gtk_icon_theme_set_search_path (theme, (const char * const *) dirs);
+		}
+	}
+
+	return theme;
+}
+
 /**
  * gs_app_get_icon_for_size:
  * @app: a #GsApp
@@ -1916,6 +1945,7 @@ gs_app_get_icon_for_size (GsApp       *app,
                           const gchar *fallback_icon_name)
 {
 	GsAppPrivate *priv = gs_app_get_instance_private (app);
+	g_autoptr(GIcon) candidate_icon = NULL;
 
 	g_return_val_if_fail (GS_IS_APP (app), NULL);
 	g_return_val_if_fail (size > 0, NULL);
@@ -1924,9 +1954,6 @@ gs_app_get_icon_for_size (GsApp       *app,
 	g_debug ("Looking for icon for %s, at size %u×%u, with fallback %s",
 		 gs_app_get_id (app), size, scale, fallback_icon_name);
 
-	/* See if there’s an icon the right size, or the first one which is too
-	 * big which could be scaled down. Note that the icons array may be
-	 * lazily created. */
 	for (guint i = 0; priv->icons != NULL && i < priv->icons->len; i++) {
 		GIcon *icon = priv->icons->pdata[i];
 		g_autofree gchar *icon_str = g_icon_to_string (icon);
@@ -1937,7 +1964,20 @@ gs_app_get_icon_for_size (GsApp       *app,
 		g_debug ("\tConsidering icon of type %s (%s), width %u×%u",
 			 G_OBJECT_TYPE_NAME (icon), icon_str, icon_width, icon_scale);
 
-		/* Appstream only guarantees the 64x64@1 cached icon is present, ignore other icons that aren't installed. */
+		/* If there’s a themed icon with no width set, use that, as
+		 * typically themed icons are available in any given size. */
+		if (icon_width == 0 && G_IS_THEMED_ICON (icon)) {
+			g_autoptr(GtkIconTheme) theme = get_icon_theme ();
+			if (gtk_icon_theme_has_gicon (theme, icon)) {
+				g_debug ("Found themed icon");
+				return g_object_ref (icon);
+			}
+		}
+
+		/* To avoid excessive I/O, the loading of AppStream data does
+		 * not verify the existence of cached icons, which we do now.
+		 * Since AppStream only guarantees that the 64x64@1 cached icon
+		 * is present, ignore other icons if they do not exist. */
 		if (G_IS_FILE_ICON (icon) && !(icon_width == 64 && icon_height == 64 && icon_scale == 1)) {
 			GFile *file = g_file_icon_get_file (G_FILE_ICON (icon));
 			if (!g_file_query_exists (file, NULL)) {
@@ -1950,21 +1990,15 @@ gs_app_get_icon_for_size (GsApp       *app,
 		if (icon_width == 0 || icon_width * icon_scale < size * scale)
 			continue;
 
-		if (icon_width * icon_scale >= size * scale)
-			return g_object_ref (icon);
+		/* See if there’s an icon of the right size, or the first one which is too
+		 * big which could be scaled down. Note that the icons array may be
+		 * lazily created. */
+		if (candidate_icon == NULL && (icon_width * icon_scale >= size * scale))
+			candidate_icon = g_object_ref (icon);
 	}
 
-	g_debug ("Found no icons of the right size; checking themed icons");
-
-	/* If there’s a themed icon with no width set, use that, as typically
-	 * themed icons are available in all the right sizes. */
-	for (guint i = 0; priv->icons != NULL && i < priv->icons->len; i++) {
-		GIcon *icon = priv->icons->pdata[i];
-		guint icon_width = gs_icon_get_width (icon);
-
-		if (icon_width == 0 && G_IS_THEMED_ICON (icon))
-			return g_object_ref (icon);
-	}
+	if (candidate_icon != NULL)
+		return g_object_ref (candidate_icon);
 
 	if (scale > 1) {
 		g_debug ("Retrying at scale 1");
@@ -2558,7 +2592,8 @@ gs_app_get_url (GsApp *app, AsUrlKind kind)
  * gs_app_set_url:
  * @app: a #GsApp
  * @kind: a #AsUrlKind, e.g. %AS_URL_KIND_HOMEPAGE
- * @url: a web URL, e.g. "http://www.hughsie.com/"
+ * @url: (nullable): a web URL, e.g. "http://www.hughsie.com/", or %NULL to
+ *   unset the URL of this @kind
  *
  * Sets a web address of a specific type.
  *
@@ -2569,18 +2604,26 @@ gs_app_set_url (GsApp *app, AsUrlKind kind, const gchar *url)
 {
 	GsAppPrivate *priv = gs_app_get_instance_private (app);
 	g_autoptr(GMutexLocker) locker = NULL;
+	gboolean changed;
+
 	g_return_if_fail (GS_IS_APP (app));
+
 	locker = g_mutex_locker_new (&priv->mutex);
 
 	if (priv->urls == NULL)
 		priv->urls = g_hash_table_new_full (g_direct_hash, g_direct_equal,
 						    NULL, g_free);
 
-	g_hash_table_insert (priv->urls,
-			     GINT_TO_POINTER (kind),
-			     g_strdup (url));
+	if (url != NULL)
+		changed = g_hash_table_insert (priv->urls,
+					       GINT_TO_POINTER (kind),
+					       g_strdup (url));
+	else
+		changed = g_hash_table_remove (priv->urls,
+					       GINT_TO_POINTER (kind));
 
-	gs_app_queue_notify (app, obj_props[PROP_URLS]);
+	if (changed)
+		gs_app_queue_notify (app, obj_props[PROP_URLS]);
 }
 
 /**
@@ -2722,7 +2765,7 @@ gs_app_get_license_is_free (GsApp *app)
  * gs_app_set_license:
  * @app: a #GsApp
  * @quality: a #GsAppQuality, e.g. %GS_APP_QUALITY_NORMAL
- * @license: a SPDX license string, e.g. "GPL-3.0 AND LGPL-2.0+"
+ * @license: a SPDX license string, e.g. "GPL-3.0 AND LGPL-2.0-or-later"
  *
  * Sets the project licenses used in the application.
  *
@@ -4665,28 +4708,7 @@ calculate_key_colors (GsApp *app)
 			pb_small = gdk_pixbuf_new_from_stream_at_scale (icon_stream, 32, 32, TRUE, NULL, NULL);
 	} else if (G_IS_THEMED_ICON (icon_small)) {
 		g_autoptr(GtkIconPaintable) icon_paintable = NULL;
-		g_autoptr(GtkIconTheme) theme = NULL;
-		GdkDisplay *display;
-
-		display = gdk_display_get_default ();
-		if (display != NULL) {
-			theme = g_object_ref (gtk_icon_theme_get_for_display (display));
-		} else {
-			const gchar *test_search_path;
-
-			/* This fallback path is needed for the unit tests,
-			 * which run without a screen, and in an environment
-			 * where the XDG dir variables don’t point to the system
-			 * datadir which contains the system icon theme. */
-			theme = gtk_icon_theme_new ();
-
-			test_search_path = g_getenv ("GS_SELF_TEST_ICON_THEME_PATH");
-			if (test_search_path != NULL) {
-				g_auto(GStrv) dirs = g_strsplit (test_search_path, ":", -1);
-				gtk_icon_theme_set_search_path (theme, (const char * const *)dirs);
-
-			}
-		}
+		g_autoptr(GtkIconTheme) theme = get_icon_theme ();
 
 		icon_paintable = gtk_icon_theme_lookup_by_gicon (theme, icon_small,
 								 32, 1,
@@ -5357,6 +5379,9 @@ gs_app_get_property (GObject *object, guint prop_id, GValue *value, GParamSpec *
 	case PROP_HAS_TRANSLATIONS:
 		g_value_set_boolean (value, gs_app_get_has_translations (app));
 		break;
+	case PROP_ICONS_STATE:
+		g_value_set_enum (value, priv->icons_state);
+		break;
 	default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 		break;
@@ -5484,6 +5509,10 @@ gs_app_set_property (GObject *object, guint prop_id, const GValue *value, GParam
 		break;
 	case PROP_HAS_TRANSLATIONS:
 		gs_app_set_has_translations (app, g_value_get_boolean (value));
+		break;
+	case PROP_ICONS_STATE:
+		/* Read-only */
+		g_assert_not_reached ();
 		break;
 	default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -6006,6 +6035,22 @@ gs_app_class_init (GsAppClass *klass)
 		g_param_spec_boolean ("has-translations", NULL, NULL,
 				      FALSE,
 				      G_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY | G_PARAM_STATIC_STRINGS);
+
+	/**
+	 * GsApp:icons-state:
+	 *
+	 * The state of the icons of this app. Notice that it is valid
+	 * for the icon state to be %GS_APP_ICONS_STATE_AVAILABLE, and
+	 * for there to be no icon for the app. This can happen, for
+	 * example, if it downloads an icon, but the icon download has
+	 * failed.
+	 *
+	 * Since: 44
+	 */
+	obj_props[PROP_ICONS_STATE] = g_param_spec_enum ("icons-state", NULL, NULL,
+					GS_TYPE_APP_ICONS_STATE,
+					GS_APP_ICONS_STATE_UNKNOWN,
+					G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
 
 	g_object_class_install_properties (object_class, G_N_ELEMENTS (obj_props), obj_props);
 }
@@ -6711,4 +6756,51 @@ gs_app_is_downloaded (GsApp *app)
 		return FALSE;
 
 	return TRUE;
+}
+
+/**
+ * gs_app_get_icons_state:
+ * @app: a #GsApp
+ *
+ * Returns the state of the icons of @app.
+ *
+ * Returns: a #GsAppIconsState
+ *
+ * Since: 44
+ **/
+GsAppIconsState
+gs_app_get_icons_state (GsApp *app)
+{
+	GsAppPrivate *priv = gs_app_get_instance_private (app);
+
+	g_return_val_if_fail (GS_IS_APP (app), GS_APP_ICONS_STATE_UNKNOWN);
+
+	return priv->icons_state;
+}
+
+/**
+ * gs_app_set_icons_state:
+ * @app: a #GsApp
+ * @icons_state: a #GsAppIconsState
+ *
+ * Sets the app icons state of @app.
+ *
+ * Since: 44
+ **/
+void
+gs_app_set_icons_state (GsApp           *app,
+                        GsAppIconsState  icons_state)
+{
+	GsAppPrivate *priv = gs_app_get_instance_private (app);
+	g_autoptr(GMutexLocker) locker = NULL;
+
+	g_return_if_fail (GS_IS_APP (app));
+
+	locker = g_mutex_locker_new (&priv->mutex);
+
+	if (priv->icons_state == icons_state)
+		return;
+
+	priv->icons_state = icons_state;
+	gs_app_queue_notify (app, obj_props[PROP_ICONS_STATE]);
 }

@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2016 Canonical Ltd.
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -39,7 +39,11 @@ gs_review_bar_snapshot (GtkWidget   *widget,
 	gdouble bar_width, bar_height;
 	GdkRGBA color;
 
+#if GTK_CHECK_VERSION(4, 9, 2)
+	gtk_widget_get_color (widget, &color);
+#else
 	gtk_style_context_get_color (gtk_widget_get_style_context (widget), &color);
+#endif
 
 	bar_width = round (GS_REVIEW_BAR (widget)->fraction * gtk_widget_get_width (widget));
 	bar_height = gtk_widget_get_height (widget);

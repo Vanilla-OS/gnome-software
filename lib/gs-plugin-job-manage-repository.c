@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2022 Red Hat <www.redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 /**
@@ -62,6 +62,8 @@ gs_plugin_job_manage_repository_dispose (GObject *object)
 
 	g_assert (self->saved_error == NULL);
 	g_assert (self->n_pending_ops == 0);
+
+	g_clear_object (&self->repository);
 
 	G_OBJECT_CLASS (gs_plugin_job_manage_repository_parent_class)->dispose (object);
 }
@@ -132,6 +134,7 @@ gs_plugin_job_manage_repository_run_async (GsPluginJob         *job,
 	g_autoptr(GTask) task = NULL;
 	GPtrArray *plugins;  /* (element-type GsPlugin) */
 	gboolean anything_ran = FALSE;
+	g_autoptr(GError) local_error = NULL;
 
 	task = g_task_new (job, cancellable, callback, user_data);
 	g_task_set_source_tag (task, gs_plugin_job_manage_repository_run_async);
@@ -171,6 +174,10 @@ gs_plugin_job_manage_repository_run_async (GsPluginJob         *job,
 		/* at least one plugin supports this vfunc */
 		anything_ran = TRUE;
 
+		/* Handle cancellation */
+		if (g_cancellable_set_error_if_cancelled (cancellable, &local_error))
+			break;
+
 		/* run the plugin */
 		self->n_pending_ops++;
 		repository_func_async (plugin, self->repository, self->flags, cancellable, plugin_repository_func_cb, g_object_ref (task));
@@ -179,7 +186,7 @@ gs_plugin_job_manage_repository_run_async (GsPluginJob         *job,
 	if (!anything_ran)
 		g_debug ("no plugin could handle repository operation");
 
-	finish_op (task, NULL);
+	finish_op (task, g_steal_pointer (&local_error));
 }
 
 static void
@@ -264,6 +271,7 @@ finish_op (GTask  *task,
 		g_task_return_error (task, g_steal_pointer (&self->saved_error));
 	else
 		g_task_return_boolean (task, TRUE);
+	g_signal_emit_by_name (G_OBJECT (self), "completed");
 }
 
 static gboolean

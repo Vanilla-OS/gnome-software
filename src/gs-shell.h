@@ -4,7 +4,7 @@
  * Copyright (C) 2013 Richard Hughes <richard@hughsie.com>
  * Copyright (C) 2014-2017 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #pragma once
@@ -88,5 +88,6 @@ void		 gs_shell_show_notification	(GsShell	*shell,
 gboolean	 gs_shell_get_is_narrow		(GsShell	*shell);
 void		 gs_shell_show_metainfo		(GsShell	*shell,
 						 GFile		*file);
+GsAppQueryLicenseType gs_shell_get_query_license_type (GsShell	*self);
 
 G_END_DECLS

@@ -5,7 +5,7 @@
  * Copyright (C) 2013 Matthias Clasen <mclasen@redhat.com>
  * Copyright (C) 2016-2018 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -181,7 +181,7 @@ gs_moderate_page_add_app (GsModeratePage *self, GsApp *app)
 					(GDestroyNotify) g_object_unref);
 		gtk_list_box_append (GTK_LIST_BOX (self->list_box_install), row);
 	}
-	gtk_widget_show (app_row);
+	gtk_widget_set_visible (app_row, TRUE);
 }
 
 static void

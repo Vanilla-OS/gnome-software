@@ -4,7 +4,7 @@
  * Copyright (C) 2013-2017 Richard Hughes <richard@hughsie.com>
  * Copyright (C) 2015-2018 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -166,7 +166,7 @@ build_title (GsExtrasPage *self)
 
 	switch (self->mode) {
 	case GS_EXTRAS_PAGE_MODE_INSTALL_FONTCONFIG_RESOURCES:
-		/* TRANSLATORS: Application window title for fonts installation.
+		/* TRANSLATORS: App window title for fonts installation.
 		   %s will be replaced by name of the script we're searching for. */
 		return g_strdup_printf (ngettext ("Available fonts for the %s script",
 		                                  "Available fonts for the %s scripts",
@@ -174,7 +174,7 @@ build_title (GsExtrasPage *self)
 		                        titles);
 		break;
 	default:
-		/* TRANSLATORS: Application window title for codec installation.
+		/* TRANSLATORS: App window title for codec installation.
 		   %s will be replaced by actual codec name(s) */
 		return g_strdup_printf (ngettext ("Available software for %s",
 		                                  "Available software for %s",
@@ -325,7 +325,7 @@ gs_extras_page_add_app (GsExtrasPage *self, GsApp *app, GsAppList *list, SearchD
 				    self->sizegroup_name,
 				    self->sizegroup_button_label,
 				    self->sizegroup_button_image);
-	gtk_widget_show (app_row);
+	gtk_widget_set_visible (app_row, TRUE);
 }
 
 static GsApp *
@@ -349,51 +349,51 @@ create_missing_app (SearchData *search_data)
 	summary_missing = g_string_new ("");
 	switch (self->mode) {
 	case GS_EXTRAS_PAGE_MODE_INSTALL_PACKAGE_FILES:
-		/* TRANSLATORS: this is when we know about an application or
+		/* TRANSLATORS: this is when we know about an app or
 		 * addon, but it can't be listed for some reason */
-		g_string_append_printf (summary_missing, _("No applications are available that provide the file %s."), search_data->title);
+		g_string_append_printf (summary_missing, _("No apps are available that provide the file %s."), search_data->title);
 		g_string_append (summary_missing, "\n");
 		/* TRANSLATORS: first %s is the codec name, and second %s is a
                  * hyperlink with the "on the website" text */
 		g_string_append_printf (summary_missing, _("Information about %s, as well as options "
-					"for how to get missing applications "
+					"for how to get missing apps "
 					"might be found %s."), search_data->title, url);
 		break;
 	case GS_EXTRAS_PAGE_MODE_INSTALL_PROVIDE_FILES:
-		/* TRANSLATORS: this is when we know about an application or
+		/* TRANSLATORS: this is when we know about an app or
 		 * addon, but it can't be listed for some reason */
-		g_string_append_printf (summary_missing, _("No applications are available for %s support."), search_data->title);
+		g_string_append_printf (summary_missing, _("No apps are available for %s support."), search_data->title);
 		g_string_append (summary_missing, "\n");
 		/* TRANSLATORS: first %s is the codec name, and second %s is a
                  * hyperlink with the "on the website" text */
 		g_string_append_printf (summary_missing, _("Information about %s, as well as options "
-					"for how to get missing applications "
+					"for how to get missing apps "
 					"might be found %s."), search_data->title, url);
 		break;
 	case GS_EXTRAS_PAGE_MODE_INSTALL_PACKAGE_NAMES:
-		/* TRANSLATORS: this is when we know about an application or
+		/* TRANSLATORS: this is when we know about an app or
 		 * addon, but it can't be listed for some reason */
 		g_string_append_printf (summary_missing, _("%s is not available."), search_data->title);
 		g_string_append (summary_missing, "\n");
 		/* TRANSLATORS: first %s is the codec name, and second %s is a
                  * hyperlink with the "on the website" text */
 		g_string_append_printf (summary_missing, _("Information about %s, as well as options "
-					"for how to get missing applications "
+					"for how to get missing apps "
 					"might be found %s."), search_data->title, url);
 		break;
 	case GS_EXTRAS_PAGE_MODE_INSTALL_MIME_TYPES:
-		/* TRANSLATORS: this is when we know about an application or
+		/* TRANSLATORS: this is when we know about an app or
 		 * addon, but it can't be listed for some reason */
-		g_string_append_printf (summary_missing, _("No applications are available for %s support."), search_data->title);
+		g_string_append_printf (summary_missing, _("No apps are available for %s support."), search_data->title);
 		g_string_append (summary_missing, "\n");
 		/* TRANSLATORS: first %s is the codec name, and second %s is a
                  * hyperlink with the "on the website" text */
 		g_string_append_printf (summary_missing, _("Information about %s, as well as options "
-					"for how to get an application that can support this format "
+					"for how to get an app that can support this format "
 					"might be found %s."), search_data->title, url);
 		break;
 	case GS_EXTRAS_PAGE_MODE_INSTALL_FONTCONFIG_RESOURCES:
-		/* TRANSLATORS: this is when we know about an application or
+		/* TRANSLATORS: this is when we know about an app or
 		 * addon, but it can't be listed for some reason */
 		g_string_append_printf (summary_missing, _("No fonts are available for the %s script support."), search_data->title);
 		g_string_append (summary_missing, "\n");
@@ -404,7 +404,7 @@ create_missing_app (SearchData *search_data)
 					"might be found %s."), search_data->title, url);
 		break;
 	case GS_EXTRAS_PAGE_MODE_INSTALL_GSTREAMER_RESOURCES:
-		/* TRANSLATORS: this is when we know about an application or
+		/* TRANSLATORS: this is when we know about an app or
 		 * addon, but it can't be listed for some reason */
 		g_string_append_printf (summary_missing, _("No addon codecs are available for the %s format."), search_data->title);
 		g_string_append (summary_missing, "\n");
@@ -415,7 +415,7 @@ create_missing_app (SearchData *search_data)
 					"might be found %s."), search_data->title, url);
 		break;
 	case GS_EXTRAS_PAGE_MODE_INSTALL_PLASMA_RESOURCES:
-		/* TRANSLATORS: this is when we know about an application or
+		/* TRANSLATORS: this is when we know about an app or
 		 * addon, but it can't be listed for some reason */
 		g_string_append_printf (summary_missing, _("No Plasma resources are available for %s support."), search_data->title);
 		g_string_append (summary_missing, "\n");
@@ -426,7 +426,7 @@ create_missing_app (SearchData *search_data)
 					"might be found %s."), search_data->title, url);
 		break;
 	case GS_EXTRAS_PAGE_MODE_INSTALL_PRINTER_DRIVERS:
-		/* TRANSLATORS: this is when we know about an application or
+		/* TRANSLATORS: this is when we know about an app or
 		 * addon, but it can't be listed for some reason */
 		g_string_append_printf (summary_missing, _("No printer drivers are available for %s."), search_data->title);
 		g_string_append (summary_missing, "\n");
@@ -483,7 +483,7 @@ build_no_results_label (GsExtrasPage *self)
 	codec_titles = build_comma_separated_list ((gchar **) array->pdata);
 	if (self->caller_app_name) {
 		/* TRANSLATORS: no codecs were found. The first %s will be replaced by actual codec name(s),
-		   the second %s is the application name, which requested the codecs, the third %s is a link titled "the documentation" */
+		   the second %s is the app name, which requested the codecs, the third %s is a link titled "the documentation" */
 		return g_strdup_printf (ngettext ("Unable to find the %s requested by %s. Please see %s for more information.",
 						  "Unable to find the %s requested by %s. Please see %s for more information.",
 						  num),
@@ -744,9 +744,11 @@ gs_extras_page_load (GsExtrasPage *self, GPtrArray *array_search_data)
 
 			query = gs_app_query_new ("provides-files", provides_files,
 						  "refine-flags", refine_flags,
+						  "license-type", gs_page_get_query_license_type (GS_PAGE (self)),
 						  NULL);
 
-			plugin_job = gs_plugin_job_list_apps_new (query, GS_PLUGIN_LIST_APPS_FLAGS_INTERACTIVE);
+			plugin_job = gs_plugin_job_list_apps_new (query,
+								  GS_PLUGIN_LIST_APPS_FLAGS_INTERACTIVE);
 
 			g_debug ("searching filename: '%s'", search_data->search_filename);
 			gs_plugin_loader_job_process_async (self->plugin_loader,
@@ -774,9 +776,11 @@ gs_extras_page_load (GsExtrasPage *self, GPtrArray *array_search_data)
 			query = gs_app_query_new ("provides-tag", search_data->search,
 						  "provides-type", search_data->search_provides_type,
 						  "refine-flags", refine_flags,
+						  "license-type", gs_page_get_query_license_type (GS_PAGE (self)),
 						  NULL);
 
-			plugin_job = gs_plugin_job_list_apps_new (query, GS_PLUGIN_LIST_APPS_FLAGS_INTERACTIVE);
+			plugin_job = gs_plugin_job_list_apps_new (query,
+								  GS_PLUGIN_LIST_APPS_FLAGS_INTERACTIVE);
 
 			g_debug ("searching what provides: '%s'", search_data->search);
 			gs_plugin_loader_job_process_async (self->plugin_loader,
@@ -1149,7 +1153,7 @@ get_app_sort_key (GsApp *app)
 
 	key = g_string_sized_new (64);
 
-	/* sort missing applications as last */
+	/* sort missing apps as last */
 	switch (gs_app_get_state (app)) {
 	case GS_APP_STATE_UNAVAILABLE:
 		g_string_append (key, "9:");

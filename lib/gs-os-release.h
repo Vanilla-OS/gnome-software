@@ -4,7 +4,7 @@
  * Copyright (C) 2016 Kalev Lember <klember@redhat.com>
  * Copyright (C) 2016 Richard Hughes <richard@hughsie.com>
  *
- * SPDX-License-Identifier: LGPL-2.1+
+ * SPDX-License-Identifier: LGPL-2.1-or-later
  */
 
 #pragma once
@@ -29,5 +29,6 @@ const gchar		*gs_os_release_get_pretty_name		(GsOsRelease	*os_release);
 const gchar		*gs_os_release_get_cpe_name		(GsOsRelease	*os_release);
 const gchar		*gs_os_release_get_distro_codename	(GsOsRelease	*os_release);
 const gchar		*gs_os_release_get_home_url		(GsOsRelease	*os_release);
+const gchar		*gs_os_release_get_logo			(GsOsRelease	*os_release);
 
 G_END_DECLS

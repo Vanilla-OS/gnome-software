@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2020 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #pragma once
@@ -18,7 +18,7 @@ typedef void (*GsBasicAuthCallback) (const gchar *user, const gchar *password, g
 
 #define GS_TYPE_BASIC_AUTH_DIALOG (gs_basic_auth_dialog_get_type ())
 
-G_DECLARE_FINAL_TYPE (GsBasicAuthDialog, gs_basic_auth_dialog, GS, BASIC_AUTH_DIALOG, GtkDialog)
+G_DECLARE_FINAL_TYPE (GsBasicAuthDialog, gs_basic_auth_dialog, GS, BASIC_AUTH_DIALOG, GtkWindow)
 
 GtkWidget	*gs_basic_auth_dialog_new		(GtkWindow		*parent,
 							 const gchar		*remote,

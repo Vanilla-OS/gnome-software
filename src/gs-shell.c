@@ -5,7 +5,7 @@
  * Copyright (C) 2013 Matthias Clasen <mclasen@redhat.com>
  * Copyright (C) 2014-2020 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -74,6 +74,7 @@ struct _GsShell
 	GQueue			*back_entry_stack;
 	GPtrArray		*modal_dialogs;
 	gchar			*events_info_uri;
+	gchar			*events_more_info;
 	AdwLeaflet		*main_leaflet;
 	AdwLeaflet		*details_leaflet;
 	AdwViewStack		*stack_loading;
@@ -91,7 +92,7 @@ struct _GsShell
 
 	GtkWidget		*main_header;
 	GtkWidget		*details_header;
-	GtkWidget		*metered_updates_bar;
+	GtkWidget		*metered_updates_banner;
 	GtkWidget		*search_button;
 	GtkWidget		*entry_search;
 	GtkWidget		*search_bar;
@@ -175,7 +176,7 @@ gs_shell_activate (GsShell *shell)
 		return;
 	}
 
-	gtk_widget_show (GTK_WIDGET (shell));
+	gtk_widget_set_visible (GTK_WIDGET (shell), TRUE);
 	gtk_window_present (GTK_WINDOW (shell));
 }
 
@@ -239,19 +240,15 @@ gs_shell_refresh_auto_updates_ui (GsShell *shell)
 	automatic_updates_paused = gs_plugin_loader_get_network_metered (shell->plugin_loader);
 #endif
 
-	gtk_info_bar_set_revealed (GTK_INFO_BAR (shell->metered_updates_bar),
-				   gs_shell_get_mode (shell) != GS_SHELL_MODE_LOADING &&
-				   automatic_updates_enabled &&
-				   automatic_updates_paused);
-	gtk_info_bar_set_default_response (GTK_INFO_BAR (shell->metered_updates_bar), GTK_RESPONSE_OK);
+	adw_banner_set_revealed (ADW_BANNER (shell->metered_updates_banner),
+				 gs_shell_get_mode (shell) != GS_SHELL_MODE_LOADING &&
+				 automatic_updates_enabled &&
+				 automatic_updates_paused);
 }
 
 static void
-gs_shell_metered_updates_bar_response_cb (GtkInfoBar *info_bar,
-					  gint        response_id,
-					  gpointer    user_data)
+gs_shell_metered_updates_banner_clicked_cb (GsShell *shell)
 {
-	GsShell *shell = GS_SHELL (user_data);
 	GtkWidget *dialog;
 
 	dialog = gs_metered_data_dialog_new (GTK_WINDOW (shell));
@@ -394,10 +391,6 @@ gs_shell_basic_auth_start_cb (GsPluginLoader *plugin_loader,
 
 	dialog = gs_basic_auth_dialog_new (GTK_WINDOW (shell), remote, realm, callback, callback_data);
 	gs_shell_modal_dialog_present (shell, GTK_WINDOW (dialog));
-
-	/* just destroy */
-	g_signal_connect_swapped (dialog, "response",
-				  G_CALLBACK (gtk_window_destroy), dialog);
 }
 
 static gboolean
@@ -504,10 +497,10 @@ stack_notify_visible_child_cb (GObject    *object,
 	case GS_SHELL_MODE_OVERVIEW:
 	case GS_SHELL_MODE_INSTALLED:
 	case GS_SHELL_MODE_SEARCH:
-		gtk_widget_show (shell->search_button);
+		gtk_widget_set_visible (shell->search_button, TRUE);
 		break;
 	case GS_SHELL_MODE_UPDATES:
-		gtk_widget_hide (shell->search_button);
+		gtk_widget_set_visible (shell->search_button, FALSE);
 		break;
 	default:
 		/* We don't care about changing the visibility of the search
@@ -738,6 +731,15 @@ static void
 gs_shell_plugin_events_more_info_cb (GtkWidget *widget, GsShell *shell)
 {
 	g_autoptr(GError) error = NULL;
+
+	/* Prefer detailed error message against origin's help URL */
+	if (shell->events_more_info != NULL) {
+		gs_utils_show_error_dialog_simple (GTK_WINDOW (shell),
+					    gtk_label_get_text (GTK_LABEL (shell->label_events)),
+					    shell->events_more_info);
+		return;
+	}
+
 	if (!g_app_info_launch_default_for_uri (shell->events_info_uri, NULL, &error)) {
 		g_warning ("failed to launch URI %s: %s",
 			   shell->events_info_uri, error->message);
@@ -750,30 +752,6 @@ gs_shell_plugin_events_restart_required_cb (GtkWidget *widget, GsShell *shell)
 	g_autoptr(GError) error = NULL;
 	if (!g_spawn_command_line_async (LIBEXECDIR "/gnome-software-restarter", &error))
 		g_warning ("failed to restart: %s", error->message);
-}
-
-/* this is basically a workaround for GtkSearchEntry. Due to delayed emission of the search-changed
- * signal it can't be blocked during insertion of text into the entry. Therefore we block the
- * precursor of that signal to be able to add text to the entry without firing the handlers
- * connected to "search-changed"
- */
-static void
-block_changed (GtkEditable *editable,
-               gpointer     user_data)
-{
-	g_signal_stop_emission_by_name (editable, "changed");
-}
-
-static void
-block_changed_signal (GtkSearchEntry *entry)
-{
-	g_signal_connect (entry, "changed", G_CALLBACK (block_changed), NULL);
-}
-
-static void
-unblock_changed_signal (GtkSearchEntry *entry)
-{
-	g_signal_handlers_disconnect_by_func (entry, G_CALLBACK (block_changed), NULL);
 }
 
 static void
@@ -806,12 +784,6 @@ gs_shell_go_back (GsShell *shell)
 	case GS_SHELL_MODE_SEARCH:
 		g_debug ("popping back entry for %s with %s",
 			 page_name[entry->mode], entry->search);
-
-		/* set the text in the entry and move cursor to the end */
-		block_changed_signal (GTK_SEARCH_ENTRY (shell->entry_search));
-		gtk_editable_set_text (GTK_EDITABLE (shell->entry_search), entry->search);
-		gtk_editable_set_position (GTK_EDITABLE (shell->entry_search), -1);
-		unblock_changed_signal (GTK_SEARCH_ENTRY (shell->entry_search));
 
 		/* set the mode directly */
 		gs_shell_change_mode (shell, entry->mode,
@@ -984,7 +956,6 @@ search_changed_handler (GObject *entry, GsShell *shell)
 		} else {
 			gs_search_page_set_text (GS_SEARCH_PAGE (shell->pages[GS_SHELL_MODE_SEARCH]), text);
 			gs_page_switch_to (shell->pages[GS_SHELL_MODE_SEARCH]);
-			gs_page_scroll_up (shell->pages[GS_SHELL_MODE_SEARCH]);
 		}
 	}
 }
@@ -1076,7 +1047,7 @@ main_window_closed_cb (GtkWidget *dialog, gpointer user_data)
 #endif  /* HAVE_MOGWAI */
 
 	gs_shell_clean_back_entry_stack (shell);
-	gtk_widget_hide (dialog);
+	gtk_widget_set_visible (dialog, FALSE);
 
 #ifdef __GLIBC__
 	/* Free unused memory with GNU extension of malloc.h */
@@ -1223,33 +1194,32 @@ gs_shell_get_title_from_app (GsApp *app)
 	return g_strdup_printf (_("“%s”"), gs_app_get_id (app));
 }
 
-static gchar *
-get_first_lines (const gchar *str)
+static gboolean
+gs_shell_handle_events_more_info (GsShell *self,
+				  GsApp *origin,
+				  const gchar *more_info)
 {
-	const gchar *end = str;
-	/* Some errors can have an "introduction", thus pick few initial lines, not only the first. */
-	for (guint lines = 0; end != NULL && lines < 7; lines++) {
-		end = strchr (end, '\n');
-		if (end != NULL)
-			end++;
-	}
-	if (end != NULL) {
-		g_autofree gchar *tmp = g_strndup (str, end - str);
-		/* Translators: The '%s' is replaced with an error message, which had been shortened.
-		   The dots at the end are there to highlight that to the user. */
-		return g_strdup_printf (_("%s…"), tmp);
-	}
-	return g_strdup (str);
-}
+	const gchar *uri;
 
-static void
-gs_shell_append_detailed_error (GsShell *shell, GString *str, const GError *error)
-{
-	g_autofree gchar *text = get_first_lines (error->message);
-	if (text != NULL) {
-		g_autofree gchar *escaped = g_markup_escape_text (text, -1);
-		g_string_append_printf (str, ":\n%s", escaped);
+	g_clear_pointer (&self->events_info_uri, g_free);
+	g_clear_pointer (&self->events_more_info, g_free);
+
+	/* Prefer detailed error message against origin's help URL */
+	if (more_info != NULL && *more_info != '\0') {
+		self->events_more_info = g_strdup (more_info);
+		return TRUE;
 	}
+
+	if (origin == NULL)
+		return FALSE;
+
+	uri = gs_app_get_url (origin, AS_URL_KIND_HELP);
+	if (uri != NULL) {
+		self->events_info_uri = g_strdup (uri);
+		return TRUE;
+	}
+
+	return FALSE;
 }
 
 static gboolean
@@ -1258,13 +1228,14 @@ gs_shell_show_event_refresh (GsShell *shell, GsPluginEvent *event)
 	GsApp *origin = gs_plugin_event_get_origin (event);
 	GsShellEventButtons buttons = GS_SHELL_EVENT_BUTTON_NONE;
 	const GError *error = gs_plugin_event_get_error (event);
-	GsPluginAction action = gs_plugin_event_get_action (event);
+	const gchar *more_info = NULL;
 	g_autofree gchar *str_origin = NULL;
 	g_autoptr(GString) str = g_string_new (NULL);
+	GsPluginJob *job = gs_plugin_event_get_job (event);
 
 	/* ignore any errors from background downloads */
 	if (!gs_plugin_event_has_flag (event, GS_PLUGIN_EVENT_FLAG_INTERACTIVE))
-		return FALSE;
+		return TRUE;
 
 	if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_DOWNLOAD_FAILED)) {
 		if (origin != NULL) {
@@ -1287,7 +1258,7 @@ gs_shell_show_event_refresh (GsShell *shell, GsPluginEvent *event)
 			/* TRANSLATORS: failure text for the in-app notification */
 			g_string_append (str, _("Unable to download updates"));
 		}
-		gs_shell_append_detailed_error (shell, str, error);
+		more_info = error->message;
 	} else if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_NO_NETWORK)) {
 		/* TRANSLATORS: failure text for the in-app notification */
 		g_string_append (str, _("Unable to download updates: "
@@ -1323,28 +1294,22 @@ gs_shell_show_event_refresh (GsShell *shell, GsPluginEvent *event)
 		   g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
 		/* Do nothing. */
 	} else {
-		if (action == GS_PLUGIN_ACTION_DOWNLOAD) {
+		if (GS_IS_PLUGIN_JOB_UPDATE_APPS (job) &&
+		    !(gs_plugin_job_update_apps_get_flags (GS_PLUGIN_JOB_UPDATE_APPS (job)) & GS_PLUGIN_UPDATE_APPS_FLAGS_NO_DOWNLOAD)) {
 			/* TRANSLATORS: failure text for the in-app notification */
 			g_string_append (str, _("Unable to download updates"));
 		} else {
 			/* TRANSLATORS: failure text for the in-app notification */
 			g_string_append (str, _("Unable to get list of updates"));
 		}
-		gs_shell_append_detailed_error (shell, str, error);
+		more_info = error->message;
 	}
 
 	if (str->len == 0)
 		return FALSE;
 
-	/* add more-info button */
-	if (origin != NULL) {
-		const gchar *uri = gs_app_get_url (origin, AS_URL_KIND_HELP);
-		if (uri != NULL) {
-			g_free (shell->events_info_uri);
-			shell->events_info_uri = g_strdup (uri);
-			buttons |= GS_SHELL_EVENT_BUTTON_MORE_INFO;
-		}
-	}
+	if (gs_shell_handle_events_more_info (shell, origin, more_info))
+		buttons |= GS_SHELL_EVENT_BUTTON_MORE_INFO;
 
 	/* show in-app notification */
 	gs_shell_show_event_app_notify (shell, str->str, buttons);
@@ -1358,6 +1323,7 @@ gs_shell_show_event_install (GsShell *shell, GsPluginEvent *event)
 	GsApp *origin = gs_plugin_event_get_origin (event);
 	GsShellEventButtons buttons = GS_SHELL_EVENT_BUTTON_NONE;
 	const GError *error = gs_plugin_event_get_error (event);
+	const gchar *more_info = NULL;
 	g_autofree gchar *str_app = NULL;
 	g_autofree gchar *str_origin = NULL;
 	g_autoptr(GString) str = g_string_new (NULL);
@@ -1368,24 +1334,24 @@ gs_shell_show_event_install (GsShell *shell, GsPluginEvent *event)
 		if (origin != NULL) {
 			str_origin = gs_shell_get_title_from_origin (origin);
 			/* TRANSLATORS: failure text for the in-app notification,
-			 * where the first %s is the application name (e.g. "GIMP") and
+			 * where the first %s is the app name (e.g. "GIMP") and
 			 * the second %s is the origin, e.g. "Fedora Project [fedoraproject.org]"  */
 			g_string_append_printf (str, _("Unable to install %s as "
 						       "download failed from %s"),
 					       str_app, str_origin);
 		} else {
 			/* TRANSLATORS: failure text for the in-app notification,
-			 * where the %s is the application name (e.g. "GIMP") */
+			 * where the %s is the app name (e.g. "GIMP") */
 			g_string_append_printf (str, _("Unable to install %s "
 						       "as download failed"),
 						str_app);
 		}
-		gs_shell_append_detailed_error (shell, str, error);
+		more_info = error->message;
 	} else if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_NOT_SUPPORTED)) {
 		if (origin != NULL) {
 			str_origin = gs_shell_get_title_from_origin (origin);
 			/* TRANSLATORS: failure text for the in-app notification,
-			 * where the first %s is the application name (e.g. "GIMP")
+			 * where the first %s is the app name (e.g. "GIMP")
 			 * and the second %s is the name of the runtime, e.g.
 			 * "GNOME SDK [flatpak.gnome.org]" */
 			g_string_append_printf (str, _("Unable to install %s as "
@@ -1393,7 +1359,7 @@ gs_shell_show_event_install (GsShell *shell, GsPluginEvent *event)
 					       str_app, str_origin);
 		} else {
 			/* TRANSLATORS: failure text for the in-app notification,
-			 * where the %s is the application name (e.g. "GIMP") */
+			 * where the %s is the app name (e.g. "GIMP") */
 			g_string_append_printf (str, _("Unable to install %s "
 						       "as not supported"),
 						str_app);
@@ -1405,10 +1371,10 @@ gs_shell_show_event_install (GsShell *shell, GsPluginEvent *event)
 		buttons |= GS_SHELL_EVENT_BUTTON_NETWORK_SETTINGS;
 	} else if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_INVALID_FORMAT)) {
 		/* TRANSLATORS: failure text for the in-app notification */
-		g_string_append (str, _("Unable to install: the application has an invalid format"));
+		g_string_append (str, _("Unable to install: the app has an invalid format"));
 	} else if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_NO_SPACE)) {
 		/* TRANSLATORS: failure text for the in-app notification,
-		 * where the %s is the application name (e.g. "GIMP") */
+		 * where the %s is the app name (e.g. "GIMP") */
 		g_string_append_printf (str, _("Unable to install %s: "
 					       "not enough disk space"),
 					str_app);
@@ -1420,26 +1386,26 @@ gs_shell_show_event_install (GsShell *shell, GsPluginEvent *event)
 					str_app);
 	} else if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_AUTH_INVALID)) {
 		/* TRANSLATORS: failure text for the in-app notification,
-		 * where the %s is the application name (e.g. "GIMP") */
+		 * where the %s is the app name (e.g. "GIMP") */
 		g_string_append_printf (str, _("Unable to install %s: "
 					       "authentication was invalid"),
 					str_app);
 	} else if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_NO_SECURITY)) {
 		/* TRANSLATORS: failure text for the in-app notification,
-		 * where the %s is the application name (e.g. "GIMP") */
+		 * where the %s is the app name (e.g. "GIMP") */
 		g_string_append_printf (str, _("Unable to install %s: "
 					       "you do not have permission to "
 					       "install software"),
 					str_app);
 	} else if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_AC_POWER_REQUIRED)) {
 		/* TRANSLATORS: failure text for the in-app notification,
-		 * where the %s is the application name (e.g. "Dell XPS 13") */
+		 * where the %s is the app name (e.g. "Dell XPS 13") */
 		g_string_append_printf (str, _("Unable to install %s: "
 					       "AC power is required"),
 					str_app);
 	} else if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_BATTERY_LEVEL_TOO_LOW)) {
 		/* TRANSLATORS: failure text for the in-app notification,
-		 * where the %s is the application name (e.g. "Dell XPS 13") */
+		 * where the %s is the app name (e.g. "Dell XPS 13") */
 		g_string_append_printf (str, _("Unable to install %s: "
 					       "The battery level is too low"),
 					str_app);
@@ -1448,23 +1414,16 @@ gs_shell_show_event_install (GsShell *shell, GsPluginEvent *event)
 		/* Do nothing. */
 	} else {
 		/* TRANSLATORS: failure text for the in-app notification,
-		 * where the %s is the application name (e.g. "GIMP") */
+		 * where the %s is the app name (e.g. "GIMP") */
 		g_string_append_printf (str, _("Unable to install %s"), str_app);
-		gs_shell_append_detailed_error (shell, str, error);
+		more_info = error->message;
 	}
 
 	if (str->len == 0)
 		return FALSE;
 
-	/* add more-info button */
-	if (origin != NULL) {
-		const gchar *uri = gs_app_get_url (origin, AS_URL_KIND_HELP);
-		if (uri != NULL) {
-			g_free (shell->events_info_uri);
-			shell->events_info_uri = g_strdup (uri);
-			buttons |= GS_SHELL_EVENT_BUTTON_MORE_INFO;
-		}
-	}
+	if (gs_shell_handle_events_more_info (shell, origin, more_info))
+		buttons |= GS_SHELL_EVENT_BUTTON_MORE_INFO;
 
 	/* show in-app notification */
 	gs_shell_show_event_app_notify (shell, str->str, buttons);
@@ -1478,13 +1437,14 @@ gs_shell_show_event_update (GsShell *shell, GsPluginEvent *event)
 	GsApp *origin = gs_plugin_event_get_origin (event);
 	GsShellEventButtons buttons = GS_SHELL_EVENT_BUTTON_NONE;
 	const GError *error = gs_plugin_event_get_error (event);
+	const gchar *more_info = NULL;
 	g_autofree gchar *str_app = NULL;
 	g_autofree gchar *str_origin = NULL;
 	g_autoptr(GString) str = g_string_new (NULL);
 
 	/* ignore any errors from background downloads */
 	if (!gs_plugin_event_has_flag (event, GS_PLUGIN_EVENT_FLAG_INTERACTIVE))
-		return FALSE;
+		return TRUE;
 
 	if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_DOWNLOAD_FAILED)) {
 		if (app != NULL && origin != NULL) {
@@ -1500,7 +1460,7 @@ gs_shell_show_event_update (GsShell *shell, GsPluginEvent *event)
 		} else if (app != NULL) {
 			str_app = gs_shell_get_title_from_app (app);
 			/* TRANSLATORS: failure text for the in-app notification,
-			 * where the %s is the application name (e.g. "GIMP") */
+			 * where the %s is the app name (e.g. "GIMP") */
 			g_string_append_printf (str, _("Unable to update %s as download failed"),
 						str_app);
 		} else if (origin != NULL) {
@@ -1514,7 +1474,7 @@ gs_shell_show_event_update (GsShell *shell, GsPluginEvent *event)
 			/* TRANSLATORS: failure text for the in-app notification */
 			g_string_append_printf (str, _("Unable to install updates as download failed"));
 		}
-		gs_shell_append_detailed_error (shell, str, error);
+		more_info = error->message;
 	} else if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_NO_NETWORK)) {
 		/* TRANSLATORS: failure text for the in-app notification */
 		g_string_append (str, _("Unable to update: "
@@ -1525,7 +1485,7 @@ gs_shell_show_event_update (GsShell *shell, GsPluginEvent *event)
 		if (app != NULL) {
 			str_app = gs_shell_get_title_from_app (app);
 			/* TRANSLATORS: failure text for the in-app notification,
-			 * where the %s is the application name (e.g. "GIMP") */
+			 * where the %s is the app name (e.g. "GIMP") */
 			g_string_append_printf (str, _("Unable to update %s: "
 						       "not enough disk space"),
 						str_app);
@@ -1539,7 +1499,7 @@ gs_shell_show_event_update (GsShell *shell, GsPluginEvent *event)
 		if (app != NULL) {
 			str_app = gs_shell_get_title_from_app (app);
 			/* TRANSLATORS: failure text for the in-app notification,
-			 * where the %s is the application name (e.g. "GIMP") */
+			 * where the %s is the app name (e.g. "GIMP") */
 			g_string_append_printf (str, _("Unable to update %s: "
 						       "authentication was required"),
 						str_app);
@@ -1552,7 +1512,7 @@ gs_shell_show_event_update (GsShell *shell, GsPluginEvent *event)
 		if (app != NULL) {
 			str_app = gs_shell_get_title_from_app (app);
 			/* TRANSLATORS: failure text for the in-app notification,
-			 * where the %s is the application name (e.g. "GIMP") */
+			 * where the %s is the app name (e.g. "GIMP") */
 			g_string_append_printf (str, _("Unable to update %s: "
 						       "authentication was invalid"),
 						str_app);
@@ -1565,7 +1525,7 @@ gs_shell_show_event_update (GsShell *shell, GsPluginEvent *event)
 		if (app != NULL) {
 			str_app = gs_shell_get_title_from_app (app);
 			/* TRANSLATORS: failure text for the in-app notification,
-			 * where the %s is the application name (e.g. "GIMP") */
+			 * where the %s is the app name (e.g. "GIMP") */
 			g_string_append_printf (str, _("Unable to update %s: "
 						       "you do not have permission to "
 						       "update software"),
@@ -1580,13 +1540,13 @@ gs_shell_show_event_update (GsShell *shell, GsPluginEvent *event)
 		if (app != NULL) {
 			str_app = gs_shell_get_title_from_app (app);
 			/* TRANSLATORS: failure text for the in-app notification,
-			 * where the %s is the application name (e.g. "Dell XPS 13") */
+			 * where the %s is the app name (e.g. "Dell XPS 13") */
 			g_string_append_printf (str, _("Unable to update %s: "
 						       "AC power is required"),
 						str_app);
 		} else {
 			/* TRANSLATORS: failure text for the in-app notification,
-			 * where the %s is the application name (e.g. "Dell XPS 13") */
+			 * where the %s is the app name (e.g. "Dell XPS 13") */
 			g_string_append_printf (str, _("Unable to install updates: "
 						       "AC power is required"));
 		}
@@ -1594,13 +1554,13 @@ gs_shell_show_event_update (GsShell *shell, GsPluginEvent *event)
 		if (app != NULL) {
 			str_app = gs_shell_get_title_from_app (app);
 			/* TRANSLATORS: failure text for the in-app notification,
-			 * where the %s is the application name (e.g. "Dell XPS 13") */
+			 * where the %s is the app name (e.g. "Dell XPS 13") */
 			g_string_append_printf (str, _("Unable to update %s: "
 						       "The battery level is too low"),
 						str_app);
 		} else {
 			/* TRANSLATORS: failure text for the in-app notification,
-			 * where the %s is the application name (e.g. "Dell XPS 13") */
+			 * where the %s is the app name (e.g. "Dell XPS 13") */
 			g_string_append_printf (str, _("Unable to install updates: "
 						       "The battery level is too low"));
 		}
@@ -1611,27 +1571,20 @@ gs_shell_show_event_update (GsShell *shell, GsPluginEvent *event)
 		if (app != NULL) {
 			str_app = gs_shell_get_title_from_app (app);
 			/* TRANSLATORS: failure text for the in-app notification,
-			 * where the %s is the application name (e.g. "GIMP") */
+			 * where the %s is the app name (e.g. "GIMP") */
 			g_string_append_printf (str, _("Unable to update %s"), str_app);
 		} else {
 			/* TRANSLATORS: failure text for the in-app notification */
 			g_string_append_printf (str, _("Unable to install updates"));
 		}
-		gs_shell_append_detailed_error (shell, str, error);
+		more_info = error->message;
 	}
 
 	if (str->len == 0)
 		return FALSE;
 
-	/* add more-info button */
-	if (origin != NULL) {
-		const gchar *uri = gs_app_get_url (origin, AS_URL_KIND_HELP);
-		if (uri != NULL) {
-			g_free (shell->events_info_uri);
-			shell->events_info_uri = g_strdup (uri);
-			buttons |= GS_SHELL_EVENT_BUTTON_MORE_INFO;
-		}
-	}
+	if (gs_shell_handle_events_more_info (shell, origin, more_info))
+		buttons |= GS_SHELL_EVENT_BUTTON_MORE_INFO;
 
 	/* show in-app notification */
 	gs_shell_show_event_app_notify (shell, str->str, buttons);
@@ -1645,6 +1598,7 @@ gs_shell_show_event_upgrade (GsShell *shell, GsPluginEvent *event)
 	GsApp *origin = gs_plugin_event_get_origin (event);
 	GsShellEventButtons buttons = GS_SHELL_EVENT_BUTTON_NONE;
 	const GError *error = gs_plugin_event_get_error (event);
+	const gchar *more_info = NULL;
 	g_autoptr(GString) str = g_string_new (NULL);
 	g_autofree gchar *str_app = NULL;
 	g_autofree gchar *str_origin = NULL;
@@ -1666,7 +1620,7 @@ gs_shell_show_event_upgrade (GsShell *shell, GsPluginEvent *event)
 						       "as download failed"),
 						str_app);
 		}
-		gs_shell_append_detailed_error (shell, str, error);
+		more_info = error->message;
 	} else if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_NO_NETWORK)) {
 		/* TRANSLATORS: failure text for the in-app notification,
 		 * where the %s is the distro name (e.g. "Fedora 25") */
@@ -1719,21 +1673,14 @@ gs_shell_show_event_upgrade (GsShell *shell, GsPluginEvent *event)
 		/* TRANSLATORS: failure text for the in-app notification,
 		 * where the %s is the distro name (e.g. "Fedora 25") */
 		g_string_append_printf (str, _("Unable to upgrade to %s"), str_app);
-		gs_shell_append_detailed_error (shell, str, error);
+		more_info = error->message;
 	}
 
 	if (str->len == 0)
 		return FALSE;
 
-	/* add more-info button */
-	if (origin != NULL) {
-		const gchar *uri = gs_app_get_url (origin, AS_URL_KIND_HELP);
-		if (uri != NULL) {
-			g_free (shell->events_info_uri);
-			shell->events_info_uri = g_strdup (uri);
-			buttons |= GS_SHELL_EVENT_BUTTON_MORE_INFO;
-		}
-	}
+	if (gs_shell_handle_events_more_info (shell, origin, more_info))
+		buttons |= GS_SHELL_EVENT_BUTTON_MORE_INFO;
 
 	/* show in-app notification */
 	gs_shell_show_event_app_notify (shell, str->str, buttons);
@@ -1747,6 +1694,7 @@ gs_shell_show_event_remove (GsShell *shell, GsPluginEvent *event)
 	GsApp *origin = gs_plugin_event_get_origin (event);
 	GsShellEventButtons buttons = GS_SHELL_EVENT_BUTTON_NONE;
 	const GError *error = gs_plugin_event_get_error (event);
+	const gchar *more_info = NULL;
 	g_autoptr(GString) str = g_string_new (NULL);
 	g_autofree gchar *str_app = NULL;
 
@@ -1754,29 +1702,29 @@ gs_shell_show_event_remove (GsShell *shell, GsPluginEvent *event)
 
 	if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_AUTH_REQUIRED)) {
 		/* TRANSLATORS: failure text for the in-app notification,
-		 * where the %s is the application name (e.g. "GIMP") */
+		 * where the %s is the app name (e.g. "GIMP") */
 		g_string_append_printf (str, _("Unable to remove %s: authentication was required"),
 					str_app);
 	} else if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_AUTH_INVALID)) {
 		/* TRANSLATORS: failure text for the in-app notification,
-		 * where the %s is the application name (e.g. "GIMP") */
+		 * where the %s is the app name (e.g. "GIMP") */
 		g_string_append_printf (str, _("Unable to remove %s: authentication was invalid"),
 					str_app);
 	} else if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_NO_SECURITY)) {
 		/* TRANSLATORS: failure text for the in-app notification,
-		 * where the %s is the application name (e.g. "GIMP") */
+		 * where the %s is the app name (e.g. "GIMP") */
 		g_string_append_printf (str, _("Unable to remove %s: you do not have"
 					       " permission to remove software"),
 					str_app);
 	} else if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_AC_POWER_REQUIRED)) {
 		/* TRANSLATORS: failure text for the in-app notification,
-		 * where the %s is the application name (e.g. "GIMP") */
+		 * where the %s is the app name (e.g. "GIMP") */
 		g_string_append_printf (str, _("Unable to remove %s: "
 					       "AC power is required"),
 					str_app);
 	} else if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_BATTERY_LEVEL_TOO_LOW)) {
 		/* TRANSLATORS: failure text for the in-app notification,
-		 * where the %s is the application name (e.g. "GIMP") */
+		 * where the %s is the app name (e.g. "GIMP") */
 		g_string_append_printf (str, _("Unable to remove %s: "
 					       "The battery level is too low"),
 					str_app);
@@ -1786,25 +1734,18 @@ gs_shell_show_event_remove (GsShell *shell, GsPluginEvent *event)
 	} else {
 		/* non-interactive generic */
 		if (!gs_plugin_event_has_flag (event, GS_PLUGIN_EVENT_FLAG_INTERACTIVE))
-			return FALSE;
+			return TRUE;
 		/* TRANSLATORS: failure text for the in-app notification,
-		 * where the %s is the application name (e.g. "GIMP") */
+		 * where the %s is the app name (e.g. "GIMP") */
 		g_string_append_printf (str, _("Unable to remove %s"), str_app);
-		gs_shell_append_detailed_error (shell, str, error);
+		more_info = error->message;
 	}
 
 	if (str->len == 0)
 		return FALSE;
 
-	/* add more-info button */
-	if (origin != NULL) {
-		const gchar *uri = gs_app_get_url (origin, AS_URL_KIND_HELP);
-		if (uri != NULL) {
-			g_free (shell->events_info_uri);
-			shell->events_info_uri = g_strdup (uri);
-			buttons |= GS_SHELL_EVENT_BUTTON_MORE_INFO;
-		}
-	}
+	if (gs_shell_handle_events_more_info (shell, origin, more_info))
+		buttons |= GS_SHELL_EVENT_BUTTON_MORE_INFO;
 
 	/* show in-app notification */
 	gs_shell_show_event_app_notify (shell, str->str, buttons);
@@ -1818,6 +1759,7 @@ gs_shell_show_event_launch (GsShell *shell, GsPluginEvent *event)
 	GsApp *origin = gs_plugin_event_get_origin (event);
 	GsShellEventButtons buttons = GS_SHELL_EVENT_BUTTON_NONE;
 	const GError *error = gs_plugin_event_get_error (event);
+	const gchar *more_info = NULL;
 	g_autoptr(GString) str = g_string_new (NULL);
 	g_autofree gchar *str_app = NULL;
 	g_autofree gchar *str_origin = NULL;
@@ -1827,7 +1769,7 @@ gs_shell_show_event_launch (GsShell *shell, GsPluginEvent *event)
 			str_app = gs_shell_get_title_from_app (app);
 			str_origin = gs_shell_get_title_from_origin (origin);
 			/* TRANSLATORS: failure text for the in-app notification,
-			 * where the first %s is the application name (e.g. "GIMP")
+			 * where the first %s is the app name (e.g. "GIMP")
 			 * and the second %s is the name of the runtime, e.g.
 			 * "GNOME SDK [flatpak.gnome.org]" */
 			g_string_append_printf (str, _("Unable to launch %s: %s is not installed"),
@@ -1839,7 +1781,7 @@ gs_shell_show_event_launch (GsShell *shell, GsPluginEvent *event)
 				return FALSE;
 			/* TRANSLATORS: we failed to get a proper error code */
 			g_string_append (str, _("Sorry, something went wrong"));
-			gs_shell_append_detailed_error (shell, str, error);
+			more_info = error->message;
 		}
 	} else if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_NO_SPACE)) {
 		/* TRANSLATORS: failure text for the in-app notification */
@@ -1852,24 +1794,17 @@ gs_shell_show_event_launch (GsShell *shell, GsPluginEvent *event)
 	} else {
 		/* non-interactive generic */
 		if (!gs_plugin_event_has_flag (event, GS_PLUGIN_EVENT_FLAG_INTERACTIVE))
-			return FALSE;
+			return TRUE;
 		/* TRANSLATORS: we failed to get a proper error code */
 		g_string_append (str, _("Sorry, something went wrong"));
-		gs_shell_append_detailed_error (shell, str, error);
+		more_info = error->message;
 	}
 
 	if (str->len == 0)
 		return FALSE;
 
-	/* add more-info button */
-	if (origin != NULL) {
-		const gchar *uri = gs_app_get_url (origin, AS_URL_KIND_HELP);
-		if (uri != NULL) {
-			g_free (shell->events_info_uri);
-			shell->events_info_uri = g_strdup (uri);
-			buttons |= GS_SHELL_EVENT_BUTTON_MORE_INFO;
-		}
-	}
+	if (gs_shell_handle_events_more_info (shell, origin, more_info))
+		buttons |= GS_SHELL_EVENT_BUTTON_MORE_INFO;
 
 	/* show in-app notification */
 	gs_shell_show_event_app_notify (shell, str->str, buttons);
@@ -1881,6 +1816,7 @@ gs_shell_show_event_file_to_app (GsShell *shell, GsPluginEvent *event)
 {
 	GsShellEventButtons buttons = GS_SHELL_EVENT_BUTTON_NONE;
 	const GError *error = gs_plugin_event_get_error (event);
+	const gchar *more_info = NULL;
 	g_autoptr(GString) str = g_string_new (NULL);
 
 	if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_NOT_SUPPORTED)) {
@@ -1900,14 +1836,17 @@ gs_shell_show_event_file_to_app (GsShell *shell, GsPluginEvent *event)
 	} else {
 		/* non-interactive generic */
 		if (!gs_plugin_event_has_flag (event, GS_PLUGIN_EVENT_FLAG_INTERACTIVE))
-			return FALSE;
+			return TRUE;
 		/* TRANSLATORS: we failed to get a proper error code */
 		g_string_append (str, _("Sorry, something went wrong"));
-		gs_shell_append_detailed_error (shell, str, error);
+		more_info = error->message;
 	}
 
 	if (str->len == 0)
 		return FALSE;
+
+	if (gs_shell_handle_events_more_info (shell, NULL, more_info))
+		buttons |= GS_SHELL_EVENT_BUTTON_MORE_INFO;
 
 	/* show in-app notification */
 	gs_shell_show_event_app_notify (shell, str->str, buttons);
@@ -1919,6 +1858,7 @@ gs_shell_show_event_url_to_app (GsShell *shell, GsPluginEvent *event)
 {
 	GsShellEventButtons buttons = GS_SHELL_EVENT_BUTTON_NONE;
 	const GError *error = gs_plugin_event_get_error (event);
+	const gchar *more_info = NULL;
 	g_autoptr(GString) str = g_string_new (NULL);
 
 	if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_NOT_SUPPORTED)) {
@@ -1938,14 +1878,17 @@ gs_shell_show_event_url_to_app (GsShell *shell, GsPluginEvent *event)
 	} else {
 		/* non-interactive generic */
 		if (!gs_plugin_event_has_flag (event, GS_PLUGIN_EVENT_FLAG_INTERACTIVE))
-			return FALSE;
+			return TRUE;
 		/* TRANSLATORS: we failed to get a proper error code */
 		g_string_append (str, _("Sorry, something went wrong"));
-		gs_shell_append_detailed_error (shell, str, error);
+		more_info = error->message;
 	}
 
 	if (str->len == 0)
 		return FALSE;
+
+	if (gs_shell_handle_events_more_info (shell, NULL, more_info))
+		buttons |= GS_SHELL_EVENT_BUTTON_MORE_INFO;
 
 	/* show in-app notification */
 	gs_shell_show_event_app_notify (shell, str->str, buttons);
@@ -1958,6 +1901,7 @@ gs_shell_show_event_fallback (GsShell *shell, GsPluginEvent *event)
 	GsApp *origin = gs_plugin_event_get_origin (event);
 	GsShellEventButtons buttons = GS_SHELL_EVENT_BUTTON_NONE;
 	const GError *error = gs_plugin_event_get_error (event);
+	const gchar *more_info = NULL;
 	g_autoptr(GString) str = g_string_new (NULL);
 	g_autofree gchar *str_origin = NULL;
 
@@ -1976,7 +1920,7 @@ gs_shell_show_event_fallback (GsShell *shell, GsPluginEvent *event)
 					"and try again"));
 		buttons |= GS_SHELL_EVENT_BUTTON_NO_SPACE;
 	} else if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_RESTART_REQUIRED)) {
-		/* TRANSLATORS: failure text for the in-app notification, where the 'Software' means this application, aka 'GNOME Software'. */
+		/* TRANSLATORS: failure text for the in-app notification, where the 'Software' means this app, aka 'GNOME Software'. */
 		g_string_append (str, _("Software needs to be restarted to use new plugins."));
 		buttons |= GS_SHELL_EVENT_BUTTON_RESTART_REQUIRED;
 	} else if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_AC_POWER_REQUIRED)) {
@@ -1991,24 +1935,17 @@ gs_shell_show_event_fallback (GsShell *shell, GsPluginEvent *event)
 	} else {
 		/* non-interactive generic */
 		if (!gs_plugin_event_has_flag (event, GS_PLUGIN_EVENT_FLAG_INTERACTIVE))
-			return FALSE;
+			return TRUE;
 		/* TRANSLATORS: we failed to get a proper error code */
 		g_string_append (str, _("Sorry, something went wrong"));
-		gs_shell_append_detailed_error (shell, str, error);
+		more_info = error->message;
 	}
 
 	if (str->len == 0)
 		return FALSE;
 
-	/* add more-info button */
-	if (origin != NULL) {
-		const gchar *uri = gs_app_get_url (origin, AS_URL_KIND_HELP);
-		if (uri != NULL) {
-			g_free (shell->events_info_uri);
-			shell->events_info_uri = g_strdup (uri);
-			buttons |= GS_SHELL_EVENT_BUTTON_MORE_INFO;
-		}
-	}
+	if (gs_shell_handle_events_more_info (shell, origin, more_info))
+		buttons |= GS_SHELL_EVENT_BUTTON_MORE_INFO;
 
 	/* show in-app notification */
 	gs_shell_show_event_app_notify (shell, str->str, buttons);
@@ -2037,18 +1974,20 @@ gs_shell_show_event (GsShell *shell, GsPluginEvent *event)
 	job = gs_plugin_event_get_job (event);
 	if (GS_IS_PLUGIN_JOB_REFRESH_METADATA (job))
 		return gs_shell_show_event_refresh (shell, event);
+	else if (GS_IS_PLUGIN_JOB_UPDATE_APPS (job) &&
+		 !(gs_plugin_job_update_apps_get_flags (GS_PLUGIN_JOB_UPDATE_APPS (job)) & GS_PLUGIN_UPDATE_APPS_FLAGS_NO_DOWNLOAD))
+		return gs_shell_show_event_refresh (shell, event);
+	else if (GS_IS_PLUGIN_JOB_UPDATE_APPS (job) &&
+		 !(gs_plugin_job_update_apps_get_flags (GS_PLUGIN_JOB_UPDATE_APPS (job)) & GS_PLUGIN_UPDATE_APPS_FLAGS_NO_APPLY))
+		return gs_shell_show_event_update (shell, event);
 
 	/* split up the events by action */
 	action = gs_plugin_event_get_action (event);
 	switch (action) {
-	case GS_PLUGIN_ACTION_DOWNLOAD:
-		return gs_shell_show_event_refresh (shell, event);
 	case GS_PLUGIN_ACTION_INSTALL:
 	case GS_PLUGIN_ACTION_INSTALL_REPO:
 	case GS_PLUGIN_ACTION_ENABLE_REPO:
 		return gs_shell_show_event_install (shell, event);
-	case GS_PLUGIN_ACTION_UPDATE:
-		return gs_shell_show_event_update (shell, event);
 	case GS_PLUGIN_ACTION_UPGRADE_DOWNLOAD:
 		return gs_shell_show_event_upgrade (shell, event);
 	case GS_PLUGIN_ACTION_REMOVE:
@@ -2077,9 +2016,27 @@ gs_shell_rescan_events (GsShell *shell)
 	/* find the first active event and show it */
 	event = gs_plugin_loader_get_event_default (shell->plugin_loader);
 	if (event != NULL) {
+		GsPluginAction action = gs_plugin_event_get_action (event);
+		const GError *error = gs_plugin_event_get_error (event);
+		if (error != NULL &&
+		    !g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_CANCELLED) &&
+		    !g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
+			if (error->domain == GS_PLUGIN_ERROR) {
+				g_debug ("%sinteractive action '%s' failed with error '%s': %s",
+					 gs_plugin_event_has_flag (event, GS_PLUGIN_EVENT_FLAG_INTERACTIVE) ? "" : "non-",
+					 gs_plugin_action_to_string (action),
+					 gs_plugin_error_to_string (error->code),
+					 error->message);
+			} else {
+				g_debug ("%sinteractive action '%s' failed with error '%s::%d': %s",
+					 gs_plugin_event_has_flag (event, GS_PLUGIN_EVENT_FLAG_INTERACTIVE) ? "" : "non-",
+					 gs_plugin_action_to_string (action),
+					 g_quark_to_string (error->domain),
+					 error->code,
+					 error->message);
+			}
+		}
 		if (!gs_shell_show_event (shell, event)) {
-			GsPluginAction action = gs_plugin_event_get_action (event);
-			const GError *error = gs_plugin_event_get_error (event);
 			if (error != NULL &&
 			    !g_error_matches (error,
 					      GS_PLUGIN_ERROR,
@@ -2087,10 +2044,24 @@ gs_shell_rescan_events (GsShell *shell)
 			    !g_error_matches (error,
 					      G_IO_ERROR,
 					      G_IO_ERROR_CANCELLED)) {
-				g_warning ("not handling error %s for action %s: %s",
-					   gs_plugin_error_to_string (error->code),
-					   gs_plugin_action_to_string (action),
-					   error->message);
+				g_autofree gchar *msg = NULL;
+				g_autofree gchar *error_ident = NULL;
+				if (error->domain == GS_PLUGIN_ERROR) {
+					error_ident = g_strdup (gs_plugin_error_to_string (error->code));
+				} else {
+					error_ident = g_strdup_printf ("%s::%d",
+									g_quark_to_string (error->domain),
+									error->code);
+				}
+				msg = g_strdup_printf ("not handling %sinteractive error '%s' for action '%s': %s",
+						       gs_plugin_event_has_flag (event, GS_PLUGIN_EVENT_FLAG_INTERACTIVE) ? "" : "non-",
+						       error_ident,
+						       gs_plugin_action_to_string (action),
+						       error->message);
+				if (g_strcmp0 (BUILD_TYPE, "debug") == 0)
+					g_warning ("%s", msg);
+				else
+					g_debug ("%s", msg);
 			}
 			gs_plugin_event_add_flag (event, GS_PLUGIN_EVENT_FLAG_INVALID);
 			return;
@@ -2439,7 +2410,7 @@ gs_shell_show_search_result (GsShell *shell, const gchar *id, const gchar *searc
 void
 gs_shell_show_uri (GsShell *shell, const gchar *url)
 {
-	gtk_show_uri (GTK_WINDOW (shell), url, GDK_CURRENT_TIME);
+	gs_show_uri (GTK_WINDOW (shell), url);
 }
 
 /**
@@ -2516,6 +2487,7 @@ gs_shell_dispose (GObject *object)
 	g_clear_object (&shell->header_end_widget);
 	g_clear_object (&shell->page);
 	g_clear_pointer (&shell->events_info_uri, g_free);
+	g_clear_pointer (&shell->events_more_info, g_free);
 	g_clear_pointer (&shell->modal_dialogs, g_ptr_array_unref);
 	g_clear_object (&shell->settings);
 
@@ -2544,7 +2516,6 @@ allocation_changed_cb (gpointer user_data)
 	GsShell *shell = GS_SHELL (user_data);
 	GtkAllocation allocation;
 	gboolean is_narrow;
-	GtkStyleContext *context;
 
 	gtk_widget_get_allocation (GTK_WIDGET (shell), &allocation);
 
@@ -2562,12 +2533,10 @@ allocation_changed_cb (gpointer user_data)
 
 	shell->allocation_changed_cb_id = 0;
 
-	context = gtk_widget_get_style_context (GTK_WIDGET (shell));
-
 	if (is_narrow)
-		gtk_style_context_add_class (context, "narrow");
+		gtk_widget_add_css_class (GTK_WIDGET (shell), "narrow");
 	else
-		gtk_style_context_remove_class (context, "narrow");
+		gtk_widget_remove_css_class (GTK_WIDGET (shell), "narrow");
 
 	return G_SOURCE_REMOVE;
 }
@@ -2651,7 +2620,7 @@ gs_shell_class_init (GsShellClass *klass)
 	gtk_widget_class_bind_template_child (widget_class, GsShell, stack_loading);
 	gtk_widget_class_bind_template_child (widget_class, GsShell, stack_main);
 	gtk_widget_class_bind_template_child (widget_class, GsShell, stack_sub);
-	gtk_widget_class_bind_template_child (widget_class, GsShell, metered_updates_bar);
+	gtk_widget_class_bind_template_child (widget_class, GsShell, metered_updates_banner);
 	gtk_widget_class_bind_template_child (widget_class, GsShell, search_button);
 	gtk_widget_class_bind_template_child (widget_class, GsShell, entry_search);
 	gtk_widget_class_bind_template_child (widget_class, GsShell, search_bar);
@@ -2697,7 +2666,7 @@ gs_shell_class_init (GsShellClass *klass)
 	gtk_widget_class_bind_template_callback (widget_class, gs_shell_plugin_events_restart_required_cb);
 	gtk_widget_class_bind_template_callback (widget_class, gs_shell_plugin_events_more_info_cb);
 	gtk_widget_class_bind_template_callback (widget_class, gs_shell_plugin_event_dismissed_cb);
-	gtk_widget_class_bind_template_callback (widget_class, gs_shell_metered_updates_bar_response_cb);
+	gtk_widget_class_bind_template_callback (widget_class, gs_shell_metered_updates_banner_clicked_cb);
 	gtk_widget_class_bind_template_callback (widget_class, stack_notify_visible_child_cb);
 	gtk_widget_class_bind_template_callback (widget_class, initial_refresh_done);
 	gtk_widget_class_bind_template_callback (widget_class, overlay_get_child_position_cb);
@@ -2722,4 +2691,14 @@ GsShell *
 gs_shell_new (void)
 {
 	return GS_SHELL (g_object_new (GS_TYPE_SHELL, NULL));
+}
+
+GsAppQueryLicenseType
+gs_shell_get_query_license_type (GsShell *self)
+{
+	g_return_val_if_fail (GS_IS_SHELL (self), GS_APP_QUERY_LICENSE_ANY);
+
+	if (g_settings_get_boolean (self->settings, "show-only-free-apps"))
+		return GS_APP_QUERY_LICENSE_FOSS;
+	return GS_APP_QUERY_LICENSE_ANY;
 }

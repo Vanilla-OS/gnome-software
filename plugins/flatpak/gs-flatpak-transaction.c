@@ -4,7 +4,7 @@
  * Copyright (C) 2018 Richard Hughes <richard@hughsie.com>
  * Copyright (C) 2018 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include <config.h>
@@ -702,7 +702,7 @@ _transaction_add_new_remote (FlatpakTransaction *transaction,
 			     const char *remote_name,
 			     const char *url)
 {
-	/* additional applications */
+	/* additional apps */
 	if (reason == FLATPAK_TRANSACTION_REMOTE_GENERIC_REPO) {
 		g_debug ("configuring %s as new generic remote", url);
 		return TRUE; //FIXME?

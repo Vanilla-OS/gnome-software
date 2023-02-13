@@ -4,7 +4,7 @@
  * Copyright (C) 2013 Richard Hughes <richard@hughsie.com>
  * Copyright (C) 2016 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #pragma once
@@ -33,13 +33,16 @@ gchar		*gs_utils_set_key_colors_in_css	(const gchar	*css,
 						 GsApp		*app);
 void		 gs_utils_widget_set_css	(GtkWidget	*widget,
 						 GtkCssProvider	**provider,
-						 const gchar	*class_name,
 						 const gchar	*css);
 const gchar	*gs_utils_get_error_value	(const GError	*error);
 void		 gs_utils_show_error_dialog	(GtkWindow	*parent,
 						 const gchar	*title,
 						 const gchar	*msg,
 						 const gchar	*details);
+void		 gs_utils_show_error_dialog_simple
+						(GtkWindow *parent,
+						 const gchar *title,
+						 const gchar *text);
 gboolean	 gs_utils_ask_user_accepts	(GtkWindow	*parent,
 						 const gchar	*title,
 						 const gchar	*msg,
@@ -67,5 +70,7 @@ gboolean	gs_utils_split_time_difference	(gint64 unix_time_seconds,
 						 gint *out_years_ago);
 gchar		*gs_utils_format_size		(guint64 size_bytes,
 						 gboolean *out_is_markup);
+void		 gs_show_uri			(GtkWindow *parent,
+						 const char *uri);
 
 G_END_DECLS

@@ -4,7 +4,7 @@
  * Copyright (C) 2013-2017 Richard Hughes <richard@hughsie.com>
  * Copyright (C) 2014-2018 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -72,8 +72,9 @@ struct _GsUpdatesPage
 	GtkWidget		*spinner_updates;
 	GtkWidget		*stack_updates;
 	GtkWidget		*upgrade_banner;
-	GtkWidget		*infobar_end_of_life;
+	GtkWidget		*banner_end_of_life;
 	GtkWidget		*label_end_of_life;
+	GtkWidget		*up_to_date_image;
 
 	GtkSizeGroup		*sizegroup_name;
 	GtkSizeGroup		*sizegroup_button_label;
@@ -142,8 +143,13 @@ gs_updates_page_invalidate (GsUpdatesPage *self)
 static GsUpdatesSectionKind
 _get_app_section (GsApp *app)
 {
-	if (gs_app_get_state (app) == GS_APP_STATE_UPDATABLE_LIVE ||
-	    gs_app_get_state (app) == GS_APP_STATE_INSTALLING) {
+	if (gs_app_get_kind (app) == AS_COMPONENT_KIND_OPERATING_SYSTEM &&
+	    gs_app_has_quirk (app, GS_APP_QUIRK_NEEDS_REBOOT))
+		return GS_UPDATES_SECTION_KIND_OFFLINE;
+
+	if (!gs_app_has_quirk (app, GS_APP_QUIRK_NEEDS_REBOOT) &&
+	    (gs_app_get_state (app) == GS_APP_STATE_UPDATABLE_LIVE ||
+	     gs_app_get_state (app) == GS_APP_STATE_INSTALLING)) {
 		if (gs_app_get_kind (app) == AS_COMPONENT_KIND_FIRMWARE)
 			return GS_UPDATES_SECTION_KIND_ONLINE_FIRMWARE;
 		return GS_UPDATES_SECTION_KIND_ONLINE;
@@ -284,7 +290,7 @@ gs_updates_page_update_ui_state (GsUpdatesPage *self)
 	default:
 		gtk_spinner_stop (GTK_SPINNER (self->spinner_updates));
 		gtk_spinner_stop (GTK_SPINNER (self->header_spinner_start));
-		gtk_widget_hide (self->header_spinner_start);
+		gtk_widget_set_visible (self->header_spinner_start, FALSE);
 		break;
 	}
 
@@ -293,16 +299,18 @@ gs_updates_page_update_ui_state (GsUpdatesPage *self)
 	case GS_UPDATES_PAGE_STATE_ACTION_REFRESH:
 	case GS_UPDATES_PAGE_STATE_ACTION_GET_UPDATES:
 		gtk_button_set_icon_name (GTK_BUTTON (self->button_refresh), "media-playback-stop-symbolic");
-		gtk_widget_show (self->button_refresh);
+		gtk_widget_set_tooltip_text(self->button_refresh, _("Stop"));
+		gtk_widget_set_visible (self->button_refresh, TRUE);
 		break;
 	case GS_UPDATES_PAGE_STATE_STARTUP:
 	case GS_UPDATES_PAGE_STATE_MANAGED:
-		gtk_widget_hide (self->button_refresh);
+		gtk_widget_set_visible (self->button_refresh, FALSE);
 		break;
 	case GS_UPDATES_PAGE_STATE_IDLE:
 		gtk_button_set_icon_name (GTK_BUTTON (self->button_refresh), "view-refresh-symbolic");
+		gtk_widget_set_tooltip_text(self->button_refresh, _("Check for Updates"));
 		if (self->result_flags != GS_UPDATES_PAGE_FLAG_NONE) {
-			gtk_widget_show (self->button_refresh);
+			gtk_widget_set_visible (self->button_refresh, TRUE);
 		} else {
 			if (gs_plugin_loader_get_network_metered (self->plugin_loader) &&
 			    !self->has_agreed_to_mobile_data)
@@ -312,7 +320,8 @@ gs_updates_page_update_ui_state (GsUpdatesPage *self)
 		break;
 	case GS_UPDATES_PAGE_STATE_FAILED:
 		gtk_button_set_icon_name (GTK_BUTTON (self->button_refresh), "view-refresh-symbolic");
-		gtk_widget_show (self->button_refresh);
+		gtk_widget_set_tooltip_text(self->button_refresh, _("Check for Updates"));
+		gtk_widget_set_visible (self->button_refresh, TRUE);
 		break;
 	default:
 		g_assert_not_reached ();
@@ -535,8 +544,8 @@ gs_updates_page_refine_system_finished_cb (GObject *source_object,
 	g_autoptr(GsPageHelper) helper = user_data;
 	GsUpdatesPage *self = helper->self;
 	GsApp *app = helper->app;
+	g_autofree char *str = NULL;
 	g_autoptr(GError) error = NULL;
-	g_autoptr(GString) str = g_string_new (NULL);
 
 	/* get result */
 	if (!gs_plugin_loader_job_action_finish (plugin_loader, res, &error)) {
@@ -548,32 +557,25 @@ gs_updates_page_refine_system_finished_cb (GObject *source_object,
 
 	/* show or hide the end of life notification */
 	if (gs_app_get_state (app) != GS_APP_STATE_UNAVAILABLE) {
-		gtk_info_bar_set_revealed (GTK_INFO_BAR (self->infobar_end_of_life), FALSE);
+		adw_banner_set_revealed (ADW_BANNER (self->banner_end_of_life), FALSE);
 		return;
 	}
 
 	/* construct a sufficiently scary message */
-	if (gs_app_get_name (app) != NULL && gs_app_get_version (app) != NULL) {
+	if (gs_app_get_name (app) != NULL) {
 		/* TRANSLATORS:  the first %s is the distro name, e.g. 'Fedora'
 		 * and the second %s is the distro version, e.g. '25' */
-		g_string_append_printf (str, _("%s %s is no longer supported."),
-					gs_app_get_name (app),
-					gs_app_get_version (app));
+		str = g_strdup_printf (_("%s %s has stopped receiving critical software updates"),
+				       gs_app_get_name (app),
+				       gs_app_get_version (app));
 	} else {
-		g_string_append (str, _("Your operating system is no longer supported."));
+		/* TRANSLATORS: This message is meant to tell users that they need to upgrade
+		* or else their distro will not get important updates. */
+		str = _("Your operating system has stopped receiving critical software updates");
 	}
-	g_string_append (str, " ");
 
-	/* TRANSLATORS: EOL distros do not get important updates */
-	g_string_append (str, _("This means that it does not receive security updates."));
-	g_string_append (str, " ");
-
-	/* TRANSLATORS: upgrade refers to a major update, e.g. Fedora 25 to 26 */
-	g_string_append (str, _("It is recommended that you upgrade to a more recent version."));
-
-	gtk_label_set_label (GTK_LABEL (self->label_end_of_life), str->str);
-	gtk_info_bar_set_revealed (GTK_INFO_BAR (self->infobar_end_of_life), TRUE);
-
+	adw_banner_set_title (ADW_BANNER (self->banner_end_of_life), str);
+	adw_banner_set_revealed (ADW_BANNER (self->banner_end_of_life), TRUE);
 }
 
 static void
@@ -774,27 +776,24 @@ gs_updates_page_show_network_settings (GsUpdatesPage *self)
 }
 
 static void
-gs_updates_page_refresh_confirm_cb (GtkDialog *dialog,
-                                    GtkResponseType response_type,
-                                    GsUpdatesPage *self)
+gs_updates_page_refresh_settings_cb (AdwMessageDialog *dialog,
+                                     const gchar *response,
+                                     GsUpdatesPage *self)
 {
-	/* unmap the dialog */
-	gtk_window_destroy (GTK_WINDOW (dialog));
-
-	switch (response_type) {
-	case GTK_RESPONSE_REJECT:
+	if (g_strcmp0 (response, "settings") == 0) {
 		/* open the control center */
 		gs_updates_page_show_network_settings (self);
-		break;
-	case GTK_RESPONSE_ACCEPT:
+	}
+}
+
+static void
+gs_updates_page_refresh_check_cb (AdwMessageDialog *dialog,
+                                  const gchar *response,
+                                  GsUpdatesPage *self)
+{
+	if (g_strcmp0 (response, "check") == 0) {
 		self->has_agreed_to_mobile_data = TRUE;
 		gs_updates_page_get_new_updates (self);
-		break;
-	case GTK_RESPONSE_CANCEL:
-	case GTK_RESPONSE_DELETE_EVENT:
-		break;
-	default:
-		g_assert_not_reached ();
 	}
 }
 
@@ -839,49 +838,35 @@ gs_updates_page_button_refresh_cb (GtkWidget *widget,
 			gs_updates_page_get_new_updates (self);
 			return;
 		}
-		dialog = gtk_message_dialog_new (parent_window,
-						 GTK_DIALOG_MODAL |
-						 GTK_DIALOG_USE_HEADER_BAR |
-						 GTK_DIALOG_DESTROY_WITH_PARENT,
-						 GTK_MESSAGE_ERROR,
-						 GTK_BUTTONS_CANCEL,
+		dialog = adw_message_dialog_new (parent_window,
 						 /* TRANSLATORS: this is to explain that downloading updates may cost money */
-						 _("Charges May Apply"));
-		gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-							  /* TRANSLATORS: we need network
-							   * to do the updates check */
-							  _("Checking for updates while using mobile broadband could cause you to incur charges."));
-		gtk_dialog_add_button (GTK_DIALOG (dialog),
-				       /* TRANSLATORS: this is a link to the
-					* control-center network panel */
-				       _("Check _Anyway"),
-				       GTK_RESPONSE_ACCEPT);
+						 _("Charges May Apply"),
+						 /* TRANSLATORS: we need network to do the updates check */
+						 _("Checking for updates while using mobile broadband could cause you to incur charges."));
+		adw_message_dialog_add_responses (ADW_MESSAGE_DIALOG (dialog),
+						  "cancel",  _("_Cancel"),
+						  /* TRANSLATORS: this is a link to the control-center network panel */
+						  "check",  _("Check _Anyway"),
+						  NULL);
 		g_signal_connect (dialog, "response",
-				  G_CALLBACK (gs_updates_page_refresh_confirm_cb),
+				  G_CALLBACK (gs_updates_page_refresh_check_cb),
 				  self);
 		gs_shell_modal_dialog_present (self->shell, GTK_WINDOW (dialog));
 
 	/* no network connection */
 	} else {
-		dialog = gtk_message_dialog_new (parent_window,
-						 GTK_DIALOG_MODAL |
-						 GTK_DIALOG_USE_HEADER_BAR |
-						 GTK_DIALOG_DESTROY_WITH_PARENT,
-						 GTK_MESSAGE_ERROR,
-						 GTK_BUTTONS_CANCEL,
+		dialog = adw_message_dialog_new (parent_window,
 						 /* TRANSLATORS: can't do updates check */
-						 _("No Network"));
-		gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-							  /* TRANSLATORS: we need network
-							   * to do the updates check */
-							  _("Internet access is required to check for updates."));
-		gtk_dialog_add_button (GTK_DIALOG (dialog),
-				       /* TRANSLATORS: this is a link to the
-					* control-center network panel */
-				       _("Network Settings"),
-				       GTK_RESPONSE_REJECT);
+						 _("No Network"),
+						 /* TRANSLATORS: we need network to do the updates check */
+						 _("Internet access is required to check for updates."));
+		adw_message_dialog_add_responses (ADW_MESSAGE_DIALOG (dialog),
+						  "cancel",  _("_Cancel"),
+						  /* TRANSLATORS: this is a link to the control-center network panel */
+						  "settings",  _("Network _Settings"),
+						  NULL);
 		g_signal_connect (dialog, "response",
-				  G_CALLBACK (gs_updates_page_refresh_confirm_cb),
+				  G_CALLBACK (gs_updates_page_refresh_settings_cb),
 				  self);
 		gs_shell_modal_dialog_present (self->shell, GTK_WINDOW (dialog));
 	}
@@ -1399,8 +1384,8 @@ gs_updates_page_class_init (GsUpdatesPageClass *klass)
 	gtk_widget_class_bind_template_child (widget_class, GsUpdatesPage, spinner_updates);
 	gtk_widget_class_bind_template_child (widget_class, GsUpdatesPage, stack_updates);
 	gtk_widget_class_bind_template_child (widget_class, GsUpdatesPage, upgrade_banner);
-	gtk_widget_class_bind_template_child (widget_class, GsUpdatesPage, infobar_end_of_life);
-	gtk_widget_class_bind_template_child (widget_class, GsUpdatesPage, label_end_of_life);
+	gtk_widget_class_bind_template_child (widget_class, GsUpdatesPage, banner_end_of_life);
+	gtk_widget_class_bind_template_child (widget_class, GsUpdatesPage, up_to_date_image);
 }
 
 static void
@@ -1457,6 +1442,10 @@ gs_updates_page_set_is_narrow (GsUpdatesPage *self, gboolean is_narrow)
 		return;
 
 	self->is_narrow = is_narrow;
+	if (self->is_narrow)
+		gtk_image_set_pixel_size (GTK_IMAGE (self->up_to_date_image), 280);
+	else
+		gtk_image_set_pixel_size (GTK_IMAGE (self->up_to_date_image), 300);
 	g_object_notify_by_pspec (G_OBJECT (self), obj_props[PROP_IS_NARROW]);
 }
 

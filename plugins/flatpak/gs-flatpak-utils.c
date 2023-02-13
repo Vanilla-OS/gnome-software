@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2017-2018 Richard Hughes <richard@hughsie.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include <config.h>
@@ -104,7 +104,7 @@ gs_flatpak_app_new_from_remote (GsPlugin *plugin,
 
 	/* origin_ui on a remote is the repo dialogue section name,
 	 * not the remote title */
-	gs_app_set_origin_ui (app, _("Applications"));
+	gs_app_set_origin_ui (app, _("Apps"));
 
 	description = flatpak_remote_get_description (xremote);
 	if (description != NULL)

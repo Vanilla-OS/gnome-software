@@ -4,7 +4,7 @@
  * Copyright (C) 2013-2017 Richard Hughes <richard@hughsie.com>
  * Copyright (C) 2014-2018 Kalev Lember <klember@redhat.com>
  *
- * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #include "config.h"
@@ -46,8 +46,7 @@ struct _GsOverviewPage
 	gboolean		 third_party_needs_question;
 	gchar		       **deployment_featured;
 
-	GtkWidget		*infobar_third_party;
-	GtkWidget		*label_third_party;
+	GtkWidget		*dialog_third_party;
 	GtkWidget		*featured_carousel;
 	GtkWidget		*box_overview;
 	GtkWidget		*box_curated;
@@ -76,6 +75,11 @@ enum {
 };
 
 static guint signals [SIGNAL_LAST] = { 0 };
+
+static void
+third_party_response_cb (AdwMessageDialog *dialog,
+                         const gchar *response,
+                         GsOverviewPage *self);
 
 static void
 gs_overview_page_invalidate (GsOverviewPage *self)
@@ -240,7 +244,7 @@ gs_overview_page_get_recent_cb (GObject *source_object, GAsyncResult *res, gpoin
 		 * focusable and activatable, which is annoying and confusing.
 		 */
 		gtk_widget_set_can_focus (child, FALSE);
-		gtk_widget_show (child);
+		gtk_widget_set_visible (child, TRUE);
 		gtk_flow_box_child_set_child (GTK_FLOW_BOX_CHILD (child), tile);
 		gtk_flow_box_insert (GTK_FLOW_BOX (self->box_recent), child, -1);
 	}
@@ -445,9 +449,58 @@ out:
 }
 
 static void
+third_party_destroy_cb (GtkWindow *window,
+			GsOverviewPage *self)
+{
+	self->dialog_third_party = NULL;
+}
+
+static void
 refresh_third_party_repo (GsOverviewPage *self)
 {
-	gtk_widget_set_visible (self->infobar_third_party, self->third_party_needs_question);
+	if (!gtk_widget_get_mapped (GTK_WIDGET (self)))
+		return;
+
+	if (self->third_party_needs_question && !self->dialog_third_party) {
+		GtkRoot *root;
+		GtkWidget *dialog;
+		g_autofree gchar *link = NULL;
+		g_autofree gchar *body = NULL;
+
+		link = g_strdup_printf ("<a href=\"%s\">%s</a>",
+					"https://docs.fedoraproject.org/en-US/workstation-working-group/third-party-repos/",
+					/* Translators: This is a clickable link on the third party repositories message dialog. It's
+					   part of a constructed sentence: "Provides access to additional software from [selected external sources].
+					   Some proprietary software is included." */
+					_("selected external sources"));
+		/* Translators: This is the third party repositories message dialog.
+		   The %s is replaced with "selected external sources" link.
+		   Repositories Preferences is an item from Software's main menu. */
+		body = g_strdup_printf (_("Provides access to additional software from %s. Some proprietary software is included.\n\nYou can enable those repositories later in Software Repositories preferences."),
+					link);
+
+		root = gtk_widget_get_root (GTK_WIDGET (self));
+		dialog = adw_message_dialog_new (GTK_WINDOW (root),
+						 /* TRANSLATORS: Heading asking whether to turn third party software repositories on of off. */
+						 _("Enable Third Party Software Repositories?"),
+						 body);
+		adw_message_dialog_set_body_use_markup (ADW_MESSAGE_DIALOG (dialog), TRUE);
+		adw_message_dialog_add_responses (ADW_MESSAGE_DIALOG (dialog),
+						  /* TRANSLATORS: button to keep the third party software repositories off */
+						  "ignore", _("_Ignore"),
+						  /* TRANSLATORS: button to turn on third party software repositories */
+						  "enable", _("_Enable"),
+						  NULL);
+		g_signal_connect (dialog, "response",
+				  G_CALLBACK (third_party_response_cb), self);
+		gtk_window_present (GTK_WINDOW (dialog));
+		g_signal_connect (dialog, "destroy",
+				  G_CALLBACK (third_party_destroy_cb), self);
+
+		self->dialog_third_party = dialog;
+	} else if (!self->third_party_needs_question && self->dialog_third_party) {
+		gtk_window_destroy (GTK_WINDOW (self->dialog_third_party));
+	}
 }
 
 static gboolean
@@ -662,6 +715,7 @@ gs_overview_page_load (GsOverviewPage *self)
 							  GS_APP_LIST_FILTER_FLAG_KEY_ID_PROVIDES,
 					  "filter-func", filter_hi_res_icon,
 					  "filter-user-data", self,
+					  "license-type", gs_page_get_query_license_type (GS_PAGE (self)),
 					  NULL);
 
 		plugin_job = gs_plugin_job_list_apps_new (query, flags);
@@ -689,6 +743,7 @@ gs_overview_page_load (GsOverviewPage *self)
 							  GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON,
 					  "dedupe-flags", GS_APP_LIST_FILTER_FLAG_PREFER_INSTALLED |
 							  GS_APP_LIST_FILTER_FLAG_KEY_ID_PROVIDES,
+					  "license-type", gs_page_get_query_license_type (GS_PAGE (self)),
 					  NULL);
 
 		plugin_job = gs_plugin_job_list_apps_new (query, flags);
@@ -713,6 +768,7 @@ gs_overview_page_load (GsOverviewPage *self)
 							  GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON,
 					  "dedupe-flags", GS_APP_LIST_FILTER_FLAG_PREFER_INSTALLED |
 							  GS_APP_LIST_FILTER_FLAG_KEY_ID_PROVIDES,
+					  "license-type", gs_page_get_query_license_type (GS_PAGE (self)),
 					  NULL);
 
 		plugin_job = gs_plugin_job_list_apps_new (query, flags);
@@ -744,6 +800,7 @@ gs_overview_page_load (GsOverviewPage *self)
 							  GS_APP_LIST_FILTER_FLAG_KEY_ID_PROVIDES,
 					  "sort-func", gs_overview_page_sort_recent_cb,
 					  "filter-func", gs_overview_page_filter_recent_cb,
+					  "license-type", gs_page_get_query_license_type (GS_PAGE (self)),
 					  NULL);
 
 		plugin_job = gs_plugin_job_list_apps_new (query, flags);
@@ -825,19 +882,18 @@ gs_overview_page_refresh_cb (GsPluginLoader *plugin_loader,
 }
 
 static void
-third_party_response_cb (GtkInfoBar *info_bar,
-                         gint response_id,
+third_party_response_cb (AdwMessageDialog *dialog,
+                         const gchar *response,
                          GsOverviewPage *self)
 {
 	g_autoptr(GsPluginJob) plugin_job = NULL;
 
-	if (response_id == GTK_RESPONSE_YES)
+	if (g_strcmp0 (response, "enable") == 0)
 		fedora_third_party_enable (self);
-	else
+	else  /* "ignore" or "close" */
 		fedora_third_party_disable (self);
 
 	self->third_party_needs_question = FALSE;
-	refresh_third_party_repo (self);
 
 	plugin_job = gs_plugin_job_refresh_metadata_new (1,
 							 GS_PLUGIN_REFRESH_METADATA_FLAGS_NONE);
@@ -857,8 +913,6 @@ gs_overview_page_setup (GsPage *page,
 	GsOverviewPage *self = GS_OVERVIEW_PAGE (page);
 	GtkWidget *tile;
 	gint i;
-	g_autofree gchar *text = NULL;
-	g_autofree gchar *link = NULL;
 
 	g_return_val_if_fail (GS_IS_OVERVIEW_PAGE (self), TRUE);
 
@@ -868,25 +922,10 @@ gs_overview_page_setup (GsPage *page,
 	self->category_hash = g_hash_table_new_full (g_str_hash, g_str_equal,
 						     g_free, (GDestroyNotify) g_object_unref);
 
-	link = g_strdup_printf ("<a href=\"%s\">%s</a>",
-	                        "https://docs.fedoraproject.org/en-US/workstation-working-group/third-party-repos/",
-	                        /* Translators: This is a clickable link on the third party repositories info bar. It's
-				   part of a constructed sentence: "Provides access to additional software from [selected external sources].
-				   Some proprietary software is included." */
-	                        _("selected external sources"));
-	/* Translators: This is the third party repositories info bar. The %s is replaced with "selected external sources" link. */
-	text = g_strdup_printf (_("Provides access to additional software from %s. Some proprietary software is included."),
-				link);
-	gtk_label_set_markup (GTK_LABEL (self->label_third_party), text);
-
-	/* create info bar if not already dismissed in initial-setup */
-	refresh_third_party_repo (self);
+	/* create message dialog if not already dismissed in initial-setup */
+	g_signal_connect (self, "map",
+			  G_CALLBACK (refresh_third_party_repo), NULL);
 	reload_third_party_repo (self);
-	gtk_info_bar_add_button (GTK_INFO_BAR (self->infobar_third_party),
-				 /* TRANSLATORS: button to turn on third party software repositories */
-				 _("Enable"), GTK_RESPONSE_YES);
-	g_signal_connect (self->infobar_third_party, "response",
-			  G_CALLBACK (third_party_response_cb), self);
 
 	/* avoid a ref cycle */
 	self->shell = shell;
@@ -979,6 +1018,8 @@ gs_overview_page_dispose (GObject *object)
 	g_clear_object (&self->third_party);
 	g_clear_pointer (&self->category_hash, g_hash_table_unref);
 	g_clear_pointer (&self->deployment_featured, g_strfreev);
+	if (self->dialog_third_party)
+		gtk_window_destroy (GTK_WINDOW (self->dialog_third_party));
 
 	G_OBJECT_CLASS (gs_overview_page_parent_class)->dispose (object);
 }
@@ -1009,8 +1050,6 @@ gs_overview_page_class_init (GsOverviewPageClass *klass)
 
 	gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Software/gs-overview-page.ui");
 
-	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, infobar_third_party);
-	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, label_third_party);
 	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, featured_carousel);
 	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, box_overview);
 	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, box_curated);
