@@ -1,8 +1,10 @@
-gnome-software (44~beta-1) UNRELEASED; urgency=medium
+gnome-software (44~beta-1) experimental; urgency=medium
 
   * New upstream release
+  * debian/control.in: Bump minimum GTK4, libadwaita, and packagekit
+  * Revert branching for bookworm
 
- -- Jeremy Bicha <jbicha@ubuntu.com>  Mon, 13 Feb 2023 13:30:07 -0500
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Mon, 13 Feb 2023 13:37:00 -0500
 
 gnome-software (43.4-1) unstable; urgency=medium
 
