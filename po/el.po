@@ -4,21 +4,22 @@
 # Dimitris Spingos <dmtrs32@gmail.com>, 2013.
 # Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>, 2013, 2014, 2015.
 # Efstathios Iosifidis <iosifidis@opensuse.org>, 2015-2019.
-#
+# Andrew Geo <andrewgeo@outlook.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2021-08-13 00:13+0300\n"
-"Last-Translator: Efstathios Iosifidis <eiosifidis@gnome.org>\n"
-"Language-Team: Greek, Modern (1453-) <gnome-el-list@gnome.org>\n"
+"PO-Revision-Date: 2023-02-16 17:28+0000\n"
+"Last-Translator: Andrew Geo <andrewgeo@outlook.com>\n"
+"Language-Team: Greek <https://hosted.weblate.org/projects/vanilla-os/"
+"gnome-software/el/>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.16-dev\n"
 "X-Project-Style: gnome\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
@@ -1044,9 +1045,8 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:568
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:593
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:636
-#, fuzzy
 msgid "Translation updates:"
-msgstr "Ενημερώσεις εφαρμογών"
+msgstr "Ενημερώσεις εφαρμογών:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:570
 msgid "British English"
@@ -2056,10 +2056,9 @@ msgstr "Εκκρεμεί αφαίρεση"
 
 #: src/gs-app-addon-row.c:111 src/gs-app-row.ui:197 src/gs-app-tile.ui:50
 #: src/gs-feature-tile.c:535
-#, fuzzy
 msgctxt "Single app"
 msgid "Installed"
-msgstr "Εγκατεστημένο"
+msgstr "Εγκατεστημένη"
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * shows the status of an application being installed
@@ -3509,7 +3508,7 @@ msgstr "Γίνεται απεγκατάσταση"
 #: src/gs-details-page.c:860 src/gs-details-page.c:886
 #: src/gs-details-page.ui:228 plugins/packagekit/gs-packagekit-task.c:150
 msgid "_Install"
-msgstr "Ε_γκατάσταση"
+msgstr "_Εγκατάσταση"
 
 #: src/gs-details-page.c:876
 msgid "_Restart"
@@ -3564,7 +3563,7 @@ msgstr "Ά_νοιγμα"
 
 #: src/gs-details-page.ui:257 plugins/packagekit/gs-packagekit-task.c:160
 msgid "_Update"
-msgstr "Ε_νημέρωση"
+msgstr "_Ενημέρωση"
 
 #: src/gs-details-page.ui:319
 msgid "Downloading"
@@ -4129,10 +4128,9 @@ msgstr "Υποστήριξη αναβάθμισης υλικολογισμικο
 #. Translators: This is in the context of a list of apps which are installed on the system.
 #. Translators: A label for a button to show only software which is already installed.
 #: src/gs-installed-page.c:812 src/gs-shell.ui:307
-#, fuzzy
 msgctxt "List of installed apps"
 msgid "Installed"
-msgstr "Εγκατεστημένο"
+msgstr "Εγκατεστημένες"
 
 #: src/gs-installed-page.ui:6
 msgid "Installed page"
@@ -4187,7 +4185,7 @@ msgstr ""
 
 #: src/gs-license-tile.c:127
 msgid "Proprietary"
-msgstr "Ιδιοταγές"
+msgstr "Ιδιοταγή"
 
 #: src/gs-license-tile.c:133
 #, fuzzy
@@ -4410,7 +4408,7 @@ msgstr ""
 
 #: src/gs-prefs-dialog.ui:19
 msgid "Automatic Updates"
-msgstr "Αυτόματες ενημερώσεις"
+msgstr "Αυτόματες Ενημερώσεις"
 
 #: src/gs-prefs-dialog.ui:20
 #, fuzzy
