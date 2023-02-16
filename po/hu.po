@@ -5,20 +5,22 @@
 # Balázs Úr <ur.balazs at fsf dot hu>, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2013, 2014, 2015, 2016, 2017, 2018.
 # Balázs Meskó <mesko.balazs at fsf dot hu>, 2020, 2021, 2022.
+# Benjamin Kőhidi <benstone326@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2022-09-02 23:05+0200\n"
-"Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
-"Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
+"PO-Revision-Date: 2023-02-16 17:28+0000\n"
+"Last-Translator: Benjamin Kőhidi <benstone326@gmail.com>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/vanilla-os/"
+"gnome-software/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 19.12.3\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -75,7 +77,7 @@ msgstr "A frissítés részletei"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:71
 msgid "This is a stable release with translation updates:"
-msgstr ""
+msgstr "Ez egy stabil kiadás fordítási frissítésekkel:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:73
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:197
@@ -83,7 +85,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:373
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:492
 msgid "Bulgarian"
-msgstr ""
+msgstr "Bolgár"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:74
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:107
@@ -100,7 +102,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:638
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:686
 msgid "Catalan"
-msgstr ""
+msgstr "Katalán"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:75
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:200
@@ -108,7 +110,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:533
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:687
 msgid "Chinese (Taiwan)"
-msgstr ""
+msgstr "Kínai (Tajvan)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:76
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:202
@@ -119,7 +121,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:639
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:688
 msgid "Czech"
-msgstr ""
+msgstr "Cseh"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:77
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:205
@@ -128,7 +130,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:536
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:600
 msgid "English (United Kingdom)"
-msgstr ""
+msgstr "Angol (Egyesült Királyság)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:78
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:113
@@ -143,14 +145,14 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:640
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:690
 msgid "Galician"
-msgstr ""
+msgstr "Galíciai"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:79
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:114
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:147
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:210
 msgid "Georgian"
-msgstr ""
+msgstr "Grúz"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:80
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:211
@@ -162,7 +164,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:605
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:691
 msgid "German"
-msgstr ""
+msgstr "Német"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:81
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:115
@@ -175,7 +177,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:541
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:693
 msgid "Hebrew"
-msgstr ""
+msgstr "Héber"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:82
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:213
@@ -183,20 +185,20 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:428
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:606
 msgid "Hungarian"
-msgstr ""
+msgstr "Magyar"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:83
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:116
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:332
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:383
 msgid "Icelandic"
-msgstr ""
+msgstr "Izlandi"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:84
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:385
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:698
 msgid "Latvian"
-msgstr ""
+msgstr "Lett"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:85
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:119
@@ -211,13 +213,13 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:610
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:699
 msgid "Lithuanian"
-msgstr ""
+msgstr "Litván"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:86
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:216
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:544
 msgid "Nepali"
-msgstr ""
+msgstr "Nepáli"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:87
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:125
@@ -229,7 +231,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:577
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:615
 msgid "Serbian"
-msgstr ""
+msgstr "Szerb"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:88
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:224
@@ -243,7 +245,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:616
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:644
 msgid "Slovenian"
-msgstr ""
+msgstr "Szlovén"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:89
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:126
@@ -259,7 +261,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:645
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:705
 msgid "Spanish"
-msgstr ""
+msgstr "Spanyol"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:90
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:226
@@ -271,28 +273,28 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:618
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:646
 msgid "Swedish"
-msgstr ""
+msgstr "Svéd"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:96
 msgid "This is the third unstable release for GNOME 43."
-msgstr ""
+msgstr "Ez a harmadik instabil kiadás a GNOME 43-hoz."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:98
-#, fuzzy
 msgid "Supports video as a screenshot"
-msgstr "Támogatja a kis képernyőn történő használatot"
+msgstr "Támogatja a videót mint képernyőképet"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:99
 msgid "Improvements of source picker in the details page"
-msgstr ""
+msgstr "A forrásválasztó javítása a részletek oldalon"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:100
 msgid "Fixes a bug when viewing details of a package file"
 msgstr ""
+"Kijavít egy, a csomagfájl részleteinek megtekintésekor tapasztalható hibát"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:101
 msgid "Fixes a bug when reading certain .flatpakref file"
-msgstr ""
+msgstr "Kijavít egy hibát bizonyos .flatpakref fájlok olvasásakor"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:103
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:141
@@ -307,12 +309,12 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:526
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:682
 msgid "This release also updates translations:"
-msgstr ""
+msgstr "Ez a kiadás a fordításokat is frissíti:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:105
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:143
 msgid "Abkhazian"
-msgstr ""
+msgstr "Abházi"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:106
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:196
@@ -325,7 +327,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:595
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:684
 msgid "Basque"
-msgstr ""
+msgstr "Baszk"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:108
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:145
@@ -338,7 +340,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:458
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:532
 msgid "Chinese (China)"
-msgstr ""
+msgstr "Kínai (Kína)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:109
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:201
@@ -348,7 +350,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:460
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:597
 msgid "Croatian"
-msgstr ""
+msgstr "Horvát"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:110
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:203
@@ -357,7 +359,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:422
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:571
 msgid "Danish"
-msgstr ""
+msgstr "Dán"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:111
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:146
@@ -367,7 +369,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:535
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:599
 msgid "Dutch"
-msgstr ""
+msgstr "Holland"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:112
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:206
@@ -377,7 +379,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:537
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:601
 msgid "Finnish"
-msgstr ""
+msgstr "Finn"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:117
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:149
@@ -391,7 +393,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:641
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:694
 msgid "Indonesian"
-msgstr ""
+msgstr "Indonéz"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:118
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:291
@@ -399,7 +401,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:466
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:609
 msgid "Korean"
-msgstr ""
+msgstr "Koreai"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:120
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:152
@@ -413,7 +415,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:611
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:700
 msgid "Persian"
-msgstr ""
+msgstr "Perzsa"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:121
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:219
@@ -421,9 +423,8 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:433
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:547
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:575
-#, fuzzy
 msgid "Polish"
-msgstr "Politika"
+msgstr "Lengyel"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:122
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:153
@@ -439,7 +440,7 @@ msgstr "Politika"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:643
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:701
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugál"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:123
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:221
@@ -453,7 +454,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:613
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:702
 msgid "Portuguese (Brazil)"
-msgstr ""
+msgstr "Portugál (Brazil)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:124
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:154
@@ -465,7 +466,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:437
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:551
 msgid "Russian"
-msgstr ""
+msgstr "Orosz"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:127
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:157
@@ -475,7 +476,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:619
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:706
 msgid "Turkish"
-msgstr ""
+msgstr "Török"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:128
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:158
@@ -490,119 +491,132 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:620
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:707
 msgid "Ukrainian"
-msgstr ""
+msgstr "Ukrán"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:134
 msgid "This is the second unstable release for GNOME 43."
-msgstr ""
+msgstr "Ez a második instabil kiadás a GNOME 43-hoz."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:136
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:237
 msgid "Various fixes related to changed threading model"
-msgstr ""
+msgstr "Különböző javítások a megváltozott szálképzési modellel kapcsolatban"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:137
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:349
 msgid "Various UI parts updated"
-msgstr ""
+msgstr "A felhasználói felület különböző részeinek frissítése"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:138
 msgid "Sources dropdown had been reworked"
-msgstr ""
+msgstr "Források legördülő listája átdolgozásra került"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:139
 msgid "Fixes a rare crash when showing app details"
 msgstr ""
+"Javít egy ritka összeomlást, amely az alkalmazás részleteinek "
+"megjelenítésekor tapasztalható"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:150
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:542
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:573
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:695
 msgid "Italian"
-msgstr ""
+msgstr "Olasz"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:159
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:229
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:399
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:708
 msgid "Vietnamese"
-msgstr ""
+msgstr "Vietnámi"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:165
 msgid "This is the first unstable release for GNOME 43."
-msgstr ""
+msgstr "Ez az első instabil kiadása a GNOME 43-nak."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:167
 msgid "Various improvements to notifications"
-msgstr ""
+msgstr "Különböző fejlesztések az értesítésekhez"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:168
 msgid "Fix several crashes when handling flatpak apps"
-msgstr ""
+msgstr "Számos összeomlás javítása flatpak alkalmazások kezelésénél"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:169
 msgid "Add ‘Other Apps by Author’ section in the app details page"
 msgstr ""
+"'A szerző más alkalmazásai' szakasz hozzáadása az alkalmazás adatlapjához"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:170
 msgid "Improve styling of app context lozenges"
-msgstr ""
+msgstr "Az alkalmazás-kontextusú kapszulák stílusának javítása"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:171
 msgid ""
 "Add ‘Available for Distro’ section to the overview page (if configured by "
 "your distribution)"
 msgstr ""
+"'Disztro számára elérhető' szakasz hozzáadása az áttekintő oldalhoz (ha a "
+"disztribúció konfigurálta)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:172
 msgid ""
 "Show more details about file system permissions requested by flatpak apps"
 msgstr ""
+"További részletek megjelenítése a flatpak alkalmazások által kért "
+"fájlrendszer-engedélyekről"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:173
 msgid "Show more types of URI from app metainfo"
-msgstr ""
+msgstr "További URI típusok megjelenítése az app metainfo alkalmazásból"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:174
 msgid "Fix a few issues when using a dark mode theme"
-msgstr ""
+msgstr "Kijavít néhány problémát sötét módú téma használatakor"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:175
 msgid "Fix some issues with arrows in right-to-left locales"
 msgstr ""
+"Kijavít néhány nyilakkal kapcsolatos problémát a jobbról balra író nyelveknél"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:176
 msgid "Fix language pack installation for certain locales"
-msgstr ""
+msgstr "A nyelvi csomag telepítésének javítása bizonyos nyelvek esetében"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:177
 msgid "Improve debug output to make user bug reports more useful"
 msgstr ""
+"A hibakijelzés javítása, hogy a felhasználói hibajelentések hasznosabbak "
+"legyenek"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:178
 msgid "Add `--uninstall=ID` command line option"
-msgstr ""
+msgstr "`--uninstall=ID` parancssori opció hozzáadása"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:179
 msgid ""
 "Allow scrolling screenshots by clicking on next and previous screenshots"
 msgstr ""
+"A képernyőképek görgetésének engedélyezése a következő és az előző "
+"képernyőképre kattintva"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:180
 msgid "Add support for webapps"
-msgstr ""
+msgstr "Webalkalmazások támogatásának hozzáadása"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:181
 msgid "Allow swiping back in the shell using touch gestures"
-msgstr ""
+msgstr "Visszalépés engedélyezése a shell-ben érintés használatával"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:182
 msgid "Improved caching of downloaded metadata"
-msgstr ""
+msgstr "A letöltött metaadatok jobb gyorsítótárazása"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:183
 msgid "Many internal architectural changes to make the code more maintainable"
 msgstr ""
+"Számos architektúra változtatás a kód karbantarthatóbbá tétele érdekében"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:184
 msgid ""
@@ -610,19 +624,24 @@ msgid ""
 "distribution vendors wishing to mark their apps as popular should see `doc/"
 "vendor-customisation.md` for examples of how to do this now"
 msgstr ""
+"A <code>popular-overrides</code> GSettings kulcsot eltávolítottuk; azok a "
+"disztribúciós gyártók, akik népszerűnek szeretnék jelölni alkalmazásaikat, a "
+"`doc/vendor-customisation.md'-ben találnak erre példákat"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:189
 msgid ""
 "The <code>hardcoded_popular</code> Meson option has been renamed to "
 "<code>hardcoded_curated</code>."
 msgstr ""
+"A <code>hardcoded_popular</code> Meson opció át lett nevezve "
+"<code>hardcoded_curated</code>-re."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:207
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:249
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:425
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:602
 msgid "French"
-msgstr ""
+msgstr "Francia"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:208
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:287
@@ -632,7 +651,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:603
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:689
 msgid "Friulian"
-msgstr ""
+msgstr "Friuliai"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:217
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:256
@@ -643,123 +662,130 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:498
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:545
 msgid "Occitan (post 1500)"
-msgstr ""
+msgstr "Okszitán (1500 után)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:235
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:405
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:561
 msgid "This is a stable release with the following changes:"
-msgstr ""
+msgstr "Ez egy stabil kiadás a következő változásokkal:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:238
 msgid "Added several appstream-related fixes"
-msgstr ""
+msgstr "Számos appstream-hez kapcsolódó javítás hozzáadva"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:243
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:530
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:685
 msgid "Bokmål, Norwegian"
-msgstr ""
+msgstr "Bokmål, Norvég"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:253
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:334
 msgid "Japanese"
-msgstr ""
+msgstr "Japán"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:254
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:465
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:608
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:697
 msgid "Kazakh"
-msgstr ""
+msgstr "Kazah"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:268
 msgid "This is the third unstable release for GNOME 42."
-msgstr ""
+msgstr "Ez a harmadik instabil kiadás a GNOME 42-höz."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:270
 msgid "Cancel ongoing update downloads when system power is low"
 msgstr ""
+"Folyamatban lévő frissítések letöltésének leállítása, ha a rendszer "
+"energiaszintje alacsony"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:271
 msgid "Numerous small user interface fixes and tweaks"
-msgstr ""
+msgstr "Számos kisebb javítás és finomítás a felhasználói felületen"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:272
 msgid "Prioritize full matches in search results"
-msgstr ""
+msgstr "Teljes találatok előnyben részesítése a keresési eredményekben"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:273
 msgid "Improvements in dark mode"
-msgstr ""
+msgstr "Javítások a sötét üzemmódban"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:274
-#, fuzzy
 msgid "Fix disabling flatpak remotes from the ‘Software Repositories’ dialog"
-msgstr "Hozzáférés engedélyezése a Szoftvertárolók párbeszédablakhoz"
+msgstr ""
+"A flatpak távoli fájlok letiltásának javítása a 'Szoftvertárak' "
+"párbeszédpanelben"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:275
 msgid ""
 "Threading and performance improvements which should reduce the number of "
 "user interface freezes"
 msgstr ""
+"Szálkezelés és teljesítményjavítás, ami csökkenti a felhasználói felület "
+"lefagyásainak számát"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:276
-#, fuzzy
 msgid "Update some icons"
-msgstr "A frissítés részletei"
+msgstr "Néhány ikon frissítése"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:277
 msgid ""
 "Check for updates when moving from a metered to a non-metered network "
 "connection"
 msgstr ""
+"Frissítések ellenőrzése, amikor méréses hálózati kapcsolatról nem méréses "
+"hálózati kapcsolatra lép át"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:306
 msgid "This is the second unstable release for GNOME 42."
-msgstr ""
+msgstr "Ez a második instabil kiadás a GNOME 42-höz."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:308
 msgid "Allow <code>--verbose</code> to be enabled at runtime"
-msgstr ""
+msgstr "A <code>--verbose</code> engedélyezése futásidőben"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:309
 msgid "Condense the rows in the age rating context dialog"
-msgstr ""
+msgstr "Sorok tömörítése a korhatár-besorolási párbeszédpanelben"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:310
 msgid "Update the UI for ratings and reviews of apps"
-msgstr ""
+msgstr "Az alkalmazás értékelések felhasználói felületének frissítése"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:311
 msgid "Improve the appearance of the category page loading screen"
-msgstr ""
+msgstr "A kategóriaoldal betöltési idejének javítása"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:312
 msgid "Drop the first run dialog"
-msgstr ""
+msgstr "Az első futtatási párbeszédpanelt elvetése"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:313
 msgid "Improvements to dark theming"
-msgstr ""
+msgstr "Javítás a sötét témában"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:314
 msgid ""
 "Support viewing a specific metainfo file using <code>--show-metainfo</code>"
 msgstr ""
+"Egy adott metainfo fájl megtekintésének támogatása a <code>--show-metainfo</"
+"code> használatával"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:315
 msgid "Several more threading improvements"
-msgstr ""
+msgstr "Számos további fejlesztés a szálkezelésben"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:316
-#, fuzzy
 msgid "Icon updates"
-msgstr "Frissítések keresése"
+msgstr "Ikon frissítések"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:317
 msgid "Drop the hardcoded-popular plugin in favour of an appstream file"
-msgstr ""
+msgstr "Eldobja a népszerű hardkódolt bővítményt egy appstream fájl javára"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:318
 msgid ""
@@ -770,40 +796,49 @@ msgid ""
 "code> GSettings key has been removed. Distributions may need to update how "
 "they ship background images. See <em>doc/vendor-customisation.md</em>."
 msgstr ""
+"A frissítéshez szükséges háttérképet most több jól ismert (és "
+"disztribúció-specifikus) névvel keresi a rendszer a <code>${DATADIR}/gnome-"
+"software/backgrounds</code> fájlban, a korábbi Fedora-specifikus "
+"alapértelmezett háttérkép pedig már nem terjesztik. Hasonlóképpen "
+"eltávolították az <code>upgrade-background-uri</code> GSettings kulcsot. "
+"Előfordulhat, hogy a terjesztőknek frissíteniük kell a háttérképek kiadási "
+"módját. Lásd: <em>doc/vendor-customisation.md</em>."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:347
 msgid "This is the first unstable release for GNOME 42."
-msgstr ""
+msgstr "Ez az első instabil kiadás a GNOME 42-höz."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:350
 msgid "Support more markup in the application description"
-msgstr ""
+msgstr "Több markup támogatása az alkalmazás leírásában"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:351
 msgid "Ask about package signature with PackageKit on signing issue"
 msgstr ""
+"Aláírási probléma esetén kérdést tesz fel a PackageKit csomag aláírásáról"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:352
 msgid "Show better System Update progress"
-msgstr ""
+msgstr "A rendszerfrissítés folyamatának jobb áttekintése"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:353
 msgid "Remove various cultural sensitivity badges"
-msgstr ""
+msgstr "Eltávolítja a különböző kulturálisan érzékeny jelvényeket"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:354
 msgid "Fix a crash when processing age ratings"
-msgstr ""
+msgstr "Összeomlás javítása a korosztályi besorolások feldolgozásakor"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:355
-#, fuzzy
 msgid ""
 "Reload application details only when not installing/removing the application"
-msgstr "Alkalmazásadatok megjelenítése (alkalmazásazonosító használata)"
+msgstr ""
+"Az alkalmazás részleteinek újratöltése csak akkor, ha nem telepíti/"
+"eltávolítja az alkalmazást"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:356
 msgid "Do not follow symlinks when calculating disk size usage"
-msgstr ""
+msgstr "Nem követi a symlinkeket a lemezméret használatának kiszámításakor"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:357
 msgid "Fix addons section, which could show addons for different application"
@@ -833,9 +868,8 @@ msgid "Fix translation of main button on updates page"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:363
-#, fuzzy
 msgid "Fix codec installation process"
-msgstr "A felhasználó elutasította a telepítést"
+msgstr "Kodek telepítési folyamatának javítása"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:364
 msgid "Add new GNOME Circle apps to the featured carousel"
@@ -1038,9 +1072,8 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:568
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:593
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:636
-#, fuzzy
 msgid "Translation updates:"
-msgstr "Fordítások"
+msgstr "Fordítási frissítések:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:570
 msgid "British English"
@@ -1190,12 +1223,11 @@ msgid "Rework timing and content of software update notifications"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:665
-#, fuzzy
 msgid ""
 "Prevent uninstalled local apps from appearing in the installed apps list"
 msgstr ""
-"Az alkalmazások telepített méretének megjelenítése a telepített alkalmazások "
-"listájában"
+"A telepített alkalmazások ne jelenjtek meg az eltávolított helyi "
+"alkalmazások listájában"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:666
 msgid "Support installation/uninstallation of addons for flatpak apps"
@@ -1246,9 +1278,8 @@ msgid "Support updating flatpaks to their new name when they are renamed"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:678
-#, fuzzy
 msgid "Update the GNOME Software icon"
-msgstr "Frissíti a nem aláírt szoftvert?"
+msgstr "GNOME szoftver ikon frissítése"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:679
 msgid "Support more search results in the snap store"
@@ -2174,7 +2205,7 @@ msgstr "Nincsenek részletek ehhez a kiadáshoz"
 #. i.e. "25 May 2012"
 #: src/gs-app-version-history-row.c:94 src/gs-review-row.c:63
 msgid "%e %B %Y"
-msgstr "%Y. %B %-e."
+msgstr "%Y. %B %e."
 
 #. TRANSLATORS: this is a command line option
 #: src/gs-application.c:124
@@ -2272,7 +2303,8 @@ msgid "translator-credits"
 msgstr ""
 "Kelemen Gábor <kelemeng at gnome dot hu>\n"
 "Úr Balázs <ur dot balazs at fsf dot hu>\n"
-"Meskó Balázs <mesko dot balazs at fsf dot hu>"
+"Meskó Balázs <mesko dot balazs at fsf dot hu>\n"
+"Kőhidi-Nagy Benjamin"
 
 #. TRANSLATORS: this is the title of the about window
 #. TRANSLATORS: this is the menu item that opens the about window
@@ -3632,7 +3664,7 @@ msgstr[1] "Elérhető betűkészletek a(z) %s írásrendszerekhez"
 #, c-format
 msgid "Available software for %s"
 msgid_plural "Available software for %s"
-msgstr[0] "Elérhető szoftverek ehhez: %s"
+msgstr[0] "Elérhető szoftver ehhez: %s"
 msgstr[1] "Elérhető szoftverek ehhez: %s"
 
 #: src/gs-extras-page.c:242
@@ -3784,11 +3816,11 @@ msgid ""
 msgid_plural ""
 "Unable to find the %s requested by %s. Please see %s for more information."
 msgstr[0] ""
-"A(z) %2$s által kért %1$s kodek nem található. További információkért nézze "
-"meg %3$s."
+"Nem sikerült megtalálni a %s által kért %s kodeket. Kérjük, további "
+"információkért tekintse meg a %s oldalt."
 msgstr[1] ""
-"A(z) %2$s által kért %1$s kodek nem található. További információkért nézze "
-"meg %3$s."
+"Nem sikerült megtalálni a %s által kért %s kodeket. Kérjük, további "
+"információkért tekintse meg a %s oldalt."
 
 #. TRANSLATORS: no codecs were found. First %s will be replaced by actual codec name(s), second %s is a link titled "the documentation"
 #: src/gs-extras-page.c:496
@@ -3799,10 +3831,8 @@ msgid ""
 msgid_plural ""
 "Unable to find the %s you were searching for. Please see %s for more "
 "information."
-msgstr[0] ""
-"A keresett %s kodek nem található. További információkért nézze meg %s."
-msgstr[1] ""
-"A keresett %s kodek nem található. További információkért nézze meg %s."
+msgstr[0] "A keresett %s kodek nem található. További információkért nézze meg %s."
+msgstr[1] "A keresett %s kodek nem található. További információkért nézze meg %s."
 
 #: src/gs-extras-page.c:574 src/gs-extras-page.c:631 src/gs-extras-page.c:671
 #, c-format
@@ -4105,7 +4135,7 @@ msgstr ""
 
 #: src/gs-license-tile.c:127
 msgid "Proprietary"
-msgstr "Tulajdonosi (zárt)"
+msgstr "Védjegyezett"
 
 #: src/gs-license-tile.c:133
 msgid "_Learn More"
@@ -6522,9 +6552,8 @@ msgstr "A snapek univerzális Linuxos csomagok"
 #. TRANSLATORS: this is to inform that the package is part of
 #. * the BASE system
 #: plugins/vso/gs-plugin-vso.c:114
-#, fuzzy
 msgid "base"
-msgstr "Adatbázis"
+msgstr "alap"
 
 #: plugins/vso/gs-plugin-vso.c:240
 msgid ""

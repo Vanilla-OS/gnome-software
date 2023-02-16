@@ -8,22 +8,23 @@
 # Maxim Taranov <png2378@gmail.com>, 2017.
 # Melman <Alexmelman88@gmail.com>, 2021.
 # Ivan Molodetskikh <yalterz@gmail.com>, 2022.
-#
+# inal <inaltarba89@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2022-08-26 15:04+0300\n"
-"Last-Translator: Aleksandr Melman <Alexmelman88@gmail.com>\n"
-"Language-Team: Russian <gnome-cyr@gnome.org>\n"
+"PO-Revision-Date: 2023-02-16 17:29+0000\n"
+"Last-Translator: inal <inaltarba89@gmail.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/vanilla-os/"
+"gnome-software/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.1\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.16-dev\n"
 "X-DL-Team: ru\n"
 "X-DL-Module: gnome-software\n"
 "X-DL-Branch: main\n"
@@ -84,7 +85,7 @@ msgstr "Подробности об обновлении"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:71
 msgid "This is a stable release with translation updates:"
-msgstr ""
+msgstr "Это стабильный выпуск с обновлениями перевода:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:73
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:197
@@ -92,7 +93,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:373
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:492
 msgid "Bulgarian"
-msgstr ""
+msgstr "Болгарский"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:74
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:107
@@ -109,7 +110,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:638
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:686
 msgid "Catalan"
-msgstr ""
+msgstr "Каталонский"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:75
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:200
@@ -117,7 +118,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:533
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:687
 msgid "Chinese (Taiwan)"
-msgstr ""
+msgstr "Китайский (Тайвань)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:76
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:202
@@ -128,7 +129,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:639
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:688
 msgid "Czech"
-msgstr ""
+msgstr "Чешский"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:77
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:205
@@ -137,7 +138,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:536
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:600
 msgid "English (United Kingdom)"
-msgstr ""
+msgstr "Английский (Соединенное Королевство)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:78
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:113
@@ -152,14 +153,14 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:640
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:690
 msgid "Galician"
-msgstr ""
+msgstr "Галисийский"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:79
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:114
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:147
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:210
 msgid "Georgian"
-msgstr ""
+msgstr "Грузинский"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:80
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:211
@@ -171,7 +172,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:605
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:691
 msgid "German"
-msgstr ""
+msgstr "Немецкий"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:81
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:115
@@ -192,20 +193,20 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:428
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:606
 msgid "Hungarian"
-msgstr ""
+msgstr "Венгерский"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:83
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:116
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:332
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:383
 msgid "Icelandic"
-msgstr ""
+msgstr "Исландский"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:84
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:385
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:698
 msgid "Latvian"
-msgstr ""
+msgstr "Латышский"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:85
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:119
@@ -220,13 +221,13 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:610
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:699
 msgid "Lithuanian"
-msgstr ""
+msgstr "Литовский"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:86
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:216
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:544
 msgid "Nepali"
-msgstr ""
+msgstr "Непальский"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:87
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:125
@@ -238,7 +239,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:577
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:615
 msgid "Serbian"
-msgstr ""
+msgstr "Сербский"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:88
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:224
@@ -252,7 +253,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:616
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:644
 msgid "Slovenian"
-msgstr ""
+msgstr "Словенский"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:89
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:126
@@ -268,7 +269,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:645
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:705
 msgid "Spanish"
-msgstr ""
+msgstr "Испанский"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:90
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:226
@@ -280,11 +281,11 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:618
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:646
 msgid "Swedish"
-msgstr ""
+msgstr "Шведский"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:96
 msgid "This is the third unstable release for GNOME 43."
-msgstr ""
+msgstr "Это третий нестабильный релиз для GNOME 43."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:98
 #, fuzzy
@@ -293,15 +294,15 @@ msgstr "Поддерживает использование на маленьк�
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:99
 msgid "Improvements of source picker in the details page"
-msgstr ""
+msgstr "Улучшения средства выбора источника на странице сведений"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:100
 msgid "Fixes a bug when viewing details of a package file"
-msgstr ""
+msgstr "Исправлена ошибка при просмотре сведений о файле пакета"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:101
 msgid "Fixes a bug when reading certain .flatpakref file"
-msgstr ""
+msgstr "Исправлена ошибка при чтении некоторых файлов .flatpakref"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:103
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:141
@@ -316,12 +317,12 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:526
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:682
 msgid "This release also updates translations:"
-msgstr ""
+msgstr "В этом выпуске также обновлены переводы:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:105
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:143
 msgid "Abkhazian"
-msgstr ""
+msgstr "Абхазский"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:106
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:196
@@ -334,7 +335,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:595
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:684
 msgid "Basque"
-msgstr ""
+msgstr "Баскский"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:108
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:145
@@ -347,7 +348,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:458
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:532
 msgid "Chinese (China)"
-msgstr ""
+msgstr "Китайский (Китай)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:109
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:201
@@ -357,7 +358,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:460
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:597
 msgid "Croatian"
-msgstr ""
+msgstr "Хорватский"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:110
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:203
@@ -366,7 +367,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:422
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:571
 msgid "Danish"
-msgstr ""
+msgstr "Датский"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:111
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:146
@@ -376,7 +377,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:535
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:599
 msgid "Dutch"
-msgstr ""
+msgstr "Голландский"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:112
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:206
@@ -386,7 +387,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:537
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:601
 msgid "Finnish"
-msgstr ""
+msgstr "Финский"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:117
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:149
@@ -400,7 +401,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:641
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:694
 msgid "Indonesian"
-msgstr ""
+msgstr "Индонезийский"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:118
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:291
@@ -408,7 +409,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:466
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:609
 msgid "Korean"
-msgstr ""
+msgstr "Корейский"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:120
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:152
@@ -4132,7 +4133,7 @@ msgstr ""
 
 #: src/gs-license-tile.c:127
 msgid "Proprietary"
-msgstr "Проприетарный код"
+msgstr "Проприетарный"
 
 #: src/gs-license-tile.c:133
 msgid "_Learn More"
@@ -5548,7 +5549,7 @@ msgstr "Параметры сети"
 #. button in the info bar
 #: src/gs-shell.ui:118
 msgid "Restart Now"
-msgstr "Перезапустить сейчас"
+msgstr "Перезагрузиться сейчас"
 
 #. button in the info bar
 #: src/gs-shell.ui:128

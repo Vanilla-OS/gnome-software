@@ -6,30 +6,31 @@
 # Aditi Kabir <aditi.kabir@gmail.com>, 2016
 # Roddy Shuler <roddy@endlessm.com>, 2016-2017
 # Shimon Sharmin <oparthib@gmail.com>, 2016
+# Abu Huraira <abuhuraira@tutamail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2018-06-12 20:17+0000\n"
-"Last-Translator: Roddy Shuler <roddy@endlessm.com>\n"
-"Language-Team: Bengali (http://www.transifex.com/endless-os/gnome-software/"
-"language/bn/)\n"
+"PO-Revision-Date: 2023-02-16 17:28+0000\n"
+"Last-Translator: Abu Huraira <abuhuraira@tutamail.com>\n"
+"Language-Team: Bengali <https://hosted.weblate.org/projects/vanilla-os/"
+"gnome-software/bn/>\n"
 "Language: bn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
 msgid "Software"
-msgstr ""
+msgstr "সফটওয়্যার"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:8
-#, fuzzy
 msgid "Install and update apps"
-msgstr "আপডেট সংস্থাপিত করা হয়েছে"
+msgstr "অ্যাপগুলি ইনস্টল এবং আপডেট করুন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:10
 msgid ""
@@ -40,17 +41,17 @@ msgstr ""
 "পারেন এবং বিদ্যমান সংস্থাপিত এ্যাপ্লিকেশন মুছে ফেলতে পারবেন।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:14
-#, fuzzy
 msgid ""
 "Software showcases featured and popular applications with useful "
 "descriptions and multiple screenshots per application. Applications can be "
 "found either through browsing the list of categories or by searching. It "
 "also allows you to update your system using an offline update."
 msgstr ""
-"GNOME সফটওয়্যারে দরকারী বর্ণনাসহ এবং প্রতি এ্যাপ্লিকেশন অনুসারে একের অধিক "
-"স্ক্রিনশটসহ  বৈশিষ্ট্যসম্পন্ন ও জনপ্রিয় এ্যাপ্লিকেশন প্রদর্শিত হয়। বিভাগের তালিকা "
-"অনুসারে অথবা অনুসন্ধান করে এ্যাপ্লিকেশন খুঁজে বের করা যাবে। একটি অফলাইন আপডেট "
-"ব্যবহার করে আপনার সিস্টেম আপডেট অনুমোদিত করা হয়।"
+"সফ্টওয়্যার আপনার সামনে বৈশিষ্ট্যযুক্ত জনপ্রিয় অ্যাপ্লিকেশনগুলি প্রতিটি "
+"অ্যাপ্লিকেশনের দরকারী বিবরণ এবং একাধিক স্ক্রিনশট সহ প্রদর্শন করে। "
+"অ্যাপ্লিকেশনগুলি বিভাগ তালিকা ব্রাউজ করার মাধ্যমে বা অনুসন্ধানের মাধ্যমে "
+"খুঁজে পাওয়া যাবে। তাছাড়া এটি আপনাকে অফলাইন আপডেট পদ্ধতি ব্যবহার করে আপনার "
+"সিস্টেম আপডেট করার সুযোগ দেয়।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:25
 msgid "Overview panel"
@@ -76,7 +77,7 @@ msgstr "হালনাগাদের বিস্তারিত"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:71
 msgid "This is a stable release with translation updates:"
-msgstr ""
+msgstr "এটি অনুবাদ আপডেট সহ একটি স্থিতিশীল রিলিজ:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:73
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:197
@@ -84,7 +85,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:373
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:492
 msgid "Bulgarian"
-msgstr ""
+msgstr "বুলগেরীয়"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:74
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:107
@@ -101,7 +102,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:638
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:686
 msgid "Catalan"
-msgstr ""
+msgstr "কাতালান"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:75
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:200
@@ -109,7 +110,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:533
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:687
 msgid "Chinese (Taiwan)"
-msgstr ""
+msgstr "চীনা (তাইওয়ান)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:76
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:202
@@ -120,7 +121,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:639
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:688
 msgid "Czech"
-msgstr ""
+msgstr "চেক"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:77
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:205
@@ -129,7 +130,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:536
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:600
 msgid "English (United Kingdom)"
-msgstr ""
+msgstr "ইংরেজি (যুক্তরাজ্য)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:78
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:113
@@ -144,14 +145,14 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:640
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:690
 msgid "Galician"
-msgstr ""
+msgstr "গ্যালিশীয়"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:79
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:114
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:147
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:210
 msgid "Georgian"
-msgstr ""
+msgstr "জর্জিয়ান"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:80
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:211
@@ -163,7 +164,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:605
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:691
 msgid "German"
-msgstr ""
+msgstr "জার্মান"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:81
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:115
@@ -176,7 +177,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:541
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:693
 msgid "Hebrew"
-msgstr ""
+msgstr "হিব্রু"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:82
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:213
@@ -184,20 +185,20 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:428
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:606
 msgid "Hungarian"
-msgstr ""
+msgstr "হাংগেরীয়"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:83
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:116
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:332
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:383
 msgid "Icelandic"
-msgstr ""
+msgstr "আইসল্যান্ডীয়"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:84
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:385
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:698
 msgid "Latvian"
-msgstr ""
+msgstr "ল্যাটভীয়"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:85
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:119
@@ -212,13 +213,13 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:610
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:699
 msgid "Lithuanian"
-msgstr ""
+msgstr "লিথুয়ানীয়"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:86
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:216
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:544
 msgid "Nepali"
-msgstr ""
+msgstr "নেপালি"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:87
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:125
@@ -230,7 +231,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:577
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:615
 msgid "Serbian"
-msgstr ""
+msgstr "সার্বিয়ান"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:88
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:224
@@ -244,7 +245,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:616
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:644
 msgid "Slovenian"
-msgstr ""
+msgstr "শ্লোভেনীয়"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:89
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:126
@@ -260,7 +261,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:645
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:705
 msgid "Spanish"
-msgstr ""
+msgstr "স্পেনীয়"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:90
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:226
@@ -272,27 +273,27 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:618
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:646
 msgid "Swedish"
-msgstr ""
+msgstr "সুইডিশ"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:96
 msgid "This is the third unstable release for GNOME 43."
-msgstr ""
+msgstr "এটি গ্নোম 43 এর তৃতীয় অস্থিতিশীল রিলিজ।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:98
 msgid "Supports video as a screenshot"
-msgstr ""
+msgstr "স্ক্রিনশট হিসাবে ভিডিও সমর্থন করে"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:99
 msgid "Improvements of source picker in the details page"
-msgstr ""
+msgstr "বিশদ পৃষ্ঠায় সোর্স পিকারের উন্নতি"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:100
 msgid "Fixes a bug when viewing details of a package file"
-msgstr ""
+msgstr "প্যাকেজ ফাইলের বিবরণ দেখার সময় পাওয়া একটি বাগ সংশোধন করে"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:101
 msgid "Fixes a bug when reading certain .flatpakref file"
-msgstr ""
+msgstr "নির্দিষ্ট .flatpakref ফাইল পড়ার সময় পাওয়া একটি বাগ সংশোধন করে"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:103
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:141
@@ -307,12 +308,12 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:526
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:682
 msgid "This release also updates translations:"
-msgstr ""
+msgstr "এই রিলিজটি অনুবাদগুলিও আপডেট করে:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:105
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:143
 msgid "Abkhazian"
-msgstr ""
+msgstr "আবখাজিয়ান"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:106
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:196
@@ -325,7 +326,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:595
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:684
 msgid "Basque"
-msgstr ""
+msgstr "বাস্ক"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:108
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:145
@@ -338,7 +339,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:458
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:532
 msgid "Chinese (China)"
-msgstr ""
+msgstr "চীনা (চীন)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:109
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:201
@@ -348,7 +349,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:460
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:597
 msgid "Croatian"
-msgstr ""
+msgstr "ক্রোয়েশীয়"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:110
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:203
@@ -357,7 +358,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:422
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:571
 msgid "Danish"
-msgstr ""
+msgstr "ড্যানিশ"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:111
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:146
@@ -367,7 +368,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:535
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:599
 msgid "Dutch"
-msgstr ""
+msgstr "ডাচ"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:112
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:206
@@ -377,7 +378,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:537
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:601
 msgid "Finnish"
-msgstr ""
+msgstr "ফিনিশ"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:117
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:149
@@ -391,7 +392,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:641
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:694
 msgid "Indonesian"
-msgstr ""
+msgstr "ইন্দোনেশীয়"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:118
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:291
@@ -399,7 +400,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:466
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:609
 msgid "Korean"
-msgstr ""
+msgstr "কোরিয়ান"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:120
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:152
@@ -412,9 +413,8 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:546
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:611
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:700
-#, fuzzy
 msgid "Persian"
-msgstr "ভার্সন"
+msgstr "ফারসি"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:121
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:219
@@ -422,9 +422,8 @@ msgstr "ভার্সন"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:433
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:547
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:575
-#, fuzzy
 msgid "Polish"
-msgstr "রাজনীতি"
+msgstr "পোলিশ"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:122
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:153
@@ -440,7 +439,7 @@ msgstr "রাজনীতি"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:643
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:701
 msgid "Portuguese"
-msgstr ""
+msgstr "পর্তুগিজ"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:123
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:221
@@ -454,7 +453,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:613
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:702
 msgid "Portuguese (Brazil)"
-msgstr ""
+msgstr "পর্তুগিজ (ব্রাজিল)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:124
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:154
@@ -466,7 +465,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:437
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:551
 msgid "Russian"
-msgstr ""
+msgstr "রুশ"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:127
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:157
@@ -476,7 +475,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:619
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:706
 msgid "Turkish"
-msgstr ""
+msgstr "তুর্কি"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:128
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:158
@@ -491,98 +490,107 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:620
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:707
 msgid "Ukrainian"
-msgstr ""
+msgstr "ইউক্রেনীয়"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:134
 msgid "This is the second unstable release for GNOME 43."
-msgstr ""
+msgstr "এটি গ্নোম 43 এর দ্বিতীয় অস্থিতিশীল রিলিজ।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:136
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:237
 msgid "Various fixes related to changed threading model"
-msgstr ""
+msgstr "পরিবর্তিত থ্রেডিং মডেল সম্পর্কিত বিভিন্ন সংশোধন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:137
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:349
 msgid "Various UI parts updated"
-msgstr ""
+msgstr "বিভিন্ন UI অংশ আপডেট করা হয়েছে"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:138
 msgid "Sources dropdown had been reworked"
-msgstr ""
+msgstr "সোর্স ড্রপডাউন পুনরায় সংস্কার করা হয়েছে"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:139
 msgid "Fixes a rare crash when showing app details"
-msgstr ""
+msgstr "অ্যাপ্লিকেশন বিবরণ দেখানোর সময় পাওয়া একটি বিরল ক্র্যাশ সংশোধন করে"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:150
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:542
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:573
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:695
 msgid "Italian"
-msgstr ""
+msgstr "ইতালীয়"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:159
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:229
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:399
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:708
 msgid "Vietnamese"
-msgstr ""
+msgstr "ভিয়েতনামী"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:165
 msgid "This is the first unstable release for GNOME 43."
-msgstr ""
+msgstr "এটি গ্নোম 43 এর প্রথম অস্থিতিশীল রিলিজ।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:167
 msgid "Various improvements to notifications"
-msgstr ""
+msgstr "নোটিফিকেশনের বিভিন্ন উন্নতি"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:168
 msgid "Fix several crashes when handling flatpak apps"
 msgstr ""
+"ফ্ল্যাটপ্যাক অ্যাপ্লিকেশনগুলি পরিচালনা করার সময় পাওয়া বেশ কয়েকটি ক্র্যাশ "
+"সমাধান"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:169
 msgid "Add ‘Other Apps by Author’ section in the app details page"
 msgstr ""
+"অ্যাপ্লিকেশন বিবরণ পৃষ্ঠায় 'লেখকের অন্যান্য অ্যাপ্লিকেশন' বিভাগ যুক্তকরণ"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:170
+#, fuzzy
 msgid "Improve styling of app context lozenges"
-msgstr ""
+msgstr "অ্যাপ প্রসঙ্গ লজেঞ্জের স্টাইলিং উন্নত করুন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:171
 msgid ""
 "Add ‘Available for Distro’ section to the overview page (if configured by "
 "your distribution)"
 msgstr ""
+"ওভারভিউ পৃষ্ঠায় 'ডিস্ট্রোর জন্য উপলব্ধ' বিভাগটি যোগ করুন (যদি আপনার "
+"ডিস্ট্রিবিউসন কর্তৃক কনফিগার করা থাকে)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:172
 msgid ""
 "Show more details about file system permissions requested by flatpak apps"
 msgstr ""
+"ফ্ল্যাটপ্যাক এ্যাপস্ কর্তৃক অনুরোধ করা ফাইল সিস্টেম অনুমতির ব্যাপারে বিষদ "
+"দেখুন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:173
 msgid "Show more types of URI from app metainfo"
-msgstr ""
+msgstr "অ্যাপ মেটাইনফো থেকে আরো অনেক ধরণের URI দেখান"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:174
 msgid "Fix a few issues when using a dark mode theme"
-msgstr ""
+msgstr "ডার্ক মোড থিম ব্যবহার করার সময় পাওয়া কয়েকটি সমস্যা সমাধান"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:175
 msgid "Fix some issues with arrows in right-to-left locales"
 msgstr ""
+"ডান-থেকে-বামে লেখা হয় এমন কিছু লোকেল (ভাষায়) প্রাপ্ত কিছু সমস্যার সমাধান"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:176
 msgid "Fix language pack installation for certain locales"
-msgstr ""
+msgstr "নির্দিষ্ট স্থানগুলির জন্য ভাষা প্যাক ইনস্টলেশন ঠিক করুন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:177
 msgid "Improve debug output to make user bug reports more useful"
-msgstr ""
+msgstr "ব্যবহারকারীর বাগ রিপোর্টগুলিকে আরো উপযোগী করতে ডিবাগ আউটপুট উন্নত করুন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:178
 msgid "Add `--uninstall=ID` command line option"
-msgstr ""
+msgstr "`--uninstall=ID` কমান্ড লাইন বিকল্প যোগ করুন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:179
 msgid ""
@@ -687,9 +695,8 @@ msgid "Numerous small user interface fixes and tweaks"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:272
-#, fuzzy
 msgid "Prioritize full matches in search results"
-msgstr "অনুসন্ধান ফলাফলে অ-বিনামূল্যের সফটওয়্যার প্রদর্শন"
+msgstr "অনুসন্ধান ফলাফলে পুরোপুরি আক্ষরিক মিল পাওয়া যায় এমন সফটওয়্যার প্রদর্শন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:273
 msgid "Improvements in dark mode"
@@ -706,9 +713,8 @@ msgid ""
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:276
-#, fuzzy
 msgid "Update some icons"
-msgstr "হালনাগাদ প্যানেল"
+msgstr "কিছু আইকন আপডেট করা হবে"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:277
 msgid ""
@@ -754,9 +760,8 @@ msgid "Several more threading improvements"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:316
-#, fuzzy
 msgid "Icon updates"
-msgstr "আপডেট খোঁজ করেন"
+msgstr "আইকন আপডেট সমূহ"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:317
 msgid "Drop the hardcoded-popular plugin in favour of an appstream file"
@@ -797,10 +802,11 @@ msgid "Fix a crash when processing age ratings"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:355
-#, fuzzy
 msgid ""
 "Reload application details only when not installing/removing the application"
-msgstr "এ্যাপ্লিকেশনের বিশদ প্রদর্শন করুন (এ্যাপ্লিকেশন ID ব্যবহার করে)"
+msgstr ""
+"শুধুমাত্র তখনই এপ্লিকেশনের বিবরণ পুনরায় লোড করা হবে যখন কোনো এপ্লিকেশন "
+"ইন্সটল/অপসারণ করা হচ্ছে না"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:356
 msgid "Do not follow symlinks when calculating disk size usage"
@@ -1242,9 +1248,8 @@ msgid "Support updating flatpaks to their new name when they are renamed"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:678
-#, fuzzy
 msgid "Update the GNOME Software icon"
-msgstr "GNOME সফটওয়্যার"
+msgstr "GNOME Software আইকন আপডেট"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:679
 msgid "Support more search results in the snap store"
@@ -1285,18 +1290,17 @@ msgstr ""
 "এবং XFCE ।"
 
 #: data/org.gnome.software.gschema.xml:10
-#, fuzzy
 msgid "Whether to manage updates and upgrades in GNOME Software"
-msgstr "GNOME সফটওয়্যারের হালনাগাদগুলো নিয়ন্ত্রণ করা হবে কিনা"
+msgstr "আপডেট ও আপগ্রেডগুলি GNOME Software-এর অভ্যন্তরে নিয়ন্ত্রণ করা হবে কিনা"
 
 #: data/org.gnome.software.gschema.xml:11
-#, fuzzy
 msgid ""
 "If disabled, GNOME Software will hide the updates panel, not perform any "
 "automatic updates actions or prompt for upgrades."
 msgstr ""
-"নিষ্ক্রিয় করা হলে, GNOME সফটওয়্যার এর হালনাগাদ সূচী লুকিয়ে রাখবে এবং স্বয়ংক্রিয়ভাবে "
-"হালনাগাদ করার কোন পদক্ষেপ নেবে না।"
+"নিষ্ক্রিয় করা হলে, GNOME Software আপডেট এর সূচী লুকিয়ে রাখবে, স্বয়ংক্রিয়ভাবে "
+"কোনো আপডেট প্রয়োগ করার পদক্ষেপ নেবে না এবং আপগ্রেড এর জন্য কোনো উৎসাহ দিবে "
+"না।"
 
 #: data/org.gnome.software.gschema.xml:15
 msgid "Automatically download and install updates"
@@ -1365,9 +1369,8 @@ msgid "The last upgrade notification timestamp"
 msgstr "সর্বশেষ হালনাগাদ বিজ্ঞপ্তির সময়"
 
 #: data/org.gnome.software.gschema.xml:55
-#, fuzzy
 msgid "The last update notification timestamp"
-msgstr "সর্বশেষ হালনাগাদ বিজ্ঞপ্তির সময়"
+msgstr "সর্বশেষ আপডেট বিজ্ঞপ্তির সময়-চিহ্ন"
 
 #: data/org.gnome.software.gschema.xml:59
 msgid "The timestamp of the first security update, cleared after update"
@@ -1405,19 +1408,19 @@ msgid "Reviews with karma less than this number will not be shown."
 msgstr "এই সংখ্যার চেয়ে কম কার্মাসহ রিভিউ প্রদর্শিত হবে না"
 
 #: data/org.gnome.software.gschema.xml:90
-#, fuzzy
 msgid "A list of official repositories that should not be considered 3rd party"
-msgstr "আনুষ্ঠানিক উৎসের একটি তালিকা যাদের তৃতীয় পক্ষ বিবেচনা করা হবে না"
+msgstr "অফিসিয়াল সফটওয়্যার উৎসের একটি তালিকা যাদেরকে তৃতীয় পক্ষ মনে করা হয় না"
 
 #: data/org.gnome.software.gschema.xml:94
-#, fuzzy
 msgid "A list of required repositories that cannot be disabled or removed"
-msgstr "অ-বিনামূল্য উৎসগুলোর একটি তালিকা যা ঐচ্ছিকভাবে সক্রিয় করা যায়"
+msgstr ""
+"আবশ্যকীয় সফটওয়্যার উৎসগুলোর একটি তালিকা যা নিষ্ক্রিয় বা অপসারণ করা সম্ভব নয়"
 
 #: data/org.gnome.software.gschema.xml:98
-#, fuzzy
 msgid "A list of official repositories that should be considered free software"
-msgstr "আনুষ্ঠানিক উৎসের একটি তালিকা যাদের মুক্ত সফটওয়্যার বিবেচনা করা হবে"
+msgstr ""
+"অফিসিয়াল সফটওয়্যার উৎসের একটি তালিকা যাদেরকে মুক্ত সফটওয়্যার হিসেবে বিবেচনা "
+"করা হয়"
 
 #: data/org.gnome.software.gschema.xml:102
 msgid ""
@@ -1432,9 +1435,8 @@ msgstr ""
 "সিস্টেমে যেখানে সম্ভব সেখানে সকল ব্যবহারকারীর জন্য বান্ডিল এ্যাপ্লিকেশন সংস্থাপন করুন"
 
 #: data/org.gnome.software.gschema.xml:110
-#, fuzzy
 msgid "Allow access to the Software Repositories dialog"
-msgstr "সফটওয়্যার উৎস বাণীতে প্রবেশাধিকার দিন"
+msgstr "সফটওয়্যার উৎস ডায়ালগে প্রবেশাধিকার দিন"
 
 #: data/org.gnome.software.gschema.xml:114
 msgid "Offer upgrades for pre-releases"
@@ -1458,11 +1460,12 @@ msgid "The URI that explains nonfree and proprietary software"
 msgstr "যে URI অ-বিনামূল্য ও স্বত্বসহ সফটওয়্যার ব্যাখ্যা করে"
 
 #: data/org.gnome.software.gschema.xml:131
-#, fuzzy
 msgid ""
 "A list of URLs pointing to appstream files that will be downloaded into an "
 "swcatalog folder"
-msgstr "অ্যাপসস্ট্রিম ফাইলে দেয়া ইউআরএল তালিকা অ্যাপস-ইনফো ফোল্ডারে ডাউনলোড হবে "
+msgstr ""
+"অ্যাপস্ট্রিম ফাইলের দিকে তাক করা একটি ইউআরএল তালিকা যা একটি swcatalog "
+"ফোল্ডারে ডাউনলোড হবে"
 
 #: data/org.gnome.software.gschema.xml:135
 msgid ""
@@ -1510,9 +1513,9 @@ msgstr ""
 
 #. TRANSLATORS: error details
 #: gs-install-appstream/gs-install-appstream.c:178
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to move: %s"
-msgstr "ছবি আনতে ব্যর্থ"
+msgstr "%s স্থানান্তর করতে ব্যর্থ"
 
 #: src/gnome-software-local-file-flatpak.desktop.in:3
 #: src/gnome-software-local-file-fwupd.desktop.in:3
@@ -1550,9 +1553,8 @@ msgstr ""
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:154
-#, fuzzy
 msgid "Realistic Violence"
-msgstr "বাস্তবিক রক্তপাত"
+msgstr "বাস্তব মনে হয় এমন সহিংসতা"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:156
@@ -1596,9 +1598,8 @@ msgstr ""
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:196
-#, fuzzy
 msgid "No information regarding references to illicit drugs"
-msgstr "অবৈধ মাদকের প্রসঙ্গ"
+msgstr "অবৈধ ড্রাগস্-এর রেফারেন্স সম্পর্কিত কোনও তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:204
@@ -1607,9 +1608,8 @@ msgstr ""
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:206
-#, fuzzy
 msgid "No information regarding references to tobacco products"
-msgstr "তামাকজাতীয় দ্রব্যের প্রসঙ্গ"
+msgstr "তামাকজাত দ্রব্যের রেফারেন্স সংক্রান্ত কোন তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:214
@@ -1654,9 +1654,8 @@ msgstr ""
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:254
-#, fuzzy
 msgid "Discrimination"
-msgstr "নথিপত্র"
+msgstr "বৈষম্য"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:256
@@ -1715,29 +1714,27 @@ msgstr ""
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:314
-#, fuzzy
 msgid "Contact Details"
-msgstr "উৎসের বিশদ"
+msgstr "যোগাযোগের বিবরণ"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:316
-#, fuzzy
 msgid ""
 "No information regarding sharing of social network usernames or email "
 "addresses"
-msgstr "সামাজিক নেটওয়ার্কের ব্যবহারকারী নাম অথবা ইমেইল ঠিকানা ভাগাভাগি করা"
+msgstr ""
+"সোশ্যাল নেটওয়ার্ক ব্যবহারকারীর নাম বা ইমেইল অ্যাড্রেস শেয়ার করে নেওয়ার মতো "
+"বিষয়ে কোনো তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:324
-#, fuzzy
 msgid "Identifying Information"
-msgstr "আরো তথ্য"
+msgstr "তথ্য সনাক্তকরণ"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:326
-#, fuzzy
 msgid "No information regarding sharing of user information with third parties"
-msgstr "3rd পক্ষের সাথে ব্যবহারকারীর তথ্য ভাগাভাগি করা"
+msgstr "তৃতীয় পক্ষের সাথে ব্যবহারকারীর তথ্য ভাগাভাগি করার বিষয়ে কোনো তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:334
@@ -1746,9 +1743,8 @@ msgstr ""
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:336
-#, fuzzy
 msgid "No information regarding sharing of physical location with other users"
-msgstr "অন্য খেলোয়াড়দের সাথে শারিরীক অবস্থান ভাগাভাগি করা"
+msgstr "অন্য খেলোয়াড়দের সাথে ভৌগলিক অবস্থান শেয়ার করার বিষয়ে কোনো তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:360
@@ -1797,9 +1793,8 @@ msgstr ""
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:402
-#, fuzzy
 msgid "No information regarding references to desecration"
-msgstr "উত্তেজক প্রসঙ্গ অথবা চিত্রায়ণ"
+msgstr "অনৈতিকতার দিকে ইঙ্গিত করে এমন কোনো তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:410
@@ -1839,9 +1834,8 @@ msgid "Does not include sex or nudity"
 msgstr ""
 
 #: src/gs-age-rating-context-dialog.c:502
-#, fuzzy
 msgid "Does not include uncontrolled chat functionality"
-msgstr "খেলোয়াড়দের মধ্যে অনিয়ন্ত্রিত আড্ডার কার্যকারিতা"
+msgstr "অনিয়ন্ত্রিত চ্যাট ব্যবস্থা অন্তর্ভুক্ত নেই"
 
 #: src/gs-age-rating-context-dialog.c:504
 msgid "Does not include violence"
@@ -1878,7 +1872,6 @@ msgstr ""
 #. Translators: The app is considered suitable to be run by all ages of people.
 #. * This is displayed in a context tile, so the string should be short.
 #: src/gs-age-rating-context-dialog.c:936
-#, fuzzy
 msgctxt "Age rating"
 msgid "All"
 msgstr "সকল"
@@ -1925,9 +1918,9 @@ msgstr ""
 #. Translators: This is a dialogue title which indicates that an app is suitable
 #. * for people aged up to and over 18. The placeholder is the app name.
 #: src/gs-age-rating-context-dialog.c:1043
-#, fuzzy, c-format
+#, c-format
 msgid "%s is suitable for adults"
-msgstr "%s ফাইল ফরম্যাট"
+msgstr "%s প্রাপ্তবয়স্কদের জন্য উপযুক্ত"
 
 #. Translators: This is a dialogue title which indicates that an app is suitable
 #. * for a specified age group. The first placeholder is the app name, the second
@@ -1946,9 +1939,8 @@ msgstr ""
 #: src/gs-age-rating-context-dialog.ui:68
 #: src/gs-hardware-support-context-dialog.ui:71
 #: src/gs-safety-context-dialog.ui:221
-#, fuzzy
 msgid "How to contribute missing information"
-msgstr "শব্দবহুল ডিবাগ তথ্য প্রদর্শন করুন"
+msgstr "যেভাবে অনুপস্থিত তথ্য পূরণে অবদান রাখবেন"
 
 #: lib/gs-app.c:6175
 msgid "Local file"
@@ -1973,21 +1965,18 @@ msgid "Pending"
 msgstr "অমীমাংসিত"
 
 #: src/gs-app-addon-row.c:101 src/gs-app-row.c:461 src/gs-details-page.c:369
-#, fuzzy
 msgid "Pending install"
-msgstr "আনইনস্টল "
+msgstr "ইন্সটল মুলতবি রয়েছে"
 
 #: src/gs-app-addon-row.c:105 src/gs-app-row.c:465 src/gs-details-page.c:376
-#, fuzzy
 msgid "Pending remove"
-msgstr "অমীমাংসিত"
+msgstr "অপসারণের অপেক্ষায় রয়েছে"
 
 #: src/gs-app-addon-row.c:111 src/gs-app-row.ui:197 src/gs-app-tile.ui:50
 #: src/gs-feature-tile.c:535
-#, fuzzy
 msgctxt "Single app"
 msgid "Installed"
-msgstr "সংস্থাপিত"
+msgstr "ইনস্টলকৃত"
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * shows the status of an application being installed
@@ -2004,18 +1993,16 @@ msgid "_Uninstall"
 msgstr "_আনইনস্টল "
 
 #: src/gs-app-details-page.c:68
-#, fuzzy
 msgid "Network"
-msgstr "নেটওয়ার্ক নেই"
+msgstr "নেটওয়ার্ক"
 
 #: src/gs-app-details-page.c:68
 msgid "Can communicate over the network"
 msgstr ""
 
 #: src/gs-app-details-page.c:69
-#, fuzzy
 msgid "System Services"
-msgstr "সিস্টেম ইন্টেগ্রেশন"
+msgstr "সিস্টেম সার্ভিস সমূহ"
 
 #: src/gs-app-details-page.c:69
 msgid "Can access D-Bus services on the system bus"
@@ -2038,9 +2025,8 @@ msgid "Can access system device files"
 msgstr ""
 
 #: src/gs-app-details-page.c:72 src/gs-app-details-page.c:73
-#, fuzzy
 msgid "Home folder"
-msgstr "_ফোল্ডার থেকে সরান"
+msgstr "_হোম ফোল্ডার"
 
 #: src/gs-app-details-page.c:72 src/gs-app-details-page.c:74
 #: src/gs-app-details-page.c:77 src/gs-app-details-page.c:150
@@ -2058,14 +2044,12 @@ msgstr ""
 
 #. The GS_APP_PERMISSIONS_FLAGS_FILESYSTEM_OTHER is used only as a flag, with actual files being part of the read/full lists
 #: src/gs-app-details-page.c:77 src/gs-app-details-page.c:78
-#, fuzzy
 msgid "Downloads folder"
-msgstr "ডাউনলোড আকৃতি"
+msgstr "ডাউনলোড ফোল্ডার"
 
 #: src/gs-app-details-page.c:79
-#, fuzzy
 msgid "Settings"
-msgstr "নেটওয়ার্ক সেটিংস"
+msgstr "সেটিংস"
 
 #: src/gs-app-details-page.c:79
 msgid "Can view and change any settings"
@@ -2080,9 +2064,8 @@ msgid "Uses an old, insecure display system"
 msgstr ""
 
 #: src/gs-app-details-page.c:81
-#, fuzzy
 msgid "Sandbox escape"
-msgstr "স্যান্ডবক্স"
+msgstr "স্যান্ডবক্স থেকে পালানো"
 
 #: src/gs-app-details-page.c:81
 msgid "Can escape the sandbox and circumvent any other restrictions"
@@ -2091,9 +2074,8 @@ msgstr ""
 #. FIXME support app == NULL
 #. set window title
 #: src/gs-app-details-page.c:166
-#, fuzzy
 msgid "Update Details"
-msgstr "হালনাগাদের বিস্তারিত"
+msgstr "আপডেট সংক্রান্ত তথ্য"
 
 #. TRANSLATORS: this is where the packager did not write
 #. * a description for the update
@@ -2107,9 +2089,8 @@ msgid "Go back"
 msgstr "পেছনে যান"
 
 #: src/gs-app-details-page.ui:48 src/gs-app-row.c:516
-#, fuzzy
 msgid "Requires additional permissions"
-msgstr "%s অতিরিক্ত ফন্টের জন্য অনুরোধ করছে।"
+msgstr "অতিরিক্ত অনুমতি প্রয়োজন"
 
 #. Translators: Header of the section with other users' opinions about the app.
 #: src/gs-app-reviews-dialog.ui:6 src/gs-details-page.ui:855
@@ -2121,14 +2102,12 @@ msgid "No reviews were found for this application."
 msgstr ""
 
 #: src/gs-app-reviews-dialog.ui:27
-#, fuzzy
 msgid "No Reviews"
-msgstr "রিভিউ"
+msgstr "কোন পর্যালোচনা নেই"
 
 #: src/gs-app-version-history-dialog.ui:6 src/gs-details-page.ui:533
-#, fuzzy
 msgid "Version History"
-msgstr "ভার্সন"
+msgstr "সংস্করণের ইতিহাস"
 
 #: src/gs-app-version-history-row.c:71
 #, c-format
@@ -2136,9 +2115,9 @@ msgid "New in Version %s"
 msgstr ""
 
 #: src/gs-app-version-history-row.c:78
-#, fuzzy, c-format
+#, c-format
 msgid "Version %s"
-msgstr "ভার্সন"
+msgstr "%s সংস্করণ"
 
 #: src/gs-app-version-history-row.c:80
 msgid "No details for this release"
@@ -2188,9 +2167,8 @@ msgid "Install the application (using application ID)"
 msgstr ""
 
 #: src/gs-application.c:134
-#, fuzzy
 msgid "Uninstall the application (using application ID)"
-msgstr "এ্যাপ্লিকেশনের বিশদ প্রদর্শন করুন (এ্যাপ্লিকেশন ID ব্যবহার করে)"
+msgstr "(এ্যাপ্লিকেশন ID ব্যবহার করে) এ্যাপ্লিকেশন অপসারণ করুন"
 
 #: src/gs-application.c:136
 msgid "Open a local package file"
@@ -2245,9 +2223,8 @@ msgstr "অনুবাদক-কৃতিত্ব"
 #. TRANSLATORS: this is the title of the about window
 #. TRANSLATORS: this is the menu item that opens the about window
 #: src/gs-application.c:277 src/gs-shell.c:2149
-#, fuzzy
 msgid "About Software"
-msgstr "উন্মুক্ত সফটওয়্যার"
+msgstr "Software সম্পর্কে"
 
 #. TRANSLATORS: well, we seem to think so, anyway
 #: src/gs-application.c:280
@@ -2407,9 +2384,8 @@ msgstr ""
 #. Translators: This indicates an app is not licensed under a free software license.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:425
-#, fuzzy
 msgid "Proprietary code"
-msgstr "মালিকানা"
+msgstr "মালিকানাধীন কোড"
 
 #. Translators: This indicates an app’s source code is freely available, so can be audited for security.
 #. * It’s used in a context tile, so should be short.
@@ -2420,16 +2396,14 @@ msgstr ""
 #. Translators: This indicates an app was written and released by a developer who has been verified.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:438
-#, fuzzy
 msgid "Software developer is verified"
-msgstr "সফটওয়্যার উৎস চিহ্নিত"
+msgstr "সফটওয়্যার ডেভেলপার যাচাইকৃত"
 
 #. Translators: This indicates an app or its runtime reached its end of life.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:447
-#, fuzzy
 msgid "Software no longer supported"
-msgstr "সফটওয়্যার হালনাগাদকৃত আছে"
+msgstr "সফ্টওয়্যারটি আর সমর্থিত নয়"
 
 #. Translators: This string is used to join various other translated
 #. * strings into an inline list of reasons why an app has been marked as
@@ -2543,16 +2517,14 @@ msgid "Contains no age-inappropriate content"
 msgstr ""
 
 #: src/gs-app-context-bar.c:753
-#, fuzzy
 msgid "No age rating information available"
-msgstr "কোন আপডেটের বর্ণনা পাওয়া যায়নি"
+msgstr "কোন বয়স রেটিং তথ্য উপলব্ধ নেই"
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * allows the application to be easily installed
 #: src/gs-app-row.c:153
-#, fuzzy
 msgid "Visit Website"
-msgstr "ওয়েবসাইটে ঘুরে আসুন"
+msgstr "ওয়েবসাইট ভিজিট করুন"
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * allows the application to be easily installed.
@@ -2593,9 +2565,8 @@ msgstr "আনইনস্টল "
 #. TRANSLATORS: this is a button next to the search results that
 #. * shows the status of an application being erased
 #: src/gs-app-row.c:212
-#, fuzzy
 msgid "Uninstalling"
-msgstr "আনইনস্টল "
+msgstr "অপসারণ"
 
 #. TRANSLATORS: during the update the device
 #. * will restart into a special update-only mode
@@ -2605,15 +2576,15 @@ msgstr "আপডেটের সময় ডিভাইস ব্যবহার
 
 #. TRANSLATORS: this refers to where the app came from
 #: src/gs-app-row.c:337 src/gs-shell-search-provider.c:264
-#, fuzzy, c-format
+#, c-format
 msgid "Source: %s"
-msgstr "উৎস"
+msgstr "উৎস: %s"
 
 #. Translators: A message to indicate that an app has been renamed. The placeholder is the old human-readable name.
 #: src/gs-app-row.c:523
-#, fuzzy, c-format
+#, c-format
 msgid "Renamed from %s"
-msgstr "_ডেস্কটপ থেকে সরান "
+msgstr "%s থেকে পুনঃনামকরণ করা হয়েছে"
 
 #. Translators: The placeholder is an application name
 #: src/gs-app-translation-dialog.c:67
@@ -2633,7 +2604,6 @@ msgid ""
 msgstr ""
 
 #: src/gs-app-translation-dialog.ui:5
-#, fuzzy
 msgid "Translations"
 msgstr "অনুবাদক-কৃতিত্ব"
 
@@ -2658,18 +2628,16 @@ msgid "_Cancel"
 msgstr "_বাতিল"
 
 #: src/gs-basic-auth-dialog.ui:35
-#, fuzzy
 msgid "_Login"
-msgstr "যুক্তি"
+msgstr "_প্রবেশ করুন"
 
 #: src/gs-basic-auth-dialog.ui:88
 msgid "_User"
 msgstr ""
 
 #: src/gs-basic-auth-dialog.ui:107
-#, fuzzy
 msgid "_Password"
-msgstr "পাসওয়ার্ড"
+msgstr "_পাসওয়ার্ড"
 
 #. TRANSLATORS: this is where all applications that don't
 #. * fit in other groups are put
@@ -2680,7 +2648,6 @@ msgstr "অন্যকিছু"
 #. TRANSLATORS: this is a subcategory matching all the
 #. * different apps in the parent category, e.g. "Games"
 #: lib/gs-category.c:214
-#, fuzzy
 msgctxt "Category"
 msgid "All"
 msgstr "সকল"
@@ -2699,9 +2666,8 @@ msgstr ""
 #. Heading for recently updated apps on a category page
 #. Translators: This is a heading for software which has been recently released upstream.
 #: src/gs-category-page.ui:69 src/gs-overview-page.ui:129
-#, fuzzy
 msgid "New & Updated"
-msgstr "আপডেট হয়েছে"
+msgstr "নতুন ও আপডেটেড"
 
 #. Heading for web apps on a category page
 #: src/gs-category-page.ui:97
@@ -2710,9 +2676,8 @@ msgstr ""
 
 #. Heading for the rest of the apps on a category page
 #: src/gs-category-page.ui:125
-#, fuzzy
 msgid "Other Software"
-msgstr "উন্মুক্ত সফটওয়্যার"
+msgstr "অন্যান্য সফটওয়্যার"
 
 #. TRANSLATORS: the user isn't reading the question
 #: lib/gs-cmd.c:194
@@ -2726,46 +2691,39 @@ msgid "Choose an application:"
 msgstr ""
 
 #: lib/gs-desktop-data.c:16
-#, fuzzy
 msgctxt "Menu of Graphics & Photography"
 msgid "All"
 msgstr "সকল"
 
 #: lib/gs-desktop-data.c:20
-#, fuzzy
 msgctxt "Menu of Graphics & Photography"
 msgid "Featured"
-msgstr "বৈশিষ্ট্যসম্পন্ন"
+msgstr "পরিবেশিত"
 
 #: lib/gs-desktop-data.c:24
-#, fuzzy
 msgctxt "Menu of Graphics & Photography"
 msgid "3D Graphics"
 msgstr "3D গ্রাফিক্স"
 
 #: lib/gs-desktop-data.c:27
-#, fuzzy
 msgctxt "Menu of Graphics & Photography"
 msgid "Photography"
 msgstr "ফটোগ্রাফি"
 
 #: lib/gs-desktop-data.c:30
-#, fuzzy
 msgctxt "Menu of Graphics & Photography"
 msgid "Scanning"
-msgstr "বিশ্লেষণ"
+msgstr "স্ক্যানিং"
 
 #: lib/gs-desktop-data.c:33
-#, fuzzy
 msgctxt "Menu of Graphics & Photography"
 msgid "Vector Graphics"
 msgstr "ভেক্টর গ্রাফিক্স"
 
 #: lib/gs-desktop-data.c:36
-#, fuzzy
 msgctxt "Menu of Graphics & Photography"
 msgid "Viewers"
-msgstr "দর্শক"
+msgstr "প্রদর্শনকারী"
 
 #: lib/gs-desktop-data.c:39
 msgctxt "Menu of Audio & Video"
@@ -2808,10 +2766,9 @@ msgid "Word Processor"
 msgstr ""
 
 #: lib/gs-desktop-data.c:77
-#, fuzzy
 msgctxt "Menu of Utilities"
 msgid "Text Editors"
-msgstr "শব্দ সম্পাদনা"
+msgstr "টেক্সট এডিটর"
 
 #: lib/gs-desktop-data.c:80
 msgctxt "Menu of Communication & News"
@@ -2889,19 +2846,16 @@ msgid "Strategy"
 msgstr "কৌশল"
 
 #: lib/gs-desktop-data.c:134
-#, fuzzy
 msgctxt "Menu of Communication & News"
 msgid "All"
 msgstr "সকল"
 
 #: lib/gs-desktop-data.c:137
-#, fuzzy
 msgctxt "Menu of Communication & News"
 msgid "Featured"
-msgstr "বৈশিষ্ট্যসম্পন্ন"
+msgstr "পরিবেশিত"
 
 #: lib/gs-desktop-data.c:140
-#, fuzzy
 msgctxt "Menu of Communication & News"
 msgid "Chat"
 msgstr "আড্ডা"
@@ -3068,21 +3022,18 @@ msgstr ""
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:293
-#, fuzzy
 msgid "Learn"
 msgstr "শিক্ষা"
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:295
-#, fuzzy
 msgid "Develop"
-msgstr "ডেভেলপার"
+msgstr "ডেভেলপ"
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:298
-#, fuzzy
 msgid "Codecs"
-msgstr "কোডেকস পাতা"
+msgstr "কোডেকস"
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:300
@@ -3096,9 +3047,8 @@ msgstr ""
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:304
-#, fuzzy
 msgid "Input Sources"
-msgstr "উৎস"
+msgstr "ইনপুট সোর্স"
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:306
@@ -3107,9 +3057,8 @@ msgstr ""
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:308
-#, fuzzy
 msgid "Localization"
-msgstr "একটি এ্যাপ্লিকেশন"
+msgstr "স্থানীয়করণ"
 
 #. TRANSLATORS: this is the summary of a notification that an application
 #. * has been successfully installed
@@ -3123,9 +3072,8 @@ msgstr "%s এখন সংস্থাপিত হয়েছে"
 #. TRANSLATORS: an application has been installed, but
 #. * needs a reboot to complete the installation
 #: src/gs-common.c:72 src/gs-common.c:95
-#, fuzzy
 msgid "A restart is required for the changes to take effect."
-msgstr "এগুলো কার্যকরী হতে পুনরায় চালু করা দরকার।"
+msgstr "পরিবর্তনগুলি কার্যকর করার জন্য একটি রিস্টার্ট প্রয়োজন৷"
 
 #. TRANSLATORS: this is the body of a notification that an application
 #. * has been successfully installed
@@ -3136,9 +3084,8 @@ msgstr ""
 #. TRANSLATORS: this is the summary of a notification that OS updates
 #. * have been successfully installed
 #: src/gs-common.c:84
-#, fuzzy
 msgid "System updates are now installed"
-msgstr "আপডেটসমূহ সংস্থাপন করা হয়েছে"
+msgstr "সিস্টেম আপডেটসমূহ সংস্থাপন করা হয়েছে"
 
 #. TRANSLATORS: this is the body of a notification that OS updates
 #. * have been successfully installed
@@ -3162,9 +3109,8 @@ msgstr "তৃতীয়-পক্ষ সফটওয়্যার সংস্থ
 
 #. TRANSLATORS: window title
 #: src/gs-common.c:222 src/gs-repos-dialog.c:168
-#, fuzzy
 msgid "Enable Third-Party Software Repository?"
-msgstr "তৃতীয়-পক্ষ সফটওয়্যার উৎস সচল করুন?"
+msgstr "তৃতীয়-পক্ষ কর্তৃক প্রাপ্ত সফটওয়্যার উৎস সক্রিয় করবেন?"
 
 #. TRANSLATORS: the replacements are as follows:
 #. * 1. Application name, e.g. "Firefox"
@@ -3188,9 +3134,8 @@ msgid "%s is provided by “%s”."
 msgstr "“%s” দ্বারা সরবরাহকৃত %s "
 
 #: src/gs-common.c:259
-#, fuzzy
 msgid "This software repository must be enabled to continue installation."
-msgstr "সংস্থাপন চালিয়ে যেতে সফটওয়্যার উৎস সচল করতে হবে।"
+msgstr "ইন্সটলেশন চালিয়ে যেতে এই সফটওয়্যার উৎসটি সক্রিয় করতে হবে।"
 
 #. TRANSLATORS: Laws are geographical, urgh...
 #: src/gs-common.c:269
@@ -3222,7 +3167,7 @@ msgstr "প্যাকেজ পরিচালনায় নিম্নো্�
 
 #: src/gs-common.c:509 src/gs-safety-context-dialog.ui:72
 msgid "Details"
-msgstr "বিশদ"
+msgstr "বিস্তারিত"
 
 #. Translators: an accept button label, in a Cancel/Accept dialog
 #: src/gs-common.c:600
@@ -3231,27 +3176,24 @@ msgstr ""
 
 #. TRANSLATORS: we've just live-updated some apps
 #: src/gs-common.c:750
-#, fuzzy
 msgid "An update has been installed"
 msgid_plural "Updates have been installed"
-msgstr[0] "আপডেটসমূহ সংস্থাপন করা হয়েছে"
+msgstr[0] "একটি আপডেট সংস্থাপন করা হয়েছে"
 msgstr[1] "আপডেটসমূহ সংস্থাপন করা হয়েছে"
 
 #. TRANSLATORS: we've just removed some apps
 #: src/gs-common.c:760
-#, fuzzy
 msgid "An application has been removed"
 msgid_plural "Applications have been removed"
-msgstr[0] "একটি এ্যাপ্লিকেশন"
-msgstr[1] "একটি এ্যাপ্লিকেশন"
+msgstr[0] "একটি এ্যাপ্লিকেশন অপসারণ করা হয়েছে"
+msgstr[1] "এ্যাপ্লিকেশন সমূহ অপসারণ করা হয়েছে"
 
 #. TRANSLATORS: the new apps will not be run until we restart
 #: src/gs-common.c:766
-#, fuzzy
 msgid "A restart is required for it to take effect."
 msgid_plural "A restart is required for them to take effect."
-msgstr[0] "এগুলো কার্যকরী হতে পুনরায় চালু করা দরকার।"
-msgstr[1] "এগুলো কার্যকরী হতে পুনরায় চালু করা দরকার।"
+msgstr[0] "এটি কার্যকরী হতে একটি রিস্টার্ট প্রয়োজন।"
+msgstr[1] "এগুলো কার্যকরী হতে একটি রিস্টার্ট প্রয়োজন।"
 
 #. TRANSLATORS: button text
 #: src/gs-common.c:773
@@ -3278,18 +3220,18 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: src/gs-common.c:879
-#, fuzzy, c-format
+#, c-format
 msgid "%d day ago"
 msgid_plural "%d days ago"
-msgstr[0] "দুই দিন আগে"
-msgstr[1] "দুই দিন আগে"
+msgstr[0] "%d দিন আগে"
+msgstr[1] "%d দিন আগে"
 
 #: src/gs-common.c:883
-#, fuzzy, c-format
+#, c-format
 msgid "%d week ago"
 msgid_plural "%d weeks ago"
-msgstr[0] "এক সপ্তাহ আগে"
-msgstr[1] "এক সপ্তাহ আগে"
+msgstr[0] "%d সপ্তাহ আগে"
+msgstr[1] "%d সপ্তাহ আগে"
 
 #: src/gs-common.c:887
 #, c-format
@@ -3385,9 +3327,8 @@ msgid "_Show More"
 msgstr "_আরো প্রদর্শন করুন"
 
 #: src/gs-description-box.c:67
-#, fuzzy
 msgid "_Show Less"
-msgstr "_আরো প্রদর্শন করুন"
+msgstr "_কম দেখান"
 
 #: src/gs-details-page.c:357
 msgid "Removing…"
@@ -3415,15 +3356,13 @@ msgstr ""
 
 #. Translators: This string is shown when preparing to download and install an app.
 #: src/gs-details-page.c:414
-#, fuzzy
 msgid "Preparing…"
-msgstr "সরানো হচ্ছে..."
+msgstr "প্রস্তুত হচ্ছে…"
 
 #. Translators: This string is shown when uninstalling an app.
 #: src/gs-details-page.c:417
-#, fuzzy
 msgid "Uninstalling…"
-msgstr "আনইনস্টল "
+msgstr "অপসারণ করা হচ্ছে…"
 
 #. TRANSLATORS: button text in the header when an application
 #. * can be installed
@@ -3435,9 +3374,8 @@ msgid "_Install"
 msgstr "_সংস্থাপন"
 
 #: src/gs-details-page.c:876
-#, fuzzy
 msgid "_Restart"
-msgstr "পুনরায় চালু করুন"
+msgstr "_রিস্টার্ট"
 
 #. TRANSLATORS: this is a button that allows the apps to
 #. * be installed.
@@ -3491,9 +3429,8 @@ msgid "_Update"
 msgstr "_আপডেট"
 
 #: src/gs-details-page.ui:319
-#, fuzzy
 msgid "Downloading"
-msgstr "_ডাউনলোড"
+msgstr "ডাউনলোড হচ্ছে"
 
 #: src/gs-details-page.ui:456 src/gs-installed-page.ui:135
 msgid "Add-ons"
@@ -3510,32 +3447,28 @@ msgid ""
 msgstr "সক্রিয় ইন্টারনেট সংযোগ থাকলেই শুধুমাত্র এই এ্যাপ্লিকেশনটি ব্যবহার করা যাবে।"
 
 #: src/gs-details-page.ui:587
-#, fuzzy
 msgid "Software Repository Included"
 msgstr "সফটওয়্যার উৎস সংযোজিত"
 
 #: src/gs-details-page.ui:588
-#, fuzzy
 msgid ""
 "This application includes a software repository which provides updates, as "
 "well as access to other software."
 msgstr ""
-"এই এ্যাপ্লিকেশনে একটি সফটওয়্যার উৎস সংযোজিত আছে যাতে আপডেট, ও সেইসাথে অন্যান্য "
-"সফটওয়্যারে প্রবেশাধিকার সরবরাহ করা হয়েছে।"
+"এই অ্যাপ্লিকেশনটিতে একটি সফ্টওয়্যার উৎস সংযোজিত রয়েছে যা আপডেটগুলি সরবরাহ "
+"করে, পাশাপাশি অন্যান্য সফ্টওয়্যার অ্যাক্সেস সরবরাহ করে।"
 
 #: src/gs-details-page.ui:605
-#, fuzzy
 msgid "No Software Repository Included"
-msgstr "কোন সফটওয়্যার উৎস সংযোজিত হয়নি"
+msgstr "কোন সফটওয়্যার উৎস সংযোজিত নেই"
 
 #: src/gs-details-page.ui:606
-#, fuzzy
 msgid ""
 "This application does not include a software repository. It will not be "
 "updated with new versions."
 msgstr ""
-"এই এ্যাপ্লিকেশনে কোন সফটওয়্যার উৎস উল্লেখ করা হয়নি। কোন নতুন ভার্সন দ্বারা এটি "
-"আপডেট হবে না।"
+"এই এ্যাপ্লিকেশনে কোন সফটওয়্যার উৎস উল্লেখ করা হয়নি। এটি কখনো কোনো নতুন ভার্"
+"সন দ্বারা আপডেট হবে না।"
 
 #: src/gs-details-page.ui:624
 msgid ""
@@ -3547,23 +3480,20 @@ msgstr ""
 
 #. Translators: a repository file used for installing software has been discovered.
 #: src/gs-details-page.ui:641
-#, fuzzy
 msgid "Software Repository Identified"
-msgstr "সফটওয়্যার উৎস চিহ্নিত"
+msgstr "সফ্টওয়্যার উৎস সনাক্ত করা হয়েছে"
 
 #: src/gs-details-page.ui:642
-#, fuzzy
 msgid ""
 "Adding this software repository will give you access to additional software "
 "and upgrades."
 msgstr ""
-"এই সফটওয়্যার উৎস সংযুক্ত করলে এটি আপনাকে অন্যান্য সফটওয়্যার ও আপগ্রেডে প্রবেশাধিকার "
-"দেবে।"
+"এই সফটওয়্যার উৎস সংযুক্ত করলে এটি আপনাকে অন্যান্য সফটওয়্যার ও আপগ্রেডের সুযো"
+"হ দেবে।"
 
 #: src/gs-details-page.ui:643
-#, fuzzy
 msgid "Only use software repositories that you trust."
-msgstr "শুধুমাত্র যে সকল সফটওয়্যার উৎসে আস্থা আছে তাদের ব্যবহার করুন।"
+msgstr "শুধুমাত্র যে সকল সফটওয়্যার উৎসে আপনার আস্থা আছে সেগুলো ব্যবহার করুন।"
 
 #: src/gs-details-page.ui:708
 msgid "No Metadata"
@@ -3576,9 +3506,8 @@ msgid ""
 msgstr ""
 
 #: src/gs-details-page.ui:745
-#, fuzzy
 msgid "Project _Website"
-msgstr "ওয়েবসাইট_উন্নয়নকারী "
+msgstr "প্রকল্পের ওয়েবসাইট"
 
 #: src/gs-details-page.ui:762
 msgid "_Donate"
@@ -3604,9 +3533,8 @@ msgstr "_একটি রিভিউ লিখুন"
 
 #. Translators: Button opening a dialog showing all reviews for an app.
 #: src/gs-details-page.ui:945
-#, fuzzy
 msgid "All Reviews"
-msgstr "রিভিউ"
+msgstr "সকল রিভিউ"
 
 #. TRANSLATORS: status text when downloading
 #: lib/gs-external-appstream-utils.c:216
@@ -3642,14 +3570,12 @@ msgstr[0] "%s জন্য সহজলভ্য সফটওয়্যার"
 msgstr[1] "%s জন্য সহজলভ্য সফটওয়্যার"
 
 #: src/gs-extras-page.c:242
-#, fuzzy
 msgid "Requested software not found"
-msgstr "স্ক্রিনশটের আকৃতি পাওয়া যায়নি"
+msgstr "অনুরোধকৃত সফটওয়্যার খুঁজে পাওয়া যায়নি"
 
 #: src/gs-extras-page.c:244
-#, fuzzy
 msgid "Failed to find requested software"
-msgstr "অনুরোধকৃত সফটওয়্যার পাওয়া যায়নি"
+msgstr "অনুরোধকৃত সফটওয়্যার পেতে ব্যর্থ"
 
 #. TRANSLATORS: This string is used for codecs that weren't found
 #: src/gs-extras-page.c:343
@@ -3777,28 +3703,27 @@ msgstr ""
 
 #. TRANSLATORS: hyperlink title
 #: src/gs-extras-page.c:481
-#, fuzzy
 msgid "the documentation"
 msgstr "নথিপত্র"
 
 #. TRANSLATORS: no codecs were found. The first %s will be replaced by actual codec name(s),
 #. the second %s is the application name, which requested the codecs, the third %s is a link titled "the documentation"
 #: src/gs-extras-page.c:487
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Unable to find the %s requested by %s. Please see %s for more information."
 msgid_plural ""
 "Unable to find the %s requested by %s. Please see %s for more information."
 msgstr[0] ""
-"দুর্ভাগ্যক্রমে, আপনি যে %s অনুসন্ধান করছে তা পাওয়া যায়নি। আরো তথ্যের জন্য অনুগ্রহ করে "
-"%s দেখুন।"
+"%s দ্বারা অনুরোধ করা %s খুঁজে পাওয়া যাচ্ছেনা। আরও তথ্যের জন্য অনুগ্রহ করে %s "
+"দেখুন।"
 msgstr[1] ""
-"দুর্ভাগ্যক্রমে, আপনি যে %s অনুসন্ধান করছে তা পাওয়া যায়নি। আরো তথ্যের জন্য অনুগ্রহ করে "
-"%s দেখুন।"
+"%s দ্বারা অনুরোধ করা %s খুঁজে পাওয়া যাচ্ছেনা। আরও তথ্যের জন্য অনুগ্রহ করে %s "
+"দেখুন।"
 
 #. TRANSLATORS: no codecs were found. First %s will be replaced by actual codec name(s), second %s is a link titled "the documentation"
 #: src/gs-extras-page.c:496
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Unable to find the %s you were searching for. Please see %s for more "
 "information."
@@ -3806,16 +3731,16 @@ msgid_plural ""
 "Unable to find the %s you were searching for. Please see %s for more "
 "information."
 msgstr[0] ""
-"দুর্ভাগ্যক্রমে, আপনি যে %s অনুসন্ধান করছে তা পাওয়া যায়নি। আরো তথ্যের জন্য অনুগ্রহ করে "
-"%s দেখুন।"
+"দুর্ভাগ্যক্রমে, আপনি যে %s অনুসন্ধান করছেন তা পাওয়া যায়নি। আরো তথ্যের জন্য "
+"অনুগ্রহ করে %s দেখুন।"
 msgstr[1] ""
-"দুর্ভাগ্যক্রমে, আপনি যে %s অনুসন্ধান করছে তা পাওয়া যায়নি। আরো তথ্যের জন্য অনুগ্রহ করে "
-"%s দেখুন।"
+"দুর্ভাগ্যক্রমে, আপনি যে %s অনুসন্ধান করছেন তা পাওয়া যায়নি। আরো তথ্যের জন্য "
+"অনুগ্রহ করে %s দেখুন।"
 
 #: src/gs-extras-page.c:574 src/gs-extras-page.c:631 src/gs-extras-page.c:671
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to find any search results: %s"
-msgstr "অনুসন্ধান করে ফললাভ করতে ব্যর্থ"
+msgstr "%s অনুসন্ধান করে ফললাভ করতে ব্যর্থ"
 
 #: src/gs-extras-page.c:874
 #, c-format
@@ -3839,9 +3764,8 @@ msgid "Next"
 msgstr ""
 
 #: src/gs-featured-carousel.ui:83
-#, fuzzy
 msgid "Featured Apps List"
-msgstr "বৈশিষ্ট্যসম্পন্ন"
+msgstr "পরিবেশিত এ্যাপ তালিকা"
 
 #: src/gs-hardware-support-context-dialog.c:577
 #: src/gs-hardware-support-context-dialog.c:586
@@ -4048,10 +3972,9 @@ msgstr ""
 #. Translators: This is in the context of a list of apps which are installed on the system.
 #. Translators: A label for a button to show only software which is already installed.
 #: src/gs-installed-page.c:812 src/gs-shell.ui:307
-#, fuzzy
 msgctxt "List of installed apps"
 msgid "Installed"
-msgstr "সংস্থাপিত"
+msgstr "ইনস্টলকৃত"
 
 #: src/gs-installed-page.ui:6
 msgid "Installed page"
@@ -4064,14 +3987,12 @@ msgstr ""
 #. origin_ui on a remote is the repo dialogue section name,
 #. * not the remote title
 #: src/gs-installed-page.ui:75 plugins/flatpak/gs-flatpak-utils.c:107
-#, fuzzy
 msgid "Applications"
-msgstr "একটি এ্যাপ্লিকেশন"
+msgstr "অ্যাপ্লিকেশনসমূহ"
 
 #: src/gs-installed-page.ui:95
-#, fuzzy
 msgid "Web Applications"
-msgstr "সিস্টেম এ্যাপ্লিকেশন"
+msgstr "ওয়েব অ্যাপ্লিকেশন"
 
 #: src/gs-installed-page.ui:115
 msgid "System Applications"
@@ -4124,9 +4045,8 @@ msgstr ""
 
 #. TRANSLATORS: initial start
 #: src/gs-loading-page.c:56
-#, fuzzy
 msgid "Downloading software catalog"
-msgstr "%s %s ডাউনলোড করা হচ্ছে"
+msgstr "সফ্টওয়্যার ক্যাটালগ ডাউনলোড করা হচ্ছে"
 
 #: src/gs-loading-page.ui:6
 msgid "Loading page"
@@ -4154,9 +4074,8 @@ msgid ""
 msgstr ""
 
 #: src/gs-metered-data-dialog.ui:17
-#, fuzzy
 msgid "Open Network _Settings"
-msgstr "নেটওয়ার্ক সেটিংস"
+msgstr "নেটওয়ার্ক_সেটিংস খুলুন"
 
 #: src/gs-moderate-page.ui:6
 msgid "Moderate page"
@@ -4167,9 +4086,8 @@ msgid "There are no reviews to moderate"
 msgstr "পরীক্ষা করার জন্য কোন রিভিউ নেই"
 
 #: src/gs-origin-popover-row.c:105
-#, fuzzy
 msgid "Unknown source"
-msgstr "অপরিচিত"
+msgstr "অজানা উৎস"
 
 #. Translators: It's like a beta version of the software, a test version
 #: src/gs-origin-popover-row.ui:108
@@ -4196,7 +4114,6 @@ msgstr ""
 #. TRANSLATORS: This is the header for package updates during
 #. * a system update
 #: src/gs-os-update-page.c:258
-#, fuzzy
 msgctxt "Packages to be updated during a system upgrade"
 msgid "Updates"
 msgstr "_আপডেটসমূহ"
@@ -4216,11 +4133,13 @@ msgstr ""
 
 #. Translators: This is the third party repositories info bar. The %s is replaced with "selected external sources" link.
 #: src/gs-overview-page.c:878
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Provides access to additional software from %s. Some proprietary software is "
 "included."
-msgstr "ওয়েব ব্রাউজার ও খেলাসহ, অতিরিক্ত সফটওয়্যারে প্রবেশাধিকার দেয়।"
+msgstr ""
+"%s থেকে অতিরিক্ত সফ্টওয়্যার অ্যাক্সেস প্রদান করে। কিছু মালিকানাধীন "
+"সফ্টওয়্যারও এর অন্তর্ভুক্ত।"
 
 #. TRANSLATORS: button to turn on third party software repositories
 #. TRANSLATORS: button to accept the agreement
@@ -4239,25 +4158,22 @@ msgid "Overview page"
 msgstr "পরিচিতি পাতা"
 
 #: src/gs-overview-page.ui:35
-#, fuzzy
 msgid "Enable Third Party Software Repositories?"
-msgstr "তৃতীয়-পক্ষ সফটওয়্যার উৎস সচল করুন?"
+msgstr "তৃতীয়-পক্ষ থেকে প্রাপ্ত সফটওয়্যার উৎস সচল করবেন?"
 
 #. Translators: This is a heading for a list of categories.
 #: src/gs-overview-page.ui:180
-#, fuzzy
 msgid "Other Categories"
-msgstr "বিভাগ"
+msgstr "অন্যান্য বিভাগ"
 
 #: src/gs-overview-page.ui:221
 msgid "No Application Data Found"
 msgstr "কোন এ্যাপ্লিকেশন তথ্য পাওয়া যায়নি"
 
 #: lib/gs-plugin-loader.c:2825
-#, fuzzy
 msgctxt "Distribution name"
 msgid "Unknown"
-msgstr "অপরিচিত"
+msgstr "অজানা"
 
 #: src/gs-page.c:274
 msgid "User declined installation"
@@ -4273,34 +4189,34 @@ msgstr "%s তৈরি করুন"
 #. TRANSLATORS: this is a prompt message, and '%s' is an
 #. * repository name, e.g. 'GNOME Nightly'
 #: src/gs-page.c:518
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to remove the %s repository?"
-msgstr "আপনি কি নিশ্চিত আপনি %s উ্ৎসটি মুছতে চান?"
+msgstr "আপনি কি নিশ্চিত আপনি %s উৎসটি মুছতে চান?"
 
 #. TRANSLATORS: longer dialog text
 #: src/gs-page.c:522
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "All applications from %s will be uninstalled, and you will have to re-"
 "install the repository to use them again."
 msgstr ""
-"%s থেকে সকল এ্যাপ্লিকেশন মুছে ফেলা হবে, এবং এদের ব্যবহার করতে হলে আপনাকে আবার "
-"উৎসটি পুনঃসংস্থাপন করতে হবে।"
+"%s থেকে সকল এ্যাপ্লিকেশন মুছে ফেলা হবে, এদের পুনরায় ব্যবহার করতে হলে আপনাকে "
+"আবার উৎসটি পুনঃসংস্থাপন করতে হবে।"
 
 #. TRANSLATORS: this is a prompt message, and '%s' is an
 #. * application summary, e.g. 'GNOME Clocks'
 #: src/gs-page.c:530
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to uninstall %s?"
 msgstr "আপনি কি নিশ্চিত আপনি %s মুছতে চান?"
 
 #. TRANSLATORS: longer dialog text
 #: src/gs-page.c:533
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s will be uninstalled, and you will have to install it to use it again."
 msgstr ""
-"%s মুছে ফেলা হবে, এবং এটা ব্যবহার করতে হলে আপনাকে আবার সংস্থাপিত করতে হবে।"
+"%s মুছে ফেলা হবে, এটা আবার ব্যবহার করতে হলে আপনাকে পুনরায় ইন্সটল করতে হবে।"
 
 #: src/gs-prefs-dialog.ui:5
 msgid "Update Preferences"
@@ -4370,9 +4286,8 @@ msgstr ""
 
 #. TRANSLATORS: this is button text to remove a repo
 #: src/gs-repos-dialog.c:257
-#, fuzzy
 msgid "_Remove"
-msgstr "মুছে ফেলা হয়েছে"
+msgstr "_অপসারণ"
 
 #: src/gs-repos-dialog.c:508
 msgid "Enable New Repositories"
@@ -4385,7 +4300,6 @@ msgstr ""
 #. TRANSLATORS: this is the clickable
 #. * link on the third party repositories info bar
 #: src/gs-repos-dialog.c:518
-#, fuzzy
 msgid "more information"
 msgstr "আরো তথ্য"
 
@@ -4416,7 +4330,6 @@ msgstr ""
 
 #. button in the info bar
 #: src/gs-repos-dialog.ui:8 src/gs-shell.ui:88
-#, fuzzy
 msgid "Software Repositories"
 msgstr "সফটওয়্যার উৎস"
 
@@ -4598,10 +4511,9 @@ msgstr ""
 
 #. TRANSLATORS: this is when a user doesn't specify a name
 #: src/gs-review-row.c:56
-#, fuzzy
 msgctxt "Reviewer name"
 msgid "Unknown"
-msgstr "অপরিচিত"
+msgstr "অজানা"
 
 #. TRANSLATORS: we explain what the action is going to do
 #: src/gs-review-row.c:220
@@ -4679,9 +4591,8 @@ msgstr ""
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:172
-#, fuzzy
 msgid "Network Access"
-msgstr "নেটওয়ার্ক সেটিংস"
+msgstr "নেটওয়ার্ক অ্যাক্সেস"
 
 #: src/gs-safety-context-dialog.c:173
 msgid "Can access the internet"
@@ -4689,9 +4600,8 @@ msgstr ""
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:176
-#, fuzzy
 msgid "No Network Access"
-msgstr "নেটওয়ার্ক নেই"
+msgstr "নেটওয়ার্ক অ্যাক্সেস নেই"
 
 #: src/gs-safety-context-dialog.c:177
 msgid "Cannot access the internet"
@@ -4745,9 +4655,8 @@ msgstr ""
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:226
-#, fuzzy
 msgid "User Settings"
-msgstr "নেটওয়ার্ক সেটিংস"
+msgstr "ব্যবহারকারী সেটিংস"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:238
@@ -4822,9 +4731,8 @@ msgstr ""
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:341
-#, fuzzy
 msgid "Proprietary Code"
-msgstr "মালিকানা"
+msgstr "মালিকানাধীন কোড"
 
 #: src/gs-safety-context-dialog.c:342
 msgid ""
@@ -4867,23 +4775,23 @@ msgstr ""
 #. Translators: The app is considered safe to install and run.
 #. * The placeholder is the app name.
 #: src/gs-safety-context-dialog.c:376
-#, fuzzy, c-format
+#, c-format
 msgid "%s is safe"
-msgstr "%s এখন সংস্থাপিত হয়েছে"
+msgstr "%s টি নিরাপদ"
 
 #. Translators: The app is considered potentially unsafe to install and run.
 #. * The placeholder is the app name.
 #: src/gs-safety-context-dialog.c:383
-#, fuzzy, c-format
+#, c-format
 msgid "%s is potentially unsafe"
-msgstr "%s এখন সংস্থাপিত হয়েছে"
+msgstr "%s টি সম্ভাব্য অনিরাপদ"
 
 #. Translators: The app is considered unsafe to install and run.
 #. * The placeholder is the app name.
 #: src/gs-safety-context-dialog.c:390
-#, fuzzy, c-format
+#, c-format
 msgid "%s is unsafe"
-msgstr "%s এখন সংস্থাপিত হয়েছে"
+msgstr "%s টি অনিরাপদ"
 
 #. Translators: This is the title of the dialog which contains information about the permissions of an app
 #: src/gs-safety-context-dialog.ui:5
@@ -4909,15 +4817,13 @@ msgstr ""
 
 #. Translators: This is the accessible description for a button to go to the previous screenshot in the screenshot carousel.
 #: src/gs-screenshot-carousel.ui:46
-#, fuzzy
 msgid "Previous Screenshot"
-msgstr "স্ক্রিনশট"
+msgstr "পূর্ববর্তী স্ক্রিনশট"
 
 #. Translators: This is the accessible description for a button to go to the next screenshot in the screenshot carousel.
 #: src/gs-screenshot-carousel.ui:74
-#, fuzzy
 msgid "Next Screenshot"
-msgstr "স্ক্রিনশট"
+msgstr "পরবর্তী স্ক্রিনশট"
 
 #: src/gs-screenshot-carousel.ui:127
 msgid "No screenshot provided"
@@ -4976,9 +4882,8 @@ msgid "Search page"
 msgstr "অনুসন্ধান পাতা"
 
 #: src/gs-search-page.ui:17
-#, fuzzy
 msgid "Search for Apps"
-msgstr "এ্যাপ্লিকেশন অনুসন্ধান"
+msgstr "অ্যাপস অনুসন্ধান করুন"
 
 #: src/gs-search-page.ui:46
 msgid "No Application Found"
@@ -5277,9 +5182,9 @@ msgstr ""
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1618
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to install updates"
-msgstr "আপডেট সংস্থাপিত করা হয়েছে"
+msgstr "আপডেটগুলি ইনস্টল করতে অক্ষম"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the first %s is the distro name (e.g. "Fedora 25") and
@@ -5456,12 +5361,10 @@ msgstr ""
 
 #. TRANSLATORS: not enough juice to do this safely
 #: src/gs-shell.c:1980
-#, fuzzy
 msgid "The battery level is too low"
-msgstr "এই সারাংশটি বেশি লম্বা"
+msgstr "ব্যাটারির স্তর খুব কম"
 
 #: src/gs-shell.ui:7
-#, fuzzy
 msgid "_Software Repositories"
 msgstr "_সফটওয়্যার উৎস"
 
@@ -5500,13 +5403,11 @@ msgid "Primary Menu"
 msgstr ""
 
 #: src/gs-shell.ui:274
-#, fuzzy
 msgid "Find Out _More"
 msgstr "আরো জানুন..."
 
 #. Translators: A label for a button to show only updates which are available to install.
 #: src/gs-shell.ui:328
-#, fuzzy
 msgctxt "Header bar button for list of apps to be updated"
 msgid "Updates"
 msgstr "_আপডেটসমূহ"
@@ -5520,9 +5421,8 @@ msgid "None"
 msgstr ""
 
 #: src/gs-storage-context-dialog.c:139
-#, fuzzy
 msgid "Application Data"
-msgstr "কোন এ্যাপ্লিকেশন তথ্য পাওয়া যায়নি"
+msgstr "অ্যাপ্লিকেশন ডেটা"
 
 #: src/gs-storage-context-dialog.c:140
 msgid "Data needed for the application to run"
@@ -5545,9 +5445,8 @@ msgid "Temporary cached data"
 msgstr ""
 
 #: src/gs-storage-context-dialog.c:172
-#, fuzzy
 msgid "The application itself"
-msgstr "%u এ্যাপ্লিকেশনসমূহ সংস্থাপিত"
+msgstr "অ্যাপ্লিকেশনটি স্বয়ং"
 
 #: src/gs-storage-context-dialog.c:177
 msgid "Required Dependencies"
@@ -5558,10 +5457,9 @@ msgid "Shared system components required by this application"
 msgstr ""
 
 #: src/gs-storage-context-dialog.c:188
-#, fuzzy
 msgctxt "Download size"
 msgid "Unknown"
-msgstr "অপরিচিত"
+msgstr "অজানা"
 
 #. Translators: This is the title of the dialog which contains information about the storage or download size needed for an app
 #: src/gs-storage-context-dialog.ui:5
@@ -5605,53 +5503,44 @@ msgid "Installed on %s"
 msgstr "%s সংস্থাপিত"
 
 #: src/gs-update-dialog.ui:77
-#, fuzzy
 msgid "No Updates Installed"
-msgstr "সফটওয়্যার আপডেট সংস্থাপন করা হয়েছে"
+msgstr "কোনো আপডেট ইনস্টল করা হয়নি"
 
 #: src/gs-update-monitor.c:213
-#, fuzzy
 msgid "Software Updates Are Out of Date"
-msgstr "সফটওয়্যার আপডেট করা ব্যর্থ"
+msgstr "সফ্টওয়্যার আপডেটগুলি মেয়াদোত্তীর্ণ"
 
 #: src/gs-update-monitor.c:214
-#, fuzzy
 msgid "Please check for software updates."
-msgstr "আপডেট খোঁজ করেন"
+msgstr "সফ্টওয়্যার আপডেটের জন্য অনুগ্রহ করে চেক করুন।"
 
 #: src/gs-update-monitor.c:220
-#, fuzzy
 msgid "Critical Software Update Ready to Install"
-msgstr "সফটওয়্যার আপডেট সংস্থাপন করা হয়েছে"
+msgstr "জরুরি সফটওয়্যার আপডেট ইনস্টল করার জন্য প্রস্তুত"
 
 #: src/gs-update-monitor.c:221
-#, fuzzy
 msgid "An important software update is ready to be installed."
-msgstr "একটি গুরুত্বপূর্ণ OS আপডেট সংস্থাপনে ব্যর্থ হয়েছে।"
+msgstr "একটি গুরুত্বপূর্ণ সফ্টওয়্যার আপডেট ইনস্টল করার জন্য প্রস্তুত।"
 
 #: src/gs-update-monitor.c:224
-#, fuzzy
 msgid "Critical Software Updates Available to Download"
-msgstr "সফটওয়্যার আপডেট পাওয়া যাবে"
+msgstr "জরুরি সফ্টওয়্যার আপডেটগুলি ডাউনলোডের জন্য উপলব্ধ"
 
 #: src/gs-update-monitor.c:225
 msgid "Important: critical software updates are waiting."
 msgstr ""
 
 #: src/gs-update-monitor.c:231
-#, fuzzy
 msgid "Software Updates Ready to Install"
-msgstr "সফটওয়্যার আপডেট সংস্থাপন করা হয়েছে"
+msgstr "সফ্টওয়্যার আপডেটগুলি ইনস্টল করার জন্য প্রস্তুত"
 
 #: src/gs-update-monitor.c:232
-#, fuzzy
 msgid "Software updates are waiting and ready to be installed."
-msgstr "একটি গুরুত্বপূর্ণ OS আপডেট সংস্থাপনে ব্যর্থ হয়েছে।"
+msgstr "সফ্টওয়্যার আপডেট অপেক্ষমান এবং ইনস্টল করার জন্য প্রস্তুত।"
 
 #: src/gs-update-monitor.c:238
-#, fuzzy
 msgid "Software Updates Available to Download"
-msgstr "সফটওয়্যার আপডেট পাওয়া যাবে"
+msgstr "সফ্টওয়্যার আপডেটগুলি ডাউনলোডের জন্য উপলব্ধ"
 
 #: src/gs-update-monitor.c:239
 msgid "Please download waiting software updates."
@@ -5667,11 +5556,11 @@ msgstr[1] ""
 
 #. TRANSLATORS: apps were auto-updated
 #: src/gs-update-monitor.c:361
-#, fuzzy, c-format
+#, c-format
 msgid "%u Application Updated"
 msgid_plural "%u Applications Updated"
-msgstr[0] "%u এ্যাপ্লিকেশনসমূহ সংস্থাপিত"
-msgstr[1] "%u এ্যাপ্লিকেশনসমূহ সংস্থাপিত"
+msgstr[0] "%u অ্যাপ্লিকেশনটি আপডেট করা হয়েছে"
+msgstr[1] "%u অ্যাপ্লিকেশনগুলি আপডেট করা হয়েছে"
 
 #. TRANSLATORS: %1 is an application name, e.g. Firefox
 #: src/gs-update-monitor.c:372
@@ -5681,9 +5570,8 @@ msgstr ""
 
 #. TRANSLATORS: the app needs restarting
 #: src/gs-update-monitor.c:375
-#, fuzzy
 msgid "Please restart the application."
-msgstr "নির্বাচিত এ্যাড-অনসমূহ এ্যাপ্লিকেশনের সাথে সংস্থাপিত হবে।"
+msgstr "অনুগ্রহ করে অ্যাপ্লিকেশনটি পুনরায় চালু করুন।"
 
 #. TRANSLATORS: %1 and %2 are both application names, e.g. Firefox
 #: src/gs-update-monitor.c:383
@@ -5693,11 +5581,11 @@ msgstr ""
 
 #. TRANSLATORS: at least one application needs restarting
 #: src/gs-update-monitor.c:389 src/gs-update-monitor.c:408
-#, fuzzy, c-format
+#, c-format
 msgid "%u application requires a restart."
 msgid_plural "%u applications require a restart."
-msgstr[0] "%u এ্যাপ্লিকেশনসমূহ সংস্থাপিত"
-msgstr[1] "%u এ্যাপ্লিকেশনসমূহ সংস্থাপিত"
+msgstr[0] "%u অ্যাপ্লিকেশনটি রিস্টার্ট করা প্রয়োজন।"
+msgstr[1] "%u অ্যাপ্লিকেশনটি রিস্টার্ট করা প্রয়োজন।"
 
 #. TRANSLATORS: %1, %2 and %3 are all application names, e.g. Firefox
 #: src/gs-update-monitor.c:401
@@ -5734,7 +5622,6 @@ msgstr "সফটওয়্যার আপডেট করা ব্যর্থ
 
 #. TRANSLATORS: message when we offline updates have failed
 #: src/gs-update-monitor.c:1139
-#, fuzzy
 msgid "An important operating system update failed to be installed."
 msgstr "একটি গুরুত্বপূর্ণ OS আপডেট সংস্থাপনে ব্যর্থ হয়েছে।"
 
@@ -5751,9 +5638,9 @@ msgstr ""
 #. * distro upgrade. First %s is the distro name and the 2nd %s
 #. * is the version, e.g. "Welcome to Fedora 28!"
 #: src/gs-update-monitor.c:1167
-#, fuzzy, c-format
+#, c-format
 msgid "Welcome to %s %s!"
-msgstr "সফটওয়্যারে স্বাগতম"
+msgstr "%s %s-এ আপনাকে স্বাগতম!"
 
 #. TRANSLATORS: title when we've done offline updates
 #: src/gs-update-monitor.c:1173
@@ -5764,11 +5651,10 @@ msgstr[1] "সফটওয়্যার আপডেট সংস্থাপন 
 
 #. TRANSLATORS: message when we've done offline updates
 #: src/gs-update-monitor.c:1177
-#, fuzzy
 msgid "An important operating system update has been installed."
 msgid_plural "Important operating system updates have been installed."
 msgstr[0] "একটি গুরুত্বপূর্ণ OS আপডেট সংস্থাপন করা হয়েছে।"
-msgstr[1] "গুরুত্বপূর্ণ OS আপডেট সংস্থাপন করা হয়েছে।"
+msgstr[1] "গুরুত্বপূর্ণ OS আপডেটসমূহ সংস্থাপন করা হয়েছে।"
 
 #. TRANSLATORS: Button to look at the updates that were installed.
 #. * Note that it has nothing to do with the application reviews, the
@@ -5861,9 +5747,8 @@ msgstr ""
 
 #. TRANSLATORS: this is to explain that downloading updates may cost money
 #: src/gs-updates-page.c:849
-#, fuzzy
 msgid "Charges May Apply"
-msgstr "মূল্য পরিশোধ করতে হতে পারে"
+msgstr "চার্জ প্রযোজ্য হতে পারে"
 
 #. TRANSLATORS: we need network
 #. * to do the updates check
@@ -5878,7 +5763,6 @@ msgstr ""
 #. TRANSLATORS: this is a link to the
 #. * control-center network panel
 #: src/gs-updates-page.c:857
-#, fuzzy
 msgid "Check _Anyway"
 msgstr "তবুও খোঁজ করুন"
 
@@ -5898,10 +5782,9 @@ msgid "Check for updates"
 msgstr "আপডেট খোঁজ করেন"
 
 #: src/gs-updates-page.c:1286
-#, fuzzy
 msgctxt "Apps to be updated"
 msgid "Updates"
-msgstr "_আপডেটসমূহ"
+msgstr "আপডেটসমূহ"
 
 #: src/gs-updates-page.ui:6
 msgid "Updates page"
@@ -5909,15 +5792,13 @@ msgstr "আপডেট পাতা"
 
 #. TRANSLATORS: the updates panel is starting up.
 #: src/gs-updates-page.ui:82
-#, fuzzy
 msgid "Loading Updates…"
-msgstr "পাতা জমা হচ্ছে"
+msgstr "আপডেটগুলি লোড হচ্ছে…"
 
 #. TRANSLATORS: the updates panel is starting up.
 #: src/gs-updates-page.ui:95
-#, fuzzy
 msgid "This could take a while."
-msgstr "(একটু সময় লাগতে পারে)"
+msgstr "এতে কিছুটা সময় লাগতে পারে।"
 
 #. TRANSLATORS: This means all software (plural) installed on this system is up to date.
 #: src/gs-updates-page.ui:203
@@ -5929,13 +5810,12 @@ msgid "Use Mobile Data?"
 msgstr ""
 
 #: src/gs-updates-page.ui:243
-#, fuzzy
 msgid ""
 "Checking for updates when using mobile broadband could cause you to incur "
 "charges."
 msgstr ""
-"মোবাইলে ব্রডব্যান্ড ব্যবহার করার সময় আপডেট খোঁজ করতে গেলে আপনাকে মূল্য পরিশোধ করতে "
-"হতে পারে"
+"মোবাইলে ব্রডব্যান্ড ব্যবহার করার সময় আপডেট খোঁজ করতে গেলে আপনাকে মূল্য পরিশো"
+"ধ করতে হতে পারে।"
 
 #: src/gs-updates-page.ui:246
 msgid "_Check Anyway"
@@ -5946,9 +5826,8 @@ msgid "No Connection"
 msgstr ""
 
 #: src/gs-updates-page.ui:263
-#, fuzzy
 msgid "Go online to check for updates."
-msgstr "আপডেট খোঁজ করতে অনলাইনে যান"
+msgstr "আপডেট খোঁজ করতে অনলাইনে যান।"
 
 #: src/gs-updates-page.ui:266
 msgid "_Network Settings"
@@ -5959,9 +5838,8 @@ msgid "Error"
 msgstr ""
 
 #: src/gs-updates-page.ui:296
-#, fuzzy
 msgid "Updates are automatically managed."
-msgstr "আপডেটসমূহ স্বয়ংক্রিয়ভাবে পরিচালিত হয়"
+msgstr "আপডেটসমূহ স্বয়ংক্রিয়ভাবে পরিচালিত হয়।"
 
 #. TRANSLATORS: This is the button for installing all
 #. * offline updates
@@ -6008,26 +5886,25 @@ msgstr "_ডাউনলোড"
 #. * upgrade is available. The first %s is the distro name
 #. * and the 2nd %s is the version, e.g. "Fedora 35 Available"
 #: src/gs-upgrade-banner.c:90
-#, fuzzy, c-format
+#, c-format
 msgid "%s %s Available"
-msgstr "%s %s এখন পাওয়া যাবে"
+msgstr "%s %s এখন উপলব্ধ"
 
 #. TRANSLATORS: This is the text displayed when a distro
 #. * upgrade is available. The %s is the distro name,
 #. * e.g. "GNOME OS Available"
 #: src/gs-upgrade-banner.c:95
-#, fuzzy, c-format
+#, c-format
 msgid "%s Available"
-msgstr "%s %s এখন পাওয়া যাবে"
+msgstr "%s এখন উপলব্ধ"
 
 #: src/gs-upgrade-banner.c:143
 msgid "Learn about the new version"
 msgstr ""
 
 #: src/gs-upgrade-banner.c:167
-#, fuzzy
 msgid "Downloading…"
-msgstr "%s %s ডাউনলোড করা হচ্ছে"
+msgstr "ডাউনলোড করা হচ্ছে…"
 
 #. Translators: the first '%s' is replaced with the downloaded size, the second '%s'
 #. with the total download size, forming text like "135 MB of 2 GB downloaded"
