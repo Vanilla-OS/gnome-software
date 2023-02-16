@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-16 17:29+0000\n"
+"PO-Revision-Date: 2023-02-17 22:27+0000\n"
 "Last-Translator: Matt C <matei.gurzu@gmail.com>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/ro/>\n"
@@ -29,9 +29,8 @@ msgid "Software"
 msgstr "Aplicații"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:8
-#, fuzzy
 msgid "Install and update apps"
-msgstr "Actualizări instalate"
+msgstr "Instalarea și actualizarea aplicațiilor"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:10
 msgid ""
@@ -42,18 +41,17 @@ msgstr ""
 "sistem sau să eliminați aplicații deja instalate."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:14
-#, fuzzy
 msgid ""
 "Software showcases featured and popular applications with useful "
 "descriptions and multiple screenshots per application. Applications can be "
 "found either through browsing the list of categories or by searching. It "
 "also allows you to update your system using an offline update."
 msgstr ""
-"Aplicații GNOME prezintă aplicații recomandate și populare care conțin "
-"descrieri folositoare și capturi de ecran multiple pentru fiecare aplicație. "
-"Acestea pot fi găsite fie prin răsfoirea listei categoriilor fie printr-o "
-"simplă căutare. Vă permite, de asemenea, să actualizați sistemul prin "
-"intermediul unei actualizări în modul deconectat."
+"Software-ul prezintă aplicații recomandate și populare cu descrieri utile și "
+"multiple capturi de ecran pentru fiecare aplicație. Aplicațiile pot fi "
+"găsite fie prin parcurgerea listei de categorii, fie prin căutare. De "
+"asemenea, vă permite să vă actualizați sistemul utilizând o actualizare "
+"offline."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:25
 msgid "Overview panel"
@@ -79,7 +77,7 @@ msgstr "Detaliile actualizărilor"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:71
 msgid "This is a stable release with translation updates:"
-msgstr ""
+msgstr "Aceasta este o versiune stabilă cu actualizări de traduceri:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:73
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:197
@@ -87,7 +85,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:373
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:492
 msgid "Bulgarian"
-msgstr ""
+msgstr "Bulgară"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:74
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:107
@@ -104,7 +102,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:638
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:686
 msgid "Catalan"
-msgstr ""
+msgstr "Catalană"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:75
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:200
@@ -112,7 +110,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:533
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:687
 msgid "Chinese (Taiwan)"
-msgstr ""
+msgstr "Chineză (Taiwan)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:76
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:202
@@ -123,7 +121,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:639
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:688
 msgid "Czech"
-msgstr ""
+msgstr "Cehă"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:77
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:205
@@ -132,7 +130,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:536
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:600
 msgid "English (United Kingdom)"
-msgstr ""
+msgstr "Engleză (Regatul Unit)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:78
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:113
@@ -147,14 +145,14 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:640
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:690
 msgid "Galician"
-msgstr ""
+msgstr "Galiciană"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:79
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:114
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:147
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:210
 msgid "Georgian"
-msgstr ""
+msgstr "Georgian"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:80
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:211
@@ -166,7 +164,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:605
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:691
 msgid "German"
-msgstr ""
+msgstr "Germană"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:81
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:115
@@ -179,7 +177,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:541
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:693
 msgid "Hebrew"
-msgstr ""
+msgstr "Ebraică"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:82
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:213
@@ -187,20 +185,20 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:428
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:606
 msgid "Hungarian"
-msgstr ""
+msgstr "Maghiară"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:83
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:116
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:332
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:383
 msgid "Icelandic"
-msgstr ""
+msgstr "Islandeză"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:84
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:385
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:698
 msgid "Latvian"
-msgstr ""
+msgstr "Letonă"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:85
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:119
@@ -215,13 +213,13 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:610
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:699
 msgid "Lithuanian"
-msgstr ""
+msgstr "Lituaniană"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:86
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:216
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:544
 msgid "Nepali"
-msgstr ""
+msgstr "Nepaleză"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:87
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:125
@@ -233,7 +231,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:577
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:615
 msgid "Serbian"
-msgstr ""
+msgstr "Sârbă"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:88
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:224
@@ -247,7 +245,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:616
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:644
 msgid "Slovenian"
-msgstr ""
+msgstr "Slovenă"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:89
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:126
@@ -263,7 +261,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:645
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:705
 msgid "Spanish"
-msgstr ""
+msgstr "Spaniolă"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:90
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:226
@@ -275,28 +273,27 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:618
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:646
 msgid "Swedish"
-msgstr ""
+msgstr "Suedeză"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:96
 msgid "This is the third unstable release for GNOME 43."
-msgstr ""
+msgstr "Aceasta este a treia versiune instabilă pentru GNOME 43."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:98
-#, fuzzy
 msgid "Supports video as a screenshot"
-msgstr "Suportă utilizarea pe un ecran mic"
+msgstr "Suportă video ca o captură de ecran"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:99
 msgid "Improvements of source picker in the details page"
-msgstr ""
+msgstr "Îmbunătățiri ale selectorului de surse din pagina de detalii"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:100
 msgid "Fixes a bug when viewing details of a package file"
-msgstr ""
+msgstr "Remediază o eroare la vizualizarea detaliilor unui fișier pachet"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:101
 msgid "Fixes a bug when reading certain .flatpakref file"
-msgstr ""
+msgstr "Remediază o eroare la citirea anumitor fișiere .flatpakref"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:103
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:141
@@ -311,12 +308,12 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:526
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:682
 msgid "This release also updates translations:"
-msgstr ""
+msgstr "Această versiune actualizează și traducerile:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:105
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:143
 msgid "Abkhazian"
-msgstr ""
+msgstr "Abhază"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:106
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:196
@@ -329,7 +326,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:595
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:684
 msgid "Basque"
-msgstr ""
+msgstr "Bască"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:108
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:145
@@ -342,7 +339,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:458
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:532
 msgid "Chinese (China)"
-msgstr ""
+msgstr "Chineză (China)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:109
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:201
@@ -352,7 +349,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:460
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:597
 msgid "Croatian"
-msgstr ""
+msgstr "Croată"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:110
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:203
@@ -361,7 +358,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:422
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:571
 msgid "Danish"
-msgstr ""
+msgstr "Daneză"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:111
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:146
@@ -371,7 +368,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:535
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:599
 msgid "Dutch"
-msgstr ""
+msgstr "Olandeză"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:112
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:206
@@ -381,7 +378,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:537
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:601
 msgid "Finnish"
-msgstr ""
+msgstr "Finlandeză"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:117
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:149
@@ -395,7 +392,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:641
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:694
 msgid "Indonesian"
-msgstr ""
+msgstr "Indoneziană"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:118
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:291
@@ -403,7 +400,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:466
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:609
 msgid "Korean"
-msgstr ""
+msgstr "Coreeană"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:120
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:152
@@ -416,9 +413,8 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:546
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:611
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:700
-#, fuzzy
 msgid "Persian"
-msgstr "Versiune"
+msgstr "Persană"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:121
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:219
@@ -426,9 +422,8 @@ msgstr "Versiune"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:433
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:547
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:575
-#, fuzzy
 msgid "Polish"
-msgstr "Politică"
+msgstr "Lustrui"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:122
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:153
@@ -444,7 +439,7 @@ msgstr "Politică"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:643
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:701
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugheză"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:123
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:221
@@ -458,7 +453,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:613
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:702
 msgid "Portuguese (Brazil)"
-msgstr ""
+msgstr "Portugheză (Brazilia)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:124
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:154
@@ -470,7 +465,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:437
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:551
 msgid "Russian"
-msgstr ""
+msgstr "Rusă"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:127
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:157
@@ -480,7 +475,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:619
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:706
 msgid "Turkish"
-msgstr ""
+msgstr "Turcă"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:128
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:158
@@ -495,119 +490,135 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:620
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:707
 msgid "Ukrainian"
-msgstr ""
+msgstr "Ucraineană"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:134
 msgid "This is the second unstable release for GNOME 43."
-msgstr ""
+msgstr "Aceasta este a doua versiune instabilă pentru GNOME 43."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:136
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:237
 msgid "Various fixes related to changed threading model"
-msgstr ""
+msgstr "Diverse remedieri legate de modificarea modelului de filetare"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:137
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:349
 msgid "Various UI parts updated"
-msgstr ""
+msgstr "Diverse părți ale interfeței de utilizare actualizate"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:138
 msgid "Sources dropdown had been reworked"
-msgstr ""
+msgstr "Lista derulantă a surselor a fost refăcută"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:139
 msgid "Fixes a rare crash when showing app details"
-msgstr ""
+msgstr "Corectează o eroare rară la afișarea detaliilor aplicației"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:150
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:542
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:573
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:695
 msgid "Italian"
-msgstr ""
+msgstr "Italiană"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:159
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:229
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:399
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:708
 msgid "Vietnamese"
-msgstr ""
+msgstr "Vietnameză"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:165
 msgid "This is the first unstable release for GNOME 43."
-msgstr ""
+msgstr "Aceasta este prima versiune instabilă pentru GNOME 43."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:167
 msgid "Various improvements to notifications"
-msgstr ""
+msgstr "Diverse îmbunătățiri ale notificărilor"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:168
 msgid "Fix several crashes when handling flatpak apps"
-msgstr ""
+msgstr "Remedierea mai multor blocări la gestionarea aplicațiilor flatpak"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:169
 msgid "Add ‘Other Apps by Author’ section in the app details page"
 msgstr ""
+"Adăugați secțiunea \"Alte aplicații ale autorului\" în pagina de detalii a "
+"aplicației"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:170
 msgid "Improve styling of app context lozenges"
-msgstr ""
+msgstr "Îmbunătățiți stilul pastilelor contextuale ale aplicațiilor"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:171
 msgid ""
 "Add ‘Available for Distro’ section to the overview page (if configured by "
 "your distribution)"
 msgstr ""
+"Adăugați secțiunea \"Disponibil pentru distribuție\" la pagina de prezentare "
+"generală (dacă este configurată de distribuția dvs.)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:172
 msgid ""
 "Show more details about file system permissions requested by flatpak apps"
 msgstr ""
+"Afișați mai multe detalii despre permisiunile sistemului de fișiere "
+"solicitate de aplicațiile flatpak"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:173
 msgid "Show more types of URI from app metainfo"
-msgstr ""
+msgstr "Afișați mai multe tipuri de URI din metainformațiile aplicației"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:174
 msgid "Fix a few issues when using a dark mode theme"
 msgstr ""
+"Remedierea câtorva probleme atunci când utilizați o temă în modul întunecat"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:175
 msgid "Fix some issues with arrows in right-to-left locales"
 msgstr ""
+"Remedierea unor probleme cu săgețile din setările regionale de la dreapta la "
+"stânga"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:176
 msgid "Fix language pack installation for certain locales"
 msgstr ""
+"Remedierea instalării pachetului lingvistic pentru anumite setări regionale"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:177
 msgid "Improve debug output to make user bug reports more useful"
 msgstr ""
+"Îmbunătățiți rezultatul de depanare pentru a face rapoartele de erori ale "
+"utilizatorilor mai utile"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:178
 msgid "Add `--uninstall=ID` command line option"
-msgstr ""
+msgstr "Adăugați opțiunea de linie de comandă `--uninstall=ID`"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:179
 msgid ""
 "Allow scrolling screenshots by clicking on next and previous screenshots"
 msgstr ""
+"Permiteți derularea capturilor de ecran făcând clic pe capturile de ecran "
+"următoare și anterioare"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:180
 msgid "Add support for webapps"
-msgstr ""
+msgstr "Adăugați suport pentru aplicații web"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:181
 msgid "Allow swiping back in the shell using touch gestures"
-msgstr ""
+msgstr "Permiteți glisarea înapoi în shell folosind gesturi tactile"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:182
 msgid "Improved caching of downloaded metadata"
-msgstr ""
+msgstr "Îmbunătățirea memorării în cache a metadatelor descărcate"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:183
 msgid "Many internal architectural changes to make the code more maintainable"
 msgstr ""
+"Multe schimbări arhitecturale interne pentru a face codul mai ușor de "
+"întreținut"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:184
 msgid ""
@@ -615,19 +626,25 @@ msgid ""
 "distribution vendors wishing to mark their apps as popular should see `doc/"
 "vendor-customisation.md` for examples of how to do this now"
 msgstr ""
+"Cheia <code>popular-overrides</code> GSettings a fost eliminată; furnizorii "
+"de distribuție care doresc să-și marcheze aplicațiile ca fiind populare ar "
+"trebui să consulte `doc/vendor-customisation.md` pentru exemple despre cum "
+"să facă acest lucru acum"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:189
 msgid ""
 "The <code>hardcoded_popular</code> Meson option has been renamed to "
 "<code>hardcoded_curated</code>."
 msgstr ""
+"Opțiunea Meson <code>hardcoded_popular</code> a fost redenumită "
+"<code>hardcoded_curated</code>."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:207
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:249
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:425
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:602
 msgid "French"
-msgstr ""
+msgstr "Franceză"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:208
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:287
@@ -637,7 +654,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:603
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:689
 msgid "Friulian"
-msgstr ""
+msgstr "Friulian"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:217
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:256
@@ -648,124 +665,131 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:498
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:545
 msgid "Occitan (post 1500)"
-msgstr ""
+msgstr "Occitană (după 1500)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:235
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:405
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:561
 msgid "This is a stable release with the following changes:"
-msgstr ""
+msgstr "Aceasta este o versiune stabilă cu următoarele modificări:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:238
 msgid "Added several appstream-related fixes"
-msgstr ""
+msgstr "Au fost adăugate mai multe remedieri legate de appstream"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:243
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:530
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:685
 msgid "Bokmål, Norwegian"
-msgstr ""
+msgstr "Bokmål, Norvegiană"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:253
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:334
 msgid "Japanese"
-msgstr ""
+msgstr "Japoneză"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:254
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:465
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:608
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:697
 msgid "Kazakh"
-msgstr ""
+msgstr "Kazahă"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:268
 msgid "This is the third unstable release for GNOME 42."
-msgstr ""
+msgstr "Aceasta este cea de-a treia versiune instabilă pentru GNOME 42."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:270
 msgid "Cancel ongoing update downloads when system power is low"
 msgstr ""
+"Anulați descărcările de actualizări în curs de desfășurare atunci când "
+"nivelul bateriei este scăzut"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:271
 msgid "Numerous small user interface fixes and tweaks"
-msgstr ""
+msgstr "Numeroase mici remedieri și ajustări ale interfeței utilizator"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:272
-#, fuzzy
 msgid "Prioritize full matches in search results"
-msgstr "Arată programe nelibere în rezultatele căutării"
+msgstr "Prioritizează potrivirile complete în rezultatele căutării"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:273
 msgid "Improvements in dark mode"
-msgstr ""
+msgstr "Îmbunătățiri la modul întunecat"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:274
-#, fuzzy
 msgid "Fix disabling flatpak remotes from the ‘Software Repositories’ dialog"
-msgstr "Permite accesul la dialogul Depozite de aplicații"
+msgstr ""
+"Corectarea dezactivării comenzilor de la distanță flatpak din fereastra de "
+"dialog \"Depozite de software\""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:275
 msgid ""
 "Threading and performance improvements which should reduce the number of "
 "user interface freezes"
 msgstr ""
+"Îmbunătățiri la nivel de threading și de performanță care ar trebui să "
+"reducă numărul de blocări ale interfeței utilizatorului"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:276
-#, fuzzy
 msgid "Update some icons"
-msgstr "Panoul cu actualizări"
+msgstr "Actualizați câteva pictograme"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:277
 msgid ""
 "Check for updates when moving from a metered to a non-metered network "
 "connection"
 msgstr ""
+"Verificați dacă există actualizări atunci când treceți de la o conexiune de "
+"rețea contorizată la una necontorizată"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:306
 msgid "This is the second unstable release for GNOME 42."
-msgstr ""
+msgstr "Aceasta este a doua versiune instabilă pentru GNOME 42."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:308
 msgid "Allow <code>--verbose</code> to be enabled at runtime"
-msgstr ""
+msgstr "Permiteți ca <code>--verbose</code> să fie activat în timpul execuției"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:309
 msgid "Condense the rows in the age rating context dialog"
-msgstr ""
+msgstr "Condensați rândurile din dialogul context pentru evaluarea vârstei"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:310
 msgid "Update the UI for ratings and reviews of apps"
-msgstr ""
+msgstr "Actualizați interfața pentru evaluări și recenzii ale aplicațiilor"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:311
 msgid "Improve the appearance of the category page loading screen"
-msgstr ""
+msgstr "Îmbunătățirea aspectului ecranului de încărcare a paginii categoriei"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:312
 msgid "Drop the first run dialog"
-msgstr ""
+msgstr "Renunță la primul dialog de rulare"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:313
 msgid "Improvements to dark theming"
-msgstr ""
+msgstr "Îmbunătățiri la tematica întunecată"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:314
 msgid ""
 "Support viewing a specific metainfo file using <code>--show-metainfo</code>"
 msgstr ""
+"Acceptă vizualizarea unui anumit fișier metainfo folosind <code>--show-"
+"metainfo</code>"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:315
 msgid "Several more threading improvements"
-msgstr ""
+msgstr "Mai multe îmbunătățiri de threading"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:316
-#, fuzzy
 msgid "Icon updates"
-msgstr "Caută actualizări"
+msgstr "Actualizări de pictograme"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:317
 msgid "Drop the hardcoded-popular plugin in favour of an appstream file"
 msgstr ""
+"Renunțați la pluginul hardcoded-popular în favoarea unui fișier appstream"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:318
 msgid ""
@@ -776,123 +800,149 @@ msgid ""
 "code> GSettings key has been removed. Distributions may need to update how "
 "they ship background images. See <em>doc/vendor-customisation.md</em>."
 msgstr ""
+"Imaginea de fundal pentru actualizări este acum căutată folosind mai multe "
+"nume bine cunoscute (și specifice distribuției) în <code>${DATADIR}/gnome-"
+"software/backgrounds</code>, iar imaginea de fundal implicită anterioară, "
+"specifică Fedora, nu mai este distribuită. În mod similar, cheia <code"
+">upgrade-background-uri</code> GSettings a fost eliminată. Este posibil ca "
+"distribuțiile să trebuiască să actualizeze modul în care distribuie "
+"imaginile de fundal. Consultați <em>doc/vendor-customisation.md</em>."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:347
 msgid "This is the first unstable release for GNOME 42."
-msgstr ""
+msgstr "Aceasta este prima versiune instabilă pentru GNOME 42."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:350
 msgid "Support more markup in the application description"
-msgstr ""
+msgstr "Suport pentru mai mult markup în descrierea aplicației"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:351
 msgid "Ask about package signature with PackageKit on signing issue"
 msgstr ""
+"Întrebați despre semnătura pachetului cu PackageKit la problema semnării"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:352
 msgid "Show better System Update progress"
-msgstr ""
+msgstr "Afișați mai bine progresul actualizării sistemului"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:353
 msgid "Remove various cultural sensitivity badges"
-msgstr ""
+msgstr "Eliminați diferitele insigne de sensibilitate culturală"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:354
 msgid "Fix a crash when processing age ratings"
-msgstr ""
+msgstr "Remediați o blocare la procesarea evaluărilor de vârstă"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:355
-#, fuzzy
 msgid ""
 "Reload application details only when not installing/removing the application"
-msgstr "Arată detaliile aplicației (folosind ID-ul aplicației)"
+msgstr ""
+"Reîncărcați detaliile aplicației numai atunci când nu instalați/eliminați "
+"aplicația"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:356
 msgid "Do not follow symlinks when calculating disk size usage"
 msgstr ""
+"Nu urmăriți legăturile simbolice atunci când calculați utilizarea "
+"dimensiunii discului"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:357
 msgid "Fix addons section, which could show addons for different application"
 msgstr ""
+"Remediați secțiunea de suplimente, care ar putea afișa suplimente pentru "
+"diferite aplicații"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:358
 msgid ""
 "Fix showing a ‘transaction in progress’ error when using the rpm-ostree "
 "plugin"
 msgstr ""
+"Remediați afișarea unei erori \"tranzacție în curs\" atunci când utilizați "
+"pluginul rpm-ostree"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:359
 msgid "Don’t recommend a reboot if firmware updates fail"
-msgstr ""
+msgstr "Nu recomandați o repornire dacă actualizările de firmware eșuează"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:360
 msgid ""
 "Fix flathub repo being considered present on Fedora 35 with filtered flathub"
 msgstr ""
+"Fixarea repo-ului flathub fiind considerat prezent pe Fedora 35 cu flathub "
+"filtrat"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:361
 msgid "Allow searching for extensions"
-msgstr ""
+msgstr "Permiteți căutarea de extensii"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:362
 msgid "Fix translation of main button on updates page"
-msgstr ""
+msgstr "Remediați traducerea butonului principal de pe pagina de actualizări"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:363
-#, fuzzy
 msgid "Fix codec installation process"
-msgstr "Utilizatorul a refuzat instalarea"
+msgstr "Remedierea procesului de instalare a codecului"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:364
 msgid "Add new GNOME Circle apps to the featured carousel"
 msgstr ""
+"Adăugați noi aplicații GNOME Circle la caruselul de aplicații recomandate"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:365
 msgid "Improve metadata support for snaps"
-msgstr ""
+msgstr "Îmbunătățiți suportul de metadate pentru snap-uri"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:366
 msgid "Fix update checks being missed across suspend/hibernation"
 msgstr ""
+"Remediați verificările de actualizare ratate în timpul suspendării/hibernării"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:367
 msgid ""
 "Ensure application lists are updated when repositories are enabled/installed "
 "or disabled/removed"
 msgstr ""
+"Asigurați-vă că listele de aplicații sunt actualizate atunci când depozitele "
+"sunt activate/instalate sau dezactivate/eliminate"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:372
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:491
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:529
 msgid "Belarusian"
-msgstr ""
+msgstr "Belarusă"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:393
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:704
 msgid "Slovak"
-msgstr ""
+msgstr "Slovacă"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:407
 msgid ""
 "Instead of showing all package-based apps as \"potentially unsafe\", only "
 "use that language for 3rd party ones"
 msgstr ""
+"În loc să afișați toate aplicațiile bazate pe pachete ca fiind \"potențial "
+"nesigure\", folosiți acest limbaj doar pentru cele de la terțe părți"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:408
 msgid ""
 "Fix a bug where the \"Show more\" button on an app details page would "
 "flicker when the window is resized"
 msgstr ""
+"Remediați o eroare în care butonul \"Afișați mai multe\" de pe o pagină cu "
+"detalii despre aplicație pâlpâie atunci când fereastra este redimensionată"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:409
 msgid ""
 "Fix a bug where Software sometimes shows an Uninstall button after "
 "uninstalling something"
 msgstr ""
+"Remediați o eroare în care Software afișează uneori un buton Dezinstalare "
+"după dezinstalarea ceva"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:410
 msgid "Add GNOME Circle apps to the featured carousel"
-msgstr ""
+msgstr "Adăugați aplicațiile GNOME Circle în caruselul de aplicații recomandate"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:411
 msgid ""
@@ -900,210 +950,243 @@ msgid ""
 "operation for PackageKit software rather than showing a PolicyKit password "
 "prompt"
 msgstr ""
+"Remediați o eroare în care Software uneori nu reușește să execute o operație "
+"de instalare/eliminare pentru software-ul PackageKit, în loc să afișeze o "
+"solicitare de parolă PolicyKit"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:412
 msgid ""
 "Fix a bug where Software would fail to upgrade the distribution via "
 "PackageKit"
 msgstr ""
+"Remediați o eroare în care Software nu ar reuși să actualizeze distribuția "
+"prin PackageKit"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:413
 msgid "Fix the hiding of rows on the Updates tab after they have been updated"
 msgstr ""
+"Remediați ascunderea rândurilor din fila Actualizări după ce acestea au fost "
+"actualizate"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:436
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:550
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:614
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:703
 msgid "Romanian"
-msgstr ""
+msgstr "Română"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:447
 msgid "This is the third unstable release for GNOME 41."
-msgstr ""
+msgstr "Aceasta este a treia versiune instabilă pentru GNOME 41."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:449
 msgid "Tweaks to the context tiles and dialogs"
-msgstr ""
+msgstr "Modificări ale dalelor contextuale și ale dialogurilor"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:450
 msgid "Fixes to the details page for non-desktop apps"
-msgstr ""
+msgstr "Corecții la pagina de detalii pentru aplicațiile non-desktop"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:451
 msgid "Re-add support for the add-ons categories"
-msgstr ""
+msgstr "Adăugați din nou suport pentru categoriile de add-ons"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:452
 msgid "Sort new and updated apps by release date on the category page"
 msgstr ""
+"Sortați aplicațiile noi și actualizate în funcție de data lansării pe pagina "
+"de categorie"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:481
 msgid "This is the second unstable release for GNOME 41."
-msgstr ""
+msgstr "Aceasta este a doua versiune instabilă pentru GNOME 41."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:483
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:511
 msgid "Many parts of the user interface reworked"
-msgstr ""
+msgstr "Multe părți ale interfeței cu utilizatorul refăcute"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:484
 msgid "Fix when the 'Launch' button is shown after an application install"
 msgstr ""
+"Remediați când butonul \"Lansare\" este afișat după instalarea unei aplicații"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:485
 msgid "Fix appstream:// URL handling"
-msgstr ""
+msgstr "Corectarea gestionării URL-urilor appstream://"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:486
 msgid "Fix application freeze on Flatpak application install/remove/update"
 msgstr ""
+"Remediați înghețarea aplicației la instalarea/eliminarea/actualizarea "
+"aplicației Flatpak"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:487
 msgid "Disable automatic update downloads when in power saver mode"
 msgstr ""
+"Dezactivați descărcările automate de actualizare atunci când este activat "
+"modul de economisire a energiei"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:497
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:540
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:692
 msgid "Greek, Modern (1453-)"
-msgstr ""
+msgstr "Greacă, modernă (1453-)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:509
 msgid "This is the first unstable release for GNOME 41."
-msgstr ""
+msgstr "Aceasta este prima versiune instabilă pentru GNOME 41."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:512
 msgid "Improve error reporting from flatpak when low on disk space"
 msgstr ""
+"Îmbunătățiți raportarea erorilor de la flatpak atunci când spațiul pe disc "
+"este redus"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:513
 msgid "Fix issues with updating the UI when uninstalling apps with add-ons"
 msgstr ""
+"Rezolvarea problemelor legate de actualizarea interfeței de utilizare la "
+"dezinstalarea aplicațiilor cu add-on-uri"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:514
 msgid "Don’t keep rpm-ostreed alive forever"
-msgstr ""
+msgstr "Nu țineți rpm-ostreed în viață la nesfârșit"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:515
 msgid "Prevent polkit checks showing up for background operations"
-msgstr ""
+msgstr "Preveniți apariția verificărilor polkit pentru operațiunile de fundal"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:516
 msgid "Disallow submitting reviews for an app you haven’t installed"
 msgstr ""
+"Nu permiteți trimiterea de recenzii pentru o aplicație pe care nu ați "
+"instalat-o"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:517
 msgid "Show download size in the Updates page"
-msgstr ""
+msgstr "Afișați dimensiunea descărcării în pagina Actualizări"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:518
 msgid "Notify when restart is needed when uninstalling an app"
 msgstr ""
+"Notificați când este necesară repornirea la dezinstalarea unei aplicații"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:519
 msgid "Fix some issues with searches not running"
-msgstr ""
+msgstr "Rezolvarea unor probleme cu căutările care nu se execută"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:520
 msgid "Allow non-integer average star ratings for apps"
-msgstr ""
+msgstr "Permiteți evaluări medii cu stele fără numere întregi pentru aplicații"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:521
 msgid "Reduce number of categories in the UI"
-msgstr ""
+msgstr "Reducerea numărului de categorii din interfața cu utilizatorul"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:522
 msgid "Improve ‘pending updates’ notifications"
-msgstr ""
+msgstr "Îmbunătățirea notificărilor \"actualizări în așteptare\""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:523
 msgid "Refine presentation of download and installed size on details page"
 msgstr ""
+"Îmbunătățiți prezentarea dimensiunilor descărcate și instalate pe pagina de "
+"detalii"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:524
 msgid "Remove left over gnome-online-account dependencies"
-msgstr ""
+msgstr "Eliminați dependențele rămase de la gnome-online-account"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:563
 msgid "Fix handling of invalid or incomplete application icons"
 msgstr ""
+"Corectarea gestionării pictogramelor invalide sau incomplete ale aplicației"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:564
 msgid "Fix the plugin documentation to reflect reality"
-msgstr ""
+msgstr "Croectați documentația pluginului pentru a reflecta realitatea"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:565
 msgid "Fix the Snap plugin to actually load icons"
-msgstr ""
+msgstr "Remediați pluginul Snap pentru a încărca efectiv pictogramele"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:566
 msgid "Set download size to 0 after the package is downloaded"
-msgstr ""
+msgstr "Setați dimensiunea descărcării la 0 după ce pachetul este descărcat"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:568
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:593
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:636
-#, fuzzy
 msgid "Translation updates:"
-msgstr "Traduceri"
+msgstr "Actualizări traduceri:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:570
 msgid "British English"
-msgstr ""
+msgstr "Engleză britanică"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:572
 msgid "Greek"
-msgstr ""
+msgstr "Greacă"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:574
 msgid "Norwegian Bokmål"
-msgstr ""
+msgstr "Norvegiană Bokmål"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:576
 msgid "Punjabi"
-msgstr ""
+msgstr "Punjabi"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:583
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:626
 msgid "This is an unstable release with the following changes:"
-msgstr ""
+msgstr "Aceasta este o versiune instabilă cu următoarele modificări:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:585
 msgid "Implement new featured apps carousel."
-msgstr ""
+msgstr "Implementarea unui nou carusel de aplicații recomandate."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:586
 msgid ""
 "List of Flatpak repositories is updated when changed using the Flatpak "
 "command line tool."
 msgstr ""
+"Lista de depozite Flatpak este actualizată atunci când este modificată cu "
+"ajutorul instrumentului de linie de comandă Flatpak."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:587
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:630
 msgid ""
 "The loading page now shows the full color icon instead of the symbolic one."
 msgstr ""
+"Pagina de încărcare afișează acum pictograma color în loc de cea simbolică."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:588
 msgid ""
 "Show release date in version history for releases that use the 'date' "
 "attribute."
 msgstr ""
+"Afișați data lansării în istoricul versiunilor pentru versiunile care "
+"utilizează atributul \"dată\"."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:589
 msgid "Improved icon handling, including with hiDPI screens."
 msgstr ""
+"Gestionarea îmbunătățită a pictogramelor, inclusiv în cazul ecranelor hiDPI."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:590
 msgid "Fixed a bug in remembering when update notifications were shown."
 msgstr ""
+"A fost reparată o eroare de memorare a momentului în care erau afișate "
+"notificările de actualizare."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:591
 msgid ""
 "Build as a dynamic rather than a static library, and rearrange installation "
 "paths."
 msgstr ""
+"Construiți ca o bibliotecă dinamică, mai degrabă decât statică, și "
+"rearanjați căile de instalare."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:628
 msgid ""
@@ -1111,163 +1194,201 @@ msgid ""
 "with appstream data which provides information about apps and other "
 "components."
 msgstr ""
+"GNOME Software utilizează acum libappstream în loc de libappstream-glib "
+"pentru a lucra cu date appstream care oferă informații despre aplicații și "
+"alte componente."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:629
 msgid "App details pages show version history information when it's available."
 msgstr ""
+"Paginile cu detaliile aplicației afișează informații despre istoricul "
+"versiunilor atunci când sunt disponibile."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:631
 msgid ""
 "UI elements for displaying app add-ons have been tweaked to more closely "
 "match the designs."
 msgstr ""
+"Elementele de interfață pentru afișarea suplimentelor de aplicații au fost "
+"modificate pentru a se potrivi mai bine cu modelele."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:632
 msgid ""
 "Installed icons and the badge showing the number of updates available were "
 "changed back to blue from green."
 msgstr ""
+"Pictogramele instalate și insigna care arată numărul de actualizări "
+"disponibile au fost schimbate de la verde înapoi la albastru."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:633
 msgid ""
 "The dropdown showing the available sources of an application includes the "
 "packaging format (e.g. Flatpak vs RPM)."
 msgstr ""
+"Lista derulantă care afișează sursele disponibile ale unei aplicații include "
+"formatul de împachetare (de exemplu, Flatpak vs RPM)."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:634
 msgid "A bug was fixed that prevented installation of .flatpakref files"
 msgstr ""
+"A fost reparată o eroare care împiedica instalarea fișierelor .flatpakref"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:642
 msgid "Panjabi"
-msgstr ""
+msgstr "Panjabi"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:652
 msgid "This is the first unstable release for GNOME 40."
-msgstr ""
+msgstr "Aceasta este prima versiune instabilă pentru GNOME 40."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:654
 msgid ""
 "Small updates to how app descriptions and addons are presented on the "
 "details page"
 msgstr ""
+"Mici actualizări ale modului în care sunt prezentate descrierile "
+"aplicațiilor și suplimentele pe pagina de detalii"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:655
 msgid "Fix handling of pending app installations when going online"
 msgstr ""
+"Remediați gestionarea instalărilor de aplicații în așteptare atunci când "
+"intrați online"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:656
 msgid "Better support for dark themes (particularly Adwaita-Dark)"
-msgstr ""
+msgstr "Suport mai bun pentru teme întunecate (în special Adwaita-Dark)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:657
 msgid "Improvements to how app screenshots are loaded and presented"
 msgstr ""
+"Îmbunătățiri ale modului în care sunt încărcate și prezentate capturile de "
+"ecran ale aplicațiilor"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:658
 msgid ""
 "Hide ‘Launch’ button if an application (for example, Wine) cannot be launched"
 msgstr ""
+"Ascundeți butonul \"Lansare\" dacă o aplicație (de exemplu, Wine) nu poate "
+"fi lansată"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:659
 msgid "Make the UI clearer when loading information from flatpakref files"
 msgstr ""
+"Faceți interfața mai clară atunci când încărcați informații din fișiere "
+"flatpakref"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:660
 msgid "Don’t update app metadata on start when download-updates is disabled"
 msgstr ""
+"Nu actualizați metadatele aplicației la pornire atunci când actualizările de "
+"descărcare sunt dezactivate"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:661
 msgid "Fix opening the updates list when clicking on an updates notification"
 msgstr ""
+"Remediați deschiderea listei de actualizări atunci când faceți clic pe o "
+"notificare de actualizare"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:662
 msgid ""
 "Fix state updates when installing flatpak apps or repos which are already "
 "installed"
 msgstr ""
+"Remediați actualizările de stare atunci când instalați aplicații flatpak sau "
+"repo-uri care sunt deja instalate"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:663
 msgid "Add Ctrl+Q as a keyboard shortcut for closing the window"
 msgstr ""
+"Adăugați Ctrl+Q ca o comandă rapidă de la tastatură pentru închiderea "
+"ferestrei"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:664
 msgid "Rework timing and content of software update notifications"
 msgstr ""
+"Refaceți temporizarea și conținutul notificărilor de actualizare software"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:665
-#, fuzzy
 msgid ""
 "Prevent uninstalled local apps from appearing in the installed apps list"
 msgstr ""
-"Arată dimensiunea instalării pentru aplicațiile din lista de aplicații "
-"instalate"
+"Împiedicați ca aplicațiile locale dezinstalate să apară în lista "
+"aplicațiilor instalate"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:666
 msgid "Support installation/uninstallation of addons for flatpak apps"
 msgstr ""
+"Suport pentru instalarea/dezinstalarea de addon-uri pentru aplicațiile "
+"flatpak"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:667
 msgid "Improve presentation of age ratings for apps"
-msgstr ""
+msgstr "Îmbunătățirea prezentării clasificărilor de vârstă pentru aplicații"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:668
 msgid "Fix a crash in the updates page"
-msgstr ""
+msgstr "Remedierea unei căderi în pagina de actualizări"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:669
 msgid "Fix presentation of app permissions for fully sandboxed flatpak apps"
 msgstr ""
+"Corectarea prezentării permisiunilor aplicațiilor pentru aplicațiile flatpak "
+"complet sandboxate"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:670
 msgid "Fix deadlock on rpm-ostree systems"
-msgstr ""
+msgstr "Remedierea blocajului la sistemele rpm-ostree"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:671
 msgid "Fix presentation of version number changes in right-to-left locales"
 msgstr ""
+"Remediați prezentarea modificărilor numărului de versiune în setările "
+"regionale de la dreapta la stânga"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:672
 msgid "Error handling improvements for fwupd"
-msgstr ""
+msgstr "Îmbunătățiri în gestionarea erorilor pentru fwupd"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:673
 msgid "Performance improvements for ODRS on startup"
-msgstr ""
+msgstr "Îmbunătățiri de performanță pentru ODRS la pornire"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:674
 msgid "Improve presentation of firmware warning messages"
-msgstr ""
+msgstr "Îmbunătățirea prezentării mesajelor de avertizare firmware"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:675
 msgid "XML parsing performance improvements"
-msgstr ""
+msgstr "Îmbunătățiri ale performanței de analiză XML"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:676
 msgid "Automatically remove end-of-life flatpak runtimes"
-msgstr ""
+msgstr "Eliminați automat runtime-urile flatpak scoase din uz"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:677
 msgid "Support updating flatpaks to their new name when they are renamed"
 msgstr ""
+"Suport pentru actualizarea flatpak-urilor la noul lor nume atunci când "
+"acestea sunt redenumite"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:678
-#, fuzzy
 msgid "Update the GNOME Software icon"
-msgstr "Aplicații GNOME"
+msgstr "Actualizarea pictogramei GNOME Software"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:679
 msgid "Support more search results in the snap store"
-msgstr ""
+msgstr "Acceptă mai multe rezultate de căutare în magazinul de snap-uri"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:680
 msgid ""
 "Drop libgnome-desktop-3 dependency in favour of gsettings-desktop-schemas"
 msgstr ""
+"Elimină dependența libgnome-desktop-3 în favoarea gsettings-desktop-schemas"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:696
 msgid "Kabyle"
-msgstr ""
+msgstr "Kabyle"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:2043
 #: src/gs-application.c:256
@@ -1431,9 +1552,8 @@ msgid "A list of official repositories that should not be considered 3rd party"
 msgstr "O listă de depozite oficiale care nu ar trebui considerate terțe"
 
 #: data/org.gnome.software.gschema.xml:94
-#, fuzzy
 msgid "A list of required repositories that cannot be disabled or removed"
-msgstr "O listă de depozite oficiale care nu ar trebui considerate terțe"
+msgstr "O listă de depozite necesare care nu pot fi dezactivate sau eliminate"
 
 #: data/org.gnome.software.gschema.xml:98
 msgid "A list of official repositories that should be considered free software"
@@ -1482,35 +1602,34 @@ msgid "The URI that explains nonfree and proprietary software"
 msgstr "URI-ul care explică programele nelibere și proprietare"
 
 #: data/org.gnome.software.gschema.xml:131
-#, fuzzy
 msgid ""
 "A list of URLs pointing to appstream files that will be downloaded into an "
 "swcatalog folder"
 msgstr ""
-"O listă de URL-uri indicând către fișiere appstream care vor fi descărcate "
-"înt-un dosar app-info"
+"O listă de adrese URL care indică spre fișierele appstream care vor fi "
+"descărcate într-un folder swcatalog"
 
 #: data/org.gnome.software.gschema.xml:135
-#, fuzzy
 msgid ""
 "Install the AppStream files to a system-wide location for all users. If "
 "false, files are installed in non-standard $XDG_DATA_HOME/swcatalog/xml "
 "directory"
 msgstr ""
-"Instalează fișierele AppStream într-o locație generală de sistem pentru toți "
-"utilizatorii"
+"Instalați fișierele AppStream într-o locație la nivel de sistem pentru toți "
+"utilizatorii. Dacă este fals, fișierele sunt instalate în directorul non-"
+"standard $XDG_DATA_HOME/swcatalog/xml"
 
 #: data/org.gnome.software.gschema.xml:139
-#, fuzzy
 msgid ""
 "Priority order of packaging formats to prefer, with more important formats "
 "listed first. An empty array means the default order. Omitted formats are "
 "assumed to be listed last. Example packaging formats are: deb, flatpak, rpm, "
 "snap."
 msgstr ""
-"Ordinea priorității a formatelor de împachetare de preferat, cu cele mai "
-"importante formate listate mai întâi. O matrice goală înseamnă ordinea "
-"implicită. Formatele omise se vor afișa la sfârșit."
+"Ordinea de prioritate a formatelor de împachetare de preferat, cu formatele "
+"mai importante enumerate mai întâi. O matrice goală înseamnă ordinea "
+"implicită. Se presupune că formatele omise sunt listate ultimele. Exemple de "
+"formate de împachetare sunt: deb, flatpak, rpm, snap."
 
 #: data/org.gnome.software.gschema.xml:146
 msgid "A string storing the gnome-online-account id used to login"
@@ -1545,9 +1664,9 @@ msgstr "Nu s-a putut valida tipul de conținut: %s"
 
 #. TRANSLATORS: error details
 #: gs-install-appstream/gs-install-appstream.c:178
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to move: %s"
-msgstr "Nu s-a putut copia: %s"
+msgstr "A eșuat mutarea: %s"
 
 #: src/gnome-software-local-file-flatpak.desktop.in:3
 #: src/gnome-software-local-file-fwupd.desktop.in:3
@@ -1571,7 +1690,7 @@ msgstr "Violență animată"
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:136
 msgid "No information regarding cartoon violence"
-msgstr ""
+msgstr "Nu există informații privind violența din desene animate"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:144
@@ -1581,7 +1700,7 @@ msgstr "Violență fantastică"
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:146
 msgid "No information regarding fantasy violence"
-msgstr ""
+msgstr "Nu există informații privind violența fantastică"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:154
@@ -1591,7 +1710,7 @@ msgstr "Violență reală"
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:156
 msgid "No information regarding realistic violence"
-msgstr ""
+msgstr "Nu există informații privind violența realistă"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:164
@@ -1601,7 +1720,7 @@ msgstr "Violență reprezentată prin vărsare de sânge"
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:166
 msgid "No information regarding bloodshed"
-msgstr ""
+msgstr "Nu există informații privind vărsarea de sânge"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:174
@@ -1611,7 +1730,7 @@ msgstr "Violență sexuală"
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:176
 msgid "No information regarding sexual violence"
-msgstr ""
+msgstr "Nu există informații privind violența sexuală"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:184
@@ -1620,9 +1739,8 @@ msgstr "Alcool"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:186
-#, fuzzy
 msgid "No information regarding references to alcohol"
-msgstr "Fără referințe la băuturi alcoolice"
+msgstr "Nu există informații privind referințele la alcool"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:194
@@ -1631,9 +1749,8 @@ msgstr "Narcotice"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:196
-#, fuzzy
 msgid "No information regarding references to illicit drugs"
-msgstr "Fără referințe la droguri ilegale"
+msgstr "Nu există informații privind referiri la droguri ilicite"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:204
@@ -1642,9 +1759,8 @@ msgstr "Tutun"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:206
-#, fuzzy
 msgid "No information regarding references to tobacco products"
-msgstr "Fără referințe la produse cu tutun"
+msgstr "Nu există informații privind referințele la produsele din tutun"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:214
@@ -1654,9 +1770,8 @@ msgstr "Nuditate"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:216
-#, fuzzy
 msgid "No information regarding nudity of any sort"
-msgstr "Fără nuditate de orice tip"
+msgstr "Nici o informație privind nuditatea de orice fel"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:224
@@ -1665,9 +1780,9 @@ msgstr "Teme sexuale"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:226
-#, fuzzy
 msgid "No information regarding references to or depictions of sexual nature"
-msgstr "Fără referințe la sau descrieri de natură sexuală"
+msgstr ""
+"Nu există informații privind referințele sau reprezentările de natură sexuală"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:234
@@ -1676,9 +1791,8 @@ msgstr "Profanare"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:236
-#, fuzzy
 msgid "No information regarding profanity of any kind"
-msgstr "Fără profanitate de orice tip"
+msgstr "Nicio informație privind blasfemia de orice fel"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:244
@@ -1688,7 +1802,7 @@ msgstr "Umor inapropriat"
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:246
 msgid "No information regarding inappropriate humor"
-msgstr ""
+msgstr "Nu există informații privind umorul inadecvat"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:254
@@ -1697,9 +1811,8 @@ msgstr "Discriminare"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:256
-#, fuzzy
 msgid "No information regarding discriminatory language of any kind"
-msgstr "Fără limbaj discriminator de orice tip"
+msgstr "Nu există informații privind limbajul discriminatoriu de orice fel"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:264
@@ -1708,9 +1821,8 @@ msgstr "Reclame"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:266
-#, fuzzy
 msgid "No information regarding advertising of any kind"
-msgstr "Fără reclame de orice tip"
+msgstr "Nu există informații privind publicitatea de orice fel"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:274
@@ -1719,9 +1831,8 @@ msgstr "Jocuri de noroc"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:276
-#, fuzzy
 msgid "No information regarding gambling of any kind"
-msgstr "Fără jocuri de noroc de orice tip"
+msgstr "Nu există informații cu privire la jocurile de noroc de orice fel"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:284
@@ -1730,9 +1841,8 @@ msgstr "Cumpărături"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:286
-#, fuzzy
 msgid "No information regarding the ability to spend money"
-msgstr "Fără abilitatea de a cheltui bani"
+msgstr "Nu există informații privind capacitatea de a cheltui bani"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:294
@@ -1741,9 +1851,10 @@ msgstr "Chat între utilizatori"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:296
-#, fuzzy
 msgid "No information regarding ways to chat with other users"
-msgstr "Fără abilitatea de a discuta cu alți utilizatori"
+msgstr ""
+"Nu există informații cu privire la modalitățile de a discuta cu alți "
+"utilizatori"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:304
@@ -1752,9 +1863,10 @@ msgstr "Chat audio între utilizatori"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:306
-#, fuzzy
 msgid "No information regarding ways to talk with other users"
-msgstr "Fără abilitatea de a vorbi cu alți utilizatori"
+msgstr ""
+"Nu există informații cu privire la modalitățile de a vorbi cu alți "
+"utilizatori"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:314
@@ -1763,12 +1875,12 @@ msgstr "Detalii de contact"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:316
-#, fuzzy
 msgid ""
 "No information regarding sharing of social network usernames or email "
 "addresses"
 msgstr ""
-"Fără partajare de nume de utilizatori de rețele sociale sau adrese de email"
+"Nu există informații privind partajarea numelor de utilizator sau a "
+"adreselor de e-mail ale rețelelor sociale"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:324
@@ -1777,9 +1889,10 @@ msgstr "Se identifică informațiile"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:326
-#, fuzzy
 msgid "No information regarding sharing of user information with third parties"
-msgstr "Fără partajarea informațiilor despre utilizatori cu părți terțe"
+msgstr ""
+"Nu există informații privind schimbul de informații despre utilizatori cu "
+"terțe părți"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:334
@@ -1788,9 +1901,9 @@ msgstr "Partajarea locației"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:336
-#, fuzzy
 msgid "No information regarding sharing of physical location with other users"
-msgstr "Fără partajarea locației fizice cu alți utilizatori"
+msgstr ""
+"Nu există informații privind partajarea locației fizice cu alți utilizatori"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:360
@@ -1799,9 +1912,8 @@ msgstr "Homosexualitate"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:362
-#, fuzzy
 msgid "No information regarding references to homosexuality"
-msgstr "Fără referințe la homosexualitate"
+msgstr "Nu există informații privind referințele la homosexualitate"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:370
@@ -1810,9 +1922,8 @@ msgstr "Prostituție"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:372
-#, fuzzy
 msgid "No information regarding references to prostitution"
-msgstr "Fără referințe la prostituție"
+msgstr "Nu există informații privind referințele la prostituție"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:380
@@ -1821,9 +1932,8 @@ msgstr "Adulter"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:382
-#, fuzzy
 msgid "No information regarding references to adultery"
-msgstr "Fără referințe la adulter"
+msgstr "Nu există informații privind referințele la adulter"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:390
@@ -1833,7 +1943,7 @@ msgstr "Caractere sexuale"
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:392
 msgid "No information regarding sexualized characters"
-msgstr ""
+msgstr "Nu există informații privind personajele sexualizate"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:400
@@ -1842,9 +1952,8 @@ msgstr "Profanare istorică"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:402
-#, fuzzy
 msgid "No information regarding references to desecration"
-msgstr "Fără referințe la profanare"
+msgstr "Nu există informații privind referințe la profanare"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:410
@@ -1853,9 +1962,8 @@ msgstr "Rămășițe umane"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:412
-#, fuzzy
 msgid "No information regarding visible dead human remains"
-msgstr "Fără rămășițe umane vizibile"
+msgstr "Nu există informații privind rămășițele umane moarte vizibile"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:420
@@ -1864,73 +1972,65 @@ msgstr "Sclavie"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:422
-#, fuzzy
 msgid "No information regarding references to slavery"
-msgstr "Fără referințe la sclavagism"
+msgstr "Nu există informații privind referințele la sclavie"
 
 #: src/gs-age-rating-context-dialog.c:494
-#, fuzzy
 msgid "Does not include references to drugs"
-msgstr "Fără referințe la droguri ilegale"
+msgstr "Nu include referiri la droguri"
 
 #: src/gs-age-rating-context-dialog.c:496
 msgid ""
 "Does not include swearing, profanity, and other kinds of strong language"
-msgstr ""
+msgstr "Nu include înjurături, blasfemii și alte tipuri de limbaj puternic"
 
 #: src/gs-age-rating-context-dialog.c:498
 msgid "Does not include ads or monetary transactions"
-msgstr ""
+msgstr "Nu include reclame sau tranzacții monetare"
 
 #: src/gs-age-rating-context-dialog.c:500
 msgid "Does not include sex or nudity"
-msgstr ""
+msgstr "Nu include sex sau nuditate"
 
 #: src/gs-age-rating-context-dialog.c:502
-#, fuzzy
 msgid "Does not include uncontrolled chat functionality"
-msgstr "Funcționalitate de chat necontrolat între utilizatori"
+msgstr "Nu include funcționalitatea necontrolată de chat"
 
 #: src/gs-age-rating-context-dialog.c:504
-#, fuzzy
 msgid "Does not include violence"
-msgstr "Violență reală"
+msgstr "Nu include violența"
 
 #: src/gs-age-rating-context-dialog.c:537
 msgid "Drugs"
-msgstr ""
+msgstr "Droguri"
 
 #: src/gs-age-rating-context-dialog.c:539
-#, fuzzy
 msgid "Strong Language"
-msgstr "Limbi"
+msgstr "Limbaj puternic"
 
 #: src/gs-age-rating-context-dialog.c:541
 msgid "Money"
-msgstr ""
+msgstr "Bani"
 
 #: src/gs-age-rating-context-dialog.c:545
-#, fuzzy
 msgid "Social"
-msgstr "Socializați"
+msgstr "Social"
 
 #: src/gs-age-rating-context-dialog.c:547
-#, fuzzy
 msgid "Violence"
-msgstr "Violență sexuală"
+msgstr "Violență"
 
 #. Translators: This is used to join two list items together in
 #. * a compressed way of displaying a list of descriptions of age
 #. * ratings for apps. The order of the items does not matter.
 #: src/gs-age-rating-context-dialog.c:658
-#, fuzzy, c-format
+#, c-format
 msgid "%s • %s"
 msgstr "%s • %s"
 
 #. Translators: The app is considered suitable to be run by all ages of people.
 #. * This is displayed in a context tile, so the string should be short.
 #: src/gs-age-rating-context-dialog.c:936
-#, fuzzy
 msgctxt "Age rating"
 msgid "All"
 msgstr "Toate"
@@ -1998,9 +2098,8 @@ msgstr "Categorie de vârstă"
 #: src/gs-age-rating-context-dialog.ui:68
 #: src/gs-hardware-support-context-dialog.ui:71
 #: src/gs-safety-context-dialog.ui:221
-#, fuzzy
 msgid "How to contribute missing information"
-msgstr "Cum se adaugă informații lipsă"
+msgstr "Cum să contribuiți cu informații lipsă"
 
 #: lib/gs-app.c:6175
 msgid "Local file"
@@ -2034,10 +2133,9 @@ msgstr "Eliminare în așteptare"
 
 #: src/gs-app-addon-row.c:111 src/gs-app-row.ui:197 src/gs-app-tile.ui:50
 #: src/gs-feature-tile.c:535
-#, fuzzy
 msgctxt "Single app"
 msgid "Installed"
-msgstr "Instalat"
+msgstr "Instalată"
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * shows the status of an application being installed
@@ -2135,9 +2233,8 @@ msgstr "Poate evada din modul sandbox și împiedica orice alte restricții"
 #. FIXME support app == NULL
 #. set window title
 #: src/gs-app-details-page.c:166
-#, fuzzy
 msgid "Update Details"
-msgstr "Detaliile actualizărilor"
+msgstr "Actualizați detalii"
 
 #. TRANSLATORS: this is where the packager did not write
 #. * a description for the update
@@ -2160,14 +2257,12 @@ msgid "Reviews"
 msgstr "Recenzii"
 
 #: src/gs-app-reviews-dialog.ui:25
-#, fuzzy
 msgid "No reviews were found for this application."
-msgstr "Nu există detalii pentru aplicația aceea."
+msgstr "Nu s-au găsit recenzii pentru această aplicație."
 
 #: src/gs-app-reviews-dialog.ui:27
-#, fuzzy
 msgid "No Reviews"
-msgstr "Recenzii"
+msgstr "Nu există recenzii"
 
 #: src/gs-app-version-history-dialog.ui:6 src/gs-details-page.ui:533
 msgid "Version History"
@@ -2233,9 +2328,8 @@ msgid "Install the application (using application ID)"
 msgstr "Instalează aplicația (folosind ID-ul aplicației)"
 
 #: src/gs-application.c:134
-#, fuzzy
 msgid "Uninstall the application (using application ID)"
-msgstr "Instalează aplicația (folosind ID-ul aplicației)"
+msgstr "Dezinstalați aplicația (folosind ID-ul aplicației)"
 
 #: src/gs-application.c:136
 msgid "Open a local package file"
@@ -2255,7 +2349,7 @@ msgstr ""
 
 #: src/gs-application.c:141
 msgid "Show a local metainfo or appdata file"
-msgstr ""
+msgstr "Afișați un fișier local metainfo sau appdata"
 
 #: src/gs-application.c:143
 msgid "Show verbose debugging information"
@@ -2282,9 +2376,8 @@ msgid "Show version number"
 msgstr "Arată numărul de versiune"
 
 #: src/gs-application.c:261 src/gs-application.c:269
-#, fuzzy
 msgid "Copyright © 2016–2022 GNOME Software contributors"
-msgstr "Drepturi de autor © 2016–2021 contribuitorii lui „Aplicații GNOME”"
+msgstr "Drepturi de autor © 2016-2022 Colaboratorii GNOME Software"
 
 #: src/gs-application.c:263 src/gs-application.c:272
 msgid "translator-credits"
@@ -2421,9 +2514,8 @@ msgstr "Poate să citească toate descărcările"
 #. Translators: This indicates an app can access data in the system unknown to the Software.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:359
-#, fuzzy
 msgid "Can access arbitrary files"
-msgstr "Poate accesa dispozitivele hardware"
+msgstr "Poate accesa fișiere arbitrare"
 
 #. Translators: This indicates an app can access or change user settings.
 #. * It’s used in a context tile, so should be short.
@@ -2478,9 +2570,8 @@ msgstr "Dezvoltatorul aplicației este verificat"
 #. Translators: This indicates an app or its runtime reached its end of life.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:447
-#, fuzzy
 msgid "Software no longer supported"
-msgstr "SO-ul dumneavoastră nu mai este suportat."
+msgstr "Software-ul nu mai este suportat"
 
 #. Translators: This string is used to join various other translated
 #. * strings into an inline list of reasons why an app has been marked as
@@ -2730,7 +2821,6 @@ msgstr "Altele"
 #. TRANSLATORS: this is a subcategory matching all the
 #. * different apps in the parent category, e.g. "Games"
 #: lib/gs-category.c:214
-#, fuzzy
 msgctxt "Category"
 msgid "All"
 msgstr "Toate"
@@ -2755,7 +2845,7 @@ msgstr "Noi și actualizate"
 #. Heading for web apps on a category page
 #: src/gs-category-page.ui:97
 msgid "Picks from the Web"
-msgstr ""
+msgstr "Selecții de pe web"
 
 #. Heading for the rest of the apps on a category page
 #: src/gs-category-page.ui:125
@@ -3167,9 +3257,8 @@ msgstr "Aplicația este gata de utilizare."
 #. TRANSLATORS: this is the summary of a notification that OS updates
 #. * have been successfully installed
 #: src/gs-common.c:84
-#, fuzzy
 msgid "System updates are now installed"
-msgstr "Actualizări de OS sunt instalate"
+msgstr "Actualizările de sistem sunt acum instalate"
 
 #. TRANSLATORS: this is the body of a notification that OS updates
 #. * have been successfully installed
@@ -3206,8 +3295,8 @@ msgid ""
 "%s is not <a href=\"https://en.wikipedia.org/wiki/Free_and_open-"
 "source_software\">free and open source software</a>, and is provided by “%s”."
 msgstr ""
-"%s nu este <a href=\"https://ro.wikipedia.org/wiki/Software_liber"
-"\">aplicație liberă cu sursa deschisă</a>, și este furnizat de către  „%s”."
+"%s nu este <a href=\"https://ro.wikipedia.org/wiki/Software_liber\""
+">aplicație liberă cu sursa deschisă</a>, și este furnizat de către „%s”."
 
 #. TRANSLATORS: the replacements are as follows:
 #. * 1. Application name, e.g. "Firefox"
@@ -3259,7 +3348,7 @@ msgstr "Detalii"
 #. Translators: an accept button label, in a Cancel/Accept dialog
 #: src/gs-common.c:600
 msgid "_Accept"
-msgstr ""
+msgstr "_Acceptă"
 
 #. TRANSLATORS: we've just live-updated some apps
 #: src/gs-common.c:750
@@ -3351,7 +3440,7 @@ msgstr[2] "%d de ani în urmă"
 #, c-format
 msgctxt "format-size"
 msgid "%s %s"
-msgstr ""
+msgstr "%s %s"
 
 #. TRANSLATORS: this is a what we use in notifications if the app's name is unknown
 #: src/gs-dbus-helper.c:291
@@ -3483,9 +3572,9 @@ msgstr "_Instalează…"
 
 #. Translators: the '%s' is replaced with a developer name or a project group
 #: src/gs-details-page.c:1177
-#, fuzzy, c-format
+#, c-format
 msgid "Other Apps by %s"
-msgstr "Alte aplicații"
+msgstr "Alte aplicații de %s"
 
 #. TRANSLATORS: we need a remote server to process
 #: src/gs-details-page.c:1560
@@ -3629,15 +3718,13 @@ msgstr "_Ajutor"
 
 #. Translators: Button opening a dialog where the users can write and publish their opinions about the apps.
 #: src/gs-details-page.ui:908
-#, fuzzy
 msgid "_Write Review"
-msgstr "_Scrieți o recenzie"
+msgstr "_Scrie o recenzie"
 
 #. Translators: Button opening a dialog showing all reviews for an app.
 #: src/gs-details-page.ui:945
-#, fuzzy
 msgid "All Reviews"
-msgstr "Recenzii"
+msgstr "Toate recenziile"
 
 #. TRANSLATORS: status text when downloading
 #: lib/gs-external-appstream-utils.c:216
@@ -4090,10 +4177,9 @@ msgstr "Suport hardware"
 #. Translators: This is in the context of a list of apps which are installed on the system.
 #. Translators: A label for a button to show only software which is already installed.
 #: src/gs-installed-page.c:812 src/gs-shell.ui:307
-#, fuzzy
 msgctxt "List of installed apps"
 msgid "Installed"
-msgstr "Instalat"
+msgstr "Instalate"
 
 #: src/gs-installed-page.ui:6
 msgid "Installed page"
@@ -4110,9 +4196,8 @@ msgid "Applications"
 msgstr "Aplicații"
 
 #: src/gs-installed-page.ui:95
-#, fuzzy
 msgid "Web Applications"
-msgstr "Aplicații"
+msgstr "Aplicații web"
 
 #: src/gs-installed-page.ui:115
 msgid "System Applications"
@@ -4128,7 +4213,7 @@ msgstr "_Implicați-vă"
 
 #. Translators: The first placeholder here is a link to information about the license, and the second placeholder here is the name of a software license.
 #: src/gs-license-tile.c:114
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "This software is developed in the open by a community of volunteers, and "
 "released under the <a href=\"%s\">%s license</a>.\n"
@@ -4136,7 +4221,7 @@ msgid ""
 "You can contribute and help make it even better."
 msgstr ""
 "Această aplicație este dezvoltată deschis de o comunitate de voluntari, și "
-"este lansată sub licența %s.\n"
+"este lansată sub <a href=\"%s\"> licența %s</a>.\n"
 "\n"
 "Puteți contribui și ajuta la îmbunătățirea ei."
 
@@ -4163,7 +4248,6 @@ msgid "_Learn More"
 msgstr "Află mai mu_lte"
 
 #: src/gs-license-tile.c:135
-#, fuzzy
 msgid ""
 "This software is not developed in the open, so only its developers know how "
 "it works. It may be insecure in ways that are hard to detect, and it may "
@@ -4171,18 +4255,16 @@ msgid ""
 "\n"
 "You may not be able to contribute to this software."
 msgstr ""
-"Această aplicație nu este dezvoltată deschis, așadar numai dezvoltatorii ei "
-"știu cum funcționează. Pot fi restricții de folosire, și poate fi greu de "
-"spus dacă aplicația este nesigură.\n"
+"Acest software nu este dezvoltat în mod deschis, astfel încât numai "
+"dezvoltatorii săi știu cum funcționează. Acesta poate fi nesigur în moduri "
+"greu de detectat și se poate modifica fără supraveghere.\n"
 "\n"
-"Nu puteți contribui la această aplicație, nici nu puteți să-i influențați "
-"dezvoltarea."
+"Este posibil să nu puteți contribui la acest software."
 
 #. TRANSLATORS: initial start
 #: src/gs-loading-page.c:56
-#, fuzzy
 msgid "Downloading software catalog"
-msgstr "Se descarcă imaginile recomandărilor…"
+msgstr "Se descarcă catalogul software"
 
 #: src/gs-loading-page.ui:6
 msgid "Loading page"
@@ -4231,20 +4313,18 @@ msgid "There are no reviews to moderate"
 msgstr "Nu există recenzii de moderat"
 
 #: src/gs-origin-popover-row.c:105
-#, fuzzy
 msgid "Unknown source"
-msgstr "Necunoscută"
+msgstr "Sursă necunoscută"
 
 #. Translators: It's like a beta version of the software, a test version
 #: src/gs-origin-popover-row.ui:108
 msgid "Beta"
-msgstr ""
+msgstr "Beta"
 
 #. Translators: It's an origin scope, 'User' or 'System' installation
 #: src/gs-origin-popover-row.ui:138
-#, fuzzy
 msgid "User"
-msgstr "_Utilizator"
+msgstr "Utilizator"
 
 #. TRANSLATORS: This is the header for package additions during
 #. * a system update
@@ -4261,7 +4341,6 @@ msgstr "Eliminări"
 #. TRANSLATORS: This is the header for package updates during
 #. * a system update
 #: src/gs-os-update-page.c:258
-#, fuzzy
 msgctxt "Packages to be updated during a system upgrade"
 msgid "Updates"
 msgstr "Actualizări"
@@ -4417,11 +4496,12 @@ msgstr "_Continuă"
 
 #. TRANSLATORS: The '%s' is replaced with a repository name, like "Fedora Modular - x86_64"
 #: src/gs-repos-dialog.c:239
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Software that has been installed from “%s” will cease to receive updates."
 msgstr ""
-"Aplicațiile care au fost instalate din „%s” nu vor mai primi actualizări."
+"Software-ul care a fost instalat de la \"%s\" va înceta să mai primească "
+"actualizări."
 
 #: src/gs-repos-dialog.c:248
 msgid "Disable Repository?"
@@ -4650,14 +4730,14 @@ msgstr ""
 "punctele de vedere ale dumneavoastră."
 
 #: src/gs-review-dialog.ui:156
-#, fuzzy
 msgid ""
 "Find what data is sent in our <a href=\"https://odrs.gnome.org/privacy"
 "\">privacy policy</a>. The full name attached to your account will be shown "
 "publicly."
 msgstr ""
-"Aflați care sunt datele trimise în <a href=\"https://odrs.gnome.org/privacy"
-"\">politica de confidențialitate</a>."
+"Aflați ce date sunt trimise în politica noastră de confidențialitate <a href="
+"\"https://odrs.gnome.org/privacy\"></a> . Numele complet atașat contului "
+"dvs. va fi afișat public."
 
 #: src/gs-review-histogram.c:72
 #, c-format
@@ -4879,14 +4959,12 @@ msgid "Can read all data in your downloads directory"
 msgstr "Poate să citească toate datele din dosarul „Descărcări”"
 
 #: src/gs-safety-context-dialog.c:299
-#, fuzzy
 msgid "Can read and write all data in the directory"
-msgstr "Poate să citească/scrie toate datele din dosarul personal"
+msgstr "Poate citi și scrie toate datele din director"
 
 #: src/gs-safety-context-dialog.c:310
-#, fuzzy
 msgid "Can read all data in the directory"
-msgstr "Poate să citească toate datele din dosarul personal"
+msgstr "Poate citi toate datele din director"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:326
@@ -4937,14 +5015,14 @@ msgstr ""
 #. Translators: This indicates an app uses an outdated SDK.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-safety-context-dialog.c:366
-#, fuzzy
 msgid "Insecure Dependencies"
-msgstr "Dependințe necesare"
+msgstr "Dependențe nesigure"
 
 #: src/gs-safety-context-dialog.c:367
 msgid ""
 "Software or its dependencies are no longer supported and may be insecure"
 msgstr ""
+"Software-ul sau dependențele sale nu mai sunt suportate și pot fi nesigure"
 
 #. Translators: The app is considered safe to install and run.
 #. * The placeholder is the app name.
@@ -4987,7 +5065,7 @@ msgstr "SDK"
 
 #: src/gs-safety-context-dialog.ui:205
 msgid "Outdated SDK version"
-msgstr ""
+msgstr "Versiune SDK învechită"
 
 #. Translators: This is the accessible description for a button to go to the previous screenshot in the screenshot carousel.
 #: src/gs-screenshot-carousel.ui:46
@@ -5081,9 +5159,9 @@ msgstr "„%s”"
 #. Translators: The '%s' is replaced with an error message, which had been shortened.
 #. The dots at the end are there to highlight that to the user.
 #: src/gs-shell.c:1240
-#, fuzzy, c-format
+#, c-format
 msgid "%s…"
-msgstr "„%s”"
+msgstr "%s…"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the source (e.g. "alt.fedoraproject.org")
@@ -5598,7 +5676,6 @@ msgstr "Aflați mai _multe"
 
 #. Translators: A label for a button to show only updates which are available to install.
 #: src/gs-shell.ui:328
-#, fuzzy
 msgctxt "Header bar button for list of apps to be updated"
 msgid "Updates"
 msgstr "Actualizări"
@@ -5648,7 +5725,6 @@ msgid "Shared system components required by this application"
 msgstr "Componentele partajate de sistem necesare pentru această aplicație"
 
 #: src/gs-storage-context-dialog.c:188
-#, fuzzy
 msgctxt "Download size"
 msgid "Unknown"
 msgstr "Necunoscută"
@@ -5697,9 +5773,8 @@ msgid "Installed on %s"
 msgstr "Instalate la data de %s"
 
 #: src/gs-update-dialog.ui:77
-#, fuzzy
 msgid "No Updates Installed"
-msgstr "Actualizarea aplicației a fost instalată"
+msgstr "Nu au fost instalate actualizări"
 
 #: src/gs-update-monitor.c:213
 msgid "Software Updates Are Out of Date"
@@ -5820,9 +5895,9 @@ msgstr "Actualizarea aplicațiilor a eșuat"
 
 #. TRANSLATORS: message when we offline updates have failed
 #: src/gs-update-monitor.c:1139
-#, fuzzy
 msgid "An important operating system update failed to be installed."
-msgstr "Instalarea unei actualizări importante a SO e eșuat."
+msgstr ""
+"O actualizare importantă a sistemului de operare nu a putut fi instalată."
 
 #: src/gs-update-monitor.c:1140
 msgid "Show Details"
@@ -5851,12 +5926,11 @@ msgstr[2] "Actualizări de aplicații instalate"
 
 #. TRANSLATORS: message when we've done offline updates
 #: src/gs-update-monitor.c:1177
-#, fuzzy
 msgid "An important operating system update has been installed."
 msgid_plural "Important operating system updates have been installed."
-msgstr[0] "O actualizare importantă a SO a fost instalată."
-msgstr[1] "Actualizări importante ale SO au fost instalate."
-msgstr[2] "Actualizări importante ale SO au fost instalate."
+msgstr[0] "O actualizare importantă a sistemului de operare a fost instalată."
+msgstr[1] "Actualizări importante ale sistemului de operare au fost instalate."
+msgstr[2] "Actualizări importante ale sistemului de operare au fost instalate."
 
 #. TRANSLATORS: Button to look at the updates that were installed.
 #. * Note that it has nothing to do with the application reviews, the
@@ -5934,9 +6008,8 @@ msgid "%s %s is no longer supported."
 msgstr "%s %s nu mai este suportat."
 
 #: src/gs-updates-page.c:563
-#, fuzzy
 msgid "Your operating system is no longer supported."
-msgstr "SO-ul dumneavoastră nu mai este suportat."
+msgstr "Sistemul dvs. de operare nu mai este suportat."
 
 #. TRANSLATORS: EOL distros do not get important updates
 #: src/gs-updates-page.c:568
@@ -5987,7 +6060,6 @@ msgid "Check for updates"
 msgstr "Caută actualizări"
 
 #: src/gs-updates-page.c:1286
-#, fuzzy
 msgctxt "Apps to be updated"
 msgid "Updates"
 msgstr "Actualizări"
@@ -6100,9 +6172,9 @@ msgstr "%s %s disponibilă"
 #. * upgrade is available. The %s is the distro name,
 #. * e.g. "GNOME OS Available"
 #: src/gs-upgrade-banner.c:95
-#, fuzzy, c-format
+#, c-format
 msgid "%s Available"
-msgstr "%s %s disponibilă"
+msgstr "%s disponibil"
 
 #: src/gs-upgrade-banner.c:143
 msgid "Learn about the new version"
@@ -6157,9 +6229,8 @@ msgstr ""
 #. TRANSLATORS: this is a group of updates that are not
 #. * packages and are not shown in the main list
 #: plugins/core/gs-plugin-generic-updates.c:67
-#, fuzzy
 msgid "System Updates"
-msgstr "Actualizare sistem %s"
+msgstr "Actualizări sistem"
 
 #. TRANSLATORS: this is a longer description of the
 #. * "System Updates" string
@@ -6168,6 +6239,8 @@ msgid ""
 "General system updates, such as security or bug fixes, and performance "
 "improvements."
 msgstr ""
+"Actualizări generale ale sistemului, cum ar fi actualizări de securitate sau "
+"remedieri de erori și îmbunătățiri de performanță."
 
 #. TRANSLATORS: status text when downloading
 #: plugins/core/gs-plugin-rewrite-resource.c:155
@@ -6176,18 +6249,17 @@ msgstr "Se descarcă imaginile recomandărilor…"
 
 #. Translators: The '%s' is replaced with the OS name, like "Endless OS"
 #: plugins/eos-updater/gs-plugin-eos-updater.c:637
-#, fuzzy, c-format
+#, c-format
 msgid "%s update with new features and fixes."
-msgstr "O înnoire OS Endless cu funcționalități noi și revizuiri."
+msgstr "Actualizare a %s cu funcționalități noi și revizuiri."
 
 #: plugins/eos-updater/gs-plugin-eos-updater.c:970
 msgid "EOS update service could not fetch and apply the update."
 msgstr "Serviciul de actualizare EOS nu a putut aduce și aplica actualizarea."
 
 #: plugins/epiphany/gs-plugin-epiphany.c:498
-#, fuzzy
 msgid "GNOME Web"
-msgstr "GNOME"
+msgstr "GNOME Web"
 
 #: plugins/epiphany/org.gnome.Software.Plugin.Epiphany.metainfo.xml.in:6
 msgid "Web Apps Support"
@@ -6220,136 +6292,126 @@ msgstr "Flatpak este o platformă pentru aplicații desktop în Linux"
 
 #. Reference: https://docs.flatpak.org/en/latest/flatpak-command-reference.html#idm45858571325264
 #: plugins/flatpak/gs-flatpak.c:313
-#, fuzzy, c-format
+#, c-format
 msgid "System folder %s"
-msgstr "Servicii ale sistemului"
+msgstr "Folder de sistem %s"
 
 #: plugins/flatpak/gs-flatpak.c:314 plugins/flatpak/gs-flatpak.c:315
-#, fuzzy, c-format
+#, c-format
 msgid "Home subfolder %s"
-msgstr "Dosar personal"
+msgstr "Subfolder personal %s"
 
 #: plugins/flatpak/gs-flatpak.c:316
-#, fuzzy
 msgid "Host system folders"
-msgstr "Dosar personal"
+msgstr "Dosare ale sistemului gazdă"
 
 #: plugins/flatpak/gs-flatpak.c:317
 msgid "Host system configuration from /etc"
-msgstr ""
+msgstr "Configurația sistemului gazdă din /etc"
 
 #: plugins/flatpak/gs-flatpak.c:318
-#, fuzzy
 msgid "Desktop folder"
-msgstr "Doar pe desktop"
+msgstr "Folder desktop"
 
 #: plugins/flatpak/gs-flatpak.c:318
-#, fuzzy, c-format
+#, c-format
 msgid "Desktop subfolder %s"
-msgstr "Suport pentru desktop"
+msgstr "Subfolder desktop %s"
 
 #: plugins/flatpak/gs-flatpak.c:319
-#, fuzzy
 msgid "Documents folder"
-msgstr "Dosar personal"
+msgstr "Dosarul Documente"
 
 #: plugins/flatpak/gs-flatpak.c:319
-#, fuzzy, c-format
+#, c-format
 msgid "Documents subfolder %s"
-msgstr "Dosar personal"
+msgstr "Subfolder documente %s"
 
 #: plugins/flatpak/gs-flatpak.c:320
-#, fuzzy
 msgid "Music folder"
-msgstr "Playere de muzică"
+msgstr "Folder de muzică"
 
 #: plugins/flatpak/gs-flatpak.c:320
-#, fuzzy, c-format
+#, c-format
 msgid "Music subfolder %s"
-msgstr "Playere de muzică"
+msgstr "Subfolder Muzică %s"
 
 #: plugins/flatpak/gs-flatpak.c:321
-#, fuzzy
 msgid "Pictures folder"
-msgstr "Imagine"
+msgstr "Dosar de imagini"
 
 #: plugins/flatpak/gs-flatpak.c:321
 #, c-format
 msgid "Pictures subfolder %s"
-msgstr ""
+msgstr "Subfolder imagini %s"
 
 #: plugins/flatpak/gs-flatpak.c:322
 msgid "Public Share folder"
-msgstr ""
+msgstr "Folderul Partajare publică"
 
 #: plugins/flatpak/gs-flatpak.c:322
 #, c-format
 msgid "Public Share subfolder %s"
-msgstr ""
+msgstr "Subfolderul Public Share %s"
 
 #: plugins/flatpak/gs-flatpak.c:323
-#, fuzzy
 msgid "Videos folder"
-msgstr "Dosar personal"
+msgstr "Folder Videoclipuri"
 
 #: plugins/flatpak/gs-flatpak.c:323
-#, fuzzy, c-format
+#, c-format
 msgid "Videos subfolder %s"
-msgstr "%s este adecvat pentru %s"
+msgstr "Subfolder Videoclipuri %s"
 
 #: plugins/flatpak/gs-flatpak.c:324
-#, fuzzy
 msgid "Templates folder"
-msgstr "Dosar personal"
+msgstr "Folder Șabloane"
 
 #: plugins/flatpak/gs-flatpak.c:324
 #, c-format
 msgid "Templates subfolder %s"
-msgstr ""
+msgstr "Subfolder șabloane %s"
 
 #: plugins/flatpak/gs-flatpak.c:325
 msgid "User cache folder"
-msgstr ""
+msgstr "Folderul cache al utilizatorului"
 
 #: plugins/flatpak/gs-flatpak.c:325
 #, c-format
 msgid "User cache subfolder %s"
-msgstr ""
+msgstr "Subfolderul cache al utilizatorului %s"
 
 #: plugins/flatpak/gs-flatpak.c:326
-#, fuzzy
 msgid "User configuration folder"
-msgstr "Actualizare configurație %s"
+msgstr "Folderul de configurare a utilizatorului"
 
 #: plugins/flatpak/gs-flatpak.c:326
-#, fuzzy, c-format
+#, c-format
 msgid "User configuration subfolder %s"
-msgstr "Actualizare configurație %s"
+msgstr "Subfolder de configurare a utilizatorului %s"
 
 #: plugins/flatpak/gs-flatpak.c:327
-#, fuzzy
 msgid "User data folder"
-msgstr "Datele utilizatorului"
+msgstr "Folderul de date ale utilizatorului"
 
 #: plugins/flatpak/gs-flatpak.c:327
 #, c-format
 msgid "User data subfolder %s"
-msgstr ""
+msgstr "Subfolder de date ale utilizatorului %s"
 
 #: plugins/flatpak/gs-flatpak.c:328
-#, fuzzy
 msgid "User runtime folder"
-msgstr "Dosar personal"
+msgstr "Dosarul de runtime al utilizatorului"
 
 #: plugins/flatpak/gs-flatpak.c:328
 #, c-format
 msgid "User runtime subfolder %s"
-msgstr ""
+msgstr "Subfolder runtime utilizator %s"
 
 #: plugins/flatpak/gs-flatpak.c:386
-#, fuzzy, c-format
+#, c-format
 msgid "Filesystem access to %s"
-msgstr "Nu are acces la sistemul de fișiere"
+msgstr "Acces la sistemul de fișiere pentru %s"
 
 #. TRANSLATORS: status text when downloading new metadata
 #: plugins/flatpak/gs-flatpak.c:1403
@@ -6386,6 +6448,8 @@ msgid ""
 "Remote “%s” doesn't allow install of “%s”, possibly due to its filter. "
 "Remove the filter and repeat the install. Detailed error: %s"
 msgstr ""
+"Comanda \"%s\" nu permite instalarea \"%s\", posibil din cauza filtrului. "
+"Îndepărtați filtrul și repetați instalarea. Eroare detaliată: %s"
 
 #. TRANSLATORS: a specific part of hardware,
 #. * the first %s is the device name, e.g. 'Unifying Receiver`
@@ -6498,37 +6562,37 @@ msgstr "%s Actualizarea tastaturii"
 
 #. TRANSLATORS: Storage Controller is typically a RAID or SAS adapter
 #: plugins/fwupd/gs-fwupd-app.c:210
-#, fuzzy, c-format
+#, c-format
 msgid "%s Storage Controller Update"
-msgstr "Actualizare controler %s"
+msgstr "%s Actualizare controler de stocare"
 
 #. TRANSLATORS: Network Interface refers to the physical
 #. * PCI card, not the logical wired connection
 #: plugins/fwupd/gs-fwupd-app.c:215
-#, fuzzy, c-format
+#, c-format
 msgid "%s Network Interface Update"
-msgstr "Actualizare controler %s"
+msgstr "%s Actualizare interfață de rețea"
 
 #. TRANSLATORS: Video Display refers to the laptop internal display or
 #. * external monitor
 #: plugins/fwupd/gs-fwupd-app.c:220
-#, fuzzy, c-format
+#, c-format
 msgid "%s Display Update"
-msgstr "Actualizare dispozitiv %s"
+msgstr "%s Actualizare afișaj"
 
 #. TRANSLATORS: BMC refers to baseboard management controller which
 #. * is the device that updates all the other firmware on the system
 #: plugins/fwupd/gs-fwupd-app.c:225
-#, fuzzy, c-format
+#, c-format
 msgid "%s BMC Update"
-msgstr "Actualizare ME %s"
+msgstr "%s Actualizare BMC"
 
 #. TRANSLATORS: Receiver refers to a radio device, e.g. a tiny Bluetooth
 #. * device that stays in the USB port so the wireless peripheral works
 #: plugins/fwupd/gs-fwupd-app.c:230
-#, fuzzy, c-format
+#, c-format
 msgid "%s USB Receiver Update"
-msgstr "Actualizare dispozitiv %s"
+msgstr "%s Actualizare receptor USB"
 
 #: plugins/fwupd/gs-plugin-fwupd.c:1240
 msgid "Firmware"
@@ -6543,9 +6607,8 @@ msgid "Provides support for firmware upgrades"
 msgstr "Oferă suport pentru înnoiri de microcod"
 
 #: plugins/packagekit/gs-packagekit-task.c:148
-#, fuzzy
 msgid "Install Unsigned Software?"
-msgstr "Instalați aplicații din sursă terță?"
+msgstr "Instalați software nesemnat?"
 
 #: plugins/packagekit/gs-packagekit-task.c:149
 msgid ""
@@ -6553,22 +6616,25 @@ msgid ""
 "verify the origin of updates to this software, or whether updates have been "
 "tampered with."
 msgstr ""
+"Software-ul care urmează să fie instalat nu este semnat. Nu va fi posibilă "
+"verificarea originii actualizărilor acestui software sau dacă actualizările "
+"au fost modificate."
 
 #: plugins/packagekit/gs-packagekit-task.c:153
-#, fuzzy
 msgid "Download Unsigned Software?"
-msgstr "Caută în Aplicații"
+msgstr "Descărcați software nesemnat?"
 
 #: plugins/packagekit/gs-packagekit-task.c:154
 msgid ""
 "Unsigned updates are available. Without a signature, it is not possible to "
 "verify the origin of the update, or whether it has been tampered with."
 msgstr ""
+"Sunt disponibile actualizări nesemnate. Fără semnătură, nu este posibil să "
+"se verifice originea actualizării sau dacă aceasta a fost modificată."
 
 #: plugins/packagekit/gs-packagekit-task.c:158
-#, fuzzy
 msgid "Update Unsigned Software?"
-msgstr "Caută în Aplicații"
+msgstr "Actualizați software-ul nesemnat?"
 
 #: plugins/packagekit/gs-packagekit-task.c:159
 msgid ""
@@ -6577,6 +6643,10 @@ msgid ""
 "Software updates will be disabled until unsigned updates are either removed "
 "or updated."
 msgstr ""
+"Sunt disponibile actualizări fără semnătură. Fără o semnătură, nu este "
+"posibil să se verifice originea actualizării sau dacă aceasta a fost "
+"modificată. Actualizările de software vor fi dezactivate până când "
+"actualizările nesemnate sunt fie eliminate, fie actualizate."
 
 #: plugins/packagekit/gs-plugin-packagekit.c:367
 msgid "Packages"
@@ -6602,30 +6672,33 @@ msgstr "Un snap este un pachet Linux universal"
 #. TRANSLATORS: this is to inform that the package is part of
 #. * the BASE system
 #: plugins/vso/gs-plugin-vso.c:114
-#, fuzzy
 msgid "base"
-msgstr "Baze de date"
+msgstr "bază"
 
 #: plugins/vso/gs-plugin-vso.c:240
 msgid ""
 "Another transaction has already been executed, you must reboot your system "
 "before starting a new transaction."
 msgstr ""
+"O altă tranzacție a fost deja executată, trebuie să reporniți sistemul "
+"înainte de a începe o nouă tranzacție."
 
 #: plugins/vso/gs-plugin-vso.c:260
 msgid "VSO failed to update the system, please try again later."
 msgstr ""
+"VSO nu a reușit să actualizeze sistemul, vă rugăm să încercați din nou mai "
+"târziu."
 
 #: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:245
 msgid ""
 "Applications installable via Apx with pre-defined container configuration"
-msgstr ""
+msgstr "Aplicații instalabile prin Apx cu configurație de container predefinită"
 
 #. origin_ui on a remote is the repo dialogue section name,
 #. * not the remote title
 #: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:249
 msgid "Apps"
-msgstr ""
+msgstr "Aplicații"
 
 #: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:251
 msgid ""
@@ -6633,6 +6706,9 @@ msgid ""
 "and pre-configured by the Vanilla OS team to guarantee that they are using "
 "the most compatible container and configurations."
 msgstr ""
+"Acest depozit conține un set de aplicații populare instalabile prin Apx și "
+"preconfigurate de către echipa Vanilla OS pentru a garanta că se utilizează "
+"cele mai compatibile containere și configurații."
 
 #~ msgid "Application manager for GNOME"
 #~ msgstr "Administrator de aplicații pentru GNOME"
