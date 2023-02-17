@@ -9,20 +9,22 @@
 # sujiniku <sujinikusityuu@gmail.com>, 2018, 2020-2021.
 # Shinichirou Yamada <yamada_strong_yamada_nice_64bit@yahoo.co.jp>, 2018.
 # sicklylife <translation@sicklylife.jp>, 2019-2020, 2022.
-#
+# azuki <ipadgoogcloud@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2022-03-14 20:30+0900\n"
-"Last-Translator: sicklylife <translation@sicklylife.jp>\n"
-"Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
+"PO-Revision-Date: 2023-02-17 22:27+0000\n"
+"Last-Translator: azuki <ipadgoogcloud@gmail.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/vanilla-os/"
+"gnome-software/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -5452,7 +5454,7 @@ msgstr "ネットワーク設定"
 #. button in the info bar
 #: src/gs-shell.ui:118
 msgid "Restart Now"
-msgstr "再起動"
+msgstr "今すぐ再起動"
 
 #. button in the info bar
 #: src/gs-shell.ui:128
