@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: gnome-software\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-16 17:28+0000\n"
+"PO-Revision-Date: 2023-02-17 22:27+0000\n"
 "Last-Translator: Abu Huraira <abuhuraira@tutamail.com>\n"
 "Language-Team: Bengali <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/bn/>\n"
@@ -548,7 +548,6 @@ msgstr ""
 "অ্যাপ্লিকেশন বিবরণ পৃষ্ঠায় 'লেখকের অন্যান্য অ্যাপ্লিকেশন' বিভাগ যুক্তকরণ"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:170
-#, fuzzy
 msgid "Improve styling of app context lozenges"
 msgstr "অ্যাপ প্রসঙ্গ লজেঞ্জের স্টাইলিং উন্নত করুন"
 
@@ -596,22 +595,25 @@ msgstr "`--uninstall=ID` কমান্ড লাইন বিকল্প য�
 msgid ""
 "Allow scrolling screenshots by clicking on next and previous screenshots"
 msgstr ""
+"পরবর্তী এবং পূর্ববর্তী স্ক্রিনশটগুলিতে ক্লিক করে স্ক্রিনশটগুলি স্ক্রোল করার "
+"অনুমতি প্রদান"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:180
 msgid "Add support for webapps"
-msgstr ""
+msgstr "ওয়েবঅ্যাপগুলির জন্য সমর্থন যোগ করা"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:181
 msgid "Allow swiping back in the shell using touch gestures"
-msgstr ""
+msgstr "স্পর্শ অঙ্গভঙ্গি ব্যবহার করে শেলে ফিরে যাওয়ার সুযোগ প্রদান"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:182
 msgid "Improved caching of downloaded metadata"
-msgstr ""
+msgstr "ডাউনলোড করা মেটাডেটার উন্নত ক্যাশিং"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:183
 msgid "Many internal architectural changes to make the code more maintainable"
 msgstr ""
+"কোডটিকে আরও রক্ষণাবেক্ষণযোগ্য করার জন্য অনেক অভ্যন্তরীণ স্থাপত্য পরিবর্তন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:184
 msgid ""
@@ -619,19 +621,25 @@ msgid ""
 "distribution vendors wishing to mark their apps as popular should see `doc/"
 "vendor-customisation.md` for examples of how to do this now"
 msgstr ""
+"<code>popular-overrides</code> GSettings কী-টি অপসারণ করা হয়েছে; ডিস্ট্রিবি"
+"উশন সেবা প্রদানকারী, যারা তাদের অ্যাপগুলিকে জনপ্রিয় হিসাবে চিহ্নিত করতে "
+"ইচ্ছুক, তাদের উচিত এটা এখন কীভাবে করা যায় তা জানতে 'doc/vendor-"
+"customisation.md' দেখা"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:189
 msgid ""
 "The <code>hardcoded_popular</code> Meson option has been renamed to "
 "<code>hardcoded_curated</code>."
 msgstr ""
+"<code>hardcoded_popular</code> মেসন অপশনটির নাম পরিবর্তন করে "
+"<code>hardcoded_curated</code> রাখা হয়েছে।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:207
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:249
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:425
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:602
 msgid "French"
-msgstr ""
+msgstr "ফরাসি"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:208
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:287
@@ -641,7 +649,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:603
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:689
 msgid "Friulian"
-msgstr ""
+msgstr "ফ্রিউলিয়ান"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:217
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:256
@@ -652,47 +660,48 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:498
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:545
 msgid "Occitan (post 1500)"
-msgstr ""
+msgstr "অক্সিটান (1500 এর পরে)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:235
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:405
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:561
 msgid "This is a stable release with the following changes:"
-msgstr ""
+msgstr "এটি নিম্নলিখিত পরিবর্তনসমূহ সহ একটি স্থিতিশীল রিলিজ:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:238
 msgid "Added several appstream-related fixes"
-msgstr ""
+msgstr "বেশ কয়েকটি অ্যাপস্ট্রিম-সম্পর্কিত সংশোধন যোগ করা হয়েছে"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:243
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:530
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:685
 msgid "Bokmål, Norwegian"
-msgstr ""
+msgstr "বোকমাল, নরওয়েজিয়ান"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:253
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:334
 msgid "Japanese"
-msgstr ""
+msgstr "জাপানী"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:254
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:465
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:608
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:697
 msgid "Kazakh"
-msgstr ""
+msgstr "কাজাখ"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:268
 msgid "This is the third unstable release for GNOME 42."
-msgstr ""
+msgstr "এটি গ্নোম 42 এর তৃতীয় অস্থিতিশীল রিলিজ।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:270
 msgid "Cancel ongoing update downloads when system power is low"
 msgstr ""
+"যখন সিস্টেম পাওয়ার (চার্জ) কম থাকে তখন চলমান আপডেট ডাউনলোডগুলি বাতিল করুন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:271
 msgid "Numerous small user interface fixes and tweaks"
-msgstr ""
+msgstr "অসংখ্য ছোট ইউজার ইন্টারফেস সংশোধন ও পরিমার্জন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:272
 msgid "Prioritize full matches in search results"
@@ -700,17 +709,21 @@ msgstr "অনুসন্ধান ফলাফলে পুরোপুরি 
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:273
 msgid "Improvements in dark mode"
-msgstr ""
+msgstr "ডার্ক মোডে উন্নতি"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:274
 msgid "Fix disabling flatpak remotes from the ‘Software Repositories’ dialog"
 msgstr ""
+"'সফ্টওয়্যার রিপোজিটরি' ডায়ালগ থেকে ফ্ল্যাটপ্যাক রিমোটগুলি নিষ্ক্রিয় করা "
+"সংশোধন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:275
 msgid ""
 "Threading and performance improvements which should reduce the number of "
 "user interface freezes"
 msgstr ""
+"থ্রেডিং এবং কর্মক্ষমতা উন্নতি যা ব্যবহারকারী ইন্টারফেস স্থির হয়ে আটকে যাওয়া "
+"হ্রাস করে"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:276
 msgid "Update some icons"
@@ -721,43 +734,47 @@ msgid ""
 "Check for updates when moving from a metered to a non-metered network "
 "connection"
 msgstr ""
+"মিটারযুক্ত থেকে একটি নন-মিটারযুক্ত নেটওয়ার্কে সংযোগ পরিবর্তন করার সময় "
+"আপডেটের জন্য পরীক্ষা করুন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:306
 msgid "This is the second unstable release for GNOME 42."
-msgstr ""
+msgstr "এটি গ্নোম 42 এর দ্বিতীয় অস্থিতিশীল রিলিজ।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:308
 msgid "Allow <code>--verbose</code> to be enabled at runtime"
-msgstr ""
+msgstr "রানটাইমে <code>--verbose</code> চালু রাখার অনুমতি দিন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:309
 msgid "Condense the rows in the age rating context dialog"
-msgstr ""
+msgstr "বয়স রেটিং প্রসঙ্গ ডায়ালগে সারিগুলিকে ঘন করুন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:310
 msgid "Update the UI for ratings and reviews of apps"
-msgstr ""
+msgstr "অ্যাপের রেটিং এবং পর্যালোচনার জন্য UI আপডেট করুন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:311
 msgid "Improve the appearance of the category page loading screen"
-msgstr ""
+msgstr "বিভাগ পৃষ্ঠা লোডিং স্ক্রিনের রূপ উন্নয়ন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:312
 msgid "Drop the first run dialog"
-msgstr ""
+msgstr "প্রথম রান ডায়ালগটি বাদ দেওয়া"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:313
 msgid "Improvements to dark theming"
-msgstr ""
+msgstr "অন্ধকার থিমিং উন্নতি"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:314
 msgid ""
 "Support viewing a specific metainfo file using <code>--show-metainfo</code>"
 msgstr ""
+"<code>--show-metainfo</code> ব্যবহার করে একটি নির্দিষ্ট metainfo ফাইল দেখার "
+"সমর্থন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:315
 msgid "Several more threading improvements"
-msgstr ""
+msgstr "আরও বেশ কিছু থ্রেডিং উন্নতি"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:316
 msgid "Icon updates"
@@ -765,7 +782,7 @@ msgstr "আইকন আপডেট সমূহ"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:317
 msgid "Drop the hardcoded-popular plugin in favour of an appstream file"
-msgstr ""
+msgstr "একটি অ্যাপস্ট্রিম ফাইলের সমর্থনে hardcoded-popular প্লাগইন বাদ প্রদান"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:318
 msgid ""
@@ -779,27 +796,27 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:347
 msgid "This is the first unstable release for GNOME 42."
-msgstr ""
+msgstr "এটি GNOME 42 এর জন্য প্রথম অস্থিতিশীল রিলিজ।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:350
 msgid "Support more markup in the application description"
-msgstr ""
+msgstr "অ্যাপ্লিকেশন বিবরণে আরো বেশি মার্কআপ সমর্থন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:351
 msgid "Ask about package signature with PackageKit on signing issue"
-msgstr ""
+msgstr "সাইনিং ইস্যুতে প্যাকেজকিটের সাথে প্যাকেজ স্বাক্ষর সম্পর্কে জিজ্ঞাসা"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:352
 msgid "Show better System Update progress"
-msgstr ""
+msgstr "আরো ভাল সিস্টেম আপডেট অগ্রগতি প্রদর্শন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:353
 msgid "Remove various cultural sensitivity badges"
-msgstr ""
+msgstr "বিভিন্ন সাংস্কৃতিক সংবেদনশীলতা ব্যাজ অপসারণ"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:354
 msgid "Fix a crash when processing age ratings"
-msgstr ""
+msgstr "বয়সের রেটিং প্রক্রিয়াকরণের সময় পাওয়া একটি ক্র্যাশ সংশোধন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:355
 msgid ""
@@ -810,89 +827,101 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:356
 msgid "Do not follow symlinks when calculating disk size usage"
-msgstr ""
+msgstr "ডিস্ক আকারের ব্যবহার গণনা করার সময় সিমলিঙ্কগুলি অনুসরণ করবেন না"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:357
 msgid "Fix addons section, which could show addons for different application"
 msgstr ""
+"অ্যাডঅন অংশটি সংশোধন, যা বিভিন্ন অ্যাপ্লিকেশনের জন্য অ্যাডঅনগুলি দেখাতে পারে"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:358
 msgid ""
 "Fix showing a ‘transaction in progress’ error when using the rpm-ostree "
 "plugin"
 msgstr ""
+"rpm-ostree প্লাগইন ব্যবহার করার সময় পাওয়া একটি 'লেনদেন চলছে' ত্রুটির সংশোধন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:359
 msgid "Don’t recommend a reboot if firmware updates fail"
-msgstr ""
+msgstr "ফার্মওয়্যার আপডেটগুলি ব্যর্থ হলে রিবুটের পরামর্শ দেবেন না"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:360
 msgid ""
 "Fix flathub repo being considered present on Fedora 35 with filtered flathub"
 msgstr ""
+"Fedora 35-এ ফিল্টার করা ফ্ল্যাটহাবকে পূর্ণ ফ্ল্যাটহাব হিসেবে গণনা করার ত্রুটি"
+" সংশোধন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:361
 msgid "Allow searching for extensions"
-msgstr ""
+msgstr "এক্সটেনশনগুলি অনুসন্ধানের অনুমতি প্রদান"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:362
 msgid "Fix translation of main button on updates page"
-msgstr ""
+msgstr "আপডেট পৃষ্ঠায় মূল বোতামের অনুবাদ সংশোধন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:363
 msgid "Fix codec installation process"
-msgstr ""
+msgstr "কোডেক ইনস্টলেশন প্রক্রিয়া সংশোধন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:364
 msgid "Add new GNOME Circle apps to the featured carousel"
-msgstr ""
+msgstr "নির্বাচিত ক্যারোসেলে নতুন GNOME সার্কেল অ্যাপ্লিকেশন যুক্ত করা"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:365
 msgid "Improve metadata support for snaps"
-msgstr ""
+msgstr "স্ন্যাপগুলির জন্য মেটাডেটা সমর্থন উন্নয়ন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:366
 msgid "Fix update checks being missed across suspend/hibernation"
-msgstr ""
+msgstr "সাসপেন্ড/হাইবারনেশন জুড়ে আপডেট চেক মিস করা সংশোধন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:367
 msgid ""
 "Ensure application lists are updated when repositories are enabled/installed "
 "or disabled/removed"
 msgstr ""
+"অ্যাপ্লিকেশন সংগ্রহস্থল সক্রিয়/ইনস্টল বা নিষ্ক্রিয়/সরানো হলে এর পর "
+"অ্যাপ্লিকেশন তালিকা আপডেট করা হয়েছে কিনা তা নিশ্চিতকরণ"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:372
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:491
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:529
 msgid "Belarusian"
-msgstr ""
+msgstr "বেলারুশীয়"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:393
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:704
 msgid "Slovak"
-msgstr ""
+msgstr "শ্লোভাক"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:407
 msgid ""
 "Instead of showing all package-based apps as \"potentially unsafe\", only "
 "use that language for 3rd party ones"
 msgstr ""
+"সমস্ত প্যাকেজ-ভিত্তিক অ্যাপ্লিকেশনগুলিকে \"সম্ভাব্য অনিরাপদ\" হিসাবে দেখানোর "
+"পরিবর্তে, কেবলমাত্র তৃতীয় পক্ষের অ্যাপ্লিকেশনগুলির জন্য সেই ভাষাটি ব্যবহার"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:408
 msgid ""
 "Fix a bug where the \"Show more\" button on an app details page would "
 "flicker when the window is resized"
 msgstr ""
+"একটি বাগ সংশোধন করুন যেখানে একটি অ্যাপের বিবরণ পৃষ্ঠায় \"আরো দেখান\" বোতামটি"
+" দপদপ করে, যখন উইন্ডোটির আকার পরিবর্তন করা হয়"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:409
 msgid ""
 "Fix a bug where Software sometimes shows an Uninstall button after "
 "uninstalling something"
 msgstr ""
+"এমন একটি বাগ সংশোধন যেখানে সফ্টওয়্যার কখনও কোনো কিছু অপসারণ করার পরও একটি "
+"আনইনস্টল বোতাম দেখায়"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:410
 msgid "Add GNOME Circle apps to the featured carousel"
-msgstr ""
+msgstr "নির্বাচিত ক্যারোসেলে নতুন GNOME সার্কেল অ্যাপ্লিকেশন যুক্ত করা"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:411
 msgid ""
@@ -900,209 +929,228 @@ msgid ""
 "operation for PackageKit software rather than showing a PolicyKit password "
 "prompt"
 msgstr ""
+"একটি বাগ সংশোধন যেখানে সফ্টওয়্যার কখনও কখনও একটি পলিসিকিট পাসওয়ার্ড প্রম্"
+"পট দেখানোর পরিবর্তে প্যাকেজকিট সফ্টওয়্যারের জন্য কোনো ইনস্টল / অপসারণ অভিজা"
+"ন সম্পাদন করতে ব্যর্থ হয়"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:412
 msgid ""
 "Fix a bug where Software would fail to upgrade the distribution via "
 "PackageKit"
 msgstr ""
+"একটি বাগ সংশোধন যেখানে সফ্টওয়্যার প্যাকেজকিটের মাধ্যমে ডিস্ট্রিবিউশন আপগ্রে"
+"ড করতে ব্যর্থ হয়"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:413
 msgid "Fix the hiding of rows on the Updates tab after they have been updated"
-msgstr ""
+msgstr "আপডেট ট্যাবে সারিগুলি আপডেট করার পরে তাদের লুকিয়ে পড়ার বিষয়টি সংশোধন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:436
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:550
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:614
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:703
 msgid "Romanian"
-msgstr ""
+msgstr "রোমানীয়"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:447
 msgid "This is the third unstable release for GNOME 41."
-msgstr ""
+msgstr "এটি GNOME 41 এর জন্য তৃতীয় অস্থিতিশীল রিলিজ।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:449
 msgid "Tweaks to the context tiles and dialogs"
-msgstr ""
+msgstr "প্রসঙ্গ টাইলস এবং ডায়ালগগুলি পরিমার্জন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:450
 msgid "Fixes to the details page for non-desktop apps"
-msgstr ""
+msgstr "নন-ডেস্কটপ অ্যাপ্লিকেশনগুলির জন্য বিশদ পৃষ্ঠা সংশোধন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:451
 msgid "Re-add support for the add-ons categories"
-msgstr ""
+msgstr "অ্যাড-অন বিভাগগুলির জন্য পুনরায় সমর্থন যোগ করা"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:452
 msgid "Sort new and updated apps by release date on the category page"
 msgstr ""
+"বিভাগ পৃষ্ঠায় প্রকাশের তারিখ অনুসারে নতুন এবং আপডেট করা অ্যাপগুলি সাজান"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:481
 msgid "This is the second unstable release for GNOME 41."
-msgstr ""
+msgstr "এটি গ্নোম 41 এর দ্বিতীয় অস্থিতিশীল রিলিজ।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:483
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:511
 msgid "Many parts of the user interface reworked"
-msgstr ""
+msgstr "ইউজার ইন্টারফেসের অনেক অংশে পুনরায় কাজ করা হয়েছে"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:484
 msgid "Fix when the 'Launch' button is shown after an application install"
-msgstr ""
+msgstr "কোনও অ্যাপ্লিকেশন ইনস্টল করার পরে 'লঞ্চ' বোতামটি প্রদর্শন সংশোধন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:485
 msgid "Fix appstream:// URL handling"
-msgstr ""
+msgstr "appstream:// URL পরিচালনা সংশোধন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:486
 msgid "Fix application freeze on Flatpak application install/remove/update"
 msgstr ""
+"ফ্ল্যাটপ্যাক অ্যাপ্লিকেশন ইনস্টল/অপসারণ/আপডেটের সময় অ্যাপ্লিকেশন স্থির হয়ে "
+"আটকে যাওয়া সংশোধন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:487
 msgid "Disable automatic update downloads when in power saver mode"
-msgstr ""
+msgstr "পাওয়ার সেভার মোডে থাকাকালীন স্বয়ংক্রিয় আপডেট ডাউনলোড নিষ্ক্রিয় করুন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:497
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:540
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:692
 msgid "Greek, Modern (1453-)"
-msgstr ""
+msgstr "গ্রীক, আধুনিক (1453-)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:509
 msgid "This is the first unstable release for GNOME 41."
-msgstr ""
+msgstr "এটি GNOME 41 এর জন্য প্রথম অস্থিতিশীল রিলিজ।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:512
 msgid "Improve error reporting from flatpak when low on disk space"
 msgstr ""
+"ডিস্কের স্থান কম থাকা অবস্থায় ফ্ল্যাটপ্যাক থেকে ত্রুটি অভিযোগ ব্যবস্থা উন্নয়ন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:513
 msgid "Fix issues with updating the UI when uninstalling apps with add-ons"
 msgstr ""
+"অ্যাড-অন সহ অ্যাপগুলি আনইনস্টল করার সময় ইউআই আপডেট করার সমস্যাগুলি সমাধান"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:514
 msgid "Don’t keep rpm-ostreed alive forever"
-msgstr ""
+msgstr "rpm-ostreed কে চিরকাল জীবিত না রাখা"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:515
 msgid "Prevent polkit checks showing up for background operations"
-msgstr ""
+msgstr "ব্যাকগ্রাউন্ড ক্রিয়াকলাপের জন্য প্রদর্শিত পোলকিট চেকগুলি প্রতিরোধ করুন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:516
 msgid "Disallow submitting reviews for an app you haven’t installed"
 msgstr ""
+"আপনি ইনস্টল করেননি এমন কোনও অ্যাপের জন্য পর্যালোচনা জমা দেওয়ার সুযোগ না "
+"দেওয়া"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:517
 msgid "Show download size in the Updates page"
-msgstr ""
+msgstr "আপডেট পৃষ্ঠায় ডাউনলোডের আকার প্রদর্শন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:518
 msgid "Notify when restart is needed when uninstalling an app"
-msgstr ""
+msgstr "কোনও অ্যাপ আনইনস্টল করার সময় কখন রিস্টার্ট প্রয়োজন হয় তা অবহিত করা"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:519
 msgid "Fix some issues with searches not running"
-msgstr ""
+msgstr "অনুসন্ধান গুলি কাজ না করার বিষয়ে সমস্যাগুলো সমাধান"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:520
 msgid "Allow non-integer average star ratings for apps"
-msgstr ""
+msgstr "অ্যাপ্লিকেশানগুলির জন্য ভগ্নাংশ গড় তারকা রেটিং গ্রহণ"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:521
 msgid "Reduce number of categories in the UI"
-msgstr ""
+msgstr "UI এ বিভাগের সংখ্যা হ্রাসকরণ"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:522
 msgid "Improve ‘pending updates’ notifications"
-msgstr ""
+msgstr "'আপডেট অপেক্ষমান' বিজ্ঞপ্তি উন্নয়ন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:523
 msgid "Refine presentation of download and installed size on details page"
-msgstr ""
+msgstr "বিস্তারিত পৃষ্ঠায় ডাউনলোড এবং ইনস্টল করা আকারের উপস্থাপনা পরিমার্জন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:524
 msgid "Remove left over gnome-online-account dependencies"
-msgstr ""
+msgstr "অবশিষ্ট gnome-online-account নির্ভরতা প্যাকেজ অপসারণ করুন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:563
 msgid "Fix handling of invalid or incomplete application icons"
-msgstr ""
+msgstr "অগ্রহণযোগ্য বা অসম্পূর্ণ অ্যাপ্লিকেশন আইকনগুলির পরিচালনা সংশোধন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:564
 msgid "Fix the plugin documentation to reflect reality"
-msgstr ""
+msgstr "বাস্তবতা প্রতিফলিত করতে প্লাগইন ডকুমেন্টেশন সংশোধন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:565
 msgid "Fix the Snap plugin to actually load icons"
-msgstr ""
+msgstr "আইকনগুলি লোড করতে স্ন্যাপ প্লাগইন সংশোধন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:566
 msgid "Set download size to 0 after the package is downloaded"
-msgstr ""
+msgstr "প্যাকেজটি ডাউনলোড হওয়ার পরে ডাউনলোডের আকার 0 এ সেট করা"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:568
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:593
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:636
 msgid "Translation updates:"
-msgstr ""
+msgstr "অনুবাদ আপডেট:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:570
 msgid "British English"
-msgstr ""
+msgstr "ব্রিটিশ ইংরেজি"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:572
 msgid "Greek"
-msgstr ""
+msgstr "গ্রীক"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:574
 msgid "Norwegian Bokmål"
-msgstr ""
+msgstr "নরওয়েজিয়ান বোকমাল"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:576
 msgid "Punjabi"
-msgstr ""
+msgstr "পাঞ্জাবি"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:583
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:626
 msgid "This is an unstable release with the following changes:"
-msgstr ""
+msgstr "এটি নিম্নলিখিত পরিবর্তনসমূহ সহ একটি অস্থিতিশীল রিলিজ:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:585
 msgid "Implement new featured apps carousel."
-msgstr ""
+msgstr "নতুন বৈশিষ্ট্যযুক্ত অ্যাপ ক্যারাউজেল গঠন।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:586
 msgid ""
 "List of Flatpak repositories is updated when changed using the Flatpak "
 "command line tool."
 msgstr ""
+"ফ্ল্যাটপ্যাক কমান্ড লাইন টুল ব্যবহার করে পরিবর্তন করার সময় ফ্ল্যাটপ্যাক "
+"সংগ্রহস্থলের তালিকা আপডেট করা হয়।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:587
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:630
 msgid ""
 "The loading page now shows the full color icon instead of the symbolic one."
-msgstr ""
+msgstr "লোডিং পৃষ্ঠাটি এখন প্রতীকী আইকনের পরিবর্তে সম্পূর্ণ রঙের আইকনটি দেখায়।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:588
 msgid ""
 "Show release date in version history for releases that use the 'date' "
 "attribute."
 msgstr ""
+"'date' অ্যাট্রিবিউট ব্যবহার করে এমন কোনো রিলিজের জন্য সংস্করণ ইতিহাসে প্রকাশে"
+"র তারিখ দেখান।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:589
 msgid "Improved icon handling, including with hiDPI screens."
-msgstr ""
+msgstr "হাইডিপিআই স্ক্রিন সহ উন্নত আইকন পরিচালনা।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:590
 msgid "Fixed a bug in remembering when update notifications were shown."
 msgstr ""
+"আপডেট বিজ্ঞপ্তিগুলি প্রদর্শিত হলে মনে রাখার ক্ষেত্রে একটি বাগ ঠিক করা হয়েছে।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:591
 msgid ""
 "Build as a dynamic rather than a static library, and rearrange installation "
 "paths."
 msgstr ""
+"একটি স্ট্যাটিক লাইব্রেরির পরিবর্তে একটি ডাইনামিক লাইব্রেরি হিসাবে বিল্ড করুন "
+"এবং ইনস্টলেশন পাথগুলি পুনরায় সাজান৷"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:628
 msgid ""
@@ -1110,142 +1158,168 @@ msgid ""
 "with appstream data which provides information about apps and other "
 "components."
 msgstr ""
+"GNOME সফ্টওয়্যার এখন libappstream-glib-এর পরিবর্তে libappstream ব্যবহার করে "
+"appstream ডেটার সাথে কাজ করে যা অ্যাপ এবং অন্যান্য উপাদান সম্পর্কে তথ্য প্রদা"
+"ন করে।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:629
 msgid "App details pages show version history information when it's available."
 msgstr ""
+"অ্যাপের বিশদ পৃষ্ঠাগুলি সংস্করণ ইতিহাসের তথ্য দেখায় যখন এটি উপলব্ধ থাকে।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:631
 msgid ""
 "UI elements for displaying app add-ons have been tweaked to more closely "
 "match the designs."
 msgstr ""
+"অ্যাপ অ্যাড-অনগুলি প্রদর্শনের জন্য UI উপাদানগুলি পরিমার্জন করা হয়েছে যেন "
+"ডিজাইনের সাথে আর ভালভাবে মিলে।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:632
 msgid ""
 "Installed icons and the badge showing the number of updates available were "
 "changed back to blue from green."
 msgstr ""
+"প্রতিস্থাপিত আইকন এবং কত আপডেট বাকি তা প্রদর্শনকারী ব্যাজ পুনরায় নীল থেকে "
+"সবুজে বদলে ফেলা হয়েছে।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:633
 msgid ""
 "The dropdown showing the available sources of an application includes the "
 "packaging format (e.g. Flatpak vs RPM)."
 msgstr ""
+"কোনো অ্যাপ্লিকেশনের জন্য উপলব্ধ উৎস প্রদর্শন ড্রপডাউন মেনুটি প্যাকেজিং "
+"বিন্যাসগুলি (যেমন ফ্ল্যাটপ্যাক বনাম RPM) অন্তর্ভুক্ত করে।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:634
 msgid "A bug was fixed that prevented installation of .flatpakref files"
-msgstr ""
+msgstr "একটি বাগ সংশোধন করা হয়েছে যা .flatpakref ফাইলের ইনস্টলেশনকে বাধা দেয়"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:642
 msgid "Panjabi"
-msgstr ""
+msgstr "পাঞ্জাবি"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:652
 msgid "This is the first unstable release for GNOME 40."
-msgstr ""
+msgstr "এটি GNOME 40 এর জন্য প্রথম অস্থিতিশীল রিলিজ।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:654
 msgid ""
 "Small updates to how app descriptions and addons are presented on the "
 "details page"
 msgstr ""
+"বিস্তারিত পৃষ্ঠায় অ্যাপের বিবরণ এবং অ্যাডঅনগুলি কীভাবে উপস্থাপন করা হয় তার "
+"ছোট আপডেট"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:655
 msgid "Fix handling of pending app installations when going online"
-msgstr ""
+msgstr "অনলাইনে যাওয়ার সময় মুলতুবি থাকা অ্যাপ ইনস্টলেশন পরিচালনা বিষয়ক সংশোধন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:656
 msgid "Better support for dark themes (particularly Adwaita-Dark)"
-msgstr ""
+msgstr "ডার্ক থিমগুলির জন্য তুলনামূলক ভাল সমর্থন (বিশেষত আডওয়াইটা-ডার্ক)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:657
 msgid "Improvements to how app screenshots are loaded and presented"
-msgstr ""
+msgstr "কীভাবে অ্যাপের স্ক্রিনশট লোড এবং উপস্থাপন করা হয় তার উন্নতি"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:658
 msgid ""
 "Hide ‘Launch’ button if an application (for example, Wine) cannot be launched"
 msgstr ""
+"যদি কোনও অ্যাপ্লিকেশন (উদাহরণস্বরূপ, ওয়াইন) চালু করা না যায় তবে 'লঞ্চ' "
+"বোতামটি লুকিয়ে রাখুন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:659
 msgid "Make the UI clearer when loading information from flatpakref files"
-msgstr ""
+msgstr "ফ্ল্যাটপ্যাক রেফ ফাইলগুলি থেকে তথ্য লোড করার সময় ইউআই আরও পরিষ্কার করা"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:660
 msgid "Don’t update app metadata on start when download-updates is disabled"
 msgstr ""
+"ডাউনলোড-আপডেটগুলি নিষ্ক্রিয় থাকা অবস্থায় শুরুতে অ্যাপ মেটাডেটা আপডেট করবেন "
+"না"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:661
 msgid "Fix opening the updates list when clicking on an updates notification"
 msgstr ""
+"কোনও আপডেট নোটিফিকেশনে ক্লিক করার সময় আপডেট তালিকাটি খোলার বিষয়টি সংশোধন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:662
 msgid ""
 "Fix state updates when installing flatpak apps or repos which are already "
 "installed"
 msgstr ""
+"ইতিমধ্যে ইনস্টল করা হয়েছে এমন ফ্ল্যাটপ্যাক অ্যাপ বা রিপো ইনস্টল করার সময় "
+"স্টেট আপডেটগুলি সংশোধন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:663
 msgid "Add Ctrl+Q as a keyboard shortcut for closing the window"
-msgstr ""
+msgstr "উইন্ডোটি বন্ধ করার জন্য একটি কীবোর্ড শর্টকাট হিসাবে Ctrl+Q যোগ করা"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:664
 msgid "Rework timing and content of software update notifications"
-msgstr ""
+msgstr "সফ্টওয়্যার আপডেট বিজ্ঞপ্তির সময় এবং বিষয়বস্তুর বিষয়ে পুনরায় কাজ করা"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:665
 msgid ""
 "Prevent uninstalled local apps from appearing in the installed apps list"
 msgstr ""
+"ইনস্টল করা অ্যাপগুলির তালিকায় আনইনস্টল করা স্থানীয় অ্যাপগুলি প্রদর্শিত হতে "
+"বাধা প্রদান"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:666
 msgid "Support installation/uninstallation of addons for flatpak apps"
 msgstr ""
+"ফ্ল্যাটপ্যাক অ্যাপগুলির জন্য অ্যাডঅনগুলির ইনস্টলেশন/আনইনস্টলেশন সমর্থন করে"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:667
 msgid "Improve presentation of age ratings for apps"
-msgstr ""
+msgstr "অ্যাপগুলির জন্য বয়সের রেটিংগুলির উপস্থাপনা উন্নয়ন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:668
 msgid "Fix a crash in the updates page"
-msgstr ""
+msgstr "আপডেট পৃষ্ঠায় একটি ক্র্যাশ সমাধান"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:669
 msgid "Fix presentation of app permissions for fully sandboxed flatpak apps"
 msgstr ""
+"সম্পূর্ণ স্যান্ডবক্সযুক্ত ফ্ল্যাটপ্যাক অ্যাপগুলির জন্য অ্যাপের অনুমতিগুলির "
+"উপস্থাপনা সংশোধন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:670
 msgid "Fix deadlock on rpm-ostree systems"
-msgstr ""
+msgstr "rpm-ostree সিস্টেমে অচলাবস্থা সমাধান"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:671
 msgid "Fix presentation of version number changes in right-to-left locales"
-msgstr ""
+msgstr "ডান-থেকে-বাম লোকেলে অ্যাপ সংস্করণ নম্বর পরিবর্তনের উপস্থাপনা সংশোধন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:672
 msgid "Error handling improvements for fwupd"
-msgstr ""
+msgstr "fwupd-এর জন্য উন্নতি পরিচালনায় ত্রুটি"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:673
 msgid "Performance improvements for ODRS on startup"
-msgstr ""
+msgstr "স্টার্টআপের সময় ODRS-এর কর্মক্ষমতার উন্নতি"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:674
 msgid "Improve presentation of firmware warning messages"
-msgstr ""
+msgstr "ফার্মওয়্যার সতর্কতা বার্তাগুলির উপস্থাপনা উন্নয়ন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:675
 msgid "XML parsing performance improvements"
-msgstr ""
+msgstr "XML পারসিং কর্মক্ষমতা উন্নতি"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:676
 msgid "Automatically remove end-of-life flatpak runtimes"
-msgstr ""
+msgstr "স্বয়ংক্রিয়ভাবে মেয়াদোত্তীর্ণ ফ্ল্যাটপ্যাক রানটাইমগুলি অপসারণ করুন"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:677
 msgid "Support updating flatpaks to their new name when they are renamed"
 msgstr ""
+"যখন ফ্ল্যাটপ্যাকসমূহের নাম পরিবর্তন করা হয়, তখন সেগুলোকে নতুন নামে আপডেট করা "
+"সমর্থন করে"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:678
 msgid "Update the GNOME Software icon"
@@ -1253,12 +1327,13 @@ msgstr "GNOME Software আইকন আপডেট"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:679
 msgid "Support more search results in the snap store"
-msgstr ""
+msgstr "স্ন্যাপ স্টোরে আরো বেশি অনুসন্ধান ফলাফল সমর্থন করে"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:680
 msgid ""
 "Drop libgnome-desktop-3 dependency in favour of gsettings-desktop-schemas"
 msgstr ""
+"gsetings-desktop-schemas-এর সমর্থনে libgnome-desktop-3 নির্ভরতা বাদ প্রদান"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:696
 msgid "Kabyle"
@@ -1271,11 +1346,11 @@ msgstr "GNOME প্রজেক্ট"
 
 #: data/org.gnome.software.external-appstream.policy.in.in:11
 msgid "Install an appstream file into a system location"
-msgstr ""
+msgstr "কোনো সিস্টেম লোকেশনে যেকোন appstream ফাইল ইনস্টল"
 
 #: data/org.gnome.software.external-appstream.policy.in.in:12
 msgid "Installing an appstream file into a system location"
-msgstr ""
+msgstr "কোনো সিস্টেম লোকেশনে যেকোন appstream ফাইল ইনস্টল"
 
 #: data/org.gnome.software.gschema.xml:5
 msgid "A list of compatible projects"
@@ -1304,27 +1379,32 @@ msgstr ""
 
 #: data/org.gnome.software.gschema.xml:15
 msgid "Automatically download and install updates"
-msgstr ""
+msgstr "স্বয়ংক্রিয়ভাবে আপডেটগুলি ডাউনলোড এবং ইনস্টল"
 
 #: data/org.gnome.software.gschema.xml:16
 msgid ""
 "If enabled, GNOME Software automatically downloads software updates in the "
 "background, also installing ones that do not require a reboot."
 msgstr ""
+"যদি এটি সক্রিয় থাকে তাহলে GNOME Software স্বয়ংক্রিয়ভাবে আড়ালে সফটওয়্যার "
+"আপডেটগুলি ডাউনলোড করে রাখে, এছাড়াও এমন সবকিছু ইন্সটল করে রাখে যেগুলোর জন্য "
+"রিবুট করার প্রয়োজন হয় না।"
 
 #: data/org.gnome.software.gschema.xml:20
 msgid "Notify the user about software updated in the background"
-msgstr ""
+msgstr "ব্যাকগ্রাউন্ডে আপডেট হওয়া সফটওয়্যার সম্পর্কে ব্যবহারকারীকে অবহিত করে"
 
 #: data/org.gnome.software.gschema.xml:21
 msgid ""
 "If enabled, GNOME Software notifies the user about updates that happened "
 "whilst the user was idle."
 msgstr ""
+"যদি এটি সক্রিয় থাকে তাহলে GNOME Software ব্যবহারকারীকে সেই আপডেটগুলি "
+"সম্পর্কে অবহিত করবে যেগুলি ব্যবহারকারী সক্রিয় না থাকা অবস্থায় ঘটে।"
 
 #: data/org.gnome.software.gschema.xml:25
 msgid "Whether to automatically refresh when on a metered connection"
-msgstr "মিটার সংযোগকালে স্বংক্রিয়ভাবে রিফ্রেশ হবে কিনা "
+msgstr "মিটারড নেটওয়ার্কে সংযোগকালে স্বংক্রিয়ভাবে রিফ্রেশ হবে কিনা"
 
 #: data/org.gnome.software.gschema.xml:26
 msgid ""
@@ -1332,13 +1412,13 @@ msgid ""
 "when using a metered connection (eventually downloading some metadata, "
 "checking for updates, etc., which may incur in costs for the user)."
 msgstr ""
-"যদি সক্রিয় করা থাকে, নোম সফটওয়্যার পেছনে স্বয়ংক্রিয়ভাবে রিফ্রেশ হবে এমনকি মিটারকৃত "
-"সংযোগ ব্যবহারকালেও (অবশেষে কিছু মেটাডাটা ডাউনলোড করে, হালনাগাদ করণ দেখে "
-"ইত্যাদি, যা ব্যবহারকারীকেই খরচ বহন করতে হবে)।  "
+"যদি সক্রিয় করা থাকে, গ্নোম সফটওয়্যার আড়ালে স্বয়ংক্রিয়ভাবে রিফ্রেশ হবে এমনকি "
+"মিটারকৃত সংযোগ ব্যবহার কালেও (যা কিছু মেটাডাটা ডাউনলোড করতে পারে, আপডেট "
+"পরীক্ষা চালাতে পারে ইত্যাদি, এতে ব্যবহারকারীকে খরচ বহন করতে হতে পারে)।"
 
 #: data/org.gnome.software.gschema.xml:30
 msgid "Whether it’s the very first run of GNOME Software"
-msgstr ""
+msgstr "এটি গ্নোম সফটওয়ারের প্রথম চালনা কিনা"
 
 #: data/org.gnome.software.gschema.xml:34
 msgid "Show star ratings next to applications"
@@ -1347,6 +1427,8 @@ msgstr "এ্যাপ্লিকেশনের পাশে নক্ষত�
 #: data/org.gnome.software.gschema.xml:38
 msgid "Filter applications based on the default branch set for the remote"
 msgstr ""
+"রিমোটের জন্য সেট করা ডিফল্ট শাখার উপর ভিত্তি করে অ্যাপ্লিকেশনগুলি ফিল্টার "
+"করুন"
 
 #: data/org.gnome.software.gschema.xml:42
 msgid "Non-free applications show a warning dialog before install"
@@ -1382,11 +1464,11 @@ msgstr "শেষবার আপডেট হবার সময়"
 
 #: data/org.gnome.software.gschema.xml:67
 msgid "The last timestamp when the system was online and got any updates"
-msgstr ""
+msgstr "সর্বশেষ টাইমস্ট্যাম্প যখন সিস্টেমটি অনলাইনে ছিল এবং কোনও আপডেট পেয়েছিল"
 
 #: data/org.gnome.software.gschema.xml:71
 msgid "The age in seconds to verify the upstream screenshot is still valid"
-msgstr ""
+msgstr "আপস্ট্রিম স্ক্রিনশট যাচাই করার জন্য সেকেন্ড হিসেবে সময় গণনা এখনও বৈধ"
 
 #: data/org.gnome.software.gschema.xml:72
 msgid ""
@@ -1394,6 +1476,9 @@ msgid ""
 "updates to the screenshots may take longer to show to the user. A value of 0 "
 "means to never check the server if the image already exists in the cache."
 msgstr ""
+"একটি বৃহত্তর মান চয়ন করার অর্থ রিমোট সার্ভারে কম রাউন্ড-ট্রিপ হবে তবে "
+"স্ক্রিনশটগুলির আপডেটগুলি ব্যবহারকারীকে দেখাতে আরও বেশি সময় নিতে পারে। 0 এর "
+"মান মানে সার্ভারটি কখনই চেক না করা যদি চিত্রটি ইতিমধ্যে ক্যাশে বিদ্যমান থাকে।"
 
 #: data/org.gnome.software.gschema.xml:81
 msgid "The server to use for application reviews"
@@ -1405,7 +1490,7 @@ msgstr "রিভিউয়ের জন্য সর্বনিম্ন কা
 
 #: data/org.gnome.software.gschema.xml:86
 msgid "Reviews with karma less than this number will not be shown."
-msgstr "এই সংখ্যার চেয়ে কম কার্মাসহ রিভিউ প্রদর্শিত হবে না"
+msgstr "এই সংখ্যার চেয়ে কম কার্মাসহ রিভিউগুলি প্রদর্শিত হবে না।"
 
 #: data/org.gnome.software.gschema.xml:90
 msgid "A list of official repositories that should not be considered 3rd party"
@@ -1448,12 +1533,18 @@ msgstr "একটি এ্যাপ অ-বিনামূল্য সেট�
 
 #: data/org.gnome.software.gschema.xml:122
 msgid "Show the installed size for apps in the list of installed applications"
-msgstr ""
+msgstr "ইনস্টল করা অ্যাপ্লিকেশনগুলির তালিকায় অ্যাপগুলির ইনস্টলের আকার প্রদর্শন"
 
 #. Translators: Replace the link with a version in your language, e.g. 'https://de.wikipedia.org/wiki/Proprietäre_Software'. Remember to include ''.
 #: data/org.gnome.software.gschema.xml:126
 msgid "'https://en.wikipedia.org/wiki/Proprietary_software'"
 msgstr ""
+"'https://bn.m.wikipedia.org/wiki/%E0%A6%B8%E0%A6%AB%E0%A6%9F%E0%A6%93%E0%A6%A"
+"F%E0%A6%BC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B0_%E0%A6%B2%E0%A6%BE%E0%A6%87%E0"
+"%A6%B8%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%B8#%E0%A6%AE%E0%A6%BE%E0%A6%B2%E0%A6%"
+"BF%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A6%BE_%E0%A6%B8%E0%A6%AB%E0%A6%9F%E0%A6%93%E"
+"0%A6%AF%E0%A6%BC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B0_%E0%A6%B2%E0%A6%BE%E0%A6"
+"%87%E0%A6%B8%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%B8'"
 
 #: data/org.gnome.software.gschema.xml:127
 msgid "The URI that explains nonfree and proprietary software"
@@ -1473,6 +1564,9 @@ msgid ""
 "false, files are installed in non-standard $XDG_DATA_HOME/swcatalog/xml "
 "directory"
 msgstr ""
+"সকল ব্যবহারকারীর জন্য একটি সিস্টেম-ব্যাপী অবস্থানে AppStream ফাইলগুলি ইনস্টল "
+"করে। মিথ্যা হলে, ফাইলগুলি আদর্শ নয় এমন $XDG_DATA_HOME/swcatalog/xml "
+"ডিরেক্টরিতে ইনস্টল করা হবে"
 
 #: data/org.gnome.software.gschema.xml:139
 msgid ""
@@ -1484,32 +1578,32 @@ msgstr ""
 
 #: data/org.gnome.software.gschema.xml:146
 msgid "A string storing the gnome-online-account id used to login"
-msgstr ""
+msgstr "লগইন করতে ব্যবহৃত gnome-online-account আইডি সঞ্চয়কারী একটি স্ট্রিং"
 
 #. TRANSLATORS: tool that is used when moving profiles system-wide
 #: gs-install-appstream/gs-install-appstream.c:143
 msgid "GNOME Software AppStream system-wide installer"
-msgstr ""
+msgstr "GNOME Software AppStream সিস্টেম-ব্যাপী ইনস্টলার"
 
 #: gs-install-appstream/gs-install-appstream.c:145
 msgid "Failed to parse command line arguments"
-msgstr ""
+msgstr "কমান্ড লাইন আর্গুমেন্ট বিশ্লেষণ করতে ব্যর্থ হয়েছে"
 
 #. TRANSLATORS: user did not specify a valid filename
 #: gs-install-appstream/gs-install-appstream.c:152
 msgid "You need to specify exactly one filename"
-msgstr ""
+msgstr "আপনাকে ঠিক একটি ফাইলের নাম নির্দিষ্টভাবে উল্লেখ করতে হবে"
 
 #. TRANSLATORS: only able to install files as root
 #: gs-install-appstream/gs-install-appstream.c:159
 msgid "This program can only be used by the root user"
-msgstr ""
+msgstr "এই প্রোগ্রামটি শুধুমাত্র রুট ব্যবহারকারী কর্তৃক ব্যবহার করা যাবে"
 
 #. TRANSLATORS: error details
 #: gs-install-appstream/gs-install-appstream.c:167
 #, c-format
 msgid "Failed to validate content type: %s"
-msgstr ""
+msgstr "%s সামগ্রীর ধরণ যাচাই করতে ব্যর্থ হয়েছে"
 
 #. TRANSLATORS: error details
 #: gs-install-appstream/gs-install-appstream.c:178
@@ -1534,22 +1628,22 @@ msgstr "সিস্টেমে নির্বাচিত সফটওয়্�
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:134
 msgid "Cartoon Violence"
-msgstr ""
+msgstr "কার্টুন অঙ্কিত সহিংসতা"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:136
 msgid "No information regarding cartoon violence"
-msgstr ""
+msgstr "কার্টুন অঙ্কিত সহিংসতা সম্পর্কিত কোনও তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:144
 msgid "Fantasy Violence"
-msgstr ""
+msgstr "কাল্পনিক সহিংসতা"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:146
 msgid "No information regarding fantasy violence"
-msgstr ""
+msgstr "কাল্পনিক সহিংসতা সম্পর্কিত কোনও তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:154
@@ -1559,42 +1653,42 @@ msgstr "বাস্তব মনে হয় এমন সহিংসতা"
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:156
 msgid "No information regarding realistic violence"
-msgstr ""
+msgstr "বাস্তবসম দেখতে এমন সহিংসতা সম্পর্কিত কোন তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:164
 msgid "Violence Depicting Bloodshed"
-msgstr ""
+msgstr "রক্তপাতের চিত্র তুলে ধরে এমন সহিংসতা"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:166
 msgid "No information regarding bloodshed"
-msgstr ""
+msgstr "রক্তপাত সম্পর্কিত কোনও তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:174
 msgid "Sexual Violence"
-msgstr ""
+msgstr "যৌন সহিংসতা"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:176
 msgid "No information regarding sexual violence"
-msgstr ""
+msgstr "যৌন সহিংসতা সম্পর্কিত কোন তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:184
 msgid "Alcohol"
-msgstr ""
+msgstr "মাদক"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:186
 msgid "No information regarding references to alcohol"
-msgstr ""
+msgstr "মাদকের দিকে ইঙ্গিত করে এমন কোনও তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:194
 msgid "Narcotics"
-msgstr ""
+msgstr "নেশাদ্রব্য"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:196
@@ -1604,7 +1698,7 @@ msgstr "অবৈধ ড্রাগস্-এর রেফারেন্স �
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:204
 msgid "Tobacco"
-msgstr ""
+msgstr "তামাক"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:206
@@ -1615,42 +1709,42 @@ msgstr "তামাকজাত দ্রব্যের রেফারেন�
 #: src/gs-age-rating-context-dialog.c:214
 #: src/gs-age-rating-context-dialog.c:543
 msgid "Nudity"
-msgstr ""
+msgstr "নগ্নতা"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:216
 msgid "No information regarding nudity of any sort"
-msgstr ""
+msgstr "কোনও ধরণের নগ্নতা সম্পর্কিত কোনও তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:224
 msgid "Sexual Themes"
-msgstr ""
+msgstr "যৌন বিষয়বস্তু"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:226
 msgid "No information regarding references to or depictions of sexual nature"
-msgstr ""
+msgstr "যৌন প্রকৃতির ইঙ্গিত করে বা চিত্রায়ন করে এমন কোনও তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:234
 msgid "Profanity"
-msgstr ""
+msgstr "অশ্লীলতা"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:236
 msgid "No information regarding profanity of any kind"
-msgstr ""
+msgstr "কোনও ধরণের অশ্লীলতা সম্পর্কিত কোনও তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:244
 msgid "Inappropriate Humor"
-msgstr ""
+msgstr "অনুপযোগী হাস্যরস"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:246
 msgid "No information regarding inappropriate humor"
-msgstr ""
+msgstr "অনুপযুক্ত হাস্যরস সম্পর্কিত কোনও তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:254
@@ -1660,57 +1754,57 @@ msgstr "বৈষম্য"
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:256
 msgid "No information regarding discriminatory language of any kind"
-msgstr ""
+msgstr "কোনও ধরণের বৈষম্যমূলক ভাষা সম্পর্কিত কোনও তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:264
 msgid "Advertising"
-msgstr ""
+msgstr "বিজ্ঞাপন"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:266
 msgid "No information regarding advertising of any kind"
-msgstr ""
+msgstr "কোন ধরনের বিজ্ঞাপন সম্পর্কিত কোন তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:274
 msgid "Gambling"
-msgstr ""
+msgstr "জুয়া"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:276
 msgid "No information regarding gambling of any kind"
-msgstr ""
+msgstr "কোন ধরনের জুয়া সম্পর্কিত কোন তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:284
 msgid "Purchasing"
-msgstr ""
+msgstr "ক্রয়"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:286
 msgid "No information regarding the ability to spend money"
-msgstr ""
+msgstr "অর্থ ব্যয় করার ক্ষমতা সম্পর্কিত কোনও তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:294
 msgid "Chat Between Users"
-msgstr ""
+msgstr "ব্যবহারকারীদের মধ্যে আলাপন"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:296
 msgid "No information regarding ways to chat with other users"
-msgstr ""
+msgstr "অন্যান্য ব্যবহারকারীদের সাথে চ্যাট করার উপায় সম্পর্কে কোনও তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:304
 msgid "Audio Chat Between Users"
-msgstr ""
+msgstr "ব্যবহারকারীদের মধ্যে অডিও চ্যাট"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:306
 msgid "No information regarding ways to talk with other users"
-msgstr ""
+msgstr "অন্যান্য ব্যবহারকারীদের সাথে কথা বলার উপায় সম্পর্কে কোনও তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:314
@@ -1739,7 +1833,7 @@ msgstr "তৃতীয় পক্ষের সাথে ব্যবহারক
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:334
 msgid "Location Sharing"
-msgstr ""
+msgstr "অবস্থান শেয়ারিং"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:336
@@ -1749,47 +1843,47 @@ msgstr "অন্য খেলোয়াড়দের সাথে ভৌগলি
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:360
 msgid "Homosexuality"
-msgstr ""
+msgstr "সমকামিতা"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:362
 msgid "No information regarding references to homosexuality"
-msgstr ""
+msgstr "সমকামিতা সম্পর্কিত কোনও তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:370
 msgid "Prostitution"
-msgstr ""
+msgstr "পতিতাবৃত্তি"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:372
 msgid "No information regarding references to prostitution"
-msgstr ""
+msgstr "পতিতাবৃত্তির ইঙ্গিত করে এমন কোনও তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:380
 msgid "Adultery"
-msgstr ""
+msgstr "ব্যভিচার"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:382
 msgid "No information regarding references to adultery"
-msgstr ""
+msgstr "ব্যভিচারের ইঙ্গিত করে এমন কোনও তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:390
 msgid "Sexualized Characters"
-msgstr ""
+msgstr "যৌনতা বিশিষ্ট চরিত্র"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:392
 msgid "No information regarding sexualized characters"
-msgstr ""
+msgstr "যৌনতা বিশিষ্ট চরিত্র সম্পর্কিত কোনও তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:400
 msgid "Desecration"
-msgstr ""
+msgstr "অবমাননা"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:402
@@ -1799,39 +1893,39 @@ msgstr "অনৈতিকতার দিকে ইঙ্গিত করে �
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:410
 msgid "Human Remains"
-msgstr ""
+msgstr "মানব দেহাবশেষ"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:412
 msgid "No information regarding visible dead human remains"
-msgstr ""
+msgstr "দৃশ্যমান মৃত মানব দেহাবশেষ সম্পর্কে কোনও তথ্য নেই"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:420
 msgid "Slavery"
-msgstr ""
+msgstr "দাসত্ব"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:422
 msgid "No information regarding references to slavery"
-msgstr ""
+msgstr "দাসত্বের ইঙ্গিত করে এমন কোনও তথ্য নেই"
 
 #: src/gs-age-rating-context-dialog.c:494
 msgid "Does not include references to drugs"
-msgstr ""
+msgstr "ড্রাগসের ইঙ্গিত করে এমন কিছু অন্তর্ভুক্ত করে না"
 
 #: src/gs-age-rating-context-dialog.c:496
 msgid ""
 "Does not include swearing, profanity, and other kinds of strong language"
-msgstr ""
+msgstr "গালিগালাজ, অশ্লীলতা এবং কোনো ধরনের কঠোর ভাষা অন্তর্ভুক্ত করে না"
 
 #: src/gs-age-rating-context-dialog.c:498
 msgid "Does not include ads or monetary transactions"
-msgstr ""
+msgstr "বিজ্ঞাপন বা আর্থিক লেনদেন অন্তর্ভুক্ত করে না"
 
 #: src/gs-age-rating-context-dialog.c:500
 msgid "Does not include sex or nudity"
-msgstr ""
+msgstr "যৌনতা বা নগ্নতা অন্তর্ভুক্ত করে না"
 
 #: src/gs-age-rating-context-dialog.c:502
 msgid "Does not include uncontrolled chat functionality"
@@ -1839,27 +1933,27 @@ msgstr "অনিয়ন্ত্রিত চ্যাট ব্যবস্�
 
 #: src/gs-age-rating-context-dialog.c:504
 msgid "Does not include violence"
-msgstr ""
+msgstr "সহিংসতা অন্তর্ভুক্ত করে না"
 
 #: src/gs-age-rating-context-dialog.c:537
 msgid "Drugs"
-msgstr ""
+msgstr "ড্রাগস্"
 
 #: src/gs-age-rating-context-dialog.c:539
 msgid "Strong Language"
-msgstr ""
+msgstr "কঠোর ভাষা"
 
 #: src/gs-age-rating-context-dialog.c:541
 msgid "Money"
-msgstr ""
+msgstr "টাকা"
 
 #: src/gs-age-rating-context-dialog.c:545
 msgid "Social"
-msgstr ""
+msgstr "সামাজিক"
 
 #: src/gs-age-rating-context-dialog.c:547
 msgid "Violence"
-msgstr ""
+msgstr "সহিংসতা"
 
 #. Translators: This is used to join two list items together in
 #. * a compressed way of displaying a list of descriptions of age
@@ -1867,7 +1961,7 @@ msgstr ""
 #: src/gs-age-rating-context-dialog.c:658
 #, c-format
 msgid "%s • %s"
-msgstr ""
+msgstr "%s • %s"
 
 #. Translators: The app is considered suitable to be run by all ages of people.
 #. * This is displayed in a context tile, so the string should be short.
@@ -1885,35 +1979,35 @@ msgstr "সকল"
 #: src/gs-age-rating-context-dialog.c:949 src/gs-app-context-bar.c:206
 #: src/gs-storage-context-dialog.c:89
 msgid "?"
-msgstr ""
+msgstr "?"
 
 #. Translators: This is a dialogue title which indicates that an app is suitable
 #. * for all ages. The placeholder is the app name.
 #: src/gs-age-rating-context-dialog.c:1023
 #, c-format
 msgid "%s is suitable for everyone"
-msgstr ""
+msgstr "%s এটি সকলের জন্য উপযোগী"
 
 #. Translators: This is a dialogue title which indicates that an app is suitable
 #. * for children up to around age 3. The placeholder is the app name.
 #: src/gs-age-rating-context-dialog.c:1027
 #, c-format
 msgid "%s is suitable for toddlers"
-msgstr ""
+msgstr "%s এটি ছোট শিশুদের জন্য উপযোগী"
 
 #. Translators: This is a dialogue title which indicates that an app is suitable
 #. * for children up to around age 5. The placeholder is the app name.
 #: src/gs-age-rating-context-dialog.c:1031
 #, c-format
 msgid "%s is suitable for young children"
-msgstr ""
+msgstr "%s এটি কমবয়সী বাচ্চাদের জন্য উপযোগী"
 
 #. Translators: This is a dialogue title which indicates that an app is suitable
 #. * for people up to around age 18. The placeholder is the app name.
 #: src/gs-age-rating-context-dialog.c:1039
 #, c-format
 msgid "%s is suitable for teenagers"
-msgstr ""
+msgstr "%s এটি কিশোর বয়সীদের জন্য উপযোগী"
 
 #. Translators: This is a dialogue title which indicates that an app is suitable
 #. * for people aged up to and over 18. The placeholder is the app name.
@@ -1928,13 +2022,13 @@ msgstr "%s প্রাপ্তবয়স্কদের জন্য উপয�
 #: src/gs-age-rating-context-dialog.c:1048
 #, c-format
 msgid "%s is suitable for %s"
-msgstr ""
+msgstr "%s এটি %s দের জন্য উপযোগী"
 
 #. Translators: This is the title of the dialog which contains information about the suitability of an app for different ages.
 #. this one’s not a placeholder
 #: src/gs-age-rating-context-dialog.ui:5 src/gs-app-context-bar.ui:211
 msgid "Age Rating"
-msgstr ""
+msgstr "বয়স রেটিং"
 
 #: src/gs-age-rating-context-dialog.ui:68
 #: src/gs-hardware-support-context-dialog.ui:71
@@ -1944,7 +2038,7 @@ msgstr "যেভাবে অনুপস্থিত তথ্য পূরণ
 
 #: lib/gs-app.c:6175
 msgid "Local file"
-msgstr ""
+msgstr "স্থানীয় ফাইল"
 
 #. TRANSLATORS: the first %s is replaced with an origin name;
 #. the second %s is replaced with the packaging format.
@@ -1954,11 +2048,11 @@ msgstr ""
 #: lib/gs-app.c:6194 src/gs-safety-context-dialog.c:439
 #, c-format
 msgid "%s (%s)"
-msgstr ""
+msgstr "%s (%s)"
 
 #: lib/gs-app.c:6271
 msgid "Package"
-msgstr ""
+msgstr "প্যাকেজ"
 
 #: src/gs-app-addon-row.c:97 src/gs-app-row.c:457
 msgid "Pending"
@@ -1990,7 +2084,7 @@ msgstr "মুছে ফেলা হচ্ছে"
 
 #: src/gs-app-addon-row.ui:64
 msgid "_Uninstall"
-msgstr "_আনইনস্টল "
+msgstr "_অপসারণ"
 
 #: src/gs-app-details-page.c:68
 msgid "Network"
@@ -1998,7 +2092,7 @@ msgstr "নেটওয়ার্ক"
 
 #: src/gs-app-details-page.c:68
 msgid "Can communicate over the network"
-msgstr ""
+msgstr "নেটওয়ার্কের মাধ্যমে যোগাযোগ করতে সক্ষম"
 
 #: src/gs-app-details-page.c:69
 msgid "System Services"
@@ -2006,23 +2100,23 @@ msgstr "সিস্টেম সার্ভিস সমূহ"
 
 #: src/gs-app-details-page.c:69
 msgid "Can access D-Bus services on the system bus"
-msgstr ""
+msgstr "সিস্টেম bus-এ D-Bus পরিষেবাগুলি অ্যাক্সেস করতে পারে"
 
 #: src/gs-app-details-page.c:70
 msgid "Session Services"
-msgstr ""
+msgstr "সেশন সেবাসমূহ"
 
 #: src/gs-app-details-page.c:70
 msgid "Can access D-Bus services on the session bus"
-msgstr ""
+msgstr "সেশন bus-এ D-Bus পরিষেবাগুলি অ্যাক্সেস করতে পারে"
 
 #: src/gs-app-details-page.c:71
 msgid "Devices"
-msgstr ""
+msgstr "যন্ত্রাদি"
 
 #: src/gs-app-details-page.c:71
 msgid "Can access system device files"
-msgstr ""
+msgstr "সিস্টেম ডিভাইস ফাইলগুলি অ্যাক্সেস করতে পারে"
 
 #: src/gs-app-details-page.c:72 src/gs-app-details-page.c:73
 msgid "Home folder"
@@ -2031,16 +2125,16 @@ msgstr "_হোম ফোল্ডার"
 #: src/gs-app-details-page.c:72 src/gs-app-details-page.c:74
 #: src/gs-app-details-page.c:77 src/gs-app-details-page.c:150
 msgid "Can view, edit and create files"
-msgstr ""
+msgstr "ফাইলসমূহ দেখতে, সম্পাদনা করতে ও নতুন ফাইল তৈরি করতে পারে"
 
 #: src/gs-app-details-page.c:73 src/gs-app-details-page.c:75
 #: src/gs-app-details-page.c:78 src/gs-app-details-page.c:145
 msgid "Can view files"
-msgstr ""
+msgstr "ফাইলগুলি দেখতে পারে"
 
 #: src/gs-app-details-page.c:74 src/gs-app-details-page.c:75
 msgid "File system"
-msgstr ""
+msgstr "ফাইল সিস্টেম"
 
 #. The GS_APP_PERMISSIONS_FLAGS_FILESYSTEM_OTHER is used only as a flag, with actual files being part of the read/full lists
 #: src/gs-app-details-page.c:77 src/gs-app-details-page.c:78
@@ -2053,15 +2147,15 @@ msgstr "সেটিংস"
 
 #: src/gs-app-details-page.c:79
 msgid "Can view and change any settings"
-msgstr ""
+msgstr "যে কোনও সেটিংস দেখতে এবং পরিবর্তন করতে পারে"
 
 #: src/gs-app-details-page.c:80
 msgid "Legacy display system"
-msgstr ""
+msgstr "লিগ্যাসি ডিসপ্লে সিস্টেম"
 
 #: src/gs-app-details-page.c:80
 msgid "Uses an old, insecure display system"
-msgstr ""
+msgstr "এটি একটি পুরানো, অনিরাপদ ডিসপ্লে সিস্টেম ব্যবহার করে"
 
 #: src/gs-app-details-page.c:81
 msgid "Sandbox escape"
@@ -2070,6 +2164,7 @@ msgstr "স্যান্ডবক্স থেকে পালানো"
 #: src/gs-app-details-page.c:81
 msgid "Can escape the sandbox and circumvent any other restrictions"
 msgstr ""
+"স্যান্ডবক্স থেকে বের হয়ে যেতে সক্ষম এবং অন্য কোনও বিধিনিষেধ এড়াতে সক্ষম"
 
 #. FIXME support app == NULL
 #. set window title
@@ -2081,7 +2176,7 @@ msgstr "আপডেট সংক্রান্ত তথ্য"
 #. * a description for the update
 #: src/gs-app-details-page.c:174
 msgid "No update description available."
-msgstr "কোন আপডেটের বর্ণনা পাওয়া যায়নি"
+msgstr "কোন আপডেটের বর্ণনা পাওয়া যায়নি।"
 
 #: src/gs-app-details-page.ui:25 src/gs-os-update-page.ui:25
 #: src/gs-shell.ui:367 src/gs-shell.ui:458
@@ -2099,7 +2194,7 @@ msgstr "রিভিউ"
 
 #: src/gs-app-reviews-dialog.ui:25
 msgid "No reviews were found for this application."
-msgstr ""
+msgstr "এই অ্যাপ্লিকেশনটির জন্য কোনও পর্যালোচনা পাওয়া যায়নি।"
 
 #: src/gs-app-reviews-dialog.ui:27
 msgid "No Reviews"
@@ -2112,7 +2207,7 @@ msgstr "সংস্করণের ইতিহাস"
 #: src/gs-app-version-history-row.c:71
 #, c-format
 msgid "New in Version %s"
-msgstr ""
+msgstr "%s সংস্করণে যা কিছু নতুন"
 
 #: src/gs-app-version-history-row.c:78
 #, c-format
@@ -2121,7 +2216,7 @@ msgstr "%s সংস্করণ"
 
 #: src/gs-app-version-history-row.c:80
 msgid "No details for this release"
-msgstr ""
+msgstr "এই রিলিজের জন্য কোনও বিবরণ নেই"
 
 #. TRANSLATORS: This is the date string with: day number, month name, year.
 #. i.e. "25 May 2012"
@@ -2132,7 +2227,7 @@ msgstr "%e %B %Y"
 #. TRANSLATORS: this is a command line option
 #: src/gs-application.c:124
 msgid "Start up mode: either ‘updates’, ‘updated’, ‘installed’ or ‘overview’"
-msgstr "শুরুর রূপ: হয় 'আপডেট', 'আপডেট হয়েছে', 'সংস্থাপিত' অথবা 'পরিচিতি'"
+msgstr "শুরুর রূপ: হয় 'আপডেটগুলি', 'আপডেট হয়েছে', 'সংস্থাপিত' অথবা 'অবলোকন'"
 
 #: src/gs-application.c:124
 msgid "MODE"
@@ -2164,7 +2259,7 @@ msgstr "PKGNAME"
 
 #: src/gs-application.c:132
 msgid "Install the application (using application ID)"
-msgstr ""
+msgstr "(Application ID ব্যবহার করে) অ্যাপ্লিকেশনটি ইনস্টল করুন"
 
 #: src/gs-application.c:134
 msgid "Uninstall the application (using application ID)"
@@ -2186,7 +2281,7 @@ msgstr ""
 
 #: src/gs-application.c:141
 msgid "Show a local metainfo or appdata file"
-msgstr ""
+msgstr "একটি স্থানীয় metainfo বা appdata ফাইল প্রদর্শন"
 
 #: src/gs-application.c:143
 msgid "Show verbose debugging information"
@@ -2194,11 +2289,11 @@ msgstr "শব্দবহুল ডিবাগ তথ্য প্রদর্
 
 #: src/gs-application.c:145
 msgid "Installs any pending updates in the background"
-msgstr ""
+msgstr "আড়ালে যেকোনও মুলতুবি থাকা আপডেট ইনস্টল করে"
 
 #: src/gs-application.c:147
 msgid "Show update preferences"
-msgstr ""
+msgstr "আপডেট পছন্দগুলি প্রদর্শন"
 
 #: src/gs-application.c:149
 msgid "Quit the running instance"
@@ -2214,7 +2309,7 @@ msgstr "ভার্সন সংখ্যা প্রদর্শন"
 
 #: src/gs-application.c:261 src/gs-application.c:269
 msgid "Copyright © 2016–2022 GNOME Software contributors"
-msgstr ""
+msgstr "স্বত্বাধিকার © 2016–2022 GNOME সফটওয়্যার অবদানকারী"
 
 #: src/gs-application.c:263 src/gs-application.c:272
 msgid "translator-credits"
@@ -2234,7 +2329,7 @@ msgstr "আপনার সিস্টেমে সফটওয়্যারট�
 #. TRANSLATORS: we tried to show an app that did not exist
 #: src/gs-application.c:468
 msgid "Sorry! There are no details for that application."
-msgstr ""
+msgstr "দুঃখিত! এই অ্যাপ্লিকেশনের জন্য কোনও বিবরণ দেয়া নেই।"
 
 #. Translators: The disk usage of an application when installed.
 #. * This is displayed in a context tile, so the string should be short.
@@ -2245,21 +2340,21 @@ msgstr "সংস্থাপিত আকৃতি"
 #: src/gs-app-context-bar.c:165
 #, c-format
 msgid "Includes %s of data and %s of cache"
-msgstr ""
+msgstr "এটি %s ডেটা এবং %s ক্যাশ অন্তর্ভুক্ত করে"
 
 #: src/gs-app-context-bar.c:168
 #, c-format
 msgid "Includes %s of data"
-msgstr ""
+msgstr "%s ডেটা অন্তর্ভুক্ত করে"
 
 #: src/gs-app-context-bar.c:171
 #, c-format
 msgid "Includes %s of cache"
-msgstr ""
+msgstr "%s ক্যাশ অন্তর্ভুক্ত করে"
 
 #: src/gs-app-context-bar.c:174
 msgid "Cache and data usage unknown"
-msgstr ""
+msgstr "ক্যাশ এবং ডেটা ব্যবহার পরিধি অজানা"
 
 #. Translators: The download size of an application.
 #. * This is displayed in a context tile, so the string should be short.
@@ -2269,117 +2364,117 @@ msgstr "ডাউনলোড আকৃতি"
 
 #: src/gs-app-context-bar.c:191
 msgid "Needs no additional system downloads"
-msgstr ""
+msgstr "কোনও অতিরিক্ত সিস্টেম ডাউনলোডের প্রয়োজন নেই"
 
 #: src/gs-app-context-bar.c:193
 msgid "Needs an unknown size of additional system downloads"
-msgstr ""
+msgstr "একটি অজানা আকারের অতিরিক্ত সিস্টেম ডাউনলোড প্রয়োজন হবে"
 
 #. Translators: The placeholder is for a size string,
 #. * such as ‘150 MB’ or ‘1.5 GB’.
 #: src/gs-app-context-bar.c:198
 #, c-format
 msgid "Needs %s of additional system downloads"
-msgstr ""
+msgstr "%s পরিমাণ অতিরিক্ত সিস্টেম ডাউনলোডের প্রয়োজন হবে"
 
 #. Translators: Displayed if the download or installed size of
 #. * an app could not be determined.
 #. * This is displayed in a context tile, so the string should be short.
 #: src/gs-app-context-bar.c:212
 msgid "Size is unknown"
-msgstr ""
+msgstr "আকার অজানা"
 
 #. Translators: This indicates an app requires no permissions to run.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:282
 msgid "No permissions"
-msgstr ""
+msgstr "কোনও অনুমতির প্রয়োজন নেই"
 
 #. Translators: This indicates an app uses the network.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:293
 msgid "Has network access"
-msgstr ""
+msgstr "নেটওয়ার্ক অ্যাক্সেস আছে"
 
 #. Translators: This indicates an app uses D-Bus system services.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:300
 msgid "Uses system services"
-msgstr ""
+msgstr "সিস্টেম পরিষেবা ব্যবহার করে"
 
 #. Translators: This indicates an app uses D-Bus session services.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:307
 msgid "Uses session services"
-msgstr ""
+msgstr "সেশন পরিষেবা ব্যবহার করে"
 
 #. Translators: This indicates an app can access arbitrary hardware devices.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:314
 msgid "Can access hardware devices"
-msgstr ""
+msgstr "হার্ডওয়্যার ডিভাইসগুলি অ্যাক্সেস করতে পারে"
 
 #. Translators: This indicates an app can read/write to the user’s home or the entire filesystem.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:326
 msgid "Can read/write all your data"
-msgstr ""
+msgstr "আপনার সমস্ত ডেটা পড়তে / লিখতে পারে"
 
 #. Translators: This indicates an app can read (but not write) from the user’s home or the entire filesystem.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:338
 msgid "Can read all your data"
-msgstr ""
+msgstr "আপনার সমস্ত ডেটা পড়তে পারে"
 
 #. Translators: This indicates an app can read/write to the user’s Downloads directory.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:345
 msgid "Can read/write your downloads"
-msgstr ""
+msgstr "আপনার ডাউনলোডগুলি পড়তে / লিখতে পারে"
 
 #. Translators: This indicates an app can read (but not write) from the user’s Downloads directory.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:352
 msgid "Can read your downloads"
-msgstr ""
+msgstr "আপনার ডাউনলোডগুলি পড়তে পারে"
 
 #. Translators: This indicates an app can access data in the system unknown to the Software.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:359
 msgid "Can access arbitrary files"
-msgstr ""
+msgstr "অজানা সব ফাইল অ্যাক্সেস করতে পারে"
 
 #. Translators: This indicates an app can access or change user settings.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:366 src/gs-safety-context-dialog.c:227
 msgid "Can access and change user settings"
-msgstr ""
+msgstr "ব্যবহারকারীর সেটিংস অ্যাক্সেস এবং পরিবর্তন করতে পারে"
 
 #. Translators: This indicates an app uses the X11 windowing system.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:373 src/gs-safety-context-dialog.c:211
 msgid "Uses a legacy windowing system"
-msgstr ""
+msgstr "একটি অনাধুনিক উইন্ডো সিস্টেম ব্যবহার করে"
 
 #. Translators: This indicates an app can escape its sandbox.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:380 src/gs-safety-context-dialog.c:219
 msgid "Can acquire arbitrary permissions"
-msgstr ""
+msgstr "নির্বিচারে অনুমতি অর্জন করতে পারে"
 
 #. Translators: This indicates that an application has been packaged
 #. * by the user’s distribution and is safe.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:406 src/gs-safety-context-dialog.c:146
 msgid "Reviewed by your distribution"
-msgstr ""
+msgstr "আপনার ডিস্ট্রো কর্তৃক পর্যালোচিত"
 
 #. Translators: This indicates that an application has been packaged
 #. * by someone other than the user’s distribution, so might not be safe.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:413 src/gs-safety-context-dialog.c:143
 msgid "Provided by a third party"
-msgstr ""
+msgstr "একটি তৃতীয় পক্ষ কর্তৃক প্রদত্ত"
 
 #. Translators: This indicates an app is not licensed under a free software license.
 #. * It’s used in a context tile, so should be short.
@@ -2391,7 +2486,7 @@ msgstr "মালিকানাধীন কোড"
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:431
 msgid "Auditable code"
-msgstr ""
+msgstr "নিরীক্ষণযোগ্য কোড"
 
 #. Translators: This indicates an app was written and released by a developer who has been verified.
 #. * It’s used in a context tile, so should be short.
@@ -2421,100 +2516,100 @@ msgstr "সফ্টওয়্যারটি আর সমর্থিত ন
 #. * https://gitlab.gnome.org/GNOME/gnome-software/-/issues/new
 #: src/gs-app-context-bar.c:459 src/gs-app-context-bar.c:730
 msgid "; "
-msgstr ""
+msgstr "; "
 
 #. Translators: The app is considered safe to install and run.
 #. * This is displayed in a context tile, so the string should be short.
 #: src/gs-app-context-bar.c:467
 msgid "Safe"
-msgstr ""
+msgstr "নিরাপদ"
 
 #. Translators: The app is considered potentially unsafe to install and run.
 #. * This is displayed in a context tile, so the string should be short.
 #: src/gs-app-context-bar.c:474
 msgid "Potentially Unsafe"
-msgstr ""
+msgstr "সম্ভাব্য অনিরাপদ"
 
 #. Translators: The app is considered unsafe to install and run.
 #. * This is displayed in a context tile, so the string should be short.
 #: src/gs-app-context-bar.c:481
 msgid "Unsafe"
-msgstr ""
+msgstr "অনিরাপদ"
 
 #: src/gs-app-context-bar.c:560 src/gs-app-context-bar.c:592
 #: src/gs-hardware-support-context-dialog.c:603
 msgid "Mobile Only"
-msgstr ""
+msgstr "শুধু মোবাইলের জন্য"
 
 #: src/gs-app-context-bar.c:561
 msgid "Only works on a small screen"
-msgstr ""
+msgstr "শুধুমাত্র ছোট পর্দায় কাজ করে"
 
 #: src/gs-app-context-bar.c:566 src/gs-app-context-bar.c:599
 #: src/gs-app-context-bar.c:606 src/gs-app-context-bar.c:656
 #: src/gs-app-context-bar.c:661 src/gs-hardware-support-context-dialog.c:583
 msgid "Desktop Only"
-msgstr ""
+msgstr "শুধুমাত্র ডেস্কটপের জন্য"
 
 #: src/gs-app-context-bar.c:567
 msgid "Only works on a large screen"
-msgstr ""
+msgstr "শুধুমাত্র বড় পর্দায় কাজ করে"
 
 #: src/gs-app-context-bar.c:571 src/gs-hardware-support-context-dialog.c:621
 msgid "Screen Size Mismatch"
-msgstr ""
+msgstr "পর্দার আকারে অসামঞ্জস্যতা"
 
 #: src/gs-app-context-bar.c:572 src/gs-hardware-support-context-dialog.c:622
 msgid "Doesn’t support your current screen size"
-msgstr ""
+msgstr "আপনার বর্তমান পর্দার আকার সমর্থন করে না"
 
 #: src/gs-app-context-bar.c:593 src/gs-hardware-support-context-dialog.c:674
 #: src/gs-hardware-support-context-dialog.c:680
 msgid "Requires a touchscreen"
-msgstr ""
+msgstr "একটি টাচস্ক্রিন প্রয়োজন"
 
 #: src/gs-app-context-bar.c:600 src/gs-hardware-support-context-dialog.c:634
 #: src/gs-hardware-support-context-dialog.c:640
 msgid "Requires a keyboard"
-msgstr ""
+msgstr "একটি কীবোর্ড প্রয়োজন"
 
 #: src/gs-app-context-bar.c:607
 msgid "Requires a mouse"
-msgstr ""
+msgstr "একটি মাউস প্রয়োজন"
 
 #: src/gs-app-context-bar.c:618
 msgid "Gamepad Needed"
-msgstr ""
+msgstr "গেমপ্যাড প্রয়োজন"
 
 #: src/gs-app-context-bar.c:619
 msgid "Requires a gamepad to play"
-msgstr ""
+msgstr "এটি খেলার জন্য একটি গেমপ্যাড প্রয়োজন"
 
 #. Translators: This is used in a context tile to indicate that
 #. * an app works on phones, tablets *and* desktops. It should be
 #. * short and in title case.
 #: src/gs-app-context-bar.c:643
 msgid "Adaptive"
-msgstr ""
+msgstr "অভিযোজনীয়"
 
 #: src/gs-app-context-bar.c:644
 msgid "Works on phones, tablets and desktops"
-msgstr ""
+msgstr "ফোন, ট্যাবলেট এবং ডেস্কটপে কাজ করে"
 
 #: src/gs-app-context-bar.c:657
 msgid "Probably requires a keyboard or mouse"
-msgstr ""
+msgstr "সম্ভবত একটি কীবোর্ড বা মাউস প্রয়োজন"
 
 #: src/gs-app-context-bar.c:662
 msgid "Works on desktops and laptops"
-msgstr ""
+msgstr "ডেস্কটপ এবং ল্যাপটপে কাজ করে"
 
 #. Translators: This indicates that the content rating for an
 #. * app says it can be used by all ages of people, as it contains
 #. * no objectionable content.
 #: src/gs-app-context-bar.c:705
 msgid "Contains no age-inappropriate content"
-msgstr ""
+msgstr "কোনও বয়স-অনুপযুক্ত সামগ্রী নেই"
 
 #: src/gs-app-context-bar.c:753
 msgid "No age rating information available"
@@ -2531,7 +2626,7 @@ msgstr "ওয়েবসাইট ভিজিট করুন"
 #. * The ellipsis indicates that further steps are required
 #: src/gs-app-row.c:159
 msgid "Install…"
-msgstr "সংস্থাপন..."
+msgstr "সংস্থাপন…"
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * allows to cancel a queued install of the application
@@ -2551,7 +2646,7 @@ msgstr "সংস্থাপন"
 #. * that allows the app to be easily updated live
 #: src/gs-app-row.c:183
 msgid "Update"
-msgstr "হালনাগাদ "
+msgstr "আপডেট"
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * allows the application to be easily removed
@@ -2560,7 +2655,7 @@ msgstr "হালনাগাদ "
 #: src/gs-app-row.c:188 src/gs-app-row.c:198 src/gs-details-page.ui:281
 #: src/gs-page.c:549
 msgid "Uninstall"
-msgstr "আনইনস্টল "
+msgstr "অপসারণ"
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * shows the status of an application being erased
@@ -2590,7 +2685,7 @@ msgstr "%s থেকে পুনঃনামকরণ করা হয়েছ
 #: src/gs-app-translation-dialog.c:67
 #, c-format
 msgid "Help Translate %s"
-msgstr ""
+msgstr "অনুবাদ করতে সহায়তা করুন %s"
 
 #. Translators: The placeholder is an application name
 #: src/gs-app-translation-dialog.c:70
@@ -2602,6 +2697,11 @@ msgid ""
 "This means that while it’s not yet available in your language, you can get "
 "involved and help translate it yourself."
 msgstr ""
+"%s স্বেচ্ছাসেবকদের একটি আন্তর্জাতিক সম্প্রদায় দ্বারা ডিজাইন, বিকাশ এবং অনুবা"
+"দ করা হয়েছে।\n"
+"\n"
+"এর মানে হল যদিও এটি এখনও আপনার ভাষায় উপলব্ধ নয়, আপনি এতে অংশ নিতে পারেন এবং"
+" নিজে অনুবাদ কাজে সহায়তা করতে পারেন৷"
 
 #: src/gs-app-translation-dialog.ui:5
 msgid "Translations"
@@ -2609,17 +2709,17 @@ msgstr "অনুবাদক-কৃতিত্ব"
 
 #: src/gs-app-translation-dialog.ui:92
 msgid "_Translation Website"
-msgstr ""
+msgstr "_অনুবাদ ওয়েবসাইট"
 
 #. TRANSLATORS: This is a description for entering user/password
 #: src/gs-basic-auth-dialog.c:82
-#, c-format
+#, c-format, fuzzy
 msgid "Login required remote %s (realm %s)"
-msgstr ""
+msgstr "লগইন করার জন্য %s রিমোট প্রয়োজন (realm %s)"
 
 #: src/gs-basic-auth-dialog.ui:13
 msgid "Login Required"
-msgstr ""
+msgstr "লগইন আবশ্যক"
 
 #: src/gs-basic-auth-dialog.ui:21 src/gs-common.c:612
 #: src/gs-details-page.ui:294 src/gs-removal-dialog.ui:17
@@ -2633,7 +2733,7 @@ msgstr "_প্রবেশ করুন"
 
 #: src/gs-basic-auth-dialog.ui:88
 msgid "_User"
-msgstr ""
+msgstr "_ব্যবহারকারী"
 
 #: src/gs-basic-auth-dialog.ui:107
 msgid "_Password"
@@ -2661,7 +2761,7 @@ msgstr "বৈশিষ্ট্যসম্পন্ন"
 #. Translators: This is a heading for software which has been featured ('picked') by the distribution.
 #: src/gs-category-page.ui:41 src/gs-overview-page.ui:106
 msgid "Editor’s Choice"
-msgstr ""
+msgstr "সম্পাদকের পছন্দ"
 
 #. Heading for recently updated apps on a category page
 #. Translators: This is a heading for software which has been recently released upstream.
@@ -2672,7 +2772,7 @@ msgstr "নতুন ও আপডেটেড"
 #. Heading for web apps on a category page
 #: src/gs-category-page.ui:97
 msgid "Picks from the Web"
-msgstr ""
+msgstr "ওয়েব থেকে বাছাই"
 
 #. Heading for the rest of the apps on a category page
 #: src/gs-category-page.ui:125
@@ -2683,12 +2783,12 @@ msgstr "অন্যান্য সফটওয়্যার"
 #: lib/gs-cmd.c:194
 #, c-format
 msgid "Please enter a number from 1 to %u: "
-msgstr ""
+msgstr "অনুগ্রহ করে 1 থেকে %u পর্যন্ত একটি সংখ্যা লিখুন: "
 
 #. TRANSLATORS: asking the user to choose an app from a list
 #: lib/gs-cmd.c:266
 msgid "Choose an application:"
-msgstr ""
+msgstr "একটি অ্যাপ্লিকেশন চয়ন করুন:"
 
 #: lib/gs-desktop-data.c:16
 msgctxt "Menu of Graphics & Photography"
@@ -3131,7 +3231,7 @@ msgstr ""
 #: src/gs-common.c:250
 #, c-format
 msgid "%s is provided by “%s”."
-msgstr "“%s” দ্বারা সরবরাহকৃত %s "
+msgstr "%s টি “%s” কর্তৃক সরবরাহকৃত।"
 
 #: src/gs-common.c:259
 msgid "This software repository must be enabled to continue installation."
@@ -3332,7 +3432,7 @@ msgstr "_কম দেখান"
 
 #: src/gs-details-page.c:357
 msgid "Removing…"
-msgstr "সরানো হচ্ছে..."
+msgstr "অপসারণ হচ্ছে…"
 
 #: src/gs-details-page.c:367
 msgid "Requires restart to finish install"
@@ -3383,7 +3483,7 @@ msgstr "_রিস্টার্ট"
 #. * e.g. enabling software repositories or the like
 #: src/gs-details-page.c:900
 msgid "_Install…"
-msgstr "_সংস্থাপন..."
+msgstr "_সংস্থাপন…"
 
 #. Translators: the '%s' is replaced with a developer name or a project group
 #: src/gs-details-page.c:1177
@@ -3527,9 +3627,8 @@ msgstr ""
 
 #. Translators: Button opening a dialog where the users can write and publish their opinions about the apps.
 #: src/gs-details-page.ui:908
-#, fuzzy
 msgid "_Write Review"
-msgstr "_একটি রিভিউ লিখুন"
+msgstr "_একটি পর্যালোচনা লিখুন"
 
 #. Translators: Button opening a dialog showing all reviews for an app.
 #: src/gs-details-page.ui:945
@@ -3544,12 +3643,12 @@ msgstr ""
 #. TRANSLATORS: separator for a list of items
 #: src/gs-extras-page.c:142
 msgid " and "
-msgstr "এবং"
+msgstr " এবং "
 
 #. TRANSLATORS: separator for a list of items
 #: src/gs-extras-page.c:145
 msgid ", "
-msgstr ","
+msgstr ", "
 
 #. TRANSLATORS: Application window title for fonts installation.
 #. %s will be replaced by name of the script we're searching for.
@@ -3557,8 +3656,8 @@ msgstr ","
 #, c-format
 msgid "Available fonts for the %s script"
 msgid_plural "Available fonts for the %s scripts"
-msgstr[0] "%s স্ক্রিপ্টের জন্য সহজলভ্য ফন্টসমূহ"
-msgstr[1] "%s স্ক্রিপ্টের জন্য সহজলভ্য ফন্টসমূহ"
+msgstr[0] "%s স্ক্রিপ্টটির জন্য সহজলভ্য ফন্টসমূহ"
+msgstr[1] "%s স্ক্রিপ্টগুলির জন্য সহজলভ্য ফন্টসমূহ"
 
 #. TRANSLATORS: Application window title for codec installation.
 #. %s will be replaced by actual codec name(s)
@@ -3566,8 +3665,8 @@ msgstr[1] "%s স্ক্রিপ্টের জন্য সহজলভ্�
 #, c-format
 msgid "Available software for %s"
 msgid_plural "Available software for %s"
-msgstr[0] "%s জন্য সহজলভ্য সফটওয়্যার"
-msgstr[1] "%s জন্য সহজলভ্য সফটওয়্যার"
+msgstr[0] "%s এর জন্য সহজলভ্য সফটওয়্যার"
+msgstr[1] "%s এর জন্য সহজলভ্য সফটওয়্যার"
 
 #: src/gs-extras-page.c:242
 msgid "Requested software not found"
@@ -3715,10 +3814,10 @@ msgid ""
 msgid_plural ""
 "Unable to find the %s requested by %s. Please see %s for more information."
 msgstr[0] ""
-"%s দ্বারা অনুরোধ করা %s খুঁজে পাওয়া যাচ্ছেনা। আরও তথ্যের জন্য অনুগ্রহ করে %s "
+"%s কর্তৃক অনুরোধকৃত %s খুঁজে পাওয়া যাচ্ছেনা। আরও তথ্যের জন্য অনুগ্রহ করে %s "
 "দেখুন।"
 msgstr[1] ""
-"%s দ্বারা অনুরোধ করা %s খুঁজে পাওয়া যাচ্ছেনা। আরও তথ্যের জন্য অনুগ্রহ করে %s "
+"%s কর্তৃক অনুরোধকৃত %s খুঁজে পাওয়া যাচ্ছেনা। আরও তথ্যের জন্য অনুগ্রহ করে %s "
 "দেখুন।"
 
 #. TRANSLATORS: no codecs were found. First %s will be replaced by actual codec name(s), second %s is a link titled "the documentation"
@@ -4054,7 +4153,7 @@ msgstr "পাতা জমা হচ্ছে"
 
 #: src/gs-loading-page.ui:11
 msgid "Starting up…"
-msgstr "শুরু হচ্ছে..."
+msgstr "শুরু হচ্ছে…"
 
 #: src/gs-metered-data-dialog.ui:5 src/gs-shell.ui:256
 msgid "Automatic Updates Paused"
@@ -4343,8 +4442,8 @@ msgstr ""
 #, c-format
 msgid "%u application installed"
 msgid_plural "%u applications installed"
-msgstr[0] "%u এ্যাপ্লিকেশনসমূহ সংস্থাপিত"
-msgstr[1] "%u এ্যাপ্লিকেশনসমূহ সংস্থাপিত"
+msgstr[0] "%u অ্যাপ্লিকেশনটি সংস্থাপিত"
+msgstr[1] "%u অ্যাপ্লিকেশনগুলি সংস্থাপিত"
 
 #. TRANSLATORS: This string is used to construct the 'X add-ons
 #. installed' sentence, describing a software repository.
@@ -4383,8 +4482,8 @@ msgstr[1] "%u এ্যাড-অনসমূহ"
 #, c-format
 msgid "%s and %s installed"
 msgid_plural "%s and %s installed"
-msgstr[0] "%s এবং %s সংস্থাপিত"
-msgstr[1] "%s এবং %s সংস্থাপিত"
+msgstr[0] "%s এবং %s দুটি সংস্থাপিত"
+msgstr[1] "%s এবং %s গুলি সংস্থাপিত"
 
 #. Translators: The first '%s' is replaced with a text like '10 applications installed',
 #. the second '%s' is replaced with installation kind, like in case of Flatpak 'User Installation'.
@@ -4477,8 +4576,8 @@ msgid ""
 "Give a short summary of your review, for example: “Great app, would "
 "recommend”."
 msgstr ""
-"আপনার রিভিউয়ের জন্য একটি ছোট সারাংশ লিখুন, উদাহরণস্বরূপ: \"দারুণ এ্যাপ, আমি সুপারিশ "
-"করছি।\""
+"আপনার রিভিউয়ের জন্য একটি ছোট সারাংশ লিখুন, উদাহরণস্বরূপ: \"দারুণ এ্যাপ, আমি "
+"এটি ব্যবহারের পরামর্শ দিচ্ছি।\""
 
 #. Translators: This is where the users enter their opinions about the apps.
 #: src/gs-review-dialog.ui:119
@@ -4564,11 +4663,11 @@ msgstr "এহ"
 
 #: src/gs-review-row.ui:128
 msgid "Report…"
-msgstr "অভিযোগ..."
+msgstr "অভিযোগ…"
 
 #: src/gs-review-row.ui:137
 msgid "Remove…"
-msgstr "মুছে ফেলুন..."
+msgstr "মুছে ফেলুন…"
 
 #: src/gs-safety-context-dialog.c:144
 msgid "Check that you trust the vendor, as the application isn’t sandboxed"
@@ -5404,7 +5503,7 @@ msgstr ""
 
 #: src/gs-shell.ui:274
 msgid "Find Out _More"
-msgstr "আরো জানুন..."
+msgstr "আরো _জানুন"
 
 #. Translators: A label for a button to show only updates which are available to install.
 #: src/gs-shell.ui:328
@@ -5584,8 +5683,8 @@ msgstr ""
 #, c-format
 msgid "%u application requires a restart."
 msgid_plural "%u applications require a restart."
-msgstr[0] "%u অ্যাপ্লিকেশনটি রিস্টার্ট করা প্রয়োজন।"
-msgstr[1] "%u অ্যাপ্লিকেশনটি রিস্টার্ট করা প্রয়োজন।"
+msgstr[0] "%u অ্যাপ্লিকেশনটি কাজ করতে একটি রিস্টার্ট প্রয়োজন।"
+msgstr[1] "%u অ্যাপ্লিকেশনগুলি কাজ করতে একটি রিস্টার্ট প্রয়োজন।"
 
 #. TRANSLATORS: %1, %2 and %3 are all application names, e.g. Firefox
 #: src/gs-update-monitor.c:401
@@ -5647,7 +5746,7 @@ msgstr "%s %s-এ আপনাকে স্বাগতম!"
 msgid "Software Update Installed"
 msgid_plural "Software Updates Installed"
 msgstr[0] "সফটওয়্যার আপডেট সংস্থাপন করা হয়েছে"
-msgstr[1] "সফটওয়্যার আপডেট সংস্থাপন করা হয়েছে"
+msgstr[1] "সফটওয়্যার আপডেটগুলি সংস্থাপন করা হয়েছে"
 
 #. TRANSLATORS: message when we've done offline updates
 #: src/gs-update-monitor.c:1177
@@ -5922,12 +6021,11 @@ msgstr ""
 
 #: src/gs-upgrade-banner.ui:42
 msgid "A major upgrade, with new features and added polish."
-msgstr "নতুন বৈশিষ্ট্য সম্পন্ন একটি গুরুত্বপূর্ণ আপগ্রেড"
+msgstr "নতুন বৈশিষ্ট্য ও পরিমার্জন সম্পন্ন একটি বিশাল আপগ্রেড।"
 
 #: src/gs-upgrade-banner.ui:187
-#, fuzzy
 msgid "_Restart & Upgrade"
-msgstr "_পুনঃ চালু ও হালনাগাদ "
+msgstr "_রিস্টার্ট ও আপডেট"
 
 #: src/gs-upgrade-banner.ui:201
 msgid "Remember to back up data and files before upgrading."
@@ -5948,7 +6046,6 @@ msgstr ""
 #. TRANSLATORS: this is a group of updates that are not
 #. * packages and are not shown in the main list
 #: plugins/core/gs-plugin-generic-updates.c:67
-#, fuzzy
 msgid "System Updates"
 msgstr "OS আপডেট"
 
@@ -5967,18 +6064,17 @@ msgstr ""
 
 #. Translators: The '%s' is replaced with the OS name, like "Endless OS"
 #: plugins/eos-updater/gs-plugin-eos-updater.c:637
-#, fuzzy, c-format
+#, c-format
 msgid "%s update with new features and fixes."
-msgstr "নতুন বৈশিষ্ট্য সম্পন্ন একটি গুরুত্বপূর্ণ আপগ্রেড"
+msgstr "নতুন বৈশিষ্ট্য ও সংশোধনী সহ %s আপডেট।"
 
 #: plugins/eos-updater/gs-plugin-eos-updater.c:970
 msgid "EOS update service could not fetch and apply the update."
 msgstr ""
 
 #: plugins/epiphany/gs-plugin-epiphany.c:498
-#, fuzzy
 msgid "GNOME Web"
-msgstr "GNOME সফটওয়্যার"
+msgstr "GNOME ওয়েব"
 
 #: plugins/epiphany/org.gnome.Software.Plugin.Epiphany.metainfo.xml.in:6
 msgid "Web Apps Support"
@@ -5995,10 +6091,11 @@ msgstr ""
 
 #. TRANSLATORS: this is a title for Fedora distro upgrades
 #: plugins/fedora-pkgdb-collections/gs-plugin-fedora-pkgdb-collections.c:404
-#, fuzzy
 msgid ""
 "Upgrade for the latest features, performance and stability improvements."
-msgstr "কর্মক্ষমতা, স্থিতিশীলতা ও নিরাপত্তার অগ্রগতি সংযোজিত।"
+msgstr ""
+"নতুন সব বৈশিষ্ট্য, কর্মক্ষমতা, স্থিতিশীলতা ও নিরাপত্তার অগ্রগতির জন্য "
+"আপগ্রেড।"
 
 #: plugins/flatpak/org.gnome.Software.Plugin.Flatpak.metainfo.xml.in:6
 msgid "Flatpak Support"
@@ -6037,9 +6134,8 @@ msgid "Desktop subfolder %s"
 msgstr ""
 
 #: plugins/flatpak/gs-flatpak.c:319
-#, fuzzy
 msgid "Documents folder"
-msgstr "নথিপত্র"
+msgstr "নথিপত্র ফোল্ডার"
 
 #: plugins/flatpak/gs-flatpak.c:319
 #, c-format
@@ -6144,14 +6240,12 @@ msgid "Failed to refine addon ‘%s’: %s"
 msgstr ""
 
 #: plugins/flatpak/gs-flatpak-utils.c:94
-#, fuzzy
 msgid "User Installation"
-msgstr "%s (সংস্থাপিত হচ্ছে)"
+msgstr "ব্যবহারকারী ইনস্টলেশন"
 
 #: plugins/flatpak/gs-flatpak-utils.c:94
-#, fuzzy
 msgid "System Installation"
-msgstr "সিস্টেম ইন্টেগ্রেশন"
+msgstr "সিস্টেম ইনস্টলেশন"
 
 #: plugins/flatpak/gs-plugin-flatpak.c:1037
 #, c-format
@@ -6180,9 +6274,9 @@ msgstr ""
 #. TRANSLATORS: the entire system, e.g. all internal devices,
 #. * the first %s is the device name, e.g. 'ThinkPad P50`
 #: plugins/fwupd/gs-fwupd-app.c:139
-#, fuzzy, c-format
+#, c-format
 msgid "%s System Update"
-msgstr "OS আপডেট"
+msgstr "%s সিস্টেম আপডেট"
 
 #. TRANSLATORS: the EC is typically the keyboard controller chip,
 #. * the first %s is the device name, e.g. 'ThinkPad P50`
@@ -6194,9 +6288,9 @@ msgstr ""
 #. TRANSLATORS: ME stands for Management Engine, the Intel AMT thing,
 #. * the first %s is the device name, e.g. 'ThinkPad P50`
 #: plugins/fwupd/gs-fwupd-app.c:149
-#, fuzzy, c-format
+#, c-format
 msgid "%s ME Update"
-msgstr "হালনাগাদ "
+msgstr "%s ME আপডেট"
 
 #. TRANSLATORS: ME stands for Management Engine (with Intel AMT),
 #. * where the first %s is the device name, e.g. 'ThinkPad P50`
@@ -6216,9 +6310,9 @@ msgstr ""
 #. * plugged into it, for example ThunderBolt, FireWire or USB,
 #. * the first %s is the device name, e.g. 'Intel ThunderBolt`
 #: plugins/fwupd/gs-fwupd-app.c:165
-#, fuzzy, c-format
+#, c-format
 msgid "%s Controller Update"
-msgstr "আপডেট সংস্থাপিত করা হয়েছে"
+msgstr "%s কন্ট্রোলার আপডেট"
 
 #. TRANSLATORS: the Thunderbolt controller is a device that
 #. * has other high speed Thunderbolt devices plugged into it;
@@ -6251,15 +6345,15 @@ msgstr ""
 #. TRANSLATORS: camera can refer to the laptop internal
 #. * camera in the bezel or external USB webcam
 #: plugins/fwupd/gs-fwupd-app.c:190
-#, fuzzy, c-format
+#, c-format
 msgid "%s Camera Update"
-msgstr "আপডেট সংস্থাপিত করা হয়েছে"
+msgstr "%s ক্যামেরা আপডেট"
 
 #. TRANSLATORS: TPM refers to a Trusted Platform Module
 #: plugins/fwupd/gs-fwupd-app.c:194
-#, fuzzy, c-format
+#, c-format
 msgid "%s TPM Update"
-msgstr "হালনাগাদ "
+msgstr "%s TPM আপডেট"
 
 #. TRANSLATORS: TouchPad refers to a flat input device
 #: plugins/fwupd/gs-fwupd-app.c:198
@@ -6302,9 +6396,9 @@ msgstr ""
 #. TRANSLATORS: BMC refers to baseboard management controller which
 #. * is the device that updates all the other firmware on the system
 #: plugins/fwupd/gs-fwupd-app.c:225
-#, fuzzy, c-format
+#, c-format
 msgid "%s BMC Update"
-msgstr "হালনাগাদ "
+msgstr "%s BMC আপডেট"
 
 #. TRANSLATORS: Receiver refers to a radio device, e.g. a tiny Bluetooth
 #. * device that stays in the USB port so the wireless peripheral works
@@ -6326,9 +6420,8 @@ msgid "Provides support for firmware upgrades"
 msgstr ""
 
 #: plugins/packagekit/gs-packagekit-task.c:148
-#, fuzzy
 msgid "Install Unsigned Software?"
-msgstr "তৃতীয়-পক্ষ সফটওয়্যার সংস্থাপন করুন?"
+msgstr "স্বাক্ষরবিহীন সফটওয়্যার ইনস্টল করবেন?"
 
 #: plugins/packagekit/gs-packagekit-task.c:149
 msgid ""
@@ -6338,9 +6431,8 @@ msgid ""
 msgstr ""
 
 #: plugins/packagekit/gs-packagekit-task.c:153
-#, fuzzy
 msgid "Download Unsigned Software?"
-msgstr "সফটওয়্যারে অনুসন্ধান করুন"
+msgstr "স্বাক্ষরবিহীন সফটওয়্যার ডাউনলোড করবেন?"
 
 #: plugins/packagekit/gs-packagekit-task.c:154
 msgid ""
@@ -6349,9 +6441,8 @@ msgid ""
 msgstr ""
 
 #: plugins/packagekit/gs-packagekit-task.c:158
-#, fuzzy
 msgid "Update Unsigned Software?"
-msgstr "সফটওয়্যারে অনুসন্ধান করুন"
+msgstr "স্বাক্ষরবিহীন সফটওয়্যার আপডেট করবেন?"
 
 #: plugins/packagekit/gs-packagekit-task.c:159
 msgid ""
@@ -6366,9 +6457,8 @@ msgid "Packages"
 msgstr ""
 
 #: plugins/rpm-ostree/gs-plugin-rpm-ostree.c:2690
-#, fuzzy
 msgid "Operating System (OSTree)"
-msgstr "অপারেটিং সিস্টেম"
+msgstr "অপারেটিং সিস্টেম (OSTree)"
 
 #. TRANSLATORS: default snap store name
 #: plugins/snap/gs-plugin-snap.c:300
@@ -6407,9 +6497,8 @@ msgstr ""
 #. origin_ui on a remote is the repo dialogue section name,
 #. * not the remote title
 #: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:249
-#, fuzzy
 msgid "Apps"
-msgstr "আরও অ্যাপস"
+msgstr "অ্যাপস"
 
 #: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:251
 msgid ""
