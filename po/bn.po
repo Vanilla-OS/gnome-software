@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: gnome-software\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-18 09:58+0000\n"
+"PO-Revision-Date: 2023-02-20 18:20+0000\n"
 "Last-Translator: Abu Huraira <abuhuraira@tutamail.com>\n"
 "Language-Team: Bengali <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/bn/>\n"
@@ -793,6 +793,13 @@ msgid ""
 "code> GSettings key has been removed. Distributions may need to update how "
 "they ship background images. See <em>doc/vendor-customisation.md</em>."
 msgstr ""
+"আপগ্রেডের জন্য ব্যাকগ্রাউন্ড ইমেজ এখন <code>${DATADIR}/gnome-software/"
+"backgrounds</code>-এ বেশ কিছু সুপরিচিত (এবং ডিস্ট্রিবিউশন-বিশেষ) নাম ব্যবহার "
+"করে খুঁজতে হবে এবং পূর্বে শুধুমাত্র ফেডোরার জন্য নির্দিষ্ট যে ডিফল্ট "
+"ব্যাকগ্রাউন্ড ইমেজ বিতরণ করা হতো তা এখন আর বিতরণ করা হয় হয় না। একইভাবে, "
+"<code>upgrade-background-uri</code> GSettings কী টি সরিয়ে ফেলা হয়েছে। "
+"ডিস্ট্রিবিউশনগুলি কীভাবে ব্যাকগ্রাউন্ড ইমেজ চালান করবে তা আপডেট করার প্রয়ো"
+"জন হতে পারে। এর জন্য <em>doc/vendor-customisation.md</em> দেখুন।"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:347
 msgid "This is the first unstable release for GNOME 42."
@@ -1337,7 +1344,7 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:696
 msgid "Kabyle"
-msgstr ""
+msgstr "কাবাইলি"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:2043
 #: src/gs-application.c:256
@@ -1575,6 +1582,10 @@ msgid ""
 "assumed to be listed last. Example packaging formats are: deb, flatpak, rpm, "
 "snap."
 msgstr ""
+"প্যাকেজিং ফর্ম্যাটগুলির জন্য একটি অগ্রাধিকারপ্রাপ্ত ক্রম পছন্দ করুন, প্রথমে "
+"তালিকাভুক্ত ফর্ম্যাটগুলো বেশি গুরুত্বপূর্ণ বলে বিবেচিত। একটি খালি অ্যারে মানে"
+" ডিফল্ট ক্রম। অপেক্ষাকৃত ফর্ম্যাটগুলি সর্বশেষ তালিকাভুক্ত হওয়া দরকার। "
+"উদাহরণযোগ্য প্যাকেজিং ফর্ম্যাটগুলি হলো : deb, flatpak, rpm, snap।"
 
 #: data/org.gnome.software.gschema.xml:146
 msgid "A string storing the gnome-online-account id used to login"
@@ -2278,6 +2289,8 @@ msgid ""
 "The kind of interaction expected for this action: either ‘none’, ‘notify’, "
 "or ‘full’"
 msgstr ""
+"এই ক্রিয়াটির জন্য যে ধরণের মিথস্ক্রিয়া প্রত্যাশিত: হয় তো 'না', অথবা 'অবগত "
+"করুন', অথবা 'পূর্ণ'"
 
 #: src/gs-application.c:141
 msgid "Show a local metainfo or appdata file"
@@ -2713,9 +2726,9 @@ msgstr "_অনুবাদ ওয়েবসাইট"
 
 #. TRANSLATORS: This is a description for entering user/password
 #: src/gs-basic-auth-dialog.c:82
-#, c-format, fuzzy
+#, c-format
 msgid "Login required remote %s (realm %s)"
-msgstr "লগইন করার জন্য %s রিমোট প্রয়োজন (realm %s)"
+msgstr "লগইন করার জন্য রিমোট প্রয়োজন %s (realm %s)"
 
 #: src/gs-basic-auth-dialog.ui:13
 msgid "Login Required"
@@ -4005,7 +4018,7 @@ msgstr "টাচস্ক্রিন সমর্থন অজানা"
 
 #: src/gs-hardware-support-context-dialog.c:677
 msgid "Not enough information to know if touchscreens are supported"
-msgstr ""
+msgstr "টাচস্ক্রিনগুলি সমর্থিত কিনা তা জানার জন্য পর্যাপ্ত তথ্য নেই"
 
 #: src/gs-hardware-support-context-dialog.c:679
 msgid "Touchscreen Required"
@@ -4058,7 +4071,7 @@ msgstr "%s এটি এই ডিভাইসে কাজ করে"
 #: src/gs-hardware-support-context-dialog.c:726
 #, c-format
 msgid "%s will not work properly on this device"
-msgstr ""
+msgstr "%s এই ডিভাইসে সঠিকভাবে কাজ করবে না"
 
 #. Translators: The app will not work properly on the current hardware.
 #. * The placeholder is the app name.
@@ -4118,6 +4131,10 @@ msgid ""
 "\n"
 "You can contribute and help make it even better."
 msgstr ""
+"এই সফ্টওয়্যারটি স্বেচ্ছাসেবকদের একটি সম্প্রদায় দ্বারা উন্মুক্তভাবে তৈরি এবং"
+" <a href=\"%s\">%s লাইসেন্সের</a> অধীনে প্রকাশিত।\n"
+"\n"
+"আপনিও এতে অবদান রাখতে পারেন এবং এর আরও উন্নয়নে সহায়তা করতে পারেন।"
 
 #. Translators: The placeholder here is the name of a software license.
 #: src/gs-license-tile.c:121
@@ -4128,6 +4145,10 @@ msgid ""
 "\n"
 "You can contribute and help make it even better."
 msgstr ""
+"এই সফ্টওয়্যারটি স্বেচ্ছাসেবকদের একটি সম্প্রদায় দ্বারা উন্মুক্তভাবে তৈরি এবং"
+" %s লাইসেন্সের অধীনে প্রকাশিত।\n"
+"\n"
+"আপনিও অবদান রাখতে পারেন এবং এর উন্নয়নে সহায়তা করতে পারেন।"
 
 #: src/gs-license-tile.c:127
 msgid "Proprietary"
@@ -4145,6 +4166,11 @@ msgid ""
 "\n"
 "You may not be able to contribute to this software."
 msgstr ""
+"এই সফ্টওয়্যারটি উন্মুক্তভাবে তৈরি করা হয়নি, তাই এটি কীভাবে কাজ করে তা "
+"শুধুমাত্র এর বিকাশকারীরা জানেন। এটি এমনভাবে অনিরাপদ হতে পারে যেগুলি সনাক্ত "
+"করা কঠিন, আর এটি যে কোনো সময় চোখের আড়ালে পরিবর্তিত হয়ে যেতে পারে।\n"
+"\n"
+"আপনি এই সফ্টওয়্যারটিতে অবদান রাখতে সক্ষম নাও হতে পারেন৷"
 
 #. TRANSLATORS: initial start
 #: src/gs-loading-page.c:56
@@ -4175,6 +4201,15 @@ msgid ""
 "Alternatively, if the current network has been in­correctly identified as "
 "being metered, this setting can be changed."
 msgstr ""
+"বর্তমান নেটওয়ার্কটি একটি সীমিত নেটওয়ার্ক হিসেবে চিহ্নিত। সীমিত সংযোগ "
+"ব্যবহারের সময় এর ডেটা সীমা রয়েছে বা এতে চার্জ (খরচ) যুক্ত থাকতে পারে। তাই "
+"ডেটা সংরক্ষণের জন্য স্বয়ংক্রিয় আপডেটগুলি স্থগিত করা হয়েছে।\n"
+"\n"
+"একটি সীমা বিহীন নেটওয়ার্ক উপলদ্ধ হলে স্বয়ংক্রিয় আপডেটগুলি পুনরায় চালু "
+"হবে। ততক্ষণ পর্যন্ত আপডেটগুলি ম্যানুয়ালি ইনস্টল করতে চাইলে তা এখনও সম্ভব।\n"
+"\n"
+"বিকল্পভাবে, যদি বর্তমান নেটওয়ার্কটি ভুলবসত সীমিত নেটওয়ার্ক হিসেবে চিহ্নিত "
+"করা হয়ে থাকে তবে এই সেটিংটি পরিবর্তন করা যেতে পারে।"
 
 #: src/gs-metered-data-dialog.ui:17
 msgid "Open Network _Settings"
@@ -4330,6 +4365,8 @@ msgid ""
 "To avoid charges and network caps, software updates are not automatically "
 "downloaded on mobile or metered connections."
 msgstr ""
+"খরচ এবং নেটওয়ার্ক ক্যাপস্ এড়াতে, সফ্টওয়্যার আপডেটগুলি মোবাইল ডেটা বা সীমি"
+"ত নেটওয়ার্ক সংযোগকালে স্বয়ংক্রিয়ভাবে ডাউনলোড হয় না।"
 
 #: src/gs-prefs-dialog.ui:19
 msgid "Automatic Updates"
@@ -4338,7 +4375,7 @@ msgstr "স্বয়ংক্রিয় আপডেট"
 #: src/gs-prefs-dialog.ui:20
 msgid ""
 "Downloads and installs software updates in the background, when possible."
-msgstr ""
+msgstr "সম্ভব হলে আড়ালে থেকে সফ্টওয়্যার আপডেটগুলি ডাউনলোড ও ইনস্টল করে।"
 
 #: src/gs-prefs-dialog.ui:32
 msgid "Automatic Update Notifications"
@@ -4346,7 +4383,7 @@ msgstr "স্বয়ংক্রিয় আপডেট বিজ্ঞপ�
 
 #: src/gs-prefs-dialog.ui:33
 msgid "Show notifications when updates have been automatically installed."
-msgstr ""
+msgstr "আপডেটগুলি স্বয়ংক্রিয়ভাবে ইনস্টল হয়ে গেলে বিজ্ঞপ্তি দেখান।"
 
 #. TRANSLATORS: This is a text displayed during a distro upgrade. %s
 #. will be replaced by the name and version of distro, e.g. 'Fedora 23'.
@@ -4372,7 +4409,7 @@ msgstr "_চলবে"
 #, c-format
 msgid ""
 "Software that has been installed from “%s” will cease to receive updates."
-msgstr ""
+msgstr "“%s” থেকে ইনস্টল করা সফ্টওয়্যারের জন্য আপডেট পাওয়া বন্ধ হয়ে যাবে।"
 
 #: src/gs-repos-dialog.c:248
 msgid "Disable Repository?"
@@ -4398,7 +4435,7 @@ msgstr "নতুন সংগ্রহস্থল সক্রিয় কর
 
 #: src/gs-repos-dialog.c:509
 msgid "Turn on new repositories when they are added."
-msgstr ""
+msgstr "নতুন সংগ্রহস্থলগুলি যুক্ত হলে সেগুলি স্বয়ংক্রিয়ভাবে চালু করুন।"
 
 #. TRANSLATORS: this is the clickable
 #. * link on the third party repositories info bar
@@ -4412,7 +4449,7 @@ msgstr "আরো তথ্য"
 #: src/gs-repos-dialog.c:523
 #, c-format
 msgid "Additional repositories from selected third parties — %s."
-msgstr ""
+msgstr "নিম্নোক্ত নির্বাচিত তৃতীয় পক্ষের কাছ থেকে অতিরিক্ত সংগ্রহস্থল - %s।"
 
 #: src/gs-repos-dialog.c:528
 msgid "Fedora Third Party Repositories"
@@ -4429,7 +4466,7 @@ msgstr "অপারেটিং সিস্টেম"
 #: src/gs-repos-dialog.c:728
 #, c-format
 msgid "These repositories supplement the default software provided by %s."
-msgstr ""
+msgstr "এই সংগ্রহস্থলগুলি %s কর্তৃক প্রদত্ত ডিফল্ট সফ্টওয়্যারসমূহ সম্পূরণ করে।"
 
 #. button in the info bar
 #: src/gs-repos-dialog.ui:8 src/gs-shell.ui:88
@@ -4492,7 +4529,7 @@ msgstr[1] "%s এবং %s গুলি সংস্থাপিত"
 #. Translators: The first '%s' is replaced with a text like '10 applications installed',
 #. the second '%s' is replaced with installation kind, like in case of Flatpak 'User Installation'.
 #: src/gs-repo-row.c:243
-#, c-format, fuzzy
+#, c-format
 msgctxt "repo-row"
 msgid "%s • %s"
 msgstr "%s • %s"
@@ -4600,6 +4637,9 @@ msgid ""
 "\">privacy policy</a>. The full name attached to your account will be shown "
 "publicly."
 msgstr ""
+"কোন ডেটা প্রেরণ করা হয় তা জানতে আমাদের <a href=\"https://odrs.gnome.org/"
+"privacy\">গোপনীয়তা নীতি</a> পাতায় সন্ধান করুন। আপনার অ্যাকাউন্টের সাথে "
+"সংযুক্ত পুরো নামটি সর্বজনীনভাবে প্রদর্শিত হবে।"
 
 #: src/gs-review-histogram.c:72
 #, c-format
@@ -4676,12 +4716,16 @@ msgstr "মুছে ফেলুন…"
 #: src/gs-safety-context-dialog.c:144
 msgid "Check that you trust the vendor, as the application isn’t sandboxed"
 msgstr ""
+"আপনি অ্যাপ্লিকেশনটির সরবরাহকারীকে বিশ্বাস করেন কিনা তা যাচাই করুন, কারণ "
+"অ্যাপ্লিকেশনটি স্যান্ডবক্স করা নেই"
 
 #: src/gs-safety-context-dialog.c:147
 msgid ""
 "Application isn’t sandboxed but the distribution has checked that it is not "
 "malicious"
 msgstr ""
+"অ্যাপ্লিকেশনটি স্যান্ডবক্স করা হয়নি তবে ডিস্ট্রিবিউশন পরীক্ষা করেছে যে এটি "
+"সন্দেহজনক নয়"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:160
@@ -4735,7 +4779,7 @@ msgstr "ডিভাইস অ্যাক্সেস"
 
 #: src/gs-safety-context-dialog.c:200
 msgid "Can access devices such as webcams or gaming controllers"
-msgstr ""
+msgstr "ওয়েবক্যাম বা গেমিং কন্ট্রোলারের মতো ডিভাইসগুলি অ্যাক্সেস করতে পারে"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:203
@@ -4744,7 +4788,7 @@ msgstr "কোনও ডিভাইস অ্যাক্সেস নেই"
 
 #: src/gs-safety-context-dialog.c:204
 msgid "Cannot access devices such as webcams or gaming controllers"
-msgstr ""
+msgstr "ওয়েবক্যাম বা গেমিং কন্ট্রোলারের মতো ডিভাইসগুলি অ্যাক্সেস করতে পারে না"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:210
@@ -4768,7 +4812,7 @@ msgstr "সম্পূর্ণ ফাইল সিস্টেম রিড/�
 
 #: src/gs-safety-context-dialog.c:239
 msgid "Can read and write all data on the file system"
-msgstr ""
+msgstr "ফাইল সিস্টেমে থাকা সমস্ত তথ্য রিড-রাইট করতে পারে"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:247
@@ -4777,7 +4821,7 @@ msgstr "হোম ফোল্ডার রিড/রাইট অ্যাক�
 
 #: src/gs-safety-context-dialog.c:248
 msgid "Can read and write all data in your home directory"
-msgstr ""
+msgstr "আপনার হোম ডিরেক্টরিতে থাকা সমস্ত তথ্য রিড-রাইট করতে পারে"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:256
@@ -4786,7 +4830,7 @@ msgstr "সম্পূর্ণ ফাইল সিস্টেম রিড �
 
 #: src/gs-safety-context-dialog.c:257
 msgid "Can read all data on the file system"
-msgstr ""
+msgstr "ফাইল সিস্টেমের সমস্ত ডেটা পড়তে পারে"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:266
@@ -4795,7 +4839,7 @@ msgstr "হোম ফোল্ডার রিড অ্যাক্সেস"
 
 #: src/gs-safety-context-dialog.c:267
 msgid "Can read all data in your home directory"
-msgstr ""
+msgstr "আপনার হোম ডিরেক্টরিতে থাকা সমস্ত তথ্য পড়তে পারে"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:276
@@ -4804,7 +4848,7 @@ msgstr "ডাউনলোড ফোল্ডার রিড/রাইট অ�
 
 #: src/gs-safety-context-dialog.c:277
 msgid "Can read and write all data in your downloads directory"
-msgstr ""
+msgstr "আপনার ডাউনলোড ডিরেক্টরিতে থাকা সমস্ত তথ্য রিড-রাইট করতে পারে"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:288
@@ -4813,11 +4857,11 @@ msgstr "ডাউনলোড ফোল্ডার রিড অ্যাক্
 
 #: src/gs-safety-context-dialog.c:289
 msgid "Can read all data in your downloads directory"
-msgstr ""
+msgstr "আপনার ডাউনলোড ডিরেক্টরিতে থাকা সমস্ত তথ্য পড়তে পারে"
 
 #: src/gs-safety-context-dialog.c:299
 msgid "Can read and write all data in the directory"
-msgstr ""
+msgstr "ডিরেক্টরিতে থাকা সমস্ত তথ্য রিড-রাইট করতে পারে"
 
 #: src/gs-safety-context-dialog.c:310
 msgid "Can read all data in the directory"
@@ -4842,6 +4886,8 @@ msgid ""
 "The source code is not public, so it cannot be independently audited and "
 "might be unsafe"
 msgstr ""
+"উত্স কোডটি সর্বজনীন উপলব্ধ নয়, তাই এটি স্বাধীনভাবে নিরীক্ষা করা সম্ভব না এবং "
+"হতে পারে এটি অনিরাপদ"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:345
@@ -4853,6 +4899,8 @@ msgid ""
 "The source code is public and can be independently audited, which makes the "
 "app more likely to be safe"
 msgstr ""
+"উত্স কোডটি সর্বজনীন উপলদ্ধ এবং এটি স্বাধীনভাবে নিরীক্ষা করা যেতে পারে, যা "
+"অ্যাপ্লিকেশনটিকে নিরাপদ হওয়ার সম্ভাবনা বাড়িয়ে তোলে"
 
 #. Translators: This indicates an app was written and released by a developer who has been verified.
 #. * It’s used in a context tile, so should be short.
@@ -4863,6 +4911,8 @@ msgstr "অ্যাপ ডেভেলপার যাচাইকৃত"
 #: src/gs-safety-context-dialog.c:355
 msgid "The developer of this app has been verified to be who they say they are"
 msgstr ""
+"এই অ্যাপ্লিকেশনটির বিকাশকারীর ব্যাপারে যাচাই করা হয়েছে যে, সে যে পরিচয় দেয় "
+"তা সঠিক কি না"
 
 #. Translators: This indicates an app uses an outdated SDK.
 #. * It’s used in a context tile, so should be short.
@@ -4874,6 +4924,7 @@ msgstr "অনিরাপদ নির্ভরতা"
 msgid ""
 "Software or its dependencies are no longer supported and may be insecure"
 msgstr ""
+"সফ্টওয়্যার বা এর নির্ভরতাগুলি এখন আর সমর্থিত নয় এবং হতে পারে এটি অনিরাপদ"
 
 #. Translators: The app is considered safe to install and run.
 #. * The placeholder is the app name.
@@ -5037,18 +5088,20 @@ msgstr "আপডেটগুলি ডাউনলোড করা যায়ন
 msgid ""
 "Unable to download updates: internet access was required but wasn’t available"
 msgstr ""
+"আপডেটগুলি ডাউনলোড করা যায়নি: ইন্টারনেট অ্যাক্সেসের প্রয়োজন ছিল কিন্তু তা "
+"উপলব্ধ নয়"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the source (e.g. "alt.fedoraproject.org")
 #: src/gs-shell.c:1301
 #, c-format
 msgid "Unable to download updates from %s: not enough disk space"
-msgstr ""
+msgstr "%s থেকে আপডেটগুলি ডাউনলোড করা যায়নি: পর্যাপ্ত ডিস্ক স্থান নেই"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1306
 msgid "Unable to download updates: not enough disk space"
-msgstr ""
+msgstr "আপডেটগুলি ডাউনলোড করা সম্ভব হয়নি: পর্যাপ্ত ডিস্ক স্থান নেই"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1312
@@ -5065,6 +5118,7 @@ msgstr "আপডেটগুলি ডাউনলোড করা সম্ভ
 msgid ""
 "Unable to download updates: you do not have permission to install software"
 msgstr ""
+"আপডেটগুলি ডাউনলোড করা সম্ভব হয়নি: আপনার সফ্টওয়্যার ইনস্টল করার অনুমতি নেই"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1331
@@ -5077,7 +5131,7 @@ msgstr "আপডেটের তালিকা পাওয়া সম্ভব
 #: src/gs-shell.c:1373
 #, c-format
 msgid "Unable to install %s as download failed from %s"
-msgstr ""
+msgstr "%2$s থেকে ডাউনলোড ব্যর্থ হওয়ায় %1$s ইনস্টল করা সম্ভব হয়নি"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
@@ -5093,7 +5147,7 @@ msgstr "ডাউনলোড ব্যর্থ হওয়ায় %s ইন
 #: src/gs-shell.c:1391
 #, c-format
 msgid "Unable to install %s as runtime %s not available"
-msgstr ""
+msgstr "রানটাইম %2$s উপলব্ধ না থাকায় %1$s ইনস্টল করা সম্ভব হচ্ছে না"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
@@ -5106,18 +5160,20 @@ msgstr "সমর্থিত নয় বলে %s ইনস্টল কর�
 #: src/gs-shell.c:1403
 msgid "Unable to install: internet access was required but wasn’t available"
 msgstr ""
+"ইনস্টল করা যায়নি : ইন্টারনেট অ্যাক্সেসের প্রয়োজন ছিল কিন্তু তা উপলব্ধ ছিলো "
+"না"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1408
 msgid "Unable to install: the application has an invalid format"
-msgstr ""
+msgstr "ইনস্টল করা সম্ভব হয়নি: অ্যাপ্লিকেশনটির একটি ত্রুটিযুক্ত বিন্যাস রয়েছে"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
 #: src/gs-shell.c:1412
 #, c-format
 msgid "Unable to install %s: not enough disk space"
-msgstr ""
+msgstr "%s ইনস্টল করা সম্ভব হয়নি: পর্যাপ্ত ডিস্ক স্থান নেই"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1418
@@ -5137,21 +5193,21 @@ msgstr "%s ইনস্টল করা যায়নি: প্রমাণী�
 #: src/gs-shell.c:1430
 #, c-format
 msgid "Unable to install %s: you do not have permission to install software"
-msgstr ""
+msgstr "%s ইন্সটল করা সম্ভব হয়নি: আপনার সফ্টওয়্যার ইনস্টল করার অনুমতি নেই"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "Dell XPS 13")
 #: src/gs-shell.c:1437
 #, c-format
 msgid "Unable to install %s: AC power is required"
-msgstr ""
+msgstr "%s ইনস্টল করা সম্ভব হচ্ছে না : AC পাওয়ার কানেকশন প্রয়োজন"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "Dell XPS 13")
 #: src/gs-shell.c:1443
 #, c-format
 msgid "Unable to install %s: The battery level is too low"
-msgstr ""
+msgstr "%s ইনস্টল করা যাচ্ছে না: ব্যাটারির স্তর খুবই কম"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
@@ -5167,7 +5223,7 @@ msgstr "%s ইন্সটল করা যায়নি"
 #: src/gs-shell.c:1497
 #, c-format
 msgid "Unable to update %s from %s as download failed"
-msgstr ""
+msgstr "ডাউনলোড ব্যর্থ হওয়ায় %2$s থেকে %1$s -এ আপডেট করা সম্ভব হয়নি"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
@@ -5182,7 +5238,7 @@ msgstr "ডাউনলোড ব্যর্থ হওয়ায় %s আপ
 #: src/gs-shell.c:1511
 #, c-format
 msgid "Unable to install updates from %s as download failed"
-msgstr ""
+msgstr "ডাউনলোড ব্যর্থ হওয়ায় %s থেকে আপডেটগুলি ইনস্টল করা সম্ভব হয়নি"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1515
@@ -5193,53 +5249,53 @@ msgstr "ডাউনলোড ব্যর্থ হওয়ায় আপড
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1520
 msgid "Unable to update: internet access was required but wasn’t available"
-msgstr ""
+msgstr "আপডেট করা যায়নি: ইন্টারনেট অ্যাক্সেসের প্রয়োজন ছিল কিন্তু তা উপলব্ধ নয়"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
 #: src/gs-shell.c:1529
 #, c-format
 msgid "Unable to update %s: not enough disk space"
-msgstr ""
+msgstr "%s আপডেট করা সম্ভব হয়নি: পর্যাপ্ত ডিস্ক স্থান নেই"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1534
 #, c-format
 msgid "Unable to install updates: not enough disk space"
-msgstr ""
+msgstr "আপডেটগুলি ইনস্টল করা সম্ভব হয়নি: পর্যাপ্ত ডিস্ক স্থান নেই"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
 #: src/gs-shell.c:1543
 #, c-format
 msgid "Unable to update %s: authentication was required"
-msgstr ""
+msgstr "%s আপডেট করা যায়নি: প্রমাণীকরণ প্রয়োজন ছিল"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1548
 #, c-format
 msgid "Unable to install updates: authentication was required"
-msgstr ""
+msgstr "আপডেটগুলি ইনস্টল করা যায়নি: প্রমাণীকরণ প্রয়োজন ছিল"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
 #: src/gs-shell.c:1556
 #, c-format
 msgid "Unable to update %s: authentication was invalid"
-msgstr ""
+msgstr "%s আপডেট করা যায়নি: প্রমাণীকরণ অবৈধ ছিল"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1561
 #, c-format
 msgid "Unable to install updates: authentication was invalid"
-msgstr ""
+msgstr "আপডেটগুলি ইনস্টল করা যায়নি: প্রমাণীকরণ অগ্রহণযোগ্য ছিল"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
 #: src/gs-shell.c:1569
 #, c-format
 msgid "Unable to update %s: you do not have permission to update software"
-msgstr ""
+msgstr "%s আপডেট করা সম্ভব হয়নি: আপনার সফ্টওয়্যার আপডেট করার অনুমতি নেই"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1575
@@ -5247,34 +5303,35 @@ msgstr ""
 msgid ""
 "Unable to install updates: you do not have permission to update software"
 msgstr ""
+"আপডেটগুলি ইন্সটল করা সম্ভব হয়নি: আপনার সফ্টওয়্যার আপডেট করার অনুমতি নেই"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "Dell XPS 13")
 #: src/gs-shell.c:1584
 #, c-format
 msgid "Unable to update %s: AC power is required"
-msgstr ""
+msgstr "%s আপডেট করা সম্ভব হচ্ছে না : AC পাওয়ার কানেকশন প্রয়োজন"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "Dell XPS 13")
 #: src/gs-shell.c:1590
 #, c-format
 msgid "Unable to install updates: AC power is required"
-msgstr ""
+msgstr "আপডেটগুলি ইনস্টল করা সম্ভব হচ্ছে না : AC পাওয়ার কানেকশন প্রয়োজন"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "Dell XPS 13")
 #: src/gs-shell.c:1598
 #, c-format
 msgid "Unable to update %s: The battery level is too low"
-msgstr ""
+msgstr "%s আপডেট করা যাচ্ছে না: ব্যাটারির স্তর খুবই কম"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "Dell XPS 13")
 #: src/gs-shell.c:1604
 #, c-format
 msgid "Unable to install updates: The battery level is too low"
-msgstr ""
+msgstr "আপডেটগুলি ইনস্টল করা যাচ্ছে না: ব্যাটারির স্তর খুবই কম"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
@@ -5295,14 +5352,14 @@ msgstr "আপডেটগুলি ইনস্টল করতে অক্ষ
 #: src/gs-shell.c:1660
 #, c-format
 msgid "Unable to upgrade to %s from %s"
-msgstr ""
+msgstr "%2$s থেকে %1$s এ আপগ্রেড করা সম্ভব হচ্ছে না"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the app name (e.g. "GIMP")
 #: src/gs-shell.c:1665
 #, c-format
 msgid "Unable to upgrade to %s as download failed"
-msgstr ""
+msgstr "ডাউনলোড ব্যর্থ হওয়ায় %s এ আপগ্রেড করা সম্ভব হয়নি"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the distro name (e.g. "Fedora 25")
@@ -5311,48 +5368,50 @@ msgstr ""
 msgid ""
 "Unable to upgrade to %s: internet access was required but wasn’t available"
 msgstr ""
+"%s -এ আপগ্রেড করা যায়নি: ইন্টারনেট অ্যাক্সেসের প্রয়োজন ছিল কিন্তু তা উপলব্ধ "
+"নয়"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the distro name (e.g. "Fedora 25")
 #: src/gs-shell.c:1681
 #, c-format
 msgid "Unable to upgrade to %s: not enough disk space"
-msgstr ""
+msgstr "%s-এ আপগ্রেড করা সম্ভব হয়নি: পর্যাপ্ত ডিস্ক স্থান নেই"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the distro name (e.g. "Fedora 25")
 #: src/gs-shell.c:1688
 #, c-format
 msgid "Unable to upgrade to %s: authentication was required"
-msgstr ""
+msgstr "%s-এ আপগ্রেড করা সম্ভব হয়নি: নিশ্চিতকরণের প্রয়োজন ছিল"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the distro name (e.g. "Fedora 25")
 #: src/gs-shell.c:1694
 #, c-format
 msgid "Unable to upgrade to %s: authentication was invalid"
-msgstr ""
+msgstr "%s-এ আপগ্রেড করা সম্ভব হয়নি: নিশ্চিতকরণ অগ্রহণযোগ্য ছিল"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the distro name (e.g. "Fedora 25")
 #: src/gs-shell.c:1700
 #, c-format
 msgid "Unable to upgrade to %s: you do not have permission to upgrade"
-msgstr ""
+msgstr "%s -এ আপগ্রেড করা যায়নি: আপনার আপগ্রেড করার অনুমতি নেই"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the distro name (e.g. "Fedora 25")
 #: src/gs-shell.c:1706
 #, c-format
 msgid "Unable to upgrade to %s: AC power is required"
-msgstr ""
+msgstr "%s -এ আপগ্রেড করা সম্ভব হচ্ছে না : AC পাওয়ার কানেকশন প্রয়োজন"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the distro name (e.g. "Fedora 25")
 #: src/gs-shell.c:1712
 #, c-format
 msgid "Unable to upgrade to %s: The battery level is too low"
-msgstr ""
+msgstr "%s -এ আপগ্রেড করা যাচ্ছে না: ব্যাটারির স্তর খুবই কম"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the distro name (e.g. "Fedora 25")
@@ -5366,35 +5425,35 @@ msgstr "%s এ আপগ্রেড করা যায়নি"
 #: src/gs-shell.c:1758
 #, c-format
 msgid "Unable to remove %s: authentication was required"
-msgstr ""
+msgstr "%s অপসারণ করা সম্ভব হচ্ছে না: নিশ্চিতকরণ প্রয়োজন ছিল"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
 #: src/gs-shell.c:1763
 #, c-format
 msgid "Unable to remove %s: authentication was invalid"
-msgstr ""
+msgstr "%s অপসারণ করা সম্ভব হয়নি: নিশ্চিতকরণ অগ্রহণযোগ্য ছিল"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
 #: src/gs-shell.c:1768
 #, c-format
 msgid "Unable to remove %s: you do not have permission to remove software"
-msgstr ""
+msgstr "%s অপসারণ করা সম্ভব হয়নি: আপনার সফ্টওয়্যার অপসারণ করার অনুমতি নেই"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
 #: src/gs-shell.c:1774
 #, c-format
 msgid "Unable to remove %s: AC power is required"
-msgstr ""
+msgstr "%s অপসারণ করা সম্ভব হচ্ছে না : AC পাওয়ার কানেকশন প্রয়োজন"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
 #: src/gs-shell.c:1780
 #, c-format
 msgid "Unable to remove %s: The battery level is too low"
-msgstr ""
+msgstr "%s অপসারণ করা যাচ্ছে না: ব্যাটারির স্তর খুবই কম"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
@@ -5410,13 +5469,13 @@ msgstr "%s টি অপসারণ করা যায়নি"
 #: src/gs-shell.c:1833
 #, c-format
 msgid "Unable to launch %s: %s is not installed"
-msgstr ""
+msgstr "%s চালু করা যায়নি: %s ইনস্টল করা নেই"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1839 src/gs-shell.c:1887 src/gs-shell.c:1925
 #: src/gs-shell.c:1968
 msgid "Not enough disk space — free up some space and try again"
-msgstr ""
+msgstr "ডিস্কে পর্যাপ্ত জায়গা নেই - কিছু স্থান খালি করুন এবং আবার চেষ্টা করুন"
 
 #. TRANSLATORS: we failed to get a proper error code
 #: src/gs-shell.c:1850 src/gs-shell.c:1898 src/gs-shell.c:1936
@@ -5455,7 +5514,7 @@ msgstr "%s-এর সাথে যোগাযোগ করা যায়নি"
 #. TRANSLATORS: failure text for the in-app notification, where the 'Software' means this application, aka 'GNOME Software'.
 #: src/gs-shell.c:1973
 msgid "Software needs to be restarted to use new plugins."
-msgstr ""
+msgstr "নতুন প্লাগইন ব্যবহার করতে সফ্টওয়্যারটি রিস্টার্ট করা প্রয়োজন।"
 
 #. TRANSLATORS: need to be connected to the AC power
 #: src/gs-shell.c:1977
@@ -5529,7 +5588,7 @@ msgstr "অ্যাপ্লিকেশন ডেটা"
 
 #: src/gs-storage-context-dialog.c:140
 msgid "Data needed for the application to run"
-msgstr ""
+msgstr "অ্যাপ্লিকেশনটি চালানোর জন্য প্রয়োজনীয় ডেটা প্রয়োজনীয়"
 
 #: src/gs-storage-context-dialog.c:145
 msgid "User Data"
@@ -5537,7 +5596,7 @@ msgstr "ব্যবহারকারীর তথ্য"
 
 #: src/gs-storage-context-dialog.c:146
 msgid "Data created by you in the application"
-msgstr ""
+msgstr "অ্যাপ্লিকেশনে আপনার দ্বারা তৈরি তথ্য"
 
 #: src/gs-storage-context-dialog.c:153
 msgid "Cache Data"
@@ -5557,7 +5616,7 @@ msgstr "প্রয়োজনীয় নির্ভরতা"
 
 #: src/gs-storage-context-dialog.c:178
 msgid "Shared system components required by this application"
-msgstr ""
+msgstr "এই অ্যাপ্লিকেশনের জন্য প্রয়োজনীয় শেয়ার্ড সিস্টেম উপাদান"
 
 #: src/gs-storage-context-dialog.c:188
 msgctxt "Download size"
@@ -5575,6 +5634,7 @@ msgid ""
 "Cached data can be cleared from the <a href=\"dummy\">_application settings</"
 "a>."
 msgstr ""
+"<a href=\"dummy\"> _অ্যাপ্লিকেশন সেটিংস</a> থেকে ক্যাশেড ডেটা সাফ করা যাবে।"
 
 #: src/gs-summary-tile.c:118
 #, c-format
@@ -5654,8 +5714,8 @@ msgstr "অনুগ্রহ করে অপেক্ষারত সফ্ট
 #, c-format
 msgid "%u Application Updated — Restart Required"
 msgid_plural "%u Applications Updated — Restart Required"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u অ্যাপ্লিকেশনটি আপডেট করা হয়েছে - রিস্টার্ট করা আবশ্যক"
+msgstr[1] "%u অ্যাপ্লিকেশনগুলি আপডেট করা হয়েছে - রিস্টার্ট করা আবশ্যক"
 
 #. TRANSLATORS: apps were auto-updated
 #: src/gs-update-monitor.c:361
@@ -5836,17 +5896,18 @@ msgstr "%s %s এখন আর সমর্থিত নয়।"
 
 #: src/gs-updates-page.c:563
 msgid "Your operating system is no longer supported."
-msgstr ""
+msgstr "আপনার অপারেটিং সিস্টেম এখন আর সমর্থিত নয়।"
 
 #. TRANSLATORS: EOL distros do not get important updates
 #: src/gs-updates-page.c:568
 msgid "This means that it does not receive security updates."
-msgstr ""
+msgstr "এর মানে হল এটি নিরাপত্তা আপডেটগুলো পায় না।"
 
 #. TRANSLATORS: upgrade refers to a major update, e.g. Fedora 25 to 26
 #: src/gs-updates-page.c:572
 msgid "It is recommended that you upgrade to a more recent version."
 msgstr ""
+"আপনাকে পরামর্শ দেয়া হচ্ছে যে আপনি আরও সাম্প্রতিক একটি সংস্করণে আপগ্রেড করুন।"
 
 #. TRANSLATORS: this is to explain that downloading updates may cost money
 #: src/gs-updates-page.c:849
@@ -6012,9 +6073,9 @@ msgstr "ডাউনলোড করা হচ্ছে…"
 #. Translators: the first '%s' is replaced with the downloaded size, the second '%s'
 #. with the total download size, forming text like "135 MB of 2 GB downloaded"
 #: src/gs-upgrade-banner.c:185
-#, c-format, fuzzy
+#, c-format
 msgid "%s of %s downloaded"
-msgstr "%s ডাউনলোড হয়েছে %s থেকে"
+msgstr "%2$s থেকে %1$s ডাউনলোড হয়েছে"
 
 #. Translators: the '%u' is replaced with the actual percentage being already
 #. downloaded, forming text like "13% downloaded"
@@ -6033,7 +6094,7 @@ msgstr "_রিস্টার্ট ও আপডেট"
 
 #: src/gs-upgrade-banner.ui:201
 msgid "Remember to back up data and files before upgrading."
-msgstr ""
+msgstr "আপগ্রেড করার আগে ডেটা এবং ফাইলগুলির ব্যাক আপ নিতে ভুলবেন না।"
 
 #: src/org.gnome.Software.desktop.in:4
 msgid "Add, remove or update software on this computer"
@@ -6060,6 +6121,8 @@ msgid ""
 "General system updates, such as security or bug fixes, and performance "
 "improvements."
 msgstr ""
+"সাধারণ সিস্টেম আপডেট, যেমন নিরাপত্তা বা বাগ সংশোধন এবং কর্মক্ষমতা উন্নয়ন "
+"সংক্রান্ত।"
 
 #. TRANSLATORS: status text when downloading
 #: plugins/core/gs-plugin-rewrite-resource.c:155
@@ -6074,7 +6137,7 @@ msgstr "নতুন বৈশিষ্ট্য ও সংশোধনী স�
 
 #: plugins/eos-updater/gs-plugin-eos-updater.c:970
 msgid "EOS update service could not fetch and apply the update."
-msgstr ""
+msgstr "EOS আপডেট পরিষেবা আপডেটটি টেনে আনতে এবং প্রয়োগ করতে পারেনি।"
 
 #: plugins/epiphany/gs-plugin-epiphany.c:498
 msgid "GNOME Web"
@@ -6086,7 +6149,7 @@ msgstr "ওয়েব অ্যাপ্লিকেশন সমর্থন"
 
 #: plugins/epiphany/org.gnome.Software.Plugin.Epiphany.metainfo.xml.in:7
 msgid "Run popular web applications in a browser"
-msgstr ""
+msgstr "কোনো ব্রাউজারে জনপ্রিয় ওয়েব অ্যাপ্লিকেশনগুলি চালান"
 
 #. TRANSLATORS: status text when downloading
 #: plugins/fedora-pkgdb-collections/gs-plugin-fedora-pkgdb-collections.c:257
@@ -6107,7 +6170,7 @@ msgstr "ফ্ল্যাটপ্যাক সমর্থন"
 
 #: plugins/flatpak/org.gnome.Software.Plugin.Flatpak.metainfo.xml.in:7
 msgid "Flatpak is a framework for desktop applications on Linux"
-msgstr ""
+msgstr "Flatpak হল লিনাক্সে ডেস্কটপ অ্যাপ্লিকেশনের জন্য একটি কাঠামো"
 
 #. Reference: https://docs.flatpak.org/en/latest/flatpak-command-reference.html#idm45858571325264
 #: plugins/flatpak/gs-flatpak.c:313
@@ -6254,12 +6317,12 @@ msgstr "সিস্টেম ইনস্টলেশন"
 #: plugins/flatpak/gs-plugin-flatpak.c:1037
 #, c-format
 msgid "Failed to add to install for addon ‘%s’: %s"
-msgstr ""
+msgstr "'%s' অ্যাডঅন এ-র জন্য ইনস্টল করতে যোগ করতে ব্যর্থ হয়েছে: %s"
 
 #: plugins/flatpak/gs-plugin-flatpak.c:1051
 #, c-format
 msgid "Failed to add to uninstall for addon ‘%s’: %s"
-msgstr ""
+msgstr "'%s' অ্যাডঅন এর জন্য আনইনস্টল করতে যোগ করতে ব্যর্থ হয়েছে:%s"
 
 #: plugins/flatpak/gs-plugin-flatpak.c:1317
 #, c-format
@@ -6267,6 +6330,8 @@ msgid ""
 "Remote “%s” doesn't allow install of “%s”, possibly due to its filter. "
 "Remove the filter and repeat the install. Detailed error: %s"
 msgstr ""
+"\"%s\" রিমোটটি \"%s\" ইনস্টল করার অনুমতি দেয় না, সম্ভবত এর ফিল্টারের কারণে। "
+"ফিল্টারটি অপসারণ করুন এবং ইনস্টলটি পুনরাবৃত্তি করুন। বিস্তারিত ত্রুটি: %s"
 
 #. TRANSLATORS: a specific part of hardware,
 #. * the first %s is the device name, e.g. 'Unifying Receiver`
@@ -6433,6 +6498,9 @@ msgid ""
 "verify the origin of updates to this software, or whether updates have been "
 "tampered with."
 msgstr ""
+"যে সফ্টওয়্যার ইনস্টল করতে হবে তা স্বাক্ষরিত নয়। এই সফ্টওয়্যারের আপডেটগুলি"
+"র উৎস কী বা আপডেটগুলির সাথে কারচুপি করা হয়েছে কিনা তা যাচাই করা সম্ভব হবে "
+"না।"
 
 #: plugins/packagekit/gs-packagekit-task.c:153
 msgid "Download Unsigned Software?"
@@ -6443,6 +6511,8 @@ msgid ""
 "Unsigned updates are available. Without a signature, it is not possible to "
 "verify the origin of the update, or whether it has been tampered with."
 msgstr ""
+"স্বাক্ষরবিহীন আপডেট পাওয়া গেছে। কোনো স্বাক্ষর ছাড়া আপডেটের উৎস যাচাই করা "
+"সম্ভব নয়, বা এর সাথে কারচুপি করা হয়েছে কিনা তা জানা সম্ভব নয়।"
 
 #: plugins/packagekit/gs-packagekit-task.c:158
 msgid "Update Unsigned Software?"
@@ -6455,6 +6525,9 @@ msgid ""
 "Software updates will be disabled until unsigned updates are either removed "
 "or updated."
 msgstr ""
+"স্বাক্ষরহীন আপডেট পাওয়া গিয়েছে। স্বাক্ষর ছাড়া আপডেটের উৎস যাচাই করা বা এটির "
+"সাথে কারচুপি করা হয়েছে কিনা তা জানা সম্ভব হয় না। স্বাক্ষরহীন আপডেটগুলি অপসা"
+"রণ বা আপডেট না হওয়া পর্যন্ত সফ্টওয়্যার আপডেটগুলি নিষ্ক্রিয় থাকবে।"
 
 #: plugins/packagekit/gs-plugin-packagekit.c:367
 msgid "Packages"
@@ -6475,7 +6548,7 @@ msgstr "স্ন্যাপ সমর্থন"
 
 #: plugins/snap/org.gnome.Software.Plugin.Snap.metainfo.xml.in:7
 msgid "A snap is a universal Linux package"
-msgstr ""
+msgstr "একটি স্ন্যাপ হলো একটি সার্বজনীন লিনাক্স প্যাকেজ"
 
 #. TRANSLATORS: this is to inform that the package is part of
 #. * the BASE system
@@ -6488,15 +6561,20 @@ msgid ""
 "Another transaction has already been executed, you must reboot your system "
 "before starting a new transaction."
 msgstr ""
+"অন্য একটি কর্মসূচী ইতিমধ্যে কার্যকর করা হয়েছে, একটি নতুন কর্মসূচী শুরু করার "
+"আগে আপনাকে অবশ্যই আপনার সিস্টেমটি পুনরায় বুট (রিস্টার্ট) করতে হবে।"
 
 #: plugins/vso/gs-plugin-vso.c:260
 msgid "VSO failed to update the system, please try again later."
 msgstr ""
+"VSO সিস্টেমটি আপডেট করতে ব্যর্থ হয়েছে, অনুগ্রহ করে পরে আবার চেষ্টা করুন।"
 
 #: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:245
 msgid ""
 "Applications installable via Apx with pre-defined container configuration"
 msgstr ""
+"পূর্ব-সংজ্ঞায়িত কন্টেইনার কনফিগারেশন সহ Apx এর মাধ্যমে ইনস্টলযোগ্য "
+"অ্যাপ্লিকেশন"
 
 #. origin_ui on a remote is the repo dialogue section name,
 #. * not the remote title
@@ -6510,6 +6588,10 @@ msgid ""
 "and pre-configured by the Vanilla OS team to guarantee that they are using "
 "the most compatible container and configurations."
 msgstr ""
+"এই সংগ্রহশালায় জনপ্রিয় অ্যাপ্লিকেশনগুলির একটি সেট রয়েছে যা Apx এর মাধ্যমে "
+"ইনস্টলযোগ্য এবং ভ্যানিলা ওএস টিম দ্বারা পূর্ব-কনফিগার কৃত, যেন সর্বাধিক "
+"সামঞ্জস্যপূর্ণ কন্টেইনার এবং কনফিগারেশন ব্যবহার করা হয়েছে কিনা তা নিশ্চিত করা"
+" যায়।"
 
 #~ msgid "Application manager for GNOME"
 #~ msgstr "GNOME এর জন্য এ্যাপ্লিকেশন ম্যানেজার"
