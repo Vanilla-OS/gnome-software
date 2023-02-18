@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-17 22:27+0000\n"
+"PO-Revision-Date: 2023-02-20 18:20+0000\n"
 "Last-Translator: Matt C <matei.gurzu@gmail.com>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/ro/>\n"
@@ -2292,8 +2292,8 @@ msgstr "%e %B %Y"
 #: src/gs-application.c:124
 msgid "Start up mode: either ‘updates’, ‘updated’, ‘installed’ or ‘overview’"
 msgstr ""
-"Mod de pornire: fie „updates” (actualizări), „updated” (actualizat), "
-"„installed” (instalat) sau „overview” (prezentare generală)"
+"Mod de pornire: fie \"updates\" (actualizări), \"updated\" (actualizat), "
+"\"installed\" (instalat) sau \"overview\" (prezentare generală)"
 
 #: src/gs-application.c:124
 msgid "MODE"
@@ -2344,8 +2344,8 @@ msgid ""
 "The kind of interaction expected for this action: either ‘none’, ‘notify’, "
 "or ‘full’"
 msgstr ""
-"Tipul de interacție așteptat de la această acțiune: fie „none”, „notifiy”, "
-"sau „full”"
+"Tipul de interacție așteptat de la această acțiune: fie \"none\", \"notifiy\""
+", sau \"full\""
 
 #: src/gs-application.c:141
 msgid "Show a local metainfo or appdata file"
@@ -2386,7 +2386,8 @@ msgstr ""
 "Adrian Gabor <raziel_theripper [at] yahoo [dot] com>, 2015\n"
 "Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>, 2016-2021\n"
 "Florentina Mușat <florentina [dot] musat [dot] 28 [at] gmail [dot] com>, "
-"2020-2021"
+"2020-2021\n"
+"Matt <github.com/mattcc23>, 2023"
 
 #. TRANSLATORS: this is the title of the about window
 #. TRANSLATORS: this is the menu item that opens the about window
@@ -3296,7 +3297,7 @@ msgid ""
 "source_software\">free and open source software</a>, and is provided by “%s”."
 msgstr ""
 "%s nu este <a href=\"https://ro.wikipedia.org/wiki/Software_liber\""
-">aplicație liberă cu sursa deschisă</a>, și este furnizat de către „%s”."
+">aplicație liberă cu sursa deschisă</a>, și este furnizat de către \"%s\"."
 
 #. TRANSLATORS: the replacements are as follows:
 #. * 1. Application name, e.g. "Firefox"
@@ -3304,7 +3305,7 @@ msgstr ""
 #: src/gs-common.c:250
 #, c-format
 msgid "%s is provided by “%s”."
-msgstr "%s este furnizat de către „%s”."
+msgstr "%s este furnizat de către \"%s\"."
 
 #: src/gs-common.c:259
 msgid "This software repository must be enabled to continue installation."
@@ -3584,7 +3585,7 @@ msgstr "Aveți nevoie de acces la internet pentru a scrie o recenzie"
 #: src/gs-details-page.c:1711 src/gs-details-page.c:1727
 #, c-format
 msgid "Unable to find “%s”"
-msgstr "Nu s-a putut găsi „%s”"
+msgstr "Nu s-a putut găsi \"%s\""
 
 #: src/gs-details-page.ui:7
 msgid "Details page"
@@ -4714,8 +4715,8 @@ msgid ""
 "Give a short summary of your review, for example: “Great app, would "
 "recommend”."
 msgstr ""
-"Scrieți un scurt rezumat al recenziei dumneavoastră, de exemplu: „Aplicație "
-"extraordinară, o recomand”."
+"Scrieți un scurt rezumat al recenziei dumneavoastră, de exemplu: \"Aplicație "
+"extraordinară, o recomand\"."
 
 #. Translators: This is where the users enter their opinions about the apps.
 #: src/gs-review-dialog.ui:119
@@ -4943,11 +4944,11 @@ msgstr "Poate să citească toate datele din dosarul personal"
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:276
 msgid "Download Folder Read/Write Access"
-msgstr "Acces de citire a dosarului „Descărcări”"
+msgstr "Acces de citire a dosarului \"Descărcări\""
 
 #: src/gs-safety-context-dialog.c:277
 msgid "Can read and write all data in your downloads directory"
-msgstr "Poate să citească/scrie toate datele din dosarul „Descărcări”"
+msgstr "Poate să citească/scrie toate datele din dosarul \"Descărcări\""
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:288
@@ -4956,7 +4957,7 @@ msgstr "Acces de citire pentru dosarul Descărcări"
 
 #: src/gs-safety-context-dialog.c:289
 msgid "Can read all data in your downloads directory"
-msgstr "Poate să citească toate datele din dosarul „Descărcări”"
+msgstr "Poate să citească toate datele din dosarul \"Descărcări\""
 
 #: src/gs-safety-context-dialog.c:299
 msgid "Can read and write all data in the directory"
@@ -5154,7 +5155,7 @@ msgstr "Nu a fost găsită nicio aplicație"
 #: src/gs-shell.c:1223
 #, c-format
 msgid "“%s”"
-msgstr "„%s”"
+msgstr "\"%s\""
 
 #. Translators: The '%s' is replaced with an error message, which had been shortened.
 #. The dots at the end are there to highlight that to the user.
@@ -6422,7 +6423,7 @@ msgstr "Se obține metadatele pentru flatpak pentru %s…"
 #: plugins/flatpak/gs-flatpak.c:3579
 #, c-format
 msgid "Failed to refine addon ‘%s’: %s"
-msgstr "Eșec la rafinarea extensiei „%s”: %s"
+msgstr "Eșec la rafinarea extensiei \"%s\": %s"
 
 #: plugins/flatpak/gs-flatpak-utils.c:94
 msgid "User Installation"
@@ -6435,12 +6436,12 @@ msgstr "Instalarea sistemului"
 #: plugins/flatpak/gs-plugin-flatpak.c:1037
 #, c-format
 msgid "Failed to add to install for addon ‘%s’: %s"
-msgstr "Eșec la adăugarea la instalare pentru extensia „%s”: %s"
+msgstr "Eșec la adăugarea la instalare pentru extensia \"%s\": %s"
 
 #: plugins/flatpak/gs-plugin-flatpak.c:1051
 #, c-format
 msgid "Failed to add to uninstall for addon ‘%s’: %s"
-msgstr "Eșec la adăugarea la dezinstalare pentru extensia „%s”: %s"
+msgstr "Eșec la adăugarea la dezinstalare pentru extensia \"%s\": %s"
 
 #: plugins/flatpak/gs-plugin-flatpak.c:1317
 #, c-format
