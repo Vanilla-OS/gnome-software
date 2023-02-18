@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: gnome-software\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-17 22:27+0000\n"
+"PO-Revision-Date: 2023-02-18 09:58+0000\n"
 "Last-Translator: Abu Huraira <abuhuraira@tutamail.com>\n"
 "Language-Team: Bengali <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/bn/>\n"
@@ -2828,42 +2828,42 @@ msgstr "প্রদর্শনকারী"
 #: lib/gs-desktop-data.c:39
 msgctxt "Menu of Audio & Video"
 msgid "Audio Creation & Editing"
-msgstr ""
+msgstr "অডিও তৈরি ও সম্পাদনা"
 
 #: lib/gs-desktop-data.c:45
 msgctxt "Menu of Audio & Video"
 msgid "Music Players"
-msgstr ""
+msgstr "মিউজিক প্লেয়ার"
 
 #: lib/gs-desktop-data.c:53
 msgctxt "Menu of Productivity"
 msgid "All"
-msgstr ""
+msgstr "সকল"
 
 #: lib/gs-desktop-data.c:58
 msgctxt "Menu of Productivity"
 msgid "Featured"
-msgstr ""
+msgstr "পরিবেশিত"
 
 #: lib/gs-desktop-data.c:62
 msgctxt "Menu of Productivity"
 msgid "Calendar"
-msgstr ""
+msgstr "বর্ষপঞ্জি"
 
 #: lib/gs-desktop-data.c:66
 msgctxt "Menu of Productivity"
 msgid "Database"
-msgstr ""
+msgstr "তথ্যশালা"
 
 #: lib/gs-desktop-data.c:69
 msgctxt "Menu of Productivity"
 msgid "Finance"
-msgstr ""
+msgstr "অর্থ"
 
 #: lib/gs-desktop-data.c:73
 msgctxt "Menu of Productivity"
 msgid "Word Processor"
-msgstr ""
+msgstr "ওয়ার্ড প্রসেসর"
 
 #: lib/gs-desktop-data.c:77
 msgctxt "Menu of Utilities"
@@ -2873,17 +2873,17 @@ msgstr "টেক্সট এডিটর"
 #: lib/gs-desktop-data.c:80
 msgctxt "Menu of Communication & News"
 msgid "Web Browsers"
-msgstr ""
+msgstr "ওয়েব ব্রাউজার"
 
 #: lib/gs-desktop-data.c:87
 msgctxt "Menu of Audio & Video"
 msgid "All"
-msgstr ""
+msgstr "সব"
 
 #: lib/gs-desktop-data.c:90
 msgctxt "Menu of Audio & Video"
 msgid "Featured"
-msgstr ""
+msgstr "পরিবেশিত"
 
 #: lib/gs-desktop-data.c:93
 msgctxt "Menu of Games"
@@ -2963,52 +2963,52 @@ msgstr "আড্ডা"
 #: lib/gs-desktop-data.c:151
 msgctxt "Menu of Education & Science"
 msgid "All"
-msgstr ""
+msgstr "সব"
 
 #: lib/gs-desktop-data.c:158
 msgctxt "Menu of Education & Science"
 msgid "Featured"
-msgstr ""
+msgstr "পরিবেশিত"
 
 #: lib/gs-desktop-data.c:163
 msgctxt "Menu of Education & Science"
 msgid "Artificial Intelligence"
-msgstr ""
+msgstr "কৃত্রিম বুদ্ধিমত্তা"
 
 #: lib/gs-desktop-data.c:166
 msgctxt "Menu of Education & Science"
 msgid "Astronomy"
-msgstr ""
+msgstr "জ্যোতির্বিজ্ঞান"
 
 #: lib/gs-desktop-data.c:170
 msgctxt "Menu of Education & Science"
 msgid "Chemistry"
-msgstr ""
+msgstr "রসায়ন"
 
 #: lib/gs-desktop-data.c:174
 msgctxt "Menu of Education & Science"
 msgid "Languages"
-msgstr ""
+msgstr "ভাষা"
 
 #: lib/gs-desktop-data.c:178
 msgctxt "Menu of Education & Science"
 msgid "Math"
-msgstr ""
+msgstr "গণিত"
 
 #: lib/gs-desktop-data.c:185
 msgctxt "Menu of Communication & News"
 msgid "News"
-msgstr ""
+msgstr "সংবাদ"
 
 #: lib/gs-desktop-data.c:189
 msgctxt "Menu of Education & Science"
 msgid "Robotics"
-msgstr ""
+msgstr "রোবোটিক্স"
 
 #: lib/gs-desktop-data.c:192
 msgctxt "Menu of Art"
 msgid "Art"
-msgstr ""
+msgstr "শিল্প"
 
 #: lib/gs-desktop-data.c:195
 msgctxt "Menu of Reference"
@@ -3053,57 +3053,57 @@ msgstr "খেলাধুলা"
 #: lib/gs-desktop-data.c:223
 msgctxt "Menu of Developer Tools"
 msgid "All"
-msgstr ""
+msgstr "সকল"
 
 #: lib/gs-desktop-data.c:226
 msgctxt "Menu of Developer Tools"
 msgid "Featured"
-msgstr ""
+msgstr "পরিবেশিত"
 
 #: lib/gs-desktop-data.c:229
 msgctxt "Menu of Developer Tools"
 msgid "Debuggers"
-msgstr ""
+msgstr "ডিবাগার"
 
 #: lib/gs-desktop-data.c:232
 msgctxt "Menu of Developer Tools"
 msgid "IDEs"
-msgstr ""
+msgstr "আইডিই"
 
 #: lib/gs-desktop-data.c:240
 msgctxt "Menu of Add-ons"
 msgid "Codecs"
-msgstr ""
+msgstr "কোডেকস"
 
 #: lib/gs-desktop-data.c:247
 msgctxt "Menu of Add-ons"
 msgid "Hardware Drivers"
-msgstr ""
+msgstr "হার্ডওয়্যার ড্রাইভার"
 
 #: lib/gs-desktop-data.c:254
 msgctxt "Menu of Add-ons"
 msgid "Fonts"
-msgstr ""
+msgstr "ফন্ট"
 
 #: lib/gs-desktop-data.c:261
 msgctxt "Menu of Add-ons"
 msgid "Input Sources"
-msgstr ""
+msgstr "ইনপুট উৎস"
 
 #: lib/gs-desktop-data.c:268
 msgctxt "Menu of Add-ons"
 msgid "Language Packs"
-msgstr ""
+msgstr "ভাষা প্যাক"
 
 #: lib/gs-desktop-data.c:275
 msgctxt "Menu of Add-ons"
 msgid "Localization"
-msgstr ""
+msgstr "স্থানীয়করণ"
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:285
 msgid "Create"
-msgstr ""
+msgstr "তৈরি"
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:287
@@ -3113,12 +3113,12 @@ msgstr "কাজ"
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:289
 msgid "Play"
-msgstr ""
+msgstr "খেলা"
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:291
 msgid "Socialize"
-msgstr ""
+msgstr "সামাজিকীকরণ"
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:293
@@ -3138,12 +3138,12 @@ msgstr "কোডেকস"
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:300
 msgid "Hardware Drivers"
-msgstr ""
+msgstr "হার্ডওয়্যার ড্রাইভার"
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:302
 msgid "Fonts"
-msgstr ""
+msgstr "ফন্ট"
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:304
@@ -3153,7 +3153,7 @@ msgstr "ইনপুট সোর্স"
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:306
 msgid "Language Packs"
-msgstr ""
+msgstr "ভাষা প্যাক"
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:308
@@ -3179,7 +3179,7 @@ msgstr "পরিবর্তনগুলি কার্যকর করার 
 #. * has been successfully installed
 #: src/gs-common.c:76
 msgid "Application is ready to be used."
-msgstr ""
+msgstr "অ্যাপ্লিকেশনটি ব্যবহারের জন্য প্রস্তুত।"
 
 #. TRANSLATORS: this is the summary of a notification that OS updates
 #. * have been successfully installed
@@ -3191,7 +3191,7 @@ msgstr "সিস্টেম আপডেটসমূহ সংস্থাপ�
 #. * have been successfully installed
 #: src/gs-common.c:87
 msgid "Recently installed updates are available to review"
-msgstr ""
+msgstr "সম্প্রতি ইনস্টল করা আপডেটগুলি পর্যালোচনার জন্য উপলব্ধ"
 
 #. TRANSLATORS: button text
 #: src/gs-common.c:106 src/gs-common.c:775
@@ -3251,7 +3251,7 @@ msgstr "এই কোডেক সংস্থাপন অথবা ব্য�
 #. TRANSLATORS: this is button text to not ask about non-free content again
 #: src/gs-common.c:282
 msgid "Don’t Warn Again"
-msgstr ""
+msgstr "আর সতর্ক করার দরকার নেই"
 
 #. TRANSLATORS: button text
 #: src/gs-common.c:291
@@ -3272,7 +3272,7 @@ msgstr "বিস্তারিত"
 #. Translators: an accept button label, in a Cancel/Accept dialog
 #: src/gs-common.c:600
 msgid "_Accept"
-msgstr ""
+msgstr "_সম্মতি"
 
 #. TRANSLATORS: we've just live-updated some apps
 #: src/gs-common.c:750
@@ -3303,21 +3303,21 @@ msgstr "এখন নয়"
 #. TRANSLATORS: something happened less than 5 minutes ago
 #: src/gs-common.c:869
 msgid "Just now"
-msgstr ""
+msgstr "এইমাত্র"
 
 #: src/gs-common.c:871
 #, c-format
 msgid "%d minute ago"
 msgid_plural "%d minutes ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d মিনিট আগে"
+msgstr[1] "%d মিনিট আগে"
 
 #: src/gs-common.c:875
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d ঘন্টা আগে"
+msgstr[1] "%d ঘন্টা আগে"
 
 #: src/gs-common.c:879
 #, c-format
@@ -3337,15 +3337,15 @@ msgstr[1] "%d সপ্তাহ আগে"
 #, c-format
 msgid "%d month ago"
 msgid_plural "%d months ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d মাস আগে"
+msgstr[1] "%d মাস আগে"
 
 #: src/gs-common.c:891
 #, c-format
 msgid "%d year ago"
 msgid_plural "%d years ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d বছর আগে"
+msgstr[1] "%d বছর আগে"
 
 #. Translators: This is to construct a disk size string consisting of the value and its unit, while
 #. * the unit is drawn with a smaller font. If you need to flip the order, then you can use "%2$s %1$s".
@@ -3355,7 +3355,7 @@ msgstr[1] ""
 #, c-format
 msgctxt "format-size"
 msgid "%s %s"
-msgstr ""
+msgstr "%s %s"
 
 #. TRANSLATORS: this is a what we use in notifications if the app's name is unknown
 #: src/gs-dbus-helper.c:291
@@ -3436,23 +3436,23 @@ msgstr "অপসারণ হচ্ছে…"
 
 #: src/gs-details-page.c:367
 msgid "Requires restart to finish install"
-msgstr ""
+msgstr "ইন্সটল শেষ করতে রিস্টার্ট প্রয়োজন"
 
 #: src/gs-details-page.c:374
 msgid "Requires restart to finish remove"
-msgstr ""
+msgstr "অপসারণ সম্পূর্ণ করতে রিস্টার্ট প্রয়োজন"
 
 #. TRANSLATORS: This is a label on top of the app's progress
 #. * bar to inform the user that the app should be installed soon
 #: src/gs-details-page.c:391
 msgid "Pending installation…"
-msgstr ""
+msgstr "ইনস্টলেশন মুলতুবি আছে…"
 
 #. TRANSLATORS: This is a label on top of the app's progress
 #. * bar to inform the user that the app should be updated soon
 #: src/gs-details-page.c:398
 msgid "Pending update…"
-msgstr ""
+msgstr "আপডেট অপেক্ষমান…"
 
 #. Translators: This string is shown when preparing to download and install an app.
 #: src/gs-details-page.c:414
@@ -3489,17 +3489,17 @@ msgstr "_সংস্থাপন…"
 #: src/gs-details-page.c:1177
 #, c-format
 msgid "Other Apps by %s"
-msgstr ""
+msgstr "%s কর্তৃক অন্যান্য অ্যাপগুলো"
 
 #. TRANSLATORS: we need a remote server to process
 #: src/gs-details-page.c:1560
 msgid "You need internet access to write a review"
-msgstr ""
+msgstr "একটি পর্যালোচনা লিখতে হলে আপনার ইন্টারনেট অ্যাক্সেস প্রয়োজন"
 
 #: src/gs-details-page.c:1711 src/gs-details-page.c:1727
 #, c-format
 msgid "Unable to find “%s”"
-msgstr ""
+msgstr "\"%s\" খুঁজে পাওয়া যায়নি"
 
 #: src/gs-details-page.ui:7
 msgid "Details page"
@@ -3507,22 +3507,23 @@ msgstr "বিশদ পাতা"
 
 #: src/gs-details-page.ui:39
 msgid "Loading application details…"
-msgstr ""
+msgstr "অ্যাপ্লিকেশনের বিবরণ লোড হচ্ছে…"
 
 #: src/gs-details-page.ui:77
 msgid ""
 "This software is not available in your language and will appear in US "
 "English."
 msgstr ""
+"এই সফ্টওয়্যারটি আপনার ভাষায় উপলভ্য নয়, বরং মার্কিন ইংরেজিতে প্রদর্শিত হবে।"
 
 #: src/gs-details-page.ui:83
 msgid "Help _Translate"
-msgstr ""
+msgstr "অনুবাদ_করতে_সহায়তা_করুন"
 
 #. TRANSLATORS: A label for a button to execute the selected application.
 #: src/gs-details-page.ui:244
 msgid "_Open"
-msgstr ""
+msgstr "_খুলুন"
 
 #: src/gs-details-page.ui:257 plugins/packagekit/gs-packagekit-task.c:160
 msgid "_Update"
@@ -3597,13 +3598,15 @@ msgstr "শুধুমাত্র যে সকল সফটওয়্যার
 
 #: src/gs-details-page.ui:708
 msgid "No Metadata"
-msgstr ""
+msgstr "কোনো মেটাডেটা নেই"
 
 #: src/gs-details-page.ui:717
 msgid ""
 "This software doesn’t provide any links to a website, code repository or "
 "issue tracker."
 msgstr ""
+"এই সফ্টওয়্যারটি কোনও ওয়েবসাইট, কোড সংগ্রহস্থল বা ইস্যু ট্র্যাকারের কোনও "
+"লিঙ্ক সরবরাহ করে না।"
 
 #: src/gs-details-page.ui:745
 msgid "Project _Website"
@@ -3611,19 +3614,19 @@ msgstr "প্রকল্পের ওয়েবসাইট"
 
 #: src/gs-details-page.ui:762
 msgid "_Donate"
-msgstr ""
+msgstr "_অনুদান"
 
 #: src/gs-details-page.ui:779
 msgid "Contribute _Translations"
-msgstr ""
+msgstr "অনুবাদে_অবদান_রাখুন"
 
 #: src/gs-details-page.ui:796
 msgid "_Report an Issue"
-msgstr ""
+msgstr "_কোনো সমস্যা অভিযোগ জানান"
 
 #: src/gs-details-page.ui:813
 msgid "_Help"
-msgstr ""
+msgstr "_সাহায্য"
 
 #. Translators: Button opening a dialog where the users can write and publish their opinions about the apps.
 #: src/gs-details-page.ui:908
@@ -3638,7 +3641,7 @@ msgstr "সকল রিভিউ"
 #. TRANSLATORS: status text when downloading
 #: lib/gs-external-appstream-utils.c:216
 msgid "Downloading extra metadata files…"
-msgstr ""
+msgstr "অতিরিক্ত মেটাডেটা ফাইল ডাউনলোড করা হচ্ছে…"
 
 #. TRANSLATORS: separator for a list of items
 #: src/gs-extras-page.c:142
@@ -3856,11 +3859,11 @@ msgstr "কোডেকস পাতা"
 
 #: src/gs-featured-carousel.ui:43
 msgid "Previous"
-msgstr ""
+msgstr "পূর্ববর্তী"
 
 #: src/gs-featured-carousel.ui:66
 msgid "Next"
-msgstr ""
+msgstr "পরবর্তী"
 
 #: src/gs-featured-carousel.ui:83
 msgid "Featured Apps List"
@@ -3869,135 +3872,136 @@ msgstr "পরিবেশিত এ্যাপ তালিকা"
 #: src/gs-hardware-support-context-dialog.c:577
 #: src/gs-hardware-support-context-dialog.c:586
 msgid "Desktop Support"
-msgstr ""
+msgstr "ডেস্কটপ সমর্থন"
 
 #: src/gs-hardware-support-context-dialog.c:578
 #: src/gs-hardware-support-context-dialog.c:587
 msgid "Supports being used on a large screen"
-msgstr ""
+msgstr "এটি একটি বড় স্ক্রিনে ব্যবহৃত হওয়া সমর্থন করে"
 
 #: src/gs-hardware-support-context-dialog.c:580
 msgid "Desktop Support Unknown"
-msgstr ""
+msgstr "ডেস্কটপ সমর্থন অজানা"
 
 #: src/gs-hardware-support-context-dialog.c:581
 msgid "Not enough information to know if large screens are supported"
-msgstr ""
+msgstr "বড় স্ক্রিনগুলি সমর্থিত কিনা তা জানার জন্য পর্যাপ্ত তথ্য নেই"
 
 #: src/gs-hardware-support-context-dialog.c:584
 msgid "Requires a large screen"
-msgstr ""
+msgstr "একটি বড় স্ক্রিন আবশ্যক"
 
 #: src/gs-hardware-support-context-dialog.c:589
 msgid "Desktop Not Supported"
-msgstr ""
+msgstr "ডেস্কটপ সমর্থিত নয়"
 
 #: src/gs-hardware-support-context-dialog.c:590
 msgid "Cannot be used on a large screen"
-msgstr ""
+msgstr "এটি বড় স্ক্রিনে ব্যবহার করা যাবে না"
 
 #: src/gs-hardware-support-context-dialog.c:597
 #: src/gs-hardware-support-context-dialog.c:606
 msgid "Mobile Support"
-msgstr ""
+msgstr "মোবাইল সমর্থক"
 
 #: src/gs-hardware-support-context-dialog.c:598
 #: src/gs-hardware-support-context-dialog.c:607
 msgid "Supports being used on a small screen"
-msgstr ""
+msgstr "একটি ছোট স্ক্রিনে ব্যবহৃত হওয়া সমর্থন করে"
 
 #: src/gs-hardware-support-context-dialog.c:600
 msgid "Mobile Support Unknown"
-msgstr ""
+msgstr "মোবাইল সমর্থন অজানা"
 
 #: src/gs-hardware-support-context-dialog.c:601
 msgid "Not enough information to know if small screens are supported"
-msgstr ""
+msgstr "ছোট স্ক্রিনগুলি সমর্থিত কিনা তা জানার জন্য পর্যাপ্ত তথ্য নেই"
 
 #: src/gs-hardware-support-context-dialog.c:604
 msgid "Requires a small screen"
-msgstr ""
+msgstr "একটি ছোট স্ক্রিন প্রয়োজন"
 
 #: src/gs-hardware-support-context-dialog.c:609
 msgid "Mobile Not Supported"
-msgstr ""
+msgstr "মোবাইল সমর্থিত নয়"
 
 #: src/gs-hardware-support-context-dialog.c:610
 msgid "Cannot be used on a small screen"
-msgstr ""
+msgstr "এটি ছোট স্ক্রিনে ব্যবহার করা যাবে না"
 
 #: src/gs-hardware-support-context-dialog.c:633
 #: src/gs-hardware-support-context-dialog.c:642
 msgid "Keyboard Support"
-msgstr ""
+msgstr "কীবোর্ড সমর্থন"
 
 #: src/gs-hardware-support-context-dialog.c:636
 msgid "Keyboard Support Unknown"
-msgstr ""
+msgstr "কীবোর্ড সমর্থন অজানা"
 
 #: src/gs-hardware-support-context-dialog.c:637
 msgid "Not enough information to know if keyboards are supported"
-msgstr ""
+msgstr "কীবোর্ড সমর্থিত কিনা তা জানার জন্য পর্যাপ্ত তথ্য নেই"
 
 #: src/gs-hardware-support-context-dialog.c:639
 msgid "Keyboard Required"
-msgstr ""
+msgstr "কীবোর্ড আবশ্যক"
 
 #: src/gs-hardware-support-context-dialog.c:643
 msgid "Supports keyboards"
-msgstr ""
+msgstr "কীবোর্ড সমর্থন করে"
 
 #: src/gs-hardware-support-context-dialog.c:645
 msgid "Keyboard Not Supported"
-msgstr ""
+msgstr "কীবোর্ড সমর্থিত নয়"
 
 #: src/gs-hardware-support-context-dialog.c:646
 msgid "Cannot be used with a keyboard"
-msgstr ""
+msgstr "কীবোর্ড দিয়ে ব্যবহার করা যাবে না"
 
 #: src/gs-hardware-support-context-dialog.c:653
 #: src/gs-hardware-support-context-dialog.c:662
 msgid "Mouse Support"
-msgstr ""
+msgstr "মাউস সমর্থন"
 
 #: src/gs-hardware-support-context-dialog.c:654
 #: src/gs-hardware-support-context-dialog.c:660
 msgid "Requires a mouse or pointing device"
-msgstr ""
+msgstr "একটি মাউস বা পয়েন্টিং ডিভাইস প্রয়োজন"
 
 #: src/gs-hardware-support-context-dialog.c:656
 msgid "Mouse Support Unknown"
-msgstr ""
+msgstr "মাউস সমর্থন অজানা"
 
 #: src/gs-hardware-support-context-dialog.c:657
 msgid ""
 "Not enough information to know if mice or pointing devices are supported"
 msgstr ""
+"মাউস বা কোনো পয়েন্টিং ডিভাইস সমর্থিত কিনা তা জানার জন্য যথেষ্ট তথ্য নেই"
 
 #: src/gs-hardware-support-context-dialog.c:659
 msgid "Mouse Required"
-msgstr ""
+msgstr "মাউস আবশ্যক"
 
 #: src/gs-hardware-support-context-dialog.c:663
 msgid "Supports mice and pointing devices"
-msgstr ""
+msgstr "মাউস এবং পয়েন্টিং ডিভাইস সমর্থন করে"
 
 #: src/gs-hardware-support-context-dialog.c:665
 msgid "Mouse Not Supported"
-msgstr ""
+msgstr "মাউস সমর্থিত নয়"
 
 #: src/gs-hardware-support-context-dialog.c:666
 msgid "Cannot be used with a mouse or pointing device"
-msgstr ""
+msgstr "মাউস বা পয়েন্টিং ডিভাইস দিয়ে ব্যবহার করা যাবে না"
 
 #: src/gs-hardware-support-context-dialog.c:673
 #: src/gs-hardware-support-context-dialog.c:682
 msgid "Touchscreen Support"
-msgstr ""
+msgstr "টাচস্ক্রিন সমর্থন"
 
 #: src/gs-hardware-support-context-dialog.c:676
 msgid "Touchscreen Support Unknown"
-msgstr ""
+msgstr "টাচস্ক্রিন সমর্থন অজানা"
 
 #: src/gs-hardware-support-context-dialog.c:677
 msgid "Not enough information to know if touchscreens are supported"
@@ -4005,49 +4009,49 @@ msgstr ""
 
 #: src/gs-hardware-support-context-dialog.c:679
 msgid "Touchscreen Required"
-msgstr ""
+msgstr "টাচস্ক্রিন আবশ্যক"
 
 #: src/gs-hardware-support-context-dialog.c:683
 msgid "Supports touchscreens"
-msgstr ""
+msgstr "টাচস্ক্রিন সমর্থন করে"
 
 #: src/gs-hardware-support-context-dialog.c:685
 msgid "Touchscreen Not Supported"
-msgstr ""
+msgstr "টাচস্ক্রিন সমর্থিত নয়"
 
 #: src/gs-hardware-support-context-dialog.c:686
 msgid "Cannot be used with a touchscreen"
-msgstr ""
+msgstr "টাচস্ক্রিন দিয়ে ব্যবহার করা যাবে না"
 
 #: src/gs-hardware-support-context-dialog.c:699
 msgid "Gamepad Required"
-msgstr ""
+msgstr "Gamepad আবশ্যক"
 
 #: src/gs-hardware-support-context-dialog.c:700
 msgid "Requires a gamepad"
-msgstr ""
+msgstr "একটি গেমপ্যাড প্রয়োজন"
 
 #: src/gs-hardware-support-context-dialog.c:702
 msgid "Gamepad Support"
-msgstr ""
+msgstr "গেমপ্যাড সমর্থন"
 
 #: src/gs-hardware-support-context-dialog.c:703
 msgid "Supports gamepads"
-msgstr ""
+msgstr "গেমপ্যাড সমর্থন করে"
 
 #. Translators: It’s unknown whether this app is supported on
 #. * the current hardware. The placeholder is the app name.
 #: src/gs-hardware-support-context-dialog.c:712
 #, c-format
 msgid "%s probably works on this device"
-msgstr ""
+msgstr "%s সম্ভবত এই ডিভাইসে কাজ করে"
 
 #. Translators: The app will work on the current hardware.
 #. * The placeholder is the app name.
 #: src/gs-hardware-support-context-dialog.c:719
 #, c-format
 msgid "%s works on this device"
-msgstr ""
+msgstr "%s এটি এই ডিভাইসে কাজ করে"
 
 #. Translators: The app may not work fully on the current hardware.
 #. * The placeholder is the app name.
@@ -4061,12 +4065,12 @@ msgstr ""
 #: src/gs-hardware-support-context-dialog.c:733
 #, c-format
 msgid "%s will not work on this device"
-msgstr ""
+msgstr "%s এই ডিভাইসে কাজ করবে না"
 
 #. Translators: This is the title of the dialog which contains information about the hardware support/requirements of an app
 #: src/gs-hardware-support-context-dialog.ui:5
 msgid "Hardware Support"
-msgstr ""
+msgstr "হার্ডওয়্যার সমর্থন"
 
 #. Translators: This is in the context of a list of apps which are installed on the system.
 #. Translators: A label for a button to show only software which is already installed.
@@ -4081,7 +4085,7 @@ msgstr "সংস্থাপিত পাতা"
 
 #: src/gs-installed-page.ui:55
 msgid "In Progress"
-msgstr ""
+msgstr "চলমান"
 
 #. origin_ui on a remote is the repo dialogue section name,
 #. * not the remote title
@@ -4099,11 +4103,11 @@ msgstr "সিস্টেম এ্যাপ্লিকেশন"
 
 #: src/gs-license-tile.c:96
 msgid "Community Built"
-msgstr ""
+msgstr "কমিউনিটি কর্তৃক তৈরি"
 
 #: src/gs-license-tile.c:107 src/gs-license-tile.ui:98
 msgid "_Get Involved"
-msgstr ""
+msgstr "_সম্পৃক্ত হোন"
 
 #. Translators: The first placeholder here is a link to information about the license, and the second placeholder here is the name of a software license.
 #: src/gs-license-tile.c:114
@@ -4157,7 +4161,7 @@ msgstr "শুরু হচ্ছে…"
 
 #: src/gs-metered-data-dialog.ui:5 src/gs-shell.ui:256
 msgid "Automatic Updates Paused"
-msgstr ""
+msgstr "স্বয়ংক্রিয় আপডেট থামানো হয়েছে"
 
 #: src/gs-metered-data-dialog.ui:9
 msgid ""
@@ -4191,24 +4195,24 @@ msgstr "অজানা উৎস"
 #. Translators: It's like a beta version of the software, a test version
 #: src/gs-origin-popover-row.ui:108
 msgid "Beta"
-msgstr ""
+msgstr "বিটা"
 
 #. Translators: It's an origin scope, 'User' or 'System' installation
 #: src/gs-origin-popover-row.ui:138
 msgid "User"
-msgstr ""
+msgstr "ব্যবহারকারী"
 
 #. TRANSLATORS: This is the header for package additions during
 #. * a system update
 #: src/gs-os-update-page.c:250
 msgid "Additions"
-msgstr ""
+msgstr "সংযোজন"
 
 #. TRANSLATORS: This is the header for package removals during
 #. * a system update
 #: src/gs-os-update-page.c:254
 msgid "Removals"
-msgstr ""
+msgstr "অপসারণ"
 
 #. TRANSLATORS: This is the header for package updates during
 #. * a system update
@@ -4221,14 +4225,14 @@ msgstr "_আপডেটসমূহ"
 #. * a system update
 #: src/gs-os-update-page.c:262
 msgid "Downgrades"
-msgstr ""
+msgstr "ডাউনগ্রেড"
 
 #. Translators: This is a clickable link on the third party repositories info bar. It's
 #. part of a constructed sentence: "Provides access to additional software from [selected external sources].
 #. Some proprietary software is included."
 #: src/gs-overview-page.c:876
 msgid "selected external sources"
-msgstr ""
+msgstr "নির্বাচিত বহিরাগত উৎস"
 
 #. Translators: This is the third party repositories info bar. The %s is replaced with "selected external sources" link.
 #: src/gs-overview-page.c:878
@@ -4250,7 +4254,7 @@ msgstr "সক্রিয় করুন"
 #. Translators: A label for a button to show all available software.
 #: src/gs-overview-page.c:946 src/gs-shell.ui:294
 msgid "Explore"
-msgstr ""
+msgstr "ঘুরে দেখুন"
 
 #: src/gs-overview-page.ui:7
 msgid "Overview page"
@@ -4276,7 +4280,7 @@ msgstr "অজানা"
 
 #: src/gs-page.c:274
 msgid "User declined installation"
-msgstr ""
+msgstr "ব্যবহারকারী ইনস্টলেশন প্রত্যাখ্যান করেছে"
 
 #. TRANSLATORS: this is a prompt message, and
 #. * '%s' is an application summary, e.g. 'GNOME Clocks'
@@ -4319,7 +4323,7 @@ msgstr ""
 
 #: src/gs-prefs-dialog.ui:5
 msgid "Update Preferences"
-msgstr ""
+msgstr "পছন্দগুলি আপডেট করুন"
 
 #: src/gs-prefs-dialog.ui:16
 msgid ""
@@ -4329,7 +4333,7 @@ msgstr ""
 
 #: src/gs-prefs-dialog.ui:19
 msgid "Automatic Updates"
-msgstr ""
+msgstr "স্বয়ংক্রিয় আপডেট"
 
 #: src/gs-prefs-dialog.ui:20
 msgid ""
@@ -4338,7 +4342,7 @@ msgstr ""
 
 #: src/gs-prefs-dialog.ui:32
 msgid "Automatic Update Notifications"
-msgstr ""
+msgstr "স্বয়ংক্রিয় আপডেট বিজ্ঞপ্তি"
 
 #: src/gs-prefs-dialog.ui:33
 msgid "Show notifications when updates have been automatically installed."
@@ -4372,16 +4376,16 @@ msgstr ""
 
 #: src/gs-repos-dialog.c:248
 msgid "Disable Repository?"
-msgstr ""
+msgstr "সংগ্রহস্থল নিষ্ক্রিয় করবেন?"
 
 #: src/gs-repos-dialog.c:248
 msgid "Remove Repository?"
-msgstr ""
+msgstr "সংগ্রহস্থল অপসারণ করবেন?"
 
 #. TRANSLATORS: this is button text to disable a repo
 #: src/gs-repos-dialog.c:254
 msgid "_Disable"
-msgstr ""
+msgstr "_ নিষ্ক্রিয়_করুন"
 
 #. TRANSLATORS: this is button text to remove a repo
 #: src/gs-repos-dialog.c:257
@@ -4390,7 +4394,7 @@ msgstr "_অপসারণ"
 
 #: src/gs-repos-dialog.c:508
 msgid "Enable New Repositories"
-msgstr ""
+msgstr "নতুন সংগ্রহস্থল সক্রিয় করুন"
 
 #: src/gs-repos-dialog.c:509
 msgid "Turn on new repositories when they are added."
@@ -4412,7 +4416,7 @@ msgstr ""
 
 #: src/gs-repos-dialog.c:528
 msgid "Fedora Third Party Repositories"
-msgstr ""
+msgstr "ফেডোরা তৃতীয় পক্ষের সংগ্রহস্থল"
 
 #. TRANSLATORS: this is the fallback text we use if we can't
 #. figure out the name of the operating system
@@ -4434,7 +4438,7 @@ msgstr "সফটওয়্যার উৎস"
 
 #: src/gs-repos-dialog.ui:53
 msgid "No Repositories"
-msgstr ""
+msgstr "কোনো সংগ্রহস্থল নেই"
 
 #. TRANSLATORS: This string is used to construct the 'X applications
 #. installed' sentence, describing a software repository.
@@ -4488,10 +4492,10 @@ msgstr[1] "%s এবং %s গুলি সংস্থাপিত"
 #. Translators: The first '%s' is replaced with a text like '10 applications installed',
 #. the second '%s' is replaced with installation kind, like in case of Flatpak 'User Installation'.
 #: src/gs-repo-row.c:243
-#, c-format
+#, c-format, fuzzy
 msgctxt "repo-row"
 msgid "%s • %s"
-msgstr ""
+msgstr "%s • %s"
 
 #. TRANSLATORS: lighthearted star rating description;
 #. *		A really bad application
@@ -4503,13 +4507,13 @@ msgstr "ঘৃণা করছি"
 #. *		Not a great application
 #: src/gs-review-dialog.c:82
 msgid "Don’t like it"
-msgstr ""
+msgstr "পছন্দ হলো না"
 
 #. TRANSLATORS: lighthearted star rating description;
 #. *		A fairly-good application
 #: src/gs-review-dialog.c:86
 msgid "It’s OK"
-msgstr ""
+msgstr "ঠিক আছে"
 
 #. TRANSLATORS: lighthearted star rating description;
 #. *		A good application
@@ -4601,12 +4605,12 @@ msgstr ""
 #, c-format
 msgid "%u review total"
 msgid_plural "%u reviews total"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u পর্যালোচনার ফলাফল"
+msgstr[1] "%u পর্যালোচনাগুলির ফলাফল"
 
 #: src/gs-review-histogram.ui:93
 msgid "out of 5 stars"
-msgstr ""
+msgstr "5 তারার মধ্যে"
 
 #. TRANSLATORS: this is when a user doesn't specify a name
 #: src/gs-review-row.c:56
@@ -4682,11 +4686,11 @@ msgstr ""
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:160
 msgid "No Permissions"
-msgstr ""
+msgstr "কোনও অনুমতি লাগবেনা"
 
 #: src/gs-safety-context-dialog.c:161
 msgid "App is fully sandboxed"
-msgstr ""
+msgstr "অ্যাপটি সম্পূর্ণরূপে স্যান্ডবক্সর রয়েছে"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:172
@@ -4695,7 +4699,7 @@ msgstr "নেটওয়ার্ক অ্যাক্সেস"
 
 #: src/gs-safety-context-dialog.c:173
 msgid "Can access the internet"
-msgstr ""
+msgstr "ইন্টারনেট অ্যাক্সেস করতে পারে"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:176
@@ -4704,30 +4708,30 @@ msgstr "নেটওয়ার্ক অ্যাক্সেস নেই"
 
 #: src/gs-safety-context-dialog.c:177
 msgid "Cannot access the internet"
-msgstr ""
+msgstr "ইন্টারনেট অ্যাক্সেস করতে পারে না"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:183
 msgid "Uses System Services"
-msgstr ""
+msgstr "সিস্টেম পরিষেবা ব্যবহার করে"
 
 #: src/gs-safety-context-dialog.c:184
 msgid "Can request data from system services"
-msgstr ""
+msgstr "সিস্টেম পরিষেবাগুলি থেকে তথ্য চাইতে পারে"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:191
 msgid "Uses Session Services"
-msgstr ""
+msgstr "সেশন পরিষেবা ব্যবহার করে"
 
 #: src/gs-safety-context-dialog.c:192
 msgid "Can request data from session services"
-msgstr ""
+msgstr "সেশন পরিষেবাগুলি থেকে তথ্য চাইতে পারে"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:199
 msgid "Device Access"
-msgstr ""
+msgstr "ডিভাইস অ্যাক্সেস"
 
 #: src/gs-safety-context-dialog.c:200
 msgid "Can access devices such as webcams or gaming controllers"
@@ -4736,7 +4740,7 @@ msgstr ""
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:203
 msgid "No Device Access"
-msgstr ""
+msgstr "কোনও ডিভাইস অ্যাক্সেস নেই"
 
 #: src/gs-safety-context-dialog.c:204
 msgid "Cannot access devices such as webcams or gaming controllers"
@@ -4745,12 +4749,12 @@ msgstr ""
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:210
 msgid "Legacy Windowing System"
-msgstr ""
+msgstr "অনাধুনিক উইন্ডো সিস্টেম"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:218
 msgid "Arbitrary Permissions"
-msgstr ""
+msgstr "নির্বিচারে অনুমতি"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:226
@@ -4760,7 +4764,7 @@ msgstr "ব্যবহারকারী সেটিংস"
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:238
 msgid "Full File System Read/Write Access"
-msgstr ""
+msgstr "সম্পূর্ণ ফাইল সিস্টেম রিড/রাইট অ্যাক্সেস"
 
 #: src/gs-safety-context-dialog.c:239
 msgid "Can read and write all data on the file system"
@@ -4769,7 +4773,7 @@ msgstr ""
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:247
 msgid "Home Folder Read/Write Access"
-msgstr ""
+msgstr "হোম ফোল্ডার রিড/রাইট অ্যাক্সেস"
 
 #: src/gs-safety-context-dialog.c:248
 msgid "Can read and write all data in your home directory"
@@ -4778,7 +4782,7 @@ msgstr ""
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:256
 msgid "Full File System Read Access"
-msgstr ""
+msgstr "সম্পূর্ণ ফাইল সিস্টেম রিড অ্যাক্সেস"
 
 #: src/gs-safety-context-dialog.c:257
 msgid "Can read all data on the file system"
@@ -4787,7 +4791,7 @@ msgstr ""
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:266
 msgid "Home Folder Read Access"
-msgstr ""
+msgstr "হোম ফোল্ডার রিড অ্যাক্সেস"
 
 #: src/gs-safety-context-dialog.c:267
 msgid "Can read all data in your home directory"
@@ -4796,7 +4800,7 @@ msgstr ""
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:276
 msgid "Download Folder Read/Write Access"
-msgstr ""
+msgstr "ডাউনলোড ফোল্ডার রিড/রাইট অ্যাক্সেস"
 
 #: src/gs-safety-context-dialog.c:277
 msgid "Can read and write all data in your downloads directory"
@@ -4805,7 +4809,7 @@ msgstr ""
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:288
 msgid "Download Folder Read Access"
-msgstr ""
+msgstr "ডাউনলোড ফোল্ডার রিড অ্যাক্সেস"
 
 #: src/gs-safety-context-dialog.c:289
 msgid "Can read all data in your downloads directory"
@@ -4817,16 +4821,16 @@ msgstr ""
 
 #: src/gs-safety-context-dialog.c:310
 msgid "Can read all data in the directory"
-msgstr ""
+msgstr "ডিরেক্টরির সমস্ত ডেটা পড়তে পারে"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:326
 msgid "No File System Access"
-msgstr ""
+msgstr "কোনও ফাইল সিস্টেম অ্যাক্সেস নেই"
 
 #: src/gs-safety-context-dialog.c:327
 msgid "Cannot access the file system at all"
-msgstr ""
+msgstr "কোনোভাবেই ফাইল সিস্টেম অ্যাক্সেস করতে পারবে না"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:341
@@ -4842,7 +4846,7 @@ msgstr ""
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:345
 msgid "Auditable Code"
-msgstr ""
+msgstr "নিরীক্ষণযোগ্য কোড"
 
 #: src/gs-safety-context-dialog.c:346
 msgid ""
@@ -4854,7 +4858,7 @@ msgstr ""
 #. * It’s used in a context tile, so should be short.
 #: src/gs-safety-context-dialog.c:354
 msgid "App developer is verified"
-msgstr ""
+msgstr "অ্যাপ ডেভেলপার যাচাইকৃত"
 
 #: src/gs-safety-context-dialog.c:355
 msgid "The developer of this app has been verified to be who they say they are"
@@ -4864,7 +4868,7 @@ msgstr ""
 #. * It’s used in a context tile, so should be short.
 #: src/gs-safety-context-dialog.c:366
 msgid "Insecure Dependencies"
-msgstr ""
+msgstr "অনিরাপদ নির্ভরতা"
 
 #: src/gs-safety-context-dialog.c:367
 msgid ""
@@ -4895,7 +4899,7 @@ msgstr "%s টি অনিরাপদ"
 #. Translators: This is the title of the dialog which contains information about the permissions of an app
 #: src/gs-safety-context-dialog.ui:5
 msgid "Safety"
-msgstr ""
+msgstr "নিরাপত্তা"
 
 #: src/gs-safety-context-dialog.ui:101
 msgid "License"
@@ -4908,11 +4912,11 @@ msgstr "উৎস"
 
 #: src/gs-safety-context-dialog.ui:181
 msgid "SDK"
-msgstr ""
+msgstr "SDK"
 
 #: src/gs-safety-context-dialog.ui:205
 msgid "Outdated SDK version"
-msgstr ""
+msgstr "মেয়াদোত্তীর্ণ SDK সংস্করণ"
 
 #. Translators: This is the accessible description for a button to go to the previous screenshot in the screenshot carousel.
 #: src/gs-screenshot-carousel.ui:46
@@ -4973,8 +4977,8 @@ msgstr "স্ক্রিনশট"
 #, c-format
 msgid "%u more match"
 msgid_plural "%u more matches"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "আরও %u টি মিল"
+msgstr[1] "আরও %u টি মিল"
 
 #: src/gs-search-page.ui:6
 msgid "Search page"
@@ -5000,33 +5004,33 @@ msgstr "কোন এ্যাপ্লিকেশন পাওয়া যায়
 #: src/gs-shell.c:1223
 #, c-format
 msgid "“%s”"
-msgstr ""
+msgstr "“%s”"
 
 #. Translators: The '%s' is replaced with an error message, which had been shortened.
 #. The dots at the end are there to highlight that to the user.
 #: src/gs-shell.c:1240
 #, c-format
 msgid "%s…"
-msgstr ""
+msgstr "%s…"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the source (e.g. "alt.fedoraproject.org")
 #: src/gs-shell.c:1275
 #, c-format
 msgid "Unable to download firmware updates from %s"
-msgstr ""
+msgstr "%s থেকে ফার্মওয়্যার আপডেটগুলি ডাউনলোড করা যায়নি"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the source (e.g. "alt.fedoraproject.org")
 #: src/gs-shell.c:1281
 #, c-format
 msgid "Unable to download updates from %s"
-msgstr ""
+msgstr "%s থেকে আপডেটগুলি ডাউনলোড করা যায়নি"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1288 src/gs-shell.c:1328
 msgid "Unable to download updates"
-msgstr ""
+msgstr "আপডেটগুলি ডাউনলোড করা যায়নি"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1293
@@ -5049,12 +5053,12 @@ msgstr ""
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1312
 msgid "Unable to download updates: authentication was required"
-msgstr ""
+msgstr "আপডেটগুলি ডাউনলোড করা সম্ভব হয়নি: প্রমাণীকরণ প্রয়োজন"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1316
 msgid "Unable to download updates: authentication was invalid"
-msgstr ""
+msgstr "আপডেটগুলি ডাউনলোড করা সম্ভব হয়নি: প্রমাণীকরণ অগ্রহণযোগ্য"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1320
@@ -5065,7 +5069,7 @@ msgstr ""
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1331
 msgid "Unable to get list of updates"
-msgstr ""
+msgstr "আপডেটের তালিকা পাওয়া সম্ভব হয়নি"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the first %s is the application name (e.g. "GIMP") and
@@ -5080,7 +5084,7 @@ msgstr ""
 #: src/gs-shell.c:1379
 #, c-format
 msgid "Unable to install %s as download failed"
-msgstr ""
+msgstr "ডাউনলোড ব্যর্থ হওয়ায় %s ইনস্টল করা সম্ভব হয়নি"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the first %s is the application name (e.g. "GIMP")
@@ -5096,7 +5100,7 @@ msgstr ""
 #: src/gs-shell.c:1397
 #, c-format
 msgid "Unable to install %s as not supported"
-msgstr ""
+msgstr "সমর্থিত নয় বলে %s ইনস্টল করা যায়নি"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1403
@@ -5119,14 +5123,14 @@ msgstr ""
 #: src/gs-shell.c:1418
 #, c-format
 msgid "Unable to install %s: authentication was required"
-msgstr ""
+msgstr "%s ইনস্টল করা যায়নি: প্রমাণীকরণ প্রয়োজন ছিল"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
 #: src/gs-shell.c:1424
 #, c-format
 msgid "Unable to install %s: authentication was invalid"
-msgstr ""
+msgstr "%s ইনস্টল করা যায়নি: প্রমাণীকরণ অগ্রহণযোগ্য ছিল"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
@@ -5154,7 +5158,7 @@ msgstr ""
 #: src/gs-shell.c:1452
 #, c-format
 msgid "Unable to install %s"
-msgstr ""
+msgstr "%s ইন্সটল করা যায়নি"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the first %s is the app name (e.g. "GIMP") and
@@ -5170,7 +5174,7 @@ msgstr ""
 #: src/gs-shell.c:1504
 #, c-format
 msgid "Unable to update %s as download failed"
-msgstr ""
+msgstr "ডাউনলোড ব্যর্থ হওয়ায় %s আপডেট করা যায়নি"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the origin, e.g. "Fedora" or
@@ -5184,7 +5188,7 @@ msgstr ""
 #: src/gs-shell.c:1515
 #, c-format
 msgid "Unable to install updates as download failed"
-msgstr ""
+msgstr "ডাউনলোড ব্যর্থ হওয়ায় আপডেটগুলি ইনস্টল করা যায়নি"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1520
@@ -5277,7 +5281,7 @@ msgstr ""
 #: src/gs-shell.c:1615
 #, c-format
 msgid "Unable to update %s"
-msgstr ""
+msgstr "%s টি আপডেট করা যায়নি"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1618
@@ -5355,7 +5359,7 @@ msgstr ""
 #: src/gs-shell.c:1721
 #, c-format
 msgid "Unable to upgrade to %s"
-msgstr ""
+msgstr "%s এ আপগ্রেড করা যায়নি"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
@@ -5397,7 +5401,7 @@ msgstr ""
 #: src/gs-shell.c:1792
 #, c-format
 msgid "Unable to remove %s"
-msgstr ""
+msgstr "%s টি অপসারণ করা যায়নি"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the first %s is the application name (e.g. "GIMP")
@@ -5418,27 +5422,27 @@ msgstr ""
 #: src/gs-shell.c:1850 src/gs-shell.c:1898 src/gs-shell.c:1936
 #: src/gs-shell.c:1989
 msgid "Sorry, something went wrong"
-msgstr ""
+msgstr "দুঃখিত, কিছু একটা ভুল হয়েছে"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1881
 msgid "Failed to install file: not supported"
-msgstr ""
+msgstr "ফাইল ইনস্টল করতে ব্যর্থ হয়েছে: সমর্থিত নয়"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1884
 msgid "Failed to install file: authentication failed"
-msgstr ""
+msgstr "ফাইল ইনস্টল করতে ব্যর্থ হয়েছে: প্রমাণীকরণ ব্যর্থ হয়েছে"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1919
 msgid "Failed to install: not supported"
-msgstr ""
+msgstr "ইনস্টল করতে ব্যর্থ হয়েছে: সমর্থিত নয়"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1922
 msgid "Failed to install: authentication failed"
-msgstr ""
+msgstr "ইনস্টল করতে ব্যর্থ হয়েছে: প্রমাণীকরণ ব্যর্থ হয়েছে"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * the %s is the origin, e.g. "Fedora" or
@@ -5446,7 +5450,7 @@ msgstr ""
 #: src/gs-shell.c:1963
 #, c-format
 msgid "Unable to contact %s"
-msgstr ""
+msgstr "%s-এর সাথে যোগাযোগ করা যায়নি"
 
 #. TRANSLATORS: failure text for the in-app notification, where the 'Software' means this application, aka 'GNOME Software'.
 #: src/gs-shell.c:1973
@@ -5456,7 +5460,7 @@ msgstr ""
 #. TRANSLATORS: need to be connected to the AC power
 #: src/gs-shell.c:1977
 msgid "AC power is required"
-msgstr ""
+msgstr "এসি পাওয়ার প্রয়োজন"
 
 #. TRANSLATORS: not enough juice to do this safely
 #: src/gs-shell.c:1980
@@ -5469,12 +5473,12 @@ msgstr "_সফটওয়্যার উৎস"
 
 #: src/gs-shell.ui:12
 msgid "_Update Preferences"
-msgstr ""
+msgstr "_পছন্দগুলি আপডেট করুন"
 
 #. button in the info bar
 #: src/gs-shell.ui:98
 msgid "Examine Disk"
-msgstr ""
+msgstr "ডিস্ক পরীক্ষা করুন"
 
 #. button in the info bar
 #. TRANSLATORS: this is a link to the
@@ -5486,20 +5490,20 @@ msgstr "নেটওয়ার্ক সেটিংস"
 #. button in the info bar
 #: src/gs-shell.ui:118
 msgid "Restart Now"
-msgstr ""
+msgstr "এখনই রিস্টার্ট করুন"
 
 #. button in the info bar
 #: src/gs-shell.ui:128
 msgid "More Information"
-msgstr ""
+msgstr "আরো তথ্য"
 
 #: src/gs-shell.ui:189
 msgid "Search"
-msgstr ""
+msgstr "অনুসন্ধান করুন"
 
 #: src/gs-shell.ui:204
 msgid "Primary Menu"
-msgstr ""
+msgstr "প্রধান মেনু"
 
 #: src/gs-shell.ui:274
 msgid "Find Out _More"
@@ -5517,7 +5521,7 @@ msgstr "_আপডেটসমূহ"
 #. * possible.
 #: src/gs-storage-context-dialog.c:95
 msgid "None"
-msgstr ""
+msgstr "কিছুইনা"
 
 #: src/gs-storage-context-dialog.c:139
 msgid "Application Data"
@@ -5529,7 +5533,7 @@ msgstr ""
 
 #: src/gs-storage-context-dialog.c:145
 msgid "User Data"
-msgstr ""
+msgstr "ব্যবহারকারীর তথ্য"
 
 #: src/gs-storage-context-dialog.c:146
 msgid "Data created by you in the application"
@@ -5537,11 +5541,11 @@ msgstr ""
 
 #: src/gs-storage-context-dialog.c:153
 msgid "Cache Data"
-msgstr ""
+msgstr "ক্যাশ ডেটা"
 
 #: src/gs-storage-context-dialog.c:154
 msgid "Temporary cached data"
-msgstr ""
+msgstr "অস্থায়ী ক্যাশ ডেটা"
 
 #: src/gs-storage-context-dialog.c:172
 msgid "The application itself"
@@ -5549,7 +5553,7 @@ msgstr "অ্যাপ্লিকেশনটি স্বয়ং"
 
 #: src/gs-storage-context-dialog.c:177
 msgid "Required Dependencies"
-msgstr ""
+msgstr "প্রয়োজনীয় নির্ভরতা"
 
 #: src/gs-storage-context-dialog.c:178
 msgid "Shared system components required by this application"
@@ -5563,7 +5567,7 @@ msgstr "অজানা"
 #. Translators: This is the title of the dialog which contains information about the storage or download size needed for an app
 #: src/gs-storage-context-dialog.ui:5
 msgid "Storage"
-msgstr ""
+msgstr "স্টোরেজ"
 
 #. Translators: Please do not translate the markup or link href
 #: src/gs-storage-context-dialog.ui:69
@@ -5627,7 +5631,7 @@ msgstr "জরুরি সফ্টওয়্যার আপডেটগু�
 
 #: src/gs-update-monitor.c:225
 msgid "Important: critical software updates are waiting."
-msgstr ""
+msgstr "গুরুত্বপূর্ণ: জরুরি সফ্টওয়্যার আপডেট অপেক্ষা করছে।"
 
 #: src/gs-update-monitor.c:231
 msgid "Software Updates Ready to Install"
@@ -5643,7 +5647,7 @@ msgstr "সফ্টওয়্যার আপডেটগুলি ডাউ�
 
 #: src/gs-update-monitor.c:239
 msgid "Please download waiting software updates."
-msgstr ""
+msgstr "অনুগ্রহ করে অপেক্ষারত সফ্টওয়্যার আপডেটগুলি ডাউনলোড করুন।"
 
 #. TRANSLATORS: apps were auto-updated and restart is required
 #: src/gs-update-monitor.c:355
@@ -5665,7 +5669,7 @@ msgstr[1] "%u অ্যাপ্লিকেশনগুলি আপডেট �
 #: src/gs-update-monitor.c:372
 #, c-format
 msgid "%s has been updated."
-msgstr ""
+msgstr "%s আপডেট করা হয়েছে।"
 
 #. TRANSLATORS: the app needs restarting
 #: src/gs-update-monitor.c:375
@@ -5676,7 +5680,7 @@ msgstr "অনুগ্রহ করে অ্যাপ্লিকেশনট�
 #: src/gs-update-monitor.c:383
 #, c-format
 msgid "%s and %s have been updated."
-msgstr ""
+msgstr "%s এবং %s আপডেট করা হয়েছে।"
 
 #. TRANSLATORS: at least one application needs restarting
 #: src/gs-update-monitor.c:389 src/gs-update-monitor.c:408
@@ -5690,17 +5694,17 @@ msgstr[1] "%u অ্যাপ্লিকেশনগুলি কাজ কর�
 #: src/gs-update-monitor.c:401
 #, c-format
 msgid "Includes %s, %s and %s."
-msgstr ""
+msgstr "%s, %s এবং %s এর অন্তর্ভুক্ত।"
 
 #. TRANSLATORS: this is when the current operating system version goes end-of-life
 #: src/gs-update-monitor.c:671 src/gs-updates-page.ui:20
 msgid "Operating System Updates Unavailable"
-msgstr ""
+msgstr "অপারেটিং সিস্টেম আপডেট অনুপলব্ধ"
 
 #. TRANSLATORS: this is the message dialog for the distro EOL notice
 #: src/gs-update-monitor.c:673
 msgid "Upgrade to continue receiving security updates."
-msgstr ""
+msgstr "নিরাপত্তা আপডেটগুলি পাওয়া চালিয়ে যেতে আপগ্রেড করুন।"
 
 #. TRANSLATORS: this is a distro upgrade, the replacement would be the
 #. * distro name, e.g. 'Fedora'
@@ -5731,7 +5735,7 @@ msgstr "বিশদ প্রদর্শন করুন"
 #. TRANSLATORS: Notification title when we've done a distro upgrade
 #: src/gs-update-monitor.c:1162
 msgid "System Upgrade Complete"
-msgstr ""
+msgstr "সিস্টেম আপগ্রেড সম্পূর্ণ"
 
 #. TRANSLATORS: This is the notification body when we've done a
 #. * distro upgrade. First %s is the distro name and the 2nd %s
@@ -5828,7 +5832,7 @@ msgstr "শেষবার দেখা হয়েছে: %s"
 #: src/gs-updates-page.c:559
 #, c-format
 msgid "%s %s is no longer supported."
-msgstr ""
+msgstr "%s %s এখন আর সমর্থিত নয়।"
 
 #: src/gs-updates-page.c:563
 msgid "Your operating system is no longer supported."
@@ -5902,11 +5906,11 @@ msgstr "এতে কিছুটা সময় লাগতে পারে�
 #. TRANSLATORS: This means all software (plural) installed on this system is up to date.
 #: src/gs-updates-page.ui:203
 msgid "Up to Date"
-msgstr ""
+msgstr "আপ টু ডেট"
 
 #: src/gs-updates-page.ui:242
 msgid "Use Mobile Data?"
-msgstr ""
+msgstr "মোবাইল ডেটা ব্যবহার করবেন?"
 
 #: src/gs-updates-page.ui:243
 msgid ""
@@ -5922,7 +5926,7 @@ msgstr "_তবুও খোঁজ করুন"
 
 #: src/gs-updates-page.ui:262
 msgid "No Connection"
-msgstr ""
+msgstr "কোনও সংযোগ নেই"
 
 #: src/gs-updates-page.ui:263
 msgid "Go online to check for updates."
@@ -5934,7 +5938,7 @@ msgstr "_নেটওয়ার্ক সেটিংস"
 
 #: src/gs-updates-page.ui:295
 msgid "Error"
-msgstr ""
+msgstr "ত্রুটি"
 
 #: src/gs-updates-page.ui:296
 msgid "Updates are automatically managed."
@@ -5944,37 +5948,37 @@ msgstr "আপডেটসমূহ স্বয়ংক্রিয়ভাবে �
 #. * offline updates
 #: src/gs-updates-section.c:312
 msgid "Restart & Update"
-msgstr ""
+msgstr "রিস্টার্ট করুন এবং আপডেট করুন"
 
 #. TRANSLATORS: This is the button for upgrading all
 #. * online-updatable applications
 #: src/gs-updates-section.c:318
 msgid "Update All"
-msgstr ""
+msgstr "সব আপডেট করুন"
 
 #. TRANSLATORS: This is the header for system firmware that
 #. * requires a reboot to apply
 #: src/gs-updates-section.c:450
 msgid "Integrated Firmware"
-msgstr ""
+msgstr "ইন্টিগ্রেটেড ফার্মওয়্যার"
 
 #. TRANSLATORS: This is the header for offline OS and offline
 #. * app updates that require a reboot to apply
 #: src/gs-updates-section.c:455
 msgid "Requires Restart"
-msgstr ""
+msgstr "রিস্টার্ট প্রয়োজন"
 
 #. TRANSLATORS: This is the header for online runtime and
 #. * app updates, typically flatpaks or snaps
 #: src/gs-updates-section.c:460
 msgid "Application Updates"
-msgstr ""
+msgstr "অ্যাপ্লিকেশন আপডেট"
 
 #. TRANSLATORS: This is the header for device firmware that can
 #. * be installed online
 #: src/gs-updates-section.c:465
 msgid "Device Firmware"
-msgstr ""
+msgstr "ডিভাইস ফার্মওয়্যার"
 
 #: src/gs-updates-section.ui:33 src/gs-upgrade-banner.ui:72
 #: plugins/packagekit/gs-packagekit-task.c:155
@@ -5999,7 +6003,7 @@ msgstr "%s এখন উপলব্ধ"
 
 #: src/gs-upgrade-banner.c:143
 msgid "Learn about the new version"
-msgstr ""
+msgstr "নতুন সংস্করণ সম্পর্কে জানুন"
 
 #: src/gs-upgrade-banner.c:167
 msgid "Downloading…"
@@ -6008,16 +6012,16 @@ msgstr "ডাউনলোড করা হচ্ছে…"
 #. Translators: the first '%s' is replaced with the downloaded size, the second '%s'
 #. with the total download size, forming text like "135 MB of 2 GB downloaded"
 #: src/gs-upgrade-banner.c:185
-#, c-format
+#, c-format, fuzzy
 msgid "%s of %s downloaded"
-msgstr ""
+msgstr "%s ডাউনলোড হয়েছে %s থেকে"
 
 #. Translators: the '%u' is replaced with the actual percentage being already
 #. downloaded, forming text like "13% downloaded"
 #: src/gs-upgrade-banner.c:189
 #, c-format
 msgid "%u%% downloaded"
-msgstr ""
+msgstr "%u%% ডাউনলোড করা হয়েছে"
 
 #: src/gs-upgrade-banner.ui:42
 msgid "A major upgrade, with new features and added polish."
@@ -6060,7 +6064,7 @@ msgstr ""
 #. TRANSLATORS: status text when downloading
 #: plugins/core/gs-plugin-rewrite-resource.c:155
 msgid "Downloading featured images…"
-msgstr ""
+msgstr "নির্বাচিত চিত্রগুলি ডাউনলোড করা হচ্ছে…"
 
 #. Translators: The '%s' is replaced with the OS name, like "Endless OS"
 #: plugins/eos-updater/gs-plugin-eos-updater.c:637
@@ -6078,7 +6082,7 @@ msgstr "GNOME ওয়েব"
 
 #: plugins/epiphany/org.gnome.Software.Plugin.Epiphany.metainfo.xml.in:6
 msgid "Web Apps Support"
-msgstr ""
+msgstr "ওয়েব অ্যাপ্লিকেশন সমর্থন"
 
 #: plugins/epiphany/org.gnome.Software.Plugin.Epiphany.metainfo.xml.in:7
 msgid "Run popular web applications in a browser"
@@ -6087,7 +6091,7 @@ msgstr ""
 #. TRANSLATORS: status text when downloading
 #: plugins/fedora-pkgdb-collections/gs-plugin-fedora-pkgdb-collections.c:257
 msgid "Downloading upgrade information…"
-msgstr ""
+msgstr "আপগ্রেড তথ্য ডাউনলোড করা হচ্ছে…"
 
 #. TRANSLATORS: this is a title for Fedora distro upgrades
 #: plugins/fedora-pkgdb-collections/gs-plugin-fedora-pkgdb-collections.c:404
@@ -6099,7 +6103,7 @@ msgstr ""
 
 #: plugins/flatpak/org.gnome.Software.Plugin.Flatpak.metainfo.xml.in:6
 msgid "Flatpak Support"
-msgstr ""
+msgstr "ফ্ল্যাটপ্যাক সমর্থন"
 
 #: plugins/flatpak/org.gnome.Software.Plugin.Flatpak.metainfo.xml.in:7
 msgid "Flatpak is a framework for desktop applications on Linux"
@@ -6109,29 +6113,29 @@ msgstr ""
 #: plugins/flatpak/gs-flatpak.c:313
 #, c-format
 msgid "System folder %s"
-msgstr ""
+msgstr "সিস্টেম ফোল্ডার %s"
 
 #: plugins/flatpak/gs-flatpak.c:314 plugins/flatpak/gs-flatpak.c:315
 #, c-format
 msgid "Home subfolder %s"
-msgstr ""
+msgstr "হোম সাবফোল্ডার %s"
 
 #: plugins/flatpak/gs-flatpak.c:316
 msgid "Host system folders"
-msgstr ""
+msgstr "হোস্ট সিস্টেম ফোল্ডার"
 
 #: plugins/flatpak/gs-flatpak.c:317
 msgid "Host system configuration from /etc"
-msgstr ""
+msgstr "/etc থেকে হোস্ট সিস্টেম কনফিগারেশন"
 
 #: plugins/flatpak/gs-flatpak.c:318
 msgid "Desktop folder"
-msgstr ""
+msgstr "ডেস্কটপ ফোল্ডার"
 
 #: plugins/flatpak/gs-flatpak.c:318
 #, c-format
 msgid "Desktop subfolder %s"
-msgstr ""
+msgstr "ডেস্কটপ সাবফোল্ডার %s"
 
 #: plugins/flatpak/gs-flatpak.c:319
 msgid "Documents folder"
@@ -6140,104 +6144,104 @@ msgstr "নথিপত্র ফোল্ডার"
 #: plugins/flatpak/gs-flatpak.c:319
 #, c-format
 msgid "Documents subfolder %s"
-msgstr ""
+msgstr "ডকুমেন্ট সাবফোল্ডার %s"
 
 #: plugins/flatpak/gs-flatpak.c:320
 msgid "Music folder"
-msgstr ""
+msgstr "মিউজিক ফোল্ডার"
 
 #: plugins/flatpak/gs-flatpak.c:320
 #, c-format
 msgid "Music subfolder %s"
-msgstr ""
+msgstr "মিউজিক সাবফোল্ডার %s"
 
 #: plugins/flatpak/gs-flatpak.c:321
 msgid "Pictures folder"
-msgstr ""
+msgstr "ছবির ফোল্ডার"
 
 #: plugins/flatpak/gs-flatpak.c:321
 #, c-format
 msgid "Pictures subfolder %s"
-msgstr ""
+msgstr "ছবির সাবফোল্ডার %s"
 
 #: plugins/flatpak/gs-flatpak.c:322
 msgid "Public Share folder"
-msgstr ""
+msgstr "পাবলিক শেয়ার ফোল্ডার"
 
 #: plugins/flatpak/gs-flatpak.c:322
 #, c-format
 msgid "Public Share subfolder %s"
-msgstr ""
+msgstr "পাবলিক শেয়ার সাবফোল্ডার %s"
 
 #: plugins/flatpak/gs-flatpak.c:323
 msgid "Videos folder"
-msgstr ""
+msgstr "ভিডিও ফোল্ডার"
 
 #: plugins/flatpak/gs-flatpak.c:323
 #, c-format
 msgid "Videos subfolder %s"
-msgstr ""
+msgstr "ভিডিও সাবফোল্ডার %s"
 
 #: plugins/flatpak/gs-flatpak.c:324
 msgid "Templates folder"
-msgstr ""
+msgstr "টেমপ্লেট ফোল্ডার"
 
 #: plugins/flatpak/gs-flatpak.c:324
 #, c-format
 msgid "Templates subfolder %s"
-msgstr ""
+msgstr "টেমপ্লেট সাবফোল্ডার %s"
 
 #: plugins/flatpak/gs-flatpak.c:325
 msgid "User cache folder"
-msgstr ""
+msgstr "ব্যবহারকারী ক্যাশ ফোল্ডার"
 
 #: plugins/flatpak/gs-flatpak.c:325
 #, c-format
 msgid "User cache subfolder %s"
-msgstr ""
+msgstr "ইউজার ক্যাশ সাবফোল্ডার %s"
 
 #: plugins/flatpak/gs-flatpak.c:326
 msgid "User configuration folder"
-msgstr ""
+msgstr "ব্যবহারকারী কনফিগারেশন ফোল্ডার"
 
 #: plugins/flatpak/gs-flatpak.c:326
 #, c-format
 msgid "User configuration subfolder %s"
-msgstr ""
+msgstr "ব্যবহারকারী কনফিগারেশন সাবফোল্ডার %s"
 
 #: plugins/flatpak/gs-flatpak.c:327
 msgid "User data folder"
-msgstr ""
+msgstr "ব্যবহারকারীর তথ্য ফোল্ডার"
 
 #: plugins/flatpak/gs-flatpak.c:327
 #, c-format
 msgid "User data subfolder %s"
-msgstr ""
+msgstr "ব্যবহারকারীর ডেটা সাবফোল্ডার %s"
 
 #: plugins/flatpak/gs-flatpak.c:328
 msgid "User runtime folder"
-msgstr ""
+msgstr "ব্যবহারকারীর রানটাইম ফোল্ডার"
 
 #: plugins/flatpak/gs-flatpak.c:328
 #, c-format
 msgid "User runtime subfolder %s"
-msgstr ""
+msgstr "ব্যবহারকারী রানটাইম সাবফোল্ডার %s"
 
 #: plugins/flatpak/gs-flatpak.c:386
 #, c-format
 msgid "Filesystem access to %s"
-msgstr ""
+msgstr "%s -এ ফাইল সিস্টেম অ্যাক্সেস"
 
 #. TRANSLATORS: status text when downloading new metadata
 #: plugins/flatpak/gs-flatpak.c:1403
 #, c-format
 msgid "Getting flatpak metadata for %s…"
-msgstr ""
+msgstr "%s এর জন্য ফ্ল্যাটপ্যাক মেটাডেটা গ্রহণ করা হচ্ছে…"
 
 #: plugins/flatpak/gs-flatpak.c:3579
 #, c-format
 msgid "Failed to refine addon ‘%s’: %s"
-msgstr ""
+msgstr "অ্যাডঅন '%s' পরিমার্জন করতে ব্যর্থ হয়েছে:%s"
 
 #: plugins/flatpak/gs-flatpak-utils.c:94
 msgid "User Installation"
@@ -6269,7 +6273,7 @@ msgstr ""
 #: plugins/fwupd/gs-fwupd-app.c:134
 #, c-format
 msgid "%s Device Update"
-msgstr ""
+msgstr "%s ডিভাইস আপডেট"
 
 #. TRANSLATORS: the entire system, e.g. all internal devices,
 #. * the first %s is the device name, e.g. 'ThinkPad P50`
@@ -6283,7 +6287,7 @@ msgstr "%s সিস্টেম আপডেট"
 #: plugins/fwupd/gs-fwupd-app.c:144
 #, c-format
 msgid "%s Embedded Controller Update"
-msgstr ""
+msgstr "%s এমবেডেড কন্ট্রোলার আপডেট"
 
 #. TRANSLATORS: ME stands for Management Engine, the Intel AMT thing,
 #. * the first %s is the device name, e.g. 'ThinkPad P50`
@@ -6297,14 +6301,14 @@ msgstr "%s ME আপডেট"
 #: plugins/fwupd/gs-fwupd-app.c:154
 #, c-format
 msgid "%s Corporate ME Update"
-msgstr ""
+msgstr "%s কর্পোরেট ME আপডেট"
 
 #. TRANSLATORS: ME stands for Management Engine, where
 #. * the first %s is the device name, e.g. 'ThinkPad P50`
 #: plugins/fwupd/gs-fwupd-app.c:159
 #, c-format
 msgid "%s Consumer ME Update"
-msgstr ""
+msgstr "%s ভোক্তা ME আপডেট"
 
 #. TRANSLATORS: the controller is a device that has other devices
 #. * plugged into it, for example ThunderBolt, FireWire or USB,
@@ -6320,27 +6324,27 @@ msgstr "%s কন্ট্রোলার আপডেট"
 #: plugins/fwupd/gs-fwupd-app.c:171
 #, c-format
 msgid "%s Thunderbolt Controller Update"
-msgstr ""
+msgstr "%s থান্ডারবোল্ট কন্ট্রোলার আপডেট"
 
 #. TRANSLATORS: the CPU microcode is firmware loaded onto the CPU
 #. * at system bootup
 #: plugins/fwupd/gs-fwupd-app.c:176
 #, c-format
 msgid "%s CPU Microcode Update"
-msgstr ""
+msgstr "%s CPU মাইক্রোকোড আপডেট"
 
 #. TRANSLATORS: configuration refers to hardware state,
 #. * e.g. a security database or a default power value
 #: plugins/fwupd/gs-fwupd-app.c:181
 #, c-format
 msgid "%s Configuration Update"
-msgstr ""
+msgstr "%s কনফিগারেশন আপডেট"
 
 #. TRANSLATORS: battery refers to the system power source
 #: plugins/fwupd/gs-fwupd-app.c:185
 #, c-format
 msgid "%s Battery Update"
-msgstr ""
+msgstr "%s ব্যাটারি আপডেট"
 
 #. TRANSLATORS: camera can refer to the laptop internal
 #. * camera in the bezel or external USB webcam
@@ -6359,39 +6363,39 @@ msgstr "%s TPM আপডেট"
 #: plugins/fwupd/gs-fwupd-app.c:198
 #, c-format
 msgid "%s Touchpad Update"
-msgstr ""
+msgstr "%s টাচপ্যাড আপডেট"
 
 #. TRANSLATORS: Mouse refers to a handheld input device
 #: plugins/fwupd/gs-fwupd-app.c:202
 #, c-format
 msgid "%s Mouse Update"
-msgstr ""
+msgstr "%s মাউস আপডেট"
 
 #. TRANSLATORS: Keyboard refers to an input device for typing
 #: plugins/fwupd/gs-fwupd-app.c:206
 #, c-format
 msgid "%s Keyboard Update"
-msgstr ""
+msgstr "%s কীবোর্ড আপডেট"
 
 #. TRANSLATORS: Storage Controller is typically a RAID or SAS adapter
 #: plugins/fwupd/gs-fwupd-app.c:210
 #, c-format
 msgid "%s Storage Controller Update"
-msgstr ""
+msgstr "%s স্টোরেজ কন্ট্রোলার আপডেট"
 
 #. TRANSLATORS: Network Interface refers to the physical
 #. * PCI card, not the logical wired connection
 #: plugins/fwupd/gs-fwupd-app.c:215
 #, c-format
 msgid "%s Network Interface Update"
-msgstr ""
+msgstr "%s নেটওয়ার্ক ইন্টারফেস আপডেট"
 
 #. TRANSLATORS: Video Display refers to the laptop internal display or
 #. * external monitor
 #: plugins/fwupd/gs-fwupd-app.c:220
 #, c-format
 msgid "%s Display Update"
-msgstr ""
+msgstr "%s ডিসপ্লে আপডেট"
 
 #. TRANSLATORS: BMC refers to baseboard management controller which
 #. * is the device that updates all the other firmware on the system
@@ -6405,19 +6409,19 @@ msgstr "%s BMC আপডেট"
 #: plugins/fwupd/gs-fwupd-app.c:230
 #, c-format
 msgid "%s USB Receiver Update"
-msgstr ""
+msgstr "%s USB রিসিভার আপডেট"
 
 #: plugins/fwupd/gs-plugin-fwupd.c:1240
 msgid "Firmware"
-msgstr ""
+msgstr "ফার্মওয়্যার"
 
 #: plugins/fwupd/org.gnome.Software.Plugin.Fwupd.metainfo.xml.in:6
 msgid "Firmware Upgrade Support"
-msgstr ""
+msgstr "ফার্মওয়্যার আপগ্রেড সমর্থন"
 
 #: plugins/fwupd/org.gnome.Software.Plugin.Fwupd.metainfo.xml.in:7
 msgid "Provides support for firmware upgrades"
-msgstr ""
+msgstr "ফার্মওয়্যার আপগ্রেডের জন্য সমর্থন প্রদান করে"
 
 #: plugins/packagekit/gs-packagekit-task.c:148
 msgid "Install Unsigned Software?"
@@ -6454,7 +6458,7 @@ msgstr ""
 
 #: plugins/packagekit/gs-plugin-packagekit.c:367
 msgid "Packages"
-msgstr ""
+msgstr "প্যাকেজ"
 
 #: plugins/rpm-ostree/gs-plugin-rpm-ostree.c:2690
 msgid "Operating System (OSTree)"
@@ -6463,11 +6467,11 @@ msgstr "অপারেটিং সিস্টেম (OSTree)"
 #. TRANSLATORS: default snap store name
 #: plugins/snap/gs-plugin-snap.c:300
 msgid "Snap Store"
-msgstr ""
+msgstr "স্ন্যাপ স্টোর"
 
 #: plugins/snap/org.gnome.Software.Plugin.Snap.metainfo.xml.in:6
 msgid "Snap Support"
-msgstr ""
+msgstr "স্ন্যাপ সমর্থন"
 
 #: plugins/snap/org.gnome.Software.Plugin.Snap.metainfo.xml.in:7
 msgid "A snap is a universal Linux package"
@@ -6477,7 +6481,7 @@ msgstr ""
 #. * the BASE system
 #: plugins/vso/gs-plugin-vso.c:114
 msgid "base"
-msgstr ""
+msgstr "ভিত্তি"
 
 #: plugins/vso/gs-plugin-vso.c:240
 msgid ""
