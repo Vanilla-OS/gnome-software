@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-16 17:28+0000\n"
+"PO-Revision-Date: 2023-02-20 18:20+0000\n"
 "Last-Translator: Andrew Geo <andrewgeo@outlook.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/el/>\n"
@@ -2915,7 +2915,7 @@ msgstr "Περιπέτεια"
 #: lib/gs-desktop-data.c:99
 msgctxt "Menu of Games"
 msgid "Arcade"
-msgstr "Arcade"
+msgstr "Ουφάδικα"
 
 #: lib/gs-desktop-data.c:102
 msgctxt "Menu of Games"
@@ -3055,7 +3055,7 @@ msgstr "Ιστορία"
 #: lib/gs-desktop-data.c:210
 msgctxt "Menu of Reference"
 msgid "Lifestyle"
-msgstr "Lifestyle"
+msgstr "Ευημερία"
 
 #: lib/gs-desktop-data.c:213
 msgctxt "Menu of Reference"
@@ -3315,11 +3315,10 @@ msgstr[1] "Οι ενημερώσεις έχουν εγκατασταθεί"
 
 #. TRANSLATORS: we've just removed some apps
 #: src/gs-common.c:760
-#, fuzzy
 msgid "An application has been removed"
 msgid_plural "Applications have been removed"
-msgstr[0] "Εισαγωγή λειτουργίας υπηρεσίας GApplication"
-msgstr[1] "Εισαγωγή λειτουργίας υπηρεσίας GApplication"
+msgstr[0] "Μια εφαρμογή έχει αφαιρεθεί"
+msgstr[1] "Κάποιες εφαρμογές έχουν αφαιρεθεί"
 
 #. TRANSLATORS: the new apps will not be run until we restart
 #: src/gs-common.c:766
@@ -3497,9 +3496,8 @@ msgstr "Προετοιμάζεται…"
 
 #. Translators: This string is shown when uninstalling an app.
 #: src/gs-details-page.c:417
-#, fuzzy
 msgid "Uninstalling…"
-msgstr "Γίνεται απεγκατάσταση"
+msgstr "Γίνεται απεγκατάσταση…"
 
 #. TRANSLATORS: button text in the header when an application
 #. * can be installed
@@ -4203,9 +4201,8 @@ msgstr ""
 
 #. TRANSLATORS: initial start
 #: src/gs-loading-page.c:56
-#, fuzzy
 msgid "Downloading software catalog"
-msgstr "Λήψη εικόνων δημοφιλέστερων…"
+msgstr "Λήψη καταλόγου λογισμικών"
 
 #: src/gs-loading-page.ui:6
 msgid "Loading page"
@@ -5104,9 +5101,9 @@ msgstr "«%s»"
 #. Translators: The '%s' is replaced with an error message, which had been shortened.
 #. The dots at the end are there to highlight that to the user.
 #: src/gs-shell.c:1240
-#, fuzzy, c-format
+#, c-format
 msgid "%s…"
-msgstr "«%s»"
+msgstr "%s…"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the source (e.g. "alt.fedoraproject.org")
@@ -5518,7 +5515,7 @@ msgstr "Αδύνατη η αφαίρεση του %s: Το επίπεδο της
 #: src/gs-shell.c:1792
 #, c-format
 msgid "Unable to remove %s"
-msgstr "Αδύνατη  η αφαίρεση του %s"
+msgstr "Αδυναμία αφαίρεσης του %s"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the first %s is the application name (e.g. "GIMP")
@@ -6599,9 +6596,8 @@ msgid ""
 msgstr ""
 
 #: plugins/packagekit/gs-packagekit-task.c:153
-#, fuzzy
 msgid "Download Unsigned Software?"
-msgstr "Εύρεση στο λογισμικό"
+msgstr "Λήψη μη υπογραμμένου λογισμικού;"
 
 #: plugins/packagekit/gs-packagekit-task.c:154
 msgid ""
@@ -6610,9 +6606,8 @@ msgid ""
 msgstr ""
 
 #: plugins/packagekit/gs-packagekit-task.c:158
-#, fuzzy
 msgid "Update Unsigned Software?"
-msgstr "Εύρεση στο λογισμικό"
+msgstr "Ενημέρωση μη υπογραμμένου λογισμικού;"
 
 #: plugins/packagekit/gs-packagekit-task.c:159
 msgid ""
