@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: gnome-software 41\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-16 17:29+0000\n"
+"PO-Revision-Date: 2023-02-20 18:20+0000\n"
 "Last-Translator: lakejason0 <sunliyuan200402@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "vanilla-os/gnome-software/zh_Hans/>\n"
@@ -552,7 +552,7 @@ msgstr "在应用详细信息页面中添加“作者的其他应用”部分"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:170
 msgid "Improve styling of app context lozenges"
-msgstr ""
+msgstr "改进应用程序上下文菱形样式"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:171
 msgid ""
@@ -592,23 +592,23 @@ msgstr "添加 `--uninstall=ID` 命令行选项"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:179
 msgid ""
 "Allow scrolling screenshots by clicking on next and previous screenshots"
-msgstr ""
+msgstr "允许通过点击下一个和上一个屏幕截图来滚动屏幕截图"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:180
 msgid "Add support for webapps"
-msgstr ""
+msgstr "添加对 Webapp 的支持"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:181
 msgid "Allow swiping back in the shell using touch gestures"
-msgstr ""
+msgstr "允许使用触摸手势在 shell 中向后滑动"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:182
 msgid "Improved caching of downloaded metadata"
-msgstr ""
+msgstr "改进了已下载元数据的缓存"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:183
 msgid "Many internal architectural changes to make the code more maintainable"
-msgstr ""
+msgstr "许多内部架构更改，使代码更易于维护"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:184
 msgid ""
@@ -616,19 +616,24 @@ msgid ""
 "distribution vendors wishing to mark their apps as popular should see `doc/"
 "vendor-customisation.md` for examples of how to do this now"
 msgstr ""
+"GSettings 键 <code>popular-overrides</code> 已被删除；"
+"希望将其应用程序标记为流行的发行版厂商现在应查看 `doc/vendor-customisation."
+"md` 以获取如何执行此操作的示例"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:189
 msgid ""
 "The <code>hardcoded_popular</code> Meson option has been renamed to "
 "<code>hardcoded_curated</code>."
 msgstr ""
+"<code>hardcoded_popular</code> Meson 选项已重命名为 "
+"<code>hardcoded_curated</code>。"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:207
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:249
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:425
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:602
 msgid "French"
-msgstr ""
+msgstr "法语"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:208
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:287
@@ -638,7 +643,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:603
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:689
 msgid "Friulian"
-msgstr ""
+msgstr "弗留利语"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:217
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:256
@@ -649,124 +654,120 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:498
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:545
 msgid "Occitan (post 1500)"
-msgstr ""
+msgstr "奥克西坦语（1500年后）"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:235
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:405
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:561
 msgid "This is a stable release with the following changes:"
-msgstr ""
+msgstr "这是一个具有以下更改的稳定版本："
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:238
 msgid "Added several appstream-related fixes"
-msgstr ""
+msgstr "添加了几个与 appstream 相关的修复"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:243
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:530
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:685
 msgid "Bokmål, Norwegian"
-msgstr ""
+msgstr "书面挪威语"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:253
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:334
 msgid "Japanese"
-msgstr ""
+msgstr "日语"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:254
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:465
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:608
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:697
 msgid "Kazakh"
-msgstr ""
+msgstr "哈萨克语"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:268
 msgid "This is the third unstable release for GNOME 42."
-msgstr ""
+msgstr "这是 GNOME 42 的第三个不稳定版本。"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:270
 msgid "Cancel ongoing update downloads when system power is low"
-msgstr ""
+msgstr "当系统电量不足时，取消正在进行的更新下载"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:271
 msgid "Numerous small user interface fixes and tweaks"
-msgstr ""
+msgstr "许多细微的用户界面修复和调整"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:272
-#, fuzzy
 msgid "Prioritize full matches in search results"
-msgstr "在搜索结果里显示非自由软件"
+msgstr "在搜索结果中优先考虑完全匹配"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:273
 msgid "Improvements in dark mode"
-msgstr ""
+msgstr "深色模式的改进"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:274
-#, fuzzy
 msgid "Fix disabling flatpak remotes from the ‘Software Repositories’ dialog"
-msgstr "允许访问软件仓库对话框"
+msgstr "修复从“软件仓库”对话框中禁用flatpak远程仓库的问题"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:275
 msgid ""
 "Threading and performance improvements which should reduce the number of "
 "user interface freezes"
-msgstr ""
+msgstr "线程和性能改进，有助于减少用户界面冻结的次数"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:276
-#, fuzzy
 msgid "Update some icons"
-msgstr "更新详情"
+msgstr "更新一些图标"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:277
 msgid ""
 "Check for updates when moving from a metered to a non-metered network "
 "connection"
-msgstr ""
+msgstr "从按流量计费的网络连接移动到非按流量计费的网络连接时检查更新"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:306
 msgid "This is the second unstable release for GNOME 42."
-msgstr ""
+msgstr "这是 GNOME 42 的第二个不稳定版本。"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:308
 msgid "Allow <code>--verbose</code> to be enabled at runtime"
-msgstr ""
+msgstr "允许 <code>--verbose</code> 在运行时启用"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:309
 msgid "Condense the rows in the age rating context dialog"
-msgstr ""
+msgstr "压缩年龄分级上下文对话框中的行"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:310
 msgid "Update the UI for ratings and reviews of apps"
-msgstr ""
+msgstr "更新应用的分级和评论的 UI"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:311
 msgid "Improve the appearance of the category page loading screen"
-msgstr ""
+msgstr "改进分类页面加载屏幕的外观"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:312
 msgid "Drop the first run dialog"
-msgstr ""
+msgstr "删除首次运行对话框"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:313
 msgid "Improvements to dark theming"
-msgstr ""
+msgstr "深色主题的改进"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:314
 msgid ""
 "Support viewing a specific metainfo file using <code>--show-metainfo</code>"
-msgstr ""
+msgstr "支持使用 <code>--show-metainfo</code> 查看特定的元信息文件"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:315
 msgid "Several more threading improvements"
-msgstr ""
+msgstr "更多线程改进"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:316
-#, fuzzy
 msgid "Icon updates"
-msgstr "检查更新"
+msgstr "图标更新"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:317
 msgid "Drop the hardcoded-popular plugin in favour of an appstream file"
-msgstr ""
+msgstr "删除硬编码的流行插件，改用 appstream 文件"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:318
 msgid ""
@@ -777,334 +778,339 @@ msgid ""
 "code> GSettings key has been removed. Distributions may need to update how "
 "they ship background images. See <em>doc/vendor-customisation.md</em>."
 msgstr ""
+"升级的背景图像现在使用 <code>${DATADIR}/gnome-software/backgrounds</code> "
+"中的几个众所周知的（和特定于发行版的）名称来查找，并且先前仅适用于 Fedora "
+"的默认背景图像将不再分发。同样，GSettings 键 <code>upgrade-background-uri</"
+"code> 已被删除。发行版可能需要更新他们发布背景图像的方式。请参阅 <em>doc/"
+"vendor-customisation.md</em>。"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:347
 msgid "This is the first unstable release for GNOME 42."
-msgstr ""
+msgstr "这是 GNOME 42 的第一个不稳定版本。"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:350
 msgid "Support more markup in the application description"
-msgstr ""
+msgstr "在应用程序描述中支持更多标记语法"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:351
 msgid "Ask about package signature with PackageKit on signing issue"
-msgstr ""
+msgstr "在签名问题上使用 PackageKit 询问包签名"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:352
 msgid "Show better System Update progress"
-msgstr ""
+msgstr "显示更好的系统更新进度"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:353
 msgid "Remove various cultural sensitivity badges"
-msgstr ""
+msgstr "移除各种文化敏感徽章"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:354
 msgid "Fix a crash when processing age ratings"
-msgstr ""
+msgstr "修复了处理年龄分级时崩溃的问题"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:355
-#, fuzzy
 msgid ""
 "Reload application details only when not installing/removing the application"
-msgstr "显示应用程序详情（使用应用程序 ID）"
+msgstr "仅不在安装/删除应用程序时重新加载应用程序详细信息"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:356
 msgid "Do not follow symlinks when calculating disk size usage"
-msgstr ""
+msgstr "计算磁盘大小使用时不遵循符号链接"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:357
 msgid "Fix addons section, which could show addons for different application"
-msgstr ""
+msgstr "修复附加组件部分，可以显示不同应用程序的附加组件"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:358
 msgid ""
 "Fix showing a ‘transaction in progress’ error when using the rpm-ostree "
 "plugin"
-msgstr ""
+msgstr "修复在使用 rpm-ostree 插件时显示“事务正在执行中（transaction in "
+"progress）”错误"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:359
 msgid "Don’t recommend a reboot if firmware updates fail"
-msgstr ""
+msgstr "如果固件更新失败，不建议重新启动"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:360
 msgid ""
 "Fix flathub repo being considered present on Fedora 35 with filtered flathub"
-msgstr ""
+msgstr "修复了即使进行了过滤，Flatpak仓库也依然被认为存在于 Fedora 35 上的问题"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:361
 msgid "Allow searching for extensions"
-msgstr ""
+msgstr "允许搜索扩展"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:362
 msgid "Fix translation of main button on updates page"
-msgstr ""
+msgstr "修复更新页面上主按钮的翻译"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:363
-#, fuzzy
 msgid "Fix codec installation process"
-msgstr "用户拒绝安装"
+msgstr "修复编解码器安装过程"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:364
 msgid "Add new GNOME Circle apps to the featured carousel"
-msgstr ""
+msgstr "将新的 GNOME Circle 应用程序添加到特色轮播图"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:365
 msgid "Improve metadata support for snaps"
-msgstr ""
+msgstr "改进对 snap 的元数据支持"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:366
 msgid "Fix update checks being missed across suspend/hibernation"
-msgstr ""
+msgstr "修复了在挂起/休眠期间缺少更新检查的问题"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:367
 msgid ""
 "Ensure application lists are updated when repositories are enabled/installed "
 "or disabled/removed"
-msgstr ""
+msgstr "确保在启用/安装或禁用/删除仓库时更新应用程序列表"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:372
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:491
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:529
 msgid "Belarusian"
-msgstr ""
+msgstr "白俄罗斯语"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:393
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:704
 msgid "Slovak"
-msgstr ""
+msgstr "斯洛伐克语"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:407
 msgid ""
 "Instead of showing all package-based apps as \"potentially unsafe\", only "
 "use that language for 3rd party ones"
-msgstr ""
+msgstr "不要将所有基于系统包管理的应用程序显示为“可能不安全”，而是仅将该提示用于第三"
+"方应用程序"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:408
 msgid ""
 "Fix a bug where the \"Show more\" button on an app details page would "
 "flicker when the window is resized"
-msgstr ""
+msgstr "修复了调整窗口大小时应用详细信息页面上的“显示更多”按钮会闪烁的错误"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:409
 msgid ""
 "Fix a bug where Software sometimes shows an Uninstall button after "
 "uninstalling something"
-msgstr ""
+msgstr "修复了软件有时会在卸载某些内容后仍显示“卸载”按钮的错误"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:410
 msgid "Add GNOME Circle apps to the featured carousel"
-msgstr ""
+msgstr "将 GNOME Circle 应用程序添加到特色轮播图"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:411
 msgid ""
 "Fix a bug where Software would sometimes fail to execute an install/remove "
 "operation for PackageKit software rather than showing a PolicyKit password "
 "prompt"
-msgstr ""
+msgstr "修复了有时无法执行 PackageKit 软件的安装/删除操作时不显示 PolicyKit "
+"密码提示的错误"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:412
 msgid ""
 "Fix a bug where Software would fail to upgrade the distribution via "
 "PackageKit"
-msgstr ""
+msgstr "修复了无法通过 PackageKit 升级发行版的错误"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:413
 msgid "Fix the hiding of rows on the Updates tab after they have been updated"
-msgstr ""
+msgstr "修复了更新后“更新”选项卡上的行会隐藏的问题"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:436
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:550
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:614
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:703
 msgid "Romanian"
-msgstr ""
+msgstr "罗马尼亚语"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:447
 msgid "This is the third unstable release for GNOME 41."
-msgstr ""
+msgstr "这是 GNOME 41 的第三个不稳定版本。"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:449
 msgid "Tweaks to the context tiles and dialogs"
-msgstr ""
+msgstr "调整上下文图块和对话框"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:450
 msgid "Fixes to the details page for non-desktop apps"
-msgstr ""
+msgstr "修复了非桌面应用程序的详细信息页面"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:451
 msgid "Re-add support for the add-ons categories"
-msgstr ""
+msgstr "重新添加对附加组件类别的支持"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:452
 msgid "Sort new and updated apps by release date on the category page"
-msgstr ""
+msgstr "在分类页面上按发布日期对新的应用和已更新的应用进行排序"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:481
 msgid "This is the second unstable release for GNOME 41."
-msgstr ""
+msgstr "这是 GNOME 41 的第二个不稳定版本。"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:483
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:511
 msgid "Many parts of the user interface reworked"
-msgstr ""
+msgstr "重新设计了用户界面的许多部分"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:484
 msgid "Fix when the 'Launch' button is shown after an application install"
-msgstr ""
+msgstr "修复了应用程序安装后显示“启动”按钮的问题"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:485
 msgid "Fix appstream:// URL handling"
-msgstr ""
+msgstr "修复 appstream:// URL 处理"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:486
 msgid "Fix application freeze on Flatpak application install/remove/update"
-msgstr ""
+msgstr "修复 Flatpak 应用程序安装/删除/更新时的应用程序冻结"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:487
 msgid "Disable automatic update downloads when in power saver mode"
-msgstr ""
+msgstr "在省电模式下禁用自动更新下载"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:497
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:540
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:692
 msgid "Greek, Modern (1453-)"
-msgstr ""
+msgstr "现代希腊语（1453-）"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:509
 msgid "This is the first unstable release for GNOME 41."
-msgstr ""
+msgstr "这是 GNOME 41 的第一个不稳定版本。"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:512
 msgid "Improve error reporting from flatpak when low on disk space"
-msgstr ""
+msgstr "改进磁盘空间不足时 flatpak 的错误报告"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:513
 msgid "Fix issues with updating the UI when uninstalling apps with add-ons"
-msgstr ""
+msgstr "修复在卸载带有附加组件的应用程序时更新用户界面的问题"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:514
 msgid "Don’t keep rpm-ostreed alive forever"
-msgstr ""
+msgstr "不保持 rpm-ostreed 活跃"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:515
 msgid "Prevent polkit checks showing up for background operations"
-msgstr ""
+msgstr "防止为后台操作显示 polkit 检查"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:516
 msgid "Disallow submitting reviews for an app you haven’t installed"
-msgstr ""
+msgstr "禁止为尚未安装的应用提交评价"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:517
 msgid "Show download size in the Updates page"
-msgstr ""
+msgstr "在“更新”页面中显示下载大小"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:518
 msgid "Notify when restart is needed when uninstalling an app"
-msgstr ""
+msgstr "卸载应用需要重新启动时通知"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:519
 msgid "Fix some issues with searches not running"
-msgstr ""
+msgstr "修复搜索不运行的问题"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:520
 msgid "Allow non-integer average star ratings for apps"
-msgstr ""
+msgstr "允许应用程序的非整数平均星级评分"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:521
 msgid "Reduce number of categories in the UI"
-msgstr ""
+msgstr "减少用户界面中的分类数量"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:522
 msgid "Improve ‘pending updates’ notifications"
-msgstr ""
+msgstr "改进“待更新”通知"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:523
 msgid "Refine presentation of download and installed size on details page"
-msgstr ""
+msgstr "优化详情页面下载和安装大小的展示"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:524
 msgid "Remove left over gnome-online-account dependencies"
-msgstr ""
+msgstr "删除遗留的 gnome-online-account 依赖项"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:563
 msgid "Fix handling of invalid or incomplete application icons"
-msgstr ""
+msgstr "修复了对无效或不完整的应用程序图标的处理"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:564
 msgid "Fix the plugin documentation to reflect reality"
-msgstr ""
+msgstr "修复插件文档以反映实际"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:565
 msgid "Fix the Snap plugin to actually load icons"
-msgstr ""
+msgstr "修复 Snap 插件以实际加载图标"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:566
 msgid "Set download size to 0 after the package is downloaded"
-msgstr ""
+msgstr "下载包后将下载大小设置为0"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:568
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:593
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:636
-#, fuzzy
 msgid "Translation updates:"
-msgstr "翻译"
+msgstr "翻译更新："
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:570
 msgid "British English"
-msgstr ""
+msgstr "英式英语"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:572
 msgid "Greek"
-msgstr ""
+msgstr "希腊语"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:574
 msgid "Norwegian Bokmål"
-msgstr ""
+msgstr "书面挪威语"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:576
 msgid "Punjabi"
-msgstr ""
+msgstr "旁遮普语"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:583
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:626
 msgid "This is an unstable release with the following changes:"
-msgstr ""
+msgstr "这是一个具有以下更改的不稳定版本："
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:585
 msgid "Implement new featured apps carousel."
-msgstr ""
+msgstr "实装新的精选应用轮播图。"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:586
 msgid ""
 "List of Flatpak repositories is updated when changed using the Flatpak "
 "command line tool."
-msgstr ""
+msgstr "使用 Flatpak 命令行工具更改 Flatpak 仓库时，仓库列表会更新。"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:587
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:630
 msgid ""
 "The loading page now shows the full color icon instead of the symbolic one."
-msgstr ""
+msgstr "加载页面现在显示全彩色图标，而不是符号图标。"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:588
 msgid ""
 "Show release date in version history for releases that use the 'date' "
 "attribute."
-msgstr ""
+msgstr "对于使用'date'属性的版本，在版本历史中显示发布日期。"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:589
 msgid "Improved icon handling, including with hiDPI screens."
-msgstr ""
+msgstr "改进了图标处理，包括高DPI屏幕的处理。"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:590
 msgid "Fixed a bug in remembering when update notifications were shown."
-msgstr ""
+msgstr "修复了记住更新通知显示时间的错误。"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:591
 msgid ""
 "Build as a dynamic rather than a static library, and rearrange installation "
 "paths."
-msgstr ""
+msgstr "构建为动态库而不是静态库，并重新安排安装路径。"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:628
 msgid ""
@@ -1112,161 +1118,161 @@ msgid ""
 "with appstream data which provides information about apps and other "
 "components."
 msgstr ""
+"GNOME 软件现在使用 libappstream 而不是 libappstream-glib "
+"来处理提供有关应用程序和其他组件信息的 appstream 数据。"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:629
 msgid "App details pages show version history information when it's available."
-msgstr ""
+msgstr "应用详情页面会在可用时显示版本历史信息。"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:631
 msgid ""
 "UI elements for displaying app add-ons have been tweaked to more closely "
 "match the designs."
-msgstr ""
+msgstr "显示应用程序附加组件的UI元素已被调整，以更紧密地配合设计。"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:632
 msgid ""
 "Installed icons and the badge showing the number of updates available were "
 "changed back to blue from green."
-msgstr ""
+msgstr "已安装的图标和显示可用更新数量的角标已从绿色改回蓝色。"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:633
 msgid ""
 "The dropdown showing the available sources of an application includes the "
 "packaging format (e.g. Flatpak vs RPM)."
-msgstr ""
+msgstr "显示应用程序可用来源的下拉列表包括打包格式（例如 Flatpak 与 RPM）。"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:634
 msgid "A bug was fixed that prevented installation of .flatpakref files"
-msgstr ""
+msgstr "修复了阻止安装 .flatpakref 文件的错误"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:642
 msgid "Panjabi"
-msgstr ""
+msgstr "旁遮普语"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:652
 msgid "This is the first unstable release for GNOME 40."
-msgstr ""
+msgstr "这是 GNOME 40 的第一个不稳定版本。"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:654
 msgid ""
 "Small updates to how app descriptions and addons are presented on the "
 "details page"
-msgstr ""
+msgstr "对应用程序描述和附加组件在详情页上的展示方式进行小幅更新"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:655
 msgid "Fix handling of pending app installations when going online"
-msgstr ""
+msgstr "修复在线时处理挂起的应用程序安装"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:656
 msgid "Better support for dark themes (particularly Adwaita-Dark)"
-msgstr ""
+msgstr "更好地支持深色主题（尤其是 Adwaita-Dark）"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:657
 msgid "Improvements to how app screenshots are loaded and presented"
-msgstr ""
+msgstr "改进了应用屏幕截图的加载和显示方式"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:658
 msgid ""
 "Hide ‘Launch’ button if an application (for example, Wine) cannot be launched"
-msgstr ""
+msgstr "如果无法启动应用程序（例如 Wine），则隐藏“启动”按钮"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:659
 msgid "Make the UI clearer when loading information from flatpakref files"
-msgstr ""
+msgstr "从 flatpakref 文件加载信息时使 UI 更清晰"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:660
 msgid "Don’t update app metadata on start when download-updates is disabled"
-msgstr ""
+msgstr "禁用下载更新时，不要在启动时更新应用元数据"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:661
 msgid "Fix opening the updates list when clicking on an updates notification"
-msgstr ""
+msgstr "修复在点击更新通知时打开更新列表的问题"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:662
 msgid ""
 "Fix state updates when installing flatpak apps or repos which are already "
 "installed"
-msgstr ""
+msgstr "修复安装已安装的 flatpak 应用或仓库时的状态更新"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:663
 msgid "Add Ctrl+Q as a keyboard shortcut for closing the window"
-msgstr ""
+msgstr "添加 Ctrl+Q 作为关闭窗口的键盘快捷键"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:664
 msgid "Rework timing and content of software update notifications"
-msgstr ""
+msgstr "重新设计软件更新通知的时间和内容"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:665
-#, fuzzy
 msgid ""
 "Prevent uninstalled local apps from appearing in the installed apps list"
-msgstr "显示已安装应用程序列表里应用的安装大小"
+msgstr "防止已卸载的本地应用程序显示在已安装的应用程序列表中"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:666
 msgid "Support installation/uninstallation of addons for flatpak apps"
-msgstr ""
+msgstr "支持为 flatpak 应用程序安装/卸载插件"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:667
 msgid "Improve presentation of age ratings for apps"
-msgstr ""
+msgstr "改进应用程序年龄分级的呈现"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:668
 msgid "Fix a crash in the updates page"
-msgstr ""
+msgstr "修复更新页面中的崩溃问题"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:669
 msgid "Fix presentation of app permissions for fully sandboxed flatpak apps"
-msgstr ""
+msgstr "修复完全沙盒化的 flatpak 应用程序权限的呈现"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:670
 msgid "Fix deadlock on rpm-ostree systems"
-msgstr ""
+msgstr "修复 rpm-ostree 系统上的死锁"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:671
 msgid "Fix presentation of version number changes in right-to-left locales"
-msgstr ""
+msgstr "修复从右到左语言环境中版本号更改的显示"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:672
 msgid "Error handling improvements for fwupd"
-msgstr ""
+msgstr "fwupd 的错误处理改进"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:673
 msgid "Performance improvements for ODRS on startup"
-msgstr ""
+msgstr "ODRS 启动时的性能改进"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:674
 msgid "Improve presentation of firmware warning messages"
-msgstr ""
+msgstr "改进固件警告消息的呈现"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:675
 msgid "XML parsing performance improvements"
-msgstr ""
+msgstr "XML 解析性能改进"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:676
 msgid "Automatically remove end-of-life flatpak runtimes"
-msgstr ""
+msgstr "自动删除生命周期结束的 flatpak 运行时"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:677
 msgid "Support updating flatpaks to their new name when they are renamed"
-msgstr ""
+msgstr "支持在重命名时将 flatpak 更新为其新名称"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:678
-#, fuzzy
 msgid "Update the GNOME Software icon"
-msgstr "更新未签名的软件吗？"
+msgstr "更新 GNOME 软件图标"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:679
 msgid "Support more search results in the snap store"
-msgstr ""
+msgstr "支持在 snap store 中的更多搜索结果"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:680
 msgid ""
 "Drop libgnome-desktop-3 dependency in favour of gsettings-desktop-schemas"
-msgstr ""
+msgstr "放弃 libgnome-desktop-3 依赖，转而使用 gsettings-desktop-schemas"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:696
 msgid "Kabyle"
-msgstr ""
+msgstr "卡拜尔语"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:2043
 #: src/gs-application.c:256
@@ -2522,7 +2528,7 @@ msgstr "适用于台式机和笔记本电脑"
 #. * no objectionable content.
 #: src/gs-app-context-bar.c:705
 msgid "Contains no age-inappropriate content"
-msgstr "不包含不适龄内容。"
+msgstr "不包含不适龄内容"
 
 #: src/gs-app-context-bar.c:753
 msgid "No age rating information available"
@@ -2636,7 +2642,7 @@ msgstr "需要登录"
 #: src/gs-details-page.ui:294 src/gs-removal-dialog.ui:17
 #: src/gs-review-dialog.ui:18
 msgid "_Cancel"
-msgstr "取消(_C)"
+msgstr "_取消"
 
 #: src/gs-basic-auth-dialog.ui:35
 msgid "_Login"
@@ -6334,37 +6340,37 @@ msgstr "Snap 是个通用的 Linux 程序包"
 #. TRANSLATORS: this is to inform that the package is part of
 #. * the BASE system
 #: plugins/vso/gs-plugin-vso.c:114
-#, fuzzy
 msgid "base"
-msgstr "数据库"
+msgstr "基础"
 
 #: plugins/vso/gs-plugin-vso.c:240
 msgid ""
 "Another transaction has already been executed, you must reboot your system "
 "before starting a new transaction."
-msgstr ""
+msgstr "另一个事务已经执行，您必须重新启动系统才能开始新事务。"
 
 #: plugins/vso/gs-plugin-vso.c:260
 msgid "VSO failed to update the system, please try again later."
-msgstr ""
+msgstr "VSO 无法更新系统，请稍后重试。"
 
 #: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:245
 msgid ""
 "Applications installable via Apx with pre-defined container configuration"
-msgstr ""
+msgstr "可通过 Apx 安装的具有预定义容器配置的应用程序"
 
 #. origin_ui on a remote is the repo dialogue section name,
 #. * not the remote title
 #: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:249
 msgid "Apps"
-msgstr ""
+msgstr "应用程序"
 
 #: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:251
 msgid ""
 "This repository contains a set of popular applications installable via Apx "
 "and pre-configured by the Vanilla OS team to guarantee that they are using "
 "the most compatible container and configurations."
-msgstr ""
+msgstr "此仓库包含一组可通过 Apx 安装并由 Vanilla OS "
+"团队预配置的流行应用程序，以确保它们使用最兼容的容器和配置。"
 
 #~ msgid "No updates have been installed on this system."
 #~ msgstr "此系统未安装过更新。"
