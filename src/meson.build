@@ -80,6 +80,7 @@ gnome_software_sources = [
   'gs-star-image.c',
   'gs-star-widget.c',
   'gs-storage-context-dialog.c',
+  'gs-tariff-editor.c',
   'gs-summary-tile.c',
   'gs-update-dialog.c',
   'gs-update-list.c',
@@ -129,6 +130,8 @@ endif
 
 if get_option('mogwai')
   gnome_software_dependencies += [mogwai_schedule_client]
+  gnome_software_dependencies += [mogwai_tariff]
+  gnome_software_dependencies += [network_manager_deps]
 endif
 
 executable(

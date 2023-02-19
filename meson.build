@@ -179,6 +179,12 @@ conf.set('HAVE_SYSPROF', libsysprof_capture_dep.found())
 
 if get_option('mogwai')
   mogwai_schedule_client = dependency('mogwai-schedule-client-0', version : '>= 0.2.0')
+  mogwai_tariff = dependency('mogwai-tariff-0', version: '>=0.1.0')
+  network_manager_deps = [
+    dependency('libnm', version: '>= 1.24.0'),
+    dependency('libnma-gtk4', version: '>= 1.8.0'),
+    dependency('libnma', version: '>= 1.8.0'),
+  ]
   conf.set('HAVE_MOGWAI', 1)
 endif
 

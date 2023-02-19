@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <template class="GsTariffEditor" parent="GtkGrid">
+    <property name="column-homogeneous">true</property>
+    <property name="column-spacing">24</property>
+    <property name="row-spacing">12</property>
+    <property name="margin-start">12</property>
+    <property name="margin-end">12</property>
+    <property name="margin-top">12</property>
+    <property name="margin-bottom">12</property>
+    <child>
+      <object class="GtkLabel">
+        <property name="xalign">0</property>
+        <property name="label" translatable="true">From</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="row">0</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">horizontal</property>
+        <property name="spacing">8</property>
+        <property name="halign">start</property>
+        <child>
+          <object class="GtkSpinButton" id="spinbutton_from_hours">
+            <property name="can-focus">true</property>
+            <property name="max-width-chars">2</property>
+            <property name="text">4</property>
+            <property name="orientation">vertical</property>
+            <property name="adjustment">adjustment_from_hours</property>
+            <property name="numeric">true</property>
+            <property name="wrap">true</property>
+            <property name="value">4</property>
+            <signal name="output" handler="on_hours_output_cb" object="GsTariffEditor" swapped="no" />
+            <style>
+              <class name="padded-spinbutton"/>
+            </style>
+            <accessibility>
+              <property name="description" translatable="true">Hour</property>
+            </accessibility>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="label" translatable="true">:</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkSpinButton" id="spinbutton_from_minutes">
+            <property name="can-focus">true</property>
+            <property name="max-width-chars">2</property>
+            <property name="text">0</property>
+            <property name="orientation">vertical</property>
+            <property name="adjustment">adjustment_from_minutes</property>
+            <property name="numeric">true</property>
+            <property name="wrap">true</property>
+            <signal name="output" handler="on_minutes_output_cb" object="GsTariffEditor" swapped="no" />
+            <style>
+              <class name="padded-spinbutton"/>
+            </style>
+            <accessibility>
+              <property name="description" translatable="true">Minute</property>
+            </accessibility>
+          </object>
+        </child>
+        <child>
+          <object class="GtkStack" id="stack_from">
+            <property name="hhomogeneous">false</property>
+            <property name="vhomogeneous">false</property>
+            <child>
+              <object class="GtkButton" id="button_from_am">
+                <property name="label" translatable="true">AM</property>
+                <property name="can-focus">true</property>
+                <property name="receives-default">true</property>
+                <property name="valign">center</property>
+                <signal name="clicked" handler="on_time_period_from_clicked_cb" object="GsTariffEditor" swapped="no" />
+                <signal name="clicked" handler="on_time_changed_cb" object="GsTariffEditor" swapped="yes" />
+                <style>
+                  <class name="unpadded-button"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="button_from_pm">
+                <property name="label" translatable="true">PM</property>
+                <property name="can-focus">true</property>
+                <property name="receives-default">true</property>
+                <property name="valign">center</property>
+                <signal name="clicked" handler="on_time_period_from_clicked_cb" object="GsTariffEditor" swapped="no" />
+                <signal name="clicked" handler="on_time_changed_cb" object="GsTariffEditor" swapped="yes" />
+                <style>
+                  <class name="unpadded-button"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox" id="blank_from">
+                <property name="can-focus">false</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <layout>
+          <property name="column">0</property>
+          <property name="row">1</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel">
+        <property name="xalign">0</property>
+        <property name="label" translatable="true">To</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="row">0</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">horizontal</property>
+        <property name="spacing">8</property>
+        <property name="halign">end</property>
+        <child>
+          <object class="GtkSpinButton" id="spinbutton_to_hours">
+            <property name="can-focus">true</property>
+            <property name="max-width-chars">2</property>
+            <property name="text">4</property>
+            <property name="orientation">vertical</property>
+            <property name="adjustment">adjustment_to_hours</property>
+            <property name="numeric">true</property>
+            <property name="wrap">true</property>
+            <property name="value">4</property>
+            <signal name="output" handler="on_hours_output_cb" object="GsTariffEditor" swapped="no" />
+            <style>
+              <class name="padded-spinbutton"/>
+            </style>
+            <accessibility>
+              <property name="description" translatable="true">Hour</property>
+            </accessibility>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="label" translatable="true">:</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkSpinButton" id="spinbutton_to_minutes">
+            <property name="can-focus">true</property>
+            <property name="max-width-chars">2</property>
+            <property name="text">0</property>
+            <property name="orientation">vertical</property>
+            <property name="adjustment">adjustment_to_minutes</property>
+            <property name="numeric">true</property>
+            <property name="wrap">true</property>
+            <signal name="output" handler="on_minutes_output_cb" object="GsTariffEditor" swapped="no" />
+            <style>
+              <class name="padded-spinbutton"/>
+            </style>
+            <accessibility>
+              <property name="description" translatable="true">Minute</property>
+            </accessibility>
+          </object>
+        </child>
+        <child>
+          <object class="GtkStack" id="stack_to">
+            <property name="hhomogeneous">false</property>
+            <property name="vhomogeneous">false</property>
+            <child>
+              <object class="GtkButton" id="button_to_am">
+                <property name="label" translatable="true">AM</property>
+                <property name="can-focus">true</property>
+                <property name="receives-default">true</property>
+                <property name="valign">center</property>
+                <signal name="clicked" handler="on_time_period_to_clicked_cb" object="GsTariffEditor" swapped="no" />
+                <signal name="clicked" handler="on_time_changed_cb" object="GsTariffEditor" swapped="yes" />
+                <style>
+                  <class name="unpadded-button"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="button_to_pm">
+                <property name="label" translatable="true">PM</property>
+                <property name="can-focus">true</property>
+                <property name="receives-default">true</property>
+                <property name="valign">center</property>
+                <signal name="clicked" handler="on_time_period_to_clicked_cb" object="GsTariffEditor" swapped="no" />
+                <signal name="clicked" handler="on_time_changed_cb" object="GsTariffEditor" swapped="yes" />
+                <style>
+                  <class name="unpadded-button"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox" id="blank_to">
+                <property name="can-focus">false</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <layout>
+          <property name="column">1</property>
+          <property name="row">1</property>
+        </layout>
+      </object>
+    </child>
+  </template>
+  <object class="GtkAdjustment" id="adjustment_from_hours">
+    <property name="value">22</property>
+    <property name="upper">23</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+    <signal name="notify::value" handler="on_time_changed_cb" object="GsTariffEditor" swapped="yes" />
+  </object>
+  <object class="GtkAdjustment" id="adjustment_from_minutes">
+    <property name="upper">59</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+    <signal name="notify::value" handler="on_time_changed_cb" object="GsTariffEditor" swapped="yes" />
+  </object>
+  <object class="GtkAdjustment" id="adjustment_to_hours">
+    <property name="value">6</property>
+    <property name="upper">23</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+    <signal name="notify::value" handler="on_time_changed_cb" object="GsTariffEditor" swapped="yes" />
+  </object>
+  <object class="GtkAdjustment" id="adjustment_to_minutes">
+    <property name="upper">59</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+    <signal name="notify::value" handler="on_time_changed_cb" object="GsTariffEditor" swapped="yes" />
+  </object>
+</interface>

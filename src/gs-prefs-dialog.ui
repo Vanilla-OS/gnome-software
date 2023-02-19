@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk+" version="3.10"/>
+  <requires lib="gtk" version="4.0"/>
   <template class="GsPrefsDialog" parent="AdwPreferencesWindow">
-    <property name="title" translatable="yes">Update Preferences</property>
-    <property name="default_width">610</property>
-    <property name="default_height">300</property>
-    <property name="search_enabled">False</property>
+    <property name="title" translatable="true">Update Preferences</property>
+    <property name="default-width">610</property>
+    <property name="default-height">600</property>
+    <property name="search-enabled">false</property>
     <style>
       <class name="update-preferences"/>
     </style>
@@ -13,29 +13,96 @@
       <object class="AdwPreferencesPage">
         <child>
           <object class="AdwPreferencesGroup">
-            <property name="description" translatable="yes">To avoid charges and network caps, software updates are not automatically downloaded on mobile or metered connections.</property>
+            <property name="description" translatable="true">To avoid charges and network caps, software updates are not automatically downloaded on mobile or metered connections.</property>
             <child>
               <object class="AdwActionRow" id="automatic_updates_row">
-                <property name="title" translatable="yes">Automatic Updates</property>
-                <property name="subtitle" translatable="yes">Downloads and installs software updates in the background, when possible.</property>
-                <property name="subtitle_lines">0</property>
-                <property name="activatable_widget">switch_updates</property>
+                <property name="title" translatable="true">Automatic Updates</property>
+                <property name="subtitle" translatable="true">Downloads and installs software updates in the background, when possible.</property>
+                <property name="subtitle-lines">0</property>
+                <property name="activatable-widget">switch_updates</property>
                 <child>
                   <object class="GtkSwitch" id="switch_updates">
                     <property name="valign">center</property>
+                    <signal name="notify::active" handler="on_automatic_updates_switch_changed_cb" object="GsPrefsDialog" swapped="no" />
                   </object>
                 </child>
               </object>
             </child>
             <child>
               <object class="AdwActionRow" id="automatic_update_notifications_row">
-                <property name="title" translatable="yes">Automatic Update Notifications</property>
-                <property name="subtitle" translatable="yes">Show notifications when updates have been automatically installed.</property>
-                <property name="subtitle_lines">0</property>
-                <property name="activatable_widget">switch_updates_notify</property>
+                <property name="title" translatable="true">Automatic Update Notifications</property>
+                <property name="subtitle" translatable="true">Show notifications when updates have been automatically installed.</property>
+                <property name="subtitle-lines">0</property>
+                <property name="activatable-widget">switch_updates_notify</property>
                 <child>
                   <object class="GtkSwitch" id="switch_updates_notify">
                     <property name="valign">center</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="can-focus">false</property>
+            <child>
+              <object class="AdwActionRow" id="network_row">
+                <property name="can-focus">false</property>
+                <child type="prefix">
+                  <object class="GtkImage" id="network_status_icon">
+                    <property name="pixel-size">24</property>
+                    <property name="icon-name">network-wireless-symbolic</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="network_settings_label">
+                    <property name="can-focus">false</property>
+                    <property name="xalign">0</property>
+                    <signal name="activate-link" handler="on_change_network_link_activated_cb" object="GsPrefsDialog" swapped="no" />
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <child>
+              <object class="AdwActionRow" id="schedule_updates_row">
+                <property name="can-focus">false</property>
+                <property name="sensitive" bind-source="switch_updates" bind-property="active" bind-flags="sync-create"/>
+                <property name="activatable-widget">scheduled_updates_switch</property>
+                <property name="title" translatable="true">Scheduled Updates</property>
+                <child>
+                  <object class="GtkSwitch" id="scheduled_updates_switch">
+                    <property name="can-focus">false</property>
+                    <property name="valign">center</property>
+                    <signal name="notify::active" handler="on_scheduled_updates_switch_changed_cb" object="GsPrefsDialog" swapped="no" />
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="AdwPreferencesRow">
+                <property name="visible" bind-source="switch_updates" bind-property="active" bind-flags="sync-create"/>
+                <property name="activatable">false</property>
+                <property name="focusable">false</property>
+                <child>
+                  <object class="GtkRevealer">
+                    <property name="can-focus">false</property>
+                    <property name="transition-type">slide-down</property>
+                    <property name="reveal-child" bind-source="scheduled_updates_switch" bind-property="active"/>
+                    <child>
+                      <object class="GsTariffEditor" id="tariff_editor">
+                        <property name="halign">center</property>
+                        <property name="margin-top">18</property>
+                        <property name="margin-bottom">18</property>
+                        <property name="margin-start">18</property>
+                        <property name="margin-end">18</property>
+                        <signal name="tariff-changed" handler="on_tariff_changed_cb" object="GsPrefsDialog" swapped="no" />
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
