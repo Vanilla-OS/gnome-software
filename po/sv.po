@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-16 17:29+0000\n"
+"PO-Revision-Date: 2023-02-20 18:20+0000\n"
 "Last-Translator: Luna Jernberg <droidbittin@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/sv/>\n"
@@ -280,9 +280,8 @@ msgid "This is the third unstable release for GNOME 43."
 msgstr "Detta är den tredje instabila utgåvan för GNOME 43."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:98
-#, fuzzy
 msgid "Supports video as a screenshot"
-msgstr "Stöder att användas på en liten skärm"
+msgstr "Stöder video som en skärmdump"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:99
 msgid "Improvements of source picker in the details page"
@@ -544,6 +543,8 @@ msgstr "Fixar flera krascher när du hanterar flatpak program"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:169
 msgid "Add ‘Other Apps by Author’ section in the app details page"
 msgstr ""
+"La till sektionen \"Andra program av samma utvecklare\" på sidan med "
+"programdetaljer"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:170
 msgid "Improve styling of app context lozenges"
@@ -554,6 +555,8 @@ msgid ""
 "Add ‘Available for Distro’ section to the overview page (if configured by "
 "your distribution)"
 msgstr ""
+"Lägg till sektionen \"Tillgänglig för din Distro\" på översiktssidan (om det "
+"har konfigurerats av din distribution)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:172
 msgid ""
@@ -738,7 +741,7 @@ msgstr "Tillåt <code>--verbose</code> att vara aktiverad vid körtid"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:309
 msgid "Condense the rows in the age rating context dialog"
-msgstr ""
+msgstr "Kondensera raderna i dialogrutan för åldersklassificeringskontext"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:310
 msgid "Update the UI for ratings and reviews of apps"
@@ -809,7 +812,7 @@ msgstr "Visa bättre systemuppdateringsförlopp"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:353
 msgid "Remove various cultural sensitivity badges"
-msgstr ""
+msgstr "Tog bort olika kulturkänsliga märken"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:354
 msgid "Fix a crash when processing age ratings"
@@ -2731,7 +2734,7 @@ msgstr "Inloggning krävs"
 #: src/gs-details-page.ui:294 src/gs-removal-dialog.ui:17
 #: src/gs-review-dialog.ui:18
 msgid "_Cancel"
-msgstr "A_vbryt"
+msgstr "_Avbryt"
 
 #: src/gs-basic-auth-dialog.ui:35
 msgid "_Login"
