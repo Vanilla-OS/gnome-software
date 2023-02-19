@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-17 22:27+0000\n"
+"PO-Revision-Date: 2023-02-20 18:20+0000\n"
 "Last-Translator: azuki <ipadgoogcloud@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/ja/>\n"
@@ -2639,7 +2639,7 @@ msgstr "ログインが必要です"
 #: src/gs-details-page.ui:294 src/gs-removal-dialog.ui:17
 #: src/gs-review-dialog.ui:18
 msgid "_Cancel"
-msgstr "キャンセル(_C)"
+msgstr "_キャンセル"
 
 #: src/gs-basic-auth-dialog.ui:35
 msgid "_Login"
