@@ -12,13 +12,14 @@
 # Jürgen Benvenuti <gastornis@posteo.org>, 2022.
 # Christian Kirbach <christian.kirbach@gmail.com>, 2015-2022.
 # M00nD3v <matteo.duchs@outlook.com>, 2023.
+# Shirosaka <teht0x1c@outlook.de>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-16 17:28+0000\n"
-"Last-Translator: M00nD3v <matteo.duchs@outlook.com>\n"
+"PO-Revision-Date: 2023-02-21 05:05+0000\n"
+"Last-Translator: Shirosaka <teht0x1c@outlook.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/de/>\n"
 "Language: de\n"
@@ -5604,7 +5605,7 @@ msgstr "Netzwerkeinstellungen"
 #. button in the info bar
 #: src/gs-shell.ui:118
 msgid "Restart Now"
-msgstr "Jetzt neustarten"
+msgstr "Jetzt neu starten"
 
 #. button in the info bar
 #: src/gs-shell.ui:128
