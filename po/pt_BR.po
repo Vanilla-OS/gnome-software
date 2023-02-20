@@ -14,14 +14,14 @@
 # Matheus Barbosa <mdpb.matheus@gmail.com>, 2022.
 # Leônidas Araújo <leorusvellt@hotmail.com>, 2022.
 # Gabriel de Jesus Nogueira Carvalho <bakalhausalgado@proton.me>, 2023.
+# TheAndreLuiz <andreluizgaspar1@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-17 22:27+0000\n"
-"Last-Translator: Gabriel de Jesus Nogueira Carvalho <bakalhausalgado@proton."
-"me>\n"
+"PO-Revision-Date: 2023-02-20 18:20+0000\n"
+"Last-Translator: TheAndreLuiz <andreluizgaspar1@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "vanilla-os/gnome-software/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -3599,7 +3599,7 @@ msgstr "_Relatar um problema"
 
 #: src/gs-details-page.ui:813
 msgid "_Help"
-msgstr "Aj_uda"
+msgstr "_Ajuda"
 
 #. Translators: Button opening a dialog where the users can write and publish their opinions about the apps.
 #: src/gs-details-page.ui:908
