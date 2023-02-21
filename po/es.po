@@ -5,21 +5,22 @@
 # Daniel Mustieles <daniel.mustieles@gmail.com>, 2013-2021.
 # germe <FOSSgerme.deb@tuta.io>, 2021.
 # Daniel Mustieles García <daniel.mustieles@gmail.com>, 2021-2022.
-#
+# Juan <benitesjn@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2022-09-05 14:30+0200\n"
-"Last-Translator: Daniel Mustieles García <daniel.mustieles@gmail.com>\n"
-"Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
-"Language: es_ES\n"
+"PO-Revision-Date: 2023-02-22 05:29+0000\n"
+"Last-Translator: Juan <benitesjn@gmail.com>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/vanilla-os/"
+"gnome-software/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Gtranslator 42.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -74,7 +75,7 @@ msgstr "Los detalles de la actualización"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:71
 msgid "This is a stable release with translation updates:"
-msgstr ""
+msgstr "Esta es una versión estable con actualizaciones de traducción:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:73
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:197
@@ -1039,9 +1040,8 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:568
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:593
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:636
-#, fuzzy
 msgid "Translation updates:"
-msgstr "Traducciones"
+msgstr "Actualizaciones de traducción:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:570
 msgid "British English"
@@ -1859,7 +1859,7 @@ msgstr "No hay información sobre referencias a drogas ilegales"
 #: src/gs-age-rating-context-dialog.c:496
 msgid ""
 "Does not include swearing, profanity, and other kinds of strong language"
-msgstr "No incluye palabrotas, blasfemias y otros tipos de lenguaje fuerte."
+msgstr "No incluye insultos, blasfemias y otros tipos de lenguaje fuerte"
 
 #: src/gs-age-rating-context-dialog.c:498
 msgid "Does not include ads or monetary transactions"
@@ -2285,7 +2285,7 @@ msgstr "Tamaño instalado"
 #: src/gs-app-context-bar.c:165
 #, c-format
 msgid "Includes %s of data and %s of cache"
-msgstr "Incluye %s de datos y %s de caché."
+msgstr "Incluye %s de datos y %s de caché"
 
 #: src/gs-app-context-bar.c:168
 #, c-format
@@ -3619,7 +3619,7 @@ msgstr[1] "Tipografías disponibles para los scripts %s"
 msgid "Available software for %s"
 msgid_plural "Available software for %s"
 msgstr[0] "Software disponible para %s"
-msgstr[1] "Software disponible para %s"
+msgstr[1] "Software disponibles para %s"
 
 #: src/gs-extras-page.c:242
 msgid "Requested software not found"
@@ -4147,9 +4147,16 @@ msgid ""
 "Alternatively, if the current network has been in­correctly identified as "
 "being metered, this setting can be changed."
 msgstr ""
-"La red actual está medida. Este tipo de conexiones tienen limitaciones de "
-"datos o cargos asociados. Para ahorrar datos se han pausado las "
-"actualizaciones automáticas."
+"La red actual se mide. Las conexiones medidas tienen límites de datos o "
+"cargos asociados con ellas. Por lo tanto, para ahorrar datos, se han pausado "
+"las actualizaciones automáticas.\n"
+"\n"
+"Las actualizaciones automáticas se reanudarán cuando una red sin medidor "
+"esté disponible. Hasta entonces, todavía es posible instalar actualizaciones "
+"manualmente.\n"
+"\n"
+"Alternativamente, si la red actual se ha identificado incorrectamente como "
+"medida, esta configuración se puede cambiar."
 
 #: src/gs-metered-data-dialog.ui:17
 msgid "Open Network _Settings"
@@ -4310,7 +4317,7 @@ msgstr ""
 
 #: src/gs-prefs-dialog.ui:19
 msgid "Automatic Updates"
-msgstr "Actualizaciones automáticas"
+msgstr "Actualizaciones automáticas"
 
 #: src/gs-prefs-dialog.ui:20
 msgid ""
@@ -5125,7 +5132,7 @@ msgstr "No se puede instalar %s: la aplicación no tiene un formato válido"
 #: src/gs-shell.c:1412
 #, c-format
 msgid "Unable to install %s: not enough disk space"
-msgstr "No se puede instalar %s: no hay suficiente espacio en disco."
+msgstr "No se puede instalar %s: no hay suficiente espacio en disco"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1418
@@ -5182,7 +5189,7 @@ msgstr "No se puede actualizar %s desde %s ya que ha fallado la descarga"
 #: src/gs-shell.c:1504
 #, c-format
 msgid "Unable to update %s as download failed"
-msgstr "No se puede actualizar %s "
+msgstr "No se puede actualizar %s porque la descarga falló"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the origin, e.g. "Fedora" or
@@ -5213,15 +5220,15 @@ msgstr ""
 #: src/gs-shell.c:1529
 #, c-format
 msgid "Unable to update %s: not enough disk space"
-msgstr "No se puede actualizar %s: no hay suficiente espacio en disco."
+msgstr "No se puede actualizar %s: no hay suficiente espacio en disco"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1534
 #, c-format
 msgid "Unable to install updates: not enough disk space"
 msgstr ""
-"No se pueden instalar las actualizaciones ya que no hay suficiente espacio "
-"en disco."
+"No se pueden instalar las actualizaciones, ya que no hay suficiente espacio "
+"en disco"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
@@ -5441,7 +5448,7 @@ msgstr "No se puede lanzar %s: %s no está instalado"
 msgid "Not enough disk space — free up some space and try again"
 msgstr ""
 "No hay suficiente espacio en disco. Libere algo de espacio e inténtelo de "
-"nuevo."
+"nuevo"
 
 #. TRANSLATORS: we failed to get a proper error code
 #: src/gs-shell.c:1850 src/gs-shell.c:1898 src/gs-shell.c:1936
@@ -5732,7 +5739,7 @@ msgstr "Actualizaciones del sistema operativo no disponibles"
 #. TRANSLATORS: this is the message dialog for the distro EOL notice
 #: src/gs-update-monitor.c:673
 msgid "Upgrade to continue receiving security updates."
-msgstr "Suba de versión para seguir recibiendo actualizaciones de seguridad"
+msgstr "Suba de versión para seguir recibiendo actualizaciones de seguridad."
 
 #. TRANSLATORS: this is a distro upgrade, the replacement would be the
 #. * distro name, e.g. 'Fedora'
@@ -5771,7 +5778,7 @@ msgstr "Actualización del sistema completa"
 #: src/gs-update-monitor.c:1167
 #, c-format
 msgid "Welcome to %s %s!"
-msgstr "Bienvenido/a %s %s"
+msgstr "¡Bienvenido/a %s %s!"
 
 #. TRANSLATORS: title when we've done offline updates
 #: src/gs-update-monitor.c:1173
@@ -6011,7 +6018,7 @@ msgstr "Firmware del dispositivo"
 #: src/gs-updates-section.ui:33 src/gs-upgrade-banner.ui:72
 #: plugins/packagekit/gs-packagekit-task.c:155
 msgid "_Download"
-msgstr "_Descargar…"
+msgstr "_Descargar"
 
 #. TRANSLATORS: This is the text displayed when a distro
 #. * upgrade is available. The first %s is the distro name
@@ -6132,7 +6139,7 @@ msgstr "Descargando información de actualizaciones…"
 msgid ""
 "Upgrade for the latest features, performance and stability improvements."
 msgstr ""
-"Actualización de las las últimas características y mejoras de rendimiento y "
+"Actualización de las últimas características y mejoras de rendimiento y "
 "estabilidad."
 
 #: plugins/flatpak/org.gnome.Software.Plugin.Flatpak.metainfo.xml.in:6
