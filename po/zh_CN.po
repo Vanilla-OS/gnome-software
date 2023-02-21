@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: gnome-software 41\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-20 18:20+0000\n"
+"PO-Revision-Date: 2023-02-21 05:05+0000\n"
 "Last-Translator: lakejason0 <sunliyuan200402@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "vanilla-os/gnome-software/zh_Hans/>\n"
@@ -2642,7 +2642,7 @@ msgstr "需要登录"
 #: src/gs-details-page.ui:294 src/gs-removal-dialog.ui:17
 #: src/gs-review-dialog.ui:18
 msgid "_Cancel"
-msgstr "_取消"
+msgstr "取消(_C)"
 
 #: src/gs-basic-auth-dialog.ui:35
 msgid "_Login"
