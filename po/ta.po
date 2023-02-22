@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: gnome-software\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-20 18:20+0000\n"
+"PO-Revision-Date: 2023-02-22 05:29+0000\n"
 "Last-Translator: \"K.B.Dharun Krishna\" <kbdharunkrishna@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/ta/>\n"
@@ -2502,7 +2502,7 @@ msgstr "ரத்துசெய்"
 #. TRANSLATORS: update the fw
 #: src/gs-app-row.c:175 src/gs-common.c:286 src/gs-page.c:374
 msgid "Install"
-msgstr ""
+msgstr "நிறுவு"
 
 #. TRANSLATORS: this is a button in the updates panel
 #. * that allows the app to be easily updated live
@@ -3122,7 +3122,7 @@ msgstr ""
 
 #: src/gs-common.c:509 src/gs-safety-context-dialog.ui:72
 msgid "Details"
-msgstr ""
+msgstr "விவரங்கள்"
 
 #. Translators: an accept button label, in a Cancel/Accept dialog
 #: src/gs-common.c:600
@@ -3381,7 +3381,7 @@ msgstr ""
 
 #: src/gs-details-page.ui:257 plugins/packagekit/gs-packagekit-task.c:160
 msgid "_Update"
-msgstr ""
+msgstr "மேம்படுத்துக (_U)"
 
 #: src/gs-details-page.ui:319
 msgid "Downloading"
