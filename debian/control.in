@@ -53,6 +53,8 @@ Depends: appstream,
          gsettings-desktop-schemas (>= 3.18),
          libgtk3-perl,
          packagekit (>= 1.1.11),
+         gnome-software-plugin-vanilla,
+         vanilla-os-meta-appstream,
          ${misc:Depends},
          ${shlibs:Depends}
 Conflicts: sessioninstaller

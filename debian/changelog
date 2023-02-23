@@ -1,3 +1,9 @@
+gnome-software (43.0-vanilla8) kinetic; urgency=medium
+
+  * Add vanilla deps
+
+ -- Muqtadir <muqtadir5555@gmail.com>  Thu, 23 Feb 2023 22:08:34 +0530
+
 gnome-software (43.0-vanilla7) kinetic; urgency=medium
 
   * Add swcatalog file previously missed
