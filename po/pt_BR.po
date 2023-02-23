@@ -16,13 +16,14 @@
 # Gabriel de Jesus Nogueira Carvalho <bakalhausalgado@proton.me>, 2023.
 # TheAndreLuiz <andreluizgaspar1@gmail.com>, 2023.
 # Felipe Nogueira <contato.fnog@gmail.com>, 2023.
+# Adtora Slonic <adtoraslonic@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
 "PO-Revision-Date: 2023-02-26 01:03+0000\n"
-"Last-Translator: Felipe Nogueira <contato.fnog@gmail.com>\n"
+"Last-Translator: Adtora Slonic <adtoraslonic@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "vanilla-os/gnome-software/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -4335,7 +4336,7 @@ msgstr ""
 
 #: src/gs-prefs-dialog.ui:19
 msgid "Automatic Updates"
-msgstr "Atualizações automáticas"
+msgstr "Atualizações Automáticas"
 
 #: src/gs-prefs-dialog.ui:20
 msgid ""
