@@ -12,13 +12,14 @@
 # Charles Monzat <charles.monzat@free.fr>, 2018-2022.
 # Alexandre Franke <afranke@gnome.org>, 2022.
 # Thual LABART--BARNAGAUD <tlabartbarnagaud@protonmail.com>, 2023.
+# Cequal <adityaojha@outlook.in>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-16 17:28+0000\n"
-"Last-Translator: Thual LABART--BARNAGAUD <tlabartbarnagaud@protonmail.com>\n"
+"PO-Revision-Date: 2023-02-26 01:03+0000\n"
+"Last-Translator: Cequal <adityaojha@outlook.in>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/fr/>\n"
 "Language: fr\n"
@@ -5596,8 +5597,9 @@ msgstr "Paramètres réseau"
 
 #. button in the info bar
 #: src/gs-shell.ui:118
+#, fuzzy
 msgid "Restart Now"
-msgstr "Redémarrer maintenant"
+msgstr "Maintenant Recommencer"
 
 #. button in the info bar
 #: src/gs-shell.ui:128
