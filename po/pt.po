@@ -8,21 +8,22 @@
 # Juliano de Souza Camargo <julianosc@pm.me>, 2020.
 # Hugo Carvalho <hugokarvalho@hotmail.com, 2020, 2021, 2022.
 # André Cerqueira <acerqueira021@gmail.com>, 2021.
-#
+# Adtora Slonic <adtoraslonic@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2022-08-28 14:04+0100\n"
-"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
-"Language-Team: Portuguese <https://l10n.gnome.org/teams/pt/>\n"
+"PO-Revision-Date: 2023-02-26 01:03+0000\n"
+"Last-Translator: Adtora Slonic <adtoraslonic@gmail.com>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/vanilla-os/"
+"gnome-software/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.16-dev\n"
 "X-DamnedLies-Scope: partial\n"
 "X-Project-Style: gnome\n"
 "X-DL-Team: pt\n"
@@ -1048,9 +1049,8 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:568
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:593
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:636
-#, fuzzy
 msgid "Translation updates:"
-msgstr "Traduções"
+msgstr "Novidades de tradução:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:570
 msgid "British English"
@@ -1256,9 +1256,8 @@ msgid "Support updating flatpaks to their new name when they are renamed"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:678
-#, fuzzy
 msgid "Update the GNOME Software icon"
-msgstr "Atualizar software não assinado?"
+msgstr "Atualizar o ícone da GNOME Software"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:679
 msgid "Support more search results in the snap store"
@@ -2340,7 +2339,7 @@ msgstr ""
 #: src/gs-app-context-bar.c:198
 #, c-format
 msgid "Needs %s of additional system downloads"
-msgstr "Necessita de %s de transferências adicionais do sistema"
+msgstr "Necessário %s de transferências adicionais do sistema"
 
 #. Translators: Displayed if the download or installed size of
 #. * an app could not be determined.
@@ -4131,8 +4130,7 @@ msgid ""
 msgstr ""
 "Este software não é desenvolvido abertamente, por isso apenas os seus "
 "programadores sabem como ele funciona. Pode ser inseguro em maneiras "
-"difíceis de detetar e pode\n"
-"alterar sem supervisão.\n"
+"difíceis de detetar e pode alterar sem supervisão.\n"
 "\n"
 "Poderá não ser possível contribuir para este software."
 
