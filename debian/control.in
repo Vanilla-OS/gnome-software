@@ -107,7 +107,7 @@ Package: gnome-software-plugin-vanilla
 Architecture: amd64 arm64 armel armhf i386 mipsel mips64el ppc64el s390x hppa powerpc ppc64 riscv64 x32
 Depends: apx,
 	 vanilla-system-operator,
-         gnome-software (= ${binary:Version}),
+         gnome-software (>= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Description: Vanilla (Apx and VSO) support for GNOME Software
