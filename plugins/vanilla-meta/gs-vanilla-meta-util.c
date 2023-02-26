@@ -46,15 +46,18 @@ gs_vanilla_meta_run_subprocess(const gchar *cmd,
                                GError **error)
 {
     SubprocessOutput *output;
-    output = malloc(sizeof(SubprocessOutput));
-
     g_autoptr(GSubprocess) subprocess = NULL;
+    g_autoptr(GError) local_error     = NULL;
     GInputStream *input_stream;
 
-    subprocess = g_subprocess_new(G_SUBPROCESS_FLAGS_STDOUT_PIPE, error, "sh", "-c", cmd, NULL);
+    output = malloc(sizeof(SubprocessOutput));
 
-    if (subprocess == NULL)
+    subprocess = g_subprocess_new(flags, &local_error, "sh", "-c", cmd, NULL);
+    if (local_error != NULL || subprocess == NULL) {
+        *error = g_error_new (GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_FAILED,
+                              "Failed to execute subprocess with command: %s", cmd);
         return NULL;
+    }
     if (!g_subprocess_wait(subprocess, cancellable, error))
         return NULL;
 
@@ -83,6 +86,8 @@ apx_container_name_to_alias(const gchar *container)
         return "ZYPPER";
     } else if (!g_strcmp0(container, "apx_managed_xbps")) {
         return "XBPS";
+    } else if (!g_strcmp0(container, "apx_nix")) {
+        return "NIX";
     } else {
         return "";
     }

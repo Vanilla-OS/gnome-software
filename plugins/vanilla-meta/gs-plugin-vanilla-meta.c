@@ -163,6 +163,7 @@ refresh_plugin_cache(GsPluginVanillaMeta *self, GCancellable *cancellable, GErro
     g_autofree gchar *xpath         = NULL;
     g_autoptr(GPtrArray) components = NULL;
     g_autoptr(GError) local_error   = NULL;
+    g_autoptr(GsApp) app            = NULL;
     GsPluginRefineFlags refine_flags;
 
     g_mutex_lock(&self->silo_mutex);
@@ -179,7 +180,7 @@ refresh_plugin_cache(GsPluginVanillaMeta *self, GCancellable *cancellable, GErro
         XbNode *node = components->pdata[i];
         g_debug("Ensure: %s", xb_node_get_text(node));
 
-        g_autoptr(GsApp) app = gs_plugin_cache_lookup(GS_PLUGIN(self), xb_node_get_text(node));
+        app = gs_plugin_cache_lookup(GS_PLUGIN(self), xb_node_get_text(node));
         if (app == NULL) {
             app = gs_app_new(xb_node_get_text(node));
             gs_app_set_management_plugin(app, GS_PLUGIN(self));
@@ -397,10 +398,11 @@ gs_plugin_launch(GsPlugin *plugin, GsApp *app, GCancellable *cancellable, GError
 gboolean
 gs_plugin_app_install(GsPlugin *plugin, GsApp *app, GCancellable *cancellable, GError **error)
 {
-    const gchar *package_name       = NULL;
-    const gchar *container_flag     = NULL;
-    const gchar *app_container_name = gs_app_get_metadata_item(app, "Vanilla::container");
-    SubprocessOutput *output        = NULL;
+    g_autofree const gchar *container_flag = NULL;
+    g_autofree const gchar *install_cmd    = NULL;
+    const gchar *app_container_name        = gs_app_get_metadata_item(app, "Vanilla::container");
+    const gchar *package_name              = NULL;
+    SubprocessOutput *output               = NULL;
 
     // Only process this app if was created by this plugin
     if (!gs_app_has_management_plugin(app, plugin))
@@ -428,6 +430,7 @@ gs_plugin_app_install(GsPlugin *plugin, GsApp *app, GCancellable *cancellable, G
 
         // If we have a valid output
         if (success && ls_out->len > 0) {
+            gboolean container_installed = FALSE;
             // NUL-terminate the array, to use it as a string
             g_byte_array_append(ls_out, (const guint8 *)"", 1);
 
@@ -441,7 +444,6 @@ gs_plugin_app_install(GsPlugin *plugin, GsApp *app, GCancellable *cancellable, G
                 return FALSE;
             }
 
-            gboolean container_installed = FALSE;
             for (guint i = 0; i < g_strv_length(splits); i++) {
                 if (g_strcmp0(splits[i], app_container_name) == 0) {
                     // Container is installed, nothing to do for now
@@ -453,11 +455,11 @@ gs_plugin_app_install(GsPlugin *plugin, GsApp *app, GCancellable *cancellable, G
 
             // Initialize container
             if (!container_installed) {
+                g_autofree const gchar *init_cmd = g_strdup_printf("apx %s init", container_flag);
                 g_debug("Install: Running init for container %s", app_container_name);
 
                 container_flag = apx_container_flag_from_name(app_container_name);
 
-                const gchar *init_cmd = g_strdup_printf("apx %s init", container_flag);
                 gs_vanilla_meta_run_subprocess(init_cmd, G_SUBPROCESS_FLAGS_STDOUT_SILENCE,
                                                cancellable, error);
             }
@@ -479,7 +481,7 @@ gs_plugin_app_install(GsPlugin *plugin, GsApp *app, GCancellable *cancellable, G
     g_debug("Installing app %s, using container flag `%s` and package name `%s`",
             gs_app_get_name(app), container_flag, package_name);
 
-    const gchar *install_cmd = g_strdup_printf("apx %s install -y %s", container_flag, package_name);
+    install_cmd = g_strdup_printf("apx %s install -y %s", container_flag, package_name);
 
     output = gs_vanilla_meta_run_subprocess(install_cmd, G_SUBPROCESS_FLAGS_STDOUT_SILENCE,
                                             cancellable, error);
@@ -497,9 +499,11 @@ gs_plugin_app_install(GsPlugin *plugin, GsApp *app, GCancellable *cancellable, G
 gboolean
 gs_plugin_app_remove(GsPlugin *plugin, GsApp *app, GCancellable *cancellable, GError **error)
 {
-    const gchar *package_name       = NULL;
-    const gchar *container_flag     = NULL;
-    const gchar *app_container_name = gs_app_get_metadata_item(app, "Vanilla::container");
+    g_autofree const gchar *container_flag = NULL;
+    g_autofree const gchar *remove_cmd     = NULL;
+    SubprocessOutput *output               = NULL;
+    const gchar *package_name              = NULL;
+    const gchar *app_container_name        = gs_app_get_metadata_item(app, "Vanilla::container");
 
     // Only process this app if was created by this plugin
     if (!gs_app_has_management_plugin(app, plugin))
@@ -513,10 +517,10 @@ gs_plugin_app_remove(GsPlugin *plugin, GsApp *app, GCancellable *cancellable, GE
         return FALSE;
     }
 
-    const gchar *remove_cmd = g_strdup_printf("apx %s remove -y %s", container_flag, package_name);
+    remove_cmd = g_strdup_printf("apx %s remove -y %s", container_flag, package_name);
 
-    SubprocessOutput *output = gs_vanilla_meta_run_subprocess(
-        remove_cmd, G_SUBPROCESS_FLAGS_STDOUT_SILENCE, cancellable, error);
+    output = gs_vanilla_meta_run_subprocess(remove_cmd, G_SUBPROCESS_FLAGS_STDOUT_SILENCE,
+                                            cancellable, error);
 
     if (output->input_stream != NULL) {
         gs_app_set_state(app, GS_APP_STATE_AVAILABLE);
@@ -718,7 +722,6 @@ refine_thread_cb(GTask *task, gpointer source_object, gpointer task_data, GCance
 
     for (guint i = 0; i < gs_app_list_length(data->list); i++) {
         GsApp *app               = gs_app_list_index(data->list, i);
-        GsPluginRefineData *data = task_data;
 
         if (g_strcmp0(gs_app_get_origin(app), "vanilla_meta"))
             continue;
