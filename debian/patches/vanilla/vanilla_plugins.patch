@@ -87,7 +87,7 @@ Author: Mateus Melchiades <matbme@duck.com>
 +                             gpointer task_data,
 +                             GCancellable *cancellable);
 +
-+const gchar *gz_metadata_filename   = "/usr/share/swcatalog/xml/vanillaos-kinetic-main.xml.gz";
++const gchar *gz_metadata_filename   = "/usr/share/swcatalog/xml/vanillaos-lunar-main.xml.gz";
 +const gchar *metadata_silo_filename = ".cache/vanilla_meta/metadata.xmlb";
 +
 +struct _GsPluginVanillaMeta {

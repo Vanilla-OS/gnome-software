@@ -1,3 +1,9 @@
+gnome-software (43.0-vanilla9) lunar; urgency=medium
+
+  * Add vanilla deps
+
+ -- Mirko Brombin <send@mirko.pm>  Thu, 23 Feb 2023 22:08:34 +0530
+
 gnome-software (43.0-vanilla8) kinetic; urgency=medium
 
   * Add vanilla deps
