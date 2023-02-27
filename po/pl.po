@@ -5,13 +5,14 @@
 # Aviary.pl <community-poland@mozilla.org>, 2012-2022.
 # gnu-ewm <gnu.ewm@protonmail.com>, 2023.
 # poti225 <fila.tomasz225@gmail.com>, 2023.
+# Kuba Bazan <kubabazan27@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-21 05:05+0000\n"
-"Last-Translator: poti225 <fila.tomasz225@gmail.com>\n"
+"PO-Revision-Date: 2023-02-27 11:38+0000\n"
+"Last-Translator: Kuba Bazan <kubabazan27@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/pl/>\n"
 "Language: pl\n"
@@ -74,7 +75,6 @@ msgid "The update details"
 msgstr "Informacje o aktualizacji"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:71
-#, fuzzy
 msgid "This is a stable release with translation updates:"
 msgstr "To jest stabilna wersja z aktualizacjami tłumaczeń:"
 
@@ -276,7 +276,7 @@ msgstr "Szwedzki"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:96
 msgid "This is the third unstable release for GNOME 43."
-msgstr ""
+msgstr "To trzecie niestabilne wydanie GNOME 43."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:98
 #, fuzzy
@@ -288,12 +288,10 @@ msgid "Improvements of source picker in the details page"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:100
-#, fuzzy
 msgid "Fixes a bug when viewing details of a package file"
 msgstr "Naprawia błąd podczas przeglądania szczegółów pliku pakietu"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:101
-#, fuzzy
 msgid "Fixes a bug when reading certain .flatpakref file"
 msgstr "Naprawia błąd podczas czytania pewnego pliku .flatpakref"
 
@@ -1040,9 +1038,8 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:568
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:593
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:636
-#, fuzzy
 msgid "Translation updates:"
-msgstr "Tłumaczenia"
+msgstr "Aktualizacje tłumaczeń:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:570
 msgid "British English"
@@ -2129,7 +2126,7 @@ msgstr "Wstecz"
 
 #: src/gs-app-details-page.ui:48 src/gs-app-row.c:516
 msgid "Requires additional permissions"
-msgstr "Wymaga dodatkowych uprawnień."
+msgstr "Wymaga dodatkowych uprawnień"
 
 #. Translators: Header of the section with other users' opinions about the app.
 #: src/gs-app-reviews-dialog.ui:6 src/gs-details-page.ui:855
@@ -2257,6 +2254,7 @@ msgid "Copyright © 2016–2022 GNOME Software contributors"
 msgstr "Copyright © 2016-2022 współtwórcy Menedżera oprogramowania GNOME"
 
 #: src/gs-application.c:263 src/gs-application.c:272
+#, fuzzy
 msgid "translator-credits"
 msgstr ""
 "Piotr Drąg <piotrdrag@gmail.com>, 2012-2022\n"
@@ -3612,7 +3610,7 @@ msgstr "Pobieranie dodatkowych plików metadanych…"
 #. TRANSLATORS: separator for a list of items
 #: src/gs-extras-page.c:142
 msgid " and "
-msgstr " i "
+msgstr " . i. "
 
 #. TRANSLATORS: separator for a list of items
 #: src/gs-extras-page.c:145
