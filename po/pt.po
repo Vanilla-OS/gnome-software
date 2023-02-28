@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-28 11:24+0000\n"
+"PO-Revision-Date: 2023-02-28 19:27+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/pt/>\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 4.16-rc\n"
 "X-DamnedLies-Scope: partial\n"
 "X-Project-Style: gnome\n"
 "X-DL-Team: pt\n"
@@ -321,7 +321,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:105
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:143
 msgid "Abkhazian"
-msgstr ""
+msgstr "Abecásio"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:106
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:196
@@ -334,7 +334,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:595
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:684
 msgid "Basque"
-msgstr ""
+msgstr "Basco"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:108
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:145
@@ -347,7 +347,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:458
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:532
 msgid "Chinese (China)"
-msgstr ""
+msgstr "Chinês (China)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:109
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:201
@@ -357,7 +357,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:460
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:597
 msgid "Croatian"
-msgstr ""
+msgstr "Croata"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:110
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:203
@@ -366,7 +366,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:422
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:571
 msgid "Danish"
-msgstr ""
+msgstr "Dinamarquês"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:111
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:146
@@ -376,7 +376,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:535
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:599
 msgid "Dutch"
-msgstr ""
+msgstr "Neerlandês"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:112
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:206
@@ -386,7 +386,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:537
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:601
 msgid "Finnish"
-msgstr ""
+msgstr "Finlandês"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:117
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:149
@@ -400,7 +400,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:641
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:694
 msgid "Indonesian"
-msgstr ""
+msgstr "Indonésio"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:118
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:291
@@ -408,7 +408,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:466
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:609
 msgid "Korean"
-msgstr ""
+msgstr "Coreano"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:120
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:152
@@ -421,9 +421,8 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:546
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:611
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:700
-#, fuzzy
 msgid "Persian"
-msgstr "Versão"
+msgstr "Persa"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:121
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:219
@@ -431,9 +430,8 @@ msgstr "Versão"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:433
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:547
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:575
-#, fuzzy
 msgid "Polish"
-msgstr "Política"
+msgstr "Polaco"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:122
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:153
@@ -475,7 +473,7 @@ msgstr "Português (Brasil)"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:437
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:551
 msgid "Russian"
-msgstr ""
+msgstr "Russo"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:127
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:157
@@ -485,7 +483,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:619
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:706
 msgid "Turkish"
-msgstr ""
+msgstr "Turco"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:128
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:158
@@ -500,7 +498,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:620
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:707
 msgid "Ukrainian"
-msgstr ""
+msgstr "Ucraniano"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:134
 msgid "This is the second unstable release for GNOME 43."
@@ -529,14 +527,14 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:573
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:695
 msgid "Italian"
-msgstr ""
+msgstr "Italiano"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:159
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:229
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:399
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:708
 msgid "Vietnamese"
-msgstr ""
+msgstr "Vietnamita"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:165
 msgid "This is the first unstable release for GNOME 43."
@@ -632,7 +630,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:425
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:602
 msgid "French"
-msgstr ""
+msgstr "Francês"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:208
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:287
@@ -642,7 +640,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:603
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:689
 msgid "Friulian"
-msgstr ""
+msgstr "Friuliano"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:217
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:256
@@ -674,14 +672,14 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:253
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:334
 msgid "Japanese"
-msgstr ""
+msgstr "Japonês"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:254
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:465
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:608
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:697
 msgid "Kazakh"
-msgstr ""
+msgstr "Kazakh"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:268
 msgid "This is the third unstable release for GNOME 42."
@@ -715,9 +713,8 @@ msgid ""
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:276
-#, fuzzy
 msgid "Update some icons"
-msgstr "Detalhes da atualização"
+msgstr "Atualização de alguns ícones"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:277
 msgid ""
@@ -763,9 +760,8 @@ msgid "Several more threading improvements"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:316
-#, fuzzy
 msgid "Icon updates"
-msgstr "Procurar atualizações"
+msgstr "Atualizações de ícones"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:317
 msgid "Drop the hardcoded-popular plugin in favour of an appstream file"
@@ -806,10 +802,11 @@ msgid "Fix a crash when processing age ratings"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:355
-#, fuzzy
 msgid ""
 "Reload application details only when not installing/removing the application"
-msgstr "Mostrar detalhes da aplicação (utilizando o ID da aplicação)"
+msgstr ""
+"Recarregar detalhes da aplicação apenas quando não instalar/remover a "
+"aplicação"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:356
 msgid "Do not follow symlinks when calculating disk size usage"
@@ -843,9 +840,8 @@ msgid "Fix translation of main button on updates page"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:363
-#, fuzzy
 msgid "Fix codec installation process"
-msgstr "O utilizador recusou a instalação"
+msgstr "Corrige o processo de instalação do codec"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:364
 msgid "Add new GNOME Circle apps to the featured carousel"
@@ -869,12 +865,12 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:491
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:529
 msgid "Belarusian"
-msgstr ""
+msgstr "Bielorrusso"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:393
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:704
 msgid "Slovak"
-msgstr ""
+msgstr "Eslovaco"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:407
 msgid ""
@@ -920,7 +916,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:614
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:703
 msgid "Romanian"
-msgstr ""
+msgstr "Romeno"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:447
 msgid "This is the third unstable release for GNOME 41."
@@ -1053,19 +1049,19 @@ msgstr "Novidades de tradução:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:570
 msgid "British English"
-msgstr ""
+msgstr "Inglês britânico"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:572
 msgid "Greek"
-msgstr ""
+msgstr "Grego"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:574
 msgid "Norwegian Bokmål"
-msgstr ""
+msgstr "Norueguês Bokmål"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:576
 msgid "Punjabi"
-msgstr ""
+msgstr "Punjabi"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:583
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:626
@@ -1199,11 +1195,10 @@ msgid "Rework timing and content of software update notifications"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:665
-#, fuzzy
 msgid ""
 "Prevent uninstalled local apps from appearing in the installed apps list"
 msgstr ""
-"Ver o tamanho ocupado pelas aplicações instalada na lista de aplicações "
+"Impedir que aplicações locais desinstaladas apareçam na lista de aplicações "
 "instaladas"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:666
@@ -1269,7 +1264,7 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:696
 msgid "Kabyle"
-msgstr ""
+msgstr "Kabyle"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:2043
 #: src/gs-application.c:256
@@ -2270,12 +2265,7 @@ msgstr "Direitos de autor © 2016-2022 Colaboradores do GNOME Software"
 
 #: src/gs-application.c:263 src/gs-application.c:272
 msgid "translator-credits"
-msgstr ""
-"Hugo Carvalho <hugokarvalho@hotmail.com>\n"
-"Tiago Santos <tiagofsantos81@sapo.pt>\n"
-"Pedro Albuquerque <palbuquerque73@gmail.com>\n"
-"João Nuno Matos <joaonmatos@gmail.com>\n"
-"Juliano de Souza Camargo <julianosc@pm.me>"
+msgstr "Hugo Carvalho <hugokarvalho@hotmail.com>"
 
 #. TRANSLATORS: this is the title of the about window
 #. TRANSLATORS: this is the menu item that opens the about window
@@ -5535,7 +5525,7 @@ msgstr "Definições de rede"
 #. button in the info bar
 #: src/gs-shell.ui:118
 msgid "Restart Now"
-msgstr "Reiniciar"
+msgstr "Reiniciar agora"
 
 #. button in the info bar
 #: src/gs-shell.ui:128
@@ -6542,9 +6532,8 @@ msgstr "Um snap é um pacote universal para Linux"
 #. TRANSLATORS: this is to inform that the package is part of
 #. * the BASE system
 #: plugins/vso/gs-plugin-vso.c:114
-#, fuzzy
 msgid "base"
-msgstr "Base de dados"
+msgstr "base"
 
 #: plugins/vso/gs-plugin-vso.c:240
 msgid ""
@@ -6565,7 +6554,7 @@ msgstr ""
 #. * not the remote title
 #: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:249
 msgid "Apps"
-msgstr ""
+msgstr "Aplicações"
 
 #: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:251
 msgid ""
