@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-22 05:29+0000\n"
+"PO-Revision-Date: 2023-02-28 11:24+0000\n"
 "Last-Translator: Benjamin Kőhidi <benstone326@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/hu/>\n"
@@ -862,14 +862,15 @@ msgstr "Nem javasolja az újraindítást, ha a firmware-frissítések sikertelen
 msgid ""
 "Fix flathub repo being considered present on Fedora 35 with filtered flathub"
 msgstr ""
+"Flathub repo kijavítása a jelenleginek tekintett Fedora 35 szűrt flathubjában"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:361
 msgid "Allow searching for extensions"
-msgstr ""
+msgstr "Bővítmények keresésének engedélyazése"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:362
 msgid "Fix translation of main button on updates page"
-msgstr ""
+msgstr "A fő gomb fordításának javítása a frissítések oldalon"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:363
 msgid "Fix codec installation process"
@@ -877,21 +878,24 @@ msgstr "Kodek telepítési folyamatának javítása"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:364
 msgid "Add new GNOME Circle apps to the featured carousel"
-msgstr ""
+msgstr "Új GNOME Circle alkalmazások hozzáadása a kiemelt képkörhintához"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:365
 msgid "Improve metadata support for snaps"
-msgstr ""
+msgstr "A snapek metaadat-támogatásának javítása"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:366
 msgid "Fix update checks being missed across suspend/hibernation"
 msgstr ""
+"A felfüggesztés/hibernálás során kimaradt frissítési ellenőrzések javítása"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:367
 msgid ""
 "Ensure application lists are updated when repositories are enabled/installed "
 "or disabled/removed"
 msgstr ""
+"Megbizonyosodik az alkalmazáslisták frissítéséről, amikor a tárolókat engedé"
+"lyezik/telepítik vagy letiltják/eltávolítják"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:372
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:491
@@ -909,22 +913,30 @@ msgid ""
 "Instead of showing all package-based apps as \"potentially unsafe\", only "
 "use that language for 3rd party ones"
 msgstr ""
+"Ahelyett, hogy minden csomagalapú alkalmazást \"potenciálisan nem "
+"biztonságos\"-ként jelenítene meg, csak a harmadik féltől származó "
+"alkalmazások esetében használja ezt"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:408
 msgid ""
 "Fix a bug where the \"Show more\" button on an app details page would "
 "flicker when the window is resized"
 msgstr ""
+"Olyan hiba javítása, amelynek következtében az alkalmazás részleteit "
+"tartalmazó oldalon a \"Még több megjelenítése\" gomb villogott, amikor az "
+"ablakot átméretezték"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:409
 msgid ""
 "Fix a bug where Software sometimes shows an Uninstall button after "
 "uninstalling something"
 msgstr ""
+"Egy olyan hiba javítása, amikor a szoftver néha megjelenít egy Eltávolítás "
+"gombot, miután eltávolított valamit"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:410
 msgid "Add GNOME Circle apps to the featured carousel"
-msgstr ""
+msgstr "GNOME Circle alkalmazások hozzáadása a kiemelt képkörhintához"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:411
 msgid ""
@@ -932,16 +944,23 @@ msgid ""
 "operation for PackageKit software rather than showing a PolicyKit password "
 "prompt"
 msgstr ""
+"Olyan hiba javítása, amikor a szoftver néha nem tudta végrehajtani a "
+"PackageKit szoftverek telepítési/eltávolítási műveletét, ahelyett, hogy a "
+"PolicyKit jelszókérőt jelenítette volna meg"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:412
 msgid ""
 "Fix a bug where Software would fail to upgrade the distribution via "
 "PackageKit"
 msgstr ""
+"Olyan hiba javítása, amikor a szoftver nem tudta frissíteni a disztribúciót "
+"a PackageKit-en keresztül"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:413
 msgid "Fix the hiding of rows on the Updates tab after they have been updated"
 msgstr ""
+"A sorok elrejtésének javítása a Frissítések lapon, miután frissítésre "
+"kerültek"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:436
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:550
@@ -952,11 +971,11 @@ msgstr "Román"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:447
 msgid "This is the third unstable release for GNOME 41."
-msgstr ""
+msgstr "Ez a harmadik instabil kiadás a GNOME 41-hez."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:449
 msgid "Tweaks to the context tiles and dialogs"
-msgstr ""
+msgstr "A kontextus csempék és párbeszédpanelek finomhangolása"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:450
 msgid "Fixes to the details page for non-desktop apps"
