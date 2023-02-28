@@ -13,13 +13,14 @@
 # Alexandre Franke <afranke@gnome.org>, 2022.
 # Thual LABART--BARNAGAUD <tlabartbarnagaud@protonmail.com>, 2023.
 # Cequal <adityaojha@outlook.in>, 2023.
+# "Alexandre BOYER (Alex)" <alexandre.boyer29@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-26 01:03+0000\n"
-"Last-Translator: Cequal <adityaojha@outlook.in>\n"
+"PO-Revision-Date: 2023-02-28 19:27+0000\n"
+"Last-Translator: \"Alexandre BOYER (Alex)\" <alexandre.boyer29@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/fr/>\n"
 "Language: fr\n"
@@ -27,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 4.16-rc\n"
 "X-DamnedLies-Scope: partial\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
@@ -548,10 +549,14 @@ msgstr "Diverses améliorations des notifications"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:168
 msgid "Fix several crashes when handling flatpak apps"
 msgstr ""
+"Correction de plusieurs plantages lors de la manipulation d'applications "
+"flatpak"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:169
 msgid "Add ‘Other Apps by Author’ section in the app details page"
 msgstr ""
+"Ajouter la section \"Autres applications par auteur\" dans la page des "
+"détails de l'application"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:170
 msgid "Improve styling of app context lozenges"
@@ -562,27 +567,33 @@ msgid ""
 "Add ‘Available for Distro’ section to the overview page (if configured by "
 "your distribution)"
 msgstr ""
+"Ajoutez la section « Disponible pour la distribution » à la page de "
+"présentation (si configurée par votre distribution)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:172
 msgid ""
 "Show more details about file system permissions requested by flatpak apps"
 msgstr ""
+"Afficher plus de détails sur les permissions du système de fichiers "
+"demandées par les applications flatpak"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:173
 msgid "Show more types of URI from app metainfo"
-msgstr ""
+msgstr "Afficher plus de types d'URI à partir des métadonnées de l'application"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:174
 msgid "Fix a few issues when using a dark mode theme"
-msgstr ""
+msgstr "Correction de quelques problèmes lors de l'utilisation du mode sombre"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:175
 msgid "Fix some issues with arrows in right-to-left locales"
 msgstr ""
+"Correction de certains problèmes avec les flèches pour les langages ayant "
+"une lecture de droite à gauche"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:176
 msgid "Fix language pack installation for certain locales"
-msgstr ""
+msgstr "Correction de l'installation du pack de langue pour certaines langues"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:177
 msgid "Improve debug output to make user bug reports more useful"
@@ -2709,7 +2720,7 @@ msgstr "Authentification requise"
 #: src/gs-details-page.ui:294 src/gs-removal-dialog.ui:17
 #: src/gs-review-dialog.ui:18
 msgid "_Cancel"
-msgstr "A_nnuler"
+msgstr "_Annuler"
 
 #: src/gs-basic-auth-dialog.ui:35
 msgid "_Login"
@@ -5597,9 +5608,8 @@ msgstr "Paramètres réseau"
 
 #. button in the info bar
 #: src/gs-shell.ui:118
-#, fuzzy
 msgid "Restart Now"
-msgstr "Maintenant Recommencer"
+msgstr "Redémarrer maintenant"
 
 #. button in the info bar
 #: src/gs-shell.ui:128
