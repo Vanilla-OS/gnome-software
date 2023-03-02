@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-28 19:27+0000\n"
+"PO-Revision-Date: 2023-03-02 08:27+0000\n"
 "Last-Translator: \"Alexandre BOYER (Alex)\" <alexandre.boyer29@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/fr/>\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.16-rc\n"
+"X-Generator: Weblate 4.16\n"
 "X-DamnedLies-Scope: partial\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
@@ -508,7 +508,7 @@ msgstr "Il s'agit de la deuxième version instable de GNOME 43."
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:136
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:237
 msgid "Various fixes related to changed threading model"
-msgstr ""
+msgstr "Divers correctifs liés à la modification du modèle de threading"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:137
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:349
@@ -560,7 +560,7 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:170
 msgid "Improve styling of app context lozenges"
-msgstr ""
+msgstr "Améliorer le style des losanges de contexte d'application"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:171
 msgid ""
@@ -598,31 +598,39 @@ msgstr "Correction de l'installation du pack de langue pour certaines langues"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:177
 msgid "Improve debug output to make user bug reports more useful"
 msgstr ""
+"Amélioration de la sortie de débogage pour rendre les rapports de bogues des "
+"utilisateurs plus utiles"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:178
 msgid "Add `--uninstall=ID` command line option"
-msgstr ""
+msgstr "Ajouter l'option de ligne de commande `--uninstall=ID`"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:179
 msgid ""
 "Allow scrolling screenshots by clicking on next and previous screenshots"
 msgstr ""
+"Autoriser le défilement des captures d'écran en cliquant sur les captures "
+"d'écran suivantes et précédentes"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:180
 msgid "Add support for webapps"
-msgstr ""
+msgstr "Ajouter la prise en charge des applications Web"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:181
 msgid "Allow swiping back in the shell using touch gestures"
 msgstr ""
+"Autoriser le balayage vers l’arrière dans le shell à l’aide de gestes "
+"tactiles"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:182
 msgid "Improved caching of downloaded metadata"
-msgstr ""
+msgstr "Amélioration de la mise en cache des métadonnées téléchargées"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:183
 msgid "Many internal architectural changes to make the code more maintainable"
 msgstr ""
+"Nombreux changements d'architecture interne pour rendre le code plus "
+"maintenable"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:184
 msgid ""
@@ -630,19 +638,25 @@ msgid ""
 "distribution vendors wishing to mark their apps as popular should see `doc/"
 "vendor-customisation.md` for examples of how to do this now"
 msgstr ""
+"La clé GSettings <code>popular-overrides</code> a été supprimée ; Les "
+"distributions souhaitant marquer leurs applications comme populaires "
+"devraient consulter 'doc/vendor-customisation.md' pour des exemples de la "
+"façon de le faire maintenant"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:189
 msgid ""
 "The <code>hardcoded_popular</code> Meson option has been renamed to "
 "<code>hardcoded_curated</code>."
 msgstr ""
+"L'option Meson <code>hardcoded_popular</code> a été renommée en "
+"<code>hardcoded_curated</code>."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:207
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:249
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:425
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:602
 msgid "French"
-msgstr ""
+msgstr "Français"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:208
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:287
@@ -669,11 +683,11 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:405
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:561
 msgid "This is a stable release with the following changes:"
-msgstr ""
+msgstr "Ceci est une version stable avec les changements suivants :"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:238
 msgid "Added several appstream-related fixes"
-msgstr ""
+msgstr "Ajout de plusieurs correctifs venant des mainteneurs des applications"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:243
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:530
@@ -684,7 +698,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:253
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:334
 msgid "Japanese"
-msgstr ""
+msgstr "Japonais"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:254
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:465
@@ -695,53 +709,60 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:268
 msgid "This is the third unstable release for GNOME 42."
-msgstr ""
+msgstr "C'est la troisième version instable de GNOME 42."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:270
 msgid "Cancel ongoing update downloads when system power is low"
 msgstr ""
+"Annuler les téléchargements de mises à jour en cours lorsque la batterie est "
+"faible"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:271
 msgid "Numerous small user interface fixes and tweaks"
 msgstr ""
+"Nombreuses corrections et ajustements mineurs de l'interface utilisateur"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:272
 msgid "Prioritize full matches in search results"
-msgstr ""
+msgstr "Prioriser les résultats exacts dans les résultats de recherche"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:273
 msgid "Improvements in dark mode"
-msgstr ""
+msgstr "Améliorations du mode sombre"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:274
-#, fuzzy
 msgid "Fix disabling flatpak remotes from the ‘Software Repositories’ dialog"
-msgstr "Autorise l’accès à la boîte de dialogue des dépôts de logiciels"
+msgstr ""
+"Correction de la désactivation des dépôts flatpak dans la boîte de dialogue "
+"\"Dépôts de logiciels\""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:275
 msgid ""
 "Threading and performance improvements which should reduce the number of "
 "user interface freezes"
 msgstr ""
+"Amélioration des threads et des performances, ce qui devrait réduire le "
+"nombre de blocages de l'interface utilisateur"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:276
-#, fuzzy
 msgid "Update some icons"
-msgstr "Panneau des mises à jour"
+msgstr "Mise à jour de certaines icônes"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:277
 msgid ""
 "Check for updates when moving from a metered to a non-metered network "
 "connection"
 msgstr ""
+"Rechercher des mises à jour lors du passage d’une connexion réseau limitée à "
+"une connexion réseau non limitée"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:306
 msgid "This is the second unstable release for GNOME 42."
-msgstr ""
+msgstr "C'est la deuxième version instable de GNOME 42."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:308
 msgid "Allow <code>--verbose</code> to be enabled at runtime"
-msgstr ""
+msgstr "Autoriser l’activation de <code>--verbose</code> durant l’exécution"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:309
 msgid "Condense the rows in the age rating context dialog"
@@ -750,32 +771,37 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:310
 msgid "Update the UI for ratings and reviews of apps"
 msgstr ""
+"Mise à jour de l'interface utilisateur des évaluations et des commentaires "
+"d'applications"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:311
 msgid "Improve the appearance of the category page loading screen"
 msgstr ""
+"Amélioration de l'apparence de l'écran de chargement de la page des "
+"catégories"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:312
 msgid "Drop the first run dialog"
-msgstr ""
+msgstr "Supprimer la première boîte de dialogue d'exécution"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:313
 msgid "Improvements to dark theming"
-msgstr ""
+msgstr "Améliorations du thème sombre"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:314
 msgid ""
 "Support viewing a specific metainfo file using <code>--show-metainfo</code>"
 msgstr ""
+"Prise en charge de l’affichage d’un fichier metainfo spécifique à l’aide de "
+"<code>--show-metainfo</code>"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:315
 msgid "Several more threading improvements"
-msgstr ""
+msgstr "Plusieurs autres améliorations du threading"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:316
-#, fuzzy
 msgid "Icon updates"
-msgstr "Rechercher des mises à jour"
+msgstr "Mises à jour des icônes"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:317
 msgid "Drop the hardcoded-popular plugin in favour of an appstream file"
@@ -790,14 +816,23 @@ msgid ""
 "code> GSettings key has been removed. Distributions may need to update how "
 "they ship background images. See <em>doc/vendor-customisation.md</em>."
 msgstr ""
+"L'image d'arrière-plan pour les mises à niveau est maintenant recherchée à "
+"l'aide de plusieurs noms bien connus (et spécifiques à la distribution) dans "
+"<code>${DATADIR}/gnome-software/backgrounds</code>, et l'ancienne image d"
+"'arrière-plan par défaut spécifique à Fedora n'est plus distribuée. De même, "
+"la clé GSettings <code>upgrade-background-uri</code> a été supprimée. Les "
+"distributions devront peut-être mettre à jour la manière dont elles "
+"fournissent les images d'arrière-plan. Voir <em>doc/vendor-customisation."
+"md</em>."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:347
 msgid "This is the first unstable release for GNOME 42."
-msgstr ""
+msgstr "C'est la première version instable de GNOME 42."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:350
 msgid "Support more markup in the application description"
 msgstr ""
+"Prise en charge de plus de balisage dans la description de l’application"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:351
 msgid "Ask about package signature with PackageKit on signing issue"
@@ -805,7 +840,7 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:352
 msgid "Show better System Update progress"
-msgstr ""
+msgstr "Affiche une meilleure progression des mises à jour système"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:353
 msgid "Remove various cultural sensitivity badges"
@@ -813,27 +848,33 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:354
 msgid "Fix a crash when processing age ratings"
-msgstr ""
+msgstr "Correction d’un crash lors du traitement des classifications par âge"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:355
-#, fuzzy
 msgid ""
 "Reload application details only when not installing/removing the application"
-msgstr "Afficher les détails de l’application (à partir de son identifiant)"
+msgstr ""
+"Recharger les détails de l'application uniquement lorsque l'application "
+"n'est pas installée/supprimée"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:356
 msgid "Do not follow symlinks when calculating disk size usage"
 msgstr ""
+"Ne pas suivre les liens symboliques lors du calcul de la taille du disque"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:357
 msgid "Fix addons section, which could show addons for different application"
 msgstr ""
+"Correction de la section addons, qui pouvait montrer des addons pour "
+"différentes applications"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:358
 msgid ""
 "Fix showing a ‘transaction in progress’ error when using the rpm-ostree "
 "plugin"
 msgstr ""
+"Correction d’une erreur d’affichage d’une « transaction en cours » lors de l’"
+"utilisation du plugin rpm-ostree"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:359
 msgid "Don’t recommend a reboot if firmware updates fail"
