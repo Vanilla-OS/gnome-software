@@ -17,13 +17,14 @@
 # TheAndreLuiz <andreluizgaspar1@gmail.com>, 2023.
 # Felipe Nogueira <contato.fnog@gmail.com>, 2023.
 # Adtora Slonic <adtoraslonic@gmail.com>, 2023.
+# Fernando Lopes <fefehex12@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-03-11 11:37+0000\n"
-"Last-Translator: Felipe Nogueira <contato.fnog@gmail.com>\n"
+"PO-Revision-Date: 2023-03-15 05:37+0000\n"
+"Last-Translator: Fernando Lopes <fefehex12@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "vanilla-os/gnome-software/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -228,13 +229,13 @@ msgstr "Letão"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:610
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:699
 msgid "Lithuanian"
-msgstr ""
+msgstr "Lituano"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:86
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:216
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:544
 msgid "Nepali"
-msgstr ""
+msgstr "Nepalês"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:87
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:125
@@ -260,7 +261,7 @@ msgstr "Sérvio"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:616
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:644
 msgid "Slovenian"
-msgstr ""
+msgstr "Esloveno"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:89
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:126
