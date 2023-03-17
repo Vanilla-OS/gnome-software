@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: gnome-software gnome-3-16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-03-11 11:37+0000\n"
+"PO-Revision-Date: 2023-03-17 10:39+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/nl/>\n"
@@ -40,7 +40,7 @@ msgid ""
 "Software allows you to find and install new applications and system "
 "extensions and remove existing installed applications."
 msgstr ""
-"Met Gnome Software kunt u nieuwe apps en systeemuitbreidingen vinden en "
+"Met Software kunt u nieuwe apps en systeemuitbreidingen vinden en "
 "installeren, en bestaande geïnstalleerde apps verwijderen."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:14
@@ -1266,7 +1266,7 @@ msgstr "Kabyle"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:2043
 #: src/gs-application.c:256
 msgid "The GNOME Project"
-msgstr "Het Gnome-project"
+msgstr "Het GNOME-project"
 
 #: data/org.gnome.software.external-appstream.policy.in.in:11
 msgid "Install an appstream file into a system location"
@@ -1286,18 +1286,18 @@ msgid ""
 "XFCE."
 msgstr ""
 "Dit is een lijst met compatibele projecten die getoond moeten worden, zoals "
-"Gnome, KDE en Xfce."
+"GNOME, KDE en XFCE."
 
 #: data/org.gnome.software.gschema.xml:10
 msgid "Whether to manage updates and upgrades in GNOME Software"
-msgstr "Of updates en upgrades worden beheerd in Gnome Software"
+msgstr "Of updates en upgrades worden beheerd in GNOME Software"
 
 #: data/org.gnome.software.gschema.xml:11
 msgid ""
 "If disabled, GNOME Software will hide the updates panel, not perform any "
 "automatic updates actions or prompt for upgrades."
 msgstr ""
-"Indien uitgeschakeld zal Gnome Software het tabblad met updates verbergen, "
+"Indien uitgeschakeld zal GNOME Software het tabblad met updates verbergen, "
 "geen automatische updates uitvoeren en geen upgrades aanbieden."
 
 #: data/org.gnome.software.gschema.xml:15
@@ -1309,7 +1309,7 @@ msgid ""
 "If enabled, GNOME Software automatically downloads software updates in the "
 "background, also installing ones that do not require a reboot."
 msgstr ""
-"Indien ingeschakeld zal Gnome Software automatisch updates op de achtergrond "
+"Indien ingeschakeld zal GNOME Software automatisch updates op de achtergrond "
 "downloaden, waarbij ook updates die geen herstart vereisen worden "
 "geïnstalleerd."
 
@@ -1323,7 +1323,7 @@ msgid ""
 "If enabled, GNOME Software notifies the user about updates that happened "
 "whilst the user was idle."
 msgstr ""
-"Indien ingeschakeld, informeert Gnome Software de gebruiker over updates die "
+"Indien ingeschakeld, informeert GNOME Software de gebruiker over updates die "
 "gedaan zijn terwijl de gebruiker niet actief was."
 
 #: data/org.gnome.software.gschema.xml:25
@@ -1336,14 +1336,14 @@ msgid ""
 "when using a metered connection (eventually downloading some metadata, "
 "checking for updates, etc., which may incur in costs for the user)."
 msgstr ""
-"Indien ingeschakeld zal Gnome Software automatisch op de achtergrond "
+"Indien ingeschakeld zal GNOME Software automatisch op de achtergrond "
 "vernieuwen, zelfs als een verbinding met datalimiet wordt gebruikt (dat "
 "leidt tot het downloaden van wat metadata, controleren op updates, enz., "
 "hetgeen kosten voor de gebruiker met zich mee kan brengen)."
 
 #: data/org.gnome.software.gschema.xml:30
 msgid "Whether it’s the very first run of GNOME Software"
-msgstr "Of het de eerste keer opstarten van Gnome Software is of niet"
+msgstr "Of het de eerste keer opstarten van GNOME Software is of niet"
 
 #: data/org.gnome.software.gschema.xml:34
 msgid "Show star ratings next to applications"
@@ -1515,7 +1515,7 @@ msgstr "Een tekenreeks met het id van de gnome-online-account om in te loggen"
 #. TRANSLATORS: tool that is used when moving profiles system-wide
 #: gs-install-appstream/gs-install-appstream.c:143
 msgid "GNOME Software AppStream system-wide installer"
-msgstr "Gnome Software AppStream systeembrede installer"
+msgstr "GNOME Software AppStream systeembrede installer"
 
 #: gs-install-appstream/gs-install-appstream.c:145
 msgid "Failed to parse command line arguments"
@@ -2246,7 +2246,7 @@ msgstr "Versienummer tonen"
 
 #: src/gs-application.c:261 src/gs-application.c:269
 msgid "Copyright © 2016–2022 GNOME Software contributors"
-msgstr "Copyright © 2016–2022 De bijdragers aan Gnome Software"
+msgstr "Copyright © 2016–2022, De bijdragers aan GNOME Software"
 
 # Met het nieuwe over-venster ziet de lege regel tussen vertalers en meer info er vreemd uit, mij lijkt het beter om deze weg te laten.
 # - Philip
@@ -2256,8 +2256,8 @@ msgstr ""
 "Nathan Follens <nfollens@gnome.org>\n"
 "Justin van Steijn\n"
 "Hannie Dumoleyn\n"
-"Philip Goto\n"
-"Meer info over Gnome-NL https://nl.gnome.org"
+"Philip Goto <philip.goto@gmail.com>\n"
+"Meer info over GNOME-NL https://nl.gnome.org"
 
 #. TRANSLATORS: this is the title of the about window
 #. TRANSLATORS: this is the menu item that opens the about window
@@ -6116,7 +6116,7 @@ msgstr "EOS-updateservice kan de update niet ophalen en toepassen."
 
 #: plugins/epiphany/gs-plugin-epiphany.c:498
 msgid "GNOME Web"
-msgstr "Gnome Web"
+msgstr "GNOME Web"
 
 #: plugins/epiphany/org.gnome.Software.Plugin.Epiphany.metainfo.xml.in:6
 msgid "Web Apps Support"
