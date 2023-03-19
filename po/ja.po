@@ -10,13 +10,14 @@
 # Shinichirou Yamada <yamada_strong_yamada_nice_64bit@yahoo.co.jp>, 2018.
 # sicklylife <translation@sicklylife.jp>, 2019-2020, 2022.
 # azuki <ipadgoogcloud@gmail.com>, 2023.
+# Ryo Nakano <ryonakaknock3@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-20 18:20+0000\n"
-"Last-Translator: azuki <ipadgoogcloud@gmail.com>\n"
+"PO-Revision-Date: 2023-03-19 23:42+0000\n"
+"Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/ja/>\n"
 "Language: ja\n"
@@ -24,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 4.16.2-dev\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -2639,7 +2640,7 @@ msgstr "ログインが必要です"
 #: src/gs-details-page.ui:294 src/gs-removal-dialog.ui:17
 #: src/gs-review-dialog.ui:18
 msgid "_Cancel"
-msgstr "_キャンセル"
+msgstr "キャンセル(_C)"
 
 #: src/gs-basic-auth-dialog.ui:35
 msgid "_Login"
