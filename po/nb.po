@@ -6,13 +6,14 @@
 # Harald H. <haarektrans@gmail.com>, 2015.
 # po
 # Trond Kjetil Bremnes <tk@bremnes.email>, 2023.
+# Infinity <a.sjur91@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software 4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-03-17 10:39+0000\n"
-"Last-Translator: Trond Kjetil Bremnes <tk@bremnes.email>\n"
+"PO-Revision-Date: 2023-03-19 23:42+0000\n"
+"Last-Translator: Infinity <a.sjur91@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "vanilla-os/gnome-software/nb_NO/>\n"
 "Language: nb\n"
@@ -29,9 +30,8 @@ msgid "Software"
 msgstr "Programvare"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:8
-#, fuzzy
 msgid "Install and update apps"
-msgstr "Installerte oppdateringer"
+msgstr "Installer og oppdater apper"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:10
 msgid ""

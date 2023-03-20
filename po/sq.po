@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-software package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# Frederik Pjetri <rikpjetri@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-03-19 23:42+0000\n"
+"Last-Translator: Frederik Pjetri <rikpjetri@gmail.com>\n"
+"Language-Team: Albanian <https://hosted.weblate.org/projects/vanilla-os/"
+"gnome-software/sq/>\n"
 "Language: sq\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.16.2-dev\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -3121,7 +3122,7 @@ msgstr ""
 
 #: src/gs-common.c:509 src/gs-safety-context-dialog.ui:72
 msgid "Details"
-msgstr ""
+msgstr "Detajet"
 
 #. Translators: an accept button label, in a Cancel/Accept dialog
 #: src/gs-common.c:600
@@ -3469,7 +3470,7 @@ msgstr ""
 
 #: src/gs-details-page.ui:813
 msgid "_Help"
-msgstr ""
+msgstr "_Ndihmë"
 
 #. Translators: Button opening a dialog where the users can write and publish their opinions about the apps.
 #: src/gs-details-page.ui:908
@@ -3688,7 +3689,7 @@ msgstr ""
 
 #: src/gs-featured-carousel.ui:66
 msgid "Next"
-msgstr ""
+msgstr "Tjetra"
 
 #: src/gs-featured-carousel.ui:83
 msgid "Featured Apps List"
@@ -4152,7 +4153,7 @@ msgstr ""
 
 #: src/gs-prefs-dialog.ui:19
 msgid "Automatic Updates"
-msgstr ""
+msgstr "Përditësime automatike"
 
 #: src/gs-prefs-dialog.ui:20
 msgid ""
