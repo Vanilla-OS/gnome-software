@@ -68,6 +68,8 @@
 
 static void gs_details_page_refresh_addons (GsDetailsPage *self);
 static void gs_details_page_refresh_all (GsDetailsPage *self);
+static void gs_details_page_refresh_progress (GsDetailsPage *self);
+static void gs_details_page_refresh_buttons (GsDetailsPage *self);
 static void gs_details_page_app_refine_cb (GObject *source, GAsyncResult *res, gpointer user_data);
 
 typedef enum {
@@ -96,6 +98,8 @@ struct _GsDetailsPage
 	gboolean		 origin_by_packaging_format; /* when TRUE, change the 'app' to the most preferred
 								packaging format when the alternatives are found */
 	gboolean		 is_narrow;
+
+	guint			 job_manager_watch_id;
 
 	GtkWidget		*application_details_icon;
 	GtkWidget		*application_details_summary;
@@ -126,7 +130,6 @@ struct _GsDetailsPage
 	GtkWidget		*infobar_details_repo;
 	GtkWidget		*label_progress_percentage;
 	GtkWidget		*label_progress_status;
-	GtkWidget		*label_addons_uninstalled_app;
 	GsAppContextBar		*context_bar;
 	GtkLabel		*developer_name_label;
 	GtkImage		*developer_verified_image;
@@ -503,6 +506,18 @@ gs_details_page_notify_state_changed_cb (GsApp *app,
                                          GsDetailsPage *self)
 {
 	g_idle_add (gs_details_page_refresh_idle, g_object_ref (self));
+}
+
+static void
+job_manager_jobs_changed_cb (GsJobManager *job_manager,
+                             GsPluginJob  *job,
+                             gpointer      user_data)
+{
+	GsDetailsPage *self = GS_DETAILS_PAGE (user_data);
+
+	/* The set of pending jobs for self->app has changed, so update the UI. */
+	gs_details_page_refresh_progress (self);
+	gs_details_page_refresh_buttons (self);
 }
 
 static void
@@ -1013,7 +1028,7 @@ gs_details_page_refresh_buttons (GsDetailsPage *self)
 	    !gtk_widget_get_visible (self->button_install) &&
 	    !gtk_widget_get_visible (self->button_update)) {
 		remove_is_destructive = FALSE;
-		gtk_button_set_label (GTK_BUTTON (self->button_remove), _("_Uninstall"));
+		gtk_button_set_label (GTK_BUTTON (self->button_remove), _("_Uninstall…"));
 	} else {
 		gtk_button_set_icon_name (GTK_BUTTON (self->button_remove), "user-trash-symbolic");
 	}
@@ -1345,18 +1360,6 @@ gs_details_page_refresh_all (GsDetailsPage *self)
 		break;
 	}
 
-	/* only show the "select addons" string if the app isn't yet installed */
-	switch (gs_app_get_state (self->app)) {
-	case GS_APP_STATE_INSTALLED:
-	case GS_APP_STATE_UPDATABLE:
-	case GS_APP_STATE_UPDATABLE_LIVE:
-		gtk_widget_set_visible (self->label_addons_uninstalled_app, FALSE);
-		break;
-	default:
-		gtk_widget_set_visible (self->label_addons_uninstalled_app, TRUE);
-		break;
-	}
-
 	/* update progress */
 	gs_details_page_refresh_progress (self);
 
@@ -1670,6 +1673,8 @@ gs_details_page_app_refine_cb (GObject *source,
 static void
 _set_app (GsDetailsPage *self, GsApp *app)
 {
+	GsJobManager *job_manager = gs_plugin_loader_get_job_manager (self->plugin_loader);
+
 	/* do not show all the reviews by default */
 	self->show_all_reviews = FALSE;
 
@@ -1679,6 +1684,8 @@ _set_app (GsDetailsPage *self, GsApp *app)
 		g_signal_handlers_disconnect_by_func (self->app, gs_details_page_progress_changed_cb, self);
 		g_signal_handlers_disconnect_by_func (self->app, gs_details_page_allow_cancel_changed_cb,
 						      self);
+		gs_job_manager_remove_watch (job_manager, self->job_manager_watch_id);
+		self->job_manager_watch_id = 0;
 	}
 
 	/* save app */
@@ -1696,6 +1703,15 @@ _set_app (GsDetailsPage *self, GsApp *app)
 		return;
 	}
 	g_set_object (&self->app_cancellable, gs_app_get_cancellable (app));
+
+	self->job_manager_watch_id = gs_job_manager_add_watch (job_manager,
+							       app,
+							       G_TYPE_INVALID,
+							       job_manager_jobs_changed_cb,
+							       job_manager_jobs_changed_cb,
+							       self,
+							       NULL);
+
 	g_signal_connect_object (self->app, "notify::state",
 				 G_CALLBACK (gs_details_page_notify_state_changed_cb),
 				 self, 0);
@@ -2366,8 +2382,14 @@ gs_details_page_dispose (GObject *object)
 	GsDetailsPage *self = GS_DETAILS_PAGE (object);
 
 	if (self->app != NULL) {
+		GsJobManager *job_manager = gs_plugin_loader_get_job_manager (self->plugin_loader);
+
 		g_signal_handlers_disconnect_by_func (self->app, gs_details_page_notify_state_changed_cb, self);
 		g_signal_handlers_disconnect_by_func (self->app, gs_details_page_progress_changed_cb, self);
+		g_signal_handlers_disconnect_by_func (self->app, gs_details_page_allow_cancel_changed_cb,
+						      self);
+		gs_job_manager_remove_watch (job_manager, self->job_manager_watch_id);
+		self->job_manager_watch_id = 0;
 		g_clear_object (&self->app);
 	}
 
@@ -2496,7 +2518,6 @@ gs_details_page_class_init (GsDetailsPageClass *klass)
 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, infobar_details_app_repo);
 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, infobar_details_package_baseos);
 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, infobar_details_repo);
-	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, label_addons_uninstalled_app);
 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, context_bar);
 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, label_progress_percentage);
 	gtk_widget_class_bind_template_child (widget_class, GsDetailsPage, label_progress_status);

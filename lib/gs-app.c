@@ -340,8 +340,8 @@ _as_component_quirk_flag_to_string (GsAppQuirk quirk)
 		return "needs-user-action";
 	case GS_APP_QUIRK_IS_PROXY:
 		return "is-proxy";
-	case GS_APP_QUIRK_REMOVABLE_HARDWARE:
-		return "removable-hardware";
+	case GS_APP_QUIRK_UNUSABLE_DURING_UPDATE:
+		return "unusable-during-update";
 	case GS_APP_QUIRK_DEVELOPER_VERIFIED:
 		return "developer-verified";
 	case GS_APP_QUIRK_PARENTAL_FILTER:
@@ -1945,7 +1945,6 @@ gs_app_get_icon_for_size (GsApp       *app,
                           const gchar *fallback_icon_name)
 {
 	GsAppPrivate *priv = gs_app_get_instance_private (app);
-	g_autoptr(GIcon) candidate_icon = NULL;
 
 	g_return_val_if_fail (GS_IS_APP (app), NULL);
 	g_return_val_if_fail (size > 0, NULL);
@@ -1954,6 +1953,9 @@ gs_app_get_icon_for_size (GsApp       *app,
 	g_debug ("Looking for icon for %s, at size %u×%u, with fallback %s",
 		 gs_app_get_id (app), size, scale, fallback_icon_name);
 
+	/* See if there’s an icon of the right size, or the first one which is too
+	 * big which could be scaled down. Note that the icons array may be
+	 * lazily created. */
 	for (guint i = 0; priv->icons != NULL && i < priv->icons->len; i++) {
 		GIcon *icon = priv->icons->pdata[i];
 		g_autofree gchar *icon_str = g_icon_to_string (icon);
@@ -1963,16 +1965,6 @@ gs_app_get_icon_for_size (GsApp       *app,
 
 		g_debug ("\tConsidering icon of type %s (%s), width %u×%u",
 			 G_OBJECT_TYPE_NAME (icon), icon_str, icon_width, icon_scale);
-
-		/* If there’s a themed icon with no width set, use that, as
-		 * typically themed icons are available in any given size. */
-		if (icon_width == 0 && G_IS_THEMED_ICON (icon)) {
-			g_autoptr(GtkIconTheme) theme = get_icon_theme ();
-			if (gtk_icon_theme_has_gicon (theme, icon)) {
-				g_debug ("Found themed icon");
-				return g_object_ref (icon);
-			}
-		}
 
 		/* To avoid excessive I/O, the loading of AppStream data does
 		 * not verify the existence of cached icons, which we do now.
@@ -1990,15 +1982,24 @@ gs_app_get_icon_for_size (GsApp       *app,
 		if (icon_width == 0 || icon_width * icon_scale < size * scale)
 			continue;
 
-		/* See if there’s an icon of the right size, or the first one which is too
-		 * big which could be scaled down. Note that the icons array may be
-		 * lazily created. */
-		if (candidate_icon == NULL && (icon_width * icon_scale >= size * scale))
-			candidate_icon = g_object_ref (icon);
+		if (icon_width * icon_scale >= size * scale)
+			return g_object_ref (icon);
 	}
 
-	if (candidate_icon != NULL)
-		return g_object_ref (candidate_icon);
+	/* Fallback to themed icons with no width set. Typically
+	 * themed icons are available in any given size. */
+	for (guint i = 0; priv->icons != NULL && i < priv->icons->len; i++) {
+		GIcon *icon = priv->icons->pdata[i];
+		guint icon_width = gs_icon_get_width (icon);
+
+		if (icon_width == 0 && G_IS_THEMED_ICON (icon)) {
+			g_autoptr(GtkIconTheme) theme = get_icon_theme ();
+			if (gtk_icon_theme_has_gicon (theme, icon)) {
+				g_debug ("Found themed icon");
+				return g_object_ref (icon);
+			}
+		}
+	}
 
 	if (scale > 1) {
 		g_debug ("Retrying at scale 1");
@@ -4610,6 +4611,7 @@ gs_app_remove_category (GsApp *app, const gchar *category)
  * Sets if the new update is already downloaded for the app.
  *
  * Since: 3.36
+ * Deprecated: 44: No longer supported.
  **/
 void
 gs_app_set_is_update_downloaded (GsApp *app, gboolean is_update_downloaded)
@@ -4629,6 +4631,7 @@ gs_app_set_is_update_downloaded (GsApp *app, gboolean is_update_downloaded)
  * Returns: (element-type gboolean): Whether a new update for the #GsApp is already downloaded.
  *
  * Since: 3.36
+ * Deprecated: 44: No longer supported.
  **/
 gboolean
 gs_app_get_is_update_downloaded (GsApp *app)
@@ -5208,6 +5211,32 @@ gs_app_get_cancellable (GsApp *app)
 }
 
 /**
+ * gs_app_peek_cancellable:
+ * @app: a #GsApp
+ *
+ * Peek the current cancellable used by the @app. It's referenced for thread safety;
+ * if not %NULL, free it with g_object_unref() when no longer needed.
+ *
+ * Returns: (nullable) (transfer full): the current cancellable, or %NULL
+ *
+ * Since: 44
+ **/
+GCancellable *
+gs_app_peek_cancellable (GsApp *app)
+{
+	GsAppPrivate *priv = gs_app_get_instance_private (app);
+	g_autoptr(GMutexLocker) locker = NULL;
+
+	g_return_val_if_fail (GS_IS_APP (app), NULL);
+
+	locker = g_mutex_locker_new (&priv->mutex);
+	if (priv->cancellable)
+		return g_object_ref (priv->cancellable);
+
+	return NULL;
+}
+
+/**
  * gs_app_get_pending_action:
  * @app: a #GsApp
  *
@@ -5451,7 +5480,9 @@ gs_app_set_property (GObject *object, guint prop_id, const GValue *value, GParam
 		gs_app_set_key_colors (app, g_value_get_boxed (value));
 		break;
 	case PROP_IS_UPDATE_DOWNLOADED:
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 		gs_app_set_is_update_downloaded (app, g_value_get_boolean (value));
+G_GNUC_END_IGNORE_DEPRECATIONS
 		break;
 	case PROP_URLS:
 		/* Read only */
@@ -5732,10 +5763,12 @@ gs_app_class_init (GsAppClass *klass)
 
 	/**
 	 * GsApp:is-update-downloaded:
+	 *
+	 * Deprecated: 44: No longer supported.
 	 */
 	obj_props[PROP_IS_UPDATE_DOWNLOADED] = g_param_spec_boolean ("is-update-downloaded", NULL, NULL,
 					       FALSE,
-					       G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+					       G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS | G_PARAM_DEPRECATED);
 
 	/**
 	 * GsApp:urls: (nullable) (element-type AsUrlKind utf8)
