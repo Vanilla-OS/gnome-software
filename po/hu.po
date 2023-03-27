@@ -6,13 +6,14 @@
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2013, 2014, 2015, 2016, 2017, 2018.
 # Balázs Meskó <mesko.balazs at fsf dot hu>, 2020, 2021, 2022.
 # Benjamin Kőhidi <benstone326@gmail.com>, 2023.
+# kramo <login@kramo.hu>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-03-11 11:37+0000\n"
-"Last-Translator: Benjamin Kőhidi <benstone326@gmail.com>\n"
+"PO-Revision-Date: 2023-03-21 02:47+0000\n"
+"Last-Translator: kramo <login@kramo.hu>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/hu/>\n"
 "Language: hu\n"
@@ -979,15 +980,17 @@ msgstr "A kontextus csempék és párbeszédpanelek finomhangolása"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:450
 msgid "Fixes to the details page for non-desktop apps"
-msgstr ""
+msgstr "Javítások a nem-asztali appok \"részletek\" oldalához"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:451
 msgid "Re-add support for the add-ons categories"
-msgstr ""
+msgstr "Az add-on kategóriák újbóli támogatása"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:452
 msgid "Sort new and updated apps by release date on the category page"
 msgstr ""
+"Az új és frissített alkalmazások megjelenés dátuma szerinti rendezése a "
+"kategóriaoldalon"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:481
 msgid "This is the second unstable release for GNOME 41."
