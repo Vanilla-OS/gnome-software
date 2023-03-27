@@ -18,13 +18,15 @@
 # Felipe Nogueira <contato.fnog@gmail.com>, 2023.
 # Adtora Slonic <adtoraslonic@gmail.com>, 2023.
 # Fernando Lopes <fefehex12@gmail.com>, 2023.
+# Fernando Lopes <118869201+plasmus777@users.noreply.github.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-03-16 06:37+0000\n"
-"Last-Translator: Fernando Lopes <fefehex12@gmail.com>\n"
+"PO-Revision-Date: 2023-03-23 01:36+0000\n"
+"Last-Translator: Fernando Lopes <118869201+plasmus777@users.noreply.github."
+"com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "vanilla-os/gnome-software/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -554,7 +556,7 @@ msgstr "Várias melhorias para notificações"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:168
 msgid "Fix several crashes when handling flatpak apps"
-msgstr "Corrigir vários travamentos ao manipular aplicativos flatpak"
+msgstr "Corrige vários travamentos ao manipular aplicativos flatpak"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:169
 msgid "Add ‘Other Apps by Author’ section in the app details page"
@@ -583,27 +585,30 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:173
 msgid "Show more types of URI from app metainfo"
-msgstr ""
+msgstr "Exibir mais tipos de URI das informações de metadados do aplicativo"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:174
 msgid "Fix a few issues when using a dark mode theme"
-msgstr ""
+msgstr "Corrige alguns problemas ao usar um tema de modo escuro"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:175
 msgid "Fix some issues with arrows in right-to-left locales"
 msgstr ""
+"Corrige alguns problemas com setas em localidades da direita para a esquerda"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:176
 msgid "Fix language pack installation for certain locales"
-msgstr ""
+msgstr "Corrige a instalação de pacotes de idioma para determinadas localidades"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:177
 msgid "Improve debug output to make user bug reports more useful"
 msgstr ""
+"Aprimora a saída de depuração para tornar relatos de problemas por usuários "
+"mais úteis"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:178
 msgid "Add `--uninstall=ID` command line option"
-msgstr ""
+msgstr "Adiciona a opção em linha de comando `--uninstall=ID`"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:179
 msgid ""
