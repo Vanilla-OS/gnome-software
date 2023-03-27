@@ -1,8 +1,8 @@
-gnome-software (44.0-1) UNRELEASED; urgency=medium
+gnome-software (44.0-1) experimental; urgency=medium
 
   * New upstream release
 
- -- Jeremy Bicha <jbicha@ubuntu.com>  Mon, 27 Mar 2023 14:42:30 -0400
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Mon, 27 Mar 2023 14:48:10 -0400
 
 gnome-software (44~beta-1) experimental; urgency=medium
 
