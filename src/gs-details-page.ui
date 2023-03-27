@@ -269,6 +269,17 @@
                                                       <!-- TRANSLATORS: button text in the header when an app can be erased -->
                                                       <property name="label" translatable="yes">Uninstall</property>
                                                     </accessibility>
+                                                    <child>
+                                                      <object class="GtkShortcutController">
+                                                        <property name="scope">managed</property>
+                                                        <child>
+                                                          <object class="GtkShortcut">
+                                                            <property name="trigger">&lt;Control&gt;U</property>
+                                                            <property name="action">activate</property>
+                                                          </object>
+                                                        </child>
+                                                      </object>
+                                                    </child>
                                                   </object>
                                                 </child>
                                                 <child>
@@ -451,14 +462,6 @@
                                             </style>
                                           </object>
                                         </child>
-                                        <child>
-                                          <object class="GtkLabel" id="label_addons_uninstalled_app">
-                                            <property name="xalign">0</property>
-                                            <property name="wrap">True</property>
-                                            <property name="max-width-chars">40</property>
-                                            <property name="label" translatable="yes">Selected add-ons will be installed with the app.</property>
-                                          </object>
-                                        </child>
                                       </object>
                                     </child>
                                     <child>
@@ -507,6 +510,7 @@
                                     </style>
                                     <child>
                                       <object class="GsAppVersionHistoryRow" id="row_latest_version">
+                                        <property name="always-expanded">False</property>
                                       </object>
                                     </child>
                                     <child>

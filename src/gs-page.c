@@ -50,7 +50,7 @@ typedef struct {
 	GCancellable	*cancellable;
 	gulong		 notify_quirk_id;
 	GtkWidget	*dialog_install;
-	GsPluginJob	*job;  /* (nullable) (unowned) */
+	GsPluginJob	*job;  /* (nullable) (owned) */
 	GsPluginAction	 action;
 	GsShellInteraction interaction;
 	gboolean	 propagate_error;
@@ -64,6 +64,7 @@ gs_page_helper_free (GsPageHelper *helper)
 		g_signal_handler_disconnect (helper->app, helper->notify_quirk_id);
 	if (helper->app_needs_user_action_id != 0)
 		g_signal_handler_disconnect (helper->job, helper->app_needs_user_action_id);
+	g_clear_object (&helper->job);
 	if (helper->app != NULL)
 		g_object_unref (helper->app);
 	if (helper->page != NULL)
@@ -323,7 +324,7 @@ gs_page_update_app_response_cb (AdwMessageDialog *dialog,
 	gs_app_list_add (list, helper->app);
 
 	plugin_job = gs_plugin_job_update_apps_new (list,
-						    GS_PLUGIN_UPDATE_APPS_FLAGS_NO_DOWNLOAD | GS_PLUGIN_UPDATE_APPS_FLAGS_INTERACTIVE);
+						    GS_PLUGIN_UPDATE_APPS_FLAGS_INTERACTIVE);
 	gs_plugin_job_set_propagate_error (plugin_job, helper->propagate_error);
 
 	gs_plugin_loader_job_process_async (priv->plugin_loader,
@@ -368,9 +369,9 @@ gs_page_update_app (GsPage *page, GsApp *app, GCancellable *cancellable)
 	gs_app_list_add (list, app);
 
 	plugin_job = gs_plugin_job_update_apps_new (list,
-						    GS_PLUGIN_UPDATE_APPS_FLAGS_NO_DOWNLOAD | GS_PLUGIN_UPDATE_APPS_FLAGS_INTERACTIVE);
+						    GS_PLUGIN_UPDATE_APPS_FLAGS_INTERACTIVE);
 	gs_plugin_job_set_propagate_error (plugin_job, helper->propagate_error);
-	helper->job = plugin_job;
+	helper->job = g_object_ref (plugin_job);
 
 	helper->app_needs_user_action_id =
 		g_signal_connect (plugin_job, "app-needs-user-action",

@@ -256,6 +256,9 @@ perms_from_metadata (GKeyFile *keyfile)
 	strv = g_key_file_get_string_list (keyfile, "Context", "devices", NULL, NULL);
 	if (strv != NULL && g_strv_contains ((const gchar * const*)strv, "all"))
 		flags |= GS_APP_PERMISSIONS_FLAGS_DEVICES;
+	if (strv != NULL && (g_strv_contains ((const gchar * const*)strv, "shm") ||
+			     g_strv_contains ((const gchar * const*)strv, "kvm")))
+		flags |= GS_APP_PERMISSIONS_FLAGS_SYSTEM_DEVICES;
 	g_strfreev (strv);
 
 	strv = g_key_file_get_string_list (keyfile, "Context", "shared", NULL, NULL);
@@ -1626,8 +1629,12 @@ gs_flatpak_create_installed (GsFlatpak *self,
 	origin = flatpak_installed_ref_get_origin (xref);
 	app = gs_flatpak_create_app (self, origin, FLATPAK_REF (xref), xremote, interactive, cancellable);
 
-	gs_app_set_state (app, GS_APP_STATE_UNKNOWN);
-	gs_app_set_state (app, GS_APP_STATE_INSTALLED);
+	/* Set the state to installed only from some states, to not override the updatable-live or other states */
+	if (gs_app_get_state (app) == GS_APP_STATE_UNKNOWN ||
+	    gs_app_get_state (app) == GS_APP_STATE_AVAILABLE) {
+		gs_app_set_state (app, GS_APP_STATE_UNKNOWN);
+		gs_app_set_state (app, GS_APP_STATE_INSTALLED);
+	}
 
 	gs_flatpak_set_metadata_installed (self, app, xref, interactive, cancellable);
 	return g_steal_pointer (&app);
@@ -4669,7 +4676,7 @@ gs_flatpak_purge_sync (GsFlatpak    *self,
 
 	if (unused_refs->len > 0) {
 		g_autoptr(FlatpakTransaction) transaction = NULL;
-		transaction = gs_flatpak_transaction_new (installation, cancellable, error);
+		transaction = gs_flatpak_transaction_new (installation, GS_FLATPAK_ERROR_MODE_STOP_ON_FIRST_ERROR, cancellable, error);
 		if (transaction == NULL) {
 			g_prefix_error_literal (error, "failed to build transaction: ");
 			return FALSE;
