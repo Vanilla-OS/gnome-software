@@ -5,13 +5,14 @@
 # Muhannad Alrusayni <muhannad.alrusayni@gmail.com>, 2016.
 # Khaled Hosny <khaledhosny@eglug.org>, 2016, 2018.
 # Abu Huraira <abuhuraira@tutamail.com>, 2023.
+# Ibrahim Kaikaa <ibrahimkaikaa@protonmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: Gnome 3.14\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-20 18:20+0000\n"
-"Last-Translator: Abu Huraira <abuhuraira@tutamail.com>\n"
+"PO-Revision-Date: 2023-03-29 22:56+0000\n"
+"Last-Translator: Ibrahim Kaikaa <ibrahimkaikaa@protonmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/ar/>\n"
 "Language: ar\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 "X-Project-Style: gnome\n"
 
 # الجمع أفضل لعنوان البرمجيّة
@@ -4407,7 +4408,6 @@ msgid ""
 msgstr ""
 
 #: src/gs-prefs-dialog.ui:19
-#, fuzzy
 msgid "Automatic Updates"
 msgstr "التحديثات التلقائية"
 
