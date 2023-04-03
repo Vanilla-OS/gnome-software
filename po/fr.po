@@ -21,7 +21,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
 "PO-Revision-Date: 2023-04-02 13:30+0000\n"
-"Last-Translator: Lucas_Strafe <Lucas-Strafe@protonmail.com>\n"
+"Last-Translator: \"Alexandre BOYER (Alex)\" <alexandre.boyer29@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/fr/>\n"
 "Language: fr\n"
@@ -1175,7 +1175,7 @@ msgstr "Norvégien Bokmål"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:576
 msgid "Punjabi"
-msgstr ""
+msgstr "Punjabi"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:583
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:626
