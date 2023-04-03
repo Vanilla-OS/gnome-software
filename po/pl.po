@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
 "PO-Revision-Date: 2023-03-30 23:18+0000\n"
-"Last-Translator: Krzysztof Kuska <kk@fw190.info>\n"
+"Last-Translator: poti225 <fila.tomasz225@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/pl/>\n"
 "Language: pl\n"
@@ -277,7 +277,7 @@ msgstr "Szwedzki"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:96
 msgid "This is the third unstable release for GNOME 43."
-msgstr "To trzecie niestabilne wydanie GNOME 43."
+msgstr "To jest trzecia niestabilna wersja dla GNOME 43."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:98
 msgid "Supports video as a screenshot"
@@ -494,7 +494,7 @@ msgstr "Ukraiński"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:134
 msgid "This is the second unstable release for GNOME 43."
-msgstr ""
+msgstr "To jest drugie niestabilne wydanie dla GNOME 43."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:136
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:237
