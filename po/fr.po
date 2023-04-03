@@ -14,13 +14,14 @@
 # Thual LABART--BARNAGAUD <tlabartbarnagaud@protonmail.com>, 2023.
 # Cequal <adityaojha@outlook.in>, 2023.
 # "Alexandre BOYER (Alex)" <alexandre.boyer29@gmail.com>, 2023.
+# Lucas_Strafe <Lucas-Strafe@protonmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-03-04 09:43+0000\n"
-"Last-Translator: \"Alexandre BOYER (Alex)\" <alexandre.boyer29@gmail.com>\n"
+"PO-Revision-Date: 2023-04-02 13:30+0000\n"
+"Last-Translator: Lucas_Strafe <Lucas-Strafe@protonmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/fr/>\n"
 "Language: fr\n"
@@ -28,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.16.2-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 "X-DamnedLies-Scope: partial\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
@@ -666,7 +667,7 @@ msgstr "Français"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:603
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:689
 msgid "Friulian"
-msgstr ""
+msgstr "Frioulan"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:217
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:256
@@ -1082,7 +1083,7 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:514
 msgid "Don’t keep rpm-ostreed alive forever"
-msgstr ""
+msgstr "Ne pas maintenir rpm-ostreed en vie éternellement"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:515
 msgid "Prevent polkit checks showing up for background operations"
@@ -1216,12 +1217,16 @@ msgstr "Amélioration de la gestion des icônes, y compris avec les écrans hiDP
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:590
 msgid "Fixed a bug in remembering when update notifications were shown."
 msgstr ""
+"Correction d'un problème de mémorisation de l'affichage des notifications de "
+"mise à jour."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:591
 msgid ""
 "Build as a dynamic rather than a static library, and rearrange installation "
 "paths."
 msgstr ""
+"Construire une bibliothèque dynamique plutôt que statique et réorganiser les "
+"chemins d'installation."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:628
 msgid ""
@@ -1229,162 +1234,206 @@ msgid ""
 "with appstream data which provides information about apps and other "
 "components."
 msgstr ""
+"GNOME Software utilise désormais libappstream au lieu de libappstream-glib "
+"pour travailler avec les données d'appstream qui fournissent des "
+"informations sur les applications et autres composants."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:629
 msgid "App details pages show version history information when it's available."
 msgstr ""
+"Les pages de détails des applications affichent l'historique des versions "
+"lorsqu'il est disponible."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:631
 msgid ""
 "UI elements for displaying app add-ons have been tweaked to more closely "
 "match the designs."
 msgstr ""
+"Les éléments de l'interface utilisateur permettant d'afficher les "
+"compléments d'application ont été modifiés pour mieux correspondre aux "
+"conceptions."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:632
 msgid ""
 "Installed icons and the badge showing the number of updates available were "
 "changed back to blue from green."
 msgstr ""
+"Les icônes installées et le badge indiquant le nombre de mises à jour "
+"disponibles sont repassés du vert au bleu."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:633
 msgid ""
 "The dropdown showing the available sources of an application includes the "
 "packaging format (e.g. Flatpak vs RPM)."
 msgstr ""
+"Le menu déroulant montrant les sources disponibles d'une application inclut "
+"le format d'empaquetage (par exemple Flatpak ou RPM)."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:634
 msgid "A bug was fixed that prevented installation of .flatpakref files"
 msgstr ""
+"Un bogue a été corrigé qui empêchait l'installation des fichiers .flatpakref."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:642
 msgid "Panjabi"
-msgstr ""
+msgstr "Panjabi"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:652
 msgid "This is the first unstable release for GNOME 40."
-msgstr ""
+msgstr "C'est la première version instable de GNOME 40."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:654
 msgid ""
 "Small updates to how app descriptions and addons are presented on the "
 "details page"
 msgstr ""
+"Petites mises à jour de la présentation des descriptions d'applications et "
+"des addons sur la page de détails"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:655
 msgid "Fix handling of pending app installations when going online"
 msgstr ""
+"Correction de la gestion des installations d'applications en attente lors de "
+"la mise en ligne"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:656
 msgid "Better support for dark themes (particularly Adwaita-Dark)"
 msgstr ""
+"Meilleure prise en charge des thèmes sombres (en particulier Adwaita-Dark)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:657
 msgid "Improvements to how app screenshots are loaded and presented"
 msgstr ""
+"Amélioration du chargement et de la présentation des captures d'écran des "
+"applications"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:658
 msgid ""
 "Hide ‘Launch’ button if an application (for example, Wine) cannot be launched"
 msgstr ""
+"Masquer le bouton \"Lancer\" si une application (par exemple, Wine) ne peut "
+"pas être lancée"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:659
 msgid "Make the UI clearer when loading information from flatpakref files"
 msgstr ""
+"Rendre l'interface utilisateur plus claire lors du chargement d'informations "
+"à partir de fichiers flatpakref"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:660
 msgid "Don’t update app metadata on start when download-updates is disabled"
 msgstr ""
+"Ne pas mettre à jour les métadonnées de l'application au démarrage lorsque "
+"le téléchargement des mises à jour est désactivé"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:661
 msgid "Fix opening the updates list when clicking on an updates notification"
 msgstr ""
+"Correction de l'ouverture de la liste des mises à jour lorsque l'on clique "
+"sur une notification de mise à jour"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:662
 msgid ""
 "Fix state updates when installing flatpak apps or repos which are already "
 "installed"
 msgstr ""
+"Correction des mises à jour d'état lors de l'installation d'applications "
+"flatpak ou de dépôts déjà installés"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:663
 msgid "Add Ctrl+Q as a keyboard shortcut for closing the window"
-msgstr ""
+msgstr "Ajouter Ctrl+Q comme raccourci clavier pour fermer la fenêtre"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:664
 msgid "Rework timing and content of software update notifications"
 msgstr ""
+"Retravailler le calendrier et le contenu des notifications de mise à jour "
+"des logiciels"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:665
-#, fuzzy
 msgid ""
 "Prevent uninstalled local apps from appearing in the installed apps list"
 msgstr ""
-"Affiche leur taille d’installation dans la liste des applications installées"
+"Empêcher les applications locales désinstallées d'apparaître dans la liste "
+"des applications installées"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:666
 msgid "Support installation/uninstallation of addons for flatpak apps"
 msgstr ""
+"Support de l'installation/désinstallation des addons pour les applications "
+"flatpak"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:667
 msgid "Improve presentation of age ratings for apps"
-msgstr ""
+msgstr "Améliorer la présentation des classements par âge des applications"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:668
 msgid "Fix a crash in the updates page"
-msgstr ""
+msgstr "Correction d'un crash dans la page des mises à jour"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:669
 msgid "Fix presentation of app permissions for fully sandboxed flatpak apps"
 msgstr ""
+"Correction de la présentation des permissions d'application pour les "
+"applications flatpak entièrement mises en bac à sable."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:670
 msgid "Fix deadlock on rpm-ostree systems"
-msgstr ""
+msgstr "Correction d'un blocage sur les systèmes rpm-ostree"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:671
 msgid "Fix presentation of version number changes in right-to-left locales"
 msgstr ""
+"Correction de la présentation des changements de numéro de version dans les "
+"langues de droite à gauche"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:672
 msgid "Error handling improvements for fwupd"
-msgstr ""
+msgstr "Amélioration de la gestion des erreurs pour fwupd"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:673
 msgid "Performance improvements for ODRS on startup"
-msgstr ""
+msgstr "Amélioration des performances du système ODRS au démarrage"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:674
 msgid "Improve presentation of firmware warning messages"
 msgstr ""
+"Amélioration de la présentation des messages d'avertissement concernant les "
+"microprogrammes"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:675
 msgid "XML parsing performance improvements"
-msgstr ""
+msgstr "Amélioration des performances de l'analyse XML"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:676
 msgid "Automatically remove end-of-life flatpak runtimes"
-msgstr ""
+msgstr "Supprimer automatiquement les runtimes flatpak en fin de vie"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:677
 msgid "Support updating flatpaks to their new name when they are renamed"
 msgstr ""
+"Prise en charge de la mise à jour des flatpaks vers leur nouveau nom "
+"lorsqu'ils sont renommés"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:678
-#, fuzzy
 msgid "Update the GNOME Software icon"
-msgstr "Logiciels de GNOME"
+msgstr "Mettre à jour l'icône du logiciel GNOME"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:679
 msgid "Support more search results in the snap store"
 msgstr ""
+"Prise en charge de plus de résultats de recherche dans le magasin instantané"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:680
 msgid ""
 "Drop libgnome-desktop-3 dependency in favour of gsettings-desktop-schemas"
 msgstr ""
+"Suppression de la dépendance de libgnome-desktop-3 en faveur de gsettings-"
+"desktop-schemas"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:696
 msgid "Kabyle"
-msgstr ""
+msgstr "Kabyle"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:2043
 #: src/gs-application.c:256
@@ -2051,7 +2100,6 @@ msgstr "%s • %s"
 #. Translators: The app is considered suitable to be run by all ages of people.
 #. * This is displayed in a context tile, so the string should be short.
 #: src/gs-age-rating-context-dialog.c:936
-#, fuzzy
 msgctxt "Age rating"
 msgid "All"
 msgstr "Tout"
@@ -2119,9 +2167,8 @@ msgstr "Évaluation par âge"
 #: src/gs-age-rating-context-dialog.ui:68
 #: src/gs-hardware-support-context-dialog.ui:71
 #: src/gs-safety-context-dialog.ui:221
-#, fuzzy
 msgid "How to contribute missing information"
-msgstr "Comment ajouter des informations manquantes"
+msgstr "Comment apporter les informations manquantes"
 
 #: lib/gs-app.c:6175
 msgid "Local file"
@@ -2155,10 +2202,9 @@ msgstr "Suppression en attente"
 
 #: src/gs-app-addon-row.c:111 src/gs-app-row.ui:197 src/gs-app-tile.ui:50
 #: src/gs-feature-tile.c:535
-#, fuzzy
 msgctxt "Single app"
 msgid "Installed"
-msgstr "Installées"
+msgstr "Installée"
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * shows the status of an application being installed
@@ -2256,9 +2302,8 @@ msgstr "Peut s’échapper du bac à sable et contourner d’autres restrictions
 #. FIXME support app == NULL
 #. set window title
 #: src/gs-app-details-page.c:166
-#, fuzzy
 msgid "Update Details"
-msgstr "Détails de la mise à jour"
+msgstr "Mettre à jour les détails"
 
 #. TRANSLATORS: this is where the packager did not write
 #. * a description for the update
@@ -2352,9 +2397,8 @@ msgid "Install the application (using application ID)"
 msgstr "Installer l’application (à partir de son identifiant)"
 
 #: src/gs-application.c:134
-#, fuzzy
 msgid "Uninstall the application (using application ID)"
-msgstr "Installer l’application (à partir de son identifiant)"
+msgstr "Désinstaller l'application (à l'aide de l'ID d'application)"
 
 #: src/gs-application.c:136
 msgid "Open a local package file"
@@ -2847,7 +2891,6 @@ msgstr "Autres"
 #. TRANSLATORS: this is a subcategory matching all the
 #. * different apps in the parent category, e.g. "Games"
 #: lib/gs-category.c:214
-#, fuzzy
 msgctxt "Category"
 msgid "All"
 msgstr "Tout"
@@ -2872,7 +2915,7 @@ msgstr "Nouveautés et mises à jour"
 #. Heading for web apps on a category page
 #: src/gs-category-page.ui:97
 msgid "Picks from the Web"
-msgstr ""
+msgstr "Suggestions du web"
 
 #. Heading for the rest of the apps on a category page
 #: src/gs-category-page.ui:125
@@ -3460,7 +3503,7 @@ msgstr[1] "Il y a %d ans"
 #, c-format
 msgctxt "format-size"
 msgid "%s %s"
-msgstr ""
+msgstr "%s %s"
 
 #. TRANSLATORS: this is a what we use in notifications if the app's name is unknown
 #: src/gs-dbus-helper.c:291
@@ -3594,7 +3637,7 @@ msgstr "_Installer…"
 #: src/gs-details-page.c:1177
 #, c-format
 msgid "Other Apps by %s"
-msgstr ""
+msgstr "Autres applications par %s"
 
 #. TRANSLATORS: we need a remote server to process
 #: src/gs-details-page.c:1560
@@ -4195,10 +4238,9 @@ msgstr "Prise en charge du matériel"
 #. Translators: This is in the context of a list of apps which are installed on the system.
 #. Translators: A label for a button to show only software which is already installed.
 #: src/gs-installed-page.c:812 src/gs-shell.ui:307
-#, fuzzy
 msgctxt "List of installed apps"
 msgid "Installed"
-msgstr "Installées"
+msgstr "Installée"
 
 #: src/gs-installed-page.ui:6
 msgid "Installed page"
@@ -4215,9 +4257,8 @@ msgid "Applications"
 msgstr "Applications"
 
 #: src/gs-installed-page.ui:95
-#, fuzzy
 msgid "Web Applications"
-msgstr "Applications"
+msgstr "Applications Web"
 
 #: src/gs-installed-page.ui:115
 msgid "System Applications"
@@ -4233,17 +4274,17 @@ msgstr "_Comment participer"
 
 #. Translators: The first placeholder here is a link to information about the license, and the second placeholder here is the name of a software license.
 #: src/gs-license-tile.c:114
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "This software is developed in the open by a community of volunteers, and "
 "released under the <a href=\"%s\">%s license</a>.\n"
 "\n"
 "You can contribute and help make it even better."
 msgstr ""
-"Il s’agit d’un logiciel libre développé par une communauté de volontaires, "
-"et publié sous licence %s.\n"
+"Ce logiciel est développé de manière ouverte par une communauté de "
+"bénévoles, et publié sous la licence <a href=\"%s\">%s</a> .\n"
 "\n"
-"Vous pouvez participer et aider à son amélioration."
+"Vous pouvez y contribuer et l'améliorer."
 
 #. Translators: The placeholder here is the name of a software license.
 #: src/gs-license-tile.c:121
@@ -4264,12 +4305,10 @@ msgid "Proprietary"
 msgstr "Propriétaire"
 
 #: src/gs-license-tile.c:133
-#, fuzzy
 msgid "_Learn More"
-msgstr "_Voir plus"
+msgstr "En savoir plus"
 
 #: src/gs-license-tile.c:135
-#, fuzzy
 msgid ""
 "This software is not developed in the open, so only its developers know how "
 "it works. It may be insecure in ways that are hard to detect, and it may "
@@ -4277,17 +4316,16 @@ msgid ""
 "\n"
 "You may not be able to contribute to this software."
 msgstr ""
-"Il s’agit d’un logiciel non libre ; seuls ses développeurs connaissent son "
-"fonctionnement. Il peut y avoir des restrictions sur son utilisation, et il "
-"peut être plus difficile de dire si le logiciel n’est pas sécurisé.\n"
+"Ce logiciel n'est pas développé de manière ouverte, de sorte que seuls ses "
+"développeurs savent comment il fonctionne. Il peut présenter des failles de "
+"sécurité difficiles à détecter et être modifié sans contrôle.\n"
 "\n"
-"Vous ne pourrez peut-être pas contribuer ou influencer son développement."
+"Il se peut que vous ne puissiez pas contribuer à ce logiciel."
 
 #. TRANSLATORS: initial start
 #: src/gs-loading-page.c:56
-#, fuzzy
 msgid "Downloading software catalog"
-msgstr "Téléchargement des images en vedette…"
+msgstr "Téléchargement du catalogue de logiciels"
 
 #: src/gs-loading-page.ui:6
 msgid "Loading page"
@@ -4337,20 +4375,18 @@ msgid "There are no reviews to moderate"
 msgstr "Il n’y a pas d’évaluation a modérer"
 
 #: src/gs-origin-popover-row.c:105
-#, fuzzy
 msgid "Unknown source"
-msgstr "Inconnue"
+msgstr "Source inconnue"
 
 #. Translators: It's like a beta version of the software, a test version
 #: src/gs-origin-popover-row.ui:108
 msgid "Beta"
-msgstr ""
+msgstr "Bêta"
 
 #. Translators: It's an origin scope, 'User' or 'System' installation
 #: src/gs-origin-popover-row.ui:138
-#, fuzzy
 msgid "User"
-msgstr "_Utilisateur"
+msgstr "Utilisateur"
 
 #. TRANSLATORS: This is the header for package additions during
 #. * a system update
@@ -4367,7 +4403,6 @@ msgstr "Suppressions"
 #. TRANSLATORS: This is the header for package updates during
 #. * a system update
 #: src/gs-os-update-page.c:258
-#, fuzzy
 msgctxt "Packages to be updated during a system upgrade"
 msgid "Updates"
 msgstr "Mises à jour"
@@ -4993,15 +5028,12 @@ msgstr ""
 "téléchargements"
 
 #: src/gs-safety-context-dialog.c:299
-#, fuzzy
 msgid "Can read and write all data in the directory"
-msgstr ""
-"Peut lire et écrire toutes les données contenues dans votre dossier personnel"
+msgstr "Peut lire et écrire toutes les données du répertoire"
 
 #: src/gs-safety-context-dialog.c:310
-#, fuzzy
 msgid "Can read all data in the directory"
-msgstr "Peut lire toutes les données contenues dans votre dossier personnel"
+msgstr "Peut lire toutes les données du répertoire"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:326
@@ -5734,7 +5766,6 @@ msgstr "En savoir _plus"
 
 #. Translators: A label for a button to show only updates which are available to install.
 #: src/gs-shell.ui:328
-#, fuzzy
 msgctxt "Header bar button for list of apps to be updated"
 msgid "Updates"
 msgstr "Mises à jour"
@@ -5784,10 +5815,9 @@ msgid "Shared system components required by this application"
 msgstr "Composants système partagés requis par cette application"
 
 #: src/gs-storage-context-dialog.c:188
-#, fuzzy
 msgctxt "Download size"
 msgid "Unknown"
-msgstr "Inconnue"
+msgstr "Inconnu"
 
 #. Translators: This is the title of the dialog which contains information about the storage or download size needed for an app
 #: src/gs-storage-context-dialog.ui:5
@@ -5833,9 +5863,8 @@ msgid "Installed on %s"
 msgstr "Installées le %s"
 
 #: src/gs-update-dialog.ui:77
-#, fuzzy
 msgid "No Updates Installed"
-msgstr "Mise à jour logicielle installée"
+msgstr "Aucune mise à jour installée"
 
 #: src/gs-update-monitor.c:213
 msgid "Software Updates Are Out of Date"
@@ -6118,7 +6147,6 @@ msgid "Check for updates"
 msgstr "Rechercher des mises à jour"
 
 #: src/gs-updates-page.c:1286
-#, fuzzy
 msgctxt "Apps to be updated"
 msgid "Updates"
 msgstr "Mises à jour"
@@ -6308,11 +6336,9 @@ msgstr "Téléchargement des images en vedette…"
 
 #. Translators: The '%s' is replaced with the OS name, like "Endless OS"
 #: plugins/eos-updater/gs-plugin-eos-updater.c:637
-#, fuzzy, c-format
+#, c-format
 msgid "%s update with new features and fixes."
-msgstr ""
-"Une mise à jour d’Endless OS, avec de nouvelles fonctionnalités et "
-"corrections."
+msgstr "%s mise à jour avec de nouvelles fonctionnalités et des corrections."
 
 #: plugins/eos-updater/gs-plugin-eos-updater.c:970
 msgid "EOS update service could not fetch and apply the update."
@@ -6321,9 +6347,8 @@ msgstr ""
 "mise à niveau."
 
 #: plugins/epiphany/gs-plugin-epiphany.c:498
-#, fuzzy
 msgid "GNOME Web"
-msgstr "Logiciels de GNOME"
+msgstr "GNOME Web"
 
 #: plugins/epiphany/org.gnome.Software.Plugin.Epiphany.metainfo.xml.in:6
 msgid "Web Apps Support"
@@ -6356,136 +6381,126 @@ msgstr "Flatpak est une structure pour les applications de bureau sous Linux"
 
 #. Reference: https://docs.flatpak.org/en/latest/flatpak-command-reference.html#idm45858571325264
 #: plugins/flatpak/gs-flatpak.c:313
-#, fuzzy, c-format
+#, c-format
 msgid "System folder %s"
-msgstr "Mises à jour système"
+msgstr "Dossier système %s"
 
 #: plugins/flatpak/gs-flatpak.c:314 plugins/flatpak/gs-flatpak.c:315
-#, fuzzy, c-format
+#, c-format
 msgid "Home subfolder %s"
-msgstr "Dossier personnel"
+msgstr "Sous-dossier Accueil %s"
 
 #: plugins/flatpak/gs-flatpak.c:316
-#, fuzzy
 msgid "Host system folders"
-msgstr "Dossier personnel"
+msgstr "Dossiers du système hôte"
 
 #: plugins/flatpak/gs-flatpak.c:317
 msgid "Host system configuration from /etc"
-msgstr ""
+msgstr "Configuration du système hôte à partir de /etc"
 
 #: plugins/flatpak/gs-flatpak.c:318
-#, fuzzy
 msgid "Desktop folder"
-msgstr "Ordinateur uniquement"
+msgstr "Dossier du bureau"
 
 #: plugins/flatpak/gs-flatpak.c:318
-#, fuzzy, c-format
+#, c-format
 msgid "Desktop subfolder %s"
-msgstr "Prise en charge de l’ordinateur"
+msgstr "Sous-dossier du bureau %s"
 
 #: plugins/flatpak/gs-flatpak.c:319
-#, fuzzy
 msgid "Documents folder"
-msgstr "Dossier personnel"
+msgstr "Dossier Documents"
 
 #: plugins/flatpak/gs-flatpak.c:319
-#, fuzzy, c-format
+#, c-format
 msgid "Documents subfolder %s"
-msgstr "Dossier personnel"
+msgstr "Sous-dossier Documents %s"
 
 #: plugins/flatpak/gs-flatpak.c:320
-#, fuzzy
 msgid "Music folder"
-msgstr "Lecteurs de musique"
+msgstr "Dossier musical"
 
 #: plugins/flatpak/gs-flatpak.c:320
-#, fuzzy, c-format
+#, c-format
 msgid "Music subfolder %s"
-msgstr "Lecteurs de musique"
+msgstr "Sous-dossier Musique %s"
 
 #: plugins/flatpak/gs-flatpak.c:321
-#, fuzzy
 msgid "Pictures folder"
-msgstr "Image"
+msgstr "Dossier images"
 
 #: plugins/flatpak/gs-flatpak.c:321
 #, c-format
 msgid "Pictures subfolder %s"
-msgstr ""
+msgstr "Sous-dossier Images %s"
 
 #: plugins/flatpak/gs-flatpak.c:322
 msgid "Public Share folder"
-msgstr ""
+msgstr "Dossier Public Share"
 
 #: plugins/flatpak/gs-flatpak.c:322
 #, c-format
 msgid "Public Share subfolder %s"
-msgstr ""
+msgstr "Sous-dossier Public Share %s"
 
 #: plugins/flatpak/gs-flatpak.c:323
-#, fuzzy
 msgid "Videos folder"
-msgstr "Dossier personnel"
+msgstr "Dossier vidéos"
 
 #: plugins/flatpak/gs-flatpak.c:323
-#, fuzzy, c-format
+#, c-format
 msgid "Videos subfolder %s"
-msgstr "%s convient à la catégorie %s"
+msgstr "Sous-dossier Vidéos %s"
 
 #: plugins/flatpak/gs-flatpak.c:324
-#, fuzzy
 msgid "Templates folder"
-msgstr "Dossier personnel"
+msgstr "Dossier Modèles"
 
 #: plugins/flatpak/gs-flatpak.c:324
 #, c-format
 msgid "Templates subfolder %s"
-msgstr ""
+msgstr "Sous-dossier Modèles %s"
 
 #: plugins/flatpak/gs-flatpak.c:325
 msgid "User cache folder"
-msgstr ""
+msgstr "Dossier cache de l'utilisateur"
 
 #: plugins/flatpak/gs-flatpak.c:325
 #, c-format
 msgid "User cache subfolder %s"
-msgstr ""
+msgstr "Sous-dossier du cache utilisateur %s"
 
 #: plugins/flatpak/gs-flatpak.c:326
-#, fuzzy
 msgid "User configuration folder"
-msgstr "Mise à jour de la configuration de « %s »"
+msgstr "Dossier de configuration de l'utilisateur"
 
 #: plugins/flatpak/gs-flatpak.c:326
-#, fuzzy, c-format
+#, c-format
 msgid "User configuration subfolder %s"
-msgstr "Mise à jour de la configuration de « %s »"
+msgstr "Sous-dossier de configuration de l'utilisateur %s"
 
 #: plugins/flatpak/gs-flatpak.c:327
-#, fuzzy
 msgid "User data folder"
-msgstr "Données d’utilisateur"
+msgstr "Dossier de données de l'utilisateur"
 
 #: plugins/flatpak/gs-flatpak.c:327
 #, c-format
 msgid "User data subfolder %s"
-msgstr ""
+msgstr "Sous-dossier des données de l'utilisateur %s"
 
 #: plugins/flatpak/gs-flatpak.c:328
-#, fuzzy
 msgid "User runtime folder"
-msgstr "Dossier personnel"
+msgstr "Dossier d'exécution de l'utilisateur"
 
 #: plugins/flatpak/gs-flatpak.c:328
 #, c-format
 msgid "User runtime subfolder %s"
-msgstr ""
+msgstr "Sous-dossier d'exécution de l'utilisateur %s"
 
 #: plugins/flatpak/gs-flatpak.c:386
-#, fuzzy, c-format
+#, c-format
 msgid "Filesystem access to %s"
-msgstr "Aucun accès au système de fichiers"
+msgstr "Accès au système de fichiers %s"
 
 #. TRANSLATORS: status text when downloading new metadata
 #: plugins/flatpak/gs-flatpak.c:1403
@@ -6522,6 +6537,9 @@ msgid ""
 "Remote “%s” doesn't allow install of “%s”, possibly due to its filter. "
 "Remove the filter and repeat the install. Detailed error: %s"
 msgstr ""
+"Remote \"%s\" ne permet pas l'installation de \"%s\", peut-être à cause de "
+"son filtre. Supprimez le filtre et recommencez l'installation. Erreur "
+"détaillée : %s"
 
 #. TRANSLATORS: a specific part of hardware,
 #. * the first %s is the device name, e.g. 'Unifying Receiver`
@@ -6662,9 +6680,9 @@ msgstr "Mise à jour du système de gestion (« BMC ») de %s"
 #. TRANSLATORS: Receiver refers to a radio device, e.g. a tiny Bluetooth
 #. * device that stays in the USB port so the wireless peripheral works
 #: plugins/fwupd/gs-fwupd-app.c:230
-#, fuzzy, c-format
+#, c-format
 msgid "%s USB Receiver Update"
-msgstr "Mise à jour du périphérique « %s »"
+msgstr "%s Mise à jour du récepteur USB"
 
 #: plugins/fwupd/gs-plugin-fwupd.c:1240
 msgid "Firmware"
@@ -6745,30 +6763,34 @@ msgstr "Un snap est un paquet Linux universel"
 #. TRANSLATORS: this is to inform that the package is part of
 #. * the BASE system
 #: plugins/vso/gs-plugin-vso.c:114
-#, fuzzy
 msgid "base"
-msgstr "Base de données"
+msgstr "base"
 
 #: plugins/vso/gs-plugin-vso.c:240
 msgid ""
 "Another transaction has already been executed, you must reboot your system "
 "before starting a new transaction."
 msgstr ""
+"Une autre transaction a déjà été exécutée, vous devez redémarrer votre "
+"système avant de commencer une nouvelle transaction."
 
 #: plugins/vso/gs-plugin-vso.c:260
 msgid "VSO failed to update the system, please try again later."
 msgstr ""
+"VSO n'a pas réussi à mettre à jour le système, veuillez réessayer plus tard."
 
 #: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:245
 msgid ""
 "Applications installable via Apx with pre-defined container configuration"
 msgstr ""
+"Applications installables via Apx avec une configuration de conteneur "
+"prédéfinie"
 
 #. origin_ui on a remote is the repo dialogue section name,
 #. * not the remote title
 #: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:249
 msgid "Apps"
-msgstr ""
+msgstr "Applications"
 
 #: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:251
 msgid ""
@@ -6776,6 +6798,9 @@ msgid ""
 "and pre-configured by the Vanilla OS team to guarantee that they are using "
 "the most compatible container and configurations."
 msgstr ""
+"Ce dépôt contient un ensemble d'applications populaires installables via Apx "
+"et préconfigurées par l'équipe de Vanilla OS pour garantir qu'elles "
+"utilisent les conteneurs et les configurations les plus compatibles."
 
 #~ msgid "Application manager for GNOME"
 #~ msgstr "Gestionnaire d’applications pour GNOME"
