@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-03-24 18:24+0000\n"
+"PO-Revision-Date: 2023-04-03 22:51+0000\n"
 "Last-Translator: Andrew Geo <andrewgeo@outlook.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/el/>\n"
@@ -28,9 +28,8 @@ msgid "Software"
 msgstr "Λογισμικό"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:8
-#, fuzzy
 msgid "Install and update apps"
-msgstr "Εγκατεστημένες ενημερώσεις"
+msgstr "Εγκατάσταση και ενημέρωση εφαρμογών"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:10
 msgid ""
@@ -79,7 +78,7 @@ msgstr "Λεπτομέρειες ενημέρωσης"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:71
 msgid "This is a stable release with translation updates:"
-msgstr ""
+msgstr "Αυτή είναι μια σταθερή έκδοση με ενημερώσεις μεταφράσεων:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:73
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:197
@@ -4562,7 +4561,7 @@ msgstr[1] "%u πρόσθετα"
 #, c-format
 msgid "%s and %s installed"
 msgid_plural "%s and %s installed"
-msgstr[0] "Τα %s και %s εγκαταστάθηκαν"
+msgstr[0] "Το %s και %s εγκαταστάθηκαν"
 msgstr[1] "Τα %s και %s εγκαταστάθηκαν"
 
 #. Translators: The first '%s' is replaced with a text like '10 applications installed',
