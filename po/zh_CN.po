@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: gnome-software 41\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-21 05:05+0000\n"
+"PO-Revision-Date: 2023-03-30 23:18+0000\n"
 "Last-Translator: lakejason0 <sunliyuan200402@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "vanilla-os/gnome-software/zh_Hans/>\n"
@@ -31,7 +31,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 "X-DamnedLies-Scope: partial\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
@@ -4062,7 +4062,9 @@ msgid ""
 msgstr ""
 "当前网络为计费流量。计费连接有流量限制或产生相关费用。为了节省流量，自动更新"
 "已暂停。\n"
+"\n"
 "当可使用非计费网络时，自动更新将恢复。届时，仍可能需要手动安装更新。\n"
+"\n"
 "另外情形，如果当前网络被错误识别为计费流量，该设置也会发生改动。"
 
 #: src/gs-metered-data-dialog.ui:17
@@ -5039,7 +5041,7 @@ msgstr "无法安装 %s"
 #: src/gs-shell.c:1497
 #, c-format
 msgid "Unable to update %s from %s as download failed"
-msgstr "无法从 %2$s 更新 %1$s 由于下载失败"
+msgstr "由于下载失败，无法从 %2$s 更新 %1$s"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")

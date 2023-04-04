@@ -7,13 +7,14 @@
 # Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
 # Sebastian Rasmussen <sebras@gmail.com>, 2016.
 # Luna Jernberg <droidbittin@gmail.com>, 2021, 2022, 2023.
+# bittin1ddc447d824349b2 <bittin@reimu.nl>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-20 18:20+0000\n"
-"Last-Translator: Luna Jernberg <droidbittin@gmail.com>\n"
+"PO-Revision-Date: 2023-04-01 18:56+0000\n"
+"Last-Translator: bittin1ddc447d824349b2 <bittin@reimu.nl>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/sv/>\n"
 "Language: sv\n"
@@ -21,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -499,7 +500,7 @@ msgstr "Detta är den andra instabila utgåvan för GNOME 43."
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:136
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:237
 msgid "Various fixes related to changed threading model"
-msgstr ""
+msgstr "Olika korrigeringar relaterade till ändrad trådningsmodell"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:137
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:349
@@ -508,7 +509,7 @@ msgstr "Olika UI-delar uppdaterade"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:138
 msgid "Sources dropdown had been reworked"
-msgstr ""
+msgstr "Källor dropdown behövdes omarbetats"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:139
 msgid "Fixes a rare crash when showing app details"
@@ -709,9 +710,8 @@ msgid "Improvements in dark mode"
 msgstr "Förbättringar i mörkt läge"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:274
-#, fuzzy
 msgid "Fix disabling flatpak remotes from the ‘Software Repositories’ dialog"
-msgstr "Tillåt åtkomst till dialogen Programförråd"
+msgstr "Fixat inaktivering av flatpak fjärrar från ‘Programvaruarkiv‘ dialog"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:275
 msgid ""
@@ -730,6 +730,8 @@ msgid ""
 "Check for updates when moving from a metered to a non-metered network "
 "connection"
 msgstr ""
+"Leta efter uppdateringar när du flyttar från en mätt till en icke-mätad "
+"nätverksanslutning"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:306
 msgid "This is the second unstable release for GNOME 42."
@@ -753,7 +755,7 @@ msgstr "Förbättrade utseendet på laddningsskärmen för kategorisidan"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:312
 msgid "Drop the first run dialog"
-msgstr ""
+msgstr "Tog bort första körnings dialogen"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:313
 msgid "Improvements to dark theming"
@@ -777,6 +779,7 @@ msgstr "Ikonuppdateringar"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:317
 msgid "Drop the hardcoded-popular plugin in favour of an appstream file"
 msgstr ""
+"Tog bort hårdkodad populär insticksmodul till förmån för en appstreamfil"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:318
 msgid ""
@@ -850,6 +853,8 @@ msgstr ""
 msgid ""
 "Fix flathub repo being considered present on Fedora 35 with filtered flathub"
 msgstr ""
+"Fixade flathub förråd betraktas som närvarande på Fedora 35 med filtrerad "
+"flathub"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:361
 msgid "Allow searching for extensions"
@@ -860,13 +865,12 @@ msgid "Fix translation of main button on updates page"
 msgstr "Fixade översättningen av huvudknappen på uppdateringssidan"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:363
-#, fuzzy
 msgid "Fix codec installation process"
-msgstr "Användaren nekade installation"
+msgstr "Fixade kodek installationsprocess"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:364
 msgid "Add new GNOME Circle apps to the featured carousel"
-msgstr ""
+msgstr "La till nya GNOME Cirkel program till karusellen som presenteras"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:365
 msgid "Improve metadata support for snaps"
@@ -900,22 +904,28 @@ msgid ""
 "Instead of showing all package-based apps as \"potentially unsafe\", only "
 "use that language for 3rd party ones"
 msgstr ""
+"Istället för att visa alla paketbaserade appar som \"potentiellt osäkra\", "
+"använd bara det språket för sådana som kommer från tredje part"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:408
 msgid ""
 "Fix a bug where the \"Show more\" button on an app details page would "
 "flicker when the window is resized"
 msgstr ""
+"Fixade en bugg där \"Visa mer\" knappen på en program detaljsida skulle "
+"flimra när fönstret ändrar storlek"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:409
 msgid ""
 "Fix a bug where Software sometimes shows an Uninstall button after "
 "uninstalling something"
 msgstr ""
+"Fixade ett fel där programvara ibland visar en avinstallationsknapp efter "
+"att ha avinstallerat något"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:410
 msgid "Add GNOME Circle apps to the featured carousel"
-msgstr ""
+msgstr "La till GNOME Cirkel appar till den karusellen som presenteras"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:411
 msgid ""
@@ -954,15 +964,15 @@ msgstr "Detta är den tredje instabila utgåvan för GNOME 41."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:449
 msgid "Tweaks to the context tiles and dialogs"
-msgstr ""
+msgstr "Tweakar till kontextbrickor och dialoger"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:450
 msgid "Fixes to the details page for non-desktop apps"
-msgstr ""
+msgstr "Fixar för detaljer sidorna för icke-skrivbords program"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:451
 msgid "Re-add support for the add-ons categories"
-msgstr ""
+msgstr "La till stöd för tilläggs kategorier igen"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:452
 msgid "Sort new and updated apps by release date on the category page"
@@ -979,7 +989,7 @@ msgstr "Många delar av användargränssnittet omarbetades"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:484
 msgid "Fix when the 'Launch' button is shown after an application install"
-msgstr ""
+msgstr "Åtgärdade när \"Starta\"-knappen visas efter en programinstallation"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:485
 msgid "Fix appstream:// URL handling"
@@ -1021,7 +1031,7 @@ msgstr "Håll inte rpm-ostreed vid liv för alltid"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:515
 msgid "Prevent polkit checks showing up for background operations"
-msgstr ""
+msgstr "Förhindra att polkitcheckar dyker upp för bakgrundsoperationer"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:516
 msgid "Disallow submitting reviews for an app you haven’t installed"
@@ -1327,6 +1337,8 @@ msgstr "Stöd för mer sökresultat i snap store"
 msgid ""
 "Drop libgnome-desktop-3 dependency in favour of gsettings-desktop-schemas"
 msgstr ""
+"Sluta använda libgnome-desktop-3 beroende till förmån för gsettings-desktop "
+"scheman"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:696
 msgid "Kabyle"
