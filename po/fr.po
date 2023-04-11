@@ -15,13 +15,14 @@
 # Cequal <adityaojha@outlook.in>, 2023.
 # "Alexandre BOYER (Alex)" <alexandre.boyer29@gmail.com>, 2023.
 # Lucas_Strafe <Lucas-Strafe@protonmail.com>, 2023.
+# Adrien SCHNEIDER-NOURY <darkaos006@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-04-02 13:30+0000\n"
-"Last-Translator: \"Alexandre BOYER (Alex)\" <alexandre.boyer29@gmail.com>\n"
+"PO-Revision-Date: 2023-04-11 17:07+0000\n"
+"Last-Translator: Adrien SCHNEIDER-NOURY <darkaos006@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/fr/>\n"
 "Language: fr\n"
@@ -523,7 +524,7 @@ msgstr "Le menu déroulant des sources a été retravaillé"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:139
 msgid "Fixes a rare crash when showing app details"
 msgstr ""
-"Correction d'un crash rare lors de l'affichage des détails d'une application."
+"Correction d'un crash rare lors de l'affichage des détails d'une application"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:150
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:542
@@ -1272,7 +1273,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:634
 msgid "A bug was fixed that prevented installation of .flatpakref files"
 msgstr ""
-"Un bogue a été corrigé qui empêchait l'installation des fichiers .flatpakref."
+"Un bogue a été corrigé qui empêchait l'installation des fichiers .flatpakref"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:642
 msgid "Panjabi"
@@ -1375,7 +1376,7 @@ msgstr "Correction d'un crash dans la page des mises à jour"
 msgid "Fix presentation of app permissions for fully sandboxed flatpak apps"
 msgstr ""
 "Correction de la présentation des permissions d'application pour les "
-"applications flatpak entièrement mises en bac à sable."
+"applications flatpak entièrement mises en bac à sable"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:670
 msgid "Fix deadlock on rpm-ostree systems"
@@ -2451,11 +2452,9 @@ msgstr "Copyright © 2016–2022 Les contributeurs de Logiciels de GNOME"
 #: src/gs-application.c:263 src/gs-application.c:272
 msgid "translator-credits"
 msgstr ""
-"Alain Lojewski <allomervan@gmail.com>\n"
-"Guillaume Bernard <associations@guillaume-bernard.fr>\n"
-"Adrien Plazas <kekun.plazas@laposte.net>\n"
-"Julien Humbert <julroy67@gmail.com>\n"
-"Charles Monzat <charles.monzat@free.fr>"
+"Alain Lojewski <allomervan@gmail.com> ; Guillaume Bernard <associations"
+"@guillaume-bernard.fr> ; Adrien Plazas <kekun.plazas@laposte.net> ; Julien "
+"Humbert <julroy67@gmail.com> ; Charles Monzat <charles.monzat@free.fr>"
 
 #. TRANSLATORS: this is the title of the about window
 #. TRANSLATORS: this is the menu item that opens the about window
@@ -3440,8 +3439,8 @@ msgstr[1] "Des applications ont été supprimées"
 #: src/gs-common.c:766
 msgid "A restart is required for it to take effect."
 msgid_plural "A restart is required for them to take effect."
-msgstr[0] "Un redémarrage est nécessaire pour terminer l’installation."
-msgstr[1] "Un redémarrage est nécessaire pour terminer l’installation."
+msgstr[0] "Un redémarrage est nécessaire pour que cela prenne effet."
+msgstr[1] "Un redémarrage est nécessaire pour que les changements prennent effet."
 
 #. TRANSLATORS: button text
 #: src/gs-common.c:773
@@ -3485,7 +3484,7 @@ msgstr[1] "Il y a %d semaines"
 #, c-format
 msgid "%d month ago"
 msgid_plural "%d months ago"
-msgstr[0] "Il y a %d mois"
+msgstr[0] "Le mois dernier"
 msgstr[1] "Il y a %d mois"
 
 #: src/gs-common.c:891
@@ -6310,7 +6309,7 @@ msgid ""
 "Updates;Upgrade;Sources;Repositories;Preferences;Install;Uninstall;Program;"
 "Software;App;Store;"
 msgstr ""
-"mises à jour;mise à niveau;sources;dépôts;préférences;installer;désinstaller;"
+"Mises à jour;mise à niveau;sources;dépôts;préférences;installer;désinstaller;"
 "programmes;logiciels;applications;magasin;boutique;"
 
 #. TRANSLATORS: this is a group of updates that are not
@@ -6348,7 +6347,7 @@ msgstr ""
 
 #: plugins/epiphany/gs-plugin-epiphany.c:498
 msgid "GNOME Web"
-msgstr "GNOME Web"
+msgstr "Navigateur GNOME"
 
 #: plugins/epiphany/org.gnome.Software.Plugin.Epiphany.metainfo.xml.in:6
 msgid "Web Apps Support"
