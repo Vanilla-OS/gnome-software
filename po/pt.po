@@ -10,13 +10,14 @@
 # André Cerqueira <acerqueira021@gmail.com>, 2021.
 # Adtora Slonic <adtoraslonic@gmail.com>, 2023.
 # Felipe Nogueira <contato.fnog@gmail.com>, 2023.
+# ssantos <ssantos@web.de>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-03-26 04:29+0000\n"
-"Last-Translator: Felipe Nogueira <contato.fnog@gmail.com>\n"
+"PO-Revision-Date: 2023-04-06 21:33+0000\n"
+"Last-Translator: ssantos <ssantos@web.de>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/pt/>\n"
 "Language: pt\n"
@@ -294,7 +295,7 @@ msgstr "Suporta vídeo como captura de ecrã"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:99
 msgid "Improvements of source picker in the details page"
-msgstr ""
+msgstr "Melhorias do seletor de fontes na página de detalhes"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:100
 msgid "Fixes a bug when viewing details of a package file"
@@ -508,20 +509,20 @@ msgstr "Esta é a segunda versão instável do GNOME 43."
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:136
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:237
 msgid "Various fixes related to changed threading model"
-msgstr ""
+msgstr "Várias correções relacionadas ao modelo de threading alterado"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:137
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:349
 msgid "Various UI parts updated"
-msgstr ""
+msgstr "Várias partes da interface do utilizador atualizadas"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:138
 msgid "Sources dropdown had been reworked"
-msgstr ""
+msgstr "A lista suspensa de fontes foi reformulada"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:139
 msgid "Fixes a rare crash when showing app details"
-msgstr ""
+msgstr "Corrige um travamento raro ao mostrar detalhes da app"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:150
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:542
@@ -543,34 +544,39 @@ msgstr "Esta é a primeira versão instável do GNOME 43."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:167
 msgid "Various improvements to notifications"
-msgstr ""
+msgstr "Várias melhorias para notificações"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:168
 msgid "Fix several crashes when handling flatpak apps"
-msgstr ""
+msgstr "Corrige vários travamentos ao manipular apps de flatpak"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:169
 msgid "Add ‘Other Apps by Author’ section in the app details page"
 msgstr ""
+"Adiciona a secção \"Outras Apps pelo Autor\" na página de detalhes da app"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:170
 msgid "Improve styling of app context lozenges"
-msgstr ""
+msgstr "Melhora o estilo das pastilhas de contexto da app"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:171
 msgid ""
 "Add ‘Available for Distro’ section to the overview page (if configured by "
 "your distribution)"
 msgstr ""
+"Adiciona a secção \"Disponível para Distribuição\" à página de visão geral ("
+"se configurado pela sua distribuição)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:172
 msgid ""
 "Show more details about file system permissions requested by flatpak apps"
 msgstr ""
+"Exibir mais detalhes sobre as permissões do sistema de ficheiros solicitadas "
+"pelas apps de flatpak"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:173
 msgid "Show more types of URI from app metainfo"
-msgstr ""
+msgstr "Exibir mais tipos de URI das informações de metadados da app"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:174
 msgid "Fix a few issues when using a dark mode theme"
@@ -579,39 +585,44 @@ msgstr "Corrige alguns problemas ao usar um tema de modo escuro"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:175
 msgid "Fix some issues with arrows in right-to-left locales"
 msgstr ""
+"Corrige alguns problemas com setas em localidades da direita para a esquerda"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:176
 msgid "Fix language pack installation for certain locales"
-msgstr ""
+msgstr "Corrige a instalação de pacotes de idioma para determinadas localidades"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:177
 msgid "Improve debug output to make user bug reports more useful"
 msgstr ""
+"Aprimora a saída de depuração para tornar relatos de problemas por "
+"utilizadores mais úteis"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:178
 msgid "Add `--uninstall=ID` command line option"
-msgstr ""
+msgstr "Adiciona a opção em linha de comando `--uninstall=ID`"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:179
 msgid ""
 "Allow scrolling screenshots by clicking on next and previous screenshots"
 msgstr ""
+"Permitir a rolagem de capturas de tela clicando nas capturas de tela "
+"seguintes e anteriores"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:180
 msgid "Add support for webapps"
-msgstr ""
+msgstr "Adicionar suporte para webapps"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:181
 msgid "Allow swiping back in the shell using touch gestures"
-msgstr ""
+msgstr "Permitir deslizar pelo shell usando gestos de toque"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:182
 msgid "Improved caching of downloaded metadata"
-msgstr ""
+msgstr "Melhorar o cachê de metadados descarregados"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:183
 msgid "Many internal architectural changes to make the code more maintainable"
-msgstr ""
+msgstr "Diversas mudanças estruturais para melhorar a manutenção do código"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:184
 msgid ""
@@ -619,12 +630,17 @@ msgid ""
 "distribution vendors wishing to mark their apps as popular should see `doc/"
 "vendor-customisation.md` for examples of how to do this now"
 msgstr ""
+"A chave <code>popular-overrides</code> do GSettings foi removida; vendedores "
+"de distribuição que desejam marcar os aplicativos deles como popular devem "
+"ver `doc/vendor-customisation.md`para exemplos de como fazer isso agora"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:189
 msgid ""
 "The <code>hardcoded_popular</code> Meson option has been renamed to "
 "<code>hardcoded_curated</code>."
 msgstr ""
+"A opção Meson <code>hardcoded_popular</code> foi renomeada para "
+"<code>hardcoded_curated</code>."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:207
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:249
@@ -652,23 +668,23 @@ msgstr "Friuliano"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:498
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:545
 msgid "Occitan (post 1500)"
-msgstr ""
+msgstr "Occitano (desde 1500)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:235
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:405
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:561
 msgid "This is a stable release with the following changes:"
-msgstr ""
+msgstr "Este é um lançamento estável com as seguintes mudanças:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:238
 msgid "Added several appstream-related fixes"
-msgstr ""
+msgstr "Adicionado diversos consertos no appstream"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:243
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:530
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:685
 msgid "Bokmål, Norwegian"
-msgstr ""
+msgstr "Bokmål, Norueguês"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:253
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:334
@@ -684,23 +700,24 @@ msgstr "Kazakh"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:268
 msgid "This is the third unstable release for GNOME 42."
-msgstr ""
+msgstr "Este é o terceiro lançamento instável para GNOME 42."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:270
 msgid "Cancel ongoing update downloads when system power is low"
 msgstr ""
+"Cancelar atualizações em andamento quando a pilha do sistema estiver baixa"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:271
 msgid "Numerous small user interface fixes and tweaks"
-msgstr ""
+msgstr "Diversos consertos e ajustes pequenos para a interface de utilizador"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:272
 msgid "Prioritize full matches in search results"
-msgstr ""
+msgstr "Priorizar resultados idênticos nos resultados da pesquisa"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:273
 msgid "Improvements in dark mode"
-msgstr ""
+msgstr "Melhorias no modo escuro"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:274
 #, fuzzy
@@ -712,6 +729,8 @@ msgid ""
 "Threading and performance improvements which should reduce the number of "
 "user interface freezes"
 msgstr ""
+"Melhorias no desempenho e threading que devem reduzir o numero de "
+"travamentos na interface de utilizador"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:276
 msgid "Update some icons"
@@ -722,26 +741,28 @@ msgid ""
 "Check for updates when moving from a metered to a non-metered network "
 "connection"
 msgstr ""
+"Verifique por atualizações quando for mover a internet entre uma conexão não "
+"cabeada e uma cabeada"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:306
 msgid "This is the second unstable release for GNOME 42."
-msgstr ""
+msgstr "Este é o segundo lançamento instável para GNOME 42."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:308
 msgid "Allow <code>--verbose</code> to be enabled at runtime"
-msgstr ""
+msgstr "Permitir que <code>--verbose</code> esteja ativado durante a execução"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:309
 msgid "Condense the rows in the age rating context dialog"
-msgstr ""
+msgstr "Condensar as fileiras no diálogo de contexto de classificação por idade"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:310
 msgid "Update the UI for ratings and reviews of apps"
-msgstr ""
+msgstr "Atualizar a Interface de Utilizador para notas e opiniões de apps"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:311
 msgid "Improve the appearance of the category page loading screen"
-msgstr ""
+msgstr "Melhorar a aparência da página com o ecrã de categoria de carregamento"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:312
 msgid "Drop the first run dialog"
@@ -749,16 +770,18 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:313
 msgid "Improvements to dark theming"
-msgstr ""
+msgstr "Melhorias para o tema escuro"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:314
 msgid ""
 "Support viewing a specific metainfo file using <code>--show-metainfo</code>"
 msgstr ""
+"Melhorar a visualização de um metainfo específico utilizando <code>--show-"
+"metainfo</code>"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:315
 msgid "Several more threading improvements"
-msgstr ""
+msgstr "Mais diversas melhorias para threading"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:316
 msgid "Icon updates"
