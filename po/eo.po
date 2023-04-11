@@ -6,20 +6,22 @@
 # Carmen Bianca BAKKER <carmen@carmenbianca.eu>, 2018.
 # Tirifto <tirifto@posteo.cz>, 2019.
 # Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>, 2014-2019.
+# phlostically <phlostically@mailinator.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2020-01-07 19:35+0100\n"
-"Last-Translator: Carmen Bianca BAKKER <carmen@carmenbianca.eu>\n"
-"Language-Team: Esperanto <gnome-eo-list@gnome.org>\n"
+"PO-Revision-Date: 2023-04-06 21:33+0000\n"
+"Last-Translator: phlostically <phlostically@mailinator.com>\n"
+"Language-Team: Esperanto <https://hosted.weblate.org/projects/vanilla-os/"
+"gnome-software/eo/>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.4\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17-dev\n"
 "X-DamnedLies-Scope: partial\n"
 "X-Project-Style: gnome\n"
 
@@ -3640,7 +3642,7 @@ msgstr ""
 
 #: src/gs-details-page.ui:813
 msgid "_Help"
-msgstr ""
+msgstr "_Helpo"
 
 #. Translators: Button opening a dialog where the users can write and publish their opinions about the apps.
 #: src/gs-details-page.ui:908
