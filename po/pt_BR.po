@@ -20,13 +20,14 @@
 # Fernando Lopes <fefehex12@gmail.com>, 2023.
 # Fernando Lopes <118869201+plasmus777@users.noreply.github.com>, 2023.
 # Leonardo Gonzalez <leog110@gmail.com>, 2023.
+# José Claudio Pereira <jpereira1330@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-03-30 23:18+0000\n"
-"Last-Translator: Leonardo Gonzalez <leog110@gmail.com>\n"
+"PO-Revision-Date: 2023-04-06 21:33+0000\n"
+"Last-Translator: José Claudio Pereira <jpereira1330@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "vanilla-os/gnome-software/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -815,7 +816,7 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:347
 msgid "This is the first unstable release for GNOME 42."
-msgstr ""
+msgstr "Esta é a primeira versão instável do GNOME 42."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:350
 msgid "Support more markup in the application description"
