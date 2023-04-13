@@ -14,13 +14,14 @@
 # M00nD3v <matteo.duchs@outlook.com>, 2023.
 # Shirosaka <teht0x1c@outlook.de>, 2023.
 # "Martin P." <edisso999@gmail.com>, 2023.
+# Jörn Weigend <das.jott@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-03-21 23:55+0000\n"
-"Last-Translator: \"Martin P.\" <edisso999@gmail.com>\n"
+"PO-Revision-Date: 2023-04-06 21:33+0000\n"
+"Last-Translator: Jörn Weigend <das.jott@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/de/>\n"
 "Language: de\n"
@@ -28,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16.2-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -709,61 +710,64 @@ msgstr "Zahlreiche kleine Korrekturen und Optimierungen der Benutzeroberfläche"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:272
 msgid "Prioritize full matches in search results"
-msgstr ""
+msgstr "Volltreffer in Suchergebnissen priorisieren"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:273
 msgid "Improvements in dark mode"
-msgstr ""
+msgstr "Verbesserungen im Dark-Mode"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:274
-#, fuzzy
 msgid "Fix disabling flatpak remotes from the ‘Software Repositories’ dialog"
-msgstr "Zugriff auf den Softwarequellen-Dialog erlauben"
+msgstr ""
+"Behebt Deaktivierung von Flatpak-Quellen aus dem 'Softwarequellen'-Dialog"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:275
 msgid ""
 "Threading and performance improvements which should reduce the number of "
 "user interface freezes"
 msgstr ""
+"Performance-Steigerungen, die das Einfrieren der Benutzeroberfläche "
+"eindämmen sollte"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:276
-#, fuzzy
 msgid "Update some icons"
-msgstr "Details aktualisieren"
+msgstr "Einige Symbole aktualisieren"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:277
 msgid ""
 "Check for updates when moving from a metered to a non-metered network "
 "connection"
 msgstr ""
+"Auf Updates prüfen nach Umschaltung von beschränkter zu unbeschränkter "
+"Netzwerkverbindung"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:306
 msgid "This is the second unstable release for GNOME 42."
-msgstr ""
+msgstr "Dies ist die zweite, unstabile Ausgabe von GNOME 42."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:308
 msgid "Allow <code>--verbose</code> to be enabled at runtime"
-msgstr ""
+msgstr "Zur Laufzeit die Aktivierung von <code>--verbose</code> erlauben"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:309
 msgid "Condense the rows in the age rating context dialog"
-msgstr ""
+msgstr "Die Zeilen im Altersfreigabe-Dialog zusammenfassen"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:310
 msgid "Update the UI for ratings and reviews of apps"
-msgstr ""
+msgstr "Oberflächen-Updates für Bewertungen und Rezensionen von Anwendungen"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:311
 msgid "Improve the appearance of the category page loading screen"
-msgstr ""
+msgstr "Verbesserung der Darstellung des Ladebildschirms der Kategorieseite"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:312
 msgid "Drop the first run dialog"
-msgstr ""
+msgstr "Wilkommensdialog verwerfen"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:313
 msgid "Improvements to dark theming"
-msgstr ""
+msgstr "Verbesserungen an dunklem Design"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:314
 msgid ""
@@ -772,12 +776,11 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:315
 msgid "Several more threading improvements"
-msgstr ""
+msgstr "Mehrere weitere Threading-Verbesserungen"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:316
-#, fuzzy
 msgid "Icon updates"
-msgstr "Nach Aktualisierungen suchen"
+msgstr "Symbol-Aktualisierungen"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:317
 msgid "Drop the hardcoded-popular plugin in favour of an appstream file"
@@ -795,7 +798,7 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:347
 msgid "This is the first unstable release for GNOME 42."
-msgstr ""
+msgstr "Dies ist die erste, unstabile Ausgabe von GNOME 42."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:350
 msgid "Support more markup in the application description"

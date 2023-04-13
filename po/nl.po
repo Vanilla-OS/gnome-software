@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: gnome-software gnome-3-16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-03-17 10:39+0000\n"
+"PO-Revision-Date: 2023-04-06 21:33+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/nl/>\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16.2-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -2256,7 +2256,7 @@ msgstr ""
 "Nathan Follens <nfollens@gnome.org>\n"
 "Justin van Steijn\n"
 "Hannie Dumoleyn\n"
-"Philip Goto <philip.goto@gmail.com>\n"
+"Philip Goto https://flipflop97.github.io/\n"
 "Meer info over GNOME-NL https://nl.gnome.org"
 
 #. TRANSLATORS: this is the title of the about window
