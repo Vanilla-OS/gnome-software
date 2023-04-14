@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2022-09-06 18:24+0200\n"
+"PO-Revision-Date: 2023-04-14 06:57+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
-"Language-Team: Georgian <(nothing)>\n"
+"Language-Team: Georgian <https://hosted.weblate.org/projects/vanilla-os/"
+"gnome-software/ka/>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Weblate 4.17-dev\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -73,7 +73,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:373
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:492
 msgid "Bulgarian"
-msgstr ""
+msgstr "ბულგარული"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:74
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:107
@@ -90,7 +90,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:638
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:686
 msgid "Catalan"
-msgstr ""
+msgstr "კატალანური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:75
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:200
@@ -98,7 +98,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:533
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:687
 msgid "Chinese (Taiwan)"
-msgstr ""
+msgstr "ჩინური (ტაივანი)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:76
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:202
@@ -109,7 +109,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:639
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:688
 msgid "Czech"
-msgstr ""
+msgstr "ჩეხური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:77
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:205
@@ -118,7 +118,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:536
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:600
 msgid "English (United Kingdom)"
-msgstr ""
+msgstr "ინგლისური (გაერთიანებული სამეფო)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:78
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:113
@@ -133,14 +133,14 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:640
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:690
 msgid "Galician"
-msgstr ""
+msgstr "გალური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:79
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:114
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:147
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:210
 msgid "Georgian"
-msgstr ""
+msgstr "ქართული"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:80
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:211
@@ -152,7 +152,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:605
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:691
 msgid "German"
-msgstr ""
+msgstr "გერმანული"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:81
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:115
@@ -165,7 +165,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:541
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:693
 msgid "Hebrew"
-msgstr ""
+msgstr "ივრითი"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:82
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:213
@@ -173,20 +173,20 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:428
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:606
 msgid "Hungarian"
-msgstr ""
+msgstr "უნგრული"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:83
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:116
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:332
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:383
 msgid "Icelandic"
-msgstr ""
+msgstr "ისლანდიური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:84
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:385
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:698
 msgid "Latvian"
-msgstr ""
+msgstr "ლატვიური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:85
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:119
@@ -201,13 +201,13 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:610
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:699
 msgid "Lithuanian"
-msgstr ""
+msgstr "ლიტვური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:86
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:216
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:544
 msgid "Nepali"
-msgstr ""
+msgstr "ნეპალური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:87
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:125
@@ -219,7 +219,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:577
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:615
 msgid "Serbian"
-msgstr ""
+msgstr "სერბული"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:88
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:224
@@ -233,7 +233,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:616
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:644
 msgid "Slovenian"
-msgstr ""
+msgstr "სლოვენური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:89
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:126
@@ -249,7 +249,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:645
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:705
 msgid "Spanish"
-msgstr ""
+msgstr "ესპანური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:90
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:226
@@ -261,7 +261,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:618
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:646
 msgid "Swedish"
-msgstr ""
+msgstr "შვედური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:96
 msgid "This is the third unstable release for GNOME 43."
@@ -301,7 +301,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:105
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:143
 msgid "Abkhazian"
-msgstr ""
+msgstr "აბხაზური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:106
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:196
@@ -314,7 +314,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:595
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:684
 msgid "Basque"
-msgstr ""
+msgstr "ბასკური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:108
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:145
@@ -327,7 +327,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:458
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:532
 msgid "Chinese (China)"
-msgstr ""
+msgstr "ჩინური (ჩინეთი)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:109
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:201
@@ -337,7 +337,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:460
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:597
 msgid "Croatian"
-msgstr ""
+msgstr "ხორვატული"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:110
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:203
@@ -346,7 +346,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:422
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:571
 msgid "Danish"
-msgstr ""
+msgstr "დანიური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:111
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:146
@@ -356,7 +356,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:535
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:599
 msgid "Dutch"
-msgstr ""
+msgstr "ჰოლანდიური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:112
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:206
@@ -366,7 +366,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:537
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:601
 msgid "Finnish"
-msgstr ""
+msgstr "ფინური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:117
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:149
@@ -380,7 +380,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:641
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:694
 msgid "Indonesian"
-msgstr ""
+msgstr "ინდონეზიური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:118
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:291
@@ -388,7 +388,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:466
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:609
 msgid "Korean"
-msgstr ""
+msgstr "კორეული"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:120
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:152
@@ -401,9 +401,8 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:546
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:611
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:700
-#, fuzzy
 msgid "Persian"
-msgstr "ვერსია"
+msgstr "სპარსული"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:121
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:219
@@ -411,9 +410,8 @@ msgstr "ვერსია"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:433
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:547
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:575
-#, fuzzy
 msgid "Polish"
-msgstr "პოლიტიკა"
+msgstr "პოლონური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:122
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:153
@@ -429,7 +427,7 @@ msgstr "პოლიტიკა"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:643
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:701
 msgid "Portuguese"
-msgstr ""
+msgstr "პორტუგალიური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:123
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:221
@@ -443,7 +441,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:613
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:702
 msgid "Portuguese (Brazil)"
-msgstr ""
+msgstr "ბრაზილიური პორტუგალიური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:124
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:154
@@ -455,7 +453,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:437
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:551
 msgid "Russian"
-msgstr ""
+msgstr "რუსული"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:127
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:157
@@ -465,7 +463,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:619
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:706
 msgid "Turkish"
-msgstr ""
+msgstr "თურქული"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:128
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:158
@@ -480,7 +478,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:620
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:707
 msgid "Ukrainian"
-msgstr ""
+msgstr "უკრაინული"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:134
 msgid "This is the second unstable release for GNOME 43."
@@ -509,14 +507,14 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:573
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:695
 msgid "Italian"
-msgstr ""
+msgstr "იტალიური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:159
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:229
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:399
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:708
 msgid "Vietnamese"
-msgstr ""
+msgstr "ვიეტნამური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:165
 msgid "This is the first unstable release for GNOME 43."
@@ -612,7 +610,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:425
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:602
 msgid "French"
-msgstr ""
+msgstr "ფრანგული"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:208
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:287
@@ -622,7 +620,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:603
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:689
 msgid "Friulian"
-msgstr ""
+msgstr "ფრიულური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:217
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:256
@@ -654,14 +652,14 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:253
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:334
 msgid "Japanese"
-msgstr ""
+msgstr "იაპონური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:254
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:465
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:608
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:697
 msgid "Kazakh"
-msgstr ""
+msgstr "ყაზახური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:268
 msgid "This is the third unstable release for GNOME 42."
@@ -694,9 +692,8 @@ msgid ""
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:276
-#, fuzzy
 msgid "Update some icons"
-msgstr "კონტაქტის დეტალები"
+msgstr "ზოგიერთი ხატულის განახლება"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:277
 msgid ""
@@ -742,9 +739,8 @@ msgid "Several more threading improvements"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:316
-#, fuzzy
 msgid "Icon updates"
-msgstr "განახლებების შემოწმება"
+msgstr "ხატულების განახლება"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:317
 msgid "Drop the hardcoded-popular plugin in favour of an appstream file"
@@ -846,12 +842,12 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:491
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:529
 msgid "Belarusian"
-msgstr ""
+msgstr "ბელორუსული"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:393
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:704
 msgid "Slovak"
-msgstr ""
+msgstr "სლოვაკური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:407
 msgid ""
@@ -897,7 +893,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:614
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:703
 msgid "Romanian"
-msgstr ""
+msgstr "რუმინული"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:447
 msgid "This is the third unstable release for GNOME 41."
@@ -1025,25 +1021,24 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:568
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:593
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:636
-#, fuzzy
 msgid "Translation updates:"
-msgstr "თარგმანები"
+msgstr "თარგმანის განახლებები:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:570
 msgid "British English"
-msgstr ""
+msgstr "ბრიტანული ინგლისური"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:572
 msgid "Greek"
-msgstr ""
+msgstr "ბერძნული"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:574
 msgid "Norwegian Bokmål"
-msgstr ""
+msgstr "ნორვეგიული ბოკმალი"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:576
 msgid "Punjabi"
-msgstr ""
+msgstr "პანჯაბი"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:583
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:626
@@ -1121,7 +1116,7 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:642
 msgid "Panjabi"
-msgstr ""
+msgstr "პენჯაბი/პანჯაბი"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:652
 msgid "This is the first unstable release for GNOME 40."
@@ -1244,7 +1239,7 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:696
 msgid "Kabyle"
-msgstr ""
+msgstr "ქაბილი"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:2043
 #: src/gs-application.c:256
@@ -1253,11 +1248,11 @@ msgstr "პროექტი \"GNOME\""
 
 #: data/org.gnome.software.external-appstream.policy.in.in:11
 msgid "Install an appstream file into a system location"
-msgstr ""
+msgstr "Appstream ფაილის სისტემურ მდებარეობაზე დაყენება"
 
 #: data/org.gnome.software.external-appstream.policy.in.in:12
 msgid "Installing an appstream file into a system location"
-msgstr ""
+msgstr "Appstream ფაილის სისტემურ მდებარეობაზე დაყენება"
 
 #: data/org.gnome.software.gschema.xml:5
 msgid "A list of compatible projects"
@@ -1281,7 +1276,7 @@ msgstr ""
 
 #: data/org.gnome.software.gschema.xml:15
 msgid "Automatically download and install updates"
-msgstr ""
+msgstr "განახლებების ავტომატურად ჩამოტვირთვა და დაყენება"
 
 #: data/org.gnome.software.gschema.xml:16
 msgid ""
@@ -1291,7 +1286,7 @@ msgstr ""
 
 #: data/org.gnome.software.gschema.xml:20
 msgid "Notify the user about software updated in the background"
-msgstr ""
+msgstr "მომხმარებლის შეტყობინება პროგრამების ფონური განახლების შესახებ"
 
 #: data/org.gnome.software.gschema.xml:21
 msgid ""
@@ -1316,7 +1311,7 @@ msgstr ""
 
 #: data/org.gnome.software.gschema.xml:34
 msgid "Show star ratings next to applications"
-msgstr ""
+msgstr "აპლიკაციის გასწვრივ ვარსკვლავების რეიტინგის ჩვენება"
 
 #: data/org.gnome.software.gschema.xml:38
 msgid "Filter applications based on the default branch set for the remote"
@@ -1334,23 +1329,24 @@ msgstr ""
 
 #: data/org.gnome.software.gschema.xml:47
 msgid "The last update check timestamp"
-msgstr ""
+msgstr "განახლების უკანასკნელი შემოწმების დროის შტამპი"
 
 #: data/org.gnome.software.gschema.xml:51
 msgid "The last upgrade notification timestamp"
-msgstr ""
+msgstr "უკანასკნელი გაუმჯობესების შეტყობინების დროის შტამპი"
 
 #: data/org.gnome.software.gschema.xml:55
 msgid "The last update notification timestamp"
-msgstr ""
+msgstr "უკანასკნელი განახლების შეტყობინების დროის შტამპი"
 
 #: data/org.gnome.software.gschema.xml:59
 msgid "The timestamp of the first security update, cleared after update"
 msgstr ""
+"პირველი უსაფრთხოების განახლების დროის შტამპი. სუფთავდება განახლების შემდეგ"
 
 #: data/org.gnome.software.gschema.xml:63
 msgid "The last update timestamp"
-msgstr ""
+msgstr "უკანასკნელი განახლების დროის შტამპი"
 
 #: data/org.gnome.software.gschema.xml:67
 msgid "The last timestamp when the system was online and got any updates"
@@ -1369,11 +1365,11 @@ msgstr ""
 
 #: data/org.gnome.software.gschema.xml:81
 msgid "The server to use for application reviews"
-msgstr ""
+msgstr "აპლიკაციის მიმოხილვების სერვერი"
 
 #: data/org.gnome.software.gschema.xml:85
 msgid "The minimum karma score for reviews"
-msgstr ""
+msgstr "მინიმალური კარმა მიმოხილვებისთვის"
 
 #: data/org.gnome.software.gschema.xml:86
 msgid "Reviews with karma less than this number will not be shown."
@@ -1457,17 +1453,17 @@ msgstr ""
 
 #: gs-install-appstream/gs-install-appstream.c:145
 msgid "Failed to parse command line arguments"
-msgstr ""
+msgstr "ბრძანებების სტრიქონის პარამეტრების დამუშავების შეცდომა"
 
 #. TRANSLATORS: user did not specify a valid filename
 #: gs-install-appstream/gs-install-appstream.c:152
 msgid "You need to specify exactly one filename"
-msgstr ""
+msgstr "საჭიროა მიუთითოთ მხოლოდ ერთი ფაილის სახელი"
 
 #. TRANSLATORS: only able to install files as root
 #: gs-install-appstream/gs-install-appstream.c:159
 msgid "This program can only be used by the root user"
-msgstr ""
+msgstr "ამ პროგრამის გამოყენება მხოლოდ root მომხმარებელს შეუძლია"
 
 #. TRANSLATORS: error details
 #: gs-install-appstream/gs-install-appstream.c:167
@@ -1479,61 +1475,61 @@ msgstr ""
 #: gs-install-appstream/gs-install-appstream.c:178
 #, c-format
 msgid "Failed to move: %s"
-msgstr ""
+msgstr "გადატანის შეცდომა: %s"
 
 #: src/gnome-software-local-file-flatpak.desktop.in:3
 #: src/gnome-software-local-file-fwupd.desktop.in:3
 #: src/gnome-software-local-file-packagekit.desktop.in:3
 #: src/gnome-software-local-file-snap.desktop.in:3
 msgid "Software Install"
-msgstr ""
+msgstr "პროგრამების დაყენება"
 
 #: src/gnome-software-local-file-flatpak.desktop.in:4
 #: src/gnome-software-local-file-fwupd.desktop.in:4
 #: src/gnome-software-local-file-packagekit.desktop.in:4
 #: src/gnome-software-local-file-snap.desktop.in:4
 msgid "Install selected software on the system"
-msgstr ""
+msgstr "მონიშნული პროგრამების დაყენება"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:134
 msgid "Cartoon Violence"
-msgstr ""
+msgstr "მულტფილმში ძალადობით"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:136
 msgid "No information regarding cartoon violence"
-msgstr ""
+msgstr "ინფორმაცია მულტფილმში ძალადობის შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:144
 msgid "Fantasy Violence"
-msgstr ""
+msgstr "წარმოსადგენი ძალადობა"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:146
 msgid "No information regarding fantasy violence"
-msgstr ""
+msgstr "ინფორმაცია წარმოსადგენი ძალადობის შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:154
 msgid "Realistic Violence"
-msgstr ""
+msgstr "რეალისტური ძალადობა"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:156
 msgid "No information regarding realistic violence"
-msgstr ""
+msgstr "ინფორმაცია რეალისტური ძალადობის შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:164
 msgid "Violence Depicting Bloodshed"
-msgstr ""
+msgstr "სისხლიანი ძალადობა"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:166
 msgid "No information regarding bloodshed"
-msgstr ""
+msgstr "ინფორმაცია სისხლიანი ძალადობის შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:174
@@ -1543,7 +1539,7 @@ msgstr "სექსუალური ძალადობა"
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:176
 msgid "No information regarding sexual violence"
-msgstr ""
+msgstr "ინფორმაცია სექსუალური ძალადობის შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:184
@@ -1553,7 +1549,7 @@ msgstr "ალკოჰოლი"
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:186
 msgid "No information regarding references to alcohol"
-msgstr ""
+msgstr "ინფორმაცია ალკოჰოლზე მიმართვის შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:194
@@ -1563,7 +1559,7 @@ msgstr "ნარკოტიკები"
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:196
 msgid "No information regarding references to illicit drugs"
-msgstr ""
+msgstr "ინფორმაცია ნარკოტინებზე მიმართვის შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:204
@@ -1573,7 +1569,7 @@ msgstr "თამბაქო"
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:206
 msgid "No information regarding references to tobacco products"
-msgstr ""
+msgstr "ინფორმაცია თამბაქოს პროდუქტების შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:214
@@ -1584,7 +1580,7 @@ msgstr "სიშიშვლე"
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:216
 msgid "No information regarding nudity of any sort"
-msgstr ""
+msgstr "ინფორმაცია სიშიშვლის შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:224
@@ -1594,87 +1590,87 @@ msgstr "სექსუალური თემები"
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:226
 msgid "No information regarding references to or depictions of sexual nature"
-msgstr ""
+msgstr "ინფორმაცია სექსუალური ხასიათის მითითების შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:234
 msgid "Profanity"
-msgstr ""
+msgstr "პროფანაცია"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:236
 msgid "No information regarding profanity of any kind"
-msgstr ""
+msgstr "ინფორმაცია პროფანაციის შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:244
 msgid "Inappropriate Humor"
-msgstr ""
+msgstr "შეუსაბამო იუმორი"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:246
 msgid "No information regarding inappropriate humor"
-msgstr ""
+msgstr "ინფორმაცია შეუსაბამო იუმორის შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:254
 msgid "Discrimination"
-msgstr ""
+msgstr "დისკრიმინაცია"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:256
 msgid "No information regarding discriminatory language of any kind"
-msgstr ""
+msgstr "ინფორმაცია დისკრიმინაციული ენის შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:264
 msgid "Advertising"
-msgstr ""
+msgstr "რეკლამირება"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:266
 msgid "No information regarding advertising of any kind"
-msgstr ""
+msgstr "ინფორმაცია რაიმე სახის რეკლამების შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:274
 msgid "Gambling"
-msgstr ""
+msgstr "ფულზე თამაში"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:276
 msgid "No information regarding gambling of any kind"
-msgstr ""
+msgstr "ინფორმაცია რაიმე სახით გემბლინგის შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:284
 msgid "Purchasing"
-msgstr ""
+msgstr "შეძენები"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:286
 msgid "No information regarding the ability to spend money"
-msgstr ""
+msgstr "ინფორმაცია მასში ფულის დახარჯვის შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:294
 msgid "Chat Between Users"
-msgstr ""
+msgstr "საუბარი მომხმარებლებს შორის"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:296
 msgid "No information regarding ways to chat with other users"
-msgstr ""
+msgstr "ინფორმაცია სხვა მომხმარებლებთან ჩატის შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:304
 msgid "Audio Chat Between Users"
-msgstr ""
+msgstr "ხმოვანი საუბარი მომხმარებლებს შორის"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:306
 msgid "No information regarding ways to talk with other users"
-msgstr ""
+msgstr "ინფორმაცია სხვა მომხმარებლებთან საუბრის შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:314
@@ -1687,76 +1683,82 @@ msgid ""
 "No information regarding sharing of social network usernames or email "
 "addresses"
 msgstr ""
+"ინფორმაცია სოციალური ქსელის მომხმარებლის ან ელფოსტის მისამართის გაზიარების "
+"შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:324
 msgid "Identifying Information"
-msgstr ""
+msgstr "ინფორმაციის იდენტიფიკაცია"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:326
 msgid "No information regarding sharing of user information with third parties"
 msgstr ""
+"ინფორმაცია მომხმარებლის ინფორმაციის მესამე პირებისთვის გადაცემის შესახებ არ "
+"არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:334
 msgid "Location Sharing"
-msgstr ""
+msgstr "მდებარეობის გაზიარება"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:336
 msgid "No information regarding sharing of physical location with other users"
 msgstr ""
+"ინფორმაცია სხვა მომხმარებლებისთვის ფიზიკური მდებარეობის გაზიარების შესახებ "
+"არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:360
 msgid "Homosexuality"
-msgstr ""
+msgstr "ჰომოსექსუალიზმი"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:362
 msgid "No information regarding references to homosexuality"
-msgstr ""
+msgstr "ინფორმაცია ჰომოსექსუალიზმთან მიმართვების შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:370
 msgid "Prostitution"
-msgstr ""
+msgstr "პროსტიტუცია"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:372
 msgid "No information regarding references to prostitution"
-msgstr ""
+msgstr "ინფორმაცია პროსტიტუციაზე მიმართვების შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:380
 msgid "Adultery"
-msgstr ""
+msgstr "მრუშობა"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:382
 msgid "No information regarding references to adultery"
-msgstr ""
+msgstr "ინფორმაცია მრუშობაზე მიმართვის შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:390
 msgid "Sexualized Characters"
-msgstr ""
+msgstr "სექსუალიზებული პერსონაჟები"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:392
 msgid "No information regarding sexualized characters"
-msgstr ""
+msgstr "ინფორმაცია ზედმეტად სექსუალიზებული ადამიანების შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:400
 msgid "Desecration"
-msgstr ""
+msgstr "შეურაცხყოფა"
 
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:402
 msgid "No information regarding references to desecration"
-msgstr ""
+msgstr "ინფორმაცია შეურაცხყოფაზე მიმართვის შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:410
@@ -1766,7 +1768,7 @@ msgstr "ადამიანის ნარჩენები"
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:412
 msgid "No information regarding visible dead human remains"
-msgstr ""
+msgstr "ინფორმაცია ადამიანის ხილული ნარჩენების შესახებ არ არსებობს"
 
 #. TRANSLATORS: content rating title, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:420
@@ -1776,36 +1778,36 @@ msgstr "მონობა"
 #. TRANSLATORS: content rating description, see https://hughsie.github.io/oars/
 #: src/gs-age-rating-context-dialog.c:422
 msgid "No information regarding references to slavery"
-msgstr ""
+msgstr "ინფორმაცია მონობაზე მიმართვის შესახებ არ არსებობს"
 
 #: src/gs-age-rating-context-dialog.c:494
 msgid "Does not include references to drugs"
-msgstr ""
+msgstr "ნარკოტიკებზე მიმართვას არ შეიცავს"
 
 #: src/gs-age-rating-context-dialog.c:496
 msgid ""
 "Does not include swearing, profanity, and other kinds of strong language"
-msgstr ""
+msgstr "არ შეიცავს მიმართვას გინებაზე, პროფანულობაზე ან სხვა უხეშ ენაზე"
 
 #: src/gs-age-rating-context-dialog.c:498
 msgid "Does not include ads or monetary transactions"
-msgstr ""
+msgstr "არ შეიცავს რეკლამას ან ფულად გადარიცხვებს"
 
 #: src/gs-age-rating-context-dialog.c:500
 msgid "Does not include sex or nudity"
-msgstr ""
+msgstr "არ შეიცავს სექსს ან სიშიშვლეს"
 
 #: src/gs-age-rating-context-dialog.c:502
 msgid "Does not include uncontrolled chat functionality"
-msgstr ""
+msgstr "არ შეიცავს უკონტროლო ჩატის ფუნქციებს"
 
 #: src/gs-age-rating-context-dialog.c:504
 msgid "Does not include violence"
-msgstr ""
+msgstr "არ შეიცავს ძალადობას"
 
 #: src/gs-age-rating-context-dialog.c:537
 msgid "Drugs"
-msgstr ""
+msgstr "ნარკოტიკები"
 
 #: src/gs-age-rating-context-dialog.c:539
 msgid "Strong Language"
@@ -1854,35 +1856,35 @@ msgstr "?"
 #: src/gs-age-rating-context-dialog.c:1023
 #, c-format
 msgid "%s is suitable for everyone"
-msgstr ""
+msgstr "%s ყველას შეეფერება"
 
 #. Translators: This is a dialogue title which indicates that an app is suitable
 #. * for children up to around age 3. The placeholder is the app name.
 #: src/gs-age-rating-context-dialog.c:1027
 #, c-format
 msgid "%s is suitable for toddlers"
-msgstr ""
+msgstr "%s ჩვილებს შეეფერება"
 
 #. Translators: This is a dialogue title which indicates that an app is suitable
 #. * for children up to around age 5. The placeholder is the app name.
 #: src/gs-age-rating-context-dialog.c:1031
 #, c-format
 msgid "%s is suitable for young children"
-msgstr ""
+msgstr "%s პატარა ბავშვებს შეეფერება"
 
 #. Translators: This is a dialogue title which indicates that an app is suitable
 #. * for people up to around age 18. The placeholder is the app name.
 #: src/gs-age-rating-context-dialog.c:1039
 #, c-format
 msgid "%s is suitable for teenagers"
-msgstr ""
+msgstr "%s თინეიჯერებს შეეფერება"
 
 #. Translators: This is a dialogue title which indicates that an app is suitable
 #. * for people aged up to and over 18. The placeholder is the app name.
 #: src/gs-age-rating-context-dialog.c:1043
 #, c-format
 msgid "%s is suitable for adults"
-msgstr ""
+msgstr "%s ზრდასრულებს შეეფერება"
 
 #. Translators: This is a dialogue title which indicates that an app is suitable
 #. * for a specified age group. The first placeholder is the app name, the second
@@ -1890,19 +1892,19 @@ msgstr ""
 #: src/gs-age-rating-context-dialog.c:1048
 #, c-format
 msgid "%s is suitable for %s"
-msgstr ""
+msgstr "%s %s-ს შეეფერება"
 
 #. Translators: This is the title of the dialog which contains information about the suitability of an app for different ages.
 #. this one’s not a placeholder
 #: src/gs-age-rating-context-dialog.ui:5 src/gs-app-context-bar.ui:211
 msgid "Age Rating"
-msgstr ""
+msgstr "ასაკის რეიტინგი"
 
 #: src/gs-age-rating-context-dialog.ui:68
 #: src/gs-hardware-support-context-dialog.ui:71
 #: src/gs-safety-context-dialog.ui:221
 msgid "How to contribute missing information"
-msgstr ""
+msgstr "როგორ მოგაწოდოთ ნაკლული ინფორმაცია"
 
 #: lib/gs-app.c:6175
 msgid "Local file"
@@ -1938,7 +1940,7 @@ msgstr "დარჩენილი წასაშლელი"
 #: src/gs-feature-tile.c:535
 msgctxt "Single app"
 msgid "Installed"
-msgstr "ჩადგმულია"
+msgstr "დაყენებულია"
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * shows the status of an application being installed
@@ -2015,15 +2017,15 @@ msgstr "მორგება"
 
 #: src/gs-app-details-page.c:79
 msgid "Can view and change any settings"
-msgstr ""
+msgstr "შეუძლია პარამეტრების ნახვა და შეცვლა"
 
 #: src/gs-app-details-page.c:80
 msgid "Legacy display system"
-msgstr ""
+msgstr "ჩვენების მოძველებული სისტემა"
 
 #: src/gs-app-details-page.c:80
 msgid "Uses an old, insecure display system"
-msgstr ""
+msgstr "იყენებს ძველ, დაუცველ ეკრანის სისტემას"
 
 #: src/gs-app-details-page.c:81
 msgid "Sandbox escape"
@@ -2043,7 +2045,7 @@ msgstr "კონტაქტის დეტალები"
 #. * a description for the update
 #: src/gs-app-details-page.c:174
 msgid "No update description available."
-msgstr ""
+msgstr "განახლების აღწერა ხელმისაწვდომი არაა."
 
 #: src/gs-app-details-page.ui:25 src/gs-os-update-page.ui:25
 #: src/gs-shell.ui:367 src/gs-shell.ui:458
@@ -2052,7 +2054,7 @@ msgstr "უკან გადასვლა"
 
 #: src/gs-app-details-page.ui:48 src/gs-app-row.c:516
 msgid "Requires additional permissions"
-msgstr ""
+msgstr "საჭიროა დამატებითი წვდომები"
 
 #. Translators: Header of the section with other users' opinions about the app.
 #: src/gs-app-reviews-dialog.ui:6 src/gs-details-page.ui:855
@@ -2065,16 +2067,16 @@ msgstr ""
 
 #: src/gs-app-reviews-dialog.ui:27
 msgid "No Reviews"
-msgstr ""
+msgstr "შეფასებების გარეშე"
 
 #: src/gs-app-version-history-dialog.ui:6 src/gs-details-page.ui:533
 msgid "Version History"
-msgstr ""
+msgstr "ვერსიის ისტორია"
 
 #: src/gs-app-version-history-row.c:71
 #, c-format
 msgid "New in Version %s"
-msgstr ""
+msgstr "სიახლე ვერსიაში %s"
 
 #: src/gs-app-version-history-row.c:78
 #, c-format
@@ -2083,7 +2085,7 @@ msgstr "ვერისა %s"
 
 #: src/gs-app-version-history-row.c:80
 msgid "No details for this release"
-msgstr ""
+msgstr "ამ რელიზის დეტალები ვერ მოიძებნა"
 
 #. TRANSLATORS: This is the date string with: day number, month name, year.
 #. i.e. "25 May 2012"
@@ -2102,7 +2104,7 @@ msgstr "რეჟიმი"
 
 #: src/gs-application.c:126
 msgid "Search for applications"
-msgstr ""
+msgstr "აპლიკაციების ძებნა"
 
 #: src/gs-application.c:126
 msgid "SEARCH"
@@ -2122,7 +2124,7 @@ msgstr ""
 
 #: src/gs-application.c:130
 msgid "PKGNAME"
-msgstr ""
+msgstr "პაკეტის სახელი"
 
 #: src/gs-application.c:132
 msgid "Install the application (using application ID)"
@@ -2172,7 +2174,7 @@ msgstr ""
 
 #: src/gs-application.c:153
 msgid "Show version number"
-msgstr ""
+msgstr "ვერსიის ნომრის ჩვენება"
 
 #: src/gs-application.c:261 src/gs-application.c:269
 msgid "Copyright © 2016–2022 GNOME Software contributors"
@@ -2227,7 +2229,7 @@ msgstr ""
 #. * This is displayed in a context tile, so the string should be short.
 #: src/gs-app-context-bar.c:187 src/gs-storage-context-dialog.c:165
 msgid "Download Size"
-msgstr ""
+msgstr "გადმოწერის ზომა"
 
 #: src/gs-app-context-bar.c:191
 msgid "Needs no additional system downloads"
@@ -2255,7 +2257,7 @@ msgstr "უცნობი ზომა"
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:282
 msgid "No permissions"
-msgstr ""
+msgstr "წვდომები არ გაქვთ"
 
 #. Translators: This indicates an app uses the network.
 #. * It’s used in a context tile, so should be short.
@@ -2267,105 +2269,105 @@ msgstr "აქვს ქსელთან წვდომა"
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:300
 msgid "Uses system services"
-msgstr ""
+msgstr "იყენებს სისტემურ სერვისებს"
 
 #. Translators: This indicates an app uses D-Bus session services.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:307
 msgid "Uses session services"
-msgstr ""
+msgstr "იყენებს სესიის სერვისებს"
 
 #. Translators: This indicates an app can access arbitrary hardware devices.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:314
 msgid "Can access hardware devices"
-msgstr ""
+msgstr "შეუძლია აპარატურასთან წვდომა"
 
 #. Translators: This indicates an app can read/write to the user’s home or the entire filesystem.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:326
 msgid "Can read/write all your data"
-msgstr ""
+msgstr "შეუძლია წაიკითხოს/ჩაწერის ყველა თქვენი მონაცემი"
 
 #. Translators: This indicates an app can read (but not write) from the user’s home or the entire filesystem.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:338
 msgid "Can read all your data"
-msgstr ""
+msgstr "შეუძლია თქვენი მონაცემების წაკითხვა"
 
 #. Translators: This indicates an app can read/write to the user’s Downloads directory.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:345
 msgid "Can read/write your downloads"
-msgstr ""
+msgstr "შეუძლია წაიკითხოს/ჩაწეროს თქვენს გადმოწერილ ფაილებში"
 
 #. Translators: This indicates an app can read (but not write) from the user’s Downloads directory.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:352
 msgid "Can read your downloads"
-msgstr ""
+msgstr "შეუძლია წაიკითხოს თქვენი გადმოწერილი ფაილები"
 
 #. Translators: This indicates an app can access data in the system unknown to the Software.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:359
 msgid "Can access arbitrary files"
-msgstr ""
+msgstr "შეუძლია ჩვეულებრივ ფაილებთან წვდომა"
 
 #. Translators: This indicates an app can access or change user settings.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:366 src/gs-safety-context-dialog.c:227
 msgid "Can access and change user settings"
-msgstr ""
+msgstr "შეუძლია წვდომა ჰქონდეს და შეცვალოს მომხმარებლის პარამეტრები"
 
 #. Translators: This indicates an app uses the X11 windowing system.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:373 src/gs-safety-context-dialog.c:211
 msgid "Uses a legacy windowing system"
-msgstr ""
+msgstr "იყენებს მოძველებულ ფანჯრულ სისტემას"
 
 #. Translators: This indicates an app can escape its sandbox.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:380 src/gs-safety-context-dialog.c:219
 msgid "Can acquire arbitrary permissions"
-msgstr ""
+msgstr "შეუძლია ჩვეულებრივი წვდომების მიღება"
 
 #. Translators: This indicates that an application has been packaged
 #. * by the user’s distribution and is safe.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:406 src/gs-safety-context-dialog.c:146
 msgid "Reviewed by your distribution"
-msgstr ""
+msgstr "განხილულია თქვენი დისტრიბუტორის მიერ"
 
 #. Translators: This indicates that an application has been packaged
 #. * by someone other than the user’s distribution, so might not be safe.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:413 src/gs-safety-context-dialog.c:143
 msgid "Provided by a third party"
-msgstr ""
+msgstr "მოწოდებულია მესამე პირის მიერ"
 
 #. Translators: This indicates an app is not licensed under a free software license.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:425
 msgid "Proprietary code"
-msgstr ""
+msgstr "დახურული კოდი"
 
 #. Translators: This indicates an app’s source code is freely available, so can be audited for security.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:431
 msgid "Auditable code"
-msgstr ""
+msgstr "აუდიტირებადი კოდი"
 
 #. Translators: This indicates an app was written and released by a developer who has been verified.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:438
 msgid "Software developer is verified"
-msgstr ""
+msgstr "პროგრამის ავტორი შემოწმებულია"
 
 #. Translators: This indicates an app or its runtime reached its end of life.
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:447
 msgid "Software no longer supported"
-msgstr ""
+msgstr "პროგრამა მხარდაჭერილი აღარაა"
 
 #. Translators: This string is used to join various other translated
 #. * strings into an inline list of reasons why an app has been marked as
@@ -2395,62 +2397,62 @@ msgstr "უსაფრთხო"
 #. * This is displayed in a context tile, so the string should be short.
 #: src/gs-app-context-bar.c:474
 msgid "Potentially Unsafe"
-msgstr ""
+msgstr "პოტენციურად სახიფათო"
 
 #. Translators: The app is considered unsafe to install and run.
 #. * This is displayed in a context tile, so the string should be short.
 #: src/gs-app-context-bar.c:481
 msgid "Unsafe"
-msgstr ""
+msgstr "სახიფათო"
 
 #: src/gs-app-context-bar.c:560 src/gs-app-context-bar.c:592
 #: src/gs-hardware-support-context-dialog.c:603
 msgid "Mobile Only"
-msgstr ""
+msgstr "მხოლოდ მობილური"
 
 #: src/gs-app-context-bar.c:561
 msgid "Only works on a small screen"
-msgstr ""
+msgstr "მუშაობს მხოლოდ პატარა ეკრანზე"
 
 #: src/gs-app-context-bar.c:566 src/gs-app-context-bar.c:599
 #: src/gs-app-context-bar.c:606 src/gs-app-context-bar.c:656
 #: src/gs-app-context-bar.c:661 src/gs-hardware-support-context-dialog.c:583
 msgid "Desktop Only"
-msgstr ""
+msgstr "მხოლოდ სამუშაო მაგიდა"
 
 #: src/gs-app-context-bar.c:567
 msgid "Only works on a large screen"
-msgstr ""
+msgstr "მუშაობს მხოლოდ სამუშაო მაგიდაზე"
 
 #: src/gs-app-context-bar.c:571 src/gs-hardware-support-context-dialog.c:621
 msgid "Screen Size Mismatch"
-msgstr ""
+msgstr "ეკრანის ზომა არ ემთხვევა"
 
 #: src/gs-app-context-bar.c:572 src/gs-hardware-support-context-dialog.c:622
 msgid "Doesn’t support your current screen size"
-msgstr ""
+msgstr "ეკრანის მიმდინარე ზომა მხარდაუჭერელია"
 
 #: src/gs-app-context-bar.c:593 src/gs-hardware-support-context-dialog.c:674
 #: src/gs-hardware-support-context-dialog.c:680
 msgid "Requires a touchscreen"
-msgstr ""
+msgstr "მოითხოვს სენსორულ ეკრანს"
 
 #: src/gs-app-context-bar.c:600 src/gs-hardware-support-context-dialog.c:634
 #: src/gs-hardware-support-context-dialog.c:640
 msgid "Requires a keyboard"
-msgstr ""
+msgstr "მოითხოვს კლავიატურას"
 
 #: src/gs-app-context-bar.c:607
 msgid "Requires a mouse"
-msgstr ""
+msgstr "მოითხოვს თაგუნას"
 
 #: src/gs-app-context-bar.c:618
 msgid "Gamepad Needed"
-msgstr ""
+msgstr "მოითხოვს გეიმპედს"
 
 #: src/gs-app-context-bar.c:619
 msgid "Requires a gamepad to play"
-msgstr ""
+msgstr "სათამაშოდ მოითხოვს გეიმპედს"
 
 #. Translators: This is used in a context tile to indicate that
 #. * an app works on phones, tablets *and* desktops. It should be
@@ -2461,32 +2463,32 @@ msgstr "შეგუებადი"
 
 #: src/gs-app-context-bar.c:644
 msgid "Works on phones, tablets and desktops"
-msgstr ""
+msgstr "მუშაობს ტელეფონზე, ტაბლეტზე და სამუშაო კომპიუტერზე"
 
 #: src/gs-app-context-bar.c:657
 msgid "Probably requires a keyboard or mouse"
-msgstr ""
+msgstr "ალბათ მოითხოვს კლავიატურას ან თაგუნას"
 
 #: src/gs-app-context-bar.c:662
 msgid "Works on desktops and laptops"
-msgstr ""
+msgstr "მუშაობს სამუშაო კომპიუტერებზე და ლეპტოპებზე"
 
 #. Translators: This indicates that the content rating for an
 #. * app says it can be used by all ages of people, as it contains
 #. * no objectionable content.
 #: src/gs-app-context-bar.c:705
 msgid "Contains no age-inappropriate content"
-msgstr ""
+msgstr "ასაკისთვის დაუშვებელ შემცველობას არ შეიცავს"
 
 #: src/gs-app-context-bar.c:753
 msgid "No age rating information available"
-msgstr ""
+msgstr "ასაკზე შეზღუდვის ინფორმაცია მიუწვდომელია"
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * allows the application to be easily installed
 #: src/gs-app-row.c:153
 msgid "Visit Website"
-msgstr ""
+msgstr "საიტზე გადასვლა"
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * allows the application to be easily installed.
@@ -2522,7 +2524,7 @@ msgstr "განახლება"
 #: src/gs-app-row.c:188 src/gs-app-row.c:198 src/gs-details-page.ui:281
 #: src/gs-page.c:549
 msgid "Uninstall"
-msgstr "ამოშლა"
+msgstr "წაშლა"
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * shows the status of an application being erased
@@ -2534,25 +2536,25 @@ msgstr "წაშლა"
 #. * will restart into a special update-only mode
 #: src/gs-app-row.c:327
 msgid "Device cannot be used during update."
-msgstr ""
+msgstr "განახლებისას მოწყობილობას ვერ გამოიყენებთ."
 
 #. TRANSLATORS: this refers to where the app came from
 #: src/gs-app-row.c:337 src/gs-shell-search-provider.c:264
 #, c-format
 msgid "Source: %s"
-msgstr ""
+msgstr "წყარო: %s"
 
 #. Translators: A message to indicate that an app has been renamed. The placeholder is the old human-readable name.
 #: src/gs-app-row.c:523
 #, c-format
 msgid "Renamed from %s"
-msgstr ""
+msgstr "სახელი გადაერქვა %s-დან"
 
 #. Translators: The placeholder is an application name
 #: src/gs-app-translation-dialog.c:67
 #, c-format
 msgid "Help Translate %s"
-msgstr ""
+msgstr "დაგვეხმარეთ, ვთარგმნოთ %s"
 
 #. Translators: The placeholder is an application name
 #: src/gs-app-translation-dialog.c:70
@@ -2581,7 +2583,7 @@ msgstr ""
 
 #: src/gs-basic-auth-dialog.ui:13
 msgid "Login Required"
-msgstr ""
+msgstr "შესვლა აუცილებელია"
 
 #: src/gs-basic-auth-dialog.ui:21 src/gs-common.c:612
 #: src/gs-details-page.ui:294 src/gs-removal-dialog.ui:17
@@ -2634,7 +2636,7 @@ msgstr "ახალი და განახლებული"
 #. Heading for web apps on a category page
 #: src/gs-category-page.ui:97
 msgid "Picks from the Web"
-msgstr ""
+msgstr "ვებიდან აღება"
 
 #. Heading for the rest of the apps on a category page
 #: src/gs-category-page.ui:125
@@ -3047,7 +3049,7 @@ msgstr "აპლიკაცია მზადაა გამოსაყე�
 #. * have been successfully installed
 #: src/gs-common.c:84
 msgid "System updates are now installed"
-msgstr ""
+msgstr "მიმდინარეობს სისტემური განახლებების დაყენება"
 
 #. TRANSLATORS: this is the body of a notification that OS updates
 #. * have been successfully installed
@@ -3067,12 +3069,12 @@ msgstr "გაშვება"
 #. TRANSLATORS: window title
 #: src/gs-common.c:218
 msgid "Install Third-Party Software?"
-msgstr ""
+msgstr "დავაყენო პროგრამები მესამე პირებისგან?"
 
 #. TRANSLATORS: window title
 #: src/gs-common.c:222 src/gs-repos-dialog.c:168
 msgid "Enable Third-Party Software Repository?"
-msgstr ""
+msgstr "ჩავრთო მესამე პირებისგან მოწოდებული რეპოზიტორია?"
 
 #. TRANSLATORS: the replacements are as follows:
 #. * 1. Application name, e.g. "Firefox"
@@ -3091,7 +3093,7 @@ msgstr ""
 #: src/gs-common.c:250
 #, c-format
 msgid "%s is provided by “%s”."
-msgstr ""
+msgstr "%s მოწოდებულია “%s”-ის მიერ."
 
 #: src/gs-common.c:259
 msgid "This software repository must be enabled to continue installation."
@@ -3111,19 +3113,19 @@ msgstr ""
 #. TRANSLATORS: this is button text to not ask about non-free content again
 #: src/gs-common.c:282
 msgid "Don’t Warn Again"
-msgstr ""
+msgstr "აღარ გამაფრთხილო"
 
 #. TRANSLATORS: button text
 #: src/gs-common.c:291
 msgid "Enable and Install"
-msgstr ""
+msgstr "ჩართვა და დაყენება"
 
 #. TRANSLATORS: these are show_detailed_error messages from the
 #. * package manager no mortal is supposed to understand,
 #. * but google might know what they mean
 #: src/gs-common.c:493
 msgid "Detailed errors from the package manager follow:"
-msgstr ""
+msgstr "დეტალური შეცდომები პაკეტების მმართველიდან:"
 
 #: src/gs-common.c:509 src/gs-safety-context-dialog.ui:72
 msgid "Details"
@@ -3138,19 +3140,19 @@ msgstr "_თანხმობა"
 #: src/gs-common.c:750
 msgid "An update has been installed"
 msgid_plural "Updates have been installed"
-msgstr[0] ""
+msgstr[0] "განახლება დადგა"
 
 #. TRANSLATORS: we've just removed some apps
 #: src/gs-common.c:760
 msgid "An application has been removed"
 msgid_plural "Applications have been removed"
-msgstr[0] ""
+msgstr[0] "აპლიკაცია წაიშალა"
 
 #. TRANSLATORS: the new apps will not be run until we restart
 #: src/gs-common.c:766
 msgid "A restart is required for it to take effect."
 msgid_plural "A restart is required for them to take effect."
-msgstr[0] ""
+msgstr[0] "ცვლილებების ძალაში შესასვლელად საჭიროა გადატვირთვა."
 
 #. TRANSLATORS: button text
 #: src/gs-common.c:773
@@ -3211,67 +3213,67 @@ msgstr "%s %s"
 #. TRANSLATORS: this is a what we use in notifications if the app's name is unknown
 #: src/gs-dbus-helper.c:291
 msgid "An application"
-msgstr ""
+msgstr "აპლიკაცია"
 
 #. TRANSLATORS: this is a notification displayed when an app needs additional MIME types.
 #: src/gs-dbus-helper.c:297
 #, c-format
 msgid "%s is requesting additional file format support."
-msgstr ""
+msgstr "%s დამატებით ფაილის ტიპების მხარდაჭერას მოითხოვს."
 
 #. TRANSLATORS: notification title
 #: src/gs-dbus-helper.c:299
 msgid "Additional MIME Types Required"
-msgstr ""
+msgstr "დამატებითი MIME ტიპები აუცილებელია"
 
 #. TRANSLATORS: this is a notification displayed when an app needs additional fonts.
 #: src/gs-dbus-helper.c:303
 #, c-format
 msgid "%s is requesting additional fonts."
-msgstr ""
+msgstr "%s დამატებით ფონტებს მოითხოვს."
 
 #. TRANSLATORS: notification title
 #: src/gs-dbus-helper.c:305
 msgid "Additional Fonts Required"
-msgstr ""
+msgstr "საჭიროა დამატებითი ფონტები"
 
 #. TRANSLATORS: this is a notification displayed when an app needs additional codecs.
 #: src/gs-dbus-helper.c:309
 #, c-format
 msgid "%s is requesting additional multimedia codecs."
-msgstr ""
+msgstr "%s დამატებით მულტიმედია კოდეკებს მოითხოვს."
 
 #. TRANSLATORS: notification title
 #: src/gs-dbus-helper.c:311
 msgid "Additional Multimedia Codecs Required"
-msgstr ""
+msgstr "საჭიროა დამატებითი მულტიმედია კოდეკები"
 
 #. TRANSLATORS: this is a notification displayed when an app needs additional printer drivers.
 #: src/gs-dbus-helper.c:315
 #, c-format
 msgid "%s is requesting additional printer drivers."
-msgstr ""
+msgstr "%s დამატებით პრინტერის დრაივერს მოითხოვს."
 
 #. TRANSLATORS: notification title
 #: src/gs-dbus-helper.c:317
 msgid "Additional Printer Drivers Required"
-msgstr ""
+msgstr "საჭიროა დამატებითი პრინტერის დრაივერი"
 
 #. TRANSLATORS: this is a notification displayed when an app wants to install additional packages.
 #: src/gs-dbus-helper.c:321
 #, c-format
 msgid "%s is requesting additional packages."
-msgstr ""
+msgstr "%s-ს დამატებითი პაკეტები სჭირდება."
 
 #. TRANSLATORS: notification title
 #: src/gs-dbus-helper.c:323
 msgid "Additional Packages Required"
-msgstr ""
+msgstr "საჭიროა დამატებითი პროგრამები"
 
 #. TRANSLATORS: this is a button that launches gnome-software
 #: src/gs-dbus-helper.c:332
 msgid "Find in Software"
-msgstr ""
+msgstr "პროგრამებში ძებნა"
 
 #: src/gs-description-box.c:67 src/gs-description-box.c:269
 msgid "_Show More"
@@ -3279,7 +3281,7 @@ msgstr "_მეტის ჩვენება"
 
 #: src/gs-description-box.c:67
 msgid "_Show Less"
-msgstr ""
+msgstr "_ნაკლების ჩვენება"
 
 #: src/gs-details-page.c:357
 msgid "Removing…"
@@ -3287,23 +3289,23 @@ msgstr "წაშლა…"
 
 #: src/gs-details-page.c:367
 msgid "Requires restart to finish install"
-msgstr ""
+msgstr "დასაყენებლად გადატვირთვაა საჭირო"
 
 #: src/gs-details-page.c:374
 msgid "Requires restart to finish remove"
-msgstr ""
+msgstr "წასაშლელად გადატვირთვაა საჭრო"
 
 #. TRANSLATORS: This is a label on top of the app's progress
 #. * bar to inform the user that the app should be installed soon
 #: src/gs-details-page.c:391
 msgid "Pending installation…"
-msgstr ""
+msgstr "დარჩენილი დაყენება…"
 
 #. TRANSLATORS: This is a label on top of the app's progress
 #. * bar to inform the user that the app should be updated soon
 #: src/gs-details-page.c:398
 msgid "Pending update…"
-msgstr ""
+msgstr "დარჩენილი განახლება…"
 
 #. Translators: This string is shown when preparing to download and install an app.
 #: src/gs-details-page.c:414
@@ -3313,7 +3315,7 @@ msgstr "მომზადება…"
 #. Translators: This string is shown when uninstalling an app.
 #: src/gs-details-page.c:417
 msgid "Uninstalling…"
-msgstr ""
+msgstr "წაშლა…"
 
 #. TRANSLATORS: button text in the header when an application
 #. * can be installed
@@ -3334,31 +3336,31 @@ msgstr "_გადატვირთვა"
 #. * e.g. enabling software repositories or the like
 #: src/gs-details-page.c:900
 msgid "_Install…"
-msgstr ""
+msgstr "_დაყენება…"
 
 #. Translators: the '%s' is replaced with a developer name or a project group
 #: src/gs-details-page.c:1177
 #, c-format
 msgid "Other Apps by %s"
-msgstr ""
+msgstr "სხვა აპები %s-სგან"
 
 #. TRANSLATORS: we need a remote server to process
 #: src/gs-details-page.c:1560
 msgid "You need internet access to write a review"
-msgstr ""
+msgstr "მიმოხილვის დასაწერად ინტერნეტთან წვდომა გჭირდებათ"
 
 #: src/gs-details-page.c:1711 src/gs-details-page.c:1727
 #, c-format
 msgid "Unable to find “%s”"
-msgstr ""
+msgstr "\"%s\"-ის პოვნა შეუძლებელია"
 
 #: src/gs-details-page.ui:7
 msgid "Details page"
-msgstr ""
+msgstr "დეტალების გვერდი"
 
 #: src/gs-details-page.ui:39
 msgid "Loading application details…"
-msgstr ""
+msgstr "აპლიკაციის დეტალების ჩატვირთვა…"
 
 #: src/gs-details-page.ui:77
 msgid ""
@@ -3368,12 +3370,12 @@ msgstr ""
 
 #: src/gs-details-page.ui:83
 msgid "Help _Translate"
-msgstr ""
+msgstr "დაგვეხმარეთ, ვთარგმნოთ"
 
 #. TRANSLATORS: A label for a button to execute the selected application.
 #: src/gs-details-page.ui:244
 msgid "_Open"
-msgstr ""
+msgstr "_გახსნა"
 
 #: src/gs-details-page.ui:257 plugins/packagekit/gs-packagekit-task.c:160
 msgid "_Update"
@@ -3399,7 +3401,7 @@ msgstr ""
 
 #: src/gs-details-page.ui:587
 msgid "Software Repository Included"
-msgstr ""
+msgstr "პროგრამების რეპოზიტორია ჩასმულია"
 
 #: src/gs-details-page.ui:588
 msgid ""
@@ -3409,7 +3411,7 @@ msgstr ""
 
 #: src/gs-details-page.ui:605
 msgid "No Software Repository Included"
-msgstr ""
+msgstr "პროგრამების რეპოზიტორია ჩასმული არაა"
 
 #: src/gs-details-page.ui:606
 msgid ""
@@ -3426,7 +3428,7 @@ msgstr ""
 #. Translators: a repository file used for installing software has been discovered.
 #: src/gs-details-page.ui:641
 msgid "Software Repository Identified"
-msgstr ""
+msgstr "პროგრამების რეპოზიტორია იდენტიფიცირებულია"
 
 #: src/gs-details-page.ui:642
 msgid ""
@@ -3440,7 +3442,7 @@ msgstr ""
 
 #: src/gs-details-page.ui:708
 msgid "No Metadata"
-msgstr ""
+msgstr "მეტამონაცემების გარეშე"
 
 #: src/gs-details-page.ui:717
 msgid ""
@@ -3450,15 +3452,15 @@ msgstr ""
 
 #: src/gs-details-page.ui:745
 msgid "Project _Website"
-msgstr ""
+msgstr "პროექტის _ვებგვერდი"
 
 #: src/gs-details-page.ui:762
 msgid "_Donate"
-msgstr ""
+msgstr "_შეწირვა"
 
 #: src/gs-details-page.ui:779
 msgid "Contribute _Translations"
-msgstr ""
+msgstr "_თარგმანების შეწირვა"
 
 #: src/gs-details-page.ui:796
 msgid "_Report an Issue"
@@ -3471,12 +3473,12 @@ msgstr "_დახმარება"
 #. Translators: Button opening a dialog where the users can write and publish their opinions about the apps.
 #: src/gs-details-page.ui:908
 msgid "_Write Review"
-msgstr ""
+msgstr "_შეფასების დაწერა"
 
 #. Translators: Button opening a dialog showing all reviews for an app.
 #: src/gs-details-page.ui:945
 msgid "All Reviews"
-msgstr ""
+msgstr "ყველა მიმოხილვა"
 
 #. TRANSLATORS: status text when downloading
 #: lib/gs-external-appstream-utils.c:216
@@ -3507,15 +3509,15 @@ msgstr[0] ""
 #, c-format
 msgid "Available software for %s"
 msgid_plural "Available software for %s"
-msgstr[0] ""
+msgstr[0] "%s-სთვის ხელმისაწვდომი პროგრამები"
 
 #: src/gs-extras-page.c:242
 msgid "Requested software not found"
-msgstr ""
+msgstr "საჭირო პროგრამები ვერ ვიპოვე"
 
 #: src/gs-extras-page.c:244
 msgid "Failed to find requested software"
-msgstr ""
+msgstr "საჭირო პროგრამები ვერ ვიპოვე"
 
 #. TRANSLATORS: This string is used for codecs that weren't found
 #: src/gs-extras-page.c:343
@@ -3556,7 +3558,7 @@ msgstr ""
 #: src/gs-extras-page.c:376
 #, c-format
 msgid "%s is not available."
-msgstr ""
+msgstr "%s ხელმიუწვდომელია."
 
 #. TRANSLATORS: first %s is the codec name, and second %s is a
 #. * hyperlink with the "on the website" text
@@ -3634,7 +3636,7 @@ msgstr ""
 #. TRANSLATORS: hyperlink title
 #: src/gs-extras-page.c:481
 msgid "the documentation"
-msgstr ""
+msgstr "დოკუმენტაცია"
 
 #. TRANSLATORS: no codecs were found. The first %s will be replaced by actual codec name(s),
 #. the second %s is the application name, which requested the codecs, the third %s is a link titled "the documentation"
@@ -3665,15 +3667,15 @@ msgstr ""
 #: src/gs-extras-page.c:874
 #, c-format
 msgid "%s file format"
-msgstr ""
+msgstr "%s ფაილის ფორმატი"
 
 #: src/gs-extras-page.c:1254
 msgid "Unable to Find Requested Software"
-msgstr ""
+msgstr "მოთხოვნილი პროგრამების მოძებნა შეუძლებელია"
 
 #: src/gs-extras-page.ui:6
 msgid "Codecs page"
-msgstr ""
+msgstr "კოდეკების გვერდი"
 
 #: src/gs-featured-carousel.ui:43
 msgid "Previous"
@@ -3685,204 +3687,211 @@ msgstr "შემდეგი"
 
 #: src/gs-featured-carousel.ui:83
 msgid "Featured Apps List"
-msgstr ""
+msgstr "პოპულარული აპების სია"
 
 #: src/gs-hardware-support-context-dialog.c:577
 #: src/gs-hardware-support-context-dialog.c:586
 msgid "Desktop Support"
-msgstr ""
+msgstr "სამუშაო მაგიდის მხარდაჭერა"
 
 #: src/gs-hardware-support-context-dialog.c:578
 #: src/gs-hardware-support-context-dialog.c:587
 msgid "Supports being used on a large screen"
-msgstr ""
+msgstr "აქვს დიდ ეკრანზე მუშაობის მხარდაჭერა"
 
 #: src/gs-hardware-support-context-dialog.c:580
 msgid "Desktop Support Unknown"
-msgstr ""
+msgstr "სამუშაო მაგიდის მხარდაჭერა უცნობია"
 
 #: src/gs-hardware-support-context-dialog.c:581
 msgid "Not enough information to know if large screens are supported"
 msgstr ""
+"ინფორმაცია იმის შესახებ, მხარდაჭერილია თუ არა დიდი ეკრანი, საკმარისი არაა"
 
 #: src/gs-hardware-support-context-dialog.c:584
 msgid "Requires a large screen"
-msgstr ""
+msgstr "ესაჭიროება დიდი ეკრანი"
 
 #: src/gs-hardware-support-context-dialog.c:589
 msgid "Desktop Not Supported"
-msgstr ""
+msgstr "სამუშაო მაგიდა მხარდაუჭერელია"
 
 #: src/gs-hardware-support-context-dialog.c:590
 msgid "Cannot be used on a large screen"
-msgstr ""
+msgstr "დიდ ეკრანზე ვერ მუშაობს"
 
 #: src/gs-hardware-support-context-dialog.c:597
 #: src/gs-hardware-support-context-dialog.c:606
 msgid "Mobile Support"
-msgstr ""
+msgstr "მობილურის მხარდაჭერა"
 
 #: src/gs-hardware-support-context-dialog.c:598
 #: src/gs-hardware-support-context-dialog.c:607
 msgid "Supports being used on a small screen"
-msgstr ""
+msgstr "აქვს პატარა ეკრანზე მუშაობის მხარდაჭერა"
 
 #: src/gs-hardware-support-context-dialog.c:600
 msgid "Mobile Support Unknown"
-msgstr ""
+msgstr "მობილურის მხარდაჭერა უცნობია"
 
 #: src/gs-hardware-support-context-dialog.c:601
 msgid "Not enough information to know if small screens are supported"
 msgstr ""
+"ინფორმაცია იმის შესახებ, მხარდაჭერილია თუ არა პატარა ეკრანი, საკმარისი არაა"
 
 #: src/gs-hardware-support-context-dialog.c:604
 msgid "Requires a small screen"
-msgstr ""
+msgstr "ესაჭიროება პატარა ეკრანი"
 
 #: src/gs-hardware-support-context-dialog.c:609
 msgid "Mobile Not Supported"
-msgstr ""
+msgstr "მობილური მხარდაუჭერელია"
 
 #: src/gs-hardware-support-context-dialog.c:610
 msgid "Cannot be used on a small screen"
-msgstr ""
+msgstr "პატარა ეკრანზე ვერ მუშაობს"
 
 #: src/gs-hardware-support-context-dialog.c:633
 #: src/gs-hardware-support-context-dialog.c:642
 msgid "Keyboard Support"
-msgstr ""
+msgstr "კლავიატურის მხარდაჭერა"
 
 #: src/gs-hardware-support-context-dialog.c:636
 msgid "Keyboard Support Unknown"
-msgstr ""
+msgstr "კლავიატურის მხარდაჭერა უცნობია"
 
 #: src/gs-hardware-support-context-dialog.c:637
 msgid "Not enough information to know if keyboards are supported"
 msgstr ""
+"ინფორმაცია იმის შესახებ, მხარდაჭერილია თუ არა კლავიატურა, საკმარისი არაა"
 
 #: src/gs-hardware-support-context-dialog.c:639
 msgid "Keyboard Required"
-msgstr ""
+msgstr "კლავიატურა აუცილებელია"
 
 #: src/gs-hardware-support-context-dialog.c:643
 msgid "Supports keyboards"
-msgstr ""
+msgstr "აქვს კლავიატურის მხარდაჭერა"
 
 #: src/gs-hardware-support-context-dialog.c:645
 msgid "Keyboard Not Supported"
-msgstr ""
+msgstr "კლავიატურა მხარდაჭერილი არაა"
 
 #: src/gs-hardware-support-context-dialog.c:646
 msgid "Cannot be used with a keyboard"
-msgstr ""
+msgstr "კლავიატურასთან ერთად ვერ გამოიყენებთ"
 
 #: src/gs-hardware-support-context-dialog.c:653
 #: src/gs-hardware-support-context-dialog.c:662
 msgid "Mouse Support"
-msgstr ""
+msgstr "თაგუნას მხარდაჭერა"
 
 #: src/gs-hardware-support-context-dialog.c:654
 #: src/gs-hardware-support-context-dialog.c:660
 msgid "Requires a mouse or pointing device"
-msgstr ""
+msgstr "მოითხოვს თაგუნას"
 
 #: src/gs-hardware-support-context-dialog.c:656
 msgid "Mouse Support Unknown"
-msgstr ""
+msgstr "თაგუნას მხარდაჭერა უცნობია"
 
 #: src/gs-hardware-support-context-dialog.c:657
 msgid ""
 "Not enough information to know if mice or pointing devices are supported"
 msgstr ""
+"ინფორმაცია იმის შესახებ, მხარდაჭერილია თუ არა თაგუნა ან სხვა მაჩვენებელი "
+"მოწყობილობა, საკმარისი არაა"
 
 #: src/gs-hardware-support-context-dialog.c:659
 msgid "Mouse Required"
-msgstr ""
+msgstr "თაგუნა აუცილებელია"
 
 #: src/gs-hardware-support-context-dialog.c:663
 msgid "Supports mice and pointing devices"
-msgstr ""
+msgstr "აქვს თაგუნას და მაჩვენებელი მოწყობილობების მხარდაჭერა"
 
 #: src/gs-hardware-support-context-dialog.c:665
 msgid "Mouse Not Supported"
-msgstr ""
+msgstr "თაგუნა მხარდაჭერილი არაა"
 
 #: src/gs-hardware-support-context-dialog.c:666
 msgid "Cannot be used with a mouse or pointing device"
-msgstr ""
+msgstr "თაგუნასთან ან მაჩვენებელ მოწყობილობებთან ერთად ვერ გამოიყენებთ"
 
 #: src/gs-hardware-support-context-dialog.c:673
 #: src/gs-hardware-support-context-dialog.c:682
 msgid "Touchscreen Support"
-msgstr ""
+msgstr "სენსორული ეკრანის მხარდაჭერა"
 
 #: src/gs-hardware-support-context-dialog.c:676
 msgid "Touchscreen Support Unknown"
-msgstr ""
+msgstr "სენსორული ეკრანის მხარდაჭერა უცნობია"
 
 #: src/gs-hardware-support-context-dialog.c:677
 msgid "Not enough information to know if touchscreens are supported"
 msgstr ""
+"ინფორმაცია იმის შესახებ, მხარდაჭერილია თუ არა სენსორული ეკრანი, საკმარისი "
+"არაა"
 
 #: src/gs-hardware-support-context-dialog.c:679
 msgid "Touchscreen Required"
-msgstr ""
+msgstr "სენსორული ეკრანი აუცილებელია"
 
 #: src/gs-hardware-support-context-dialog.c:683
 msgid "Supports touchscreens"
-msgstr ""
+msgstr "აქვს სენსორული ეკრანის მხარდაჭერა"
 
 #: src/gs-hardware-support-context-dialog.c:685
 msgid "Touchscreen Not Supported"
-msgstr ""
+msgstr "სენსორული ეკრანი მხარდაუჭერელია"
 
 #: src/gs-hardware-support-context-dialog.c:686
 msgid "Cannot be used with a touchscreen"
-msgstr ""
+msgstr "შეუძლებელია სენსორული ეკრანით გამოყენება"
 
 #: src/gs-hardware-support-context-dialog.c:699
 msgid "Gamepad Required"
-msgstr ""
+msgstr "გეიმპადი აუცილებელია"
 
 #: src/gs-hardware-support-context-dialog.c:700
 msgid "Requires a gamepad"
-msgstr ""
+msgstr "სათამაშოდ მოითხოვს გეიმპედს"
 
 #: src/gs-hardware-support-context-dialog.c:702
 msgid "Gamepad Support"
-msgstr ""
+msgstr "გეიმპადის მხარდაჭერა"
 
 #: src/gs-hardware-support-context-dialog.c:703
 msgid "Supports gamepads"
-msgstr ""
+msgstr "აქვს გეიმპადის მხარდაჭერა"
 
 #. Translators: It’s unknown whether this app is supported on
 #. * the current hardware. The placeholder is the app name.
 #: src/gs-hardware-support-context-dialog.c:712
 #, c-format
 msgid "%s probably works on this device"
-msgstr ""
+msgstr "%s ალბათ იმუშავებს ამ მოწყობილობაზე"
 
 #. Translators: The app will work on the current hardware.
 #. * The placeholder is the app name.
 #: src/gs-hardware-support-context-dialog.c:719
 #, c-format
 msgid "%s works on this device"
-msgstr ""
+msgstr "%s მუშაობს ამ მოწყობილობაზე"
 
 #. Translators: The app may not work fully on the current hardware.
 #. * The placeholder is the app name.
 #: src/gs-hardware-support-context-dialog.c:726
 #, c-format
 msgid "%s will not work properly on this device"
-msgstr ""
+msgstr "%s ალბათ ამ მოწყობილობაზე სწორად არ იმუშავებს"
 
 #. Translators: The app will not work properly on the current hardware.
 #. * The placeholder is the app name.
 #: src/gs-hardware-support-context-dialog.c:733
 #, c-format
 msgid "%s will not work on this device"
-msgstr ""
+msgstr "%s ამ მოწყობილობაზე არ იმუშავებს"
 
 #. Translators: This is the title of the dialog which contains information about the hardware support/requirements of an app
 #: src/gs-hardware-support-context-dialog.ui:5
@@ -3894,11 +3903,11 @@ msgstr "აპარატურული ნაწილის მხარდ�
 #: src/gs-installed-page.c:812 src/gs-shell.ui:307
 msgctxt "List of installed apps"
 msgid "Installed"
-msgstr "ჩადგმულია"
+msgstr "დაყენებულია"
 
 #: src/gs-installed-page.ui:6
 msgid "Installed page"
-msgstr ""
+msgstr "დაყენებული გვერდი"
 
 #: src/gs-installed-page.ui:55
 msgid "In Progress"
@@ -3916,15 +3925,15 @@ msgstr "ვებ აპლიკაციები"
 
 #: src/gs-installed-page.ui:115
 msgid "System Applications"
-msgstr ""
+msgstr "სისტემური აპლიკაციები"
 
 #: src/gs-license-tile.c:96
 msgid "Community Built"
-msgstr ""
+msgstr "საზოგადოების მიერ აგებული"
 
 #: src/gs-license-tile.c:107 src/gs-license-tile.ui:98
 msgid "_Get Involved"
-msgstr ""
+msgstr "_შემოგვიერთდით"
 
 #. Translators: The first placeholder here is a link to information about the license, and the second placeholder here is the name of a software license.
 #: src/gs-license-tile.c:114
@@ -3966,19 +3975,19 @@ msgstr ""
 #. TRANSLATORS: initial start
 #: src/gs-loading-page.c:56
 msgid "Downloading software catalog"
-msgstr ""
+msgstr "პროგრამების კატალოგის გადმოწერა"
 
 #: src/gs-loading-page.ui:6
 msgid "Loading page"
-msgstr ""
+msgstr "გვერდის ჩატვირთვა"
 
 #: src/gs-loading-page.ui:11
 msgid "Starting up…"
-msgstr ""
+msgstr "გაშვება…"
 
 #: src/gs-metered-data-dialog.ui:5 src/gs-shell.ui:256
 msgid "Automatic Updates Paused"
-msgstr ""
+msgstr "ავტომატური განახლებები შეჩერებულია"
 
 #: src/gs-metered-data-dialog.ui:9
 msgid ""
@@ -3995,19 +4004,19 @@ msgstr ""
 
 #: src/gs-metered-data-dialog.ui:17
 msgid "Open Network _Settings"
-msgstr ""
+msgstr "_ქსელის პარამეტრების გახსნა"
 
 #: src/gs-moderate-page.ui:6
 msgid "Moderate page"
-msgstr ""
+msgstr "გვერდის ჩასწორება"
 
 #: src/gs-moderate-page.ui:71
 msgid "There are no reviews to moderate"
-msgstr ""
+msgstr "ჩასასწორებელი მიმოხილვების გარეშე"
 
 #: src/gs-origin-popover-row.c:105
 msgid "Unknown source"
-msgstr ""
+msgstr "უცნობი წყარო"
 
 #. Translators: It's like a beta version of the software, a test version
 #: src/gs-origin-popover-row.ui:108
@@ -4023,13 +4032,13 @@ msgstr "მომხმარებელი"
 #. * a system update
 #: src/gs-os-update-page.c:250
 msgid "Additions"
-msgstr ""
+msgstr "დამატებები"
 
 #. TRANSLATORS: This is the header for package removals during
 #. * a system update
 #: src/gs-os-update-page.c:254
 msgid "Removals"
-msgstr ""
+msgstr "წაშლები"
 
 #. TRANSLATORS: This is the header for package updates during
 #. * a system update
@@ -4042,14 +4051,14 @@ msgstr "განახლებები"
 #. * a system update
 #: src/gs-os-update-page.c:262
 msgid "Downgrades"
-msgstr ""
+msgstr "ვერსიის ჩამოწევა"
 
 #. Translators: This is a clickable link on the third party repositories info bar. It's
 #. part of a constructed sentence: "Provides access to additional software from [selected external sources].
 #. Some proprietary software is included."
 #: src/gs-overview-page.c:876
 msgid "selected external sources"
-msgstr ""
+msgstr "მონიშნული გარე რესურსები"
 
 #. Translators: This is the third party repositories info bar. The %s is replaced with "selected external sources" link.
 #: src/gs-overview-page.c:878
@@ -4073,43 +4082,43 @@ msgstr "დათვალიერება"
 
 #: src/gs-overview-page.ui:7
 msgid "Overview page"
-msgstr ""
+msgstr "გვერდის მიმოხილვა"
 
 #: src/gs-overview-page.ui:35
 msgid "Enable Third Party Software Repositories?"
-msgstr ""
+msgstr "ჩავრთო მესამე პირებისგან მოწოდებული რეპოზიტორიები?"
 
 #. Translators: This is a heading for a list of categories.
 #: src/gs-overview-page.ui:180
 msgid "Other Categories"
-msgstr ""
+msgstr "სხვა კატეგორიები"
 
 #: src/gs-overview-page.ui:221
 msgid "No Application Data Found"
-msgstr ""
+msgstr "აპლიკაციების მონაცემები ვერ ვიპოვე"
 
 #: lib/gs-plugin-loader.c:2825
 msgctxt "Distribution name"
 msgid "Unknown"
-msgstr ""
+msgstr "უცნობი"
 
 #: src/gs-page.c:274
 msgid "User declined installation"
-msgstr ""
+msgstr "მომხმარებელმა გააუქმა დაყენება"
 
 #. TRANSLATORS: this is a prompt message, and
 #. * '%s' is an application summary, e.g. 'GNOME Clocks'
 #: src/gs-page.c:365
 #, c-format
 msgid "Prepare %s"
-msgstr ""
+msgstr "მომზადება: %s"
 
 #. TRANSLATORS: this is a prompt message, and '%s' is an
 #. * repository name, e.g. 'GNOME Nightly'
 #: src/gs-page.c:518
 #, c-format
 msgid "Are you sure you want to remove the %s repository?"
-msgstr ""
+msgstr "დარწმუნებული ბრძანდებით, რომ გნებავთ, წაშალოთ %s რეპოზიტორია?"
 
 #. TRANSLATORS: longer dialog text
 #: src/gs-page.c:522
@@ -4124,7 +4133,7 @@ msgstr ""
 #: src/gs-page.c:530
 #, c-format
 msgid "Are you sure you want to uninstall %s?"
-msgstr ""
+msgstr "დარწმუნებული ბრძანდებით, რომ გნებავთ, წაშალოთ %s?"
 
 #. TRANSLATORS: longer dialog text
 #: src/gs-page.c:533
@@ -4135,7 +4144,7 @@ msgstr ""
 
 #: src/gs-prefs-dialog.ui:5
 msgid "Update Preferences"
-msgstr ""
+msgstr "განახლების მორგება"
 
 #: src/gs-prefs-dialog.ui:16
 msgid ""
@@ -4145,7 +4154,7 @@ msgstr ""
 
 #: src/gs-prefs-dialog.ui:19
 msgid "Automatic Updates"
-msgstr ""
+msgstr "ავტომატური განახლებები"
 
 #: src/gs-prefs-dialog.ui:20
 msgid ""
@@ -4154,7 +4163,7 @@ msgstr ""
 
 #: src/gs-prefs-dialog.ui:32
 msgid "Automatic Update Notifications"
-msgstr ""
+msgstr "ავტომატური განახლებების შეტყობინებები"
 
 #: src/gs-prefs-dialog.ui:33
 msgid "Show notifications when updates have been automatically installed."
@@ -4171,7 +4180,7 @@ msgstr ""
 
 #: src/gs-removal-dialog.ui:4
 msgid "Incompatible Software"
-msgstr ""
+msgstr "შეუთავსებელი პროგრამები"
 
 #: src/gs-removal-dialog.ui:23
 msgid "_Continue"
@@ -4186,11 +4195,11 @@ msgstr ""
 
 #: src/gs-repos-dialog.c:248
 msgid "Disable Repository?"
-msgstr ""
+msgstr "გამოვრთო რეპოზიტორია?"
 
 #: src/gs-repos-dialog.c:248
 msgid "Remove Repository?"
-msgstr ""
+msgstr "წავშალო რეპოზიტორია?"
 
 #. TRANSLATORS: this is button text to disable a repo
 #: src/gs-repos-dialog.c:254
@@ -4204,11 +4213,11 @@ msgstr "_წაშლა"
 
 #: src/gs-repos-dialog.c:508
 msgid "Enable New Repositories"
-msgstr ""
+msgstr "ჩართეთ ახალი რეპოზიტორიები"
 
 #: src/gs-repos-dialog.c:509
 msgid "Turn on new repositories when they are added."
-msgstr ""
+msgstr "რეპოზიტორიების ჩართვა მათ დამატებისას."
 
 #. TRANSLATORS: this is the clickable
 #. * link on the third party repositories info bar
@@ -4226,7 +4235,7 @@ msgstr ""
 
 #: src/gs-repos-dialog.c:528
 msgid "Fedora Third Party Repositories"
-msgstr ""
+msgstr "მესამე პირების მიერ მოწოდებული რეპოზიტორიები Fedora-სთვის"
 
 #. TRANSLATORS: this is the fallback text we use if we can't
 #. figure out the name of the operating system
@@ -4244,11 +4253,11 @@ msgstr ""
 #. button in the info bar
 #: src/gs-repos-dialog.ui:8 src/gs-shell.ui:88
 msgid "Software Repositories"
-msgstr ""
+msgstr "პროგრამის რეპოზიტორიები"
 
 #: src/gs-repos-dialog.ui:53
 msgid "No Repositories"
-msgstr ""
+msgstr "რეპოზიტორიების გარეშე"
 
 #. TRANSLATORS: This string is used to construct the 'X applications
 #. installed' sentence, describing a software repository.
@@ -4256,7 +4265,7 @@ msgstr ""
 #, c-format
 msgid "%u application installed"
 msgid_plural "%u applications installed"
-msgstr[0] ""
+msgstr[0] "%u პროგრამა დაყენებულია"
 
 #. TRANSLATORS: This string is used to construct the 'X add-ons
 #. installed' sentence, describing a software repository.
@@ -4264,7 +4273,7 @@ msgstr[0] ""
 #, c-format
 msgid "%u add-on installed"
 msgid_plural "%u add-ons installed"
-msgstr[0] ""
+msgstr[0] "%u დამატება დაყენებულია"
 
 #. TRANSLATORS: This string is used to construct the 'X applications
 #. and y add-ons installed' sentence, describing a software repository.
@@ -4273,7 +4282,7 @@ msgstr[0] ""
 #, c-format
 msgid "%u application"
 msgid_plural "%u applications"
-msgstr[0] ""
+msgstr[0] "%u აპლიკაცია"
 
 #. TRANSLATORS: This string is used to construct the 'X applications
 #. and y add-ons installed' sentence, describing a software repository.
@@ -4282,7 +4291,7 @@ msgstr[0] ""
 #, c-format
 msgid "%u add-on"
 msgid_plural "%u add-ons"
-msgstr[0] ""
+msgstr[0] "%u დამატება"
 
 #. TRANSLATORS: This string is used to construct the 'X applications
 #. and y add-ons installed' sentence, describing a software repository.
@@ -4292,7 +4301,7 @@ msgstr[0] ""
 #, c-format
 msgid "%s and %s installed"
 msgid_plural "%s and %s installed"
-msgstr[0] ""
+msgstr[0] "%s და %s დაყენებულია"
 
 #. Translators: The first '%s' is replaced with a text like '10 applications installed',
 #. the second '%s' is replaced with installation kind, like in case of Flatpak 'User Installation'.
@@ -4340,37 +4349,37 @@ msgstr ""
 #. TRANSLATORS: the review is not acceptable
 #: src/gs-review-dialog.c:122
 msgid "Please choose a star rating"
-msgstr ""
+msgstr "აირჩიეთ ვარსკვლავების რეიტინგი"
 
 #. TRANSLATORS: the review is not acceptable
 #: src/gs-review-dialog.c:126
 msgid "The summary is too short"
-msgstr ""
+msgstr "მიმოხილვა ძალიან მოკლეა"
 
 #. TRANSLATORS: the review is not acceptable
 #: src/gs-review-dialog.c:130
 msgid "The summary is too long"
-msgstr ""
+msgstr "მიმოხილვა ძალიან გრძელია"
 
 #. TRANSLATORS: the review is not acceptable
 #: src/gs-review-dialog.c:134
 msgid "The description is too short"
-msgstr ""
+msgstr "აღწერა ძალიან მოკლეა"
 
 #. TRANSLATORS: the review is not acceptable
 #: src/gs-review-dialog.c:138
 msgid "The description is too long"
-msgstr ""
+msgstr "აღწერა ძალიან გრძელია"
 
 #. Translators: Title of the dialog box where the users can write and publish their opinions about the apps.
 #: src/gs-review-dialog.ui:10
 msgid "Post Review"
-msgstr ""
+msgstr "მიმოხილვის დაწერა"
 
 #. Translators: A button to publish the user's opinion about the app.
 #: src/gs-review-dialog.ui:26
 msgid "_Post"
-msgstr ""
+msgstr "_დაპოსტვა"
 
 #: src/gs-review-dialog.ui:56
 msgid "Rating"
@@ -4407,7 +4416,7 @@ msgstr ""
 #, c-format
 msgid "%u review total"
 msgid_plural "%u reviews total"
-msgstr[0] ""
+msgstr[0] "სულ %u მიმოხილვა"
 
 #: src/gs-review-histogram.ui:93
 msgid "out of 5 stars"
@@ -4436,7 +4445,7 @@ msgstr ""
 #. * for moderation
 #: src/gs-review-row.c:239
 msgid "Report Review?"
-msgstr ""
+msgstr "გადავცე მიმოხილვა?"
 
 #. TRANSLATORS: button text when
 #. * sending a review for moderation
@@ -4447,7 +4456,7 @@ msgstr "ანგარიში"
 #. Translators: Users can express their opinions about other users' opinions about the apps.
 #: src/gs-review-row.ui:84
 msgid "Was this review useful to you?"
-msgstr ""
+msgstr "მიმოხილვა სასარგებლო იყო?"
 
 #: src/gs-review-row.ui:100
 msgid "Yes"
@@ -4460,11 +4469,11 @@ msgstr "არა"
 #. Translators: Button text for indifference, only used when moderating
 #: src/gs-review-row.ui:116
 msgid "Meh"
-msgstr ""
+msgstr "ისე რა"
 
 #: src/gs-review-row.ui:128
 msgid "Report…"
-msgstr ""
+msgstr "ანგარიში…"
 
 #: src/gs-review-row.ui:137
 msgid "Remove…"
@@ -4483,61 +4492,61 @@ msgstr ""
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:160
 msgid "No Permissions"
-msgstr ""
+msgstr "წვდომების გარეშე"
 
 #: src/gs-safety-context-dialog.c:161
 msgid "App is fully sandboxed"
-msgstr ""
+msgstr "აპი მთლიანად შემოსაზღვრულია"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:172
 msgid "Network Access"
-msgstr ""
+msgstr "ქსელური წვდომა"
 
 #: src/gs-safety-context-dialog.c:173
 msgid "Can access the internet"
-msgstr ""
+msgstr "წვდომა ინტერნეტთან"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:176
 msgid "No Network Access"
-msgstr ""
+msgstr "ქსელთან წვდომის გარეშე"
 
 #: src/gs-safety-context-dialog.c:177
 msgid "Cannot access the internet"
-msgstr ""
+msgstr "არ აქვს ინტერნეტთან წვდომა"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:183
 msgid "Uses System Services"
-msgstr ""
+msgstr "იყენებს სისტემურ სერვისებს"
 
 #: src/gs-safety-context-dialog.c:184
 msgid "Can request data from system services"
-msgstr ""
+msgstr "შეუძლია მონაცემების გამოთხოვა სისტემური რესურსებიდან"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:191
 msgid "Uses Session Services"
-msgstr ""
+msgstr "იყენებს სესიის სერვისებს"
 
 #: src/gs-safety-context-dialog.c:192
 msgid "Can request data from session services"
-msgstr ""
+msgstr "შეუძლია მონაცემების გამოთხოვა სესიის რესურსებიდან"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:199
 msgid "Device Access"
-msgstr ""
+msgstr "მოწყობილობასთან წვდომა"
 
 #: src/gs-safety-context-dialog.c:200
 msgid "Can access devices such as webcams or gaming controllers"
-msgstr ""
+msgstr "აქვს ისეთ მოწყობილობებთან წვდომა, როგორიცაა ვებკამერა ან ჯოისტიკი"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:203
 msgid "No Device Access"
-msgstr ""
+msgstr "მოწყობილობებთან წვდომის გარეშე"
 
 #: src/gs-safety-context-dialog.c:204
 msgid "Cannot access devices such as webcams or gaming controllers"
@@ -4623,7 +4632,7 @@ msgstr ""
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:326
 msgid "No File System Access"
-msgstr ""
+msgstr "ფაილურ სისტემასთან წვდომის გარეშე"
 
 #: src/gs-safety-context-dialog.c:327
 msgid "Cannot access the file system at all"
@@ -4632,7 +4641,7 @@ msgstr ""
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:341
 msgid "Proprietary Code"
-msgstr ""
+msgstr "დახურული კოდი"
 
 #: src/gs-safety-context-dialog.c:342
 msgid ""
@@ -4643,7 +4652,7 @@ msgstr ""
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:345
 msgid "Auditable Code"
-msgstr ""
+msgstr "აუდიტირებადი კოდი"
 
 #: src/gs-safety-context-dialog.c:346
 msgid ""
@@ -4655,7 +4664,7 @@ msgstr ""
 #. * It’s used in a context tile, so should be short.
 #: src/gs-safety-context-dialog.c:354
 msgid "App developer is verified"
-msgstr ""
+msgstr "აპის ავტორი შემოწმებულია"
 
 #: src/gs-safety-context-dialog.c:355
 msgid "The developer of this app has been verified to be who they say they are"
@@ -4665,7 +4674,7 @@ msgstr ""
 #. * It’s used in a context tile, so should be short.
 #: src/gs-safety-context-dialog.c:366
 msgid "Insecure Dependencies"
-msgstr ""
+msgstr "დაუცველი დამოკიდებულებები"
 
 #: src/gs-safety-context-dialog.c:367
 msgid ""
@@ -4677,26 +4686,26 @@ msgstr ""
 #: src/gs-safety-context-dialog.c:376
 #, c-format
 msgid "%s is safe"
-msgstr ""
+msgstr "%s უსაფრთხოა"
 
 #. Translators: The app is considered potentially unsafe to install and run.
 #. * The placeholder is the app name.
 #: src/gs-safety-context-dialog.c:383
 #, c-format
 msgid "%s is potentially unsafe"
-msgstr ""
+msgstr "%s პოტენციურად სახიფათოა"
 
 #. Translators: The app is considered unsafe to install and run.
 #. * The placeholder is the app name.
 #: src/gs-safety-context-dialog.c:390
 #, c-format
 msgid "%s is unsafe"
-msgstr ""
+msgstr "%s სახიფათოა"
 
 #. Translators: This is the title of the dialog which contains information about the permissions of an app
 #: src/gs-safety-context-dialog.ui:5
 msgid "Safety"
-msgstr ""
+msgstr "უსაფრთხოება"
 
 #: src/gs-safety-context-dialog.ui:101
 msgid "License"
@@ -4713,28 +4722,28 @@ msgstr "SDK"
 
 #: src/gs-safety-context-dialog.ui:205
 msgid "Outdated SDK version"
-msgstr ""
+msgstr "SDK-ის მოძველებული ვერსია"
 
 #. Translators: This is the accessible description for a button to go to the previous screenshot in the screenshot carousel.
 #: src/gs-screenshot-carousel.ui:46
 msgid "Previous Screenshot"
-msgstr ""
+msgstr "წინა ეკრანის ანაბეჭდი"
 
 #. Translators: This is the accessible description for a button to go to the next screenshot in the screenshot carousel.
 #: src/gs-screenshot-carousel.ui:74
 msgid "Next Screenshot"
-msgstr ""
+msgstr "შემდეგი ეკრანის ანაბეჭდი"
 
 #: src/gs-screenshot-carousel.ui:127
 msgid "No screenshot provided"
-msgstr ""
+msgstr "ეკრანის ანაბეჭდი მოწოდებული არაა"
 
 #. TRANSLATORS: this is when we try to download a screenshot and
 #. * we get back 404
 #: src/gs-screenshot-image.c:362 src/gs-screenshot-image.c:419
 #: src/gs-screenshot-image.c:622
 msgid "Screenshot not found"
-msgstr ""
+msgstr "ეკრანის ანაბეჭდი ვერ ვიპოვე"
 
 #. TRANSLATORS: possibly image file corrupt or not an image
 #: src/gs-screenshot-image.c:438
@@ -4745,24 +4754,24 @@ msgstr "გამოსახულების ჩატვირთვის �
 #. * the generator did not create or the parser did not add
 #: src/gs-screenshot-image.c:650
 msgid "Screenshot size not found"
-msgstr ""
+msgstr "ეკრანის ანაბეჭდის ზომა ვერ ვიპოვე"
 
 #. TRANSLATORS: this is when we try create the cache directory
 #. * but we were out of space or permission was denied
 #: src/gs-screenshot-image.c:732
 msgid "Could not create cache"
-msgstr ""
+msgstr "ქეშის შექმნის შეცდომა"
 
 #. TRANSLATORS: this is when we try to download a screenshot
 #. * that was not a valid URL
 #: src/gs-screenshot-image.c:746
 msgid "Screenshot not valid"
-msgstr ""
+msgstr "ეკრანის ანაბეჭდი არასწორია"
 
 #. TRANSLATORS: this is when networking is not available
 #: src/gs-screenshot-image.c:796
 msgid "Screenshot not available"
-msgstr ""
+msgstr "ეკრანის ანაბეჭდი ხელმიუწვდომელია"
 
 #: src/gs-screenshot-image.ui:6
 msgid "Screenshot"
@@ -4774,19 +4783,19 @@ msgstr "ეკრანის ანაბეჭდი"
 #, c-format
 msgid "%u more match"
 msgid_plural "%u more matches"
-msgstr[0] ""
+msgstr[0] "კიდევ %u დამთხვევა"
 
 #: src/gs-search-page.ui:6
 msgid "Search page"
-msgstr ""
+msgstr "გვერდის მოძებნა"
 
 #: src/gs-search-page.ui:17
 msgid "Search for Apps"
-msgstr ""
+msgstr "აპების მოძებნა"
 
 #: src/gs-search-page.ui:46
 msgid "No Application Found"
-msgstr ""
+msgstr "აპი ვერ ვიპოვე"
 
 #. TRANSLATORS: this is part of the in-app notification,
 #. * where the %s is the truncated hostname, e.g.
@@ -4814,25 +4823,27 @@ msgstr "%s…"
 #: src/gs-shell.c:1275
 #, c-format
 msgid "Unable to download firmware updates from %s"
-msgstr ""
+msgstr "%s-დან მიკროკოდის განახლების გადმოწერის შეცდომა"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the source (e.g. "alt.fedoraproject.org")
 #: src/gs-shell.c:1281
 #, c-format
 msgid "Unable to download updates from %s"
-msgstr ""
+msgstr "%s-დან განახლებების გადმოწერის შეცდომა"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1288 src/gs-shell.c:1328
 msgid "Unable to download updates"
-msgstr ""
+msgstr "განახლებების გადმოწერის შეცდომა"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1293
 msgid ""
 "Unable to download updates: internet access was required but wasn’t available"
 msgstr ""
+"განახლებების გადმოწერის შეცდომა: ინტერნეტთან წვდომა აუცილებელია, მაგრამ ის "
+"მიუწვდომელია"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the source (e.g. "alt.fedoraproject.org")
@@ -4840,32 +4851,35 @@ msgstr ""
 #, c-format
 msgid "Unable to download updates from %s: not enough disk space"
 msgstr ""
+"%s-დან განახლებების გადმოწერის შეცდომა: დისკზე თავისუფალი ადგილი საკმარისი "
+"არაა"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1306
 msgid "Unable to download updates: not enough disk space"
-msgstr ""
+msgstr "განახლებების გადმოწერის შეცდომა: დისკზე საკმარისი ადგილი არაა"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1312
 msgid "Unable to download updates: authentication was required"
-msgstr ""
+msgstr "განახლებების გადმოწერის შეცდომა: ავთენტიკაცია აუცილებელია"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1316
 msgid "Unable to download updates: authentication was invalid"
-msgstr ""
+msgstr "განახლებების გადმოწერის შეცდომა: ავთენტიკაცია ვერ გავიარე"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1320
 msgid ""
 "Unable to download updates: you do not have permission to install software"
 msgstr ""
+"განახლებების გადმოწერის შეცდომა: პროგრამების დაყენების წვდომა არ გაგაჩნიათ"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1331
 msgid "Unable to get list of updates"
-msgstr ""
+msgstr "განახლებების სიის მიღების შეცდომა"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the first %s is the application name (e.g. "GIMP") and
@@ -4880,7 +4894,7 @@ msgstr ""
 #: src/gs-shell.c:1379
 #, c-format
 msgid "Unable to install %s as download failed"
-msgstr ""
+msgstr "%s-ის დაყენების შეცდომა: გადმოწერის შეცდომა"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the first %s is the application name (e.g. "GIMP")
@@ -4896,7 +4910,7 @@ msgstr ""
 #: src/gs-shell.c:1397
 #, c-format
 msgid "Unable to install %s as not supported"
-msgstr ""
+msgstr "%s-ის დაყენების შეცდომა: ის მხარდაუჭერელია"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1403
@@ -4906,55 +4920,55 @@ msgstr ""
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1408
 msgid "Unable to install: the application has an invalid format"
-msgstr ""
+msgstr "დაყენების შეცდომა: აპლიკაციის არასწორი ფორმატი"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
 #: src/gs-shell.c:1412
 #, c-format
 msgid "Unable to install %s: not enough disk space"
-msgstr ""
+msgstr "%s-ის დაყენების შეცდომა: დისკზე თავისუფალი ადგილი საკმარისი არაა"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1418
 #, c-format
 msgid "Unable to install %s: authentication was required"
-msgstr ""
+msgstr "%s-ის დაყენების შეცდომა: ავთენტიკაცია აუცილებელია"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
 #: src/gs-shell.c:1424
 #, c-format
 msgid "Unable to install %s: authentication was invalid"
-msgstr ""
+msgstr "%s-ის დაყენების შეცდომა: ავთენტიკაცია ვერ გაიარეთ"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
 #: src/gs-shell.c:1430
 #, c-format
 msgid "Unable to install %s: you do not have permission to install software"
-msgstr ""
+msgstr "%s-ის დაყენების შეცდომა: პროგრამების დაყენების წვდომა არ გაგაჩნიათ"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "Dell XPS 13")
 #: src/gs-shell.c:1437
 #, c-format
 msgid "Unable to install %s: AC power is required"
-msgstr ""
+msgstr "%s-ის დაყენების შეცდომა: საჭიროა დამტენზე მიერთება"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "Dell XPS 13")
 #: src/gs-shell.c:1443
 #, c-format
 msgid "Unable to install %s: The battery level is too low"
-msgstr ""
+msgstr "%s-ის დაყენების შეცდომა: ელემენტის მუხტი მეტისმეტად მცირეა"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the %s is the application name (e.g. "GIMP")
 #: src/gs-shell.c:1452
 #, c-format
 msgid "Unable to install %s"
-msgstr ""
+msgstr "%s-ის დაყენების შეცდომა"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the first %s is the app name (e.g. "GIMP") and
@@ -5077,13 +5091,13 @@ msgstr ""
 #: src/gs-shell.c:1615
 #, c-format
 msgid "Unable to update %s"
-msgstr ""
+msgstr "%s-ის განახლების შეცდომა"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1618
 #, c-format
 msgid "Unable to install updates"
-msgstr ""
+msgstr "განახლებების დაყენების შეცდომა"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the first %s is the distro name (e.g. "Fedora 25") and
@@ -5197,7 +5211,7 @@ msgstr ""
 #: src/gs-shell.c:1792
 #, c-format
 msgid "Unable to remove %s"
-msgstr ""
+msgstr "წაშლის შეცდომა: %s"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * where the first %s is the application name (e.g. "GIMP")
@@ -5223,22 +5237,22 @@ msgstr ""
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1881
 msgid "Failed to install file: not supported"
-msgstr ""
+msgstr "ფაილის დაყენების შეცდომა: მხარდაუჭერელია"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1884
 msgid "Failed to install file: authentication failed"
-msgstr ""
+msgstr "ფაილის დაყენების შეცდომა: ავთენტიკაციის შეცდომა"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1919
 msgid "Failed to install: not supported"
-msgstr ""
+msgstr "დაყენების შეცდომა: მხარდაუჭერელია"
 
 #. TRANSLATORS: failure text for the in-app notification
 #: src/gs-shell.c:1922
 msgid "Failed to install: authentication failed"
-msgstr ""
+msgstr "დაყენების შეცდომა: ავთენტიკაციის შეცდომა"
 
 #. TRANSLATORS: failure text for the in-app notification,
 #. * the %s is the origin, e.g. "Fedora" or
@@ -5246,7 +5260,7 @@ msgstr ""
 #: src/gs-shell.c:1963
 #, c-format
 msgid "Unable to contact %s"
-msgstr ""
+msgstr "%s-სთან მიერთების შეცდომა"
 
 #. TRANSLATORS: failure text for the in-app notification, where the 'Software' means this application, aka 'GNOME Software'.
 #: src/gs-shell.c:1973
@@ -5256,25 +5270,25 @@ msgstr ""
 #. TRANSLATORS: need to be connected to the AC power
 #: src/gs-shell.c:1977
 msgid "AC power is required"
-msgstr ""
+msgstr "დამტენის მიერთება აუცილებელია"
 
 #. TRANSLATORS: not enough juice to do this safely
 #: src/gs-shell.c:1980
 msgid "The battery level is too low"
-msgstr ""
+msgstr "ელემენტის მუხტი მეტისმეტად მცირეა"
 
 #: src/gs-shell.ui:7
 msgid "_Software Repositories"
-msgstr ""
+msgstr "_პროგრამის რეპოზიტორიები"
 
 #: src/gs-shell.ui:12
 msgid "_Update Preferences"
-msgstr ""
+msgstr "_განახლების მორგება"
 
 #. button in the info bar
 #: src/gs-shell.ui:98
 msgid "Examine Disk"
-msgstr ""
+msgstr "დისკის ანალიზი"
 
 #. button in the info bar
 #. TRANSLATORS: this is a link to the
@@ -5295,15 +5309,15 @@ msgstr "მეტი ინფორმაცია"
 
 #: src/gs-shell.ui:189
 msgid "Search"
-msgstr ""
+msgstr "ძებნა"
 
 #: src/gs-shell.ui:204
 msgid "Primary Menu"
-msgstr ""
+msgstr "ძირითადი მენიუს"
 
 #: src/gs-shell.ui:274
 msgid "Find Out _More"
-msgstr ""
+msgstr "_გაიგეთ მეტი"
 
 #. Translators: A label for a button to show only updates which are available to install.
 #: src/gs-shell.ui:328
@@ -5337,19 +5351,19 @@ msgstr ""
 
 #: src/gs-storage-context-dialog.c:153
 msgid "Cache Data"
-msgstr ""
+msgstr "ქეშის მონაცემები"
 
 #: src/gs-storage-context-dialog.c:154
 msgid "Temporary cached data"
-msgstr ""
+msgstr "დროებით ქეში"
 
 #: src/gs-storage-context-dialog.c:172
 msgid "The application itself"
-msgstr ""
+msgstr "თვითონ აპლიკაცია"
 
 #: src/gs-storage-context-dialog.c:177
 msgid "Required Dependencies"
-msgstr ""
+msgstr "აუცილებელი დამოკიდებულებები"
 
 #: src/gs-storage-context-dialog.c:178
 msgid "Shared system components required by this application"
@@ -5358,7 +5372,7 @@ msgstr ""
 #: src/gs-storage-context-dialog.c:188
 msgctxt "Download size"
 msgid "Unknown"
-msgstr ""
+msgstr "უცნობი"
 
 #. Translators: This is the title of the dialog which contains information about the storage or download size needed for an app
 #: src/gs-storage-context-dialog.ui:5
@@ -5375,22 +5389,22 @@ msgstr ""
 #: src/gs-summary-tile.c:118
 #, c-format
 msgid "%s (Installed)"
-msgstr ""
+msgstr "%s (დაყენებული)"
 
 #: src/gs-summary-tile.c:123
 #, c-format
 msgid "%s (Installing)"
-msgstr ""
+msgstr "%s (დაყენება)"
 
 #: src/gs-summary-tile.c:128
 #, c-format
 msgid "%s (Removing)"
-msgstr ""
+msgstr "%s (წაშლა)"
 
 #. TRANSLATORS: this is the title of the installed updates dialog window
 #: src/gs-update-dialog.c:65 src/gs-update-dialog.c:152
 msgid "Installed Updates"
-msgstr ""
+msgstr "დაყენებული განახლებები"
 
 #. TRANSLATORS: this is the subtitle of the installed updates dialog window.
 #. %s will be replaced by the date when the updates were installed.
@@ -5399,7 +5413,7 @@ msgstr ""
 #: src/gs-update-dialog.c:131
 #, c-format
 msgid "Installed on %s"
-msgstr ""
+msgstr "დაყენებულია %s-ზე"
 
 #: src/gs-update-dialog.ui:77
 msgid "No Updates Installed"
@@ -5431,7 +5445,7 @@ msgstr ""
 
 #: src/gs-update-monitor.c:231
 msgid "Software Updates Ready to Install"
-msgstr ""
+msgstr "პროგრამების განახლებები დასაყენებლად მზადაა"
 
 #: src/gs-update-monitor.c:232
 msgid "Software updates are waiting and ready to be installed."
@@ -5450,25 +5464,25 @@ msgstr ""
 #, c-format
 msgid "%u Application Updated — Restart Required"
 msgid_plural "%u Applications Updated — Restart Required"
-msgstr[0] ""
+msgstr[0] "%u აპი განახლდა -- გადატვირთვა აუცილებელია"
 
 #. TRANSLATORS: apps were auto-updated
 #: src/gs-update-monitor.c:361
 #, c-format
 msgid "%u Application Updated"
 msgid_plural "%u Applications Updated"
-msgstr[0] ""
+msgstr[0] "%u აპი განახლდა"
 
 #. TRANSLATORS: %1 is an application name, e.g. Firefox
 #: src/gs-update-monitor.c:372
 #, c-format
 msgid "%s has been updated."
-msgstr ""
+msgstr "%s განახლდა."
 
 #. TRANSLATORS: the app needs restarting
 #: src/gs-update-monitor.c:375
 msgid "Please restart the application."
-msgstr ""
+msgstr "გადატვირთეთ აპლიკაცია."
 
 #. TRANSLATORS: %1 and %2 are both application names, e.g. Firefox
 #: src/gs-update-monitor.c:383
@@ -5487,12 +5501,12 @@ msgstr[0] ""
 #: src/gs-update-monitor.c:401
 #, c-format
 msgid "Includes %s, %s and %s."
-msgstr ""
+msgstr "შეიცავს %s, %s და %s-ს."
 
 #. TRANSLATORS: this is when the current operating system version goes end-of-life
 #: src/gs-update-monitor.c:671 src/gs-updates-page.ui:20
 msgid "Operating System Updates Unavailable"
-msgstr ""
+msgstr "ოპერაციული სისტემის განახლებები ხელმიუწვდომელია"
 
 #. TRANSLATORS: this is the message dialog for the distro EOL notice
 #: src/gs-update-monitor.c:673
@@ -5509,12 +5523,12 @@ msgstr ""
 #. TRANSLATORS: this is a distro upgrade
 #: src/gs-update-monitor.c:732
 msgid "Software Upgrade Available"
-msgstr ""
+msgstr "ხელმისაწვდომია პროგრამების გაუმჯობესებები"
 
 #. TRANSLATORS: title when we offline updates have failed
 #: src/gs-update-monitor.c:1137
 msgid "Software Updates Failed"
-msgstr ""
+msgstr "პროგრამების განახლების შეცდომა"
 
 #. TRANSLATORS: message when we offline updates have failed
 #: src/gs-update-monitor.c:1139
@@ -5528,7 +5542,7 @@ msgstr "დეტალების ჩვენება"
 #. TRANSLATORS: Notification title when we've done a distro upgrade
 #: src/gs-update-monitor.c:1162
 msgid "System Upgrade Complete"
-msgstr ""
+msgstr "სისტემის გაუმჯობესება დასრულდა"
 
 #. TRANSLATORS: This is the notification body when we've done a
 #. * distro upgrade. First %s is the distro name and the 2nd %s
@@ -5536,13 +5550,13 @@ msgstr ""
 #: src/gs-update-monitor.c:1167
 #, c-format
 msgid "Welcome to %s %s!"
-msgstr ""
+msgstr "კეთილი იყოს თქვენი მობრძანება %s %s-ში!"
 
 #. TRANSLATORS: title when we've done offline updates
 #: src/gs-update-monitor.c:1173
 msgid "Software Update Installed"
 msgid_plural "Software Updates Installed"
-msgstr[0] ""
+msgstr[0] "პროგრამის განახლება დაყენებულია"
 
 #. TRANSLATORS: message when we've done offline updates
 #: src/gs-update-monitor.c:1177
@@ -5563,18 +5577,18 @@ msgstr "Მიმოხილვა"
 #. TRANSLATORS: this is when the offline update failed
 #: src/gs-update-monitor.c:1237
 msgid "Failed To Update"
-msgstr ""
+msgstr "განახლების შეცდომა"
 
 #. TRANSLATORS: the user must have updated manually after
 #. * the updates were prepared
 #: src/gs-update-monitor.c:1242
 msgid "The system was already up to date."
-msgstr ""
+msgstr "სისტემა უკვე განახლებულია."
 
 #. TRANSLATORS: the user aborted the update manually
 #: src/gs-update-monitor.c:1247
 msgid "The update was cancelled."
-msgstr ""
+msgstr "განახლება გაუქმდა."
 
 #. TRANSLATORS: the package manager needed to download
 #. * something with no network available
@@ -5608,7 +5622,7 @@ msgstr ""
 #: src/gs-updates-page.c:247
 #, c-format
 msgid "Last checked: %s"
-msgstr ""
+msgstr "ბოლო შემოწმება: %s"
 
 #. TRANSLATORS:  the first %s is the distro name, e.g. 'Fedora'
 #. * and the second %s is the distro version, e.g. '25'
@@ -5634,7 +5648,7 @@ msgstr ""
 #. TRANSLATORS: this is to explain that downloading updates may cost money
 #: src/gs-updates-page.c:849
 msgid "Charges May Apply"
-msgstr ""
+msgstr "შეიძლება გადასახდელი გაგიხდეთ"
 
 #. TRANSLATORS: we need network
 #. * to do the updates check
@@ -5648,7 +5662,7 @@ msgstr ""
 #. * control-center network panel
 #: src/gs-updates-page.c:857
 msgid "Check _Anyway"
-msgstr ""
+msgstr "_მაინც შემოწმება"
 
 #. TRANSLATORS: can't do updates check
 #: src/gs-updates-page.c:873
@@ -5682,7 +5696,7 @@ msgstr "განახლებების ჩატვირთვა…"
 #. TRANSLATORS: the updates panel is starting up.
 #: src/gs-updates-page.ui:95
 msgid "This could take a while."
-msgstr ""
+msgstr "საკმაო დრო დასჭირდება."
 
 #. TRANSLATORS: This means all software (plural) installed on this system is up to date.
 #: src/gs-updates-page.ui:203
@@ -5691,7 +5705,7 @@ msgstr "განახლებულია"
 
 #: src/gs-updates-page.ui:242
 msgid "Use Mobile Data?"
-msgstr ""
+msgstr "გამოვიყენო მობილური ინტერნეტი?"
 
 #: src/gs-updates-page.ui:243
 msgid ""
@@ -5701,11 +5715,11 @@ msgstr ""
 
 #: src/gs-updates-page.ui:246
 msgid "_Check Anyway"
-msgstr ""
+msgstr "_მაინც შემოწმება"
 
 #: src/gs-updates-page.ui:262
 msgid "No Connection"
-msgstr ""
+msgstr "მიერთების გარეშე"
 
 #: src/gs-updates-page.ui:263
 msgid "Go online to check for updates."
@@ -5727,7 +5741,7 @@ msgstr ""
 #. * offline updates
 #: src/gs-updates-section.c:312
 msgid "Restart & Update"
-msgstr ""
+msgstr "გადატვირთვა და განახლება"
 
 #. TRANSLATORS: This is the button for upgrading all
 #. * online-updatable applications
@@ -5782,7 +5796,7 @@ msgstr "%s ხელმისაწვდომია"
 
 #: src/gs-upgrade-banner.c:143
 msgid "Learn about the new version"
-msgstr ""
+msgstr "გაიგეთ მეტი ახალ ვერსიაზე"
 
 #: src/gs-upgrade-banner.c:167
 msgid "Downloading…"
@@ -5793,14 +5807,14 @@ msgstr "გადმოწერა…"
 #: src/gs-upgrade-banner.c:185
 #, c-format
 msgid "%s of %s downloaded"
-msgstr ""
+msgstr "%s/%s გადმოწერილია"
 
 #. Translators: the '%u' is replaced with the actual percentage being already
 #. downloaded, forming text like "13% downloaded"
 #: src/gs-upgrade-banner.c:189
 #, c-format
 msgid "%u%% downloaded"
-msgstr ""
+msgstr "%u%% გადმოწერილია"
 
 #: src/gs-upgrade-banner.ui:42
 msgid "A major upgrade, with new features and added polish."
@@ -5808,7 +5822,7 @@ msgstr ""
 
 #: src/gs-upgrade-banner.ui:187
 msgid "_Restart & Upgrade"
-msgstr ""
+msgstr "_გადატვირთვა და სისტემის განახლება"
 
 #: src/gs-upgrade-banner.ui:201
 msgid "Remember to back up data and files before upgrading."
@@ -5829,7 +5843,7 @@ msgstr ""
 #. * packages and are not shown in the main list
 #: plugins/core/gs-plugin-generic-updates.c:67
 msgid "System Updates"
-msgstr ""
+msgstr "სისტემური განახლებები"
 
 #. TRANSLATORS: this is a longer description of the
 #. * "System Updates" string
@@ -5856,11 +5870,11 @@ msgstr ""
 
 #: plugins/epiphany/gs-plugin-epiphany.c:498
 msgid "GNOME Web"
-msgstr ""
+msgstr "GNOME ვები"
 
 #: plugins/epiphany/org.gnome.Software.Plugin.Epiphany.metainfo.xml.in:6
 msgid "Web Apps Support"
-msgstr ""
+msgstr "ვებ აპების მხარდაჭერა"
 
 #: plugins/epiphany/org.gnome.Software.Plugin.Epiphany.metainfo.xml.in:7
 msgid "Run popular web applications in a browser"
@@ -5911,7 +5925,7 @@ msgstr "სამუშაო მაგიდის საქაღალდე"
 #: plugins/flatpak/gs-flatpak.c:318
 #, c-format
 msgid "Desktop subfolder %s"
-msgstr ""
+msgstr "სამუშაო მაგიდის ქვესაქაღალდე %s"
 
 #: plugins/flatpak/gs-flatpak.c:319
 msgid "Documents folder"
@@ -5938,16 +5952,16 @@ msgstr "სურთების საქაღალდე"
 #: plugins/flatpak/gs-flatpak.c:321
 #, c-format
 msgid "Pictures subfolder %s"
-msgstr ""
+msgstr "სურათების ქვესაქაღალდე %s"
 
 #: plugins/flatpak/gs-flatpak.c:322
 msgid "Public Share folder"
-msgstr ""
+msgstr "საჯარო გაზიარების საქაღალდე"
 
 #: plugins/flatpak/gs-flatpak.c:322
 #, c-format
 msgid "Public Share subfolder %s"
-msgstr ""
+msgstr "საჯარო გაზიარების ქვესაქაღალდე %s"
 
 #: plugins/flatpak/gs-flatpak.c:323
 msgid "Videos folder"
@@ -5956,7 +5970,7 @@ msgstr "ვიდეოების საქაღალდე"
 #: plugins/flatpak/gs-flatpak.c:323
 #, c-format
 msgid "Videos subfolder %s"
-msgstr ""
+msgstr "ვიდეოების ქვესაქაღალდე %s"
 
 #: plugins/flatpak/gs-flatpak.c:324
 msgid "Templates folder"
@@ -5965,25 +5979,25 @@ msgstr "შაბლონების საქაღალდე"
 #: plugins/flatpak/gs-flatpak.c:324
 #, c-format
 msgid "Templates subfolder %s"
-msgstr ""
+msgstr "შაბლონების ქვესაქაღალდე %s"
 
 #: plugins/flatpak/gs-flatpak.c:325
 msgid "User cache folder"
-msgstr ""
+msgstr "მომხმარებლის ქეშის საქაღალდე"
 
 #: plugins/flatpak/gs-flatpak.c:325
 #, c-format
 msgid "User cache subfolder %s"
-msgstr ""
+msgstr "მომხმარებლის ქეშის ქვესაქაღალდე %s"
 
 #: plugins/flatpak/gs-flatpak.c:326
 msgid "User configuration folder"
-msgstr ""
+msgstr "მომხმარებლის კონფიგურაციის საქაღალდე"
 
 #: plugins/flatpak/gs-flatpak.c:326
 #, c-format
 msgid "User configuration subfolder %s"
-msgstr ""
+msgstr "მომხმარებლის კონფიგურაციის ქვესაქაღალდე %s"
 
 #: plugins/flatpak/gs-flatpak.c:327
 msgid "User data folder"
@@ -5992,7 +6006,7 @@ msgstr "მომხმარებლის მონაცემების �
 #: plugins/flatpak/gs-flatpak.c:327
 #, c-format
 msgid "User data subfolder %s"
-msgstr ""
+msgstr "მომხმარებლის მონაცემების ქვესაქაღალდე %s"
 
 #: plugins/flatpak/gs-flatpak.c:328
 msgid "User runtime folder"
@@ -6006,7 +6020,7 @@ msgstr ""
 #: plugins/flatpak/gs-flatpak.c:386
 #, c-format
 msgid "Filesystem access to %s"
-msgstr ""
+msgstr "ფაილური სისტემის წვდომა %s-ზე"
 
 #. TRANSLATORS: status text when downloading new metadata
 #: plugins/flatpak/gs-flatpak.c:1403
@@ -6021,11 +6035,11 @@ msgstr ""
 
 #: plugins/flatpak/gs-flatpak-utils.c:94
 msgid "User Installation"
-msgstr ""
+msgstr "მომხმარებლისთვის დაყენება"
 
 #: plugins/flatpak/gs-flatpak-utils.c:94
 msgid "System Installation"
-msgstr ""
+msgstr "სისტემაში დაყენება"
 
 #: plugins/flatpak/gs-plugin-flatpak.c:1037
 #, c-format
@@ -6193,15 +6207,15 @@ msgstr "მიკროკოდი"
 
 #: plugins/fwupd/org.gnome.Software.Plugin.Fwupd.metainfo.xml.in:6
 msgid "Firmware Upgrade Support"
-msgstr ""
+msgstr "მიკროკოდის განახლების მხარდაჭერა"
 
 #: plugins/fwupd/org.gnome.Software.Plugin.Fwupd.metainfo.xml.in:7
 msgid "Provides support for firmware upgrades"
-msgstr ""
+msgstr "მიკროკოდის განახლების მხარდაჭერა"
 
 #: plugins/packagekit/gs-packagekit-task.c:148
 msgid "Install Unsigned Software?"
-msgstr ""
+msgstr "დავაყენო ხელმოუწერელი პროგრამები?"
 
 #: plugins/packagekit/gs-packagekit-task.c:149
 msgid ""
@@ -6212,7 +6226,7 @@ msgstr ""
 
 #: plugins/packagekit/gs-packagekit-task.c:153
 msgid "Download Unsigned Software?"
-msgstr ""
+msgstr "გადმოვწერო ხელმოუწერელი პროგრამები?"
 
 #: plugins/packagekit/gs-packagekit-task.c:154
 msgid ""
@@ -6222,7 +6236,7 @@ msgstr ""
 
 #: plugins/packagekit/gs-packagekit-task.c:158
 msgid "Update Unsigned Software?"
-msgstr ""
+msgstr "განვაახლო ხელმოუწერელი პროგრამები?"
 
 #: plugins/packagekit/gs-packagekit-task.c:159
 msgid ""
@@ -6238,25 +6252,24 @@ msgstr "პაკეტები"
 
 #: plugins/rpm-ostree/gs-plugin-rpm-ostree.c:2690
 msgid "Operating System (OSTree)"
-msgstr ""
+msgstr "ოპერაცული სისტემა (OSTree)"
 
 #. TRANSLATORS: default snap store name
 #: plugins/snap/gs-plugin-snap.c:300
 msgid "Snap Store"
-msgstr ""
+msgstr "Snap Store"
 
 #: plugins/snap/org.gnome.Software.Plugin.Snap.metainfo.xml.in:6
 msgid "Snap Support"
-msgstr ""
+msgstr "Snap -ის მხარდაჭერა"
 
 #: plugins/snap/org.gnome.Software.Plugin.Snap.metainfo.xml.in:7
 msgid "A snap is a universal Linux package"
-msgstr ""
+msgstr "Snap ლინუქსის უნივერსალური პაკეტია"
 
 #. TRANSLATORS: this is to inform that the package is part of
 #. * the BASE system
 #: plugins/vso/gs-plugin-vso.c:114
-#, fuzzy
 msgid "base"
 msgstr "მონაცემთა ბაზა"
 
@@ -6279,7 +6292,7 @@ msgstr ""
 #. * not the remote title
 #: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:249
 msgid "Apps"
-msgstr ""
+msgstr "აპები"
 
 #: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:251
 msgid ""
