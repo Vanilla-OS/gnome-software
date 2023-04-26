@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-software/issues\n"
-"POT-Creation-Date: 2023-03-10 23:30+0000\n"
-"PO-Revision-Date: 2023-03-14 13:38+0100\n"
+"POT-Creation-Date: 2023-03-22 14:25+0000\n"
+"PO-Revision-Date: 2023-03-24 09:49+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenščina <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -32,7 +32,6 @@ msgid "Install and update apps"
 msgstr "Namesti in posodobi programe"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:10
-#, fuzzy
 msgid ""
 "Software allows you to find and install new apps and system extensions and "
 "remove existing installed apps."
@@ -74,7 +73,7 @@ msgstr "Okno posodobitev"
 msgid "The update details"
 msgstr "Podrobnosti posodobitve"
 
-#: data/metainfo/org.gnome.Software.metainfo.xml.in:2200
+#: data/metainfo/org.gnome.Software.metainfo.xml.in:2222
 #: src/gs-application.c:264
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
@@ -296,7 +295,6 @@ msgstr ""
 "$XDG_DATA_HOME/swcatalog/xml."
 
 #: data/org.gnome.software.gschema.xml:135
-#, fuzzy
 msgid ""
 "Priority order of packaging formats to prefer, with more important formats "
 "listed first. An empty array means the default order. Omitted formats are "
@@ -311,14 +309,12 @@ msgstr ""
 "»flatpak:flathub«."
 
 #: data/org.gnome.software.gschema.xml:139
-#, fuzzy
 msgid "The timestamp of the last attempt to remove unused Flatpak runtimes"
 msgstr ""
 "Časovni žig zadnjega poskusa odstranjevanja neuporabljenih izvajalnih "
 "paketov Flatpak"
 
 #: data/org.gnome.software.gschema.xml:143
-#, fuzzy
 msgid ""
 "Set to 'true' to show only freely licensed apps and hide any proprietary "
 "apps."
@@ -874,7 +870,6 @@ msgid "Devices"
 msgstr "Naprave"
 
 #: src/gs-app-details-page.c:71
-#, fuzzy
 msgid "Can access arbitrary devices such as webcams"
 msgstr "Lahko dostopa do poljubnih naprav, kot so spletne kamere"
 
@@ -2297,12 +2292,11 @@ msgstr "_Odstrani namestitev …"
 
 #. Translators: %s is the user-visible app name
 #: src/gs-details-page.c:1175
-#, fuzzy, c-format
+#, c-format
 msgid "%s will appear in US English"
 msgstr "%s se bo pojavil v angleščini (ZDA)"
 
 #: src/gs-details-page.c:1181
-#, fuzzy
 msgid "This app will appear in US English"
 msgstr "Ta program se bo pojavil v angleščini (ZDA)"
 
@@ -3083,7 +3077,7 @@ msgstr "izbrani zunanji viri"
 #. The %s is replaced with "selected external sources" link.
 #. Repositories Preferences is an item from Software's main menu.
 #: src/gs-overview-page.c:479
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Provides access to additional software from %s. Some proprietary software is "
 "included.\n"
@@ -3200,7 +3194,6 @@ msgid "Automatic _Updates"
 msgstr "_Samodejno posodabljanje"
 
 #: src/gs-prefs-dialog.ui:20
-#, fuzzy
 msgid ""
 "Downloads and installs software updates in the background, when possible"
 msgstr ""
@@ -3219,7 +3212,6 @@ msgid "Show Only _Free Apps"
 msgstr "Pokaži le _proste programe"
 
 #: src/gs-prefs-dialog.ui:48
-#, fuzzy
 msgid "Show only freely licensed apps and hide any proprietary apps"
 msgstr ""
 "Pokaži samo programje s prostimi dovoljenji in skrij vse lastniške programe"
@@ -3227,12 +3219,12 @@ msgstr ""
 #. TRANSLATORS: This is a text displayed during a distro upgrade. %s
 #. will be replaced by the name and version of distro, e.g. 'Fedora 23'.
 #: src/gs-removal-dialog.c:96
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Installed software is incompatible with %s, and will be automatically "
 "removed during upgrade."
 msgstr ""
-"Nameščena programska oprema ni združljiva z %s in bo med nadgradnjo "
+"Nameščena programska oprema ni združljiva s/z %s in bo med nadgradnjo "
 "samodejno odstranjena."
 
 #: src/gs-removal-dialog.ui:7
@@ -3438,7 +3430,6 @@ msgstr "Noro dober je"
 #. TRANSLATORS: lighthearted star rating description;
 #. *		No star has been clicked yet
 #: src/gs-review-dialog.c:98
-#, fuzzy
 msgid "Select a Star to Leave a Rating"
 msgstr "Izberite zvezdico, če želite podati oceno"
 
@@ -3483,13 +3474,12 @@ msgid "_Send"
 msgstr "_Pošlji"
 
 #: src/gs-review-dialog.ui:71
-#, fuzzy
 msgid ""
 "What did you like about this app? Leaving your feedback along with your "
 "reasons for leaving a review is helpful for others."
 msgstr ""
 "Kaj vam je bilo všeč pri tem programu? Če pustite povratne informacije "
-"skupaj z razlogi za pisanje ocene je koristno za druge uporabnike."
+"skupaj z razlogi za pisanje ocene, je to koristno za druge uporabnike."
 
 #: src/gs-review-dialog.ui:84
 msgid "Review Summary"
@@ -3652,8 +3642,6 @@ msgstr "Lahko dostopa do naprav, kot so spletne kamere in igralne konzole"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:202
-#, fuzzy
-#| msgid "No Device Access"
 msgid "No User Device Access"
 msgstr "Ne zahteva dostopa do povezanih naprav"
 
@@ -3667,9 +3655,8 @@ msgid "System Device Access"
 msgstr "Dostop do sistemske naprave"
 
 #: src/gs-safety-context-dialog.c:210
-#, fuzzy
 msgid "Can access system devices which require elevated permissions"
-msgstr "Omogočen je dostop do sistemskih naprav, ki zahtevajo več pravic"
+msgstr "Lahko dostopa do sistemskih naprav, ki zahtevajo več pravic"
 
 #. Translators: This refers to permissions (for example, from flatpak) which an app requests from the user.
 #: src/gs-safety-context-dialog.c:217
@@ -4464,9 +4451,9 @@ msgid "Search apps"
 msgstr "Poišči programe"
 
 #: src/gs-shell.ui:257
-#, fuzzy
 msgid "Metered network ‒ automatic updates paused"
-msgstr "Omrežje z omejeno uporabo ‒ samodejno posodabljanje je v premoru"
+msgstr ""
+"Omrežje z omejenim prenosom podatkov ‒ samodejno posodabljanje je v premoru"
 
 #: src/gs-shell.ui:258
 msgid "Find Out _More"
@@ -4822,7 +4809,7 @@ msgstr "Preveri za posodobitve"
 #. TRANSLATORS:  the first %s is the distro name, e.g. 'Fedora'
 #. * and the second %s is the distro version, e.g. '25'
 #: src/gs-updates-page.c:568
-#, fuzzy, c-format
+#, c-format
 msgid "%s %s has stopped receiving critical software updates"
 msgstr "%s %s je prenehal prejemati kritične posodobitve programske opreme"
 
@@ -5269,20 +5256,19 @@ msgstr ""
 
 #. TRANSLATORS: as in laptop battery power
 #: plugins/fwupd/gs-fwupd-app.c:66
-#, fuzzy
 msgid "System power is too low to perform the update"
-msgstr "Sistemska moč je prenizka za izvedbo posodobitve"
+msgstr "Napolnjenost baterije je prenizka za izvedbo posodobitve"
 
 #. TRANSLATORS: as in laptop battery power
 #: plugins/fwupd/gs-fwupd-app.c:70
-#, fuzzy, c-format
+#, c-format
 msgid "System power is too low to perform the update (%u%%, requires %u%%)"
 msgstr ""
-"Sistemska moč je prenizka za izvedbo posodobitve (%u %%, potrebuje %u %%)"
+"Napolnjenost baterije je prenizka za izvedbo posodobitve (%u %%, potrebuje "
+"%u %%)"
 
 #. TRANSLATORS: for example, a Bluetooth mouse that is in powersave mode
 #: plugins/fwupd/gs-fwupd-app.c:76
-#, fuzzy
 msgid "Device is unreachable, or out of wireless range"
 msgstr "Naprava je nedosegljiva ali je zunaj brezžičnega območja"
 
@@ -5294,25 +5280,22 @@ msgstr "Napetost baterije naprave je prenizka"
 
 #. TRANSLATORS: for example the batteries *inside* the Bluetooth mouse
 #: plugins/fwupd/gs-fwupd-app.c:85
-#, fuzzy, c-format
+#, c-format
 msgid "Device battery power is too low (%u%%, requires %u%%)"
 msgstr "Napolnjenost baterije naprave je prenizka (%u %%, potrebuje %u %%)"
 
 #. TRANSLATORS: usually this is when we're waiting for a reboot
 #: plugins/fwupd/gs-fwupd-app.c:91
-#, fuzzy
 msgid "Device is waiting for the update to be applied"
 msgstr "Naprava čaka na uveljavitev posodobitve"
 
 #. TRANSLATORS: as in, wired mains power for a laptop
 #: plugins/fwupd/gs-fwupd-app.c:95
-#, fuzzy
 msgid "Device requires AC power to be connected"
-msgstr "Naprava mora biti priključena na napajanje"
+msgstr "Naprava mora biti priključena na el. omrežje"
 
 #. TRANSLATORS: lid means "laptop top cover"
 #: plugins/fwupd/gs-fwupd-app.c:99
-#, fuzzy
 msgid "Device cannot be used while the lid is closed"
 msgstr "Naprave ni mogoče uporabiti, ko je pokrov zaprt"
 
@@ -5488,7 +5471,7 @@ msgstr "Posodobitev modula GPU %s"
 #. TRANSLATORS: Dock refers to the port replicator hardware laptops are
 #. * cradled in, or lowered onto
 #: plugins/fwupd/gs-fwupd-app.c:338
-#, fuzzy, c-format
+#, c-format
 msgid "%s Dock Update"
 msgstr "Posodobitev pogona %s"
 
