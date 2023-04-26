@@ -1,3 +1,9 @@
+gnome-software (44.1-1) UNRELEASED; urgency=medium
+
+  * New upstream release
+
+ -- Amin Bandali <bandali@ubuntu.com>  Wed, 26 Apr 2023 13:51:16 -0400
+
 gnome-software (44.0-1) experimental; urgency=medium
 
   * New upstream release
