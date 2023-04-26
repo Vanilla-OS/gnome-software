@@ -1,6 +1,12 @@
 gnome-software (44.1-1) UNRELEASED; urgency=medium
 
   * New upstream release
+    - Fix firmware updates state change after update
+      (https://gitlab.gnome.org/GNOME/gnome-software/-/issues/2112)
+    - Fix origin reference information for PackageKit apps
+    - Fix a crash after dismissing firmware update warning dialog
+      (https://gitlab.gnome.org/GNOME/gnome-software/-/issues/2130)
+    - Fix a crash on repo removal
 
  -- Amin Bandali <bandali@ubuntu.com>  Wed, 26 Apr 2023 13:51:16 -0400
 
