@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: gnome-software main\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-04-15 16:49+0000\n"
+"PO-Revision-Date: 2023-04-23 01:41+0000\n"
 "Last-Translator: Alim Satria <alimsatria2017@mail.ugm.ac.id>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/id/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -506,12 +506,13 @@ msgid "Various UI parts updated"
 msgstr "Ragam pembaruan pada bagian UI"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:138
+#, fuzzy
 msgid "Sources dropdown had been reworked"
-msgstr ""
+msgstr "Bilah turun pada sumber telah dibuat ulang"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:139
 msgid "Fixes a rare crash when showing app details"
-msgstr ""
+msgstr "Perbaikan kerusakan langka ketika menampilkan detail aplikasi"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:150
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:542
@@ -528,20 +529,22 @@ msgid "Vietnamese"
 msgstr "Vietnam"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:165
+#, fuzzy
 msgid "This is the first unstable release for GNOME 43."
-msgstr ""
+msgstr "Ini merupakan rilisan pertama yang belum stabil untuk GNOME 43."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:167
 msgid "Various improvements to notifications"
-msgstr ""
+msgstr "Ragam peningkatan pada notifikasi"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:168
 msgid "Fix several crashes when handling flatpak apps"
-msgstr ""
+msgstr "Perbaikan beberapa kerusakan ketika menjalankan aplikasi flatpak"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:169
 msgid "Add ‘Other Apps by Author’ section in the app details page"
 msgstr ""
+"Menambahkan bagian 'Aplikasi Lain oleh Pengembang' pada laman detail aplikasi"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:170
 msgid "Improve styling of app context lozenges"
@@ -552,19 +555,23 @@ msgid ""
 "Add ‘Available for Distro’ section to the overview page (if configured by "
 "your distribution)"
 msgstr ""
+"Menambahkan bagian `Ada untuk Distro`pada laman ringkasan (jika telah diatur "
+"pada distribusi anda)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:172
 msgid ""
 "Show more details about file system permissions requested by flatpak apps"
 msgstr ""
+"Menampilkan lebih banyak detail tentang izin berkas sistem yang diminta oleh "
+"aplikasi flatpak"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:173
 msgid "Show more types of URI from app metainfo"
-msgstr ""
+msgstr "Menampilkan lebih banyak tipe URI dari metainfo aplikasi"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:174
 msgid "Fix a few issues when using a dark mode theme"
-msgstr ""
+msgstr "Pebaikan beberapa masalah ketika menggunakan tema mode gelap"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:175
 msgid "Fix some issues with arrows in right-to-left locales"
