@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: gnome-software gnome-3-16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-04-06 21:33+0000\n"
+"PO-Revision-Date: 2023-05-02 16:51+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/nl/>\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -496,7 +496,7 @@ msgstr "Oekraïens"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:134
 msgid "This is the second unstable release for GNOME 43."
-msgstr ""
+msgstr "Dit is de tweede onstabiele uitgave voor GNOME 43."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:136
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:237
@@ -688,18 +688,18 @@ msgid "Numerous small user interface fixes and tweaks"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:272
-#, fuzzy
 msgid "Prioritize full matches in search results"
-msgstr "Niet-vrije software tonen in zoekresultaten"
+msgstr "Hogere prioriteit voor volledige overeenkomsten in zoekresultaten"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:273
 msgid "Improvements in dark mode"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:274
-#, fuzzy
 msgid "Fix disabling flatpak remotes from the ‘Software Repositories’ dialog"
-msgstr "Toegang geven tot het softwarebronnen-dialoogvenster"
+msgstr ""
+"Foutoplossing voor uitschakelen Flatpak-remotes vanuit de dialoog "
+"‘Softwarebronnen’"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:275
 msgid ""
@@ -708,9 +708,8 @@ msgid ""
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:276
-#, fuzzy
 msgid "Update some icons"
-msgstr "Update-details"
+msgstr "Enkele pictogrammen bijgewerkt"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:277
 msgid ""
@@ -835,9 +834,8 @@ msgid "Fix translation of main button on updates page"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:363
-#, fuzzy
 msgid "Fix codec installation process"
-msgstr "Gebruikt heeft installatie afgewezen"
+msgstr "Foutoplossing voor codec-installatieproces"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:364
 msgid "Add new GNOME Circle apps to the featured carousel"
@@ -1246,9 +1244,8 @@ msgid "Support updating flatpaks to their new name when they are renamed"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:678
-#, fuzzy
 msgid "Update the GNOME Software icon"
-msgstr "Niet-ondertekende software bijwerken?"
+msgstr "Pictogram van GNOME Software bijgewerkt"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:679
 msgid "Support more search results in the snap store"
@@ -2256,7 +2253,7 @@ msgstr ""
 "Nathan Follens <nfollens@gnome.org>\n"
 "Justin van Steijn\n"
 "Hannie Dumoleyn\n"
-"Philip Goto https://flipflop97.github.io/\n"
+"Philip Goto https://philipgoto.nl/\n"
 "Meer info over GNOME-NL https://nl.gnome.org"
 
 #. TRANSLATORS: this is the title of the about window

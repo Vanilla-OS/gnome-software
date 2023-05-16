@@ -11,13 +11,14 @@
 # inal <inaltarba89@gmail.com>, 2023.
 # Sergey Ivanov <ivanov.sergey.ekb@gmail.com>, 2023.
 # Alexey <aleksejfedorov963@gmail.com>, 2023.
+# Максим <mrxzzet@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-03-26 04:29+0000\n"
-"Last-Translator: Alexey <aleksejfedorov963@gmail.com>\n"
+"PO-Revision-Date: 2023-05-07 09:49+0000\n"
+"Last-Translator: Максим <mrxzzet@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/ru/>\n"
 "Language: ru\n"
@@ -26,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 "X-DL-Team: ru\n"
 "X-DL-Module: gnome-software\n"
 "X-DL-Branch: main\n"
@@ -549,7 +550,7 @@ msgstr "Различные улучшения уведомлений"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:168
 msgid "Fix several crashes when handling flatpak apps"
-msgstr ""
+msgstr "Исправлено несколько сбоев при обработке приложений flatpak"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:169
 msgid "Add ‘Other Apps by Author’ section in the app details page"
@@ -579,7 +580,7 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:173
 msgid "Show more types of URI from app metainfo"
-msgstr ""
+msgstr "Показать больше типов URI из app metainfo"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:174
 msgid "Fix a few issues when using a dark mode theme"
