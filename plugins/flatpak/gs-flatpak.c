@@ -33,6 +33,7 @@
 #include <xmlb.h>
 
 #include "gs-appstream.h"
+#include "gs-app-private.h"
 #include "gs-flatpak-app.h"
 #include "gs-flatpak.h"
 #include "gs-flatpak-transaction.h"
@@ -442,7 +443,18 @@ gs_flatpak_set_update_permissions (GsFlatpak           *self,
 	g_autoptr(GsAppPermissions) additional_permissions = gs_app_permissions_new ();
 	g_autoptr(GError) error_local = NULL;
 
-	old_bytes = flatpak_installed_ref_load_metadata (FLATPAK_INSTALLED_REF (xref), NULL, NULL);
+	old_bytes = flatpak_installed_ref_load_metadata (FLATPAK_INSTALLED_REF (xref), NULL, &error_local);
+	if (old_bytes == NULL) {
+		g_debug ("Failed to get metadata for app ‘%s’: %s",
+			 gs_app_get_id (app), error_local->message);
+		g_clear_error (&error_local);
+
+		/* Permissions are unknown */
+		g_clear_object (&additional_permissions);
+
+		goto finish;
+	}
+
 	old_keyfile = g_key_file_new ();
 	g_key_file_load_from_data (old_keyfile,
 	                           g_bytes_get_data (old_bytes, NULL),
@@ -492,6 +504,7 @@ gs_flatpak_set_update_permissions (GsFlatpak           *self,
 		}
 	}
 
+finish:
 	/* no new permissions set */
 	if (gs_app_permissions_get_flags (additional_permissions) == GS_APP_PERMISSIONS_FLAGS_UNKNOWN)
 		gs_app_permissions_set_flags (additional_permissions, GS_APP_PERMISSIONS_FLAGS_NONE);
@@ -2802,6 +2815,7 @@ gs_flatpak_prune_addons_list (GsFlatpak *self,
 	g_autoptr(GsAppList) addons_list = NULL;
 	g_autoptr(GPtrArray) installed_related_refs = NULL;
 	g_autoptr(GPtrArray) remote_related_refs = NULL;
+	g_autoptr(GPtrArray) remove_addons = NULL;
 	g_autofree gchar *ref = NULL;
 	FlatpakInstallation *installation = gs_flatpak_get_installation (self, interactive);
 	g_autoptr(GError) error_local = NULL;
@@ -2886,6 +2900,7 @@ gs_flatpak_prune_addons_list (GsFlatpak *self,
 
 	g_clear_error (&error_local);
 
+	remove_addons = g_ptr_array_new_full (gs_app_list_length (addons_list), g_object_unref);
 	/* For each addon, if it is neither installed nor available, hide it
 	 * since it may be intended for a different version of the app. We
 	 * don't want to show both org.videolan.VLC.Plugin.bdj//3-19.08 and
@@ -2902,29 +2917,30 @@ gs_flatpak_prune_addons_list (GsFlatpak *self,
 					     gs_flatpak_app_get_ref_name (app_addon),
 					     gs_flatpak_app_get_ref_arch (app_addon),
 					     gs_app_get_branch (app_addon));
-		for (guint j = 0; installed_related_refs && j < installed_related_refs->len; j++) {
+		for (guint j = 0; !found && installed_related_refs && j < installed_related_refs->len; j++) {
 			FlatpakRelatedRef *rel = g_ptr_array_index (installed_related_refs, j);
 			g_autofree char *rel_ref = flatpak_ref_format_ref (FLATPAK_REF (rel));
 			if (g_strcmp0 (addon_ref, rel_ref) == 0)
 				found = TRUE;
 		}
-		for (guint j = 0; remote_related_refs && j < remote_related_refs->len; j++) {
+		for (guint j = 0; !found && remote_related_refs && j < remote_related_refs->len; j++) {
 			FlatpakRelatedRef *rel = g_ptr_array_index (remote_related_refs, j);
 			g_autofree char *rel_ref = flatpak_ref_format_ref (FLATPAK_REF (rel));
 			if (g_strcmp0 (addon_ref, rel_ref) == 0)
 				found = TRUE;
 		}
 
-		if (!found) {
-			gs_app_add_quirk (app_addon, GS_APP_QUIRK_HIDE_EVERYWHERE);
-			g_debug ("hiding %s since it's not related to %s",
-				 addon_ref, gs_app_get_unique_id (app));
-		} else {
-			gs_app_remove_quirk (app_addon, GS_APP_QUIRK_HIDE_EVERYWHERE);
-			g_debug ("unhiding %s since it's related to %s",
-				 addon_ref, gs_app_get_unique_id (app));
-		}
+		if (!found)
+			g_ptr_array_add (remove_addons, g_object_ref (app_addon));
 	}
+
+	for (guint i = 0; i < remove_addons->len; i++) {
+		GsApp *addon = g_ptr_array_index (remove_addons, i);
+		g_debug ("removing addon '%s' from app '%s', because not related to it",
+			 gs_app_get_unique_id (addon), gs_app_get_unique_id (app));
+		gs_app_remove_addon (app, addon);
+	}
+
 	return TRUE;
 }
 
