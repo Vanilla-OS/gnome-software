@@ -1,8 +1,24 @@
 gnome-software (44.2-1) UNRELEASED; urgency=medium
 
   * New upstream release
+    - Fix subsequent checking for updates if the first check after login
+      fails (https://gitlab.gnome.org/GNOME/gnome-software/-/issues/1316)
+    - Fix checking for updates when automatic updates are disabled
+      (https://gitlab.gnome.org/GNOME/gnome-software/-/issues/1866)
+    - Fix rare stall when many background jobs are running
+      (https://gitlab.gnome.org/GNOME/gnome-software/-/issues/2105)
+    - Don’t download rpm-ostree updates when only checking if updates are
+      available
+      (https://gitlab.gnome.org/GNOME/gnome-software/-/issues/2151)
+    - Fix bug with listing flatpak addons when multiple flathub remotes
+      are enabled
+      (https://gitlab.gnome.org/GNOME/gnome-software/-/issues/2152)
+    - Fix duplicated sources in app details page when using an appstream
+      URL (https://gitlab.gnome.org/GNOME/gnome-software/-/issues/2166)
+    - Reduce background resource consumption when idle.
+      (https://gitlab.gnome.org/GNOME/gnome-software/-/issues/2153)
 
- -- Amin Bandali <bandali@ubuntu.com>  Thu, 25 May 2023 17:00:59 -0400
+ -- Amin Bandali <bandali@ubuntu.com>  Thu, 25 May 2023 17:03:42 -0400
 
 gnome-software (44.1-1) experimental; urgency=medium
 
