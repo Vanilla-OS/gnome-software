@@ -1,5 +1,6 @@
-gnome-software (44.2-1) UNRELEASED; urgency=medium
+gnome-software (44.2-1) experimental; urgency=medium
 
+  * Team upload
   * New upstream release
     - Fix subsequent checking for updates if the first check after login
       fails (https://gitlab.gnome.org/GNOME/gnome-software/-/issues/1316)
