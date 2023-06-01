@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-software package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# Gabriel Girouard <ggirouard@bungeetaco.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-06-01 13:52+0000\n"
+"Last-Translator: Gabriel Girouard <ggirouard@bungeetaco.com>\n"
+"Language-Team: French (Canada) <https://hosted.weblate.org/projects/"
+"vanilla-os/gnome-software/fr_CA/>\n"
 "Language: fr_CA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -3688,7 +3689,7 @@ msgstr ""
 
 #: src/gs-featured-carousel.ui:66
 msgid "Next"
-msgstr ""
+msgstr "Suivant"
 
 #: src/gs-featured-carousel.ui:83
 msgid "Featured Apps List"
