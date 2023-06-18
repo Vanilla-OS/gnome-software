@@ -4,20 +4,22 @@
 # This file is distributed under the same license as the gnome-software package.
 # Lyubomir Vasilev <lyubomirv@abv.bg>, 2017.
 # Alexander Shopov <ash@kambanaria.org>, 2021, 2022.
-#
+# Plamen Stanchev <sommersbynobodyev@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software main\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2022-09-12 13:33+0200\n"
-"Last-Translator: Alexander Shopov <ash@kambanaria.org>\n"
-"Language-Team: Bulgarian <dict-notifications@fsa-bg.org>\n"
+"PO-Revision-Date: 2023-06-09 19:50+0000\n"
+"Last-Translator: Plamen Stanchev <sommersbynobodyev@gmail.com>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/vanilla-os/"
+"gnome-software/bg/>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -72,7 +74,7 @@ msgstr "Подробности за обновлението"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:71
 msgid "This is a stable release with translation updates:"
-msgstr ""
+msgstr "Това е стабилна версия с актуализации на превода:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:73
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:197
@@ -80,7 +82,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:373
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:492
 msgid "Bulgarian"
-msgstr ""
+msgstr "Български"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:74
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:107
@@ -97,7 +99,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:638
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:686
 msgid "Catalan"
-msgstr ""
+msgstr "Каталонски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:75
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:200
@@ -105,7 +107,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:533
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:687
 msgid "Chinese (Taiwan)"
-msgstr ""
+msgstr "Китайски (Тайван)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:76
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:202
@@ -116,7 +118,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:639
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:688
 msgid "Czech"
-msgstr ""
+msgstr "Чешки"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:77
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:205
@@ -125,7 +127,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:536
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:600
 msgid "English (United Kingdom)"
-msgstr ""
+msgstr "Английски език (Великобритания)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:78
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:113
@@ -140,14 +142,14 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:640
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:690
 msgid "Galician"
-msgstr ""
+msgstr "Галисийски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:79
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:114
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:147
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:210
 msgid "Georgian"
-msgstr ""
+msgstr "Грузински"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:80
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:211
@@ -159,7 +161,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:605
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:691
 msgid "German"
-msgstr ""
+msgstr "Немски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:81
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:115
@@ -172,7 +174,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:541
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:693
 msgid "Hebrew"
-msgstr ""
+msgstr "Иврит"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:82
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:213
@@ -180,20 +182,20 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:428
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:606
 msgid "Hungarian"
-msgstr ""
+msgstr "Унгарски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:83
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:116
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:332
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:383
 msgid "Icelandic"
-msgstr ""
+msgstr "Исландски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:84
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:385
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:698
 msgid "Latvian"
-msgstr ""
+msgstr "Латвийски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:85
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:119
@@ -208,13 +210,13 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:610
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:699
 msgid "Lithuanian"
-msgstr ""
+msgstr "Литовски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:86
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:216
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:544
 msgid "Nepali"
-msgstr ""
+msgstr "Непалски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:87
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:125
@@ -226,7 +228,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:577
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:615
 msgid "Serbian"
-msgstr ""
+msgstr "Сръбски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:88
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:224
@@ -240,7 +242,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:616
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:644
 msgid "Slovenian"
-msgstr ""
+msgstr "Словенски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:89
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:126
@@ -256,7 +258,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:645
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:705
 msgid "Spanish"
-msgstr ""
+msgstr "Испански"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:90
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:226
@@ -268,28 +270,27 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:618
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:646
 msgid "Swedish"
-msgstr ""
+msgstr "Шведски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:96
 msgid "This is the third unstable release for GNOME 43."
-msgstr ""
+msgstr "Това е третото нестабилно издание на GNOME 43."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:98
-#, fuzzy
 msgid "Supports video as a screenshot"
-msgstr "Поддържа ползване на малък екран"
+msgstr "Поддържа видео като скрийншот"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:99
 msgid "Improvements of source picker in the details page"
-msgstr ""
+msgstr "Подобрения на селектора на източници в страницата с подробности"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:100
 msgid "Fixes a bug when viewing details of a package file"
-msgstr ""
+msgstr "Поправена е грешка при преглеждане на подробностите за пакетния файл"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:101
 msgid "Fixes a bug when reading certain .flatpakref file"
-msgstr ""
+msgstr "Поправена е грешка при четене на определен .flatpakref файл"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:103
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:141
@@ -304,12 +305,12 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:526
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:682
 msgid "This release also updates translations:"
-msgstr ""
+msgstr "Тази версия също така актуализира преводите:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:105
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:143
 msgid "Abkhazian"
-msgstr ""
+msgstr "Абхазия"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:106
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:196
@@ -322,7 +323,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:595
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:684
 msgid "Basque"
-msgstr ""
+msgstr "Баски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:108
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:145
@@ -335,7 +336,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:458
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:532
 msgid "Chinese (China)"
-msgstr ""
+msgstr "Китайски (Китай)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:109
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:201
@@ -345,7 +346,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:460
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:597
 msgid "Croatian"
-msgstr ""
+msgstr "Хърватски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:110
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:203
@@ -354,7 +355,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:422
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:571
 msgid "Danish"
-msgstr ""
+msgstr "Датски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:111
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:146
@@ -364,7 +365,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:535
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:599
 msgid "Dutch"
-msgstr ""
+msgstr "Холандски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:112
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:206
@@ -374,7 +375,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:537
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:601
 msgid "Finnish"
-msgstr ""
+msgstr "Финландски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:117
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:149
@@ -388,7 +389,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:641
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:694
 msgid "Indonesian"
-msgstr ""
+msgstr "Индонезийски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:118
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:291
@@ -396,7 +397,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:466
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:609
 msgid "Korean"
-msgstr ""
+msgstr "Корейски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:120
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:152
@@ -410,7 +411,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:611
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:700
 msgid "Persian"
-msgstr ""
+msgstr "Персийски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:121
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:219
@@ -418,9 +419,8 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:433
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:547
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:575
-#, fuzzy
 msgid "Polish"
-msgstr "Политика"
+msgstr "Полски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:122
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:153
@@ -436,7 +436,7 @@ msgstr "Политика"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:643
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:701
 msgid "Portuguese"
-msgstr ""
+msgstr "Португалски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:123
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:221
@@ -450,7 +450,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:613
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:702
 msgid "Portuguese (Brazil)"
-msgstr ""
+msgstr "Португалски (Бразилия)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:124
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:154
@@ -462,7 +462,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:437
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:551
 msgid "Russian"
-msgstr ""
+msgstr "Руски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:127
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:157
@@ -472,7 +472,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:619
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:706
 msgid "Turkish"
-msgstr ""
+msgstr "Турски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:128
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:158
@@ -487,119 +487,130 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:620
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:707
 msgid "Ukrainian"
-msgstr ""
+msgstr "Украински"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:134
 msgid "This is the second unstable release for GNOME 43."
-msgstr ""
+msgstr "Това е второто нестабилно издание на GNOME 43."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:136
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:237
 msgid "Various fixes related to changed threading model"
-msgstr ""
+msgstr "Различни поправки, свързани с променения модел на нишките"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:137
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:349
 msgid "Various UI parts updated"
-msgstr ""
+msgstr "Актуализиране на различни части на потребителския интерфейс"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:138
 msgid "Sources dropdown had been reworked"
-msgstr ""
+msgstr "Преработено е падащото меню Източници"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:139
 msgid "Fixes a rare crash when showing app details"
-msgstr ""
+msgstr "Отстранява рядък срив при показване на подробности за приложението"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:150
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:542
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:573
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:695
 msgid "Italian"
-msgstr ""
+msgstr "Италиански"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:159
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:229
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:399
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:708
 msgid "Vietnamese"
-msgstr ""
+msgstr "Виетнамски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:165
 msgid "This is the first unstable release for GNOME 43."
-msgstr ""
+msgstr "Това е първото нестабилно издание за GNOME 43."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:167
 msgid "Various improvements to notifications"
-msgstr ""
+msgstr "Различни подобрения в известията"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:168
 msgid "Fix several crashes when handling flatpak apps"
-msgstr ""
+msgstr "Поправяне на няколко срива при работа с Flatpak приложения"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:169
 msgid "Add ‘Other Apps by Author’ section in the app details page"
 msgstr ""
+"Добавяне на раздел \"Други приложения от автора\" в страницата с подробности "
+"за приложението"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:170
 msgid "Improve styling of app context lozenges"
-msgstr ""
+msgstr "Подобряване на стилизирането на контекстните таблетки на приложението"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:171
 msgid ""
 "Add ‘Available for Distro’ section to the overview page (if configured by "
 "your distribution)"
 msgstr ""
+"Добавяне на раздел \"Налично за дистрибуция\" в страницата за преглед (ако е "
+"конфигуриран от вашата дистрибуция)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:172
 msgid ""
 "Show more details about file system permissions requested by flatpak apps"
 msgstr ""
+"Показване на повече подробности за разрешенията на файловата система, "
+"изисквани от приложенията flatpak"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:173
 msgid "Show more types of URI from app metainfo"
-msgstr ""
+msgstr "Показване на повече типове URI от app metainfo"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:174
 msgid "Fix a few issues when using a dark mode theme"
-msgstr ""
+msgstr "Отстраняване на няколко проблема при използване на тема в тъмен режим"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:175
 msgid "Fix some issues with arrows in right-to-left locales"
-msgstr ""
+msgstr "Отстраняване на някои проблеми със стрелките в локалите отдясно наляво"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:176
 msgid "Fix language pack installation for certain locales"
-msgstr ""
+msgstr "Коригиране на инсталирането на езиковия пакет за някои локали"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:177
 msgid "Improve debug output to make user bug reports more useful"
 msgstr ""
+"Подобряване на изхода за отстраняване на грешки, за да бъдат докладите за "
+"грешки на потребителите по-полезни"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:178
 msgid "Add `--uninstall=ID` command line option"
-msgstr ""
+msgstr "Добавяне на опцията `--uninstall=ID` в командния ред"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:179
 msgid ""
 "Allow scrolling screenshots by clicking on next and previous screenshots"
 msgstr ""
+"Разрешаване на превъртане на скрийншоти чрез щракване върху следващите и "
+"предишните скрийншоти"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:180
 msgid "Add support for webapps"
-msgstr ""
+msgstr "Добавяне на поддръжка за уеб приложения"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:181
 msgid "Allow swiping back in the shell using touch gestures"
-msgstr ""
+msgstr "Разрешаване на връщането в черупката с помощта на жестове с докосване"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:182
 msgid "Improved caching of downloaded metadata"
-msgstr ""
+msgstr "Подобрено кеширане на изтеглените метаданни"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:183
 msgid "Many internal architectural changes to make the code more maintainable"
 msgstr ""
+"Много вътрешни архитектурни промени, за да се подобри поддържането на кода"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:184
 msgid ""
@@ -607,19 +618,25 @@ msgid ""
 "distribution vendors wishing to mark their apps as popular should see `doc/"
 "vendor-customisation.md` for examples of how to do this now"
 msgstr ""
+"Ключът <code>popular-overrides</code> GSettings е премахнат; доставчиците на "
+"дистрибуции, които желаят да маркират своите приложения като популярни, "
+"трябва да видят в `doc/vendor-customisation.md` примери за това как да го "
+"направят сега"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:189
 msgid ""
 "The <code>hardcoded_popular</code> Meson option has been renamed to "
 "<code>hardcoded_curated</code>."
 msgstr ""
+"Опцията <code>hardcoded_popular</code> Meson е преименувана на "
+"<code>hardcoded_curated</code>."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:207
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:249
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:425
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:602
 msgid "French"
-msgstr ""
+msgstr "Френски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:208
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:287
@@ -629,7 +646,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:603
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:689
 msgid "Friulian"
-msgstr ""
+msgstr "Фриулиан"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:217
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:256
@@ -640,123 +657,137 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:498
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:545
 msgid "Occitan (post 1500)"
-msgstr ""
+msgstr "Окситански (след 1500 г.)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:235
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:405
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:561
 msgid "This is a stable release with the following changes:"
-msgstr ""
+msgstr "Това е стабилна версия със следните промени:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:238
 msgid "Added several appstream-related fixes"
-msgstr ""
+msgstr "Добавени са няколко поправки, свързани с appstream"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:243
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:530
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:685
 msgid "Bokmål, Norwegian"
-msgstr ""
+msgstr "Bokmål, норвежки"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:253
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:334
 msgid "Japanese"
-msgstr ""
+msgstr "Японски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:254
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:465
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:608
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:697
 msgid "Kazakh"
-msgstr ""
+msgstr "Казахски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:268
 msgid "This is the third unstable release for GNOME 42."
-msgstr ""
+msgstr "Това е третото нестабилно издание на GNOME 42."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:270
 msgid "Cancel ongoing update downloads when system power is low"
 msgstr ""
+"Отмяна на текущите изтегляния на актуализации, когато захранването на "
+"системата е ниско"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:271
 msgid "Numerous small user interface fixes and tweaks"
-msgstr ""
+msgstr "Многобройни малки поправки и настройки на потребителския интерфейс"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:272
 msgid "Prioritize full matches in search results"
-msgstr ""
+msgstr "Даване на приоритет на пълните съвпадения в резултатите от търсенето"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:273
 msgid "Improvements in dark mode"
-msgstr ""
+msgstr "Подобрения в тъмния режим"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:274
-#, fuzzy
 msgid "Fix disabling flatpak remotes from the ‘Software Repositories’ dialog"
-msgstr "Достъп до прозореца за източниците на софтуер"
+msgstr ""
+"Коригиране на деактивирането на отдалечените устройства Flatpak от "
+"диалоговия прозорец \"Софтуерни хранилища"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:275
 msgid ""
 "Threading and performance improvements which should reduce the number of "
 "user interface freezes"
 msgstr ""
+"Подобрения в нишките и производителността, които трябва да намалят броя на "
+"застопоряванията на потребителския интерфейс"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:276
-#, fuzzy
 msgid "Update some icons"
-msgstr "Подробности за обновлението"
+msgstr "Актуализиране на някои икони"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:277
 msgid ""
 "Check for updates when moving from a metered to a non-metered network "
 "connection"
 msgstr ""
+"Проверка за актуализации при преминаване от мрежова връзка с таксуване към "
+"такава без таксуване"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:306
 msgid "This is the second unstable release for GNOME 42."
-msgstr ""
+msgstr "Това е второто нестабилно издание на GNOME 42."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:308
 msgid "Allow <code>--verbose</code> to be enabled at runtime"
 msgstr ""
+"Позволете на <code>--verbose</code> да бъде разрешен по време на изпълнение"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:309
 msgid "Condense the rows in the age rating context dialog"
 msgstr ""
+"Сгъстяване на редовете в контекстния диалогов прозорец за оценка на възрастта"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:310
 msgid "Update the UI for ratings and reviews of apps"
 msgstr ""
+"Актуализиране на потребителския интерфейс за рейтинги и прегледи на "
+"приложения"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:311
 msgid "Improve the appearance of the category page loading screen"
 msgstr ""
+"Подобряване на външния вид на екрана за зареждане на страницата с категория"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:312
 msgid "Drop the first run dialog"
-msgstr ""
+msgstr "Откажете се от първия диалогов прозорец"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:313
 msgid "Improvements to dark theming"
-msgstr ""
+msgstr "Подобрения в тъмните теми"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:314
 msgid ""
 "Support viewing a specific metainfo file using <code>--show-metainfo</code>"
 msgstr ""
+"Подкрепа за преглед на конкретен метаинфо файл с помощта на <code>--show-"
+"metainfo</code>"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:315
 msgid "Several more threading improvements"
-msgstr ""
+msgstr "Още няколко подобрения на нишките"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:316
-#, fuzzy
 msgid "Icon updates"
-msgstr "Проверка за обновления"
+msgstr "Актуализации на икони"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:317
 msgid "Drop the hardcoded-popular plugin in favour of an appstream file"
 msgstr ""
+"Откажете се от твърдо кодираната популярна приставка в полза на файл с поток "
+"от приложения"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:318
 msgid ""
@@ -767,124 +798,150 @@ msgid ""
 "code> GSettings key has been removed. Distributions may need to update how "
 "they ship background images. See <em>doc/vendor-customisation.md</em>."
 msgstr ""
+"Фоновото изображение за обновявания сега се търси с помощта на няколко добре "
+"познати (и специфични за дистрибуцията) имена в <code>${DATADIR}/gnome-"
+"software/backgrounds</code>, а предишното специфично за Fedora фоново "
+"изображение по подразбиране вече не се разпространява. По същия начин е "
+"премахнат ключът <code>upgrade-background-uri</code> GSettings. Може да се "
+"наложи дистрибуциите да актуализират начина, по който доставят фоновите "
+"изображения. Вижте <em>doc/vendor-customisation.md</em>."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:347
 msgid "This is the first unstable release for GNOME 42."
-msgstr ""
+msgstr "Това е първото нестабилно издание за GNOME 42."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:350
 msgid "Support more markup in the application description"
-msgstr ""
+msgstr "Поддръжка на повече маркировки в описанието на приложението"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:351
 msgid "Ask about package signature with PackageKit on signing issue"
 msgstr ""
+"Попитайте за подписването на пакета с PackageKit по въпроса за подписването"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:352
 msgid "Show better System Update progress"
-msgstr ""
+msgstr "Показване на по-добър напредък в актуализирането на системата"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:353
 msgid "Remove various cultural sensitivity badges"
-msgstr ""
+msgstr "Премахване на различни значки за културна чувствителност"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:354
 msgid "Fix a crash when processing age ratings"
-msgstr ""
+msgstr "Поправяне на срив при обработката на възрастови оценки"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:355
-#, fuzzy
 msgid ""
 "Reload application details only when not installing/removing the application"
 msgstr ""
-"Показване на подробностите за програма (по идентификатор на приложение)"
+"Презареждане на подробностите за приложението само когато не инсталирате/"
+"премахвате приложението"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:356
 msgid "Do not follow symlinks when calculating disk size usage"
 msgstr ""
+"Да не се следват симлинкове при изчисляване на използването на размера на "
+"диска"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:357
 msgid "Fix addons section, which could show addons for different application"
 msgstr ""
+"Поправка на раздела за добавки, който може да показва добавки за различни "
+"приложения"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:358
 msgid ""
 "Fix showing a ‘transaction in progress’ error when using the rpm-ostree "
 "plugin"
 msgstr ""
+"Поправка на показването на грешка \"транзакция в ход\" при използване на "
+"приставката rpm-ostree"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:359
 msgid "Don’t recommend a reboot if firmware updates fail"
 msgstr ""
+"Не препоръчвайте рестартиране, ако актуализациите на фърмуера са неуспешни"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:360
 msgid ""
 "Fix flathub repo being considered present on Fedora 35 with filtered flathub"
 msgstr ""
+"Поправяне на репото на flathub, което се счита за налично на Fedora 35 с "
+"филтриран flathub"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:361
 msgid "Allow searching for extensions"
-msgstr ""
+msgstr "Разрешаване на търсенето на разширения"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:362
 msgid "Fix translation of main button on updates page"
-msgstr ""
+msgstr "Поправете превода на главния бутон на страницата с актуализации"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:363
-#, fuzzy
 msgid "Fix codec installation process"
-msgstr "Потребителят отказа инсталирането"
+msgstr "Поправка на процеса на инсталиране на кодеци"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:364
 msgid "Add new GNOME Circle apps to the featured carousel"
-msgstr ""
+msgstr "Добавяне на нови приложения на GNOME Circle в лентата с функции"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:365
 msgid "Improve metadata support for snaps"
-msgstr ""
+msgstr "Подобряване на поддръжката на метаданни за снимки"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:366
 msgid "Fix update checks being missed across suspend/hibernation"
 msgstr ""
+"Поправяне на пропускането на проверки за актуализация при спиране/хибернация"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:367
 msgid ""
 "Ensure application lists are updated when repositories are enabled/installed "
 "or disabled/removed"
 msgstr ""
+"Уверете се, че списъците с приложения се актуализират, когато хранилищата се "
+"активират/инсталират или деактивират/премахват"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:372
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:491
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:529
 msgid "Belarusian"
-msgstr ""
+msgstr "Беларуски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:393
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:704
 msgid "Slovak"
-msgstr ""
+msgstr "Словашки"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:407
 msgid ""
 "Instead of showing all package-based apps as \"potentially unsafe\", only "
 "use that language for 3rd party ones"
 msgstr ""
+"Вместо да показвате всички приложения базирани на пакети, като \"потенциално "
+"опасни\", използвайте този език само за приложенията на трети страни"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:408
 msgid ""
 "Fix a bug where the \"Show more\" button on an app details page would "
 "flicker when the window is resized"
 msgstr ""
+"Отстраняване на грешка, при която бутонът \"Покажи повече\" на страницата с "
+"подробна информация за приложението мигаше при промяна на размера на "
+"прозореца"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:409
 msgid ""
 "Fix a bug where Software sometimes shows an Uninstall button after "
 "uninstalling something"
 msgstr ""
+"Отстраняване на грешка, при която софтуерът понякога показва бутон за "
+"деинсталиране, след като деинсталирате нещо"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:410
 msgid "Add GNOME Circle apps to the featured carousel"
-msgstr ""
+msgstr "Добавяне на приложенията на GNOME Circle в лентата с функции"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:411
 msgid ""
@@ -892,210 +949,241 @@ msgid ""
 "operation for PackageKit software rather than showing a PolicyKit password "
 "prompt"
 msgstr ""
+"Отстраняване на грешка, при която софтуерът понякога не успяваше да изпълни "
+"операция за инсталиране/премахване на софтуер PackageKit, вместо да покаже "
+"подкана за парола на PolicyKit"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:412
 msgid ""
 "Fix a bug where Software would fail to upgrade the distribution via "
 "PackageKit"
 msgstr ""
+"Отстраняване на грешка, при която софтуерът не успяваше да обнови "
+"дистрибуцията чрез PackageKit"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:413
 msgid "Fix the hiding of rows on the Updates tab after they have been updated"
 msgstr ""
+"Коригиране на скриването на редове в раздела Актуализации след тяхното "
+"актуализиране"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:436
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:550
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:614
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:703
 msgid "Romanian"
-msgstr ""
+msgstr "Румънски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:447
 msgid "This is the third unstable release for GNOME 41."
-msgstr ""
+msgstr "Това е третото нестабилно издание на GNOME 41."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:449
 msgid "Tweaks to the context tiles and dialogs"
-msgstr ""
+msgstr "Уточнения на контекстните плочки и диалозите"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:450
 msgid "Fixes to the details page for non-desktop apps"
 msgstr ""
+"Поправки в страницата с подробности за приложения, които не са за настолни "
+"компютри"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:451
 msgid "Re-add support for the add-ons categories"
-msgstr ""
+msgstr "Повторно добавяне на поддръжка за категориите с добавки"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:452
 msgid "Sort new and updated apps by release date on the category page"
 msgstr ""
+"Сортиране на новите и актуализираните приложения по дата на пускане в "
+"страницата с категории"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:481
 msgid "This is the second unstable release for GNOME 41."
-msgstr ""
+msgstr "Това е второто нестабилно издание за GNOME 41."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:483
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:511
 msgid "Many parts of the user interface reworked"
-msgstr ""
+msgstr "Много части от потребителския интерфейс са преработени"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:484
 msgid "Fix when the 'Launch' button is shown after an application install"
 msgstr ""
+"Поправка при показване на бутона \"Стартиране\" след инсталиране на "
+"приложение"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:485
 msgid "Fix appstream:// URL handling"
-msgstr ""
+msgstr "Коригиране на обработката на appstream:// URL"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:486
 msgid "Fix application freeze on Flatpak application install/remove/update"
 msgstr ""
+"Поправяне на замразяването на приложението при инсталиране/премахване/"
+"обновяване на приложението Flatpak"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:487
 msgid "Disable automatic update downloads when in power saver mode"
 msgstr ""
+"Деактивиране на автоматичното изтегляне на актуализации, когато сте в режим "
+"на пестене на енергия"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:497
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:540
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:692
 msgid "Greek, Modern (1453-)"
-msgstr ""
+msgstr "Гръцки език, съвременен (1453-)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:509
 msgid "This is the first unstable release for GNOME 41."
-msgstr ""
+msgstr "Това е първото нестабилно издание за GNOME 41."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:512
 msgid "Improve error reporting from flatpak when low on disk space"
 msgstr ""
+"Подобряване на отчитането на грешки от flatpak при малко дисково пространство"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:513
 msgid "Fix issues with updating the UI when uninstalling apps with add-ons"
 msgstr ""
+"Отстраняване на проблеми с актуализирането на потребителския интерфейс при "
+"деинсталиране на приложения с добавки"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:514
 msgid "Don’t keep rpm-ostreed alive forever"
-msgstr ""
+msgstr "Не поддържайте rpm-ostreed жив завинаги"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:515
 msgid "Prevent polkit checks showing up for background operations"
-msgstr ""
+msgstr "Предотвратяване на появата на проверки на polkit за фонови операции"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:516
 msgid "Disallow submitting reviews for an app you haven’t installed"
-msgstr ""
+msgstr "Забрана за подаване на отзиви за приложение, което не сте инсталирали"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:517
 msgid "Show download size in the Updates page"
-msgstr ""
+msgstr "Показване на размера на изтеглянето в страницата с актуализации"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:518
 msgid "Notify when restart is needed when uninstalling an app"
 msgstr ""
+"Уведомяване, когато е необходимо рестартиране при деинсталиране на приложение"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:519
 msgid "Fix some issues with searches not running"
-msgstr ""
+msgstr "Поправяне на някои проблеми с неизпълняваните търсения"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:520
 msgid "Allow non-integer average star ratings for apps"
-msgstr ""
+msgstr "Разрешаване на нецелочислени средни оценки със звезди за приложения"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:521
 msgid "Reduce number of categories in the UI"
-msgstr ""
+msgstr "Намаляване на броя на категориите в потребителския интерфейс"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:522
 msgid "Improve ‘pending updates’ notifications"
-msgstr ""
+msgstr "Подобряване на известията за \"чакащи актуализации"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:523
 msgid "Refine presentation of download and installed size on details page"
 msgstr ""
+"Усъвършенстване на представянето на размера на изтеглените и инсталираните "
+"файлове на страницата с подробности"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:524
 msgid "Remove left over gnome-online-account dependencies"
-msgstr ""
+msgstr "Премахване на останали зависимости от gnome-online-account"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:563
 msgid "Fix handling of invalid or incomplete application icons"
-msgstr ""
+msgstr "Коригиране на обработката на невалидни или непълни икони на приложения"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:564
 msgid "Fix the plugin documentation to reflect reality"
-msgstr ""
+msgstr "Поправете документацията на плъгина, за да отрази реалността"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:565
 msgid "Fix the Snap plugin to actually load icons"
-msgstr ""
+msgstr "Поправете плъгина Snap, за да зарежда икони"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:566
 msgid "Set download size to 0 after the package is downloaded"
-msgstr ""
+msgstr "Задаване на размера на изтеглянето на 0 след изтеглянето на пакета"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:568
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:593
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:636
-#, fuzzy
 msgid "Translation updates:"
-msgstr "Преводи"
+msgstr "Актуализации на превода:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:570
 msgid "British English"
-msgstr ""
+msgstr "Британски английски"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:572
 msgid "Greek"
-msgstr ""
+msgstr "Гръцки"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:574
 msgid "Norwegian Bokmål"
-msgstr ""
+msgstr "Норвежки Bokmål"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:576
 msgid "Punjabi"
-msgstr ""
+msgstr "Пенджаби"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:583
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:626
 msgid "This is an unstable release with the following changes:"
-msgstr ""
+msgstr "Това е нестабилна версия със следните промени:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:585
 msgid "Implement new featured apps carousel."
-msgstr ""
+msgstr "Изпълнение на нова въртележка с препоръчани приложения."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:586
 msgid ""
 "List of Flatpak repositories is updated when changed using the Flatpak "
 "command line tool."
 msgstr ""
+"Списъкът на хранилищата на Flatpak се актуализира при промяна с помощта на "
+"инструмента за команден ред Flatpak."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:587
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:630
 msgid ""
 "The loading page now shows the full color icon instead of the symbolic one."
 msgstr ""
+"Страницата за зареждане вече показва пълноцветната икона вместо символичната."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:588
 msgid ""
 "Show release date in version history for releases that use the 'date' "
 "attribute."
 msgstr ""
+"Показване на датата на издаване в историята на версиите за версии, които "
+"използват атрибута 'date'."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:589
 msgid "Improved icon handling, including with hiDPI screens."
-msgstr ""
+msgstr "Подобрена е работата с икони, включително при екрани с висок DPI."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:590
 msgid "Fixed a bug in remembering when update notifications were shown."
 msgstr ""
+"Коригирана е грешка в запомнянето на момента на показване на известията за "
+"актуализация."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:591
 msgid ""
 "Build as a dynamic rather than a static library, and rearrange installation "
 "paths."
 msgstr ""
+"Изграждайте като динамична, а не като статична библиотека, и пренареждайте "
+"пътищата за инсталиране."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:628
 msgid ""
@@ -1103,161 +1191,200 @@ msgid ""
 "with appstream data which provides information about apps and other "
 "components."
 msgstr ""
+"Софтуерът GNOME вече използва libappstream вместо libappstream-glib за "
+"работа с данни от appstream, които предоставят информация за приложения и "
+"други компоненти."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:629
 msgid "App details pages show version history information when it's available."
 msgstr ""
+"На страниците с подробности за приложенията се показва информация за "
+"историята на версиите, когато тя е налична."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:631
 msgid ""
 "UI elements for displaying app add-ons have been tweaked to more closely "
 "match the designs."
 msgstr ""
+"Елементите на потребителския интерфейс за показване на добавките към "
+"приложенията са променени, за да съответстват по-добре на дизайна."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:632
 msgid ""
 "Installed icons and the badge showing the number of updates available were "
 "changed back to blue from green."
 msgstr ""
+"Иконите на инсталираните актуализации и баджът, показващ броя на наличните "
+"актуализации, бяха променени от зелени на сини."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:633
 msgid ""
 "The dropdown showing the available sources of an application includes the "
 "packaging format (e.g. Flatpak vs RPM)."
 msgstr ""
+"Падащото меню, показващо наличните източници на дадено приложение, включва "
+"формата на опаковане (напр. Flatpak срещу RPM)."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:634
 msgid "A bug was fixed that prevented installation of .flatpakref files"
 msgstr ""
+"Поправена е грешка, която не позволяваше инсталирането на файлове .flatpakref"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:642
 msgid "Panjabi"
-msgstr ""
+msgstr "Панджаби"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:652
 msgid "This is the first unstable release for GNOME 40."
-msgstr ""
+msgstr "Това е първото нестабилно издание за GNOME 40."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:654
 msgid ""
 "Small updates to how app descriptions and addons are presented on the "
 "details page"
 msgstr ""
+"Малки актуализации на начина, по който се представят описанията на "
+"приложенията и добавките на страницата с подробности"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:655
 msgid "Fix handling of pending app installations when going online"
 msgstr ""
+"Коригиране на обработката на висящи инсталации на приложения при преминаване "
+"в режим онлайн"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:656
 msgid "Better support for dark themes (particularly Adwaita-Dark)"
-msgstr ""
+msgstr "По-добра поддръжка на тъмни теми (особено Adwaita-Dark)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:657
 msgid "Improvements to how app screenshots are loaded and presented"
 msgstr ""
+"Подобрения в начина, по който се зареждат и представят екранните снимки на "
+"приложенията"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:658
 msgid ""
 "Hide ‘Launch’ button if an application (for example, Wine) cannot be launched"
 msgstr ""
+"Скриване на бутона \"Стартиране\", ако дадено приложение (например Wine) не "
+"може да бъде стартирано"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:659
 msgid "Make the UI clearer when loading information from flatpakref files"
 msgstr ""
+"Направете потребителския интерфейс по-ясен при зареждане на информация от "
+"файлове flatpakref"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:660
 msgid "Don’t update app metadata on start when download-updates is disabled"
 msgstr ""
+"Не актуализирайте метаданните на приложението при стартиране, когато "
+"функцията за изтегляне на актуализации е деактивирана"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:661
 msgid "Fix opening the updates list when clicking on an updates notification"
 msgstr ""
+"Поправяне на отварянето на списъка с актуализации при щракване върху "
+"известие за актуализации"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:662
 msgid ""
 "Fix state updates when installing flatpak apps or repos which are already "
 "installed"
 msgstr ""
+"Коригиране на актуализациите на състоянието при инсталиране на Flatpak "
+"приложения или хранилища, които вече са инсталирани"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:663
 msgid "Add Ctrl+Q as a keyboard shortcut for closing the window"
 msgstr ""
+"Добавяне на Ctrl+Q като бърза клавишна комбинация за затваряне на прозореца"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:664
 msgid "Rework timing and content of software update notifications"
 msgstr ""
+"Преработване на времето и съдържанието на известията за актуализация на "
+"софтуера"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:665
-#, fuzzy
 msgid ""
 "Prevent uninstalled local apps from appearing in the installed apps list"
-msgstr "Показване на размера на програмите в списъка с инсталирани програми"
+msgstr ""
+"Предотвратяване на появата на деинсталирани местни приложения в списъка с "
+"инсталирани приложения"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:666
 msgid "Support installation/uninstallation of addons for flatpak apps"
 msgstr ""
+"Поддържане на инсталиране/деинсталиране на добавки за приложения Flatpak"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:667
 msgid "Improve presentation of age ratings for apps"
-msgstr ""
+msgstr "Подобряване на представянето на възрастовите оценки за приложения"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:668
 msgid "Fix a crash in the updates page"
-msgstr ""
+msgstr "Отстраняване на срив в страницата с актуализации"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:669
 msgid "Fix presentation of app permissions for fully sandboxed flatpak apps"
 msgstr ""
+"Коригиране на представянето на разрешенията на приложенията за напълно "
+"изолирани Flatpak приложения"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:670
 msgid "Fix deadlock on rpm-ostree systems"
-msgstr ""
+msgstr "Поправяне на задънена улица при системите rpm-ostree"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:671
 msgid "Fix presentation of version number changes in right-to-left locales"
 msgstr ""
+"Коригиране на представянето на промените в номера на версията в локалите от "
+"дясно на ляво"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:672
 msgid "Error handling improvements for fwupd"
-msgstr ""
+msgstr "Подобрения в обработката на грешки за fwupd"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:673
 msgid "Performance improvements for ODRS on startup"
-msgstr ""
+msgstr "Подобрения в производителността на ODRS при стартиране"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:674
 msgid "Improve presentation of firmware warning messages"
-msgstr ""
+msgstr "Подобряване на представянето на предупредителните съобщения за фърмуера"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:675
 msgid "XML parsing performance improvements"
-msgstr ""
+msgstr "Подобрения в производителността на обработката на XML"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:676
 msgid "Automatically remove end-of-life flatpak runtimes"
 msgstr ""
+"Автоматично премахване на излезли от употреба изпълнявани програми Flatpak"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:677
 msgid "Support updating flatpaks to their new name when they are renamed"
-msgstr ""
+msgstr "Подкрепа за актуализиране на flatpaks с новото им име при преименуване"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:678
-#, fuzzy
 msgid "Update the GNOME Software icon"
-msgstr "Обновяване на неподписаните програми?"
+msgstr "Актуализиране на иконата на софтуера GNOME"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:679
 msgid "Support more search results in the snap store"
-msgstr ""
+msgstr "Поддържане на повече резултати от търсенето в магазина на Snap"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:680
 msgid ""
 "Drop libgnome-desktop-3 dependency in favour of gsettings-desktop-schemas"
 msgstr ""
+"Отпадане на зависимостта libgnome-desktop-3 в полза на gsettings-desktop-"
+"schemas"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:696
 msgid "Kabyle"
-msgstr ""
+msgstr "Kabyle"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:2043
 #: src/gs-application.c:256
@@ -2255,17 +2382,7 @@ msgstr ""
 
 #: src/gs-application.c:263 src/gs-application.c:272
 msgid "translator-credits"
-msgstr ""
-"Любомир Василев &lt;<a href='mailto:lyubomirv@abv.bg'>lyubomirv@abv.bg</"
-"a>&gt;\n"
-"Александър Шопов &lt;<a href='mailto:ash@kambanaria.org'>ash@kambanaria.org</"
-"a>&gt;\n"
-"\n"
-"Проектът за превод на GNOME има нужда от подкрепа.\n"
-"Научете повече за нас на <a href='https://fsa-bg.org/project/gtp'>уеб сайта</"
-"a> ни.\n"
-"Докладвайте за грешки в превода в <a href='https://fsa-bg.org/project/gtp/"
-"newticket'>съответния раздел</a>."
+msgstr "Пламен Станчев plamenst91@gmail.com ако имате предложения за корекции"
 
 #. TRANSLATORS: this is the title of the about window
 #. TRANSLATORS: this is the menu item that opens the about window
@@ -2450,7 +2567,7 @@ msgstr "Потвърден софтуерен разработчик"
 #. * It’s used in a context tile, so should be short.
 #: src/gs-app-context-bar.c:447
 msgid "Software no longer supported"
-msgstr "Този софтуер вече не се поддържа."
+msgstr "Този софтуер вече не се поддържа"
 
 #. Translators: This string is used to join various other translated
 #. * strings into an inline list of reasons why an app has been marked as
@@ -3173,7 +3290,7 @@ msgid ""
 "%s is not <a href=\"https://en.wikipedia.org/wiki/Free_and_open-"
 "source_software\">free and open source software</a>, and is provided by “%s”."
 msgstr ""
-"„%s“ не е <a href='https://bg.wikipedia.org/wiki/Свободен_софтуер'>свободен "
+"%s не е <a href=\"https://bg.wikipedia.org/wiki/Свободен_софтуер\">свободен "
 "софтуер</a> с <a href='https://bg.wikipedia.org/wiki/"
 "Софтуер_с_отворен_код'>отворен код</a> и се осигурява от „%s“."
 
@@ -3249,8 +3366,8 @@ msgstr[1] "Програмите бяха деинсталирани"
 #: src/gs-common.c:766
 msgid "A restart is required for it to take effect."
 msgid_plural "A restart is required for them to take effect."
-msgstr[0] "Нужно е рестартиране на системата, за да влезе в сила промяната"
-msgstr[1] "Нужно е рестартиране на системата, за да влязат в сила промените"
+msgstr[0] "Нужно е рестартиране на системата, за да влезе в сила промяната."
+msgstr[1] "Нужно е рестартиране на системата, за да влязат в сила промените."
 
 #. TRANSLATORS: button text
 #: src/gs-common.c:773
@@ -3582,7 +3699,7 @@ msgstr "_Докладване на грешка"
 
 #: src/gs-details-page.ui:813
 msgid "_Help"
-msgstr "Помо_щ"
+msgstr "_Помощ"
 
 #. Translators: Button opening a dialog where the users can write and publish their opinions about the apps.
 #: src/gs-details-page.ui:908
@@ -3624,7 +3741,7 @@ msgstr[1] "Налични шрифтове за писменостите: %s"
 #, c-format
 msgid "Available software for %s"
 msgid_plural "Available software for %s"
-msgstr[0] "Налични програми за: %s"
+msgstr[0] "Налична програма за: %s"
 msgstr[1] "Налични програми за: %s"
 
 #: src/gs-extras-page.c:242
@@ -4311,7 +4428,7 @@ msgid ""
 msgstr ""
 "За да се избегнат такси и ограничения на данните, автоматичното обновяване "
 "се изключва при мобилна връзка или такава, която се таксува според "
-"количеството данни"
+"количеството данни."
 
 #: src/gs-prefs-dialog.ui:19
 msgid "Automatic Updates"
@@ -4380,7 +4497,7 @@ msgstr "Включване на новите източници"
 
 #: src/gs-repos-dialog.c:509
 msgid "Turn on new repositories when they are added."
-msgstr "Включване на новите източници при добавянето им"
+msgstr "Включване на новите източници при добавянето им."
 
 #. TRANSLATORS: this is the clickable
 #. * link on the third party repositories info bar
@@ -4468,7 +4585,7 @@ msgstr[1] "%u добавки"
 #, c-format
 msgid "%s and %s installed"
 msgid_plural "%s and %s installed"
-msgstr[0] "Инсталирани: %s и %s"
+msgstr[0] "Инсталиран: %s и %s"
 msgstr[1] "Инсталирани: %s и %s"
 
 #. Translators: The first '%s' is replaced with a text like '10 applications installed',
@@ -5937,7 +6054,7 @@ msgid ""
 "charges."
 msgstr ""
 "Проверяването за обновления при използване на мобилна връзка може да завиши "
-"сметката ви"
+"сметката ви."
 
 #: src/gs-updates-page.ui:246
 msgid "_Check Anyway"
@@ -5949,7 +6066,7 @@ msgstr "Няма връзка"
 
 #: src/gs-updates-page.ui:263
 msgid "Go online to check for updates."
-msgstr "Свържете се с Интернет, за да се провери за обновления"
+msgstr "Свържете се с Интернет, за да се провери за обновления."
 
 #: src/gs-updates-page.ui:266
 msgid "_Network Settings"
@@ -6170,7 +6287,7 @@ msgstr "Папка с документи"
 #: plugins/flatpak/gs-flatpak.c:319
 #, c-format
 msgid "Documents subfolder %s"
-msgstr "Подпапка с документи: „%s“:"
+msgstr "Подпапка с документи: %s"
 
 #: plugins/flatpak/gs-flatpak.c:320
 msgid "Music folder"
@@ -6518,30 +6635,33 @@ msgstr "„Snap“ е универсален пакет за Linux"
 #. TRANSLATORS: this is to inform that the package is part of
 #. * the BASE system
 #: plugins/vso/gs-plugin-vso.c:114
-#, fuzzy
 msgid "base"
-msgstr "Бази от данни"
+msgstr "база"
 
 #: plugins/vso/gs-plugin-vso.c:240
 msgid ""
 "Another transaction has already been executed, you must reboot your system "
 "before starting a new transaction."
 msgstr ""
+"Друга транзакция вече е била изпълнена, трябва да рестартирате системата, "
+"преди да започнете нова транзакция."
 
 #: plugins/vso/gs-plugin-vso.c:260
 msgid "VSO failed to update the system, please try again later."
-msgstr ""
+msgstr "VSO не успя да актуализира системата, моля, опитайте отново по-късно."
 
 #: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:245
 msgid ""
 "Applications installable via Apx with pre-defined container configuration"
 msgstr ""
+"Приложения, които могат да се инсталират чрез Apx с предварително дефинирана "
+"конфигурация на контейнера"
 
 #. origin_ui on a remote is the repo dialogue section name,
 #. * not the remote title
 #: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:249
 msgid "Apps"
-msgstr ""
+msgstr "Приложения"
 
 #: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:251
 msgid ""
@@ -6549,3 +6669,7 @@ msgid ""
 "and pre-configured by the Vanilla OS team to guarantee that they are using "
 "the most compatible container and configurations."
 msgstr ""
+"Това хранилище съдържа набор от популярни приложения, които могат да се "
+"инсталират чрез Apx и са предварително конфигурирани от екипа на Vanilla OS, "
+"за да се гарантира, че се използват най-съвместимите контейнери и "
+"конфигурации."

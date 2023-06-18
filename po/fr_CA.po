@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-software package.
 # Gabriel Girouard <ggirouard@bungeetaco.com>, 2023.
+# Jumpy Game <jumpy634@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-06-01 13:52+0000\n"
-"Last-Translator: Gabriel Girouard <ggirouard@bungeetaco.com>\n"
+"PO-Revision-Date: 2023-06-09 19:50+0000\n"
+"Last-Translator: Jumpy Game <jumpy634@gmail.com>\n"
 "Language-Team: French (Canada) <https://hosted.weblate.org/projects/"
 "vanilla-os/gnome-software/fr_CA/>\n"
 "Language: fr_CA\n"
@@ -3470,7 +3471,7 @@ msgstr ""
 
 #: src/gs-details-page.ui:813
 msgid "_Help"
-msgstr ""
+msgstr "Aide"
 
 #. Translators: Button opening a dialog where the users can write and publish their opinions about the apps.
 #: src/gs-details-page.ui:908
@@ -4153,7 +4154,7 @@ msgstr ""
 
 #: src/gs-prefs-dialog.ui:19
 msgid "Automatic Updates"
-msgstr ""
+msgstr "Mises à jour automatiques"
 
 #: src/gs-prefs-dialog.ui:20
 msgid ""
