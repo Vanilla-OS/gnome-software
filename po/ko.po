@@ -2,21 +2,22 @@
 # Copyright (C) 2013 gnome-software's all of contributors.
 # This file is distributed under the same license as the gnome-software package.
 # Seong-ho Cho <shcho@gnome.org>, 2013-2022.
-#
+# MJKim <kmj10727@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software main\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2022-08-28 20:26+0900\n"
-"Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
-"Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
+"PO-Revision-Date: 2023-07-09 06:52+0000\n"
+"Last-Translator: MJKim <kmj10727@gmail.com>\n"
+"Language-Team: Korean <https://hosted.weblate.org/projects/vanilla-os/"
+"gnome-software/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -3003,7 +3004,7 @@ msgstr "지역화"
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:285
 msgid "Create"
-msgstr "생산"
+msgstr "만들기"
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:287
