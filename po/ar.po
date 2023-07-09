@@ -7,13 +7,14 @@
 # Abu Huraira <abuhuraira@tutamail.com>, 2023.
 # Ibrahim Kaikaa <ibrahimkaikaa@protonmail.com>, 2023.
 # Muhammad Bahaa <muhammad.bahaa1@gmail.com>, 2023.
+# Moumn Almunawy <moumnalmunawy2006@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: Gnome 3.14\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-06-23 22:50+0000\n"
-"Last-Translator: Muhammad Bahaa <muhammad.bahaa1@gmail.com>\n"
+"PO-Revision-Date: 2023-07-09 06:52+0000\n"
+"Last-Translator: Moumn Almunawy <moumnalmunawy2006@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/ar/>\n"
 "Language: ar\n"
@@ -22,14 +23,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 4.18.1\n"
+"X-Generator: Weblate 5.0-dev\n"
 "X-Project-Style: gnome\n"
 
 # الجمع أفضل لعنوان البرمجيّة
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
 msgid "Software"
-msgstr "برمجيّات"
+msgstr "البرمجيات"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:8
 #, fuzzy
@@ -2624,13 +2625,13 @@ msgstr "إلغاء"
 #. TRANSLATORS: update the fw
 #: src/gs-app-row.c:175 src/gs-common.c:286 src/gs-page.c:374
 msgid "Install"
-msgstr "نصّب"
+msgstr "التثبيت"
 
 #. TRANSLATORS: this is a button in the updates panel
 #. * that allows the app to be easily updated live
 #: src/gs-app-row.c:183
 msgid "Update"
-msgstr "حدّث"
+msgstr "التحديث"
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * allows the application to be easily removed
@@ -2708,7 +2709,7 @@ msgstr ""
 #: src/gs-details-page.ui:294 src/gs-removal-dialog.ui:17
 #: src/gs-review-dialog.ui:18
 msgid "_Cancel"
-msgstr "أل_غِ"
+msgstr "إلغاء (_C)"
 
 #: src/gs-basic-auth-dialog.ui:35
 #, fuzzy
@@ -3092,7 +3093,7 @@ msgstr "التوطين"
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:285
 msgid "Create"
-msgstr ""
+msgstr "أنشِئ"
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:287
@@ -3267,7 +3268,7 @@ msgstr "فيما يلي الأعطال التّفصيليّة من مدير ال
 
 #: src/gs-common.c:509 src/gs-safety-context-dialog.ui:72
 msgid "Details"
-msgstr "التّفاصيل"
+msgstr "التفاصيل"
 
 #. Translators: an accept button label, in a Cancel/Accept dialog
 #: src/gs-common.c:600
@@ -5629,7 +5630,7 @@ msgstr "مزيد من المعلومات"
 
 #: src/gs-shell.ui:189
 msgid "Search"
-msgstr "ابحث"
+msgstr "البحث"
 
 #: src/gs-shell.ui:204
 msgid "Primary Menu"
@@ -6648,7 +6649,7 @@ msgstr ""
 
 #: plugins/packagekit/gs-plugin-packagekit.c:367
 msgid "Packages"
-msgstr ""
+msgstr "الحزم"
 
 #: plugins/rpm-ostree/gs-plugin-rpm-ostree.c:2690
 #, fuzzy
