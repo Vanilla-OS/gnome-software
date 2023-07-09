@@ -4,22 +4,23 @@
 #
 # Jordi Mas i Hernandez <jmas@softcatala.org>, 2013-2022
 # Gil Forcada <gilforcada@guifi.net>, 2014-2020.
-#
+# jolupa <jolupameister@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2022-08-31 16:50+0100\n"
-"Last-Translator: Jordi Mas i Hernandez <jmas@softcatala.org>\n"
-"Language-Team: Catalan <tradgnome@softcatala.org>\n"
+"PO-Revision-Date: 2023-07-09 06:52+0000\n"
+"Last-Translator: jolupa <jolupameister@gmail.com>\n"
+"Language-Team: Catalan <https://hosted.weblate.org/projects/vanilla-os/"
+"gnome-software/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.0-dev\n"
 "Id-Version: gnome-software master\n"
-"X-Generator: Poedit 3.0.1\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -2582,7 +2583,7 @@ msgstr "Instal·la…"
 #. * allows to cancel a queued install of the application
 #: src/gs-app-row.c:167 src/gs-updates-section.ui:62
 msgid "Cancel"
-msgstr "Cancel·la"
+msgstr "Cancel·lar"
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * allows the application to be easily installed
@@ -2590,13 +2591,13 @@ msgstr "Cancel·la"
 #. TRANSLATORS: update the fw
 #: src/gs-app-row.c:175 src/gs-common.c:286 src/gs-page.c:374
 msgid "Install"
-msgstr "Instal·la"
+msgstr "Instal·lar"
 
 #. TRANSLATORS: this is a button in the updates panel
 #. * that allows the app to be easily updated live
 #: src/gs-app-row.c:183
 msgid "Update"
-msgstr "Actualitza"
+msgstr "Actualitzar"
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * allows the application to be easily removed
@@ -3053,7 +3054,7 @@ msgstr "Localització"
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:285
 msgid "Create"
-msgstr "Creació"
+msgstr "Crear"
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:287
@@ -5538,7 +5539,7 @@ msgstr "Més informació"
 
 #: src/gs-shell.ui:189
 msgid "Search"
-msgstr "Cerca"
+msgstr "Cercar"
 
 #: src/gs-shell.ui:204
 msgid "Primary Menu"
