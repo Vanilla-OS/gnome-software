@@ -1,3 +1,9 @@
+gnome-software (44.3-1) UNRELEASED; urgency=medium
+
+  * New upstream release
+
+ -- jardon <jarred.wilson@canonical.com>  Tue, 11 Jul 2023 14:40:17 -0400
+
 gnome-software (44.2-1) experimental; urgency=medium
 
   * Team upload
