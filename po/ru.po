@@ -12,13 +12,14 @@
 # Sergey Ivanov <ivanov.sergey.ekb@gmail.com>, 2023.
 # Alexey <aleksejfedorov963@gmail.com>, 2023.
 # Максим <mrxzzet@gmail.com>, 2023.
+# Alexei <aleksejfedorov963@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-05-07 09:49+0000\n"
-"Last-Translator: Максим <mrxzzet@gmail.com>\n"
+"PO-Revision-Date: 2023-07-09 06:52+0000\n"
+"Last-Translator: Alexei <aleksejfedorov963@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/ru/>\n"
 "Language: ru\n"
@@ -27,7 +28,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 "X-DL-Team: ru\n"
 "X-DL-Module: gnome-software\n"
 "X-DL-Branch: main\n"
@@ -559,7 +560,6 @@ msgstr ""
 "приложении"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:170
-#, fuzzy
 msgid "Improve styling of app context lozenges"
 msgstr "Улучшение оформления контекстных пастилок приложения"
 
@@ -603,7 +603,6 @@ msgid "Add `--uninstall=ID` command line option"
 msgstr "Добавлена опция «--uninstall=ID» для терминала"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:179
-#, fuzzy
 msgid ""
 "Allow scrolling screenshots by clicking on next and previous screenshots"
 msgstr ""
@@ -615,9 +614,8 @@ msgid "Add support for webapps"
 msgstr "Добавлена поддержка Web-приложений"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:181
-#, fuzzy
 msgid "Allow swiping back in the shell using touch gestures"
-msgstr "Разрешить пролистывание назад в оболочке с помощью сенсорных жестов"
+msgstr "Разрешено пролистывание назад в оболочке с помощью сенсорных жестов"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:182
 msgid "Improved caching of downloaded metadata"
@@ -626,6 +624,8 @@ msgstr "Улучшено кеширование загруженных мета�
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:183
 msgid "Many internal architectural changes to make the code more maintainable"
 msgstr ""
+"Много внутренних архитектурных изменений, чтобы сделать код более пригодным "
+"для дальнейших улучшений"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:184
 msgid ""
@@ -2618,7 +2618,7 @@ msgstr "Установить"
 #. * that allows the app to be easily updated live
 #: src/gs-app-row.c:183
 msgid "Update"
-msgstr "Обновить"
+msgstr "Обновить список пакетов"
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * allows the application to be easily removed
@@ -3078,7 +3078,7 @@ msgstr "Локализация"
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:285
 msgid "Create"
-msgstr "Творчество"
+msgstr "Создать"
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:287
@@ -3249,7 +3249,7 @@ msgstr "Подробные сообщения об ошибках от мене�
 
 #: src/gs-common.c:509 src/gs-safety-context-dialog.ui:72
 msgid "Details"
-msgstr "Подробности"
+msgstr "Детали"
 
 #. Translators: an accept button label, in a Cancel/Accept dialog
 #: src/gs-common.c:600
@@ -5564,7 +5564,7 @@ msgstr "Параметры сети"
 #. button in the info bar
 #: src/gs-shell.ui:118
 msgid "Restart Now"
-msgstr "Перезагрузитесь сейчас"
+msgstr "Перезагрузить сейчас"
 
 #. button in the info bar
 #: src/gs-shell.ui:128

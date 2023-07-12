@@ -3,21 +3,22 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Arash Mousavi <mousavi.arash@gmail.com>, 2016.
 # Danial Behzadi <dani.behzi@ubuntu.com>, 2017-2022.
-#
+# MohammadSaleh Kamyab <mskf1383@envs.net>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2022-08-27 09:58+0430\n"
-"Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
-"Language-Team: \n"
-"Language: fa_IR\n"
+"PO-Revision-Date: 2023-06-28 11:51+0000\n"
+"Last-Translator: MohammadSaleh Kamyab <mskf1383@envs.net>\n"
+"Language-Team: Persian <https://hosted.weblate.org/projects/vanilla-os/"
+"gnome-software/fa/>\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Weblate 4.18.1\n"
 "X-DamnedLies-Scope: partial\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
@@ -73,7 +74,7 @@ msgstr "جزییات به‌روز رسانی"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:71
 msgid "This is a stable release with translation updates:"
-msgstr ""
+msgstr "این یک انتشار پایدار با به‌روزرسانی‌های ترجمه است:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:73
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:197

@@ -4,13 +4,14 @@
 # Bogdan Mințoi <mintoi.bogdan@gmail.com>, 2014.
 # Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>, 2014-2019.
 # Matt C <matei.gurzu@gmail.com>, 2023.
+# Gabriel Cozma <me@gabs.eu.org>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-20 18:20+0000\n"
-"Last-Translator: Matt C <matei.gurzu@gmail.com>\n"
+"PO-Revision-Date: 2023-07-09 06:52+0000\n"
+"Last-Translator: Gabriel Cozma <me@gabs.eu.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/ro/>\n"
 "Language: ro\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 "X-Project-Style: gnome\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 

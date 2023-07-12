@@ -26,8 +26,9 @@ msgstr ""
 "Project-Id-Version: gnome-software\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-04-06 21:33+0000\n"
-"Last-Translator: José Claudio Pereira <jpereira1330@gmail.com>\n"
+"PO-Revision-Date: 2023-07-09 06:52+0000\n"
+"Last-Translator: Fernando Lopes <118869201+plasmus777@users.noreply.github."
+"com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "vanilla-os/gnome-software/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -35,7 +36,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 "X-Project-Style: gnome\n"
 "X-DL-Team: pt_BR\n"
 "X-DL-Module: gnome-software\n"
@@ -730,10 +731,9 @@ msgid "Improvements in dark mode"
 msgstr "Melhorias no modo escuro"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:274
-#, fuzzy
 msgid "Fix disabling flatpak remotes from the ‘Software Repositories’ dialog"
 msgstr ""
-"Consertar desabilitar flatpaks remotos do diálogo em \"Repositórios de "
+"Corrigir desabilitar flatpaks remotos do diálogo em \"Repositórios de "
 "Software\""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:275
@@ -779,7 +779,7 @@ msgstr "Melhorar a aparência da página com a categoria tela de carregamento"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:312
 msgid "Drop the first run dialog"
-msgstr ""
+msgstr "Abandonar o diálogo da primeira execução"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:313
 msgid "Improvements to dark theming"
@@ -803,6 +803,8 @@ msgstr "Atualizações de ícones"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:317
 msgid "Drop the hardcoded-popular plugin in favour of an appstream file"
 msgstr ""
+"Abandone o plug-in popular com código rígido em favor de um arquivo de fluxo "
+"de aplicativos"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:318
 msgid ""
@@ -813,6 +815,13 @@ msgid ""
 "code> GSettings key has been removed. Distributions may need to update how "
 "they ship background images. See <em>doc/vendor-customisation.md</em>."
 msgstr ""
+"A imagem de fundo para upgrades agora é procurada usando vários nomes bem "
+"conhecidos (e específicos da distribuição) em <code>${DATADIR}/gnome-"
+"software/backgrounds</code>, e a imagem de fundo padrão específica do Fedora "
+"não é mais distribuída. Da mesma forma, a chave GSettings <code>upgrade-"
+"background-uri</code> foi removida. As distribuições talvez precisem "
+"atualizar a forma como enviam as imagens de fundo. Consulte <em>doc/vendor-"
+"customisation.md</em>."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:347
 msgid "This is the first unstable release for GNOME 42."
@@ -820,23 +829,25 @@ msgstr "Esta é a primeira versão instável do GNOME 42."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:350
 msgid "Support more markup in the application description"
-msgstr ""
+msgstr "Suporte a mais marcações na descrição do aplicativo"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:351
 msgid "Ask about package signature with PackageKit on signing issue"
 msgstr ""
+"Pergunte sobre a assinatura de pacotes com o PackageKit no problema de "
+"assinatura"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:352
 msgid "Show better System Update progress"
-msgstr ""
+msgstr "Mostrar melhor o progresso da atualização do sistema"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:353
 msgid "Remove various cultural sensitivity badges"
-msgstr ""
+msgstr "Remover vários emblemas culturalmente sensíveis"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:354
 msgid "Fix a crash when processing age ratings"
-msgstr ""
+msgstr "Correção de uma falha ao processar classificações de idade"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:355
 msgid ""
@@ -847,34 +858,41 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:356
 msgid "Do not follow symlinks when calculating disk size usage"
-msgstr ""
+msgstr "Não siga links simbólicos ao calcular o uso do tamanho do disco"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:357
 msgid "Fix addons section, which could show addons for different application"
 msgstr ""
+"Corrigir a seção de complementos, que poderia mostrar complementos para "
+"diferentes aplicativos"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:358
 msgid ""
 "Fix showing a ‘transaction in progress’ error when using the rpm-ostree "
 "plugin"
 msgstr ""
+"Correção da exibição de um erro de \"transação em andamento\" ao usar o "
+"plugin rpm-ostree"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:359
 msgid "Don’t recommend a reboot if firmware updates fail"
 msgstr ""
+"Não recomendar uma reinicialização se as atualizações de firmware falharem"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:360
 msgid ""
 "Fix flathub repo being considered present on Fedora 35 with filtered flathub"
 msgstr ""
+"Corrigir o repositório flathub sendo considerado presente no Fedora 35 com "
+"flathub filtrado"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:361
 msgid "Allow searching for extensions"
-msgstr ""
+msgstr "Permitir a pesquisa de extensões"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:362
 msgid "Fix translation of main button on updates page"
-msgstr ""
+msgstr "Correção da tradução do botão principal na página de atualizações"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:363
 msgid "Fix codec installation process"
@@ -882,54 +900,65 @@ msgstr "Corrigir o processo de instalação do codec"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:364
 msgid "Add new GNOME Circle apps to the featured carousel"
-msgstr ""
+msgstr "Adicionar o novo aplicativo GNOME Circle ao carrossel em destaque"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:365
 msgid "Improve metadata support for snaps"
-msgstr ""
+msgstr "Aprimorar o suporte a metadados para snaps"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:366
 msgid "Fix update checks being missed across suspend/hibernation"
 msgstr ""
+"Correção de verificações de atualização perdidas durante a suspensão/"
+"hibernação"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:367
 msgid ""
 "Ensure application lists are updated when repositories are enabled/installed "
 "or disabled/removed"
 msgstr ""
+"Garantir que as listas de aplicativos sejam atualizadas quando os "
+"repositórios forem ativados/instalados ou desativados/removidos"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:372
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:491
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:529
 msgid "Belarusian"
-msgstr ""
+msgstr "Bielorrusso"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:393
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:704
 msgid "Slovak"
-msgstr ""
+msgstr "Eslovaco"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:407
 msgid ""
 "Instead of showing all package-based apps as \"potentially unsafe\", only "
 "use that language for 3rd party ones"
 msgstr ""
+"Em vez de mostrar todos os aplicativos baseados em pacotes como "
+"\"potencialmente inseguros\", use essa linguagem apenas para os aplicativos "
+"de terceiros"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:408
 msgid ""
 "Fix a bug where the \"Show more\" button on an app details page would "
 "flicker when the window is resized"
 msgstr ""
+"Correção de um erro que fazia com que o botão \"Mostrar mais\" em uma página "
+"de detalhes do aplicativo ficasse piscando quando a janela era redimensionada"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:409
 msgid ""
 "Fix a bug where Software sometimes shows an Uninstall button after "
 "uninstalling something"
 msgstr ""
+"Correção de um erro em que o Software às vezes mostra um botão Desinstalar "
+"depois de desinstalar algo"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:410
 msgid "Add GNOME Circle apps to the featured carousel"
-msgstr ""
+msgstr "Adicionar o aplicativo GNOME Circle ao carrossel em destaque"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:411
 msgid ""
@@ -937,12 +966,17 @@ msgid ""
 "operation for PackageKit software rather than showing a PolicyKit password "
 "prompt"
 msgstr ""
+"Correção de um bug em que o Software às vezes falhava ao executar uma "
+"operação de instalação/remoção do software PackageKit em vez de mostrar uma "
+"solicitação de senha do PolicyKit"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:412
 msgid ""
 "Fix a bug where Software would fail to upgrade the distribution via "
 "PackageKit"
 msgstr ""
+"Correção de um bug em que o Software não conseguia atualizar a distribuição "
+"por meio do PackageKit"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:413
 msgid "Fix the hiding of rows on the Updates tab after they have been updated"
@@ -2640,7 +2674,7 @@ msgstr "Instalar"
 #. * that allows the app to be easily updated live
 #: src/gs-app-row.c:183
 msgid "Update"
-msgstr "Atualizar"
+msgstr "Atualizar (Banco de Dados)"
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * allows the application to be easily removed
@@ -3098,7 +3132,7 @@ msgstr "Localização"
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:285
 msgid "Create"
-msgstr "Criação"
+msgstr "Criar"
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:287

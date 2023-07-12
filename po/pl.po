@@ -7,13 +7,15 @@
 # poti225 <fila.tomasz225@gmail.com>, 2023.
 # Kuba Bazan <kubabazan27@gmail.com>, 2023.
 # Krzysztof Kuska <kk@fw190.info>, 2023.
+# Dawid Bajon <dawidwsmole@gmail.com>, 2023.
+# Eryk Michalak <gnu.ewm@protonmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-04-02 00:31+0000\n"
-"Last-Translator: gnu-ewm <gnu.ewm@protonmail.com>\n"
+"PO-Revision-Date: 2023-07-09 06:52+0000\n"
+"Last-Translator: Eryk Michalak <gnu.ewm@protonmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/pl/>\n"
 "Language: pl\n"
@@ -22,7 +24,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -631,6 +633,8 @@ msgid ""
 "The <code>hardcoded_popular</code> Meson option has been renamed to "
 "<code>hardcoded_curated</code>."
 msgstr ""
+"Opcja <code>hardcoded_popular</code> Meson została przemianowana na "
+"<code>hardcoded_curated</code>."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:207
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:249
@@ -658,7 +662,7 @@ msgstr "Friulski"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:498
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:545
 msgid "Occitan (post 1500)"
-msgstr ""
+msgstr "Occitan (po 1500 roku)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:235
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:405
@@ -2606,13 +2610,13 @@ msgstr "Anuluj"
 #. TRANSLATORS: update the fw
 #: src/gs-app-row.c:175 src/gs-common.c:286 src/gs-page.c:374
 msgid "Install"
-msgstr "Zainstaluj"
+msgstr "Instalacja"
 
 #. TRANSLATORS: this is a button in the updates panel
 #. * that allows the app to be easily updated live
 #: src/gs-app-row.c:183
 msgid "Update"
-msgstr "Zaktualizuj"
+msgstr "Odświeżanie listy"
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * allows the application to be easily removed
@@ -3069,7 +3073,7 @@ msgstr "Tłumaczenia"
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:285
 msgid "Create"
-msgstr "Twórz"
+msgstr "Utwórz"
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:287
@@ -5586,7 +5590,7 @@ msgstr "Więcej informacji"
 
 #: src/gs-shell.ui:189
 msgid "Search"
-msgstr "Wyszukaj"
+msgstr "Wyszukiwanie"
 
 #: src/gs-shell.ui:204
 msgid "Primary Menu"
