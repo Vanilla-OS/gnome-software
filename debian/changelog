@@ -1,3 +1,10 @@
+gnome-software (44.3-2) unstable; urgency=medium
+
+  * Remove an obsolete maintscript entry
+  * Release to unstable
+
+ -- Jeremy Bícha <jbicha@ubuntu.com>  Sun, 23 Jul 2023 16:22:56 -0400
+
 gnome-software (44.3-1) experimental; urgency=medium
 
   * Team upload
