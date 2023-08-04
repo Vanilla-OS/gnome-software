@@ -92,6 +92,7 @@ typedef struct
 	gchar			*update_version;
 	gchar			*update_version_ui;
 	gchar			*update_details_markup;
+	gboolean		 update_details_set;
 	AsUrgencyKind		 update_urgency;
 	GsAppPermissions        *update_permissions;
 	GWeakRef		 management_plugin_weak;  /* (element-type GsPlugin) */
@@ -474,20 +475,10 @@ gs_app_kudos_to_string (guint64 kudos)
 		g_ptr_array_add (array, "recent-release");
 	if ((kudos & GS_APP_KUDO_FEATURED_RECOMMENDED) > 0)
 		g_ptr_array_add (array, "featured-recommended");
-	if ((kudos & GS_APP_KUDO_MODERN_TOOLKIT) > 0)
-		g_ptr_array_add (array, "modern-toolkit");
-	if ((kudos & GS_APP_KUDO_SEARCH_PROVIDER) > 0)
-		g_ptr_array_add (array, "search-provider");
-	if ((kudos & GS_APP_KUDO_INSTALLS_USER_DOCS) > 0)
-		g_ptr_array_add (array, "installs-user-docs");
-	if ((kudos & GS_APP_KUDO_USES_NOTIFICATIONS) > 0)
-		g_ptr_array_add (array, "uses-notifications");
 	if ((kudos & GS_APP_KUDO_HAS_KEYWORDS) > 0)
 		g_ptr_array_add (array, "has-keywords");
 	if ((kudos & GS_APP_KUDO_HAS_SCREENSHOTS) > 0)
 		g_ptr_array_add (array, "has-screenshots");
-	if ((kudos & GS_APP_KUDO_HIGH_CONTRAST) > 0)
-		g_ptr_array_add (array, "high-contrast");
 	if ((kudos & GS_APP_KUDO_HI_DPI_ICON) > 0)
 		g_ptr_array_add (array, "hi-dpi-icon");
 	if ((kudos & GS_APP_KUDO_SANDBOXED) > 0)
@@ -1159,7 +1150,8 @@ gs_app_set_state_internal (GsApp *app, GsAppState state)
 		/* updatable has to go into an action state */
 		if (state == GS_APP_STATE_UNKNOWN ||
 		    state == GS_APP_STATE_REMOVING ||
-		    state == GS_APP_STATE_INSTALLING)
+		    state == GS_APP_STATE_INSTALLING ||
+		    state == GS_APP_STATE_PENDING_INSTALL)
 			state_change_ok = TRUE;
 		break;
 	case GS_APP_STATE_UPDATABLE_LIVE:
@@ -1945,6 +1937,7 @@ gs_app_get_icon_for_size (GsApp       *app,
                           const gchar *fallback_icon_name)
 {
 	GsAppPrivate *priv = gs_app_get_instance_private (app);
+	g_autoptr(GMutexLocker) locker = NULL;
 
 	g_return_val_if_fail (GS_IS_APP (app), NULL);
 	g_return_val_if_fail (size > 0, NULL);
@@ -1952,6 +1945,8 @@ gs_app_get_icon_for_size (GsApp       *app,
 
 	g_debug ("Looking for icon for %s, at size %u×%u, with fallback %s",
 		 gs_app_get_id (app), size, scale, fallback_icon_name);
+
+	locker = g_mutex_locker_new (&priv->mutex);
 
 	/* See if there’s an icon of the right size, or the first one which is too
 	 * big which could be scaled down. Note that the icons array may be
@@ -2001,6 +1996,8 @@ gs_app_get_icon_for_size (GsApp       *app,
 		}
 	}
 
+	g_clear_pointer (&locker, g_mutex_locker_free);
+
 	if (scale > 1) {
 		g_debug ("Retrying at scale 1");
 		return gs_app_get_icon_for_size (app, size, 1, fallback_icon_name);
@@ -2044,17 +2041,82 @@ gs_app_get_action_screenshot (GsApp *app)
  *     or %NULL if there are no icons
  *
  * Since: 3.22
+ *
+ * Deprecated: 45: Use gs_app_dup_icons() or gs_app_has_icons() instead.
  **/
 GPtrArray *
 gs_app_get_icons (GsApp *app)
 {
 	GsAppPrivate *priv = gs_app_get_instance_private (app);
+	g_autoptr(GMutexLocker) locker = NULL;
+
 	g_return_val_if_fail (GS_IS_APP (app), NULL);
 
-	if (priv->icons != NULL && priv->icons->len == 0)
+	locker = g_mutex_locker_new (&priv->mutex);
+
+	if (priv->icons == NULL || priv->icons->len == 0)
 		return NULL;
 
 	return priv->icons;
+}
+
+/**
+ * gs_app_dup_icons:
+ * @app: a #GsApp
+ *
+ * Gets the icons for the application in a thread safe way.
+ *
+ * This will never return an empty array; it will always return either %NULL or
+ * a non-empty array.
+ *
+ * Returns: (transfer container) (element-type GIcon) (nullable): an array of icons,
+ *     or %NULL if there are no icons
+ *
+ * Since: 45
+ **/
+GPtrArray *
+gs_app_dup_icons (GsApp *app)
+{
+	GsAppPrivate *priv = gs_app_get_instance_private (app);
+	g_autoptr(GMutexLocker) locker = NULL;
+	GPtrArray *copy;
+
+	g_return_val_if_fail (GS_IS_APP (app), NULL);
+
+	locker = g_mutex_locker_new (&priv->mutex);
+
+	if (priv->icons == NULL || priv->icons->len == 0)
+		return NULL;
+
+	copy = g_ptr_array_new_full (priv->icons->len, g_object_unref);
+	for (guint i = 0; i < priv->icons->len; i++) {
+		g_ptr_array_add (copy, g_object_ref (g_ptr_array_index (priv->icons, i)));
+	}
+
+	return copy;
+}
+
+/**
+ * gs_app_has_icons:
+ * @app: a #GsApp
+ *
+ * Checks whether there are any icons set.
+ *
+ * Returns: %TRUE, when the @app has set any icons, %FALSE otherwise
+ *
+ * Since: 45
+ **/
+gboolean
+gs_app_has_icons (GsApp *app)
+{
+	GsAppPrivate *priv = gs_app_get_instance_private (app);
+	g_autoptr(GMutexLocker) locker = NULL;
+
+	g_return_val_if_fail (GS_IS_APP (app), FALSE);
+
+	locker = g_mutex_locker_new (&priv->mutex);
+
+	return priv->icons != NULL && priv->icons->len > 0;
 }
 
 static gint
@@ -3239,6 +3301,7 @@ gs_app_set_update_details_markup (GsApp *app,
 	g_autoptr(GMutexLocker) locker = NULL;
 	g_return_if_fail (GS_IS_APP (app));
 	locker = g_mutex_locker_new (&priv->mutex);
+	priv->update_details_set = TRUE;
 	_g_set_str (&priv->update_details_markup, markup);
 }
 
@@ -3262,6 +3325,7 @@ gs_app_set_update_details_text (GsApp *app,
 	g_autoptr(GMutexLocker) locker = NULL;
 	g_return_if_fail (GS_IS_APP (app));
 	locker = g_mutex_locker_new (&priv->mutex);
+	priv->update_details_set = TRUE;
 	if (text == NULL) {
 		_g_set_str (&priv->update_details_markup, NULL);
 	} else {
@@ -3269,6 +3333,27 @@ gs_app_set_update_details_text (GsApp *app,
 		g_free (priv->update_details_markup);
 		priv->update_details_markup = markup;
 	}
+}
+
+/**
+ * gs_app_get_update_details_set:
+ * @app: a #GsApp
+ *
+ * Returns whether update details for the @app had been set. It does
+ * not matter whether it was set to %NULL or an actual text.
+ *
+ * Returns: whether update details for the @app had been set
+ *
+ * Since: 45
+ **/
+gboolean
+gs_app_get_update_details_set (GsApp *app)
+{
+	GsAppPrivate *priv = gs_app_get_instance_private (app);
+	g_autoptr(GMutexLocker) locker = NULL;
+	g_return_val_if_fail (GS_IS_APP (app), FALSE);
+	locker = g_mutex_locker_new (&priv->mutex);
+	return priv->update_details_set;
 }
 
 /**
@@ -4954,19 +5039,9 @@ gs_app_get_kudos_percentage (GsApp *app)
 		percentage += 20;
 	if ((priv->kudos & GS_APP_KUDO_FEATURED_RECOMMENDED) > 0)
 		percentage += 20;
-	if ((priv->kudos & GS_APP_KUDO_MODERN_TOOLKIT) > 0)
-		percentage += 20;
-	if ((priv->kudos & GS_APP_KUDO_SEARCH_PROVIDER) > 0)
-		percentage += 10;
-	if ((priv->kudos & GS_APP_KUDO_INSTALLS_USER_DOCS) > 0)
-		percentage += 10;
-	if ((priv->kudos & GS_APP_KUDO_USES_NOTIFICATIONS) > 0)
-		percentage += 20;
 	if ((priv->kudos & GS_APP_KUDO_HAS_KEYWORDS) > 0)
 		percentage += 5;
 	if ((priv->kudos & GS_APP_KUDO_HAS_SCREENSHOTS) > 0)
-		percentage += 20;
-	if ((priv->kudos & GS_APP_KUDO_HIGH_CONTRAST) > 0)
 		percentage += 20;
 	if ((priv->kudos & GS_APP_KUDO_HI_DPI_ICON) > 0)
 		percentage += 20;

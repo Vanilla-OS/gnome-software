@@ -28,6 +28,7 @@ typedef struct
 	GtkWidget	*version_arrow_label;
 	GtkWidget	*version_update_label;
 	GtkWidget	*system_updates_label; /* Only for "System Updates" app */
+	GtkWidget	*update_critical_image;
 	GtkWidget	*star;
 	GtkWidget	*description_label;
 	GtkWidget	*button_box;
@@ -309,7 +310,7 @@ gs_app_row_actually_refresh (GsAppRow *app_row)
 	/* join the description lines */
 	str = gs_app_row_get_description (app_row, &is_markup);
 	if (str != NULL) {
-		as_gstring_replace (str, "\n", " ");
+		gs_utils_gstring_replace (str, "\n", " ");
 		if (is_markup)
 			gtk_label_set_markup (GTK_LABEL (priv->description_label), str->str);
 		else
@@ -433,6 +434,8 @@ gs_app_row_actually_refresh (GsAppRow *app_row)
 		gtk_widget_set_visible (priv->system_updates_label, FALSE);
 	}
 
+	gtk_widget_set_visible (priv->update_critical_image, priv->show_update && gs_app_get_update_urgency (priv->app) >= AS_URGENCY_KIND_CRITICAL);
+
 	/* pixbuf */
 	icon = gs_app_get_icon_for_size (priv->app,
 					 gtk_image_get_pixel_size (GTK_IMAGE (priv->image)),
@@ -534,6 +537,39 @@ gs_app_row_actually_refresh (GsAppRow *app_row)
 
 		if (warning->len > 0) {
 			gtk_label_set_text (GTK_LABEL (priv->label_warning), warning->str);
+			gtk_widget_set_tooltip_text (priv->label_warning, warning->str);
+			gtk_widget_set_visible (priv->label_warning, TRUE);
+		}
+	} else if (priv->show_installed) {
+		g_autofree gchar *warning_tmp = NULL;
+		const gchar *problems, *eol_reason;
+		problems = gs_app_get_metadata_item (priv->app, "GnomeSoftware::problems");
+		if (problems == NULL || *problems == '\0') {
+			/* Show runtime problems on the apps which use them, unless they have their own problems */
+			GsApp *runtime = gs_app_get_runtime (priv->app);
+			if (runtime != NULL)
+				problems = gs_app_get_metadata_item (runtime, "GnomeSoftware::problems");
+		}
+		eol_reason = gs_app_get_metadata_item (priv->app, "GnomeSoftware::EolReason");
+		if (eol_reason == NULL || *eol_reason == '\0') {
+			/* Show runtime EOL on the apps which use them, unless they have their own EOL */
+			GsApp *runtime = gs_app_get_runtime (priv->app);
+			if (runtime != NULL)
+				eol_reason = gs_app_get_metadata_item (runtime, "GnomeSoftware::EolReason");
+		}
+		if (eol_reason != NULL && *eol_reason != '\0') {
+			/* Replace user-provided non-localized string with a localized text */
+			eol_reason = _("Stopped Receiving Updates");
+			if (problems != NULL && *problems != '\0') {
+				warning_tmp = g_strconcat (problems, "\n", eol_reason, NULL);
+				problems = warning_tmp;
+			} else {
+				problems = eol_reason;
+			}
+		}
+		if (problems != NULL && *problems != '\0') {
+			gtk_label_set_text (GTK_LABEL (priv->label_warning), problems);
+			gtk_widget_set_tooltip_text (priv->label_warning, problems);
 			gtk_widget_set_visible (priv->label_warning, TRUE);
 		}
 	}
@@ -957,6 +993,7 @@ gs_app_row_class_init (GsAppRowClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GsAppRow, version_arrow_label);
 	gtk_widget_class_bind_template_child_private (widget_class, GsAppRow, version_update_label);
 	gtk_widget_class_bind_template_child_private (widget_class, GsAppRow, system_updates_label);
+	gtk_widget_class_bind_template_child_private (widget_class, GsAppRow, update_critical_image);
 	gtk_widget_class_bind_template_child_private (widget_class, GsAppRow, star);
 	gtk_widget_class_bind_template_child_private (widget_class, GsAppRow, description_label);
 	gtk_widget_class_bind_template_child_private (widget_class, GsAppRow, button_box);
@@ -984,6 +1021,9 @@ gs_app_row_init (GsAppRow *app_row)
 
 	priv->show_description = TRUE;
 	priv->show_installed = TRUE;
+
+	g_type_ensure (GS_TYPE_PROGRESS_BUTTON);
+	g_type_ensure (GS_TYPE_STAR_WIDGET);
 
 	gtk_widget_init_template (GTK_WIDGET (app_row));
 

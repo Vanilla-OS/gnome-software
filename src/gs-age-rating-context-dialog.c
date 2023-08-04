@@ -559,6 +559,7 @@ content_rating_value_get_importance (AsContentRatingValue value)
 	case AS_CONTENT_RATING_VALUE_UNKNOWN:
 		return GS_CONTEXT_DIALOG_ROW_IMPORTANCE_NEUTRAL;
 	case AS_CONTENT_RATING_VALUE_MILD:
+		return GS_CONTEXT_DIALOG_ROW_IMPORTANCE_INFORMATION;
 	case AS_CONTENT_RATING_VALUE_MODERATE:
 		return GS_CONTEXT_DIALOG_ROW_IMPORTANCE_WARNING;
 	case AS_CONTENT_RATING_VALUE_INTENSE:
@@ -1090,6 +1091,8 @@ sort_cb (GtkListBoxRow *row1,
 static void
 gs_age_rating_context_dialog_init (GsAgeRatingContextDialog *self)
 {
+	g_type_ensure (GS_TYPE_LOZENGE);
+
 	gtk_widget_init_template (GTK_WIDGET (self));
 
 	/* Sort the list so the most important rows are at the top. */

@@ -47,7 +47,7 @@ struct _GsUpdatesPage
 	GsPluginLoader		*plugin_loader;
 	GCancellable		*cancellable;
 	GCancellable		*cancellable_refresh;
-	GCancellable		*cancellable_upgrade_download;
+	GCancellable		*cancellable_upgrade;
 	GSettings		*settings;
 	GSettings		*desktop_settings;
 	gboolean		 cache_valid;
@@ -439,12 +439,13 @@ gs_updates_page_get_updates_cb (GsPluginLoader *plugin_loader,
 	/* get the results */
 	list = gs_plugin_loader_job_process_finish (plugin_loader, res, &error);
 	if (list == NULL) {
+		g_autofree gchar *escaped_text = NULL;
 		gs_updates_page_clear_flag (self, GS_UPDATES_PAGE_FLAG_HAS_UPDATES);
 		if (!g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_CANCELLED) &&
 		    !g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
 			g_warning ("updates-shell: failed to get updates: %s", error->message);
-		adw_status_page_set_description (ADW_STATUS_PAGE (self->updates_failed_page),
-						 error->message);
+		escaped_text = g_markup_escape_text (error->message, -1);
+		adw_status_page_set_description (ADW_STATUS_PAGE (self->updates_failed_page), escaped_text);
 		gs_updates_page_set_state (self, GS_UPDATES_PAGE_STATE_FAILED);
 		refresh_headerbar_updates_counter (self);
 		return;
@@ -512,16 +513,19 @@ gs_updates_page_get_upgrades_cb (GObject *source_object,
 typedef struct {
 	GsApp		*app; /* (owned) */
 	GsUpdatesPage	*self; /* (owned) */
+	GsPluginJob	*job; /* (owned) */
 } GsPageHelper;
 
 static GsPageHelper *
 gs_page_helper_new (GsUpdatesPage *self,
-		    GsApp	 *app)
+		    GsApp	  *app,
+		    GsPluginJob   *job)
 {
 	GsPageHelper *helper;
 	helper = g_slice_new0 (GsPageHelper);
 	helper->self = g_object_ref (self);
 	helper->app = g_object_ref (app);
+	helper->job = g_object_ref (job);
 	return helper;
 }
 
@@ -529,6 +533,7 @@ static void
 gs_page_helper_free (GsPageHelper *helper)
 {
 	g_clear_object (&helper->app);
+	g_clear_object (&helper->job);
 	g_clear_object (&helper->self);
 	g_slice_free (GsPageHelper, helper);
 }
@@ -603,12 +608,12 @@ gs_updates_page_get_system_finished_cb (GObject *source_object,
 
 	refine_flags = GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON |
 		       GS_PLUGIN_REFINE_FLAGS_REQUIRE_SIZE |
-		       GS_PLUGIN_REFINE_FLAGS_REQUIRE_UPDATE_DETAILS |
+		       GS_PLUGIN_REFINE_FLAGS_REQUIRE_UPDATE_SEVERITY |
 		       GS_PLUGIN_REFINE_FLAGS_REQUIRE_VERSION;
 
-	helper = gs_page_helper_new (self, app);
 	plugin_job = gs_plugin_job_refine_new_for_app (app, refine_flags);
 	gs_plugin_job_set_interactive (plugin_job, TRUE);
+	helper = gs_page_helper_new (self, app, plugin_job);
 	gs_plugin_loader_job_process_async (self->plugin_loader, plugin_job,
 					    self->cancellable,
 					    gs_updates_page_refine_system_finished_cb,
@@ -631,7 +636,7 @@ gs_updates_page_load (GsUpdatesPage *self)
 
 	refine_flags = GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON |
 		       GS_PLUGIN_REFINE_FLAGS_REQUIRE_SIZE |
-		       GS_PLUGIN_REFINE_FLAGS_REQUIRE_UPDATE_DETAILS |
+		       GS_PLUGIN_REFINE_FLAGS_REQUIRE_UPDATE_SEVERITY |
 		       GS_PLUGIN_REFINE_FLAGS_REQUIRE_VERSION;
 	gs_updates_page_set_state (self, GS_UPDATES_PAGE_STATE_ACTION_GET_UPDATES);
 	self->action_cnt++;
@@ -723,6 +728,7 @@ gs_updates_page_refresh_cb (GsPluginLoader *plugin_loader,
 	/* get the results */
 	ret = gs_plugin_loader_job_action_finish (plugin_loader, res, &error);
 	if (!ret) {
+		g_autofree gchar *escaped_text = NULL;
 		/* user cancel */
 		if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_CANCELLED) ||
 		    g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
@@ -730,8 +736,8 @@ gs_updates_page_refresh_cb (GsPluginLoader *plugin_loader,
 			return;
 		}
 		g_warning ("failed to refresh: %s", error->message);
-		adw_status_page_set_description (ADW_STATUS_PAGE (self->updates_failed_page),
-						 error->message);
+		escaped_text = g_markup_escape_text (error->message, -1);
+		adw_status_page_set_description (ADW_STATUS_PAGE (self->updates_failed_page), escaped_text);
 		gs_updates_page_set_state (self, GS_UPDATES_PAGE_STATE_FAILED);
 		return;
 	}
@@ -888,11 +894,24 @@ upgrade_download_finished_cb (GObject *source,
 	g_autoptr(GsPageHelper) helper = user_data;
 	g_autoptr(GError) error = NULL;
 
+	g_clear_object (&helper->self->cancellable_upgrade);
+
 	if (!gs_plugin_loader_job_action_finish (plugin_loader, res, &error)) {
 		if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_CANCELLED) ||
 		    g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
 			return;
-		g_warning ("failed to upgrade-download: %s", error->message);
+		gs_plugin_loader_claim_job_error (plugin_loader,
+						  NULL,
+						  helper->job,
+						  error);
+	} else if (!gs_page_is_active_and_focused (GS_PAGE (helper->self))) {
+		g_autoptr(GNotification) notif = NULL;
+
+		notif = g_notification_new (_("Software Upgrades Downloaded"));
+		g_notification_set_body (notif, _("Software upgrades have been downloaded and are ready to be installed."));
+		g_notification_set_default_action_and_target (notif, "app.set-mode", "s", "updates");
+		/* last the notification for an hour */
+		gs_application_send_notification (GS_APPLICATION (g_application_get_default ()), "upgrades-downloaded", notif, 60);
 	}
 }
 
@@ -904,24 +923,25 @@ gs_updates_page_upgrade_download_cb (GsUpgradeBanner *upgrade_banner,
 	GsPageHelper *helper;
 	g_autoptr(GsPluginJob) plugin_job = NULL;
 
+	g_application_withdraw_notification (g_application_get_default (), "upgrades-downloaded");
+
 	app = gs_upgrade_banner_get_app (upgrade_banner);
 	if (app == NULL) {
 		g_warning ("no upgrade available to download");
 		return;
 	}
 
-	helper = gs_page_helper_new (self, app);
-
-	if (self->cancellable_upgrade_download != NULL)
-		g_object_unref (self->cancellable_upgrade_download);
-	self->cancellable_upgrade_download = g_cancellable_new ();
-	g_debug ("Starting upgrade download with cancellable %p", self->cancellable_upgrade_download);
+	g_clear_object (&self->cancellable_upgrade);
+	self->cancellable_upgrade = g_cancellable_new ();
+	g_debug ("Starting upgrade download with cancellable %p", self->cancellable_upgrade);
 	plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_UPGRADE_DOWNLOAD,
 					 "interactive", TRUE,
 					 "app", app,
+					 "propagate-error", TRUE,
 					 NULL);
+	helper = gs_page_helper_new (self, app, plugin_job);
 	gs_plugin_loader_job_process_async (self->plugin_loader, plugin_job,
-					    self->cancellable_upgrade_download,
+					    self->cancellable_upgrade,
 					    upgrade_download_finished_cb,
 					    helper);
 }
@@ -980,6 +1000,8 @@ upgrade_trigger_finished_cb (GObject *source,
 	GsUpdatesPage *self = (GsUpdatesPage *) user_data;
 	g_autoptr(GError) error = NULL;
 
+	g_clear_object (&self->cancellable_upgrade);
+
 	/* get the results */
 	if (!gs_plugin_loader_job_action_finish (self->plugin_loader, res, &error)) {
 		g_warning ("Failed to trigger offline update: %s", error->message);
@@ -1002,12 +1024,15 @@ trigger_upgrade (GsUpdatesPage *self)
 		return;
 	}
 
+	g_clear_object (&self->cancellable_upgrade);
+	self->cancellable_upgrade = g_cancellable_new ();
+
 	plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_UPGRADE_TRIGGER,
 					 "interactive", TRUE,
 					 "app", upgrade,
 					 NULL);
 	gs_plugin_loader_job_process_async (self->plugin_loader, plugin_job,
-					    self->cancellable,
+					    self->cancellable_upgrade,
 					    upgrade_trigger_finished_cb,
 					    self);
 }
@@ -1165,8 +1190,8 @@ static void
 gs_updates_page_upgrade_cancel_cb (GsUpgradeBanner *upgrade_banner,
                                    GsUpdatesPage *self)
 {
-	g_debug ("Cancelling upgrade download with %p", self->cancellable_upgrade_download);
-	g_cancellable_cancel (self->cancellable_upgrade_download);
+	g_debug ("Cancelling upgrade with %p", self->cancellable_upgrade);
+	g_cancellable_cancel (self->cancellable_upgrade);
 }
 
 static gboolean
@@ -1312,8 +1337,8 @@ gs_updates_page_dispose (GObject *object)
 
 	g_cancellable_cancel (self->cancellable_refresh);
 	g_clear_object (&self->cancellable_refresh);
-	g_cancellable_cancel (self->cancellable_upgrade_download);
-	g_clear_object (&self->cancellable_upgrade_download);
+	g_cancellable_cancel (self->cancellable_upgrade);
+	g_clear_object (&self->cancellable_upgrade);
 
 	for (guint i = 0; i < GS_UPDATES_SECTION_KIND_LAST; i++) {
 		if (self->sections[i] != NULL) {
@@ -1391,6 +1416,8 @@ gs_updates_page_class_init (GsUpdatesPageClass *klass)
 static void
 gs_updates_page_init (GsUpdatesPage *self)
 {
+	g_type_ensure (GS_TYPE_UPGRADE_BANNER);
+
 	gtk_widget_init_template (GTK_WIDGET (self));
 
 	self->state = GS_UPDATES_PAGE_STATE_STARTUP;

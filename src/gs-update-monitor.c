@@ -128,7 +128,7 @@ check_updates_kind (GsAppList *apps,
 
 		app = gs_app_list_index (apps, ii);
 
-		is_important = gs_app_get_update_urgency (app) == AS_URGENCY_KIND_CRITICAL;
+		is_important = gs_app_get_update_urgency (app) >= AS_URGENCY_KIND_CRITICAL;
 		has_important = has_important || is_important;
 
 		if (gs_app_is_downloaded (app))
@@ -571,7 +571,7 @@ get_updates_finished_cb (GObject *object, GAsyncResult *res, gpointer user_data)
 		guint64 size_download_bytes;
 		GsSizeType size_download_type = gs_app_get_size_download (app, &size_download_bytes);
 
-		if (gs_app_get_update_urgency (app) == AS_URGENCY_KIND_CRITICAL &&
+		if (gs_app_get_update_urgency (app) >= AS_URGENCY_KIND_CRITICAL &&
 		    size_download_type == GS_SIZE_TYPE_VALID &&
 		    size_download_bytes > 0) {
 			security_timestamp = (guint64) g_get_monotonic_time ();
@@ -786,8 +786,7 @@ get_updates (GsUpdateMonitor *monitor,
 	/* NOTE: this doesn't actually do any network access */
 	g_debug ("Getting updates");
 	plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_GET_UPDATES,
-					 "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_UPDATE_DETAILS |
-							 GS_PLUGIN_REFINE_FLAGS_REQUIRE_UPDATE_SEVERITY,
+					 "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_UPDATE_SEVERITY,
 					 NULL);
 	gs_plugin_loader_job_process_async (monitor->plugin_loader,
 					    plugin_job,
@@ -855,6 +854,36 @@ refresh_cache_finished_cb (GObject *object,
 	/* update the last checked timestamp */
 	now = g_date_time_new_now_local ();
 	get_updates (monitor, g_date_time_to_unix (now));
+}
+
+static gboolean
+monitor_get_game_mode_is_active (GsUpdateMonitor *self)
+{
+	g_autoptr(GDBusProxy) proxy = NULL;
+	g_autoptr(GVariant) val = NULL;
+
+	/* This supports https://github.com/FeralInteractive/gamemode ;
+	   it's okay when it's not installed, nor running. */
+	proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION,
+					       G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START |
+#if GLIB_CHECK_VERSION(2, 72, 0)
+					       G_DBUS_PROXY_FLAGS_NO_MATCH_RULE |
+#endif
+					       G_DBUS_PROXY_FLAGS_DO_NOT_CONNECT_SIGNALS,
+					       NULL,
+					       "com.feralinteractive.GameMode",
+					       "/com/feralinteractive/GameMode",
+					       "com.feralinteractive.GameMode",
+					       NULL,
+					       NULL);
+	if (proxy == NULL)
+		return FALSE;
+
+	val = g_dbus_proxy_get_cached_property (proxy, "ClientCount");
+	if (val != NULL)
+		return g_variant_get_int32 (val) > 0;
+
+	return FALSE;
 }
 
 typedef enum {
@@ -962,6 +991,31 @@ check_updates (GsUpdateMonitor *monitor)
 	/* check for language pack */
 	check_language_pack (monitor);
 
+	g_settings_get (monitor->settings, "check-timestamp", "x", &tmp);
+	last_refreshed = g_date_time_new_from_unix_local (tmp);
+	if (last_refreshed != NULL) {
+		gint now_year, now_month, now_day, now_hour;
+		gint year, month, day;
+		g_autoptr(GDateTime) now = NULL;
+
+		now = g_date_time_new_now_local ();
+
+		g_date_time_get_ymd (now, &now_year, &now_month, &now_day);
+		now_hour = g_date_time_get_hour (now);
+
+		g_date_time_get_ymd (last_refreshed, &year, &month, &day);
+
+		/* check that it is the next day */
+		if (!((now_year > year) ||
+		      (now_year == year && now_month > month) ||
+		      (now_year == year && now_month == month && now_day > day)))
+			return;
+
+		/* ...and past 6am */
+		if (!(now_hour >= 6))
+			return;
+	}
+
 #ifdef HAVE_MOGWAI
 	refresh_on_metered = TRUE;
 #else
@@ -1001,29 +1055,9 @@ check_updates (GsUpdateMonitor *monitor)
 	}
 #endif
 
-	g_settings_get (monitor->settings, "check-timestamp", "x", &tmp);
-	last_refreshed = g_date_time_new_from_unix_local (tmp);
-	if (last_refreshed != NULL) {
-		gint now_year, now_month, now_day, now_hour;
-		gint year, month, day;
-		g_autoptr(GDateTime) now = NULL;
-
-		now = g_date_time_new_now_local ();
-
-		g_date_time_get_ymd (now, &now_year, &now_month, &now_day);
-		now_hour = g_date_time_get_hour (now);
-
-		g_date_time_get_ymd (last_refreshed, &year, &month, &day);
-
-		/* check that it is the next day */
-		if (!((now_year > year) ||
-		      (now_year == year && now_month > month) ||
-		      (now_year == year && now_month == month && now_day > day)))
-			return;
-
-		/* ...and past 6am */
-		if (!(now_hour >= 6))
-			return;
+	if (monitor_get_game_mode_is_active (monitor)) {
+		g_debug ("Not getting updates with enabled GameMode");
+		return;
 	}
 
 	if (!should_download_updates (monitor)) {
@@ -1150,8 +1184,6 @@ get_updates_historical_cb (GObject *object, GAsyncResult *res, gpointer data)
 {
 	GsUpdateMonitor *monitor = data;
 	GsApp *app;
-	const gchar *message;
-	const gchar *title;
 	guint64 time_last_notified;
 	g_autoptr(GError) error = NULL;
 	g_autoptr(GsAppList) apps = NULL;
@@ -1197,6 +1229,8 @@ get_updates_historical_cb (GObject *object, GAsyncResult *res, gpointer data)
 		return;
 
 	if (gs_app_get_kind (app) == AS_COMPONENT_KIND_OPERATING_SYSTEM) {
+		g_autofree gchar *message = NULL;
+
 		/* TRANSLATORS: Notification title when we've done a distro upgrade */
 		notification = g_notification_new (_("System Upgrade Complete"));
 
@@ -1208,6 +1242,9 @@ get_updates_historical_cb (GObject *object, GAsyncResult *res, gpointer data)
 		                           gs_app_get_version (app));
 		g_notification_set_body (notification, message);
 	} else {
+		const gchar *message;
+		const gchar *title;
+
 		/* TRANSLATORS: title when we've done offline updates */
 		title = ngettext ("Software Update Installed",
 				  "Software Updates Installed",
@@ -1247,6 +1284,7 @@ cleanup_notifications_cb (gpointer user_data)
 	g_debug ("getting historical updates for fresh session");
 	plugin_job = gs_plugin_job_newv (GS_PLUGIN_ACTION_GET_UPDATES_HISTORICAL,
 					 "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_VERSION,
+					 "propagate-error", TRUE,
 					 NULL);
 	gs_plugin_loader_job_process_async (monitor->plugin_loader,
 					    plugin_job,
