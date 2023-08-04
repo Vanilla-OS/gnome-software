@@ -1,39 +1,63 @@
-Version 44.3
-~~~~~~~~~~~~
+Version 45~beta
+~~~~~~~~~~~~~~~
+Released: 2023-07-30
+
+This is an unstable release with the following changes:
+ * Improve error notifications from failed GPG checks
+ * Disable animations in the UI according to the user’s accessibility settings
+ * Fix applying updates which require some packages to be removed to satisfy dependencies
+ * Stop using the software repositories dialog provided by the distribution, and always use GNOME
+   Software’s inbuilt dialog; this will affect Debian and Ubuntu
+
+This release also updates translations:
+ * Belarusian (Vasil Pupkin)
+ * Chinese (China) (Luming Zh)
+ * Czech (Daniel Rusek)
+ * English (United Kingdom) (Bruce Cowan)
+ * French (Guillaume Bernard)
+ * Friulian (Fabio Tomat)
+ * Georgian (Ekaterine Papava)
+ * Greek, Modern (1453-) (Efstathios Iosifidis)
+ * Hebrew (Yosef Or Boczko)
+ * Hungarian (Balázs Úr)
+ * Lithuanian (Aurimas Černius)
+ * Persian (Danial Behzadi)
+ * Turkish (Sabri Ünal)
+ * Ukrainian (Yuri Chornoivan)
+
+Version 45~alpha
+~~~~~~~~~~~~~~~~
 Released: 2023-06-30
 
-This is a stable release with the following changes:
- * Fix a crash when refining a flatpak app
+This is an unstable release with the following changes:
+ * Indicate when OS updates includes security fixes
+ * Ask whether to clear app storage for Flatpak apps on uninstall
+ * Show a notification when system updates are downloaded
+ * Advertise if an installed Flatpak app has reached end of life
+ * Revamp Safety ratings
+ * Fix slow Repositories dialog open
+ * Fix card view and key navigation in the Explore page
+ * Fix a crash on startup in GNOME OS
+ * Fix navigation between "Other Apps by Developer" in the Details page
+ * Fix a crash when refining a Flatpak app
  * Fix a state recover after a failed app update
 
 This release also updates translations:
+ * Basque (Asier Sarasua Garmendia)
  * Catalan (Jordi Mas i Hernandez)
  * Czech (Daniel Rusek)
  * Finnish (Jiri Grönroos)
+ * Friulian (Fabio Tomat)
  * Georgian (Ekaterine Papava)
+ * Hebrew (Yosef Or Boczko)
+ * Italian (Gianvito Cavasoli)
+ * Occitan (post 1500) (Quentin PAGÈS)
  * Persian (Danial Behzadi)
  * Polish (Piotr Drąg)
  * Portuguese (Hugo Carvalho)
+ * Russian (Aleksandr Melman)
  * Slovenian (Martin)
- * Swedish (Anders Jonsson)
- * Ukrainian (Yuri Chornoivan)
-
-Version 44.2
-~~~~~~~~~~~~
-Released: 2023-05-25
-
-This is a stable release with the following changes:
- * Fix subsequent checking for updates if the first check after login fails
- * Fix checking for updates when automatic updates are disabled
- * Fix rare stall when many background jobs are running
- * Don’t download rpm-ostree updates when only checking if updates are available
- * Fix bug with listing flatpak addons when multiple flathub remotes are enabled
- * Fix duplicated sources in app details page when using an appstream URL
- * Reduce background resource consumption when idle
-
-This release also updates translations:
- * Czech (Daniel Rusek)
- * Italian (Gianvito Cavasoli)
+ * Turkish (Sabri Ünal)
 
 Version 44.1
 ~~~~~~~~~~~~

@@ -61,8 +61,10 @@ css_class_for_importance (GsContextDialogRowImportance importance)
 		return "grey";
 	case GS_CONTEXT_DIALOG_ROW_IMPORTANCE_UNIMPORTANT:
 		return "green";
-	case GS_CONTEXT_DIALOG_ROW_IMPORTANCE_WARNING:
+	case GS_CONTEXT_DIALOG_ROW_IMPORTANCE_INFORMATION:
 		return "yellow";
+	case GS_CONTEXT_DIALOG_ROW_IMPORTANCE_WARNING:
+		return "orange";
 	case GS_CONTEXT_DIALOG_ROW_IMPORTANCE_IMPORTANT:
 		return "red";
 	default:
@@ -73,6 +75,8 @@ css_class_for_importance (GsContextDialogRowImportance importance)
 static void
 gs_context_dialog_row_init (GsContextDialogRow *self)
 {
+	g_type_ensure (GS_TYPE_LOZENGE);
+
 	gtk_widget_init_template (GTK_WIDGET (self));
 
 #if ADW_CHECK_VERSION(1,2,0)

@@ -140,7 +140,7 @@ gs_application_init (GsApplication *application)
 		{ "show-metainfo", '\0', 0, G_OPTION_ARG_FILENAME, NULL,
 		  _("Show a local metainfo or appdata file"), _("FILENAME") },
 		{ "verbose", '\0', 0, G_OPTION_ARG_NONE, NULL,
-		  _("Show verbose debugging information"), NULL },
+		  _("Enable verbose debugging output (from the running instance, if already running)"), NULL },
 		{ "autoupdate", 0, 0, G_OPTION_ARG_NONE, NULL,
 		  _("Installs any pending updates in the background"), NULL },
 		{ "prefs", 0, 0, G_OPTION_ARG_NONE, NULL,
@@ -1109,8 +1109,10 @@ gs_application_startup (GApplication *application)
 	g_application_withdraw_notification (application, "installed");
 	g_application_withdraw_notification (application, "restart-required");
 	g_application_withdraw_notification (application, "updates-available");
+	g_application_withdraw_notification (application, "updates-downloaded");
 	g_application_withdraw_notification (application, "updates-installed");
 	g_application_withdraw_notification (application, "upgrades-available");
+	g_application_withdraw_notification (application, "upgrades-downloaded");
 	g_application_withdraw_notification (application, "offline-updates");
 	g_application_withdraw_notification (application, "eol");
 

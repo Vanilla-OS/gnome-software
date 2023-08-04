@@ -95,13 +95,8 @@ typedef enum {
  * @GS_APP_KUDO_MY_LANGUAGE:		Localised in my language
  * @GS_APP_KUDO_RECENT_RELEASE:		Released recently
  * @GS_APP_KUDO_FEATURED_RECOMMENDED:	Chosen for the front page
- * @GS_APP_KUDO_MODERN_TOOLKIT:		Uses a modern toolkit
- * @GS_APP_KUDO_SEARCH_PROVIDER:	Provides a search provider
- * @GS_APP_KUDO_INSTALLS_USER_DOCS:	Installs user docs
- * @GS_APP_KUDO_USES_NOTIFICATIONS:	Registers notifications
  * @GS_APP_KUDO_HAS_KEYWORDS:		Has at least 1 keyword
  * @GS_APP_KUDO_HAS_SCREENSHOTS:	Supplies screenshots
- * @GS_APP_KUDO_HIGH_CONTRAST:		Installs a high contrast icon
  * @GS_APP_KUDO_HI_DPI_ICON:		Installs a HiDPI icon
  * @GS_APP_KUDO_SANDBOXED:		Application is sandboxed
  * @GS_APP_KUDO_SANDBOXED_SECURE:	Application is sandboxed securely
@@ -112,13 +107,8 @@ typedef enum {
 	GS_APP_KUDO_MY_LANGUAGE			= 1 << 0,
 	GS_APP_KUDO_RECENT_RELEASE		= 1 << 1,
 	GS_APP_KUDO_FEATURED_RECOMMENDED	= 1 << 2,
-	GS_APP_KUDO_MODERN_TOOLKIT		= 1 << 3,
-	GS_APP_KUDO_SEARCH_PROVIDER		= 1 << 4,
-	GS_APP_KUDO_INSTALLS_USER_DOCS		= 1 << 5,
-	GS_APP_KUDO_USES_NOTIFICATIONS		= 1 << 6,
 	GS_APP_KUDO_HAS_KEYWORDS		= 1 << 7,
 	GS_APP_KUDO_HAS_SCREENSHOTS		= 1 << 9,
-	GS_APP_KUDO_HIGH_CONTRAST		= 1 << 13,
 	GS_APP_KUDO_HI_DPI_ICON			= 1 << 14,
 	GS_APP_KUDO_SANDBOXED			= 1 << 15,
 	GS_APP_KUDO_SANDBOXED_SECURE		= 1 << 16,
@@ -373,6 +363,7 @@ void		 gs_app_set_update_details_markup
 						 const gchar	*markup);
 void		 gs_app_set_update_details_text	(GsApp		*app,
 						 const gchar	*text);
+gboolean	 gs_app_get_update_details_set	(GsApp		*app);
 AsUrgencyKind	 gs_app_get_update_urgency	(GsApp		*app);
 void		 gs_app_set_update_urgency	(GsApp		*app,
 						 AsUrgencyKind	 update_urgency);
@@ -385,7 +376,10 @@ GIcon		*gs_app_get_icon_for_size	(GsApp		*app,
 						 guint		 size,
 						 guint		 scale,
 						 const gchar	*fallback_icon_name);
+G_DEPRECATED_FOR(gs_app_dup_icons)
 GPtrArray	*gs_app_get_icons		(GsApp		*app);
+GPtrArray	*gs_app_dup_icons		(GsApp		*app);
+gboolean	 gs_app_has_icons		(GsApp		*app);
 void		 gs_app_add_icon		(GsApp		*app,
 						 GIcon		*icon);
 void		 gs_app_remove_all_icons	(GsApp		*app);

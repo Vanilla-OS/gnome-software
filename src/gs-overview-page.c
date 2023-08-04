@@ -25,6 +25,12 @@
  * 3-column layout. */
 #define N_TILES 12
 
+/* Even when asking for N_TILES apps, the curated apps can be less than N_TILES */
+#define MIN_CURATED_APPS 6
+
+/* Show all apps in the overview page when there are less than these apps */
+#define MIN_CATEGORIES_APPS 100
+
 struct _GsOverviewPage
 {
 	GsPage			 parent_instance;
@@ -52,6 +58,8 @@ struct _GsOverviewPage
 	GtkWidget		*box_curated;
 	GtkWidget		*box_recent;
 	GtkWidget		*box_deployment_featured;
+	GtkWidget		*box_all_apps;
+	GtkWidget		*heading_all_apps;
 	GtkWidget		*flowbox_categories;
 	GtkWidget		*flowbox_iconless_categories;
 	GtkWidget		*iconless_categories_heading;
@@ -88,45 +96,16 @@ gs_overview_page_invalidate (GsOverviewPage *self)
 }
 
 static void
-app_tile_clicked (GsAppTile *tile, gpointer data)
+app_activated_cb (GsOverviewPage *self, GsAppTile *tile)
 {
-	GsOverviewPage *self = GS_OVERVIEW_PAGE (data);
 	GsApp *app;
 
 	app = gs_app_tile_get_app (tile);
+
+	if (!app)
+		return;
+
 	gs_shell_show_app (self->shell, app);
-}
-
-static void
-flow_box_child_activate_cb (GtkFlowBoxChild *flowboxchild,
-			    gpointer user_data)
-{
-	GtkWidget *tile = gtk_flow_box_child_get_child (flowboxchild);
-	if (tile != NULL)
-		g_signal_emit_by_name (tile, "clicked", 0, NULL);
-}
-
-/* Each tile is in a GtkFlowBoxChild. The tile can be focused and activated,
- * but the GtkFlowBoxChild can only be focused and not activated (by default).
- * Tweak that to avoid tab navigation issues and visual artifacts. */
-static void
-setup_parent_flow_box_child (GsOverviewPage *self,
-			     GtkWidget *tile,
-			     GCallback clicked_cb)
-{
-	GtkWidget *child;
-
-	g_signal_connect_object (tile, "clicked", clicked_cb, self, 0);
-
-	g_assert (GTK_IS_FLOW_BOX_CHILD (gtk_widget_get_parent (tile)));
-
-	child = gtk_widget_get_parent (tile);
-	gtk_widget_add_css_class (child, "card");
-
-	gtk_widget_set_can_focus (tile, FALSE);
-
-	g_signal_connect_object (child, "activate",
-				 G_CALLBACK (flow_box_child_activate_cb), self, 0);
 }
 
 static void
@@ -183,7 +162,7 @@ gs_overview_page_get_curated_cb (GObject *source_object,
 	}
 
 	/* not enough to show */
-	if (gs_app_list_length (list) < N_TILES) {
+	if (gs_app_list_length (list) < MIN_CURATED_APPS) {
 		g_warning ("Only %u apps for curated list, hiding",
 		           gs_app_list_length (list));
 		gtk_widget_set_visible (self->box_curated, FALSE);
@@ -191,7 +170,16 @@ gs_overview_page_get_curated_cb (GObject *source_object,
 		goto out;
 	}
 
-	g_assert (gs_app_list_length (list) == N_TILES);
+	g_assert (gs_app_list_length (list) >= MIN_CURATED_APPS && gs_app_list_length (list) <= N_TILES);
+
+	/* Ensure as it has 2 and 3 as factors, so it will form an even
+	 * 2-column and 3-column layout. */
+	while (gs_app_list_length (list) > 0 &&
+	       ((gs_app_list_length (list) % 3) != 0 ||
+		(gs_app_list_length (list) % 2) != 0)) {
+		/* Remove the last app from the list */
+		gs_app_list_remove (list, gs_app_list_index (list, gs_app_list_length (list) - 1));
+	}
 
 	gs_widget_remove_all (self->box_curated, (GsRemoveFunc) gtk_flow_box_remove);
 
@@ -199,7 +187,6 @@ gs_overview_page_get_curated_cb (GObject *source_object,
 		app = gs_app_list_index (list, i);
 		tile = gs_summary_tile_new (app);
 		gtk_flow_box_insert (GTK_FLOW_BOX (self->box_curated), tile, -1);
-		setup_parent_flow_box_child (self, tile, G_CALLBACK (app_tile_clicked));
 	}
 	gtk_widget_set_visible (self->box_curated, TRUE);
 	gtk_widget_set_visible (self->curated_heading, TRUE);
@@ -267,7 +254,6 @@ gs_overview_page_get_recent_cb (GObject *source_object, GAsyncResult *res, gpoin
 		app = gs_app_list_index (list, i);
 		tile = gs_summary_tile_new (app);
 		gtk_flow_box_insert (GTK_FLOW_BOX (self->box_recent), tile, -1);
-		setup_parent_flow_box_child (self, tile, G_CALLBACK (app_tile_clicked));
 	}
 	gtk_widget_set_visible (self->box_recent, TRUE);
 	gtk_widget_set_visible (self->recent_heading, TRUE);
@@ -367,7 +353,6 @@ gs_overview_page_get_deployment_featured_cb (GObject *source_object,
 		app = gs_app_list_index (list, i);
 		tile = gs_summary_tile_new (app);
 		gtk_flow_box_insert (GTK_FLOW_BOX (self->box_deployment_featured), tile, -1);
-		setup_parent_flow_box_child (self, tile, G_CALLBACK (app_tile_clicked));
 	}
 	gtk_widget_set_visible (self->box_deployment_featured, TRUE);
 	gtk_widget_set_visible (self->deployment_featured_heading, TRUE);
@@ -378,10 +363,65 @@ gs_overview_page_get_deployment_featured_cb (GObject *source_object,
 	gs_overview_page_decrement_action_cnt (self);
 }
 
+typedef struct {
+	GsOverviewPage *self; /* (owned) */
+	GsAppList *list; /* (owned) */
+	gint n_pending;
+} GatherAppsData;
+
 static void
-category_tile_clicked (GsCategoryTile *tile, gpointer data)
+decrement_gather_apps (GatherAppsData *data)
 {
-	GsOverviewPage *self = GS_OVERVIEW_PAGE (data);
+	if (!g_atomic_int_dec_and_test (&data->n_pending))
+		return;
+
+	gtk_widget_set_visible (data->self->heading_all_apps, gs_app_list_length (data->list) > 0);
+	gtk_widget_set_visible (data->self->box_all_apps, gs_app_list_length (data->list) > 0);
+
+	gs_app_list_sort (data->list, gs_utils_app_sort_name, NULL);
+
+	for (guint i = 0; i < gs_app_list_length (data->list); i++) {
+		GsApp *app = gs_app_list_index (data->list, i);
+		GtkWidget *tile;
+
+		tile = gs_summary_tile_new (app);
+		gtk_flow_box_insert (GTK_FLOW_BOX (data->self->box_all_apps), tile, -1);
+		gtk_widget_set_can_focus (gtk_widget_get_parent (tile), FALSE);
+	}
+
+	data->self->empty = data->self->empty && gs_app_list_length (data->list) == 0;
+
+	gs_overview_page_decrement_action_cnt (data->self);
+
+	g_clear_object (&data->self);
+	g_clear_object (&data->list);
+	g_free (data);
+}
+
+static void
+gs_overview_page_gather_apps_cb (GObject *source_object,
+				 GAsyncResult *res,
+				 gpointer user_data)
+{
+	GatherAppsData *data = user_data;
+	GsPluginLoader *plugin_loader = GS_PLUGIN_LOADER (source_object);
+	g_autoptr(GError) error = NULL;
+	g_autoptr(GsAppList) list = NULL;
+
+	list = gs_plugin_loader_job_process_finish (plugin_loader, res, &error);
+	if (g_error_matches (error, GS_PLUGIN_ERROR, GS_PLUGIN_ERROR_CANCELLED) ||
+	    g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
+		/* ignore errors */
+	} else if (list != NULL) {
+		gs_app_list_add_list (data->list, list);
+	}
+
+	decrement_gather_apps (data);
+}
+
+static void
+category_activated_cb (GsOverviewPage *self, GsCategoryTile *tile)
+{
 	GsCategory *category;
 
 	category = gs_category_tile_get_category (tile);
@@ -415,6 +455,7 @@ gs_overview_page_get_categories_cb (GObject *source_object,
 	GtkFlowBox *flowbox;
 	GtkWidget *tile;
 	guint added_cnt = 0;
+	guint found_apps_cnt = 0;
 	g_autoptr(GError) error = NULL;
 	GPtrArray *list = NULL;  /* (element-type GsCategory) */
 
@@ -430,6 +471,10 @@ gs_overview_page_get_categories_cb (GObject *source_object,
 	gs_widget_remove_all (self->flowbox_categories, (GsRemoveFunc) gtk_flow_box_remove);
 	gs_widget_remove_all (self->flowbox_iconless_categories, (GsRemoveFunc) gtk_flow_box_remove);
 
+	gtk_widget_set_visible (self->heading_all_apps, FALSE);
+	gtk_widget_set_visible (self->box_all_apps, FALSE);
+	gs_widget_remove_all (self->box_all_apps, (GsRemoveFunc) gtk_flow_box_remove);
+
 	/* Add categories to the flowboxes. Categories with icons are deemed to
 	 * be visually important, and are listed near the top of the page.
 	 * Categories without icons are listed in a separate flowbox at the
@@ -440,13 +485,13 @@ gs_overview_page_get_categories_cb (GObject *source_object,
 			continue;
 		tile = gs_category_tile_new (cat);
 
-		if (gs_category_get_icon_name (cat) != NULL)
+		if (gs_category_get_icon_name (cat) != NULL) {
+			found_apps_cnt += gs_category_get_size (cat);
 			flowbox = GTK_FLOW_BOX (self->flowbox_categories);
-		else
+		} else
 			flowbox = GTK_FLOW_BOX (self->flowbox_iconless_categories);
 
 		gtk_flow_box_insert (flowbox, tile, -1);
-		setup_parent_flow_box_child (self, tile, G_CALLBACK (category_tile_clicked));
 		added_cnt++;
 
 		/* we save these for the 'More...' buttons */
@@ -462,6 +507,61 @@ out:
 
 	if (added_cnt > 0)
 		self->empty = FALSE;
+
+	/* If there are too few apps available, show them all on the overview
+	 * page rather than showing the category buttons. Effectively, this
+	 * hides the category pages entirely, as with too few apps these pages
+	 * will be too empty to look nice.
+	 * See https://gitlab.gnome.org/GNOME/gnome-software/-/issues/2053 */
+	gtk_widget_set_visible (self->flowbox_categories, found_apps_cnt >= MIN_CATEGORIES_APPS);
+
+	if (found_apps_cnt < MIN_CATEGORIES_APPS && found_apps_cnt > 0) {
+		GsPluginListAppsFlags flags = GS_PLUGIN_LIST_APPS_FLAGS_INTERACTIVE;
+		GatherAppsData *gather_apps_data = g_new0 (GatherAppsData, 1);
+
+		gather_apps_data->n_pending = 1;
+		gather_apps_data->self = g_object_ref (self);
+		gather_apps_data->list = gs_app_list_new ();
+
+		for (i = 0; i < list->len; i++) {
+			g_autoptr(GsPluginJob) plugin_job = NULL;
+			g_autoptr(GsAppQuery) query = NULL;
+			GsCategory *subcat;
+
+			cat = GS_CATEGORY (g_ptr_array_index (list, i));
+			if (gs_category_get_size (cat) == 0 ||
+			    gs_category_get_icon_name (cat) == NULL)
+				continue;
+
+			subcat = gs_category_find_child (cat, "all");
+			if (subcat == NULL)
+				continue;
+
+			query = gs_app_query_new ("category", subcat,
+						  "refine-flags", GS_PLUGIN_REFINE_FLAGS_REQUIRE_RATING |
+								  GS_PLUGIN_REFINE_FLAGS_REQUIRE_CATEGORIES |
+								  GS_PLUGIN_REFINE_FLAGS_REQUIRE_ICON,
+						  "dedupe-flags", GS_APP_LIST_FILTER_FLAG_PREFER_INSTALLED |
+								  GS_APP_LIST_FILTER_FLAG_KEY_ID_PROVIDES,
+						  "license-type", gs_page_get_query_license_type (GS_PAGE (self)),
+						  NULL);
+
+			plugin_job = gs_plugin_job_list_apps_new (query, flags);
+
+			g_atomic_int_inc (&gather_apps_data->n_pending);
+
+			gs_plugin_loader_job_process_async (self->plugin_loader,
+							    plugin_job,
+							    self->cancellable,
+							    gs_overview_page_gather_apps_cb,
+							    gather_apps_data);
+		}
+
+		decrement_gather_apps (gather_apps_data);
+
+		/* inherit the action count */
+		return;
+	}
 
 	gs_overview_page_decrement_action_cnt (self);
 }
@@ -681,20 +781,11 @@ gs_overview_page_read_deployment_featured_keys (gchar **out_label,
 		return FALSE;
 	}
 
-	*out_label = g_key_file_get_locale_string (key_file, "Deployment Featured Apps", "Title", NULL, NULL);
-
-	if (*out_label == NULL || **out_label == '\0') {
-		g_clear_pointer (out_label, g_free);
-		return FALSE;
-	}
-
 	selector = g_key_file_get_string_list (key_file, "Deployment Featured Apps", "Selector", NULL, NULL);
 
 	/* Sanitize the content */
-	if (selector == NULL) {
-		g_clear_pointer (out_label, g_free);
+	if (selector == NULL)
 		return FALSE;
-	}
 
 	array = g_ptr_array_sized_new (g_strv_length (selector) + 1);
 
@@ -704,14 +795,28 @@ gs_overview_page_read_deployment_featured_keys (gchar **out_label,
 			g_ptr_array_add (array, g_strdup (value));
 	}
 
-	if (array->len == 0) {
-		g_clear_pointer (out_label, g_free);
+	if (array->len == 0)
 		return FALSE;
-	}
 
 	g_ptr_array_add (array, NULL);
 
 	*out_deployment_featured = (gchar **) g_ptr_array_free (g_steal_pointer (&array), FALSE);
+	*out_label = g_key_file_get_locale_string (key_file, "Deployment Featured Apps", "Title", NULL, NULL);
+
+	if (*out_label == NULL || **out_label == '\0') {
+		g_autoptr(GsOsRelease) os_release = gs_os_release_new (NULL);
+		const gchar *name = NULL;
+		if (os_release != NULL)
+			name = gs_os_release_get_name (os_release);
+		g_free (*out_label);
+		if (name == NULL) {
+			*out_label = g_strdup (_("Available for your operating system"));
+		} else {
+			/* Translators: the '%s' is replaced with the distribution name, constructing
+			   for example: "Available for Fedora Linux" */
+			*out_label = g_strdup_printf (_("Available for %s"), name);
+		}
+	}
 
 	return TRUE;
 }
@@ -935,7 +1040,7 @@ gs_overview_page_setup (GsPage *page,
 	g_return_val_if_fail (GS_IS_OVERVIEW_PAGE (self), TRUE);
 
 	self->plugin_loader = g_object_ref (plugin_loader);
-	self->third_party = gs_fedora_third_party_new ();
+	self->third_party = gs_fedora_third_party_new (plugin_loader);
 	self->cancellable = g_object_ref (cancellable);
 	self->category_hash = g_hash_table_new_full (g_str_hash, g_str_equal,
 						     g_free, (GDestroyNotify) g_object_unref);
@@ -975,6 +1080,8 @@ static void
 gs_overview_page_init (GsOverviewPage *self)
 {
 	g_autofree gchar *tmp_label = NULL;
+
+	g_type_ensure (GS_TYPE_FEATURED_CAROUSEL);
 
 	gtk_widget_init_template (GTK_WIDGET (self));
 
@@ -1073,6 +1180,8 @@ gs_overview_page_class_init (GsOverviewPageClass *klass)
 	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, box_curated);
 	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, box_recent);
 	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, box_deployment_featured);
+	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, box_all_apps);
+	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, heading_all_apps);
 	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, flowbox_categories);
 	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, flowbox_iconless_categories);
 	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, iconless_categories_heading);
@@ -1082,6 +1191,8 @@ gs_overview_page_class_init (GsOverviewPageClass *klass)
 	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, scrolledwindow_overview);
 	gtk_widget_class_bind_template_child (widget_class, GsOverviewPage, stack_overview);
 	gtk_widget_class_bind_template_callback (widget_class, featured_carousel_app_clicked_cb);
+	gtk_widget_class_bind_template_callback (widget_class, category_activated_cb);
+	gtk_widget_class_bind_template_callback (widget_class, app_activated_cb);
 }
 
 GsOverviewPage *

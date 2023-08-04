@@ -247,7 +247,7 @@ perms_from_metadata (GKeyFile *keyfile)
 	char **strv;
 	char *str;
 	GsAppPermissions *permissions = gs_app_permissions_new ();
-	GsAppPermissionsFlags flags = GS_APP_PERMISSIONS_FLAGS_UNKNOWN;
+	GsAppPermissionsFlags flags = GS_APP_PERMISSIONS_FLAGS_NONE;
 
 	strv = g_key_file_get_string_list (keyfile, "Context", "sockets", NULL, NULL);
 	if (strv != NULL && g_strv_contains ((const gchar * const*)strv, "system-bus"))
@@ -425,10 +425,6 @@ perms_from_metadata (GKeyFile *keyfile)
 		g_free (str);
 	}
 
-	/* no permissions set */
-	if (flags == GS_APP_PERMISSIONS_FLAGS_UNKNOWN)
-		flags = GS_APP_PERMISSIONS_FLAGS_NONE;
-
 	gs_app_permissions_set_flags (permissions, flags);
 	gs_app_permissions_seal (permissions);
 
@@ -476,7 +472,9 @@ gs_flatpak_set_update_permissions (GsFlatpak           *self,
 		g_debug ("Failed to get metadata for remote ‘%s’: %s",
 			 gs_app_get_origin (app), error_local->message);
 		g_clear_error (&error_local);
-		gs_app_permissions_set_flags (additional_permissions, GS_APP_PERMISSIONS_FLAGS_UNKNOWN);
+
+		/* Permissions are unknown */
+		g_clear_object (&additional_permissions);
 	} else {
 		g_autoptr(GsAppPermissions) old_permissions = NULL;
 		g_autoptr(GsAppPermissions) new_permissions = NULL;
@@ -512,13 +510,13 @@ gs_flatpak_set_update_permissions (GsFlatpak           *self,
 
 finish:
 	/* no new permissions set */
-	if (gs_app_permissions_get_flags (additional_permissions) == GS_APP_PERMISSIONS_FLAGS_UNKNOWN)
-		gs_app_permissions_set_flags (additional_permissions, GS_APP_PERMISSIONS_FLAGS_NONE);
+	if (additional_permissions != NULL)
+		gs_app_permissions_seal (additional_permissions);
 
-	gs_app_permissions_seal (additional_permissions);
 	gs_app_set_update_permissions (app, additional_permissions);
 
-	if (gs_app_permissions_get_flags (additional_permissions) != GS_APP_PERMISSIONS_FLAGS_NONE)
+	if (additional_permissions != NULL &&
+	    gs_app_permissions_get_flags (additional_permissions) != GS_APP_PERMISSIONS_FLAGS_NONE)
 		gs_app_add_quirk (app, GS_APP_QUIRK_NEW_PERMISSIONS);
 	else
 		gs_app_remove_quirk (app, GS_APP_QUIRK_NEW_PERMISSIONS);
@@ -1867,7 +1865,7 @@ gs_flatpak_update_remote_from_app (GsFlatpak     *self,
 	const gchar *branch;
 	const gchar *title, *homepage, *comment, *description;
 	const gchar *filter;
-	GPtrArray *icons;
+	g_autoptr(GPtrArray) icons = NULL;
 
 	flatpak_remote_set_disabled (xremote, FALSE);
 
@@ -1910,7 +1908,7 @@ gs_flatpak_update_remote_from_app (GsFlatpak     *self,
 	if (description != NULL)
 		flatpak_remote_set_description (xremote, description);
 
-	icons = gs_app_get_icons (app);
+	icons = gs_app_dup_icons (app);
 	for (guint i = 0; icons != NULL && i < icons->len; i++) {
 		GIcon *icon = g_ptr_array_index (icons, i);
 

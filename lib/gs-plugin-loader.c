@@ -769,7 +769,6 @@ gs_plugin_loader_run_results (GsPluginLoaderHelper *helper,
 			switch (gs_plugin_job_get_action (helper->plugin_job)) {
 			case GS_PLUGIN_ACTION_GET_UPDATES:
 			case GS_PLUGIN_ACTION_GET_SOURCES:
-			case GS_PLUGIN_ACTION_GET_UPDATES_HISTORICAL:
 			case GS_PLUGIN_ACTION_GET_LANGPACKS:
 				mask_error = TRUE;
 				break;
@@ -2682,13 +2681,18 @@ gs_plugin_loader_class_init (GsPluginLoaderClass *klass)
 static void
 gs_plugin_loader_allow_updates_recheck (GsPluginLoader *plugin_loader)
 {
+	gboolean changed;
+
 	if (g_settings_get_boolean (plugin_loader->settings, "allow-updates")) {
-		g_hash_table_remove (plugin_loader->disallow_updates, plugin_loader);
+		changed = g_hash_table_remove (plugin_loader->disallow_updates, plugin_loader);
 	} else {
-		g_hash_table_insert (plugin_loader->disallow_updates,
-				     (gpointer) plugin_loader,
-				     (gpointer) "GSettings");
+		changed = g_hash_table_insert (plugin_loader->disallow_updates,
+					       (gpointer) plugin_loader,
+					       (gpointer) "GSettings");
 	}
+
+	if (changed)
+		g_object_notify_by_pspec (G_OBJECT (plugin_loader), obj_props[PROP_ALLOW_UPDATES]);
 }
 
 static void
@@ -3281,7 +3285,7 @@ gs_plugin_loader_process_old_api_job_cb (gpointer task_data,
 
 		for (guint j = 0; j < gs_app_list_length (list); j++) {
 			GsApp *app = gs_app_list_index (list, j);
-			if (gs_app_get_icons (app) == NULL) {
+			if (!gs_app_has_icons (app)) {
 				g_autoptr(GIcon) ic = NULL;
 				const gchar *icon_name;
 				if (gs_app_has_quirk (app, GS_APP_QUIRK_HAS_SOURCE))

@@ -226,10 +226,29 @@ typedef enum
 {
 	/* The code in this file relies on the fact that these enum values
 	 * numerically increase as they get more unsafe. */
+	SAFETY_PRIVILEGED,
 	SAFETY_SAFE,
+	SAFETY_PROBABLY_SAFE,
 	SAFETY_POTENTIALLY_UNSAFE,
 	SAFETY_UNSAFE
 } SafetyRating;
+
+static void
+add_to_safety_rating_full (SafetyRating *chosen_rating,
+                           GPtrArray    *descriptions,
+                           SafetyRating  item_rating,
+                           const gchar  *item_description,
+                           gboolean      can_clear_descriptions)
+{
+	if (item_rating > *chosen_rating) {
+		if (can_clear_descriptions)
+			g_ptr_array_set_size (descriptions, 0);
+		*chosen_rating = item_rating;
+	}
+
+	if (item_rating == *chosen_rating)
+		g_ptr_array_add (descriptions, (gpointer) item_description);
+}
 
 static void
 add_to_safety_rating (SafetyRating *chosen_rating,
@@ -241,13 +260,7 @@ add_to_safety_rating (SafetyRating *chosen_rating,
 	 * this item increases the @chosen_rating. This means the final list of
 	 * @descriptions will only be the items which caused @chosen_rating to
 	 * be so high. */
-	if (item_rating > *chosen_rating) {
-		g_ptr_array_set_size (descriptions, 0);
-		*chosen_rating = item_rating;
-	}
-
-	if (item_rating == *chosen_rating)
-		g_ptr_array_add (descriptions, (gpointer) item_description);
+	add_to_safety_rating_full (chosen_rating, descriptions, item_rating, item_description, TRUE);
 }
 
 static void
@@ -257,7 +270,7 @@ update_safety_tile (GsAppContextBar *self)
 	g_autofree gchar *description = NULL;
 	g_autoptr(GPtrArray) descriptions = g_ptr_array_new_with_free_func (NULL);
 	g_autoptr(GsAppPermissions) permissions = NULL;
-	GsAppPermissionsFlags perm_flags = GS_APP_PERMISSIONS_FLAGS_UNKNOWN;
+	GsAppPermissionsFlags perm_flags = GS_APP_PERMISSIONS_FLAGS_NONE;
 
 	/* Treat everything as safe to begin with, and downgrade its safety
 	 * based on app properties. */
@@ -268,25 +281,29 @@ update_safety_tile (GsAppContextBar *self)
 	permissions = gs_app_dup_permissions (self->app);
 	if (permissions != NULL)
 		perm_flags = gs_app_permissions_get_flags (permissions);
-	for (GsAppPermissionsFlags i = GS_APP_PERMISSIONS_FLAGS_NONE; i < GS_APP_PERMISSIONS_FLAGS_LAST; i <<= 1) {
+
+	if (perm_flags == GS_APP_PERMISSIONS_FLAGS_NONE &&
+	    (permissions != NULL ||
+	    !gs_app_has_quirk (self->app, GS_APP_QUIRK_PROVENANCE))) {
+		add_to_safety_rating (&chosen_rating, descriptions,
+				      SAFETY_SAFE,
+				      /* Translators: This indicates an app requires no permissions to run.
+				       * It’s used in a context tile, so should be short. */
+				      _("No permissions"));
+	}
+
+	for (GsAppPermissionsFlags i = (1 << 0); i < GS_APP_PERMISSIONS_FLAGS_LAST; i <<= 1) {
 		if (!(perm_flags & i))
 			continue;
 
 		switch (i) {
-		case GS_APP_PERMISSIONS_FLAGS_NONE:
-			add_to_safety_rating (&chosen_rating, descriptions,
-					      SAFETY_SAFE,
-					      /* Translators: This indicates an app requires no permissions to run.
-					       * It’s used in a context tile, so should be short. */
-					      _("No permissions"));
-			break;
 		case GS_APP_PERMISSIONS_FLAGS_NETWORK:
 			add_to_safety_rating (&chosen_rating, descriptions,
 					      /* This isn’t actually safe (network access can expand a local
 					       * vulnerability into a remotely exploitable one), but it’s
 					       * needed commonly enough that marking it as
 					       * %SAFETY_POTENTIALLY_UNSAFE is too noisy. */
-					      SAFETY_SAFE,
+					      SAFETY_PROBABLY_SAFE,
 					      /* Translators: This indicates an app uses the network.
 					       * It’s used in a context tile, so should be short. */
 					      _("Has network access"));
@@ -300,7 +317,7 @@ update_safety_tile (GsAppContextBar *self)
 			break;
 		case GS_APP_PERMISSIONS_FLAGS_SESSION_BUS:
 			add_to_safety_rating (&chosen_rating, descriptions,
-					      SAFETY_UNSAFE,
+					      SAFETY_POTENTIALLY_UNSAFE,
 					      /* Translators: This indicates an app uses D-Bus session services.
 					       * It’s used in a context tile, so should be short. */
 					      _("Uses session services"));
@@ -326,7 +343,7 @@ update_safety_tile (GsAppContextBar *self)
 				break;
 
 			add_to_safety_rating (&chosen_rating, descriptions,
-					      SAFETY_UNSAFE,
+					      SAFETY_POTENTIALLY_UNSAFE,
 					      /* Translators: This indicates an app can read/write to the user’s home or the entire filesystem.
 					       * It’s used in a context tile, so should be short. */
 					      _("Can read/write all your data"));
@@ -338,7 +355,7 @@ update_safety_tile (GsAppContextBar *self)
 				break;
 
 			add_to_safety_rating (&chosen_rating, descriptions,
-					      SAFETY_UNSAFE,
+					      SAFETY_POTENTIALLY_UNSAFE,
 					      /* Translators: This indicates an app can read (but not write) from the user’s home or the entire filesystem.
 					       * It’s used in a context tile, so should be short. */
 					      _("Can read all your data"));
@@ -362,7 +379,7 @@ update_safety_tile (GsAppContextBar *self)
 					      SAFETY_POTENTIALLY_UNSAFE,
 					      /* Translators: This indicates an app can access data in the system unknown to the Software.
 					       * It’s used in a context tile, so should be short. */
-					      _("Can access arbitrary files"));
+					      _("Can access some specific files"));
 			break;
 		case GS_APP_PERMISSIONS_FLAGS_SETTINGS:
 			add_to_safety_rating (&chosen_rating, descriptions,
@@ -373,14 +390,14 @@ update_safety_tile (GsAppContextBar *self)
 			break;
 		case GS_APP_PERMISSIONS_FLAGS_X11:
 			add_to_safety_rating (&chosen_rating, descriptions,
-					      SAFETY_UNSAFE,
+					      SAFETY_POTENTIALLY_UNSAFE,
 					      /* Translators: This indicates an app uses the X11 windowing system.
 					       * It’s used in a context tile, so should be short. */
 					      _("Uses a legacy windowing system"));
 			break;
 		case GS_APP_PERMISSIONS_FLAGS_ESCAPE_SANDBOX:
 			add_to_safety_rating (&chosen_rating, descriptions,
-					      SAFETY_UNSAFE,
+					      SAFETY_POTENTIALLY_UNSAFE,
 					      /* Translators: This indicates an app can escape its sandbox.
 					       * It’s used in a context tile, so should be short. */
 					      _("Can acquire arbitrary permissions"));
@@ -390,52 +407,6 @@ update_safety_tile (GsAppContextBar *self)
 		}
 	}
 
-	/* Unknown permissions typically come from non-sandboxed packaging
-	 * systems like RPM or DEB. Telling the user the software has unknown
-	 * permissions is unhelpful; it’s more relevant to say it’s not
-	 * sandboxed but is (or is not) packaged by a trusted vendor. They will
-	 * have (at least) done some basic checks to make sure the software is
-	 * not overtly malware. That doesn’t protect the user from exploitable
-	 * bugs in the software, but it does mean they’re not accidentally
-	 * installing something which is actively malicious.
-	 *
-	 * FIXME: We could do better by potentially adding a ‘trusted’ state
-	 * to indicate that something is probably safe, but isn’t sandboxed.
-	 * See https://gitlab.gnome.org/GNOME/gnome-software/-/issues/1451 */
-	if (perm_flags == GS_APP_PERMISSIONS_FLAGS_UNKNOWN &&
-	    gs_app_has_quirk (self->app, GS_APP_QUIRK_PROVENANCE))
-		add_to_safety_rating (&chosen_rating, descriptions,
-				      SAFETY_SAFE,
-				      /* Translators: This indicates that an app has been packaged
-				       * by the user’s distribution and is safe.
-				       * It’s used in a context tile, so should be short. */
-				      _("Reviewed by your distribution"));
-	else if (perm_flags == GS_APP_PERMISSIONS_FLAGS_UNKNOWN)
-		add_to_safety_rating (&chosen_rating, descriptions,
-				      SAFETY_POTENTIALLY_UNSAFE,
-				      /* Translators: This indicates that an app has been packaged
-				       * by someone other than the user’s distribution, so might not be safe.
-				       * It’s used in a context tile, so should be short. */
-				      _("Provided by a third party"));
-
-	/* Is the code FOSS and hence inspectable? This doesn’t distinguish
-	 * between closed source and open-source-but-not-FOSS software, even
-	 * though the code of the latter is technically publicly auditable. This
-	 * is because I don’t want to get into the business of maintaining lists
-	 * of ‘auditable’ source code licenses. */
-	if (!gs_app_get_license_is_free (self->app))
-		add_to_safety_rating (&chosen_rating, descriptions,
-				      SAFETY_POTENTIALLY_UNSAFE,
-				      /* Translators: This indicates an app is not licensed under a free software license.
-				       * It’s used in a context tile, so should be short. */
-				      _("Proprietary code"));
-	else
-		add_to_safety_rating (&chosen_rating, descriptions,
-				      SAFETY_SAFE,
-				      /* Translators: This indicates an app’s source code is freely available, so can be audited for security.
-				       * It’s used in a context tile, so should be short. */
-				      _("Auditable code"));
-
 	if (gs_app_has_quirk (self->app, GS_APP_QUIRK_DEVELOPER_VERIFIED))
 		add_to_safety_rating (&chosen_rating, descriptions,
 				      SAFETY_SAFE,
@@ -443,14 +414,83 @@ update_safety_tile (GsAppContextBar *self)
 				       * It’s used in a context tile, so should be short. */
 				      _("Software developer is verified"));
 
+	/* Unknown permissions (`permissions == NULL`) typically come from non-sandboxed packaging
+	 * systems like RPM or DEB. Telling the user the software has unknown
+	 * permissions is unhelpful; it’s more relevant to say it’s not
+	 * sandboxed but is (or is not) packaged by a trusted vendor. They will
+	 * have (at least) done some basic checks to make sure the software is
+	 * not overtly malware. That doesn’t protect the user from exploitable
+	 * bugs in the software, but it does mean they’re not accidentally
+	 * installing something which is actively malicious. */
+	if (permissions == NULL &&
+	    gs_app_has_quirk (self->app, GS_APP_QUIRK_PROVENANCE)) {
+		/* It's a new key suggested at https://github.com/systemd/systemd/issues/27777 */
+		g_autofree gchar *name = g_get_os_info ("VENDOR_NAME");
+		g_autofree gchar *reviewed_by = NULL;
+		if (name == NULL) {
+			/* Translators: This indicates that an app has been packaged
+			 * by the user’s distribution and is probably safe.
+			 * It’s used in a context tile, so should be short. */
+			reviewed_by = g_strdup (_("Reviewed by OS distributor"));
+		} else {
+			/* Translators: This indicates that an app has been packaged
+			 * by the user’s distribution and is probably safe.
+			 * It’s used in a context tile, so should be short.
+			 * The '%s' is replaced by the distribution name. */
+			reviewed_by = g_strdup_printf (_("Reviewed by %s"), name);
+		}
+
+		/* Show as 'probably safe' when the app is considered safe until now and it's provided by the distribution */
+		if (chosen_rating == SAFETY_SAFE)
+			chosen_rating = SAFETY_PRIVILEGED;
+
+		add_to_safety_rating (&chosen_rating, descriptions,
+				      SAFETY_PRIVILEGED,
+				      reviewed_by);
+	} else if (permissions == NULL) {
+		add_to_safety_rating (&chosen_rating, descriptions,
+				      SAFETY_POTENTIALLY_UNSAFE,
+				      /* Translators: This indicates that an app has been packaged
+				       * by someone other than the user’s distribution, so might not be safe.
+				       * It’s used in a context tile, so should be short. */
+				      _("Provided by a third party"));
+	}
+
 	if (gs_app_get_metadata_item (self->app, "GnomeSoftware::EolReason") != NULL || (
 	    gs_app_get_runtime (self->app) != NULL &&
 	    gs_app_get_metadata_item (gs_app_get_runtime (self->app), "GnomeSoftware::EolReason") != NULL))
 		add_to_safety_rating (&chosen_rating, descriptions,
-				      SAFETY_UNSAFE,
+				      SAFETY_POTENTIALLY_UNSAFE,
 				      /* Translators: This indicates an app or its runtime reached its end of life.
 				       * It’s used in a context tile, so should be short. */
 				      _("Software no longer supported"));
+
+	/* Is the code FOSS and hence inspectable? This doesn’t distinguish
+	 * between closed source and open-source-but-not-FOSS software, even
+	 * though the code of the latter is technically publicly auditable. This
+	 * is because I don’t want to get into the business of maintaining lists
+	 * of ‘auditable’ source code licenses. */
+	if (gs_app_get_license_is_free (self->app)) {
+		add_to_safety_rating (&chosen_rating, descriptions,
+				      SAFETY_SAFE,
+				      /* Translators: This indicates an app’s source code is freely available, so can be audited for security.
+				       * It’s used in a context tile, so should be short. */
+				      _("Auditable code"));
+	} else {
+		SafetyRating use_rating = SAFETY_PROBABLY_SAFE;
+
+		/* Proprietary apps are one level worse (less safe) than whichever rating
+		   had been determined from the provided permissions. */
+		if (chosen_rating < SAFETY_UNSAFE && chosen_rating >= use_rating)
+			use_rating = chosen_rating + 1;
+
+		add_to_safety_rating_full (&chosen_rating, descriptions,
+					   use_rating,
+					   /* Translators: This indicates an app is not licensed under a free software license.
+					    * It’s used in a context tile, so should be short. */
+					   _("Proprietary code"),
+					   FALSE);
+	}
 
 	g_assert (descriptions->len > 0);
 
@@ -466,6 +506,13 @@ update_safety_tile (GsAppContextBar *self)
 
 	/* Update the UI. */
 	switch (chosen_rating) {
+	case SAFETY_PRIVILEGED:
+		icon_name = "safety-symbolic";
+		/* Translators: The app is considered privileged, aka provided by the distribution.
+		 * This is displayed in a context tile, so the string should be short. */
+		title = _("Privileged");
+		css_class = "grey";
+		break;
 	case SAFETY_SAFE:
 		icon_name = "safety-symbolic";
 		/* Translators: The app is considered safe to install and run.
@@ -473,12 +520,19 @@ update_safety_tile (GsAppContextBar *self)
 		title = _("Safe");
 		css_class = "green";
 		break;
+	case SAFETY_PROBABLY_SAFE:
+		icon_name = "safety-symbolic";
+		/* Translators: The app is considered probably safe to install and run.
+		 * This is displayed in a context tile, so the string should be short. */
+		title = _("Probably Safe");
+		css_class = "yellow";
+		break;
 	case SAFETY_POTENTIALLY_UNSAFE:
 		icon_name = "dialog-question-symbolic";
 		/* Translators: The app is considered potentially unsafe to install and run.
 		 * This is displayed in a context tile, so the string should be short. */
 		title = _("Potentially Unsafe");
-		css_class = "yellow";
+		css_class = "orange";
 		break;
 	case SAFETY_UNSAFE:
 		icon_name = "dialog-warning-symbolic";
@@ -496,7 +550,9 @@ update_safety_tile (GsAppContextBar *self)
 	gtk_label_set_text (self->tiles[SAFETY_TILE].description, description);
 
 	gtk_widget_remove_css_class (self->tiles[SAFETY_TILE].lozenge, "green");
+	gtk_widget_remove_css_class (self->tiles[SAFETY_TILE].lozenge, "grey");
 	gtk_widget_remove_css_class (self->tiles[SAFETY_TILE].lozenge, "yellow");
+	gtk_widget_remove_css_class (self->tiles[SAFETY_TILE].lozenge, "orange");
 	gtk_widget_remove_css_class (self->tiles[SAFETY_TILE].lozenge, "red");
 
 	gtk_widget_add_css_class (self->tiles[SAFETY_TILE].lozenge, css_class);
@@ -677,6 +733,7 @@ update_hardware_support_tile (GsAppContextBar *self)
 	gtk_label_set_text (self->tiles[HARDWARE_SUPPORT_TILE].description, description);
 
 	gtk_widget_remove_css_class (self->tiles[HARDWARE_SUPPORT_TILE].lozenge, "green");
+	gtk_widget_remove_css_class (self->tiles[HARDWARE_SUPPORT_TILE].lozenge, "grey");
 	gtk_widget_remove_css_class (self->tiles[HARDWARE_SUPPORT_TILE].lozenge, "yellow");
 	gtk_widget_remove_css_class (self->tiles[HARDWARE_SUPPORT_TILE].lozenge, "red");
 
@@ -813,6 +870,8 @@ tile_clicked_cb (GtkWidget *widget,
 static void
 gs_app_context_bar_init (GsAppContextBar *self)
 {
+	g_type_ensure (GS_TYPE_LOZENGE);
+
 	gtk_widget_init_template (GTK_WIDGET (self));
 }
 
