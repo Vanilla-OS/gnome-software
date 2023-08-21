@@ -55,7 +55,6 @@ Depends: appstream,
          gsettings-desktop-schemas (>= 3.18),
          libgtk3-perl,
          packagekit (>= 1.2.5),
-         software-properties-gtk,
          ${misc:Depends},
          ${shlibs:Depends}
 Conflicts: sessioninstaller

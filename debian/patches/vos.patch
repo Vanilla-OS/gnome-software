@@ -1,0 +1,722 @@
+Description: random-changes
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ gnome-software (45~beta-1) unstable; urgency=medium
+ .
+   * New upstream release
+   * debian/control.in: Bump minimum GTK4 to 4.10.0
+   * Add patch to keep using software-properties-gtk
+     for the Software Repositories dialog
+Author: Jeremy Bícha <jbicha@ubuntu.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout https://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: (upstream|backport|vendor|other), (<patch-url>|commit:<commit-id>)
+Bug: <upstream-bugtracker-url>
+Bug-Debian: https://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: (no|not-needed|<patch-forwarded-url>)
+Applied-Upstream: <version>, (<commit-url>|commit:<commid-id>)
+Reviewed-By: <name and email of someone who approved/reviewed the patch>
+Last-Update: 2023-08-21
+
+--- /dev/null
++++ gnome-software-45~beta/subprojects/gnome-pwa-list/README.md
+@@ -0,0 +1,61 @@
++# GNOME PWA list
++
++This repository is a place to maintain a list of Progressive Web Apps that are
++suitable for inclusion with GNOME Software. The goals of this initiative are:
++
++1. To facilitate the discovery of useful apps by pre-populating a list of web
++   apps in GNOME Software
++2. To enable users to take advantage of the powerful features of PWAs, such as
++   offline functionality and desktop integration
++3. To make the GNOME platform competitive with other platforms which already
++   make PWAs first-class citizens
++
++There is more context available in the discussion on [this issue](https://gitlab.gnome.org/GNOME/gnome-software/-/issues/1575).
++
++## Criteria for inclusion
++
++To be eligible for inclusion, PWAs must:
++
++- either be released under an open source license (see below) or appear in the
++  popular apps category [here](https://www.findpwa.com/list/top-apps) or [here](https://appsco.pe/toplist)
++- be served over HTTPS
++- include a [web app manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest) with an
++  icon, name, and a `display` value of `fullscreen`, `standalone`, or
++  `minimal-ui`. The app having an Install button in Chrome means the app meets
++  and exceeds these criteria.
++- be fully functional in GNOME Web
++- not duplicate a native (non-Electron) app available for GNOME
++
++## Process for adding to the list
++
++1. Determine that the app meets all the criteria above.
++2. Gather the information for each of the columns listed below.
++2. If the license is [FSF-approved or OSI-approved](https://spdx.org/licenses/),
++   the app will go in `gnome-pwa-list-foss.csv`, otherwise `gnome-pwa-list-proprietary.csv`.
++4. Add a new line in the format "URL,license,categories,content-rating,adaptive,custom-summary" to
++   either CSV file as appropriate.
++5. Re-build the AppStream xml; see below.
++6. Open a merge request [here](https://gitlab.gnome.org/mwleeds/gnome-pwa-list/-/merge_requests).
++
++| Column  | Example value | Accepted values |
++|---------|---------------|-----------------|
++| URL     | https://app.diagrams.net/ | the starting URL of the app |
++| license | Apache-2.0 | the license(s) of the client side software in a format conforming to the AppStream [spec](https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-project_license) |
++| categories | Graphics;Office | one or more main or additional categories as defined [here](https://specifications.freedesktop.org/menu-spec/latest/apa.html) |
++| content-rating | social-info=intense;social-audio=moderate | a set of key-value pairs which are OARS 1.1 attributes and values; see [here](https://hughsie.github.io/oars/generate.html). "social-info=none" is appropriate if the service does not even store IP addresses |
++| adaptive | adaptive | either "adaptive" or "not-adaptive" depending on whether mobile devices are supported |
++| custom-summary | "Telegram web app based on the open API" | a one-sentence summary to use instead of the one in the manifest, or an empty string |
++
++## Re-generating AppStream xml
++
++The script `pwa-metainfo-generator.py` can take the CSV files mentioned above
++and generate AppStream metainfo for them, which enables software centers to
++display them with rich metadata such as screenshots.
++
++1. Install the `requests` and `bs4` python3 modules using pip3 or your package manager
++2. To regenerate the FOSS xml: `python3 pwa-metainfo-generator.py gnome-pwa-list-foss.xml`
++3. To regenerate the proprietary xml: `python3 pwa-metainfo-generator.py gnome-pwa-list-proprietary.xml`
++4. You can check the validity using e.g. `appstreamcli validate
++   gnome-pwa-list-foss.xml`. It will complain about missing descriptions but
++   GNOME Software handles those gracefully.
++
+--- /dev/null
++++ gnome-software-45~beta/subprojects/gnome-pwa-list/gnome-pwa-list-foss.csv
+@@ -0,0 +1,10 @@
++https://app.diagrams.net/,Apache-2.0,Graphics;Office;FlowChart,social-info=mild,adaptive,
++https://pinafore.social/,AGPL-3.0-only,Chat,social-audio=intense;social-info=none,adaptive,
++https://snapdrop.net/,GPL-3.0-only,FileTransfer;Utility,social-info=mild,adaptive,"Local network file sharing in your browser"
++https://stackedit.io/app,Apache-2.0,TextEditor;Utility,social-info=mild,adaptive,
++https://squoosh.app/,Apache-2.0,FileTools;Utility;ImageProcessing,social-info=moderate,adaptive,
++https://excalidraw.com/,MIT,Office;Education,social-info=moderate,adaptive,
++https://discourse.gnome.org/,GPL-2.0-or-later,Chat,social-info=moderate;social-audio=moderate;social-contacts=intense,adaptive,
++https://discourse.flathub.org/,GPL-2.0-or-later,Chat,social-info=moderate;social-audio=moderate;social-contacts=intense,adaptive,
++https://devdocs.io/,MPL-2.0,Documentation;Development,social-info=moderate,adaptive,
++https://web.telegram.org/,GPL-3.0-only,Chat,social-info=mild,adaptive,"Telegram web app based on the MTProto protocol and Telegram's open API"
+--- /dev/null
++++ gnome-software-45~beta/subprojects/gnome-pwa-list/gnome-pwa-list-foss.xml
+@@ -0,0 +1,310 @@
++<?xml version='1.0' encoding='utf-8'?>
++<components version="0.15">
++  <component type="web-application">
++    <launchable type="url">https://app.diagrams.net/</launchable>
++    <url type="homepage">https://app.diagrams.net/</url>
++    <project_license>Apache-2.0</project_license>
++    <metadata_license>FSFAP</metadata_license>
++    <name>Diagrams</name>
++    <id>org.gnome.Software.WebApp_527a2dd6729c3574227c145bbc447997f0048537.desktop</id>
++    <icon type="remote" width="512" height="512">https://app.diagrams.net/images/android-chrome-512x512.png</icon>
++    <categories>
++      <category>Graphics</category>
++      <category>Office</category>
++      <category>FlowChart</category>
++    </categories>
++    <content_rating type="oars-1.1">
++      <content_attribute id="social-info">mild</content_attribute>
++    </content_rating>
++    <recommends>
++      <control>pointing</control>
++      <control>keyboard</control>
++      <control>touch</control>
++      <display_length compare="ge">small</display_length>
++    </recommends>
++    <summary>diagrams.net is a completely free diagram editor</summary>
++  </component>
++  <component type="web-application">
++    <launchable type="url">https://pinafore.social/</launchable>
++    <url type="homepage">https://pinafore.social/</url>
++    <project_license>AGPL-3.0-only</project_license>
++    <metadata_license>FSFAP</metadata_license>
++    <name>Pinafore</name>
++    <id>org.gnome.Software.WebApp_e636aa5f2069f6e9c02deccc7b65f43da7985e32.desktop</id>
++    <icon type="remote" width="48" height="48">https://pinafore.social/icon-48.png</icon>
++    <icon type="remote" width="72" height="72">https://pinafore.social/icon-72.png</icon>
++    <icon type="remote" width="96" height="96">https://pinafore.social/icon-96.png</icon>
++    <icon type="remote" width="144" height="144">https://pinafore.social/icon-144.png</icon>
++    <icon type="remote" width="192" height="192">https://pinafore.social/icon-192.png</icon>
++    <icon type="remote" width="512" height="512">https://pinafore.social/icon-512.png</icon>
++    <icon type="remote" width="44" height="44">https://pinafore.social/icon-44.png</icon>
++    <icon type="remote" width="50" height="50">https://pinafore.social/icon-50.png</icon>
++    <icon type="remote" width="150" height="150">https://pinafore.social/icon-150.png</icon>
++    <screenshots>
++      <screenshot type="default">
++        <image width="540" height="720">https://pinafore.social/screenshot-540-720-1.png</image>
++      </screenshot>
++      <screenshot type="default">
++        <image width="540" height="720">https://pinafore.social/screenshot-540-720-2.png</image>
++      </screenshot>
++      <screenshot type="default">
++        <image width="540" height="720">https://pinafore.social/screenshot-540-720-3.png</image>
++      </screenshot>
++    </screenshots>
++    <categories>
++      <category>Chat</category>
++    </categories>
++    <content_rating type="oars-1.1">
++      <content_attribute id="social-audio">intense</content_attribute>
++      <content_attribute id="social-info">none</content_attribute>
++    </content_rating>
++    <recommends>
++      <control>pointing</control>
++      <control>keyboard</control>
++      <control>touch</control>
++      <display_length compare="ge">small</display_length>
++    </recommends>
++    <summary>An alternative web client for Mastodon, focused on speed and simplicity</summary>
++  </component>
++  <component type="web-application">
++    <launchable type="url">https://snapdrop.net/</launchable>
++    <url type="homepage">https://snapdrop.net/</url>
++    <project_license>GPL-3.0-only</project_license>
++    <metadata_license>FSFAP</metadata_license>
++    <name>Snapdrop</name>
++    <id>org.gnome.Software.WebApp_4dda9043da5b2d2aa57c6064c907c1ae3fe58941.desktop</id>
++    <icon type="remote" width="192" height="192">https://snapdrop.net/images/android-chrome-192x192.png</icon>
++    <icon type="remote" width="512" height="512">https://snapdrop.net/images/android-chrome-512x512.png</icon>
++    <icon type="remote" width="96" height="96">https://snapdrop.net/images/favicon-96x96.png</icon>
++    <categories>
++      <category>FileTransfer</category>
++      <category>Utility</category>
++    </categories>
++    <content_rating type="oars-1.1">
++      <content_attribute id="social-info">mild</content_attribute>
++    </content_rating>
++    <recommends>
++      <control>pointing</control>
++      <control>keyboard</control>
++      <control>touch</control>
++      <display_length compare="ge">small</display_length>
++    </recommends>
++    <summary>Local network file sharing in your browser</summary>
++  </component>
++  <component type="web-application">
++    <launchable type="url">https://stackedit.io/app</launchable>
++    <url type="homepage">https://stackedit.io/app</url>
++    <project_license>Apache-2.0</project_license>
++    <metadata_license>FSFAP</metadata_license>
++    <name>StackEdit</name>
++    <id>org.gnome.Software.WebApp_e7aada0261449b5239c5c458c48fe92717950d1a.desktop</id>
++    <icon type="remote" width="512" height="512">https://stackedit.io/icon_512x512.bc1452c3b77b59eb0d8c449de1c77310.png</icon>
++    <icon type="remote" width="384" height="384">https://stackedit.io/icon_384x384.3f55b77300c8b37b4aa380c8460ee0a2.png</icon>
++    <icon type="remote" width="256" height="256">https://stackedit.io/icon_256x256.f406288343ae34c5c7bd1543700c2ac0.png</icon>
++    <icon type="remote" width="192" height="192">https://stackedit.io/icon_192x192.eec0feaecc5bef1a499b3de11bde6b27.png</icon>
++    <icon type="remote" width="128" height="128">https://stackedit.io/icon_128x128.43ad56ce3535a3ffe333a76a05c13267.png</icon>
++    <icon type="remote" width="96" height="96">https://stackedit.io/icon_96x96.1d93fc90dc62ceec6c921786ddab3f69.png</icon>
++    <categories>
++      <category>TextEditor</category>
++      <category>Utility</category>
++    </categories>
++    <content_rating type="oars-1.1">
++      <content_attribute id="social-info">mild</content_attribute>
++    </content_rating>
++    <recommends>
++      <control>pointing</control>
++      <control>keyboard</control>
++      <control>touch</control>
++      <display_length compare="ge">small</display_length>
++    </recommends>
++    <summary>Full-featured, open-source Markdown editor</summary>
++  </component>
++  <component type="web-application">
++    <launchable type="url">https://squoosh.app/</launchable>
++    <url type="homepage">https://squoosh.app/</url>
++    <project_license>Apache-2.0</project_license>
++    <metadata_license>FSFAP</metadata_license>
++    <name>Squoosh</name>
++    <id>org.gnome.Software.WebApp_e41134be0ce95da0832878faa90cf3473b1b52d7.desktop</id>
++    <icon type="remote" width="1024" height="1024">https://squoosh.app/c/icon-large-cb438cac.png</icon>
++    <screenshots>
++      <screenshot type="default">
++        <image width="540" height="720">https://squoosh.app/c/screenshot1-0ff68546.png</image>
++      </screenshot>
++      <screenshot type="default">
++        <image width="540" height="720">https://squoosh.app/c/screenshot2-1f78c4db.jpg</image>
++      </screenshot>
++      <screenshot type="default">
++        <image width="540" height="720">https://squoosh.app/c/screenshot3-c1e02216.jpg</image>
++      </screenshot>
++    </screenshots>
++    <categories>
++      <category>FileTools</category>
++      <category>Utility</category>
++      <category>ImageProcessing</category>
++      <category>Photography</category>
++      <category>Office</category>
++    </categories>
++    <content_rating type="oars-1.1">
++      <content_attribute id="social-info">moderate</content_attribute>
++    </content_rating>
++    <recommends>
++      <control>pointing</control>
++      <control>keyboard</control>
++      <control>touch</control>
++      <display_length compare="ge">small</display_length>
++    </recommends>
++    <summary>Compress and compare images with different codecs, right in your browser</summary>
++  </component>
++  <component type="web-application">
++    <launchable type="url">https://excalidraw.com/</launchable>
++    <url type="homepage">https://excalidraw.com/</url>
++    <project_license>MIT</project_license>
++    <metadata_license>FSFAP</metadata_license>
++    <name>Excalidraw</name>
++    <id>org.gnome.Software.WebApp_ea52ad18346faac27072cd1654243dfb7c70ef14.desktop</id>
++    <icon type="remote" width="180" height="180">https://excalidraw.com/logo-180x180.png</icon>
++    <icon type="remote" width="256" height="256">https://excalidraw.com/apple-touch-icon.png</icon>
++    <screenshots>
++      <screenshot type="default">
++        <image width="462" height="945">https://excalidraw.com/screenshots/virtual-whiteboard.png</image>
++      </screenshot>
++      <screenshot type="default">
++        <image width="462" height="945">https://excalidraw.com/screenshots/wireframe.png</image>
++      </screenshot>
++      <screenshot type="default">
++        <image width="462" height="945">https://excalidraw.com/screenshots/illustration.png</image>
++      </screenshot>
++      <screenshot type="default">
++        <image width="462" height="945">https://excalidraw.com/screenshots/shapes.png</image>
++      </screenshot>
++      <screenshot type="default">
++        <image width="462" height="945">https://excalidraw.com/screenshots/collaboration.png</image>
++      </screenshot>
++      <screenshot type="default">
++        <image width="462" height="945">https://excalidraw.com/screenshots/export.png</image>
++      </screenshot>
++    </screenshots>
++    <categories>
++      <category>Office</category>
++      <category>Education</category>
++    </categories>
++    <content_rating type="oars-1.1">
++      <content_attribute id="social-info">moderate</content_attribute>
++    </content_rating>
++    <recommends>
++      <control>pointing</control>
++      <control>keyboard</control>
++      <control>touch</control>
++      <display_length compare="ge">small</display_length>
++    </recommends>
++    <summary>Excalidraw is a whiteboard tool that lets you easily sketch diagrams that have a hand-drawn feel to them</summary>
++  </component>
++  <component type="web-application">
++    <launchable type="url">https://discourse.gnome.org/</launchable>
++    <url type="homepage">https://discourse.gnome.org/</url>
++    <project_license>GPL-2.0-or-later</project_license>
++    <metadata_license>FSFAP</metadata_license>
++    <name>GNOME</name>
++    <id>org.gnome.Software.WebApp_dd7b0c5ff0c21c2984f8fc1a05d01c33aee4fe9d.desktop</id>
++    <icon type="remote" width="512" height="512">https://discourse.gnome.org/uploads/default/optimized/1X/d7f8fbabd4cd13f5fdbf7c73bd203723a2ef36ea_2_512x512.png</icon>
++    <categories>
++      <category>Chat</category>
++    </categories>
++    <content_rating type="oars-1.1">
++      <content_attribute id="social-info">moderate</content_attribute>
++      <content_attribute id="social-audio">moderate</content_attribute>
++      <content_attribute id="social-contacts">intense</content_attribute>
++    </content_rating>
++    <recommends>
++      <control>pointing</control>
++      <control>keyboard</control>
++      <control>touch</control>
++      <display_length compare="ge">small</display_length>
++    </recommends>
++    <summary>GNOME Project and Community related discussions</summary>
++  </component>
++  <component type="web-application">
++    <launchable type="url">https://discourse.flathub.org/</launchable>
++    <url type="homepage">https://discourse.flathub.org/</url>
++    <project_license>GPL-2.0-or-later</project_license>
++    <metadata_license>FSFAP</metadata_license>
++    <name>Flathub</name>
++    <id>org.gnome.Software.WebApp_02310f2fd700a63d17ecc2d4b261f6956d8a0193.desktop</id>
++    <icon type="remote" width="512" height="512">https://discourse-flathub-org-uploads.s3.dualstack.us-east-1.amazonaws.com/optimized/1X/be4563846333bda6607c6c3c5b226dff9d213866_2_512x512.png</icon>
++    <categories>
++      <category>Chat</category>
++    </categories>
++    <content_rating type="oars-1.1">
++      <content_attribute id="social-info">moderate</content_attribute>
++      <content_attribute id="social-audio">moderate</content_attribute>
++      <content_attribute id="social-contacts">intense</content_attribute>
++    </content_rating>
++    <recommends>
++      <control>pointing</control>
++      <control>keyboard</control>
++      <control>touch</control>
++      <display_length compare="ge">small</display_length>
++    </recommends>
++    <summary>A place for Flathub Contributors and Users</summary>
++  </component>
++  <component type="web-application">
++    <launchable type="url">https://devdocs.io/</launchable>
++    <url type="homepage">https://devdocs.io/</url>
++    <project_license>MPL-2.0</project_license>
++    <metadata_license>FSFAP</metadata_license>
++    <name>DevDocs</name>
++    <id>org.gnome.Software.WebApp_962f69328d6450369f25a6fdb6bbd1764d11a3c8.desktop</id>
++    <icon type="remote" width="32" height="32">https://devdocs.io/images/webapp-icon-32.png</icon>
++    <icon type="remote" width="60" height="60">https://devdocs.io/images/webapp-icon-60.png</icon>
++    <icon type="remote" width="80" height="80">https://devdocs.io/images/webapp-icon-80.png</icon>
++    <icon type="remote" width="128" height="128">https://devdocs.io/images/webapp-icon-128.png</icon>
++    <icon type="remote" width="192" height="192">https://devdocs.io/images/webapp-icon-192.png</icon>
++    <icon type="remote" width="256" height="256">https://devdocs.io/images/webapp-icon-256.png</icon>
++    <icon type="remote" width="512" height="512">https://devdocs.io/images/webapp-icon-512.png</icon>
++    <categories>
++      <category>Documentation</category>
++      <category>Development</category>
++    </categories>
++    <content_rating type="oars-1.1">
++      <content_attribute id="social-info">moderate</content_attribute>
++    </content_rating>
++    <recommends>
++      <control>pointing</control>
++      <control>keyboard</control>
++      <control>touch</control>
++      <display_length compare="ge">small</display_length>
++    </recommends>
++    <summary>API Documentation Browser</summary>
++  </component>
++  <component type="web-application">
++    <launchable type="url">https://web.telegram.org/</launchable>
++    <url type="homepage">https://web.telegram.org/</url>
++    <project_license>GPL-3.0-only</project_license>
++    <metadata_license>FSFAP</metadata_license>
++    <name>Telegram</name>
++    <id>org.gnome.Software.WebApp_78977f7aec98d1c072a768b6a366b8d99cde8df4.desktop</id>
++    <icon type="remote" width="16" height="16">https://web.telegram.org/img/icons/icon16.png</icon>
++    <icon type="remote" width="32" height="32">https://web.telegram.org/img/icons/icon32.png</icon>
++    <icon type="remote" width="60" height="60">https://web.telegram.org/img/icons/icon60.png</icon>
++    <icon type="remote" width="64" height="64">https://web.telegram.org/img/icons/icon64.png</icon>
++    <icon type="remote" width="90" height="90">https://web.telegram.org/img/icons/icon90.png</icon>
++    <icon type="remote" width="128" height="128">https://web.telegram.org/img/icons/icon128.png</icon>
++    <icon type="remote" width="192" height="192">https://web.telegram.org/img/icons/icon192.png</icon>
++    <icon type="remote" width="512" height="512">https://web.telegram.org/img/icons/icon512.png</icon>
++    <icon type="remote" width="513" height="513">https://web.telegram.org/img/icons/icon.svg</icon>
++    <categories>
++      <category>Chat</category>
++    </categories>
++    <content_rating type="oars-1.1">
++      <content_attribute id="social-info">mild</content_attribute>
++    </content_rating>
++    <recommends>
++      <control>pointing</control>
++      <control>keyboard</control>
++      <control>touch</control>
++      <display_length compare="ge">small</display_length>
++    </recommends>
++    <summary>Telegram web app based on the MTProto protocol and Telegram's open API</summary>
++  </component>
++</components>
+--- /dev/null
++++ gnome-software-45~beta/subprojects/gnome-pwa-list/gnome-pwa-list-proprietary.csv
+@@ -0,0 +1,2 @@
++https://twitter.com/,LicenseRef-proprietary,Chat,social-info=intense;social-audio=moderate,adaptive,
++https://www.photopea.com/,LicenseRef-proprietary,Photography;ImageProcessing,social-info=intense,not-adaptive,"Photopea is an advanced photo editor supporting PSD, XCF, Sketch, XD, and CDR formats"
+--- /dev/null
++++ gnome-software-45~beta/subprojects/gnome-pwa-list/gnome-pwa-list-proprietary.xml
+@@ -0,0 +1,62 @@
++<?xml version='1.0' encoding='utf-8'?>
++<components version="0.15">
++  <component type="web-application">
++    <launchable type="url">https://twitter.com/</launchable>
++    <url type="homepage">https://twitter.com/</url>
++    <project_license>LicenseRef-proprietary</project_license>
++    <metadata_license>FSFAP</metadata_license>
++    <name>Twitter</name>
++    <id>org.gnome.Software.WebApp_5ea0d5a0681e425022d889f3e355de2f19f92070.desktop</id>
++    <icon type="remote" width="192" height="192">https://abs.twimg.com/responsive-web/client-web-legacy/icon-default.ee534d85.png</icon>
++    <icon type="remote" width="512" height="512">https://abs.twimg.com/responsive-web/client-web-legacy/icon-default-large.8e027b65.png</icon>
++    <screenshots>
++      <screenshot type="default">
++        <image width="586" height="1041">https://abs.twimg.com/responsive-web/client-web-legacy/twitter-lite-data-saver-marketing.68059865.png</image>
++      </screenshot>
++      <screenshot type="default">
++        <image width="586" height="1041">https://abs.twimg.com/responsive-web/client-web-legacy/twitter-lite-explore-marketing.fd45b025.png</image>
++      </screenshot>
++      <screenshot type="default">
++        <image width="586" height="1041">https://abs.twimg.com/responsive-web/client-web-legacy/twitter-lite-timeline-marketing.befcdb45.png</image>
++      </screenshot>
++    </screenshots>
++    <categories>
++      <category>Chat</category>
++      <category>News</category>
++      <category>News</category>
++    </categories>
++    <content_rating type="oars-1.1">
++      <content_attribute id="social-info">intense</content_attribute>
++      <content_attribute id="social-audio">moderate</content_attribute>
++    </content_rating>
++    <recommends>
++      <control>pointing</control>
++      <control>keyboard</control>
++      <control>touch</control>
++      <display_length compare="ge">small</display_length>
++    </recommends>
++    <summary>Get breaking news, politics, trending music, world events, sports scores, and the latest global news stories as they unfold - all with less data</summary>
++  </component>
++  <component type="web-application">
++    <launchable type="url">https://www.photopea.com/</launchable>
++    <url type="homepage">https://www.photopea.com/</url>
++    <project_license>LicenseRef-proprietary</project_license>
++    <metadata_license>FSFAP</metadata_license>
++    <name>Photopea</name>
++    <id>org.gnome.Software.WebApp_b38ea26683d13dabcfbbc10824fcd7f3b88af94b.desktop</id>
++    <icon type="remote" width="512" height="512">https://www.photopea.com/promo/icon512.png</icon>
++    <categories>
++      <category>Photography</category>
++      <category>ImageProcessing</category>
++    </categories>
++    <content_rating type="oars-1.1">
++      <content_attribute id="social-info">intense</content_attribute>
++    </content_rating>
++    <recommends>
++      <control>pointing</control>
++      <control>keyboard</control>
++      <display_length compare="ge">medium</display_length>
++    </recommends>
++    <summary>Photopea is an advanced photo editor supporting PSD, XCF, Sketch, XD, and CDR formats</summary>
++  </component>
++</components>
+--- /dev/null
++++ gnome-software-45~beta/subprojects/gnome-pwa-list/meson.build
+@@ -0,0 +1,14 @@
++project('gnome-pwa-list')
++
++python3 = find_program('python3')
++
++gnome_pwa_list_foss = configure_file(
++  input: 'gnome-pwa-list-foss.xml',
++  output: 'gnome-pwa-list-foss.xml',
++  copy: true,
++)
++gnome_pwa_list_proprietary = configure_file(
++  input: 'gnome-pwa-list-proprietary.xml',
++  output: 'gnome-pwa-list-proprietary.xml',
++  copy: true,
++)
+--- /dev/null
++++ gnome-software-45~beta/subprojects/gnome-pwa-list/pwa-metainfo-generator.py
+@@ -0,0 +1,213 @@
++#!/usr/bin/env python3
++# -*- coding: utf-8 -*-
++# Copyright 2021-2022 Matthew Leeds
++# SPDX-License-Identifier: GPL-2.0+
++
++"""
++Generates AppStream metainfo for a set of Progressive Web Apps
++
++Usage: pwa-metainfo-generator.py LIST.CSV
++
++The CSV format expected looks like this:
++
++https://app.diagrams.net/,Apache-2.0
++https://pinafore.social/,AGPL-3.0-only
++...
++
++The output will be written to a file with the same name as the input but a .xml
++file ending.
++
++This tool uses the web app's manifest to fill out the AppStream info, so an
++Internet connection is required
++"""
++
++import csv
++import sys
++import xml.etree.ElementTree as ET
++import requests
++import json
++import hashlib
++from urllib.parse import urljoin
++from bs4 import BeautifulSoup
++
++# w3c categories: https://github.com/w3c/manifest/wiki/Categories
++# appstream categories: https://specifications.freedesktop.org/menu-spec/latest/apa.html
++# left out due to no corresponding appstream category:
++# entertainment, food, government, kids, lifestyle, personalization, politics, shopping, travel
++w3c_to_appstream_categories = {
++    "books": "Literature",
++    "business": "Office",
++    "education": "Education",
++    "finance": "Finance",
++    "fitness": "Sports",
++    "games": "Game",
++    "health": "MedicalSoftware",
++    "magazines": "News",
++    "medical": "MedicalSoftware",
++    "music": "Music",
++    "navigation": "Maps",
++    "news": "News",
++    "photo": "Photography",
++    "productivity": "Office",
++    "security": "Security",
++    "social": "Chat",
++    "sports": "Sports",
++    "utilities": "Utility",
++    "weather": "Utility"
++}
++
++
++def get_manifest_for_url(url):
++    response = requests.get(url)
++    response.raise_for_status()
++    soup = BeautifulSoup(response.text, 'html.parser')
++
++    # Seems this link is broken for discourse, href value doesn't use quotes
++    if url.startswith('https://discourse.'):
++        manifest_path = '/manifest.webmanifest'
++    elif soup.head:
++        manifest_path = soup.head.find('link', rel='manifest', href=True)['href']
++    else:
++        manifest_path = soup.find('link', rel='manifest', href=True)['href']
++
++    manifest_response = requests.get(urljoin(url, manifest_path))
++    manifest_response.raise_for_status()
++    return json.loads(manifest_response.text)
++
++def copy_metainfo_from_manifest(url, app_component, manifest, categories, content_rating, adaptive, custom_summary):
++    # Short name seems more suitable in practice
++    try:
++      ET.SubElement(app_component, 'name').text = manifest['short_name']
++    except KeyError:
++      ET.SubElement(app_component, 'name').text = manifest['name']
++
++    # Generate a unique app ID that meets the spec requirements. A different
++    # app ID will be used upon install that is determined by the backing browser
++    hashed_url = hashlib.sha1(url.encode('utf-8')).hexdigest()
++    app_id = 'org.gnome.Software.WebApp_' + hashed_url + '.desktop'
++    ET.SubElement(app_component, 'id').text = app_id
++
++    # Avoid using maskable icons if we can, they don't have nice rounded edges
++    normal_icon_exists = False
++    for icon in manifest['icons']:
++        if 'purpose' not in icon or icon['purpose'] == 'any':
++            normal_icon_exists = True
++
++    for icon in manifest['icons']:
++        if 'purpose' in icon and icon['purpose'] != 'any' and normal_icon_exists:
++            continue
++        icon_element = ET.SubElement(app_component, 'icon')
++        icon_element.text = urljoin(url, icon['src'])
++        icon_element.set('type', 'remote')
++        size = icon['sizes'].split(' ')[-1]
++        icon_element.set('width', size.split('x')[0])
++        icon_element.set('height', size.split('x')[1])
++
++    if 'screenshots' in manifest:
++        screenshots_element = ET.SubElement(app_component, 'screenshots')
++        for screenshot in manifest['screenshots']:
++            screenshot_element = ET.SubElement(screenshots_element, 'screenshot')
++            screenshot_element.set('type', 'default')
++            image_element = ET.SubElement(screenshot_element, 'image')
++            image_element.text = urljoin(url, screenshot['src'])
++            size = screenshot['sizes'].split(' ')[-1]
++            image_element.set('width', size.split('x')[0])
++            image_element.set('height', size.split('x')[1])
++            if 'label' in screenshot:
++                ET.SubElement(screenshot_element, 'caption').text = screenshot['label']
++
++    categories_element = ET.SubElement(app_component, 'categories')
++    user_categories = categories.split(';')
++    for category in user_categories:
++        if len(category) > 0:
++            ET.SubElement(categories_element, 'category').text = category
++    if 'categories' in manifest:
++        for category in manifest['categories']:
++            try:
++                mapped_category = w3c_to_appstream_categories[category]
++                if mapped_category not in user_categories:
++                    ET.SubElement(categories_element, 'category').text = mapped_category
++            except KeyError:
++                pass
++
++    if len(content_rating) > 0:
++        ratings_element = ET.SubElement(app_component, 'content_rating')
++        ratings_element.set('type', 'oars-1.1')
++        content_ratings = content_rating.split(';')
++        for rating in content_ratings:
++            if len(rating) > 0:
++                rating_element = ET.SubElement(ratings_element, 'content_attribute')
++                rating_element.text = rating.split('=')[1]
++                rating_element.set('id', rating.split('=')[0])
++
++    if adaptive in ('adaptive', 'not-adaptive'):
++        recommends_element = ET.SubElement(app_component, 'recommends')
++        ET.SubElement(recommends_element, 'control').text = 'pointing'
++        ET.SubElement(recommends_element, 'control').text = 'keyboard'
++        if adaptive == 'adaptive':
++            ET.SubElement(recommends_element, 'control').text = 'touch'
++        display_element = ET.SubElement(recommends_element, 'display_length')
++        display_element.set('compare', 'ge')
++        if adaptive == 'adaptive':
++            display_element.text = 'small'
++        else:
++            display_element.text = 'medium'
++
++    summary = ''
++    if len(custom_summary) > 0:
++        summary = custom_summary
++    elif 'description' in manifest:
++        summary = manifest['description']
++
++    if len(summary) > 0:
++        # appstreamcli validate recommends summary not ending with '.'
++        if summary.endswith('.'): summary = summary[:-1]
++        # ...and not containing newlines
++        summary = summary.replace('\n', ' ').strip()
++        ET.SubElement(app_component, 'summary').text = summary
++
++def main():
++    if len(sys.argv) != 2 or not sys.argv[1].endswith('.csv'):
++        print('Usage: {} input.csv'.format(sys.argv[0]))
++        sys.exit(1)
++
++    input_filename = sys.argv[1]
++    out_filename = input_filename.replace('.csv', '.xml')
++    with open(input_filename) as input_csv:
++        components = ET.Element('components')
++        components.set('version', '0.15')
++        reader = csv.reader(input_csv)
++        for (i, app) in enumerate(reader):
++            if len(app) != 6:
++                print('Line {} has the wrong number of columns!'.format(i+1), file=sys.stderr)
++                sys.exit(2)
++
++            app_component = ET.SubElement(components, 'component')
++            app_component.set('type', 'web-application')
++
++            launchable = ET.SubElement(app_component, 'launchable')
++            launchable.set('type', 'url')
++            launchable.text = app[0]
++
++            url = ET.SubElement(app_component, 'url')
++            url.set('type', 'homepage')
++            url.text = app[0]
++
++            project_license = ET.SubElement(app_component, 'project_license')
++            project_license.text = app[1]
++
++            # metadata license is a required field but we don't have one, assume FSFAP?
++            metadata_license = ET.SubElement(app_component, 'metadata_license')
++            metadata_license.text = 'FSFAP'
++
++            print('Processing entry \'{}\' from file \'{}\''.format(app[0], input_filename))
++            copy_metainfo_from_manifest(app[0], app_component, get_manifest_for_url(app[0]),
++                                        app[2], app[3], app[4], app[5])
++
++    tree = ET.ElementTree(components)
++    ET.indent(tree)
++    tree.write(out_filename, xml_declaration=True, encoding='utf-8', method='xml')
++
++
++if __name__=='__main__':
++        main()

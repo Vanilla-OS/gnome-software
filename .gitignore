@@ -17,3 +17,14 @@ subprojects/sassc/
 subprojects/sysprof/
 subprojects/wayland-protocols.wrap
 subprojects/wayland-protocols/
+.pc/
+debian/*.log
+debian/.debhelper
+debian/debhelper-build-stamp
+debian/tmp
+debian/files
+debian/gnome-software
+debian/gnome-software-*
+debian/gnome-software.substvars
+debian/gnome-software.substvars
+debian/gnome-software.gsettings-override

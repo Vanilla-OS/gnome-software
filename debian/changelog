@@ -1,3 +1,9 @@
+gnome-software (45~beta-20) unstable; urgency=medium
+
+  * Disable Packagekit
+
+ -- Mirko Brombin <send@mirko.pm>  Fri, 04 Aug 2023 09:13:30 -0400
+
 gnome-software (45~beta-1) unstable; urgency=medium
 
   * New upstream release

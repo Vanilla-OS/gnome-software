@@ -1,2 +1,2 @@
 01_details-Use-custom-icon-for-verified-developers.patch
-debian/use-software-properties-gtk.patch
+vos.patch
