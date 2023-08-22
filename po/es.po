@@ -14,10 +14,10 @@ msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-07-29 14:06+0000\n"
-"Last-Translator: ramon ledesma <rmon.led@gmail.com>\n"
-"Language-Team: Spanish <https://hosted.weblate.org/projects/vanilla-os/"
-"gnome-software/es/>\n"
+"PO-Revision-Date: 2023-08-15 17:54+0000\n"
+"Last-Translator: Íñigo Aréjula Aísa <arejula27@gmail.com>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/vanilla-os/gnome-"
+"software/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -314,7 +314,7 @@ msgstr "Esta versión también actualiza las traducciones:"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:105
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:143
 msgid "Abkhazian"
-msgstr ""
+msgstr "Abjasia"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:106
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:196
@@ -379,7 +379,7 @@ msgstr "Holandés"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:537
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:601
 msgid "Finnish"
-msgstr ""
+msgstr "Finlandés"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:117
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:149
@@ -393,7 +393,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:641
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:694
 msgid "Indonesian"
-msgstr ""
+msgstr "Indonesio"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:118
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:291
@@ -501,6 +501,7 @@ msgstr "Esta es la segunda versión inestable de GNOME 43."
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:237
 msgid "Various fixes related to changed threading model"
 msgstr ""
+"Varias correcciones relacionadas con el cambio al modelo de subprocesos"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:137
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:349
@@ -509,7 +510,7 @@ msgstr "Actualización de varias partes de la interfaz de usuario"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:138
 msgid "Sources dropdown had been reworked"
-msgstr "Se ha modificado el menú desplegable fuentes"
+msgstr "Se ha modificado el menú desplegable de las fuentes"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:139
 msgid "Fixes a rare crash when showing app details"
@@ -546,17 +547,19 @@ msgstr "Corrección de varios fallos al manejar aplicaciones flatpak"
 msgid "Add ‘Other Apps by Author’ section in the app details page"
 msgstr ""
 "Añadir la sección \"Otras aplicaciones del autor\" en la página de detalles "
-"de la aplicación."
+"de la aplicación"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:170
 msgid "Improve styling of app context lozenges"
-msgstr ""
+msgstr "Mejora del estilo de las pastillas contextuales de la aplicación"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:171
 msgid ""
 "Add ‘Available for Distro’ section to the overview page (if configured by "
 "your distribution)"
 msgstr ""
+"Añadir la sección ‘Disponible para la distribución’ a la pagina general (Si "
+"está configurado por  su distribución)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:172
 msgid ""
@@ -567,7 +570,7 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:173
 msgid "Show more types of URI from app metainfo"
-msgstr "Mostrar más tipos de URI de app metainfo"
+msgstr "Mostrar más tipos de URI en la metainformación de la aplicación"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:174
 msgid "Fix a few issues when using a dark mode theme"
@@ -576,7 +579,8 @@ msgstr "Corrección de algunos problemas al utilizar un tema en modo oscuro"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:175
 msgid "Fix some issues with arrows in right-to-left locales"
 msgstr ""
-"Corregir algunos problemas con las flechas en locales de derecha a izquierda"
+"Corregir algunos problemas con las flechas de derecha a izquierda en las "
+"configuraciones regionales"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:176
 msgid "Fix language pack installation for certain locales"
@@ -587,19 +591,23 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:177
 msgid "Improve debug output to make user bug reports more useful"
 msgstr ""
+"Mejorar la salida de depuración para que los informes de errores de los "
+"usuarios sean más útiles."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:178
 msgid "Add `--uninstall=ID` command line option"
-msgstr ""
+msgstr "Añadir la opción de línea de comando `--uninstall=ID`"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:179
 msgid ""
 "Allow scrolling screenshots by clicking on next and previous screenshots"
 msgstr ""
+"Permitir el desplazamiento de las capturas de pantalla haciendo clic en las "
+"capturas de pantalla siguiente y anterior"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:180
 msgid "Add support for webapps"
-msgstr ""
+msgstr "Añadir soporte para aplicaciones web"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:181
 msgid "Allow swiping back in the shell using touch gestures"
@@ -607,11 +615,13 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:182
 msgid "Improved caching of downloaded metadata"
-msgstr ""
+msgstr "Mejora del almacenamiento en caché de los metadatos descargados"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:183
 msgid "Many internal architectural changes to make the code more maintainable"
 msgstr ""
+"Numerosos cambios en la arquitectura interna para que el código sea más "
+"fácil de mantener"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:184
 msgid ""
@@ -6764,11 +6774,9 @@ msgstr ""
 #~ msgid "Recommended Games"
 #~ msgstr "Juegos recomendados"
 
-#~| msgid "Recommended Graphics Applications"
 #~ msgid "Recommended Creation Applications"
 #~ msgstr "Aplicaciones de creación recomendadas"
 
-#~| msgid "Recommended Graphics Applications"
 #~ msgid "Recommended Work Applications"
 #~ msgstr "Aplicaciones de trabajo recomendadas"
 
@@ -6824,11 +6832,9 @@ msgstr ""
 #~ msgid "_Remove All"
 #~ msgstr "_Quitar todos"
 
-#~| msgid "Setting up updates…"
 #~ msgid "Setting Up Updates…"
 #~ msgstr "Configurando actualizaciones…"
 
-#~| msgid "Looking for new updates…"
 #~ msgid "Looking for New Updates…"
 #~ msgstr "Buscando actualizaciones nuevas…"
 
@@ -7646,7 +7652,6 @@ msgstr ""
 #~ msgid "The ultimate entertainment platform from Valve"
 #~ msgstr "La última plataforma de entretenimiento de Valve"
 
-#~| msgid "Application Updates"
 #~ msgid "Applications Updated"
 #~ msgstr "Aplicaciones actualizadas"
 
@@ -8541,7 +8546,6 @@ msgstr ""
 #~ msgid "If you are uncertain about this, you should obtain legal advice."
 #~ msgstr "Si no está seguro, debería solicitar asesoramiento legal."
 
-#~| msgid "Are you sure you want to remove %s?"
 #~ msgid "Do you want to enable it?"
 #~ msgstr "¿Quiere activarlo?"
 
@@ -8551,7 +8555,6 @@ msgstr ""
 #~ msgid "Picks"
 #~ msgstr "Selección"
 
-#~| msgid "Complicated!"
 #~ msgctxt "license"
 #~ msgid "Complicated!"
 #~ msgstr "Complicada"
@@ -8652,11 +8655,9 @@ msgstr ""
 #~ msgid "Shotwell"
 #~ msgstr "Shotwell"
 
-#~| msgid "Application manager for GNOME"
 #~ msgid "Open source photo management for GNOME"
 #~ msgstr "Aplicación libre de gestión de fotos para GNOME"
 
-#~| msgid "Description"
 #~ msgid "Long description"
 #~ msgstr "Descripción larga"
 
