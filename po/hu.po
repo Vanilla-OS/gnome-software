@@ -7,13 +7,14 @@
 # Balázs Meskó <mesko.balazs at fsf dot hu>, 2020, 2021, 2022.
 # Benjamin Kőhidi <benstone326@gmail.com>, 2023.
 # kramo <login@kramo.hu>, 2023.
+# Attila Szigedi <szigedi.attila@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-03-21 02:47+0000\n"
-"Last-Translator: kramo <login@kramo.hu>\n"
+"PO-Revision-Date: 2023-07-21 00:30+0000\n"
+"Last-Translator: Attila Szigedi <szigedi.attila@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/hu/>\n"
 "Language: hu\n"
@@ -21,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16.2-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -994,7 +995,7 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:481
 msgid "This is the second unstable release for GNOME 41."
-msgstr ""
+msgstr "Ez a második instabil kiadás a GNOME 41-hez."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:483
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:511
