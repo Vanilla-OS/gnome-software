@@ -7,13 +7,15 @@
 # Balázs Meskó <mesko.balazs at fsf dot hu>, 2020, 2021, 2022.
 # Benjamin Kőhidi <benstone326@gmail.com>, 2023.
 # kramo <login@kramo.hu>, 2023.
+# Attila Szigedi <szigedi.attila@gmail.com>, 2023.
+# Peter Rakmanyi <rakmanyi.peter@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-03-21 02:47+0000\n"
-"Last-Translator: kramo <login@kramo.hu>\n"
+"PO-Revision-Date: 2023-08-07 14:36+0000\n"
+"Last-Translator: Peter Rakmanyi <rakmanyi.peter@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/hu/>\n"
 "Language: hu\n"
@@ -21,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16.2-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -994,54 +996,61 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:481
 msgid "This is the second unstable release for GNOME 41."
-msgstr ""
+msgstr "Ez a második instabil kiadás a GNOME 41-hez."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:483
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:511
 msgid "Many parts of the user interface reworked"
-msgstr ""
+msgstr "A felhasználói felület számos részét átdolgozták"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:484
 msgid "Fix when the 'Launch' button is shown after an application install"
 msgstr ""
+"Javítva, hogy mikor jelenik meg az 'Indítás' gomb az alkalmazás telepítése "
+"után"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:485
 msgid "Fix appstream:// URL handling"
-msgstr ""
+msgstr "Az appstream:// URL-ek kezelésének javítása"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:486
 msgid "Fix application freeze on Flatpak application install/remove/update"
 msgstr ""
+"Az alkalmazás befagyásának javítása a Flatpak alkalmazás telepítésekor/"
+"eltávolításakor/frissítésekor"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:487
 msgid "Disable automatic update downloads when in power saver mode"
 msgstr ""
+"Automatikus frissítések letöltésének tiltása energiatakarékos üzemmódban"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:497
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:540
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:692
 msgid "Greek, Modern (1453-)"
-msgstr ""
+msgstr "Görög, modern (1453-)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:509
 msgid "This is the first unstable release for GNOME 41."
-msgstr ""
+msgstr "Ez az első instabil kiadás a GNOME 41-hez."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:512
 msgid "Improve error reporting from flatpak when low on disk space"
-msgstr ""
+msgstr "A flatpak hibajelentésének javítása, ha kevés a lemezterület"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:513
 msgid "Fix issues with updating the UI when uninstalling apps with add-ons"
 msgstr ""
+"A felhasználói felület frissítésével kapcsolatos problémák javítása a "
+"bővítményeket tartalmazó alkalmazások eltávolításakor"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:514
 msgid "Don’t keep rpm-ostreed alive forever"
-msgstr ""
+msgstr "Ne tartsa életben örökké az rpm-ostreed-et"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:515
 msgid "Prevent polkit checks showing up for background operations"
-msgstr ""
+msgstr "A háttérműveleteknél megjelenő polkit-ellenőrzések megakadályozása"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:516
 msgid "Disallow submitting reviews for an app you haven’t installed"

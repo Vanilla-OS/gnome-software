@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-04-06 21:33+0000\n"
+"PO-Revision-Date: 2023-08-03 04:54+0000\n"
 "Last-Translator: Andrew Geo <andrewgeo@outlook.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/el/>\n"
@@ -19,13 +19,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 "X-Project-Style: gnome\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
 msgid "Software"
-msgstr "Λογισμικό"
+msgstr "λογισμικό"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:8
 msgid "Install and update apps"

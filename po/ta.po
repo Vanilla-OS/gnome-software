@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: gnome-software\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-02-22 05:29+0000\n"
+"PO-Revision-Date: 2023-07-14 08:51+0000\n"
 "Last-Translator: \"K.B.Dharun Krishna\" <kbdharunkrishna@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/ta/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -2508,7 +2508,7 @@ msgstr "நிறுவு"
 #. * that allows the app to be easily updated live
 #: src/gs-app-row.c:183
 msgid "Update"
-msgstr ""
+msgstr "புதுப்பிக்கவும்"
 
 #. TRANSLATORS: this is a button next to the search results that
 #. * allows the application to be easily removed
@@ -2960,7 +2960,7 @@ msgstr ""
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:285
 msgid "Create"
-msgstr ""
+msgstr "உருவாக்கு"
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:287
@@ -5310,7 +5310,7 @@ msgstr ""
 
 #: src/gs-shell.ui:189
 msgid "Search"
-msgstr ""
+msgstr "தேடு"
 
 #: src/gs-shell.ui:204
 msgid "Primary Menu"
@@ -6254,7 +6254,7 @@ msgstr ""
 
 #: plugins/packagekit/gs-plugin-packagekit.c:367
 msgid "Packages"
-msgstr ""
+msgstr "தொகுப்புகள்"
 
 #: plugins/rpm-ostree/gs-plugin-rpm-ostree.c:2690
 msgid "Operating System (OSTree)"
