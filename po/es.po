@@ -290,11 +290,11 @@ msgstr "Mejoras del selector de fuentes en la página de detalles"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:100
 msgid "Fixes a bug when viewing details of a package file"
-msgstr "Arregla un error al ver los detalles de un archivo de paquete"
+msgstr "Se corrige un error al ver los detalles de un archivo de paquete"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:101
 msgid "Fixes a bug when reading certain .flatpakref file"
-msgstr "Arregla un error cuando se lee cierto archivo .flatpakref"
+msgstr "Corrección de un error al leer determinados archivos .flatpakref"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:103
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:141
@@ -559,14 +559,14 @@ msgid ""
 "your distribution)"
 msgstr ""
 "Añadir la sección ‘Disponible para la distribución’ a la pagina general (Si "
-"está configurado por  su distribución)"
+"está configurado por su distribución)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:172
 msgid ""
 "Show more details about file system permissions requested by flatpak apps"
 msgstr ""
 "Mostrar más detalles sobre los permisos del sistema de archivos solicitados "
-"por las aplicaciones de flatpak."
+"por las aplicaciones de flatpak"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:173
 msgid "Show more types of URI from app metainfo"
@@ -610,8 +610,9 @@ msgid "Add support for webapps"
 msgstr "Añadir soporte para aplicaciones web"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:181
+#, fuzzy
 msgid "Allow swiping back in the shell using touch gestures"
-msgstr ""
+msgstr "Permitir retroceder en el shell mediante gestos táctiles"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:182
 msgid "Improved caching of downloaded metadata"
