@@ -22,8 +22,8 @@ msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-07-09 06:52+0000\n"
-"Last-Translator: Fabian Ruttmann <fabian.ruttmann@gmail.com>\n"
+"PO-Revision-Date: 2023-08-21 12:52+0000\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/de/>\n"
 "Language: de\n"
@@ -863,6 +863,7 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:359
 msgid "Don’t recommend a reboot if firmware updates fail"
 msgstr ""
+"Bei fehlgeschlagenen Firmware-Aktualisierungen keinen Neustart empfehlen"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:360
 msgid ""
