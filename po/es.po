@@ -8,13 +8,14 @@
 # Juan <benitesjn@gmail.com>, 2023.
 # Sebastián García <sebgm2019@gmail.com>, 2023.
 # Íñigo Aréjula Aísa <arejula27@gmail.com>, 2023.
+# ramon ledesma <rmon.led@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-06-18 10:49+0000\n"
-"Last-Translator: Íñigo Aréjula Aísa <arejula27@gmail.com>\n"
+"PO-Revision-Date: 2023-07-29 14:06+0000\n"
+"Last-Translator: ramon ledesma <rmon.led@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/es/>\n"
 "Language: es\n"
@@ -22,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18.1\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -562,7 +563,7 @@ msgid ""
 "Show more details about file system permissions requested by flatpak apps"
 msgstr ""
 "Mostrar más detalles sobre los permisos del sistema de archivos solicitados "
-"por las aplicaciones flatpak."
+"por las aplicaciones de flatpak."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:173
 msgid "Show more types of URI from app metainfo"
