@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-10-08 08:02+0000\n"
-"Last-Translator: \"Wu Lok Hin (Thomas Wu)\" <thomaswu6113@gmail.com>\n"
+"PO-Revision-Date: 2023-10-10 05:57+0000\n"
+"Last-Translator: lakejason0 <sunliyuan200402@outlook.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
 "vanilla-os/gnome-software/zh_Hant/>\n"
 "Language: zh_TW\n"
@@ -539,7 +539,7 @@ msgstr "修正了處理 flatpak 應用程式時的幾個當機錯誤"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:169
 msgid "Add ‘Other Apps by Author’ section in the app details page"
-msgstr "在應用詳情頁增加“作者的其他應用”部分"
+msgstr "在應用詳情頁新增 「作者的其他應用」部分"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:170
 msgid "Improve styling of app context lozenges"
@@ -549,7 +549,7 @@ msgstr ""
 msgid ""
 "Add ‘Available for Distro’ section to the overview page (if configured by "
 "your distribution)"
-msgstr "在概览页中添加 \"可用于发行版 \"部分（如果你的发行版已配置）。"
+msgstr "在概覽頁面中加入「散布版可用程式」的部分（若您的散布版有相關組態）"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:172
 msgid ""
@@ -558,7 +558,7 @@ msgstr "顯示更多關於flatpak應用要所要求的檔案系統權限的資�
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:173
 msgid "Show more types of URI from app metainfo"
-msgstr "從應用程序metainfo顯示更多類型的URI"
+msgstr "從應用程式metainfo顯示更多類型的URI"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:174
 msgid "Fix a few issues when using a dark mode theme"
@@ -574,7 +574,7 @@ msgstr "修復某些地區的語言包安裝"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:177
 msgid "Improve debug output to make user bug reports more useful"
-msgstr "改進調試輸出，使用戶的錯誤報告更加有用"
+msgstr "改進偵錯輸出以讓使用者的錯誤報告更加有用"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:178
 msgid "Add `--uninstall=ID` command line option"
@@ -583,7 +583,7 @@ msgstr "新增 `--uninstall=ID` 命令列選項"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:179
 msgid ""
 "Allow scrolling screenshots by clicking on next and previous screenshots"
-msgstr "允许通過點擊下一個和上一個屏幕截圖来滾動屏幕截圖"
+msgstr "允许透過按下一個和上一個螢幕擷圖来捲動螢幕擷圖"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:180
 msgid "Add support for webapps"
@@ -591,11 +591,11 @@ msgstr "新增 Webapps 支援"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:181
 msgid "Allow swiping back in the shell using touch gestures"
-msgstr "允許使用觸手控手勢在系統介面中回掃"
+msgstr "允許使用觸控手勢在系統介面中回掃"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:182
 msgid "Improved caching of downloaded metadata"
-msgstr "改進了下載元數據的緩存"
+msgstr "改進了下載元資料的快取"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:183
 msgid "Many internal architectural changes to make the code more maintainable"
@@ -614,14 +614,14 @@ msgid ""
 "<code>hardcoded_curated</code>."
 msgstr ""
 "<code>hardcoded_popular</code> Meson "
-"选项已被重新命名为<code>hardcoded_curated</code> 。"
+"選項已被重新命名為<code>hardcoded_curated</code> 。"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:207
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:249
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:425
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:602
 msgid "French"
-msgstr "法國"
+msgstr "法文"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:208
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:287
@@ -701,7 +701,7 @@ msgstr "是否允許取用「軟體庫」對話框"
 msgid ""
 "Threading and performance improvements which should reduce the number of "
 "user interface freezes"
-msgstr "線程和性能改進，應可減少用戶界面凍结次數"
+msgstr "執行緒和效能改進，應可減少使用者介面凍结次數"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:276
 msgid "Update some icons"
