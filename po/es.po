@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-08-18 04:52+0000\n"
+"PO-Revision-Date: 2023-10-15 00:00+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/es/>\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.1-dev\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -902,45 +902,56 @@ msgstr "Compatibilidad mejorada de los metadatos para las fotos"
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:366
 msgid "Fix update checks being missed across suspend/hibernation"
 msgstr ""
+"Se corrigió que no se buscaran actualizaciones durante la suspensión/"
+"hibernación"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:367
 msgid ""
 "Ensure application lists are updated when repositories are enabled/installed "
 "or disabled/removed"
 msgstr ""
+"Asegúrate de que las listas de las aplicaciones se actualicen cuando los "
+"repositorios estén habilitados/instalados o deshabilitados/eliminados"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:372
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:491
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:529
 msgid "Belarusian"
-msgstr ""
+msgstr "Bielorruso"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:393
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:704
 msgid "Slovak"
-msgstr ""
+msgstr "Eslovaco"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:407
 msgid ""
 "Instead of showing all package-based apps as \"potentially unsafe\", only "
 "use that language for 3rd party ones"
 msgstr ""
+"En lugar de mostrar todos las aplicaciones de paquetes como \"potencialmente "
+"inseguros\", utiliza esto sólo para aplicaciones de terceros"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:408
 msgid ""
 "Fix a bug where the \"Show more\" button on an app details page would "
 "flicker when the window is resized"
 msgstr ""
+"Se ha corregido un error por el que el botón \"Mostrar más\" de la página de "
+"los detalles de una aplicación parpadeaba al cambiar el tamaño de la ventana"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:409
 msgid ""
 "Fix a bug where Software sometimes shows an Uninstall button after "
 "uninstalling something"
 msgstr ""
+"Se ha corregido un error por el que a veces el software mostraba un botón de "
+"desinstalación después de desinstalar algo"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:410
 msgid "Add GNOME Circle apps to the featured carousel"
 msgstr ""
+"Añadir aplicaciones de GNOME Circle al carrusel de aplicaciones destacadas"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:411
 msgid ""
@@ -948,138 +959,167 @@ msgid ""
 "operation for PackageKit software rather than showing a PolicyKit password "
 "prompt"
 msgstr ""
+"Se ha corregido un error por el que, en ocasiones, el software no podía "
+"ejecutar una operación de instalación/eliminación de PackageKit en su lugar "
+"mostrar una solicitud para una contraseña de PolicyKit"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:412
 msgid ""
 "Fix a bug where Software would fail to upgrade the distribution via "
 "PackageKit"
 msgstr ""
+"Se ha corregido un error por el que el software no podía actualizar la "
+"distribución a través de PackageKit"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:413
 msgid "Fix the hiding of rows on the Updates tab after they have been updated"
 msgstr ""
+"Corrección en la ocultación de las filas en la pestaña Actualizaciones "
+"después de actualizar"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:436
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:550
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:614
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:703
 msgid "Romanian"
-msgstr ""
+msgstr "Rumano"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:447
 msgid "This is the third unstable release for GNOME 41."
-msgstr ""
+msgstr "Esta es la tercera versión inestable de GNOME 41."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:449
 msgid "Tweaks to the context tiles and dialogs"
-msgstr ""
+msgstr "Ajustes en los mosaicos y menús contextuales"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:450
 msgid "Fixes to the details page for non-desktop apps"
 msgstr ""
+"Correcciones en la página de los detalles de las aplicaciones que no son de "
+"escritorio"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:451
 msgid "Re-add support for the add-ons categories"
-msgstr ""
+msgstr "Volver a añadir el soporte para las categorías de los complementos"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:452
 msgid "Sort new and updated apps by release date on the category page"
 msgstr ""
+"Ordenar las aplicaciones nuevas y actualizadas por fecha de lanzamiento en "
+"la página de las categorías"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:481
 msgid "This is the second unstable release for GNOME 41."
-msgstr ""
+msgstr "Esta es la segunda versión inestable de GNOME 41."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:483
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:511
 msgid "Many parts of the user interface reworked"
-msgstr ""
+msgstr "Muchas partes de la interfaz de usuario reelaboradas"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:484
 msgid "Fix when the 'Launch' button is shown after an application install"
 msgstr ""
+"Se solucionó cuando se muestra el botón \"Iniciar\" después de instalar una "
+"aplicación"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:485
 msgid "Fix appstream:// URL handling"
-msgstr ""
+msgstr "Corrección de la gestión de la URL de appstream://"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:486
 msgid "Fix application freeze on Flatpak application install/remove/update"
 msgstr ""
+"Arreglar la congelación de la aplicación en la instalación/eliminación/"
+"actualización de la aplicación Flatpak"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:487
 msgid "Disable automatic update downloads when in power saver mode"
 msgstr ""
+"Desactivar las descargas automáticas de las actualizaciones en el modo de "
+"ahorro de energía"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:497
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:540
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:692
 msgid "Greek, Modern (1453-)"
-msgstr ""
+msgstr "Griego moderno (desde 1453)"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:509
 msgid "This is the first unstable release for GNOME 41."
-msgstr ""
+msgstr "Esta es la primera versión inestable de GNOME 41."
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:512
 msgid "Improve error reporting from flatpak when low on disk space"
 msgstr ""
+"Mejorar la notificación de errores de flatpak cuando hay poco espacio en el "
+"disco"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:513
 msgid "Fix issues with updating the UI when uninstalling apps with add-ons"
 msgstr ""
+"Se solucionan los problemas con la actualización de la interfaz de usuario "
+"al desinstalar las aplicaciones que tienen complementos"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:514
 msgid "Don’t keep rpm-ostreed alive forever"
-msgstr ""
+msgstr "No mantengas rpm-ostreed activo siempre"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:515
 msgid "Prevent polkit checks showing up for background operations"
 msgstr ""
+"Evitar que aparezcan comprobaciones de polkit en operaciones en segundo plano"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:516
 msgid "Disallow submitting reviews for an app you haven’t installed"
 msgstr ""
+"No permitir el envío de opiniones para una aplicación que no has instalado"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:517
 msgid "Show download size in the Updates page"
-msgstr ""
+msgstr "Mostrar el tamaño de la descarga en la página Actualizaciones"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:518
 msgid "Notify when restart is needed when uninstalling an app"
-msgstr ""
+msgstr "Notificar que se reinicié al desinstalar una aplicación"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:519
 msgid "Fix some issues with searches not running"
-msgstr ""
+msgstr "Solucionar algunos problemas con las búsquedas que no se realizan"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:520
 msgid "Allow non-integer average star ratings for apps"
 msgstr ""
+"Permitir calificaciones de media estrella en lugar de una entera para las "
+"aplicaciones"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:521
 msgid "Reduce number of categories in the UI"
-msgstr ""
+msgstr "Reducir el número de las categorías en la interfaz de usuario"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:522
 msgid "Improve ‘pending updates’ notifications"
-msgstr ""
+msgstr "Mejorar las notificaciones de las \"actualizaciones pendientes\""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:523
 msgid "Refine presentation of download and installed size on details page"
 msgstr ""
+"Mejorar la presentación del tamaño descargado e instalado en la página de "
+"los detalles"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:524
 msgid "Remove left over gnome-online-account dependencies"
-msgstr ""
+msgstr "Eliminar dependencias sobrantes de gnome-online-account"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:563
 msgid "Fix handling of invalid or incomplete application icons"
 msgstr ""
+"Corrección de la gestión de los iconos de la aplicación no válidos o "
+"incompletos"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:564
 msgid "Fix the plugin documentation to reflect reality"
-msgstr ""
+msgstr "Arreglar la documentación del complemento para reflejar la realidad"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:565
 msgid "Fix the Snap plugin to actually load icons"
