@@ -17,13 +17,14 @@
 # Jörn Weigend <das.jott@gmail.com>, 2023.
 # Ettore Atalan <atalanttore@googlemail.com>, 2023.
 # Fabian Ruttmann <fabian.ruttmann@gmail.com>, 2023.
+# MrHyppe <paul.westram1@outlook.de>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-08-21 12:52+0000\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
+"PO-Revision-Date: 2023-09-30 01:38+0000\n"
+"Last-Translator: MrHyppe <paul.westram1@outlook.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/de/>\n"
 "Language: de\n"
@@ -31,7 +32,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.1-dev\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -825,7 +826,7 @@ msgstr "Mehr Markup in der Applikations-Beschreibung unterstützen"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:351
 msgid "Ask about package signature with PackageKit on signing issue"
-msgstr ""
+msgstr "Frage zur Paketsignatur mit PackageKit zu Signierungs Problemen"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:352
 msgid "Show better System Update progress"
@@ -853,12 +854,16 @@ msgstr "Symlinks bei der Berechnung der Festplattengröße nicht berücksichtige
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:357
 msgid "Fix addons section, which could show addons for different application"
 msgstr ""
+"Korrektur der Addons-Sektion, die Addons für verschiedene Anwendungen "
+"anzeigen konnte"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:358
 msgid ""
 "Fix showing a ‘transaction in progress’ error when using the rpm-ostree "
 "plugin"
 msgstr ""
+"Behebe die Fehlermeldung \"Transaktion in Bearbeitung\" bei Verwendung des "
+"rpm-ostree Plugins"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:359
 msgid "Don’t recommend a reboot if firmware updates fail"
@@ -869,14 +874,16 @@ msgstr ""
 msgid ""
 "Fix flathub repo being considered present on Fedora 35 with filtered flathub"
 msgstr ""
+"Behebe eine Falthup-Repo, die als aktuell mit Fedora 35 bezeichnet wird, mit "
+"Filtered-Falthub"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:361
 msgid "Allow searching for extensions"
-msgstr ""
+msgstr "Suche nach Erweiterungen zulassen"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:362
 msgid "Fix translation of main button on updates page"
-msgstr ""
+msgstr "Übersetzung der Hauptschaltfläche auf der Updateseite korrigiert"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:363
 msgid "Fix codec installation process"
@@ -884,7 +891,7 @@ msgstr "Codec-Installationsprozess korrigieren"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:364
 msgid "Add new GNOME Circle apps to the featured carousel"
-msgstr ""
+msgstr "Hinzufügen neuer GNOME-Circle-Anwendungen zum Vorstellungskarussell"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:365
 msgid "Improve metadata support for snaps"
@@ -1083,9 +1090,8 @@ msgstr ""
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:568
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:593
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:636
-#, fuzzy
 msgid "Translation updates:"
-msgstr "Übersetzungen"
+msgstr "Aktualisierte Übersetzung:"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:570
 msgid "British English"
@@ -1235,10 +1241,11 @@ msgid "Rework timing and content of software update notifications"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:665
-#, fuzzy
 msgid ""
 "Prevent uninstalled local apps from appearing in the installed apps list"
-msgstr "Zeigen der installierten Größe in der Liste installierter Anwendungen"
+msgstr ""
+"Verhindern, dass deinstallierte lokale Anwendungen in der Liste der "
+"installierten Anwendungen angezeigt werden"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:666
 msgid "Support installation/uninstallation of addons for flatpak apps"
@@ -1290,9 +1297,8 @@ msgid "Support updating flatpaks to their new name when they are renamed"
 msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:678
-#, fuzzy
 msgid "Update the GNOME Software icon"
-msgstr "GNOME Software"
+msgstr "Aktualisieren Sie das GNOME-Software-Symbol"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:679
 msgid "Support more search results in the snap store"
@@ -1570,9 +1576,7 @@ msgstr ""
 
 #: data/org.gnome.software.gschema.xml:146
 msgid "A string storing the gnome-online-account id used to login"
-msgstr ""
-"Eine Zeichenkette, die die Kennung gnome-online-account zur Anmeldung "
-"speichert"
+msgstr "Ein String, der die gnome-online-account id zur Anmeldung speichert"
 
 #. TRANSLATORS: tool that is used when moving profiles system-wide
 #: gs-install-appstream/gs-install-appstream.c:143
@@ -3053,7 +3057,7 @@ msgstr "Geschichte"
 #: lib/gs-desktop-data.c:210
 msgctxt "Menu of Reference"
 msgid "Lifestyle"
-msgstr "Lifestyle"
+msgstr "Lebensstil"
 
 #: lib/gs-desktop-data.c:213
 msgctxt "Menu of Reference"
@@ -3706,7 +3710,7 @@ msgstr "Angeforderte Software nicht gefunden"
 
 #: src/gs-extras-page.c:244
 msgid "Failed to find requested software"
-msgstr "Die angeforderte Software kann nicht gefunden werden"
+msgstr "Die angeforderte Software konnte nicht gefunden werden"
 
 #. TRANSLATORS: This string is used for codecs that weren't found
 #: src/gs-extras-page.c:343
@@ -6124,7 +6128,7 @@ msgstr "Neustart erforderlich"
 #. * app updates, typically flatpaks or snaps
 #: src/gs-updates-section.c:460
 msgid "Application Updates"
-msgstr "Aktualisierungen"
+msgstr "Anwendungs Aktualisierungen"
 
 #. TRANSLATORS: This is the header for device firmware that can
 #. * be installed online
@@ -6658,9 +6662,8 @@ msgstr "Ein Snap ist ein universelles Linux-Paket"
 #. TRANSLATORS: this is to inform that the package is part of
 #. * the BASE system
 #: plugins/vso/gs-plugin-vso.c:114
-#, fuzzy
 msgid "base"
-msgstr "Datenbank"
+msgstr "Basis"
 
 #: plugins/vso/gs-plugin-vso.c:240
 msgid ""
