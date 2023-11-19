@@ -22,14 +22,14 @@
 # Leonardo Gonzalez <leog110@gmail.com>, 2023.
 # José Claudio Pereira <jpereira1330@gmail.com>, 2023.
 # Império Linux <kevendoria86@gmail.com>, 2023.
+# Davi de Oliveira Barbosa <davioliveira.java@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-09-17 18:01+0000\n"
-"Last-Translator: Fernando Lopes <118869201+plasmus777@users.noreply.github."
-"com>\n"
+"PO-Revision-Date: 2023-09-19 14:02+0000\n"
+"Last-Translator: Davi de Oliveira Barbosa <davioliveira.java@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "vanilla-os/gnome-software/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -37,7 +37,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.0.2\n"
+"X-Generator: Weblate 5.1-dev\n"
 "X-Project-Style: gnome\n"
 "X-DL-Team: pt_BR\n"
 "X-DL-Module: gnome-software\n"
@@ -3962,7 +3962,7 @@ msgstr "Anterior"
 
 #: src/gs-featured-carousel.ui:66
 msgid "Next"
-msgstr "Próxima"
+msgstr "Próximo"
 
 #: src/gs-featured-carousel.ui:83
 msgid "Featured Apps List"
