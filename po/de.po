@@ -19,14 +19,14 @@
 # Fabian Ruttmann <fabian.ruttmann@gmail.com>, 2023.
 # MrHyppe <paul.westram1@outlook.de>, 2023.
 # Experiencing A Significant Gravitas Shortfall <bedeb1@pm.me>, 2023.
+# Florian Lammer <florian.lammer.05@proton.me>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-10-13 06:33+0000\n"
-"Last-Translator: Experiencing A Significant Gravitas Shortfall <bedeb1@pm.me>"
-"\n"
+"PO-Revision-Date: 2023-10-22 21:22+0000\n"
+"Last-Translator: Florian Lammer <florian.lammer.05@proton.me>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/de/>\n"
 "Language: de\n"
@@ -34,7 +34,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.1\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -944,10 +944,12 @@ msgid ""
 "Fix a bug where Software sometimes shows an Uninstall button after "
 "uninstalling something"
 msgstr ""
+"Behebung eines Fehlers, bei dem die Software manchmal eine "
+"Deinstallationsschaltfläche anzeigt, nachdem sie etwas deinstalliert hat"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:410
 msgid "Add GNOME Circle apps to the featured carousel"
-msgstr ""
+msgstr "Hinzufügen von GNOME Circle-Anwendungen zum Karussell"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:411
 msgid ""
@@ -955,12 +957,17 @@ msgid ""
 "operation for PackageKit software rather than showing a PolicyKit password "
 "prompt"
 msgstr ""
+"Behebung eines Fehlers, bei dem die Software manchmal nicht in der Lage war, "
+"einen Installations-/Entfernungsvorgang für PackageKit-Software auszuführen, "
+"anstatt eine PolicyKit-Kennwortabfrage anzuzeigen"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:412
 msgid ""
 "Fix a bug where Software would fail to upgrade the distribution via "
 "PackageKit"
 msgstr ""
+"Behebung eines Fehlers, bei dem die Software die Distribution nicht über "
+"PackageKit aktualisieren konnte"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:413
 msgid "Fix the hiding of rows on the Updates tab after they have been updated"
