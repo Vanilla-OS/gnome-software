@@ -18,13 +18,15 @@
 # Ettore Atalan <atalanttore@googlemail.com>, 2023.
 # Fabian Ruttmann <fabian.ruttmann@gmail.com>, 2023.
 # MrHyppe <paul.westram1@outlook.de>, 2023.
+# Experiencing A Significant Gravitas Shortfall <bedeb1@pm.me>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-09-30 01:38+0000\n"
-"Last-Translator: MrHyppe <paul.westram1@outlook.de>\n"
+"PO-Revision-Date: 2023-10-13 06:33+0000\n"
+"Last-Translator: Experiencing A Significant Gravitas Shortfall <bedeb1@pm.me>"
+"\n"
 "Language-Team: German <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/de/>\n"
 "Language: de\n"
@@ -895,40 +897,47 @@ msgstr "Hinzufügen neuer GNOME-Circle-Anwendungen zum Vorstellungskarussell"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:365
 msgid "Improve metadata support for snaps"
-msgstr ""
+msgstr "Verbessert die Unterstützung von Metadaten für Snaps"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:366
 msgid "Fix update checks being missed across suspend/hibernation"
-msgstr ""
+msgstr "Behebt fehlende Update-Prüfungen bei Suspendierung/Hibernation"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:367
 msgid ""
 "Ensure application lists are updated when repositories are enabled/installed "
 "or disabled/removed"
 msgstr ""
+"Stelle sicher, dass Anwendungslisten geupdatet werden, wenn Repositories "
+"aktiviert/installiert oder deaktiviert/deinstalliert werden"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:372
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:491
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:529
 msgid "Belarusian"
-msgstr ""
+msgstr "Belarussisch"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:393
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:704
 msgid "Slovak"
-msgstr ""
+msgstr "Slowakisch"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:407
 msgid ""
 "Instead of showing all package-based apps as \"potentially unsafe\", only "
 "use that language for 3rd party ones"
 msgstr ""
+"Anstatt alle paketbasierten Anwendungen als \"potenziell unsicher\" zu "
+"kennzeichnen, sollten Sie diese Formulierung nur für Anwendungen von "
+"Drittanbietern verwenden"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:408
 msgid ""
 "Fix a bug where the \"Show more\" button on an app details page would "
 "flicker when the window is resized"
 msgstr ""
+"Behebung eines Fehlers, bei dem die Schaltfläche \"Mehr anzeigen\" auf einer "
+"App-Detailseite flackerte, wenn das Fenster in der Größe verändert wurde"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:409
 msgid ""
