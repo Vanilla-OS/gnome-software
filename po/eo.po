@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-04-06 21:33+0000\n"
+"PO-Revision-Date: 2023-11-09 17:34+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/eo/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 5.2-dev\n"
 "X-DamnedLies-Scope: partial\n"
 "X-Project-Style: gnome\n"
 
@@ -3100,7 +3100,7 @@ msgstr "Asimilado"
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:285
 msgid "Create"
-msgstr ""
+msgstr "Krei"
 
 #. Translators: this is a menu category
 #: lib/gs-desktop-data.c:287
@@ -5579,7 +5579,7 @@ msgstr "Pli da informoj"
 
 #: src/gs-shell.ui:189
 msgid "Search"
-msgstr "Serĉi"
+msgstr "Serĝi"
 
 #: src/gs-shell.ui:204
 msgid "Primary Menu"
@@ -6586,9 +6586,8 @@ msgid ""
 msgstr ""
 
 #: plugins/packagekit/gs-plugin-packagekit.c:367
-#, fuzzy
 msgid "Packages"
-msgstr "Pako"
+msgstr "Pakoj"
 
 #: plugins/rpm-ostree/gs-plugin-rpm-ostree.c:2690
 #, fuzzy

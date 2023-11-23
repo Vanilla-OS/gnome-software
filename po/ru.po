@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: gnome-software master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-08-03 04:54+0000\n"
+"PO-Revision-Date: 2023-11-23 11:02+0000\n"
 "Last-Translator: Fedorov Alexei <aleksejfedorov963@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/ru/>\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.2.1-rc\n"
 "X-DL-Team: ru\n"
 "X-DL-Module: gnome-software\n"
 "X-DL-Branch: main\n"
@@ -2689,7 +2689,7 @@ msgstr "Отменить"
 #. TRANSLATORS: update the fw
 #: src/gs-app-row.c:175 src/gs-common.c:286 src/gs-page.c:374
 msgid "Install"
-msgstr "Установить (Install)"
+msgstr "Установить"
 
 #. TRANSLATORS: this is a button in the updates panel
 #. * that allows the app to be easily updated live
@@ -3326,7 +3326,7 @@ msgstr "Подробные сообщения об ошибках от мене�
 
 #: src/gs-common.c:509 src/gs-safety-context-dialog.ui:72
 msgid "Details"
-msgstr "Детали"
+msgstr "Подробности"
 
 #. Translators: an accept button label, in a Cancel/Accept dialog
 #: src/gs-common.c:600

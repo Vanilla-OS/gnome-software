@@ -22,13 +22,14 @@
 # Leonardo Gonzalez <leog110@gmail.com>, 2023.
 # José Claudio Pereira <jpereira1330@gmail.com>, 2023.
 # Império Linux <kevendoria86@gmail.com>, 2023.
+# Davi de Oliveira Barbosa <davioliveira.java@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-08-18 04:52+0000\n"
-"Last-Translator: Império Linux <kevendoria86@gmail.com>\n"
+"PO-Revision-Date: 2023-09-19 14:02+0000\n"
+"Last-Translator: Davi de Oliveira Barbosa <davioliveira.java@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "vanilla-os/gnome-software/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -36,7 +37,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.1-dev\n"
 "X-Project-Style: gnome\n"
 "X-DL-Team: pt_BR\n"
 "X-DL-Module: gnome-software\n"
@@ -1091,7 +1092,6 @@ msgid "Fix some issues with searches not running"
 msgstr "Correção de alguns problemas com a não execução de pesquisas"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:520
-#, fuzzy
 msgid "Allow non-integer average star ratings for apps"
 msgstr ""
 "Permitir classificações de estrelas médias não inteiras para aplicativos"
@@ -1359,27 +1359,30 @@ msgstr ""
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:672
 msgid "Error handling improvements for fwupd"
-msgstr ""
+msgstr "Melhorias no tratamento de erros do fwupd"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:673
 msgid "Performance improvements for ODRS on startup"
-msgstr ""
+msgstr "Melhorias no desempenho do ODRS na inicialização"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:674
 msgid "Improve presentation of firmware warning messages"
-msgstr ""
+msgstr "Melhorias na apresentação das mensagens de aviso do firmware"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:675
 msgid "XML parsing performance improvements"
-msgstr ""
+msgstr "Melhorias de desempenho ao analisar XML"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:676
 msgid "Automatically remove end-of-life flatpak runtimes"
 msgstr ""
+"Remover automaticamente os ambientes de execução flatpak em fim de vida útil"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:677
 msgid "Support updating flatpaks to their new name when they are renamed"
 msgstr ""
+"Suporte à atualização de flatpaks para seu novo nome quando eles são "
+"renomeados"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:678
 msgid "Update the GNOME Software icon"
@@ -1387,16 +1390,17 @@ msgstr "Atualizar o ícone de GNOME Software"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:679
 msgid "Support more search results in the snap store"
-msgstr ""
+msgstr "Suporte a mais resultados de pesquisa na snap store"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:680
 msgid ""
 "Drop libgnome-desktop-3 dependency in favour of gsettings-desktop-schemas"
 msgstr ""
+"Libera a dependência libgnome-desktop-3 em favor do gsettings-desktop-schemas"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:696
 msgid "Kabyle"
-msgstr ""
+msgstr "Kabyle"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:2043
 #: src/gs-application.c:256
@@ -3958,7 +3962,7 @@ msgstr "Anterior"
 
 #: src/gs-featured-carousel.ui:66
 msgid "Next"
-msgstr "Próxima"
+msgstr "Próximo"
 
 #: src/gs-featured-carousel.ui:83
 msgid "Featured Apps List"
@@ -6672,21 +6676,24 @@ msgid ""
 "Another transaction has already been executed, you must reboot your system "
 "before starting a new transaction."
 msgstr ""
+"Outra transação já foi executada, você deve reiniciar seu sistema antes de "
+"iniciar uma nova transação."
 
 #: plugins/vso/gs-plugin-vso.c:260
 msgid "VSO failed to update the system, please try again later."
-msgstr ""
+msgstr "O VSO falhou ao atualizar o sistema, tente novamente mais tarde."
 
 #: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:245
 msgid ""
 "Applications installable via Apx with pre-defined container configuration"
 msgstr ""
+"Aplicativos instaláveis via Apx com configuração de contêiner predefinida"
 
 #. origin_ui on a remote is the repo dialogue section name,
 #. * not the remote title
 #: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:249
 msgid "Apps"
-msgstr ""
+msgstr "Apps"
 
 #: plugins/vanilla-meta/gs-plugin-vanilla-meta.c:251
 msgid ""
@@ -6694,6 +6701,9 @@ msgid ""
 "and pre-configured by the Vanilla OS team to guarantee that they are using "
 "the most compatible container and configurations."
 msgstr ""
+"Este repositório contém um conjunto de aplicativos populares instaláveis via "
+"Apx e pré-configurados pela equipe do Vanilla OS para garantir que eles "
+"estejam usando o contêiner e as configurações mais compatíveis."
 
 #~ msgid "Application manager for GNOME"
 #~ msgstr "Gerenciador de aplicativos para o GNOME"
