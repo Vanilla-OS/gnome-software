@@ -9,13 +9,14 @@
 # Krzysztof Kuska <kk@fw190.info>, 2023.
 # Dawid Bajon <dawidwsmole@gmail.com>, 2023.
 # Eryk Michalak <gnu.ewm@protonmail.com>, 2023.
+# Tomasz Dyńka <gramyteraz12@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-software\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 17:21-0300\n"
-"PO-Revision-Date: 2023-07-09 06:52+0000\n"
-"Last-Translator: Eryk Michalak <gnu.ewm@protonmail.com>\n"
+"PO-Revision-Date: 2023-11-30 23:03+0000\n"
+"Last-Translator: Tomasz Dyńka <gramyteraz12@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/vanilla-os/"
 "gnome-software/pl/>\n"
 "Language: pl\n"
@@ -24,7 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.3-dev\n"
 
 #: data/metainfo/org.gnome.Software.metainfo.xml.in:7 src/gs-shell.ui:21
 #: src/org.gnome.Software.desktop.in:3
@@ -2609,8 +2610,9 @@ msgstr "Anuluj"
 #. TRANSLATORS: button text
 #. TRANSLATORS: update the fw
 #: src/gs-app-row.c:175 src/gs-common.c:286 src/gs-page.c:374
+#, fuzzy
 msgid "Install"
-msgstr "Instalacja"
+msgstr "Instalowanie..."
 
 #. TRANSLATORS: this is a button in the updates panel
 #. * that allows the app to be easily updated live
